@@ -1,6 +1,6 @@
 @font-face {
   font-family: "vt";
-  src: url("file:///var/mobile/Documents/blog/font/Arial.ttf");
+  src: url("./Arial.ttf");
 }
 #bnt {
   background-color: var(--bg-color);
