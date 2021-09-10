@@ -56,6 +56,9 @@
         --scorpion: #5b5b5b;
         --tundora: #4c4c4c;
       }
+      #bg3 {
+        background-color: var(--bg-color);
+      }
       #theme-switch-wrapper {
         position: fixed;
         width: 120px;
