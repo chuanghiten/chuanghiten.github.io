@@ -131,7 +131,6 @@
       #bg {
         background-color: var(--bg-color);
         width: 980px;
-        min-height: 1409px;
         overflow: hidden;
       }
       #bg {
