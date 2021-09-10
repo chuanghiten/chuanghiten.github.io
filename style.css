@@ -134,7 +134,7 @@
       #bg {
         background-color: var(--bg-color);
         width: 980px;
-        overflow: hidden;
+        overflow-x: hidden;
       }
       #bg {
         display: block;
