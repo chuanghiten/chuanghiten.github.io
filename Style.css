@@ -169,6 +169,8 @@ input:checked + .slider::before {
   background-color: var(--background);
   z-index: -1;
   transition: all 0.5s ease-in-out;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 #content_container.open {
   border-radius: 34px;
