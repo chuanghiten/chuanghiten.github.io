@@ -11,7 +11,7 @@ fdiv.onmousedown = function(e) {
     e = window.event;
   }
   posX = 106/2/*e.clientX - parseInt(fdiv.style.left)*/;
-  posY = 106/2 /*e.clientY - parseInt(fdiv.style.top)*/;
+  posY =  /*e.clientY - parseInt(fdiv.style.top)*/;
         document.onmousemove = mousemove;
       };
       document.onmouseup = function() {
