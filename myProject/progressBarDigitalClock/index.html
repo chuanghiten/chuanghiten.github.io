@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<hear>
+  <meta charset="utf-8"/>
+  <title>Progress Bar Digital Clock</title>
+  <style>
+  :root{
+    --bg:#191a2e;
+    --ct:#fff;
+    --bgsd:#191a2e26
+  }
+  [theme="light"]{
+    --bg:#fff;
+    --ct:#191a2e;
+    --bgsd:#ffffff26
+  }
+  *,:before,:after{
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing:border-box;
+    font-size:100%;
+    transition:all .25s ease-in-out
+  }
+  @font-face{
+    font-family:Chewy;
+    src:url("../analogClock/fonts/chewy/Chewy-Regular.ttf"),url("https://fonts.gstatic.com/s/chewy/v12/uK_94ruUb-k-wn52KjI9OPec.woff2")
+  }
+  body{
+    background:var(--bg)
+  }
+  div.darkLightButton{
+    width:100px;
+    height:60px;
+    position:relative;
+    background:var(--ct);
+    border-radius:30px;
+    margin:20px;
+    box-shadow:0 0 10px 0 var(--ct)
+  }
+  div.darkLightButtonContent{
+    position:absolute;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    top:10px;
+    left:10px;
+    background:var(--bg)
+  }
+  div.clocks{
+    height:300px;
+    width:800px;
+    position:relative;
+    margin:200px auto;
+  }
+  div.dates{
+    width:200px;
+    height:100%;
+    background:var(--ct);
+    border-radius:20px;
+    position:absolute;
+    box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct);
+    display:flex;
+    align-items:center;
+    justify-content:center
+  }
+  div.day,div.date,div.title{
+    color:var(--bg);
+    display:block;
+    text-align:center;
+    font:80px Chewy;
+    text-shadow:0 0 5px var(--bg)
+  }
+  div.date{
+    font-size:30px;
+  }
+  div.clock{
+    height:100%;
+    width:580px;
+    position:absolute;
+    background:var(--ct);
+    left:220px;
+    border-radius:20px;
+    box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct);
+    padding:20px 30px
+  }
+  div.title{
+    text-align:left;
+    font-size:30px
+  }
+  div.progressBar{
+    width:100%;
+    height:10px;
+    background:linear-gradient(to right,var(--bg) 0%,var(--bgsd) 0);
+    display:block;
+    position:relative;
+    margin:20px 0
+  }
+  div.progressBar:before,div.progressBarContent{
+    content:"0";
+    display:flex;
+    position:absolute;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:var(--bg);
+    top:50%;
+    left:0;
+    transform:translate(-50%,-50%);
+    color:var(--ct);
+    font:15px Chewy;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 0 10px 0 var(--bg)
+  }
+  </style>
+</hear>
+<body class="body">
+  <div class="darkLightButton">
+    <div class="darkLightButtonContent"></div>
+  </div>
+  <div class="clocks">
+    <div class="dates">
+      <div class="day"></div>
+    </div>
+    <div class="clock">
+      <div class="hour">
+        <div class="title">Hour</div>
+        <div class="progressBar">
+          <div class="progressBarContent"></div>
+        </div>
+      </div>
+      <div class="minute">
+        <div class="title">Minute</div>
+        <div class="progressBar">
+          <div class="progressBarContent"></div>
+        </div>
+      </div>
+      <div class="second">
+        <div class="title">Second</div>
+        <div class="progressBar">
+          <div class="progressBarContent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+var body = document.querySelector("body");
+var darkLightButton = document.querySelector("div.darkLightButton");
+var darkLightButtonContent = document.querySelector("div.darkLightButtonContent");
+var check = 0;
+var secondProgressBar = document.querySelector("div.second div.progressBar");
+var secondProgressBarContent = document.querySelector("div.second div.progressBarContent");
+var minuteProgressBar = document.querySelector("div.minute div.progressBar");
+var minuteProgressBarContent = document.querySelector("div.minute div.progressBarContent");
+var hourProgressBar = document.querySelector("div.hour div.progressBar");
+var hourProgressBarContent = document.querySelector("div.hour div.progressBarContent");
+darkLightButton.onclick = function() {
+  if(check === 0) {
+    check = 1;
+    body.setAttribute("theme","light");
+    darkLightButtonContent.style.transform = "translate(100%,0)";
+  } else {
+    check = 0;
+    body.removeAttribute("theme");
+    darkLightButtonContent.style.transform = "translate(0,0)";
+  };
+};
+function clocks() {
+  var time = new Date();
+  var secondTime = time.getSeconds();
+  var minuteTime = time.getMinutes();
+  var hourTime = time.getHours();
+  var secondWidth = (secondTime * 100) / 60;
+  var minuteWidth = minuteTime * (5 / 3) + secondTime * 0.01;
+  var hourWidth = (hourTime * (25 / 3) + minuteTime * 0.005) / 2;
+  var days = ["CN","Th2","Th3","Th4","Th5","Th6","Th7"];
+  var dayTime = days[time.getDay()];
+  var dateTime = time.getDate();
+  var monthTime = time.getMonth() + 1;
+  var yearTime = time.getFullYear();
+  var day = document.querySelector("div.day");
+  secondProgressBar.style.background = "linear-gradient(to right,var(--bg) " + secondWidth + "%,var(--bgsd) 0)";
+  minuteProgressBar.style.background = "linear-gradient(to right,var(--bg) " + minuteWidth + "%,var(--bgsd) 0)";
+  hourProgressBar.style.background = "linear-gradient(to right,var(--bg) " + hourWidth + "%,var(--bgsd) 0)";
+  secondProgressBarContent.style.left = secondWidth + "%";
+  minuteProgressBarContent.style.left = minuteWidth + "%";
+  hourProgressBarContent.style.left = hourWidth + "%";
+  secondProgressBarContent.innerHTML = secondTime;
+  minuteProgressBarContent.innerHTML = minuteTime;
+  hourProgressBarContent.innerHTML = hourTime;
+  day.innerHTML = dayTime + "</br><div class='date'>" + dateTime + "/" + monthTime + "/" + yearTime;
+};
+setInterval(clocks,1000);
+clocks();
+</script>
+</html>
