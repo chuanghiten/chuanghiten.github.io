@@ -173,8 +173,8 @@ function clocks() {
   var minuteTime = time.getMinutes();
   var hourTime = time.getHours();
   var secondWidth = (secondTime * 100) / 60;
-  var minuteWidth = minuteTime * (5 / 3) + secondWidth * (1/60);
-  var hourWidth = (hourTime * (25 / 3) + minuteWidth * (1/60)) / 2;
+  var minuteWidth = ((minuteTime * 100) / 60) + secondWidth * (1/60);
+  var hourWidth = ((hourTime * 100) / 24) + minuteWidth * (1/60);
   var days = ["CN","Th2","Th3","Th4","Th5","Th6","Th7"];
   var dayTime = days[time.getDay()];
   var dateTime = time.getDate();
