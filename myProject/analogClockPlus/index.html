@@ -393,7 +393,7 @@ setInterval(function() {
 				var day = time.getDay();
 				var dayTime = days[time.getDay()];
 				var dateTime = time.getDate();
-				var monthTime = time.getMonth();
+				var monthTime = time.getMonth() + 1;
 				var yearTime = time.getFullYear();
 				var dates = document.querySelector("div.dates");
 				secondHand.style.transform = "translate(-50%,-260px) rotate(" + secondDeg + "deg)";
