@@ -1,413 +1,451 @@
 <!DOCTYPE html>
 <html>
 <hear>
-				<meta charset="utf-8">
-				<title>Analog Clock +</title>
-				<style>
-				@font-face{
-								font-family:Chewy;
-								src:url("../analogClock/fonts/chewy/Chewy-Regular.ttf"),url("https://fonts.gstatic.com/s/chewy/v12/uK_94ruUb-k-wn52KjI9OPec.woff2")
-				}
-				@font-face{
-								font-family:Pacifico;
-								src:url("./fonts/pacificoVietnamese.woff2"),url("https://fonts.gstatic.com/s/pacifico/v21/FwZY7-Qmy14u9lezJ-6I6MmBp0u-zK4.woff2")
-				}
-				@font-face{
-								font-family:Pacifico;
-								src:url("./fonts/pacificoLatin.woff2"),url("https://fonts.gstatic.com/s/pacifico/v21/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2")
-				}
-				:root{
-								--bg:#191a2e;
-								--ct:#fff
-				}
-				[theme="light"]{
-								--bg:#fff;
-								--ct:#191a2e
-				}
-				*,:before,:after{
-								margin:0;
-								padding:0;
-								border:0;
-								box-sizing:border-box;
-								transition:all .15s .7s ease-in-out
-				}
-				body{
-								background:var(--bg);
-				}
-				div.themeButton{
-								position:relative;
-								width:100px;
-								height:60px;
-								border-radius:30px;
-								margin:20px;
-								background:var(--ct);
-								box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct)
-				}
-				div.themeButtonContent{
-								position:absolute;
-								width:40px;
-								height:40px;
-								border-radius:50%;
-								top:10px;
-								left:10px;
-								background:var(--bg);
-								box-shadow:0 0 10px 0 var(--ct) inset;
-								transition-delay:.8s
-				}
-				div.darkLightAnimation{
-								width:100vw;
-								height:100vh;
-								position:absolute;
-								overflow:hidden;
-								top:0;
-								left:0
-				}
-				div.darkLightAnimation[hidden]{
-								display:none
-				}
-				div.darkLightAnimation[active]{
-								display:block
-				}
-				div.darkLightAnimation[active] div.darkLightAnimationContent{
-								animation:darkLightAnimation 1s ease-in-out 1 forwards
-				}
-				div.darkLightAnimationContent{
-								border-radius:50%;
-								background:var(--bg);
-								position:absolute
-				}
-				@keyframes darkLightAnimation{
-								0%{
-												transform:translate(-50%,-50%) scale(0)
-								}
-								80%{
-												transform:translate(-50%,-50%) scale(1);
-												opacity:1
-								}
-								100%{
-												transform:translate(-50%,-50%) scale(1);
-												opacity:0
-								}
-				}
-				div.clocks{
-								width:700px;
-								height:auto;
-								position:relative;
-								margin:0 auto
-				}
-				div.clock{
-								width:100%;
-								height:700px;
-								border-radius:50%;
-								background:var(--ct);
-								box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct),0 0 40px 0 var(--ct),0 0 60px 0 var(--ct);
-								position:relative
-				}
-				div.titles{
-								width:auto;
-								height:650px;
-								position:absolute;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%) rotate(calc(30deg * var(--rotate)));
-								font:50px Chewy;
-								color:var(--bg);
-								text-shadow:0 0 5px var(--bg)
-				}
-				div.title{
-								font:50px Chewy;
-								transform:rotate(calc(-30deg * var(--rotate)));
-								color:var(--bg);
-								text-shadow:0 0 5px var(--bg)
-				}
-				div.secondHand{
-								width:10px;
-								height:300px;
-								background:linear-gradient(to bottom,var(--bg) 45px,transparent 0 155px,var(--bg) 0);
-								position:absolute;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-260px);
-								border-radius:5px;
-								transform-origin:5px 260px
-				}
-				div.secondCenter{
-								width:30px;
-								height:30px;
-								border-radius:50%;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%);
-								background:var(--bg);
-								position:absolute
-				}
-				div.secondCenter:before{
-								content:"";
-								display:block;
-								position:absolute;
-								width:220px;
-								height:220px;
-								border-radius:50%;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%);
-								border:10px solid var(--bg)
-				}
-				div.minute{
-								width:450px;
-								height:450px;
-								border-radius:50%;
-								position:absolute;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%) rotate(calc(0deg - 7.5deg));
-								background:conic-gradient(transparent 15deg,var(--bg) 0);
-								border:10px solid var(--bg)
-				}
-				div.hourTitles,div.minuteTitles{
-								width:auto;
-								height:100%;
-								position:absolute;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%) rotate(7.5deg)
-				}
-				div.minuteTitle,div.hourTitle{
-								font:30px Chewy;
-								transform:rotate(0deg);
-								color:var(--bg)
-				}
-				div.hour:after,div.minute:after{
-								width:350px;
-								height:350px;
-								border-radius:50%;
-								position:absolute;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%);
-								background:var(--bg);
-								content:"";
-								display:block
-				}
-				div.hour{
-								width:330px;
-								height:330px;
-								position:absolute;
-								top:50%;
-								left:50%;
-								transform:translate(-50%,-50%) rotate(calc(0deg - 7.5deg));
-								background:conic-gradient(transparent 15deg,var(--ct) 0);
-								border-radius:50%;
-								border:10px solid var(--ct)
-				}
-				div.hour:after{
-								width:240px;
-								height:240px;
-								background:var(--ct)
-				}
-				div.hourTitle{
-								font:25px Chewy;
-								color:var(--ct)
-				}
-				div.dates{
-								position:relative;
-								width:100%;
-								height:140px;
-								margin:50px auto;
-								background:var(--ct);
-								border-radius:20px;
-								box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct),0 0 40px 0 var(--ct),0 0 60px 0 var(--ct);
-								font:60px Pacifico;
-								display:flex;
-								align-items:center;
-								justify-content:center;
-								color:var(--bg);
-								text-shadow:0 0 5px 0 var(--bg)
-				}
-				</style>
+	<meta charset="utf-8">
+	<title>Analog Clock +</title>
+	<style>
+		@font-face {
+			font-family: Chewy;
+			src: url("../analogClock/fonts/chewy/Chewy-Regular.ttf")
+		}
+
+		@font-face {
+			font-family: Pacifico;
+			src: url("./fonts/pacificoVietnamese.woff2")
+		}
+
+		@font-face {
+			font-family: Pacifico;
+			src: url("./fonts/pacificoLatin.woff2")
+		}
+
+		:root {
+			--bg: #191a2e;
+			--ct: #fff
+		}
+
+		[theme="light"] {
+			--bg: #fff;
+			--ct: #191a2e
+		}
+
+		*,
+		:before,
+		:after {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			box-sizing: border-box;
+			transition: all .15s .7s ease-in-out
+		}
+
+		body {
+			background: var(--bg);
+		}
+
+		div.themeButton {
+			position: relative;
+			width: 100px;
+			height: 60px;
+			border-radius: 30px;
+			margin: 20px;
+			background: var(--ct);
+			box-shadow: 0 0 10px 0 var(--ct), 0 0 20px 0 var(--ct)
+		}
+
+		div.themeButtonContent {
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			top: 10px;
+			left: 10px;
+			background: var(--bg);
+			box-shadow: 0 0 10px 0 var(--ct) inset;
+			transition-delay: .8s
+		}
+
+		div.darkLightAnimation {
+			width: 100vw;
+			height: 100vh;
+			position: absolute;
+			overflow: hidden;
+			top: 0;
+			left: 0
+		}
+
+		div.darkLightAnimation[hidden] {
+			display: none
+		}
+
+		div.darkLightAnimation[active] {
+			display: block
+		}
+
+		div.darkLightAnimation[active] div.darkLightAnimationContent {
+			animation: darkLightAnimation 1s ease-in-out 1 forwards
+		}
+
+		div.darkLightAnimationContent {
+			border-radius: 50%;
+			background: var(--bg);
+			position: absolute
+		}
+
+		@keyframes darkLightAnimation {
+			0% {
+				transform: translate(-50%, -50%) scale(0)
+			}
+
+			80% {
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 1
+			}
+
+			100% {
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 0
+			}
+		}
+
+		div.clocks {
+			width: 700px;
+			height: auto;
+			position: relative;
+			margin: 0 auto
+		}
+
+		div.clock {
+			width: 100%;
+			height: 700px;
+			border-radius: 50%;
+			background: var(--ct);
+			box-shadow: 0 0 10px 0 var(--ct), 0 0 20px 0 var(--ct), 0 0 40px 0 var(--ct), 0 0 60px 0 var(--ct);
+			position: relative
+		}
+
+		div.titles {
+			width: auto;
+			height: 650px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(calc(30deg * var(--rotate)));
+			font: 50px Chewy;
+			color: var(--bg);
+			text-shadow: 0 0 5px var(--bg)
+		}
+
+		div.title {
+			font: 50px Chewy;
+			transform: rotate(calc(-30deg * var(--rotate)));
+			color: var(--bg);
+			text-shadow: 0 0 5px var(--bg)
+		}
+
+		div.secondHand {
+			width: 10px;
+			height: 300px;
+			background: linear-gradient(to bottom, var(--bg) 45px, transparent 0 155px, var(--bg) 0);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -260px);
+			border-radius: 5px;
+			transform-origin: 5px 260px
+		}
+
+		div.secondCenter {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: var(--bg);
+			position: absolute
+		}
+
+		div.secondCenter:before {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 220px;
+			height: 220px;
+			border-radius: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border: 10px solid var(--bg)
+		}
+
+		div.minute {
+			width: 450px;
+			height: 450px;
+			border-radius: 50%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(calc(0deg - 7.5deg));
+			background: conic-gradient(transparent 15deg, var(--bg) 0);
+			border: 10px solid var(--bg)
+		}
+
+		div.hourTitles,
+		div.minuteTitles {
+			width: auto;
+			height: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(7.5deg)
+		}
+
+		div.minuteTitle,
+		div.hourTitle {
+			font: 30px Chewy;
+			transform: rotate(0deg);
+			color: var(--bg)
+		}
+
+		div.hour:after,
+		div.minute:after {
+			width: 350px;
+			height: 350px;
+			border-radius: 50%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: var(--bg);
+			content: "";
+			display: block
+		}
+
+		div.hour {
+			width: 330px;
+			height: 330px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(calc(0deg - 7.5deg));
+			background: conic-gradient(transparent 15deg, var(--ct) 0);
+			border-radius: 50%;
+			border: 10px solid var(--ct)
+		}
+
+		div.hour:after {
+			width: 240px;
+			height: 240px;
+			background: var(--ct)
+		}
+
+		div.hourTitle {
+			font: 25px Chewy;
+			color: var(--ct)
+		}
+
+		div.dates {
+			position: relative;
+			width: 100%;
+			height: 140px;
+			margin: 50px auto;
+			background: var(--ct);
+			border-radius: 20px;
+			box-shadow: 0 0 10px 0 var(--ct), 0 0 20px 0 var(--ct), 0 0 40px 0 var(--ct), 0 0 60px 0 var(--ct);
+			font: 60px Pacifico;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--bg);
+			text-shadow: 0 0 5px 0 var(--bg)
+		}
+	</style>
 </hear>
+
 <body>
-				<div class="themeButton">
-								<div class="themeButtonContent"></div>
+	<div class="themeButton">
+		<div class="themeButtonContent"></div>
+	</div>
+	<div class="clocks">
+		<div class="clock">
+			<div class="minute">
+				<div class="minuteTitles">
+					<div class="minuteTitle">??</div>
 				</div>
-				<div class="clocks">
-								<div class="clock">
-												<div class="minute">
-																<div class="minuteTitles">
-																				<div class="minuteTitle">??</div>
-																</div>
-												</div>
-												<div class="hour">
-																<div class="hourTitles">
-																				<div class="hourTitle">??</div>
-																</div>
-												</div>
-												<div class="second">
-																<div class="titles" style="--rotate:0">
-																				<div class="title">12</div>
-																</div>
-																<div class="titles" style="--rotate:1">
-																				<div class="title">1</div>
-																</div>
-																<div class="titles" style="--rotate:2">
-																				<div class="title">2</div>
-																</div>
-																<div class="titles" style="--rotate:3">
-																				<div class="title">3</div>
-																</div>
-																<div class="titles" style="--rotate:4">
-																				<div class="title">4</div>
-																</div>
-																<div class="titles" style="--rotate:5">
-																				<div class="title">5</div>
-																</div>
-																<div class="titles" style="--rotate:6">
-																				<div class="title">6</div>
-																</div>
-																<div class="titles" style="--rotate:7">
-																				<div class="title">7</div>
-																</div>
-																<div class="titles" style="--rotate:8">
-																				<div class="title">8</div>
-																</div>
-																<div class="titles" style="--rotate:9">
-																				<div class="title">9</div>
-																</div>
-																<div class="titles" style="--rotate:10">
-																				<div class="title">10</div>
-																</div>
-																<div class="titles" style="--rotate:11">
-																				<div class="title">11</div>
-																</div>
-																<div class="titles" style="--rotate:0.2">.</div>
-																<div class="titles" style="--rotate:0.4">.</div>
-																<div class="titles" style="--rotate:0.6">.</div>
-																<div class="titles" style="--rotate:0.8">.</div>
-																<div class="titles" style="--rotate:1.2">.</div>
-																<div class="titles" style="--rotate:1.4">.</div>
-																<div class="titles" style="--rotate:1.6">.</div>
-																<div class="titles" style="--rotate:1.8">.</div>
-																<div class="titles" style="--rotate:2.2">.</div>
-																<div class="titles" style="--rotate:2.4">.</div>
-																<div class="titles" style="--rotate:2.6">.</div>
-																<div class="titles" style="--rotate:2.8">.</div>
-																<div class="titles" style="--rotate:3.2">.</div>
-																<div class="titles" style="--rotate:3.4">.</div>
-																<div class="titles" style="--rotate:3.6">.</div>
-																<div class="titles" style="--rotate:3.8">.</div>
-																<div class="titles" style="--rotate:4.2">.</div>
-																<div class="titles" style="--rotate:4.4">.</div>
-																<div class="titles" style="--rotate:4.6">.</div>
-																<div class="titles" style="--rotate:4.8">.</div>
-																<div class="titles" style="--rotate:5.2">.</div>
-																<div class="titles" style="--rotate:5.4">.</div>
-																<div class="titles" style="--rotate:5.6">.</div>
-																<div class="titles" style="--rotate:5.8">.</div>
-																<div class="titles" style="--rotate:6.2">.</div>
-																<div class="titles" style="--rotate:6.4">.</div>
-																<div class="titles" style="--rotate:6.6">.</div>
-																<div class="titles" style="--rotate:6.8">.</div>
-																<div class="titles" style="--rotate:7.2">.</div>
-																<div class="titles" style="--rotate:7.4">.</div>
-																<div class="titles" style="--rotate:7.6">.</div>
-																<div class="titles" style="--rotate:7.8">.</div>
-																<div class="titles" style="--rotate:8.2">.</div>
-																<div class="titles" style="--rotate:8.4">.</div>
-																<div class="titles" style="--rotate:8.6">.</div>
-																<div class="titles" style="--rotate:8.8">.</div>
-																<div class="titles" style="--rotate:9.2">.</div>
-																<div class="titles" style="--rotate:9.4">.</div>
-																<div class="titles" style="--rotate:9.6">.</div>
-																<div class="titles" style="--rotate:9.8">.</div>
-																<div class="titles" style="--rotate:10.2">.</div>
-																<div class="titles" style="--rotate:10.4">.</div>
-																<div class="titles" style="--rotate:10.6">.</div>
-																<div class="titles" style="--rotate:10.8">.</div>
-																<div class="titles" style="--rotate:11.2">.</div>
-																<div class="titles" style="--rotate:11.4">.</div>
-																<div class="titles" style="--rotate:11.6">.</div>
-																<div class="titles" style="--rotate:11.8">.</div>
-																<div class="secondHand"></div>
-																<div class="secondCenter"></div>
-												</div>
-								</div>
-								<div class="dates">
-												??
-								</div>
+			</div>
+			<div class="hour">
+				<div class="hourTitles">
+					<div class="hourTitle">??</div>
 				</div>
-				<div class="darkLightAnimation" hidden>
-								<div class="darkLightAnimationContent"></div>
+			</div>
+			<div class="second">
+				<div class="titles" style="--rotate:0">
+					<div class="title">12</div>
 				</div>
+				<div class="titles" style="--rotate:1">
+					<div class="title">1</div>
+				</div>
+				<div class="titles" style="--rotate:2">
+					<div class="title">2</div>
+				</div>
+				<div class="titles" style="--rotate:3">
+					<div class="title">3</div>
+				</div>
+				<div class="titles" style="--rotate:4">
+					<div class="title">4</div>
+				</div>
+				<div class="titles" style="--rotate:5">
+					<div class="title">5</div>
+				</div>
+				<div class="titles" style="--rotate:6">
+					<div class="title">6</div>
+				</div>
+				<div class="titles" style="--rotate:7">
+					<div class="title">7</div>
+				</div>
+				<div class="titles" style="--rotate:8">
+					<div class="title">8</div>
+				</div>
+				<div class="titles" style="--rotate:9">
+					<div class="title">9</div>
+				</div>
+				<div class="titles" style="--rotate:10">
+					<div class="title">10</div>
+				</div>
+				<div class="titles" style="--rotate:11">
+					<div class="title">11</div>
+				</div>
+				<div class="titles" style="--rotate:0.2">.</div>
+				<div class="titles" style="--rotate:0.4">.</div>
+				<div class="titles" style="--rotate:0.6">.</div>
+				<div class="titles" style="--rotate:0.8">.</div>
+				<div class="titles" style="--rotate:1.2">.</div>
+				<div class="titles" style="--rotate:1.4">.</div>
+				<div class="titles" style="--rotate:1.6">.</div>
+				<div class="titles" style="--rotate:1.8">.</div>
+				<div class="titles" style="--rotate:2.2">.</div>
+				<div class="titles" style="--rotate:2.4">.</div>
+				<div class="titles" style="--rotate:2.6">.</div>
+				<div class="titles" style="--rotate:2.8">.</div>
+				<div class="titles" style="--rotate:3.2">.</div>
+				<div class="titles" style="--rotate:3.4">.</div>
+				<div class="titles" style="--rotate:3.6">.</div>
+				<div class="titles" style="--rotate:3.8">.</div>
+				<div class="titles" style="--rotate:4.2">.</div>
+				<div class="titles" style="--rotate:4.4">.</div>
+				<div class="titles" style="--rotate:4.6">.</div>
+				<div class="titles" style="--rotate:4.8">.</div>
+				<div class="titles" style="--rotate:5.2">.</div>
+				<div class="titles" style="--rotate:5.4">.</div>
+				<div class="titles" style="--rotate:5.6">.</div>
+				<div class="titles" style="--rotate:5.8">.</div>
+				<div class="titles" style="--rotate:6.2">.</div>
+				<div class="titles" style="--rotate:6.4">.</div>
+				<div class="titles" style="--rotate:6.6">.</div>
+				<div class="titles" style="--rotate:6.8">.</div>
+				<div class="titles" style="--rotate:7.2">.</div>
+				<div class="titles" style="--rotate:7.4">.</div>
+				<div class="titles" style="--rotate:7.6">.</div>
+				<div class="titles" style="--rotate:7.8">.</div>
+				<div class="titles" style="--rotate:8.2">.</div>
+				<div class="titles" style="--rotate:8.4">.</div>
+				<div class="titles" style="--rotate:8.6">.</div>
+				<div class="titles" style="--rotate:8.8">.</div>
+				<div class="titles" style="--rotate:9.2">.</div>
+				<div class="titles" style="--rotate:9.4">.</div>
+				<div class="titles" style="--rotate:9.6">.</div>
+				<div class="titles" style="--rotate:9.8">.</div>
+				<div class="titles" style="--rotate:10.2">.</div>
+				<div class="titles" style="--rotate:10.4">.</div>
+				<div class="titles" style="--rotate:10.6">.</div>
+				<div class="titles" style="--rotate:10.8">.</div>
+				<div class="titles" style="--rotate:11.2">.</div>
+				<div class="titles" style="--rotate:11.4">.</div>
+				<div class="titles" style="--rotate:11.6">.</div>
+				<div class="titles" style="--rotate:11.8">.</div>
+				<div class="secondHand"></div>
+				<div class="secondCenter"></div>
+			</div>
+		</div>
+		<div class="dates">
+			??
+		</div>
+	</div>
+	<div class="darkLightAnimation" hidden>
+		<div class="darkLightAnimationContent"></div>
+	</div>
 </body>
 <script>
-var body = document.querySelector("body");
-var themeButton = document.querySelector("div.themeButton");
-var themeButtonContent = document.querySelector("div.themeButtonContent");
-var darkLightAnimation = document.querySelector("div.darkLightAnimation");
-var check = 0;
-var screenWidth = screen.availWidth;
-var screenHeight = screen.availHeight;
-var darkLightAnimationContent = document.querySelector("div.darkLightAnimationContent");
-var secondHand = document.querySelector("div.secondHand");
-var minuteHand = document.querySelector("div.minute");
-var minuteHandContent = document.querySelector("div.minuteTitle");
-var hourHand = document.querySelector("div.hour");
-var hourHandContent = document.querySelector("div.hourTitle");
-themeButton.onclick = function() {
-				if(screenWidth <= screenHeight) {
-								darkLightAnimationContent.style.width = "250vh";
-								darkLightAnimationContent.style.height = "250vh";
-				} else {
-								darkLightAnimationContent.style.width = "250vw";
-								darkLightAnimationContent.style.height = "250vw";
+	var body = document.querySelector("body");
+	var themeButton = document.querySelector("div.themeButton");
+	var themeButtonContent = document.querySelector("div.themeButtonContent");
+	var darkLightAnimation = document.querySelector("div.darkLightAnimation");
+	var check = 0;
+	var screenWidth = screen.availWidth;
+	var screenHeight = screen.availHeight;
+	var darkLightAnimationContent = document.querySelector("div.darkLightAnimationContent");
+	var secondHand = document.querySelector("div.secondHand");
+	var minuteHand = document.querySelector("div.minute");
+	var minuteHandContent = document.querySelector("div.minuteTitle");
+	var hourHand = document.querySelector("div.hour");
+	var hourHandContent = document.querySelector("div.hourTitle");
+	themeButton.onclick = function () {
+		if (screenWidth <= screenHeight) {
+			darkLightAnimationContent.style.width = "250vh";
+			darkLightAnimationContent.style.height = "250vh";
+		} else {
+			darkLightAnimationContent.style.width = "250vw";
+			darkLightAnimationContent.style.height = "250vw";
 		};
-								darkLightAnimation.removeAttribute("hidden");
-								darkLightAnimation.setAttribute("active","");
-								setTimeout(function() {
-												darkLightAnimation.removeAttribute("active");
-												darkLightAnimation.setAttribute("hidden","");
-								},1100);
-								if(check === 0) {
-												check = 1;
-												body.setAttribute("theme","light");
-												themeButtonContent.style.transform = "translate(100%,0)";
-												themeButtonContent.style.boxShadow = "0 0 10px 0 var(--bg)";
-								} else {
-												check = 0;
-												body.removeAttribute("theme");
-												themeButtonContent.style.transform = "translate(0,0)";
-												themeButtonContent.style.boxShadow = "0 0 10px 0 var(--ct) inset"
-								}
-};
-setInterval(function() {
-				var time = new Date();
-				var secondTime = time.getSeconds();
-				var minuteTime = time.getMinutes();
-				var hourTime = time.getHours();
-				var secondDeg = secondTime * 6;
-				var minuteDeg = minuteTime * 6 + secondTime * 0.1;
-				var hourDeg = hourTime * 30 + minuteTime * 0.5;
-				var unMinuteDeg = minuteDeg * -1;
-				var unHourDeg = hourDeg * -1;
-				var days = ["Chủ nhật","Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7"];
-				var day = time.getDay();
-				var dayTime = days[time.getDay()];
-				var dateTime = time.getDate();
-				var monthTime = time.getMonth() + 1;
-				var yearTime = time.getFullYear();
-				var dates = document.querySelector("div.dates");
-				secondHand.style.transform = "translate(-50%,-260px) rotate(" + secondDeg + "deg)";
-				minuteHand.style.transform = "translate(-50%,-50%) rotate(calc(" + minuteDeg + "deg - 7.5deg))";
-				minuteHandContent.style.transform = "rotate(" + unMinuteDeg + "deg)";
-				minuteHandContent.innerHTML = minuteTime;
-				hourHand.style.transform = "translate(-50%,-50%) rotate(calc(" + hourDeg + "deg - 7.5deg))";
-				hourHandContent.style.transform = "rotate(" + unHourDeg + "deg)";
-				hourHandContent.innerHTML = hourTime;
-				if(day === 0) {
-								dates.innerHTML = dayTime + ", " + dateTime + "/" + monthTime + "/" + yearTime;
-				} else {
-								dates.innerHTML = dayTime + ", ngày " + dateTime + "/" + monthTime + "/" + yearTime;
-				};
-},1000);
+		darkLightAnimation.removeAttribute("hidden");
+		darkLightAnimation.setAttribute("active", "");
+		setTimeout(function () {
+			darkLightAnimation.removeAttribute("active");
+			darkLightAnimation.setAttribute("hidden", "");
+		}, 1100);
+		if (check === 0) {
+			check = 1;
+			body.setAttribute("theme", "light");
+			themeButtonContent.style.transform = "translate(100%,0)";
+			themeButtonContent.style.boxShadow = "0 0 10px 0 var(--bg)";
+		} else {
+			check = 0;
+			body.removeAttribute("theme");
+			themeButtonContent.style.transform = "translate(0,0)";
+			themeButtonContent.style.boxShadow = "0 0 10px 0 var(--ct) inset"
+		}
+	};
+	setInterval(function () {
+		var time = new Date();
+		var secondTime = time.getSeconds();
+		var minuteTime = time.getMinutes();
+		var hourTime = time.getHours();
+		var secondDeg = secondTime * 6;
+		var minuteDeg = minuteTime * 6 + secondTime * 0.1;
+		var hourDeg = hourTime * 30 + minuteTime * 0.5;
+		var unMinuteDeg = minuteDeg * -1;
+		var unHourDeg = hourDeg * -1;
+		var days = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+		var day = time.getDay();
+		var dayTime = days[time.getDay()];
+		var dateTime = time.getDate();
+		var monthTime = time.getMonth() + 1;
+		var yearTime = time.getFullYear();
+		var dates = document.querySelector("div.dates");
+		secondHand.style.transform = "translate(-50%,-260px) rotate(" + secondDeg + "deg)";
+		minuteHand.style.transform = "translate(-50%,-50%) rotate(calc(" + minuteDeg + "deg - 7.5deg))";
+		minuteHandContent.style.transform = "rotate(" + unMinuteDeg + "deg)";
+		minuteHandContent.innerHTML = minuteTime;
+		hourHand.style.transform = "translate(-50%,-50%) rotate(calc(" + hourDeg + "deg - 7.5deg))";
+		hourHandContent.style.transform = "rotate(" + unHourDeg + "deg)";
+		hourHandContent.innerHTML = hourTime;
+		if (day === 0) {
+			dates.innerHTML = dayTime + ", " + dateTime + "/" + monthTime + "/" + yearTime;
+		} else {
+			dates.innerHTML = dayTime + ", ngày " + dateTime + "/" + monthTime + "/" + yearTime;
+		};
+	}, 1000);
 </script>
+
 </html>

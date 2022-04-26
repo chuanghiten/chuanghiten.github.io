@@ -1,171 +1,212 @@
 <!DOCTYPE html>
 <html>
 <hear>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <title>Circular Progress Bar Digital Clock</title>
   <style>
-  @font-face{
-    font-family:Chewy;
-    src:url("../analogClock/fonts/chewy/Chewy-Regular.ttf"),url("https://fonts.gstatic.com/s/chewy/v12/uK_94ruUb-k-wn52KjI9OPec.woff2")
-  }
-  :root{
-    --bg:#191a2e;
-    --ct:#fff;
-    --ct2:#333
-  }
-  *,
-  :before,
-  :after{
-    margin:0;
-    padding:0;
-    border:0;
-    box-sizing:border-box
-  }
-  body{
-    background:var(--bg)
-  }
-  div.clock{
-    width:500px;
-    height:500px;
-    margin:300px auto 0 auto;
-    position:relative
-  }
-  div.hour{
-    width:100%;
-    height:100%;
-    position:relative
-  }
-  div.hour div.progressbar,div.minute div.progressbar,div.second div.progressbar{
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    background:conic-gradient(var(--ct) 0,var(--ct2) 0);
-    position:absolute;
-    box-shadow:0 0 10px 0 var(--ct2),0 0 20px 0 var(--ct2)
-  }
-  div.hour div.progressbar:before,div.minute div.progressbar:before,div.second div.progressbar:before,div.hour div.progressbar:after,div.second div.progressbar:after,div.minute div.progressbar:after{
-    content:"";
-    display:block;
-    position:absolute
-  }
-  div.hour div.progressbar:after,div.second div.progressbar:after,div.minute div.progressbar:after{
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:var(--ct);
-    left:50%;
-    transform:translate(-50%,-10px);
-    content:"0";
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Chewy,cursive;
-    box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct)
-  }
-  div.hour div.progressbar:before,div.second div.progressbar:before,div.minute div.progressbar:before{
-    width:480px;
-    height:480px;
-    border-radius:50%;
-    top:10px;
-    left:10px;
-    background:var(--bg);
-    box-shadow:0 0 10px 0 var(--ct2) inset,0 0 20px 0 var(--ct2) inset
-  }
-  div.hour div.contents,div.second div.contents,div.minute div.contents{
-    height:490px;
-    width:490px;
-    left:5px;
-    top:5px;
-    transform:rotate(0);
-    position:absolute;
-  }
-  div.hour div.contents div.content,div.minute div.contents div.content,div.second div.contents div.content{
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    transform:translate(-50%,-50%) rotate(0);
-    left:50%;
-    top:0;
-    background:var(--ct);
-    color:var(--bg);
-    position:absolute;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Chewy,cursive;
-    box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct);
-    text-shadow: 0 0 1px var(--bg)
-  }
-  div.minute,div.second{
-    width:400px;
-    height:400px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%)
-  }
-  div.minute div.progressbar{
-    background:conic-gradient(var(--ct) 0,var(--ct2) 0);
-  }
-  div.minute div.progressbar:before{
-    width:380px;
-    height:380px;
-  }
-  div.minute div.contents{
-    height:390px;
-    width:390px;
-    transform:rotate(0);
-  }
-  div.minute div.contents div.content{
-    transform:translate(-50%,-50%) rotate(0);
-  }
-  div.second{
-    width:300px;
-    height:300px;
-  }
-  div.second div.progressbar{
-    background:conic-gradient(var(--ct) 0,var(--ct2) 0);
-  }
-  div.second div.progressbar:before{
-    width:280px;
-    height:280px;
-  }
-  div.second div.contents{
-    height:290px;
-    width:290px;
-    transform:rotate(0);
-  }
-  div.second div.contents div.content{
-    transform:translate(-50%,-50%) rotate(0)
-  }
-  div.dates{
-    width:200px;
-    height:200px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:var(--bg);
-    border-radius:50%;
-    border:10px solid var(--ct);
-    box-shadow:0 0 10px 0 var(--ct),0 0 20px 0 var(--ct),0 0 10px 0 var(--ct) inset,0 0 20px 0 var(--ct) inset;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center
-  }
-  div.day,div.date{
-    display:block;
-    color:var(--ct);
-    font:40px Chewy,cursive;
-    text-shadow:0 0 10px var(--ct);
-  }
-  div.date{
-    font-size:20px;
-  }
-  div.date
+    @font-face {
+      font-family: Chewy;
+      src: url("../analogClock/fonts/chewy/Chewy-Regular.ttf")
+    }
+
+    :root {
+      --bg: #191a2e;
+      --ct: #fff;
+      --ct2: #333
+    }
+
+    *,
+    :before,
+    :after {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      background: var(--bg)
+    }
+
+    div.clock {
+      width: 500px;
+      height: 500px;
+      margin: 300px auto 0 auto;
+      position: relative
+    }
+
+    div.hour {
+      width: 100%;
+      height: 100%;
+      position: relative
+    }
+
+    div.hour div.progressbar,
+    div.minute div.progressbar,
+    div.second div.progressbar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(var(--ct) 0, var(--ct2) 0);
+      position: absolute;
+      box-shadow: 0 0 10px 0 var(--ct2), 0 0 20px 0 var(--ct2)
+    }
+
+    div.hour div.progressbar:before,
+    div.minute div.progressbar:before,
+    div.second div.progressbar:before,
+    div.hour div.progressbar:after,
+    div.second div.progressbar:after,
+    div.minute div.progressbar:after {
+      content: "";
+      display: block;
+      position: absolute
+    }
+
+    div.hour div.progressbar:after,
+    div.second div.progressbar:after,
+    div.minute div.progressbar:after {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--ct);
+      left: 50%;
+      transform: translate(-50%, -10px);
+      content: "0";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Chewy, cursive;
+      box-shadow: 0 0 10px 0 var(--ct), 0 0 20px 0 var(--ct)
+    }
+
+    div.hour div.progressbar:before,
+    div.second div.progressbar:before,
+    div.minute div.progressbar:before {
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      top: 10px;
+      left: 10px;
+      background: var(--bg);
+      box-shadow: 0 0 10px 0 var(--ct2) inset, 0 0 20px 0 var(--ct2) inset
+    }
+
+    div.hour div.contents,
+    div.second div.contents,
+    div.minute div.contents {
+      height: 490px;
+      width: 490px;
+      left: 5px;
+      top: 5px;
+      transform: rotate(0);
+      position: absolute;
+    }
+
+    div.hour div.contents div.content,
+    div.minute div.contents div.content,
+    div.second div.contents div.content {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(0);
+      left: 50%;
+      top: 0;
+      background: var(--ct);
+      color: var(--bg);
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Chewy, cursive;
+      box-shadow: 0 0 10px 0 var(--ct), 0 0 20px 0 var(--ct);
+      text-shadow: 0 0 1px var(--bg)
+    }
+
+    div.minute,
+    div.second {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+
+    div.minute div.progressbar {
+      background: conic-gradient(var(--ct) 0, var(--ct2) 0);
+    }
+
+    div.minute div.progressbar:before {
+      width: 380px;
+      height: 380px;
+    }
+
+    div.minute div.contents {
+      height: 390px;
+      width: 390px;
+      transform: rotate(0);
+    }
+
+    div.minute div.contents div.content {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+
+    div.second {
+      width: 300px;
+      height: 300px;
+    }
+
+    div.second div.progressbar {
+      background: conic-gradient(var(--ct) 0, var(--ct2) 0);
+    }
+
+    div.second div.progressbar:before {
+      width: 280px;
+      height: 280px;
+    }
+
+    div.second div.contents {
+      height: 290px;
+      width: 290px;
+      transform: rotate(0);
+    }
+
+    div.second div.contents div.content {
+      transform: translate(-50%, -50%) rotate(0)
+    }
+
+    div.dates {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg);
+      border-radius: 50%;
+      border: 10px solid var(--ct);
+      box-shadow: 0 0 10px 0 var(--ct), 0 0 20px 0 var(--ct), 0 0 10px 0 var(--ct) inset, 0 0 20px 0 var(--ct) inset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center
+    }
+
+    div.day,
+    div.date {
+      display: block;
+      color: var(--ct);
+      font: 40px Chewy, cursive;
+      text-shadow: 0 0 10px var(--ct);
+    }
+
+    div.date {
+      font-size: 20px;
+    }
   </style>
 </hear>
+
 <body>
   <div class="clock">
     <div class="hour">
@@ -192,47 +233,48 @@
   </div>
 </body>
 <script>
-var secondProgressbar = document.querySelector(".second .progressbar");
-var secondContent = document.querySelector(".second .content");
-var secondContents = document.querySelector(".second .contents");
-var minuteProgressbar = document.querySelector(".minute .progressbar");
-var minuteContent = document.querySelector(".minute .content");
-var minuteContents = document.querySelector(".minute .contents");
-var hourProgressbar = document.querySelector(".hour .progressbar");
-var hourContent = document.querySelector(".hour .content");
-var hourContents = document.querySelector(".hour .contents");
-var day = document.querySelector(".day");
-function clock() {
-  var time = new Date();
-  var secondTime = time.getSeconds();
-  var secondDeg = secondTime * 6;
-  var secondDeg2 = secondDeg * -1;
-  var minuteTime = time.getMinutes();
-  var minuteDeg = minuteTime * 6 + secondTime * 0.1;
-  var minuteDeg2 = minuteDeg * -1;
-  var hourTime = time.getHours();
-  var hourDeg = (hourTime * 30 + minuteTime * 0.5) / 2;
-  var hourDeg2 = hourDeg * -1;
-  var days = ["CN","Th2","Th3","Th4","Th5","Th6","Th7"]
-  var dayTime = days[time.getDay()];
-  var dateTime = time.getDate();
-  var monthTime = time.getMonth() + 1;
-  var yearTime = time.getFullYear();
-  secondProgressbar.style.background = "conic-gradient(var(--ct) " + secondDeg + "deg,var(--ct2) 0)";
-  secondContents.style.transform = "rotate(" + secondDeg + "deg)";
-  secondContent.innerHTML = secondTime;
-  secondContent.style.transform = "translate(-50%,-50%) rotate(" + secondDeg2 + "deg)";
-  minuteProgressbar.style.background = "conic-gradient(var(--ct) " + minuteDeg + "deg,var(--ct2) 0)";
-  minuteContents.style.transform = "rotate(" + minuteDeg + "deg)";
-  minuteContent.innerHTML = minuteTime;
-  minuteContent.style.transform = "translate(-50%,-50%) rotate(" + minuteDeg2 + "deg)";
-  hourProgressbar.style.background = "conic-gradient(var(--ct) " + hourDeg + "deg,var(--ct2) 0)";
-  hourContents.style.transform = "rotate(" + hourDeg + "deg)";
-  hourContent.innerHTML = hourTime;
-  hourContent.style.transform = "translate(-50%,-50%) rotate(" + hourDeg2 + "deg)";
-  day.innerHTML = dayTime + "</br><div class='date'>" + dateTime + "/" + monthTime + "/" + yearTime + "</div>";
-};
-setInterval(clock,1000);
-clock();
+  var secondProgressbar = document.querySelector(".second .progressbar");
+  var secondContent = document.querySelector(".second .content");
+  var secondContents = document.querySelector(".second .contents");
+  var minuteProgressbar = document.querySelector(".minute .progressbar");
+  var minuteContent = document.querySelector(".minute .content");
+  var minuteContents = document.querySelector(".minute .contents");
+  var hourProgressbar = document.querySelector(".hour .progressbar");
+  var hourContent = document.querySelector(".hour .content");
+  var hourContents = document.querySelector(".hour .contents");
+  var day = document.querySelector(".day");
+  function clock() {
+    var time = new Date();
+    var secondTime = time.getSeconds();
+    var secondDeg = secondTime * 6;
+    var secondDeg2 = secondDeg * -1;
+    var minuteTime = time.getMinutes();
+    var minuteDeg = minuteTime * 6 + secondTime * 0.1;
+    var minuteDeg2 = minuteDeg * -1;
+    var hourTime = time.getHours();
+    var hourDeg = (hourTime * 30 + minuteTime * 0.5) / 2;
+    var hourDeg2 = hourDeg * -1;
+    var days = ["CN", "Th2", "Th3", "Th4", "Th5", "Th6", "Th7"]
+    var dayTime = days[time.getDay()];
+    var dateTime = time.getDate();
+    var monthTime = time.getMonth() + 1;
+    var yearTime = time.getFullYear();
+    secondProgressbar.style.background = "conic-gradient(var(--ct) " + secondDeg + "deg,var(--ct2) 0)";
+    secondContents.style.transform = "rotate(" + secondDeg + "deg)";
+    secondContent.innerHTML = secondTime;
+    secondContent.style.transform = "translate(-50%,-50%) rotate(" + secondDeg2 + "deg)";
+    minuteProgressbar.style.background = "conic-gradient(var(--ct) " + minuteDeg + "deg,var(--ct2) 0)";
+    minuteContents.style.transform = "rotate(" + minuteDeg + "deg)";
+    minuteContent.innerHTML = minuteTime;
+    minuteContent.style.transform = "translate(-50%,-50%) rotate(" + minuteDeg2 + "deg)";
+    hourProgressbar.style.background = "conic-gradient(var(--ct) " + hourDeg + "deg,var(--ct2) 0)";
+    hourContents.style.transform = "rotate(" + hourDeg + "deg)";
+    hourContent.innerHTML = hourTime;
+    hourContent.style.transform = "translate(-50%,-50%) rotate(" + hourDeg2 + "deg)";
+    day.innerHTML = dayTime + "</br><div class='date'>" + dateTime + "/" + monthTime + "/" + yearTime + "</div>";
+  };
+  setInterval(clock, 1000);
+  clock();
 </script>
+
 </html>
