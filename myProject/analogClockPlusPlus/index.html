@@ -25,17 +25,17 @@
 
 		@font-face {
 			font-family: Chewy;
-			src: url('../fonts/chewy/Chewy-Regular.ttf'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/myProject/analogClock/fonts/chewy/Chewy-Regular.ttf')
+			src: url('../analogClock/fonts/chewy/Chewy-Regular.ttf'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/myProject/analogClock/fonts/chewy/Chewy-Regular.ttf')
 		}
 
 		@font-face {
 			font-family: Pacifico;
-			src: url('../fonts/pacificoLatin.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/myProject/analogClockPlus/fonts/pacificoLatin.woff2')
+			src: url('../analogClockPlus/fonts/pacificoLatin.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/myProject/analogClockPlus/fonts/pacificoLatin.woff2')
 		}
 
 		@font-face {
 			font-family: Pacifico;
-			src: url('../fonts/pacificoVietnamese.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/myProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
+			src: url('../analogClockPlus/fonts/pacificoVietnamese.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/myProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
 		}
 
 		*,
@@ -1256,7 +1256,7 @@
 	async function addPositionData(position) {
 		latitudeData = position.coords.latitude;
 		longitudeData = position.coords.longitude;
-		cityApiUrl = 'http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitudeData + '&lon=' + longitudeData + '&appid=' + apiKey;
+		cityApiUrl = 'https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitudeData + '&lon=' + longitudeData + '&appid=' + apiKey;
 		cityData = await fetch(cityApiUrl).then(data => data.json());
 		cityName = cityData[0].local_names.vi;
 	};
