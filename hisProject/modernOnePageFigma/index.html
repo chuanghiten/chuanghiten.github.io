@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Modern One Page - Figma</title>
+	<style>
+		@font-face {
+			font-family: 'Josefin Sans Bold';
+			src: url(./fonts/josefinSans/JosefinSans-Bold.ttf);
+		}
+
+		@font-face {
+			font-family: 'Quicksand Bold';
+			src: url(./fonts/quicksand/Quicksand-Bold.ttf);
+		}
+
+		@font-face {
+			font-family: 'Quicksand Regular';
+			src: url(./fonts/quicksand/Quicksand-Regular.ttf);
+		}
+
+		@font-face {
+			font-family: 'Josefin Sans Regular';
+			src: url(./fonts/josefinSans/JosefinSans-Regular.ttf);
+		}
+
+		@font-face {
+			font-family: 'Quicksand Medium';
+			src: url(./fonts/quicksand/Quicksand-Medium.ttf);
+		}
+
+		@font-face {
+			font-family: 'Roboto Regular';
+			src: url(./fonts/roboto/Roboto-Regular.ttf);
+		}
+
+		@font-face {
+			font-family: 'Roboto Bold';
+			src: url(./fonts/roboto/Roboto-Bold.ttf);
+		}
+
+		@font-face {
+			font-family: 'Josefin Sans Light';
+			src: url(./fonts/josefinSans/JosefinSans-Light.ttf);
+		}
+
+		@font-face {
+			font-family: 'josefin Sans SemiBold';
+			src: url(./fonts/josefinSans/JosefinSans-SemiBold.ttf);
+		}
+		@font-face {
+			font-family: 'Objective Regular';
+			src: url(./fonts/objective/Objective-Regular.woff2);
+		}
+
+		:root {
+			--blueColorGradient: #0283e9;
+			--pinkColorGradient: #fc0bcc;
+			--blueColorGradientBlur: #0283e980;
+			--pinkColorGradientBlur: #fc0bcc80;
+			--bg: #fff;
+			--textTitleColor: #000;
+			--textContentColor: #828089;
+			--rectangleColor: #4a99d3;
+			--cardButtonPinkColorGradient: #fd66fd;
+			--cardButtonBlueColorGradient: #67b5f2
+		}
+
+		*,
+		:before,
+		:after {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			box-sizing: border-box;
+			cursor: default;
+			transition: all .15s ease-in-out;
+		}
+
+		::-webkit-scrollbar {
+			background: var(--blueColorGradient);
+			width: 5px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			border-radius: 5px;
+			background: linear-gradient(to bottom, var(--blueColorGradient), var(--pinkColorGradient), var(--blueColorGradient));
+		}
+
+		body {
+			background: var(--bg);
+			margin: 61px 0 0 0;
+			overflow: hidden;
+			scroll-behavior: smooth;
+		}
+
+		div.image {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		svg.imageBackground {
+			position: absolute;
+			width: 1130px;
+			height: 827px;
+			top: 0;
+			right: 0;
+		}
+
+		img.humanRocketImage {
+			position: absolute;
+			top: 107px;
+			right: 154px;
+			width: 679px;
+			height: 728px;
+		}
+
+		div.logo {
+			font: 60px 'Josefin Sans Bold';
+			color: var(--textTitleColor);
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			position: relative;
+			top: 50px;
+		}
+
+		div.logo * {
+			display: inline;
+		}
+
+		div.contents {
+			width: 798px;
+			height: auto;
+			margin: 280px 135px 91px 135px;
+			position: relative;
+		}
+
+		div.title {
+			position: relative;
+			margin: 0 0 23px 0;
+			font: 72px 'Quicksand Bold'
+		}
+
+		div.content {
+			position: relative;
+			font: 40px 'Quicksand Regular';
+			color: var(--textContentColor)
+		}
+
+		div.buttons {
+			width: 720px;
+			height: 121px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin: 0 0 0 135px;
+		}
+
+		div.circle,
+		div.button {
+			height: 100%;
+			width: 121px;
+			border-radius: 50%;
+			background: linear-gradient(to top left, var(--blueColorGradient), var(--pinkColorGradient));
+			position: relative;
+		}
+
+		div.circle::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			border: 8px solid var(--bg);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		div.button {
+			width: 310px;
+			height: 67px;
+			position: relative;
+			border-radius: 10px;
+			font: 40px 'Quicksand Regular';
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: var(--bg);
+			cursor: pointer;
+		}
+
+		div.circle {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		div.circle svg {
+			transform: translate(0, -25px) scale(.35);
+			position: relative;
+			opacity: 0;
+		}
+
+		div.circle path {
+			fill: var(--bg);
+		}
+
+		div.circle svg[active] {
+			opacity: 1;
+			transform: translate(0, 0) scale(.35);
+		}
+
+		div.images {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		a.homeButton,
+		div.contactButton {
+			font: 40px 'Josefin Sans Regular';
+			color: var(--bg);
+			transform: translate(0, -40px);
+			opacity: 0;
+			text-decoration: none;
+		}
+
+		a.homeButton {
+			margin: 0 65px 0 613px
+		}
+
+		div.navbar[active] a.homeButton,
+		div.navbar[active] div.contactButton {
+			opacity: 1;
+			transform: translate(0, 0);
+			cursor: pointer;
+		}
+
+		div.navbar {
+			width: 100%;
+			height: 124px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: 0 135px;
+		}
+
+		div.navbar[scroll] {
+			background: linear-gradient(to top left, var(--blueColorGradientBlur), var(--pinkColorGradientBlur));
+			backdrop-filter: blur(3px);
+			height: 60px;
+			width: 500px;
+			top: 20px;
+			border-radius: 0 30px 30px 0;
+			border: 2px solid var(--pinkColorGradient);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-left: unset
+		}
+
+		div.navbar[scroll] div.logo {
+			color: var(--bg);
+			font-size: 20px;
+			top: auto;
+		}
+
+		div.navbar[scroll] a.homeButton {
+			margin: 0 40px 0 50px
+		}
+
+		div.navbar[scroll] a.homeButton,
+		div.navbar[scroll] div.contactButton {
+			font-size: 20px;
+		}
+
+		div.mainContent {
+			position: relative;
+			margin: 411px 135px 0 135px;
+			width: auto;
+			height: auto;
+			display: flex;
+			justify-content: space-evenly;
+			;
+			flex-wrap: wrap;
+			align-items: flex-start;
+		}
+
+		div.titleMainContent {
+			width: 665px;
+			height: 207px;
+			font: 60px 'Quicksand Medium';
+			position: relative;
+		}
+
+		div.card {
+			width: 665px;
+			height: 912px;
+			position: relative;
+			margin: 280px 0 0 50px;
+			background: var(--bg);
+			box-shadow: 0 0 20px 0 var(--textContentColor);
+			border-radius: 20px;
+			padding: 30px;
+		}
+
+		div.rectangle {
+			position: absolute;
+			width: 142px;
+			height: 120px;
+			border: 5px solid var(--rectangleColor);
+			top: 326px;
+			left: -255px;
+			border-radius: 5px;
+		}
+
+		div.rectangle:before,
+		div.rectangle:after {
+			width: 100%;
+			height: 100%;
+			border: 5px solid var(--rectangleColor);
+			border-radius: 5px;
+			content: '';
+			display: block;
+			position: absolute;
+			left: 32px;
+			bottom: 32px;
+		}
+
+		div.rectangle:after {
+			left: 90px;
+			top: 50px;
+		}
+
+		div.cardImage {
+			width: 100%;
+			height: auto;
+			display: flex;
+			position: relative;
+			justify-content: center;
+			margin: -40px 0 0 0;
+		}
+
+		div.cardImage img {
+			width: 305px;
+			height: 300px;
+		}
+
+		div.cardTitle {
+			font: 50px 'Quicksand Bold';
+			color: var(--textTitleColor);
+			margin: 72px 0 0 0;
+		}
+
+		div.cardContent {
+			font: 40px 'Quicksand Regular';
+			margin: 37px 0 0 0;
+			color: var(--textContentColor);
+		}
+
+		div.cardButton {
+			font: 30px 'Quicksand Regular';
+			width: 204px;
+			height: 55px;
+			background: linear-gradient(to bottom right, var(--cardButtonPinkColorGradient), var(--cardButtonBlueColorGradient));
+			color: var(--bg);
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 58px 0 0 0;
+			cursor: pointer;
+		}
+
+		div.mainContent div.card:nth-child(3) {
+			margin: -450px 50px 0 0;
+		}
+
+		div.card:nth-child(3) img {
+			width: 215px;
+			height: 385px;
+		}
+
+		div.card:nth-child(3) div.cardImage {
+			margin: -120px 0 0 0;
+		}
+
+		div.card:nth-child(4) img {
+			width: 430px;
+			height: 430px;
+		}
+
+		div.card:nth-child(4) div.cardImage {
+			margin: -190px 0 0 0;
+		}
+
+		div.card:nth-child(3) div.rectangle {
+			top: 1500px;
+		}
+
+		div.mockup {
+			width: 100%;
+			height: auto;
+			position: relative;
+			margin: 340px 0 0 0;
+			padding: 50px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		div.mockupImage * {
+			position: absolute;
+		}
+
+		div.mockupImage {
+			width: 685px;
+			height: 831px;
+			position: relative;
+		}
+
+		div.mockupImage div.mockupImageMin img {
+			width: 373px;
+			height: 712px;
+			top: 115px;
+		}
+
+		div.mockupImage div.mockupImageMax img {
+			width: 435px;
+			height: 831px;
+			left: 250px;
+		}
+
+		div.mockupTitle {
+			position: relative;
+			font: 72px 'Quicksand Bold';
+			margin: 0 0 18px 0;
+		}
+
+		div.mockupContent {
+			position: relative;
+			font: 40px 'QuickSand Regular';
+			width: 771px;
+			height: 188px;
+			color: var(--textContentColor);
+		}
+
+		div.mockupContents {
+			width: 772px;
+			height: 392px;
+			position: relative;
+		}
+
+		div.mockup div.downloadButton {
+			width: 517px;
+			height: 75px;
+			position: relative;
+			margin: 44px 0 0 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		div.mockup div.downloadButton * {
+			cursor: pointer;
+		}
+
+		div.googlePlays,
+		div.appStore {
+			background: var(--textTitleColor);
+			border-radius: 10px;
+			height: 100%;
+			width: 238px;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			color: var(--bg);
+		}
+
+		div.mockup div.downloadButton svg {
+			margin: 0 19px 0 0;
+		}
+
+		div.mockup div.downloadButton div.downloadTitleText {
+			font: 14px 'Roboto Regular';
+		}
+
+		div.mockup div.downloadButton div.logoText {
+			font: 25px 'Roboto Bold';
+		}
+
+		div.quotes {
+			width: 100%;
+			height: auto;
+			position: relative;
+			margin: 287px 0 0 0;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-wrap: wrap;
+		}
+
+		div.quoteTitle {
+			font: 60px 'Quicksand Bold';
+		}
+
+		div.quoteContent {
+			width: 100%;
+			height: auto;
+			margin: 76px 0 0 0;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		div.ceoQuote {
+			width: 503px;
+			height: auto;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-wrap: wrap;
+		}
+
+		div.brackets {
+			width: 43px;
+			height: 23px;
+			position: relative;
+			margin: 0 0 30px 0;
+		}
+
+		div.ceoQuoteContent {
+			font: 30px 'Josefin Sans Light';
+			color: var(--textContentColor);
+			text-align: center;
+		}
+
+		div.ceoQuoteEnd {
+			font: 30px 'Josefin Sans SemiBold';
+			margin: 18px 0 6px 0;
+		}
+
+		div.ceoUserName {
+			font: 20px 'Josefin Sans Regular';
+			color: var(--textContentColor);
+			margin: 0 130px;
+		}
+
+		div.sliderDot {
+			width: 100%;
+			height: auto;
+			position: relative;
+			margin: 77px 0 0 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		div.sliderDot div.dot {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: var(--textContentColor);
+			margin: 8px;
+			cursor: pointer;
+		}
+
+		div.sliderDot div.dot:before {
+			width: 23px;
+			height: 23px;
+			border-radius: 50%;
+			border: 4px solid var(--bg);
+			content: '';
+			display: block;
+			position: relative;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			cursor: pointer;
+		}
+
+		div.sliderDot div.dot[active] {
+			background: linear-gradient(to bottom left, var(--blueColorGradient), var(--pinkColorGradient));
+		}
+
+		div.footer {
+			width: 100%;
+			height: auto;
+			position: relative;
+			margin: 234px 0 0 0;
+		}
+
+		input {
+			cursor: auto;
+		}
+
+		div.seenEmail {
+			height: 212px;
+			background: #454545;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		div.seenEmailContents {
+			width: 506px;
+			height: 96px;
+			border-radius: 10px;
+			font: 30px 'Quicksand Regular';
+			color: var(--textTitleColor);
+			background: var(--bg);
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: nowrap;
+		}
+
+		div.seenEmail input#seenEmail {
+			width: calc(100% - (62px + 20px));
+			height: 100%;
+			font: 30px 'Quicksand Regular';
+			color: var(--textTitleColor);
+			background: transparent;
+			border-radius: 10px;
+			margin: 0 20px 0 0;
+		}
+
+		div.seenEmail input#seenEmail:focus {
+			border: unset;
+			outline: unset;
+			color: var(--textTitleColor);
+		}
+
+		label.seenEmailText {
+			color: var(--bg);
+			font: 40px 'Josefin Sans SemiBold';
+			margin: 0 63px 0 0;
+		}
+
+		div.seenEmail input.seenButton {
+			width: 27px;
+			height: 23px;
+			cursor: pointer;
+		}
+
+		div.seenButton {
+			width: 62px;
+			height: 51px;
+			background: linear-gradient(to bottom left, var(--blueColorGradient), var(--pinkColorGradient));
+			border-radius: 10px;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative
+		}
+
+		div.category {
+			position: relative;
+			height: auto;
+			padding: 100px 0;
+			background: #2b2b2b;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: var(--pinkColorGradient);
+		}
+
+		a.categoryText {
+			font: 30px 'Josefin Sans Light';
+			color: var(--textContentColor);
+			text-decoration: none;
+			margin: 0 65px;
+			cursor: pointer;
+		}
+
+		div.copyright {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font: 16px 'Josefin Sans Regular';
+			margin: 100px 0 0 0;
+			color: var(--bg);
+		}
+
+		div.copyrightLogo {
+			width: 32px;
+			height: 33px;
+			position: relative;
+			margin: 0 12px 0 0;
+		}
+
+		div.contactPopup {
+			position: fixed;
+			width: 1240px;
+			height: 815px;
+			background: #ffffffbf;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 10px 0 var(--textContentColor), 0 0 20px 0 var(--textContentColor);
+			border-radius: 10px;
+			padding: 70px 77px;
+			backdrop-filter: blur(5px);
+		}
+
+		div.contactPopup[hidden] {
+			display: none;
+		}
+
+		div.closeButton {
+			width: 24px;
+			height: 24px;
+			cursor: pointer;
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+
+		div.closeButton * {
+			cursor: pointer;
+		}
+
+		div.closeButton:hover path {
+			fill: var(--pinkColorGradient);
+		}
+		div.contactPopupHeader{
+			width: 100%;
+			height: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		div.contactPopupHeader div.title{
+			font: 30px 'Quicksand Bold';
+			background: linear-gradient(to right,var(--pinkColorGradient),var(--blueColorGradient));
+			color: transparent;
+			-webkit-background-clip: text;
+			border-bottom: 2px solid;
+			border-image: linear-gradient(to right,var(--pinkColorGradient),var(--blueColorGradient));
+			border-image-slice: 1;
+		}
+		div.contactPopup div.popupContents{
+			width: 100%;
+			height: auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin: 72px 0 0 0;
+		}
+		div.userInfo{
+			width: 539px;
+			height: auto;
+		}
+		div.officeInfo{
+			width: calc(100% - 539px - 78px);
+			height: auto;
+		}
+		div.userInfoTitle{
+			font: 30px 'Quicksand Regular';
+		}
+		input.userTopicInput,input.userEmailAddress,input.userYourMessage{
+			width: 100%;
+			height: 64px;
+			border: 2px solid var(--textContentColor);
+			color: var(--textContentColor);
+			font: 16px 'Quicksand Regular';
+			margin: 60px 0 0 0;
+			border-radius: 5px;
+			padding: 20px;
+		}
+		div.userInfo input:focus{
+			border-color: var(--pinkColorGradient);
+			outline: unset;
+			color: var(--textTitleColor);
+		}
+		input.userEmailAddress,input.userYourMessage{
+			margin: 30px 0 0 0;
+		}
+		input.userYourMessage{
+			height: 175px;
+		}
+		div.officeInfoPositionText,div.officeInfoPhoneNumberText,div.officeInfoEmailText{
+			font: 16px 'Objective Regular';
+		}
+		div.officeInfoPosition,div.officeInfoPhoneNumber,div.officeInfoEmail{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			position: relative;
+		}
+		div.officeInfoPositionIcon{
+			width: 16px;
+			height: 21px;
+			position: relative;
+			margin: 0 28px 0 0;
+		}
+		div.officeInfoPhoneNumber{
+			margin: 40px 0 0 0;
+		}
+		div.officeInfoPhoneNumberIcon{
+			width: 21px;
+			height: 21px;
+			position: relative;
+			margin: 0 28px 0 0;
+		}
+		div.officeInfoEmail{
+			margin: 52px 0 0 0;
+		}
+		div.officeInfoEmailIcon{
+			width: 21px;
+			height: 16px;
+			position:relative;
+			margin: 0 28px 0 0;
+		}
+		div.officeInfoSocialNetworkIcon{
+			position: relative;
+			margin: 45px 0 0 0;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		a.officeInfoSocialNetworkYoutubeIcon{
+			width: 29px;
+			height: 22px;
+			position: relative;
+			margin: 0 23px 0 0;
+		}
+		a.officeInfoSocialNetworkInstagramIcon{
+			width: 22px;
+			height: 22px;
+			position: relative;
+			margin: 0 31px 0 0;
+		}
+		a.officeInfoSocialNetworkFacebookIcon{
+			width: 10px;
+			height: 22px;
+			position: relative;
+			margin: 0 31px 0 0;
+		}
+		a.officeInfoSocialNetworkTwitterIcon{
+			width: 26px;
+			height: 22px;
+			position: relative;
+		}
+		div.officeInfoSocialNetworkIcon *{
+			cursor: pointer;
+		}
+		div.officeInfoMapImage{
+			position: relative;
+			margin: 37px 0 0 0;
+			width: 455px;
+			height: 205px;
+			border-radius: 5px;
+			border: 2px dashed var(--textContentColor);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		div.officeInfoMapImage img{
+			width: 445px;
+			height: 199px;
+		}
+		@media screen and (max-width:1800px){
+			div.ceoQuote{
+				margin: 0 10px;
+			}
+		}
+		@media screen and (max-width: 1699px){
+			div.mainContent{
+				justify-content: center;
+
+			}
+			div.card{
+				margin: 280px 200px 0 200px;
+			}
+			div.mainContent div.card:nth-child(3){
+				margin: 280px 200px 0 200px;
+			}
+			div.mainContent div.titleMainContent{
+				margin: 0 200px;
+			}
+			div.mockup{
+				margin: 280px 0 0 0;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap-reverse;
+			}
+			div.quotes{
+				margin: 280px 0 0 0;
+			}
+			div.categoryContent{
+				width: 100%;
+				height: auto;
+				justify-content: center;
+				align-items: center;
+				display: flex;
+			}
+		}
+		@media screen and (max-width:1670px){
+			div.contents{
+				background: #ffffffbf;
+				backdrop-filter: blur(5px);
+				border-radius: 10px;
+				padding: 20px;
+				box-shadow: 0 0 10px var(--bg),0 0 20px 0 var(--bg);
+			}
+		}
+		@media screen and (max-width:1618px){
+			div.navbar{
+				background: linear-gradient(to right,#ffffffbf 0 40%,#0283e9bf 50%);
+				backdrop-filter: blur(5px);
+				border-bottom: 2px solid var(--pinkColorGradient);
+				height: 60px;
+			}
+			div.logo{
+				top: 50%;
+				transform: translate(0,-50%);
+				font-size: 25px;
+			}
+			div.logo div.icon svg{
+				transform: scale(.75);
+			}
+			a.homeButton, div.contactButton{
+				font-size: 25px;
+			}
+			div.navbar[scroll] div.logo{
+				transform: unset;
+			}
+		@media screen and (max-width:1329px){
+				a.homeButton{
+					margin: 0 90px 0 380px;
+				}
+				a.categoryText{
+					margin: 10px;
+				}
+			}
+		}
+		@media screen and (max-width:1308px){
+			div.quoteContent{
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			div.ceoQuote{
+				margin:50px 10px;
+			}
+			div.sliderDot{
+				display: none;
+			}
+		}
+		@media screen and (max-width:1290px){
+			div.contactPopup{
+				width: 1175px;
+			}
+		}
+		@media screen and (max-width:1210px) {
+			div.contactPopup div.popupContents{
+				display: block;
+				overflow: hidden scroll;
+				height: 550px;
+			}
+			div.officeInfo{
+				margin: 0 auto;
+				width: 470px;
+			}
+			div.userInfo{
+				margin: 0 auto 50px auto;
+			}
+			div.contactPopup{
+				width: 95%;
+			}
+		}
+		@media screen and (max-width:1150px){
+			div.card{
+				height: auto;
+			}
+			div.mainContent{
+				margin: 411px 0 0 0;
+			}
+		}
+		@media screen and (max-width:1000px){
+			a.homeButton{
+				margin: 0 40px 0 270px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="images">
+		<svg class="imageBackground" viewBox="0 0 1130 827" width="1130" height="827">
+			<defs>
+				<linearGradient id="g1" x1="565" y1="0" x2="565" y2="827" gradientUnits="userSpaceOnUse">
+					<stop offset="0" stop-color="#0283e9" />
+					<stop offset="1" stop-color="#fc01ca" />
+				</linearGradient>
+			</defs>
+			<path id="Layer" fill="url(#g1)"
+				d="m482.5 425.5c-167-101-470.5-76.5-482.5-425.5h1130v827c-115-9.3-364.4-49.8-442-137-97-109-38.5-163.5-205.5-264.5z" />
+		</svg>
+		<img class="humanRocketImage" src="./images/humanRocket.png" alt="image">
+	</div>
+	<div class="contents">
+		<div class="title">Lorem ipsum</div>
+		<div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora alias deserunt, velit
+			assumenda et dignissimos quasi debitis.</div>
+	</div>
+	<div class="buttons">
+		<div class="circle">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+				<path
+					d="M176 32h96c13.3 0 24 10.7 24 24v200h103.8c21.4 0 32.1 25.8 17 41L241 473c-9.4 9.4-24.6 9.4-34 0L31.3 297c-15.1-15.1-4.4-41 17-41H152V56c0-13.3 10.7-24 24-24z" />
+			</svg>
+		</div>
+		<div class="button">GET STARTED</div>
+	</div>
+	<div class="mainContent">
+		<div class="titleMainContent">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			<div class="rectangle"></div>
+		</div>
+		<div class="card">
+			<div class="cardImage">
+				<img src="./images/Saly-12.png" alt="image">
+			</div>
+			<div class="cardTitle">Lorem ipsum</div>
+			<div class="cardContent">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa fugiat tempora iure
+				adipisci voluptas omnis commodi tenetur.</div>
+			<div class="cardButton">Learn more</div>
+		</div>
+		<div class="card">
+			<div class="cardImage">
+				<img src="./images/Saly-15.png" alt="image">
+			</div>
+			<div class="cardTitle">Lorem ipsum</div>
+			<div class="cardContent">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa fugiat tempora iure
+				adipisci voluptas omnis commodi tenetur.</div>
+			<div class="cardButton">Learn more</div>
+			<div class="rectangle"></div>
+		</div>
+		<div class="card">
+			<div class="cardImage">
+				<img src="./images/1 1.png" alt="image">
+			</div>
+			<div class="cardTitle">Lorem ipsum</div>
+			<div class="cardContent">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa fugiat tempora iure
+				adipisci voluptas omnis commodi tenetur.</div>
+			<div class="cardButton">Learn more</div>
+		</div>
+		<div class="mockup">
+			<div class="mockupContents">
+				<div class="mockupTitle">Lorem ipsum</div>
+				<div class="mockupContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore praesentium cumque
+					repellendus est a omnis numquam exercitationem ullam pariatur.</div>
+				<div class="downloadButton">
+					<div class="googlePlays">
+						<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 42 46" width="42" height="46">
+							<path fill="#fff"
+								d="m27 21.1l-19.9-19.9 25.3 14.5zm-2 1.9l-23 23c-1.2-0.6-2-1.7-2-3.2v-39.6c0-1.5 0.8-2.6 2-3.2zm15.2 2.7l-5.4 3.1-5.9-5.8 5.9-5.8 5.3 3.1c1.7 1.3 1.7 4.2 0.1 5.4zm-13.3-0.7l5.4 5.4-25.2 14.5z" />
+						</svg>
+						<div class="downloadText">
+							<div class="downloadTitleText">GET IT ON</div>
+							<div class="logoText">Google Play</div>
+						</div>
+					</div>
+					<div class="appStore">
+						<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 39 46" width="39" height="46">
+							<path fill="#fff"
+								d="m38.7 33.7c-1.3 3.8-5.6 12.2-10.6 12.3-2.9 0-4.6-1.8-7.8-1.8-3.4 0-5.2 1.7-7.8 1.8-5 0.2-9.7-9.1-11-12.9q-1.5-4.3-1.5-8.3c0-9.1 6.1-13.6 11.8-13.7 2.8 0 6.3 2 7.9 2 1.4 0 5.4-2.4 9.1-2.1q5.7 0.5 8.7 4.6c-3.5 2.1-5.2 4.9-5.2 8.7 0 0.2-0.3 6.3 6.4 9.4zm-19.3-22.7c-0.3-2.9 0.8-5.4 2.6-7.4 1.6-1.9 4.5-3.5 7-3.6 0.1 1.1 0.3 4.1-2.5 7.4-2 2.4-4.5 3.8-7.1 3.6z" />
+						</svg>
+						<div class="downloadText">
+							<div class="downloadTitleText">DOWNLOAD ON THE</div>
+							<div class="logoText">App Store</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mockupImage">
+				<div class="mockupImageMax">
+					<img src="./images/mockup1 3.png" alt="image">
+				</div>
+				<div class="mockupImageMin">
+					<img src="./images/mockup1 2.png" alt="image">
+				</div>
+			</div>
+		</div>
+		<div class="quotes">
+			<div class="quoteTitle">What Our Clients Say</div>
+			<div class="quoteContent">
+				<div class="ceoQuote">
+					<div class="brackets">
+						<svg xmlns="http://www.w3.org/2000/svg" width="57" height="40" viewBox="0 0 57 40" fill="none">
+							<path
+								d="M45.8124 11.1314C48.2201 12.9548 49.5128 14.9998 49.5128 18.3148C49.5128 24.1481 43.7693 29.3764 35.4171 31.9614L33.3296 29.6648C41.1255 26.6581 42.6496 22.7564 43.2574 20.2964C42.0021 20.7598 40.3588 20.9214 38.7482 20.8148C34.5311 20.5364 31.207 18.0681 31.207 14.9998C31.207 13.4527 32.069 11.9689 33.6034 10.875C35.1377 9.781 37.2188 9.16642 39.3887 9.16643C41.8969 9.16643 44.2953 9.98309 45.8124 11.1314ZM22.4363 11.1314C24.8441 12.9548 26.1368 14.9998 26.1368 18.3148C26.1368 24.1481 20.3933 29.3764 12.041 31.9614L9.95351 29.6648C17.7494 26.6581 19.2736 22.7564 19.8813 20.2964C18.626 20.7598 16.9827 20.9214 15.3721 20.8148C11.155 20.5364 7.83097 18.0681 7.83097 14.9998C7.83097 13.4527 8.69296 11.9689 10.2273 10.875C11.7617 9.781 13.8427 9.16642 16.0126 9.16642C18.5208 9.16642 20.9192 9.98309 22.4363 11.1314Z"
+								fill="#18191A" />
+						</svg>
+					</div>
+					<div class="ceoQuoteContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, repellat.
+						Delectus modi vel officiis, eligendi non nulla aut. Obcaecati molestiae.</div>
+					<div class="ceoQuoteEnd">Some guy</div>
+					<div class="ceoUserName">CEO, Founder</div>
+				</div>
+				<div class="ceoQuote">
+					<div class="brackets">
+						<svg xmlns="http://www.w3.org/2000/svg" width="57" height="40" viewBox="0 0 57 40" fill="none">
+							<path
+								d="M45.8124 11.1314C48.2201 12.9548 49.5128 14.9998 49.5128 18.3148C49.5128 24.1481 43.7693 29.3764 35.4171 31.9614L33.3296 29.6648C41.1255 26.6581 42.6496 22.7564 43.2574 20.2964C42.0021 20.7598 40.3588 20.9214 38.7482 20.8148C34.5311 20.5364 31.207 18.0681 31.207 14.9998C31.207 13.4527 32.069 11.9689 33.6034 10.875C35.1377 9.781 37.2188 9.16642 39.3887 9.16643C41.8969 9.16643 44.2953 9.98309 45.8124 11.1314ZM22.4363 11.1314C24.8441 12.9548 26.1368 14.9998 26.1368 18.3148C26.1368 24.1481 20.3933 29.3764 12.041 31.9614L9.95351 29.6648C17.7494 26.6581 19.2736 22.7564 19.8813 20.2964C18.626 20.7598 16.9827 20.9214 15.3721 20.8148C11.155 20.5364 7.83097 18.0681 7.83097 14.9998C7.83097 13.4527 8.69296 11.9689 10.2273 10.875C11.7617 9.781 13.8427 9.16642 16.0126 9.16642C18.5208 9.16642 20.9192 9.98309 22.4363 11.1314Z"
+								fill="#18191A" />
+						</svg>
+					</div>
+					<div class="ceoQuoteContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, repellat.
+						Delectus modi vel officiis, eligendi non nulla aut. Obcaecati molestiae.</div>
+					<div class="ceoQuoteEnd">Some guy</div>
+					<div class="ceoUserName">CEO, Founder</div>
+				</div>
+				<div class="ceoQuote">
+					<div class="brackets">
+						<svg xmlns="http://www.w3.org/2000/svg" width="57" height="40" viewBox="0 0 57 40" fill="none">
+							<path
+								d="M45.8124 11.1314C48.2201 12.9548 49.5128 14.9998 49.5128 18.3148C49.5128 24.1481 43.7693 29.3764 35.4171 31.9614L33.3296 29.6648C41.1255 26.6581 42.6496 22.7564 43.2574 20.2964C42.0021 20.7598 40.3588 20.9214 38.7482 20.8148C34.5311 20.5364 31.207 18.0681 31.207 14.9998C31.207 13.4527 32.069 11.9689 33.6034 10.875C35.1377 9.781 37.2188 9.16642 39.3887 9.16643C41.8969 9.16643 44.2953 9.98309 45.8124 11.1314ZM22.4363 11.1314C24.8441 12.9548 26.1368 14.9998 26.1368 18.3148C26.1368 24.1481 20.3933 29.3764 12.041 31.9614L9.95351 29.6648C17.7494 26.6581 19.2736 22.7564 19.8813 20.2964C18.626 20.7598 16.9827 20.9214 15.3721 20.8148C11.155 20.5364 7.83097 18.0681 7.83097 14.9998C7.83097 13.4527 8.69296 11.9689 10.2273 10.875C11.7617 9.781 13.8427 9.16642 16.0126 9.16642C18.5208 9.16642 20.9192 9.98309 22.4363 11.1314Z"
+								fill="#18191A" />
+						</svg>
+					</div>
+					<div class="ceoQuoteContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, repellat.
+						Delectus modi vel officiis, eligendi non nulla aut. Obcaecati molestiae.</div>
+					<div class="ceoQuoteEnd">Some guy</div>
+					<div class="ceoUserName">CEO, Founder</div>
+				</div>
+			</div>
+			<div class="sliderDot">
+				<div class="dot" active></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="seenEmail">
+			<label class="seenEmailText" for="seenEmail">Newslatter</label>
+			<div class="seenEmailContents">
+				<input id="seenEmail" type="text" placeholder="Your Email">
+				<div class="seenButton">
+					<input type="image" src="./images/send.svg" alt="Seen" class="seenButton">
+				</div>
+			</div>
+		</div>
+		<div class="category">
+			<div class="categoryContent">
+				<a href="#" class="categoryText">Lorem ipsum</a>
+				<a href="#" class="categoryText">Lorem ipsum</a>
+				<a href="#" class="categoryText">Lorem ipsum</a>
+				<a href="#" class="categoryText">Lorem ipsum</a>
+				<a href="#" class="categoryText">Lorem ipsum</a>
+				<a href="#" class="categoryText">Lorem ipsum</a>
+			</div>
+			<div class="copyright">
+				<div class="copyrightLogo">
+					<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g clip-path="url(#clip0_4_268)">
+							<path
+								d="M16 2.67725C23.36 2.67725 29.3333 8.67402 29.3333 16.0629C29.3333 23.4518 23.36 29.4485 16 29.4485C8.64001 29.4485 2.66667 23.4518 2.66667 16.0629C2.66667 8.67402 8.64001 2.67725 16 2.67725ZM16 5.35438C10.1067 5.35438 5.33334 10.1464 5.33334 16.0629C5.33334 21.9794 10.1067 26.7714 16 26.7714C21.8933 26.7714 26.6667 21.9794 26.6667 16.0629C26.6667 10.1464 21.8933 5.35438 16 5.35438ZM16 9.37007C18.4267 9.37007 20.5507 10.6725 21.7173 12.6201L19.432 13.9975C19.0724 13.3955 18.5618 12.8986 17.9512 12.5565C17.3406 12.2143 16.6514 12.0388 15.9522 12.0475C15.253 12.0562 14.5682 12.2487 13.9663 12.6059C13.3643 12.9632 12.8661 13.4725 12.5214 14.0833C12.1767 14.6941 11.9975 15.3849 12.0017 16.0869C12.0059 16.7889 12.1933 17.4775 12.5453 18.0841C12.8972 18.6907 13.4014 19.1941 14.0076 19.544C14.6138 19.894 15.3007 20.0783 16 20.0786C16.6909 20.079 17.37 19.8997 17.9713 19.5582C18.5725 19.2166 19.0753 18.7244 19.4307 18.1296L21.7173 19.5057C20.968 20.7621 19.8289 21.737 18.4746 22.281C17.1203 22.825 15.6256 22.9079 14.2199 22.5171C12.8141 22.1263 11.5749 21.2833 10.6922 20.1175C9.80952 18.9516 9.33216 17.5273 9.33334 16.0629C9.33334 12.3685 12.32 9.37007 16 9.37007Z"
+								fill="white" />
+						</g>
+						<defs>
+							<clipPath id="clip0_4_268">
+								<rect width="32" height="32.1256" fill="white" />
+							</clipPath>
+						</defs>
+					</svg>
+				</div>
+				Copyright Lorem ipsum dolor sit amet consectetur adipisicing elit.
+			</div>
+		</div>
+	</div>
+	<div class="navbar">
+		<div class="logo">
+			COMPANY
+			<div class="icon">
+				<svg width="35" height="46" viewBox="0 0 35 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="18.4346" width="8.92266" height="37.7968" rx="4.46133" transform="rotate(29.1913 18.4346 0)"
+						fill="#0283E9" />
+					<rect x="26.4092" y="8" width="8.92266" height="37.7968" rx="4.46133" transform="rotate(29.1913 26.4092 8)"
+						fill="#FC01CA" />
+				</svg>
+			</div>
+			<a class="homeButton" href="#">HOME</a>
+			<div class="contactButton">CONTACT</div>
+		</div>
+	</div>
+	<div class="contactPopup" hidden>
+		<div class="contactPopupHeader">
+			<div class="closeButton">
+				<svg viewBox="0 0 20 20" width="20" height="20">
+					<path fill="var(--blueColorGradient)"
+						d="m19.5 15.7c0.7 0.7 0.7 1.8 0 2.5l-1.3 1.3c-0.7 0.7-1.8 0.7-2.5 0l-5.7-5.7-5.7 5.7c-0.7 0.7-1.8 0.7-2.5 0l-1.3-1.3c-0.7-0.7-0.7-1.8 0-2.5l5.7-5.7-5.7-5.7c-0.7-0.7-0.7-1.8 0-2.5l1.3-1.3c0.7-0.7 1.8-0.7 2.5 0l5.7 5.7 5.7-5.7c0.7-0.7 1.8-0.7 2.5 0l1.3 1.3c0.7 0.7 0.7 1.8 0 2.5l-5.7 5.7z" />
+				</svg>
+			</div>
+			<div class="title">Get in touch</div>
+		</div>
+		<div class="popupContents">
+			<div class="userInfo">
+				<div class="userInfoTitle">Leave us a message</div>
+				<input type="text" class="userTopicInput" placeholder="Topic">
+				<input type="text" class="userEmailAddress" placeholder="Email Address">
+				<input type="text" class="userYourMessage" placeholder="Your Message">
+			</div>
+			<div class="officeInfo">
+				<div class="officeInfoPosition">
+					<div class="officeInfoPositionIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="21" viewBox="0 0 16 21" fill="none">
+							<path d="M7.8667 4.08231C6.82503 4.08231 5.93962 4.44689 5.21045 5.17606C4.48128 5.90522 4.1167 6.79064 4.1167 7.83231C4.1167 8.87397 4.48128 9.75939 5.21045 10.4886C5.93962 11.2177 6.82503 11.5823 7.8667 11.5823C8.90837 11.5823 9.79378 11.2177 10.5229 10.4886C11.2521 9.75939 11.6167 8.87397 11.6167 7.83231C11.6167 6.79064 11.2521 5.90522 10.5229 5.17606C9.79378 4.44689 8.90837 4.08231 7.8667 4.08231ZM7.8667 10.3323C7.18962 10.3323 6.60368 10.0849 6.10889 9.59012C5.6141 9.09533 5.3667 8.50939 5.3667 7.83231C5.3667 7.15522 5.6141 6.56929 6.10889 6.07449C6.60368 5.5797 7.18962 5.33231 7.8667 5.33231C8.54378 5.33231 9.12972 5.5797 9.62451 6.07449C10.1193 6.56929 10.3667 7.15522 10.3667 7.83231C10.3667 8.50939 10.1193 9.09533 9.62451 9.59012C9.12972 10.0849 8.54378 10.3323 7.8667 10.3323ZM7.8667 0.332306C6.51253 0.332306 5.26253 0.670848 4.1167 1.34793C2.97087 2.02501 2.05941 2.93647 1.38232 4.08231C0.705241 5.22814 0.366699 6.47814 0.366699 7.83231C0.366699 8.66564 0.470866 9.40783 0.679199 10.0589C0.887533 10.6839 1.29118 11.4651 1.89014 12.4026C2.3068 13.0537 3.16618 14.3167 4.46826 16.1917L7.08545 19.9417C7.26774 20.2021 7.52816 20.3323 7.8667 20.3323C8.20524 20.3323 8.46566 20.2021 8.64795 19.9417L11.2651 16.1917C12.5672 14.3167 13.4266 13.0537 13.8433 12.4026C14.4422 11.4651 14.8459 10.6839 15.0542 10.0589C15.2625 9.40783 15.3667 8.66564 15.3667 7.83231C15.3667 6.47814 15.0282 5.22814 14.3511 4.08231C13.674 2.93647 12.7625 2.02501 11.6167 1.34793C10.4709 0.670848 9.22087 0.332306 7.8667 0.332306ZM7.8667 18.8479C7.2417 17.9365 6.43441 16.7776 5.44482 15.3714C4.19482 13.5745 3.37451 12.3896 2.98389 11.8167C2.43701 10.9313 2.07243 10.2281 1.89014 9.70731C1.70785 9.16043 1.6167 8.53543 1.6167 7.83231C1.6167 6.99897 1.77295 6.2047 2.08545 5.44949C2.39795 4.69429 2.85368 4.0172 3.45264 3.41824C4.0516 2.81929 4.72868 2.36356 5.48389 2.05106C6.2391 1.73856 7.03337 1.58231 7.8667 1.58231C8.70003 1.58231 9.4943 1.73856 10.2495 2.05106C11.0047 2.36356 11.6818 2.81929 12.2808 3.41824C12.8797 4.0172 13.3354 4.69429 13.6479 5.44949C13.9604 6.2047 14.1167 6.99897 14.1167 7.83231C14.1167 8.53543 14.0256 9.16043 13.8433 9.70731C13.661 10.2281 13.2964 10.9313 12.7495 11.8167C12.3589 12.3896 11.5386 13.5745 10.2886 15.3714L7.8667 18.8479Z" fill="#0F001A"/>
+						</svg>
+					</div>
+					<div class="officeInfoPositionText">Infomation Technologies building, Victoria Island, Lagos, Nigeria</div>
+				</div>
+				<div class="officeInfoPhoneNumber">
+					<div class="officeInfoPhoneNumberIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+							<path d="M19.1111 19.9105L20.0095 15.9652C20.0876 15.6787 20.0486 15.4053 19.8923 15.1449C19.7621 14.8844 19.5668 14.6891 19.3064 14.5589L15.0876 12.762C14.8272 12.6579 14.5668 12.6318 14.3064 12.6839C14.046 12.762 13.8246 12.9053 13.6423 13.1136L11.9236 15.223C10.5694 14.5459 9.35848 13.6735 8.29077 12.6058C7.22306 11.5381 6.35067 10.3272 5.67358 8.97298L7.78296 7.25423C7.99129 7.07194 8.1215 6.85059 8.17358 6.59017C8.25171 6.32976 8.23869 6.06934 8.13452 5.80892L6.33765 1.59017C6.20744 1.32976 6.01213 1.12142 5.75171 0.965172C5.49129 0.834963 5.21785 0.808922 4.9314 0.887047L0.986084 1.78548C0.725667 1.86361 0.504313 2.00684 0.322021 2.21517C0.13973 2.44955 0.048584 2.70996 0.048584 2.99642C0.048584 6.22559 0.855876 9.22038 2.47046 11.9808C4.059 14.6891 6.19442 16.8245 8.87671 18.387C11.6632 20.0277 14.684 20.848 17.9392 20.848C18.1996 20.848 18.434 20.7568 18.6423 20.5745C18.8767 20.3923 19.033 20.1709 19.1111 19.9105ZM1.29858 2.99642L5.20483 2.09798L7.00171 6.31673L4.15015 8.62142C5.08765 10.6527 6.16838 12.2803 7.39233 13.5042C8.61629 14.7282 10.2439 15.8089 12.2751 16.7464L14.5798 13.8949L18.7986 15.6917L17.9001 19.598C14.9054 19.598 12.1189 18.8428 9.54077 17.3324C7.01473 15.848 5.02254 13.8558 3.56421 11.3558C2.05379 8.77767 1.29858 5.99121 1.29858 2.99642Z" fill="#0F001A"/>
+						</svg>
+					</div>
+					<div class="officeInfoPhoneNumberText">+84 385333485</div>
+				</div>
+				<div class="officeInfoEmail">
+					<div class="officeInfoEmailIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="21" height="16" viewBox="0 0 21 16" fill="none">
+							<path d="M18.4917 0.71946L2.2417 0.71946C1.72087 0.71946 1.27816 0.901751 0.913574 1.26633C0.548991 1.63092 0.366699 2.07363 0.366699 2.59446L0.366699 13.8445C0.366699 14.3653 0.548991 14.808 0.913574 15.1726C1.27816 15.5372 1.72087 15.7195 2.2417 15.7195H18.4917C19.0125 15.7195 19.4552 15.5372 19.8198 15.1726C20.1844 14.808 20.3667 14.3653 20.3667 13.8445V2.59446C20.3667 2.07363 20.1844 1.63092 19.8198 1.26633C19.4552 0.901751 19.0125 0.71946 18.4917 0.71946ZM2.2417 1.96946L18.4917 1.96946C18.674 1.96946 18.8172 2.03456 18.9214 2.16477C19.0516 2.26894 19.1167 2.41217 19.1167 2.59446V4.19602C18.2052 4.97727 16.2391 6.56581 13.2183 8.96165L12.8276 9.27415C12.3068 9.71686 11.9032 10.0294 11.6167 10.2116C11.1219 10.5502 10.7052 10.7195 10.3667 10.7195C10.0282 10.7195 9.61149 10.5502 9.1167 10.2116C8.8042 10.0294 8.38753 9.71686 7.8667 9.27415L7.51514 8.96165C4.4943 6.56581 2.52816 4.97727 1.6167 4.19602V2.59446C1.6167 2.41217 1.66878 2.26894 1.77295 2.16477C1.90316 2.03456 2.05941 1.96946 2.2417 1.96946ZM18.4917 14.4695H2.2417C2.05941 14.4695 1.90316 14.4174 1.77295 14.3132C1.66878 14.183 1.6167 14.0268 1.6167 13.8445L1.6167 5.83665C2.52816 6.56581 4.23389 7.933 6.73389 9.93821L7.12451 10.2507C7.72347 10.7715 8.21826 11.1491 8.60889 11.3835C9.25993 11.7741 9.84587 11.9695 10.3667 11.9695C10.8875 11.9695 11.4735 11.7741 12.1245 11.3835C12.4891 11.1491 12.9839 10.7715 13.6089 10.2507L13.9995 9.93821C16.4995 7.933 18.2052 6.56581 19.1167 5.83665V13.8445C19.1167 14.0268 19.0516 14.183 18.9214 14.3132C18.8172 14.4174 18.674 14.4695 18.4917 14.4695Z" fill="#0F001A"/>
+						</svg>
+					</div>
+					<div class="officeInfoEmailText">thuphan12321@gmail.com</div>
+				</div>
+				<div class="officeInfoSocialNetworkIcon">
+					<a href="#" class="officeInfoSocialNetworkYoutubeIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="29" height="22" viewBox="0 0 29 22" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M28.2091 3.78254C27.8821 2.52621 26.9185 1.5369 25.6949 1.20114C23.4775 0.590942 14.585 0.590942 14.585 0.590942C14.585 0.590942 5.6926 0.590942 3.47502 1.20114C2.25144 1.5369 1.28782 2.52621 0.9608 3.78254C0.366699 6.05949 0.366699 10.8104 0.366699 10.8104C0.366699 10.8104 0.366699 15.5611 0.9608 17.8382C1.28782 19.0945 2.25144 20.0839 3.47502 20.4198C5.6926 21.0298 14.585 21.0298 14.585 21.0298C14.585 21.0298 23.4775 21.0298 25.6949 20.4198C26.9185 20.0839 27.8821 19.0945 28.2091 17.8382C28.8034 15.5611 28.8034 10.8104 28.8034 10.8104C28.8034 10.8104 28.8034 6.05949 28.2091 3.78254Z" fill="#0F001A"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.9194 15.6979V6.81148L19.0286 11.2549L11.9194 15.6979Z" fill="white"/>
+						</svg>
+					</a>
+					<a href="#" class="officeInfoSocialNetworkInstagramIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M10.9617 0.590942C8.18631 0.590942 7.838 0.603078 6.74793 0.652685C5.65998 0.702505 4.91737 0.874745 4.26759 1.12746C3.59545 1.38848 3.02529 1.73765 2.45726 2.30589C1.8888 2.87392 1.53964 3.44408 1.27776 4.11601C1.02441 4.76601 0.851953 5.50883 0.802985 6.59635C0.754229 7.68642 0.741455 8.03495 0.741455 10.8104C0.741455 13.5858 0.753804 13.9331 0.803198 15.0231C0.85323 16.1111 1.02547 16.8537 1.27798 17.5035C1.53921 18.1756 1.88837 18.7458 2.45662 19.3138C3.02443 19.8823 3.59459 20.2323 4.26631 20.4933C4.91652 20.746 5.65935 20.9183 6.74708 20.9681C7.83715 21.0177 8.18525 21.0298 10.9605 21.0298C13.7361 21.0298 14.0834 21.0177 15.1734 20.9681C16.2614 20.9183 17.0048 20.746 17.655 20.4933C18.327 20.2323 18.8963 19.8823 19.4641 19.3138C20.0326 18.7458 20.3817 18.1756 20.6436 17.5037C20.8948 16.8537 21.0673 16.1109 21.1184 15.0233C21.1673 13.9333 21.1801 13.5858 21.1801 10.8104C21.1801 8.03495 21.1673 7.68664 21.1184 6.59656C21.0673 5.50862 20.8948 4.76601 20.6436 4.11622C20.3817 3.44408 20.0326 2.87392 19.4641 2.30589C18.8956 1.73744 18.3272 1.38827 17.6544 1.12746C17.0029 0.874745 16.2599 0.702505 15.1719 0.652685C14.0819 0.603078 13.7348 0.590942 10.9585 0.590942H10.9617ZM10.0453 2.43257C10.3174 2.43214 10.621 2.43257 10.962 2.43257C13.6906 2.43257 14.014 2.44236 15.0915 2.49133C16.0879 2.53689 16.6287 2.70338 16.989 2.84326C17.4659 3.02849 17.8059 3.24991 18.1633 3.60759C18.521 3.96527 18.7424 4.30592 18.9281 4.78282C19.068 5.14263 19.2347 5.68341 19.28 6.67981C19.329 7.75711 19.3396 8.08072 19.3396 10.808C19.3396 13.5353 19.329 13.859 19.28 14.9363C19.2345 15.9327 19.068 16.4734 18.9281 16.8332C18.7429 17.3101 18.521 17.6497 18.1633 18.0072C17.8057 18.3649 17.4661 18.5863 16.989 18.7715C16.6291 18.912 16.0879 19.0781 15.0915 19.1237C14.0142 19.1726 13.6906 19.1833 10.962 19.1833C8.23324 19.1833 7.90984 19.1726 6.83254 19.1237C5.83614 19.0777 5.29536 18.9112 4.93492 18.7713C4.45801 18.5861 4.11736 18.3647 3.75968 18.007C3.402 17.6493 3.18058 17.3095 2.99493 16.8324C2.85505 16.4726 2.68834 15.9318 2.643 14.9354C2.59403 13.8581 2.58423 13.5345 2.58423 10.8055C2.58423 8.07646 2.59403 7.75455 2.643 6.67725C2.68856 5.68086 2.85505 5.14008 2.99493 4.77984C3.18015 4.30294 3.402 3.96229 3.75968 3.60461C4.11736 3.24693 4.45801 3.02551 4.93492 2.83985C5.29515 2.69934 5.83614 2.53327 6.83254 2.4875C7.77528 2.44492 8.14062 2.43214 10.0453 2.43001V2.43257ZM16.4171 4.12942C15.74 4.12942 15.1907 4.67808 15.1907 5.35533C15.1907 6.03237 15.74 6.58166 16.4171 6.58166C17.0941 6.58166 17.6434 6.03237 17.6434 5.35533C17.6434 4.67829 17.0941 4.129 16.4171 4.129V4.12942ZM10.9617 5.56225C8.06339 5.56225 5.71356 7.91208 5.71356 10.8104C5.71356 13.7086 8.06339 16.0574 10.9617 16.0574C13.8599 16.0574 16.2089 13.7086 16.2089 10.8104C16.2089 7.91208 13.8597 5.56225 10.9615 5.56225H10.9617ZM10.9616 7.40388C12.8429 7.40388 14.3681 8.92892 14.3681 10.8104C14.3681 12.6916 12.8429 14.2168 10.9616 14.2168C9.08021 14.2168 7.55517 12.6916 7.55517 10.8104C7.55517 8.92892 9.08021 7.40388 10.9616 7.40388Z" fill="#0F001A"/>
+						</svg>
+					</a>
+					<a href="#" class="officeInfoSocialNetworkFacebookIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="10" height="22" viewBox="0 0 10 22" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M6.45749 21.0298V10.8092H9.27883L9.65272 7.28709H6.45749L6.46229 5.52426C6.46229 4.60564 6.54957 4.11343 7.86896 4.11343H9.63275V0.590942H6.81101C3.42165 0.590942 2.22868 2.29953 2.22868 5.17285V7.28749H0.115967V10.8096H2.22868V21.0298H6.45749Z" fill="#0F001A"/>
+						</svg>
+					</a>
+					<a href="#" class="officeInfoSocialNetworkTwitterIcon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M12.6842 6.02802L12.7378 6.91206L11.8442 6.80381C8.59177 6.38885 5.75033 4.9816 3.33778 2.61815L2.15832 1.44545L1.85452 2.31145C1.21117 4.2419 1.6222 6.2806 2.9625 7.65176C3.67733 8.40951 3.51649 8.51776 2.28341 8.06672C1.85452 7.92239 1.47923 7.81414 1.44349 7.86826C1.31839 7.99455 1.74729 9.63634 2.08683 10.2858C2.55147 11.1879 3.49862 12.072 4.53512 12.5952L5.41079 13.0101L4.37429 13.0282C3.37353 13.0282 3.33778 13.0462 3.44501 13.4251C3.80242 14.5978 5.21421 15.8427 6.78683 16.3839L7.89482 16.7628L6.9298 17.3401C5.50014 18.17 3.82029 18.6391 2.14045 18.6752C1.33627 18.6932 0.675049 18.7654 0.675049 18.8195C0.675049 18.9999 2.85528 20.0103 4.1241 20.4072C7.93056 21.5799 12.4518 21.0747 15.8473 19.0721C18.2598 17.6468 20.6724 14.8143 21.7982 12.072C22.4058 10.6106 23.0134 7.94043 23.0134 6.65947C23.0134 5.82956 23.067 5.72131 24.0678 4.72902C24.6575 4.15169 25.2115 3.52023 25.3188 3.33982C25.4975 2.99703 25.4796 2.99703 24.5682 3.30373C23.0492 3.84498 22.8347 3.77282 23.5853 2.96094C24.1393 2.38361 24.8005 1.3372 24.8005 1.03049C24.8005 0.976367 24.5324 1.06658 24.2286 1.22895C23.907 1.40937 23.1921 1.67999 22.656 1.84236L21.691 2.14907L20.8153 1.5537C20.3328 1.22895 19.6537 0.868117 19.2963 0.759868C18.3849 0.507285 16.991 0.543368 16.169 0.832034C13.9351 1.64391 12.5233 3.73673 12.6842 6.02802Z" fill="#0F001A"/>
+						</svg>
+					</a>
+				</div>
+				<div class="officeInfoMapImage">
+					<img src="./images/Rectangle 19.png" alt="image">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var body = window.document.querySelector('body');
+	var button = window.document.querySelector('div.button');
+	var scrollArrow = window.document.querySelector('div.circle svg');
+	var navbar = window.document.querySelector('div.navbar');
+	var contactPopup = window.document.querySelector('div.contactPopup');
+	var contactButton = window.document.querySelector('div.contactButton');
+	var closeButton = window.document.querySelector('div.closeButton');
+	var contactPopupCheck = 0;
+	var screenHeight=window.screen.availHeight;
+	var screenWidth=window.screen.availWidth;
+	if((screenWidth/screenHeight)<(443/456)){
+		body.style.overflow = 'hidden auto';
+	}else{
+		body.style.overflow = 'hidden';
+	};
+	button.onclick = function () {
+		button.style.opacity = '0';
+		setTimeout(function () {
+			button.style.display = 'none';
+		}, 200);
+		body.style.overflow = 'hidden auto';
+		scrollArrow.setAttribute('active', '');
+		navbar.setAttribute('active', '');
+	}
+	window.onscroll = function () {
+		if (document.documentElement.scrollTop > 200) {
+			navbar.setAttribute('scroll', '');
+			body.style.overflow = 'hidden auto';
+			navbar.setAttribute('active', '');
+		} else {
+			navbar.removeAttribute('scroll');
+		};
+	};
+	contactButton.onclick = function () {
+		if (contactPopupCheck == 0) {
+			contactPopupCheck = 1;
+			contactPopup.removeAttribute('hidden');
+		} else {
+			contactPopupCheck = 0;
+			contactPopup.setAttribute('hidden', '');
+		};
+	};
+	closeButton.onclick = function () {
+		contactPopup.setAttribute('hidden', '');
+		contactPopupCheck = 0;
+	};
+</script>
+
+</html>
