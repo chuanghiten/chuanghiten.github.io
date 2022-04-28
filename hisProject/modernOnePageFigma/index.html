@@ -989,7 +989,7 @@
 				margin: 0 auto 50px auto;
 			}
 			div.contactPopup{
-				width: 95%;
+				width: 85%;
 			}
 		}
 		@media screen and (max-width:1150px){
@@ -1004,6 +1004,15 @@
 			a.homeButton{
 				margin: 0 40px 0 270px;
 			}
+		}
+		div.backgroundContactPopup{
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			background: transparent;
+			top: 0;
+			left: 0;
+			display: none;
 		}
 	</style>
 </head>
@@ -1209,6 +1218,7 @@
 			<div class="contactButton">CONTACT</div>
 		</div>
 	</div>
+	<div class="backgroundContactPopup"></div>
 	<div class="contactPopup" hidden>
 		<div class="contactPopupHeader">
 			<div class="closeButton">
@@ -1286,6 +1296,7 @@
 	var button = window.document.querySelector('div.button');
 	var scrollArrow = window.document.querySelector('div.circle svg');
 	var navbar = window.document.querySelector('div.navbar');
+	var backgroundContactPopup=window.document.querySelector('div.backgroundContactPopup');
 	var contactPopup = window.document.querySelector('div.contactPopup');
 	var contactButton = window.document.querySelector('div.contactButton');
 	var closeButton = window.document.querySelector('div.closeButton');
@@ -1319,14 +1330,22 @@
 		if (contactPopupCheck == 0) {
 			contactPopupCheck = 1;
 			contactPopup.removeAttribute('hidden');
+			backgroundContactPopup.style.display='block';
 		} else {
 			contactPopupCheck = 0;
 			contactPopup.setAttribute('hidden', '');
+			backgroundContactPopup.style.display='none';
 		};
 	};
 	closeButton.onclick = function () {
 		contactPopup.setAttribute('hidden', '');
 		contactPopupCheck = 0;
+		backgroundContactPopup.style.display='none';
+	};
+	backgroundContactPopup.onclick=function(){
+		contactPopup.setAttribute('hidden','');
+		contactPopupCheck=0;
+		backgroundContactPopup.style.display='none';
 	};
 </script>
 
