@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analog Digital Clock</title>
+  <style>
+    @font-face{
+      font-family:'Seven Segment';
+      src:url('./sevenSegment/Seven Segment.ttf')
+    }
+    @font-face{
+      font-family:Pacifico;
+      src:url('../analogClockPlus/fonts/pacificoLatin.woff2')
+    }
+    @font-face{
+      font-family:Pacifico;
+      src:url('../analogClockPlus/fonts/pacificoVietnamese.woff2');
+    }
+    :root{
+      --naviBlue:#191a2e;
+      --red:#F00;
+      --white:#fff
+    }
+    body[light]{
+      --naviBlue:#fff;
+      --white:#191a2e;
+      --red:#f00
+    }
+    *,:before,:after{
+      margin:0;
+      padding:0;
+      border:0;
+      box-sizing:border-box;
+      transition:all .25s ease-in-out
+    }
+    body{
+      background:var(--naviBlue);
+      overflow:hidden
+    }
+    div.lightButton{
+      position:fixed;
+      width:100px;
+      height:60px;
+      border-radius:30px;
+      background:var(--white);
+      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white);
+      bottom:25px;
+      right:25px
+    }
+    div.lightButton:before{
+      content:'';
+      display:block;
+      position:absolute;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      top:10px;
+      left:10px;
+      background:var(--naviBlue);
+      box-shadow:0 0 10px 0 var(--white) inset;
+      transform:translate(0,0)
+    }
+    div.lightButton[active]:before{
+      transform:translate(100%,0);
+      box-shadow:0 0 10px 0 var(--naviBlue)
+    }
+    div.clockBody{
+      position:relative;
+      width:830px;
+      height:830px;
+      margin:80px auto;
+      padding:15px;
+      overflow:hidden
+    }
+    div.second{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      border:10px solid var(--white);
+      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white),0 0 10px 0 var(--white) inset,0 0 20px 0 var(--white) inset;
+      position:relative
+    }
+    body[light] div.second{
+      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
+    }
+    div.secondTitle,div.minuteTitle,div.hourTitle{
+      width:100%;
+      height:auto;
+      padding:0 30px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%) rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)))
+    }
+    div.secondTitle span,div.minuteTitle span,div.hour span{
+      color:var(--white);
+      display:inline-block;
+      font:35px 'Seven Segment';
+      text-shadow:0 0 10px var(--white);
+      transform:rotate(180deg)
+    }
+    body[light] div.secondTitle span,div.minuteTitle span,body[light] div.hour span{
+      text-shadow:unset;
+      font-weight:600
+    }
+    div.minute{
+      width:610px;
+      height:610px;
+      border-radius:50%;
+      background:var(--white);
+      top:50%;
+      left:50%;
+      position:absolute;
+      transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
+      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
+    }
+    body[light] div.minute{
+      box-shadow:unset
+    }
+    div.minuteTitle{
+      transform:translate(-50%,-50%) rotate(calc((var(--minuteTitleRotate) * 6deg) + 96deg));
+      
+    }              
+    div.minuteTitle span{
+      color:var(--naviBlue)
+    }
+    div.hour{
+      width:440px;
+      height:440px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
+      background:var(--naviBlue);
+      border-radius:50%;
+      box-shadow:0 0 10px 0 var(--white) inset,0 0 20px 0 var(--white)
+    }
+    body[light] div.hour{
+      box-shadow:unset
+    }
+    div.hourTitle{
+      transform:translate(-50%,-50%) rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg))
+    }
+    div.borderLeft{
+      width:390px;
+      height:790px;
+      position:absolute;
+      top:20px;
+      left:20px;
+      border-radius:400px 0 0 400px;
+      background:var(--white);
+      box-shadow:0 0 10px 0 var(--white)
+    }
+    div.borderLeftCenter{
+      position:absolute;
+      background:var(--white);
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      box-shadow:0 0 10px 0 var(--white);
+      top:50%;
+      right:0;
+      transform:translate(50%,-50%);
+      display:flex;
+      justify-content:center;
+      align-items:center
+    }
+    div.startLine{
+      width:0;
+      height:0;
+      border:15px solid transparent;
+      border-left-color:var(--white);
+      position:absolute;
+      top:50%;
+      right:1px;
+      transform:translate(100%,-50%)
+    }
+    div.line{
+      width:237px;
+      height:50px;
+      border:5px solid var(--red);
+      transform:translate(0,-50%)
+    }
+    div.endLine{
+      width:0;
+      height:0;
+      border:15px solid transparent;
+      border-right-color:var(--white);
+      position:absolute;
+      top:50%;
+      right:0;
+      transform:translate(calc(50% + 5px),-50%)
+    }
+    div.days{
+      width:auto;
+      height:auto;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font:65px Pacifico;
+      color:var(--naviBlue);
+      flex-wrap:wrap
+    }
+    div.days span{
+      font-size:40px
+    }
+  </style>
+</head>
+<body>
+  <div class='clockBody'>
+    <div class='second'>
+      <div class='secondTitle' style='--secondTitleRotate:0'>
+        <span>59</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:1'>
+        <span>58</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:2'>
+        <span>57</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:3'>
+        <span>56</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:4'>
+        <span>55</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:5'>
+        <span>54</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:6'>
+        <span>53</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:7'>
+        <span>52</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:8'>
+        <span>51</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:9'>
+        <span>50</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:10'>
+        <span>49</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:11'>
+        <span>48</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:12'>
+        <span>47</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:13'>
+        <span>46</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:14'>
+        <span>45</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:15'>
+        <span>44</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:16'>
+        <span>43</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:17'>
+        <span>42</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:18'>
+        <span>41</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:19'>
+        <span>40</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:20'>
+        <span>39</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:21'>
+        <span>38</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:22'>
+        <span>37</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:23'>
+        <span>36</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:24'>
+        <span>35</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:25'>
+        <span>34</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:26'>
+        <span>33</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:27'>
+        <span>32</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:28'>
+        <span>31</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:29'>
+        <span>30</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:30'>
+        <span>29</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:31'>
+        <span>28</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:32'>
+        <span>27</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:33'>
+        <span>26</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:34'>
+        <span>25</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:35'>
+        <span>24</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:36'>
+        <span>23</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:37'>
+        <span>22</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:38'>
+        <span>21</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:39'>
+        <span>20</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:40'>
+        <span>19</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:41'>
+        <span>18</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:42'>
+        <span>17</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:43'>
+        <span>16</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:44'>
+        <span>15</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:45'>
+        <span>14</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:46'>
+        <span>13</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:47'>
+        <span>12</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:48'>
+        <span>11</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:49'>
+        <span>10</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:50'>
+        <span>09</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:51'>
+        <span>08</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:52'>
+        <span>07</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:53'>
+        <span>06</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:54'>
+        <span>05</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:55'>
+        <span>04</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:56'>
+        <span>03</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:57'>
+        <span>02</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:58'>
+        <span>01</span>
+      </div>
+      <div class='secondTitle' style='--secondTitleRotate:59'>
+        <span>00</span>
+      </div>
+    </div>
+    <div class='minute'>
+      <div class='minuteTitle' style='--minuteTitleRotate:0'>
+        <span>59</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:1'>
+        <span>58</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:2'>
+        <span>57</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:3'>
+        <span>56</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:4'>
+        <span>55</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:5'>
+        <span>54</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:6'>
+        <span>53</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:7'>
+        <span>52</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:8'>
+        <span>51</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:9'>
+        <span>50</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:10'>
+        <span>49</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:11'>
+        <span>48</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:12'>
+        <span>47</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:13'>
+        <span>46</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:14'>
+        <span>45</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:15'>
+        <span>44</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:16'>
+        <span>43</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:17'>
+        <span>42</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:18'>
+        <span>41</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:19'>
+        <span>40</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:20'>
+        <span>39</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:21'>
+        <span>38</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:22'>
+        <span>37</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:23'>
+        <span>36</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:24'>
+        <span>35</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:25'>
+        <span>34</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:26'>
+        <span>33</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:27'>
+        <span>32</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:28'>
+        <span>31</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:29'>
+        <span>30</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:30'>
+        <span>29</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:31'>
+        <span>28</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:32'>
+        <span>27</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:33'>
+        <span>26</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:34'>
+        <span>25</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:35'>
+        <span>24</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:36'>
+        <span>23</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:37'>
+        <span>22</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:38'>
+        <span>21</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:39'>
+        <span>20</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:40'>
+        <span>19</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:41'>
+        <span>18</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:42'>
+        <span>17</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:43'>
+        <span>16</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:44'>
+        <span>15</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:45'>
+        <span>14</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:46'>
+        <span>13</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:47'>
+        <span>12</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:48'>
+        <span>11</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:49'>
+        <span>10</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:50'>
+        <span>09</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:51'>
+        <span>08</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:52'>
+        <span>07</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:53'>
+        <span>06</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:54'>
+        <span>05</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:55'>
+        <span>04</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:56'>
+        <span>03</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:57'>
+        <span>02</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:58'>
+        <span>01</span>
+      </div>
+      <div class='minuteTitle' style='--minuteTitleRotate:59'>
+        <span>00</span>
+      </div>
+    </div>
+    <div class='hour'>
+      <div class='hourTitle' style='--hourTitleRotate:0'>
+        <span>23</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:1'>
+        <span>22</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:2'>
+        <span>21</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:3'>
+        <span>20</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:4'>
+        <span>19</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:5'>
+        <span>18</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:6'>
+        <span>17</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:7'>
+        <span>16</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:8'>
+        <span>15</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:9'>
+        <span>14</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:10'>
+        <span>13</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:11'>
+        <span>12</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:12'>
+        <span>11</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:13'>
+        <span>10</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:14'>
+        <span>09</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:15'>
+        <span>08</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:16'>
+        <span>07</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:17'>
+        <span>06</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:18'>
+        <span>05</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:19'>
+        <span>04</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:20'>
+        <span>03</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:21'>
+        <span>02</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:22'>
+        <span>01</span>
+      </div>
+      <div class='hourTitle' style='--hourTitleRotate:23'>
+        <span>00</span>
+      </div>
+    </div>
+    <div class='borderLeft'>
+      <div class='borderLeftCenter'>
+        <div class='days'>Chủ nhật<span>88/88/8888</span></div>
+        <div class='startLine'>
+          <div class='line'>
+            <div class='endLine'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='lightButton'></div>
+</body>
+<script>
+  var body=window.document.querySelector('body');
+  var lightButton=window.document.querySelector('div.lightButton');
+  var lightCheck=0;
+  var second=window.document.querySelector('div.second');
+  var minute=window.document.querySelector('div.minute');
+  var hour=window.document.querySelector('div.hour');
+  lightButton.onclick=function(){
+    if(lightCheck==0){
+      lightCheck=1;
+      body.setAttribute('light','');
+      lightButton.setAttribute('active','');
+    }else{
+      lightCheck=0;
+      body.removeAttribute('light');
+      lightButton.removeAttribute('active');
+    };
+  };
+  setInterval(function(){
+    var time=new Date();
+    var secondTime=time.getSeconds();
+    var secondDeg=(secondTime*360)/60;
+    var minuteTime=time.getMinutes();
+    var minuteDeg=(minuteTime*360)/60;
+    var hourTime=time.getHours();
+    var hourDeg=(hourTime*360)/24;
+    second.style.transform='rotate('+secondDeg+'deg)';
+    minute.style.transform='translate(-50%,-50%) rotate(calc('+minuteDeg+'deg + 90deg))';
+    hour.style.transform='translate(-50%,-50%) rotate(calc('+hourDeg+'deg + 90deg))';
+  },1000);
+</script>
+</html>
