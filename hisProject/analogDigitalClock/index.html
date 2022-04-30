@@ -31,7 +31,7 @@
       padding:0;
       border:0;
       box-sizing:border-box;
-      transition:all .25s cubic-bezier(.41,1.43,.51,0)
+      transition:all .25s ease-in-out
     }
     body{
       background:var(--naviBlue);
@@ -45,7 +45,8 @@
       background:var(--white);
       box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white);
       bottom:25px;
-      right:25px
+      right:25px;
+      cursor: pointer;
     }
     div.lightButton:before{
       content:'';
@@ -216,6 +217,9 @@
     }
     div.halfCircleNot45Deg{
       transform:rotate(-45deg)
+    }
+    div.second,div.minute,div.hour{
+      transition-timing-function: cubic-bezier(.39,1.62,.49,1.87);
     }
   </style>
 </head>
