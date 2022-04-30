@@ -6,15 +6,15 @@
   <style>
     @font-face{
       font-family:'Seven Segment';
-      src:url('.fonts/sevenSegment/Seven Segment.ttf')
+      src:url('./fonts/sevenSegment/Seven Segment.ttf'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/fonts/sevenSegment/Seven%20Segment.ttf')
     }
     @font-face{
       font-family:Pacifico;
-      src:url('../analogClockPlus/fonts/pacificoLatin.woff2')
+      src:url('../analogClockPlus/fonts/pacificoLatin.woff2'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoLatin.woff2')
     }
     @font-face{
       font-family:Pacifico;
-      src:url('../analogClockPlus/fonts/pacificoVietnamese.woff2');
+      src:url('../analogClockPlus/fonts/pacificoVietnamese.woff2'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
     }
     :root{
       --naviBlue:#191a2e;
@@ -34,8 +34,7 @@
       transition:all .25s ease-in-out
     }
     body{
-      background:var(--naviBlue);
-      overflow:hidden
+      background:var(--naviBlue)
     }
     div.lightButton{
       position:fixed;
@@ -95,7 +94,7 @@
     div.secondTitle span,div.minuteTitle span,div.hour span{
       color:var(--white);
       display:inline-block;
-      font:35px 'Seven Segment';
+      font:30px 'Seven Segment';
       text-shadow:0 0 10px var(--white);
       transform:rotate(180deg)
     }
@@ -198,7 +197,7 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      font:65px Pacifico;
+      font:55px Pacifico;
       color:var(--naviBlue);
       flex-wrap:wrap
     }
@@ -667,6 +666,9 @@
   var second=window.document.querySelector('div.second');
   var minute=window.document.querySelector('div.minute');
   var hour=window.document.querySelector('div.hour');
+  var days=window.document.querySelector('div.days');
+  var date;
+  var month;
   lightButton.onclick=function(){
     if(lightCheck==0){
       lightCheck=1;
@@ -686,9 +688,23 @@
     var minuteDeg=(minuteTime*360)/60;
     var hourTime=time.getHours();
     var hourDeg=(hourTime*360)/24;
+    var dates=['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
+    var day=dates[time.getDay()];
+    if(time.getDate()<10){
+      date='0'+time.getDate();
+    }else{
+      date=time.getDate();
+    };
+    if((time.getMonth()+1)<10){
+      month='0'+(time.getMonth()+1);
+    }else{
+      month=time.getMonth+1;
+    };
+    year=time.getFullYear();
     second.style.transform='rotate('+secondDeg+'deg)';
     minute.style.transform='translate(-50%,-50%) rotate(calc('+minuteDeg+'deg + 90deg))';
     hour.style.transform='translate(-50%,-50%) rotate(calc('+hourDeg+'deg + 90deg))';
+    days.innerHTML=day+'<span>'+date+'/'+month+'/'+year+'</span>'
   },1000);
 </script>
 </html>
