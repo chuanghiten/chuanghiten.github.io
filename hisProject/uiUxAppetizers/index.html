@@ -243,6 +243,7 @@
 	var pageHidden;
 	var pageActiveNumber;
 	var pageHiddenNumber;
+	var clickCheck;
 	function left(){
 		if(sliderCheck==minSliderCheck){
 			sliderCheck=maxSliderCheck;
@@ -258,10 +259,12 @@
 		};
 	};
 	leftNavigationButton.onclick=function(){
+		clickCheck='left';
 		left();
 		slider();
 	};
 	rightNavigationButton.onclick=function(){
+		clickCheck='right';
 		right();
 		slider();
 	};
@@ -279,7 +282,7 @@
 	};
 	function slider(){
 		pageActiveNumber=sliderCheck;
-		if(key=='a'||key=='A'){
+		if(key=='a'||key=='A'||clickCheck=='left'){
 			if((sliderCheck+1)==(maxSliderCheck+1)){
 				pageHiddenNumber=minSliderCheck;
 			}else{
@@ -298,6 +301,7 @@
 		pageHidden=window.document.querySelector('div.page'+pageHiddenNumber);
 		pageActive.setAttribute('active','');
 		pageHidden.removeAttribute('active');
+	console.log(clickCheck);
 	};
 </script>
 </html>
