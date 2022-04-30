@@ -31,10 +31,11 @@
       padding:0;
       border:0;
       box-sizing:border-box;
-      transition:all .25s ease-in-out
+      transition:all .25s cubic-bezier(.41,1.43,.51,0)
     }
     body{
-      background:var(--naviBlue)
+      background:var(--naviBlue);
+      font-size:100%
     }
     div.lightButton{
       position:fixed;
@@ -132,7 +133,7 @@
       transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
       background:var(--naviBlue);
       border-radius:50%;
-      box-shadow:0 0 10px 0 var(--white) inset,0 0 20px 0 var(--white)
+      box-shadow:0 0 15px 0 var(--white) inset,0 0 25px 0 var(--white)
     }
     body[light] div.hour{
       box-shadow:unset
@@ -140,23 +141,20 @@
     div.hourTitle{
       transform:translate(-50%,-50%) rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg))
     }
-    div.borderLeft{
+    div.halfCircle{
       width:390px;
       height:790px;
       position:absolute;
       top:20px;
-      left:20px;
-      border-radius:400px 0 0 400px;
-      background:var(--white);
-      box-shadow:0 0 10px 0 var(--white)
+      left:20px
     }
-    div.borderLeftCenter{
+    div.halfCircleCenter{
       position:absolute;
       background:var(--white);
       width:260px;
       height:260px;
       border-radius:50%;
-      box-shadow:0 0 10px 0 var(--white);
+      box-shadow:0 0 20px 0 var(--white);
       top:50%;
       right:0;
       transform:translate(50%,-50%);
@@ -203,6 +201,21 @@
     }
     div.days span{
       font-size:40px
+    }
+    div.halfCircle45Deg,div.halfCircleNot45Deg{
+      transform:rotate(45deg);
+      width:100%;
+      height:100%;
+      border-radius:400px 0 0 400px;
+      background:var(--white);
+      box-shadow:0 0 20px 0 var(--white);
+      position:absolute;
+      top:0;
+      left:0;
+      transform-origin:100% 50%
+    }
+    div.halfCircleNot45Deg{
+      transform:rotate(-45deg)
     }
   </style>
 </head>
@@ -646,8 +659,10 @@
         <span>00</span>
       </div>
     </div>
-    <div class='borderLeft'>
-      <div class='borderLeftCenter'>
+    <div class='halfCircle'>
+      <div class='halfCircle45Deg'></div>
+      <div class='halfCircleNot45Deg'></div>
+      <div class='halfCircleCenter'>
         <div class='days'>?<span>?</span></div>
         <div class='startLine'>
           <div class='line'>
