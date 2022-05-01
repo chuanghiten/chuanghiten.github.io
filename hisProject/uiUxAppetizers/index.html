@@ -251,6 +251,125 @@
 			height: 78px;
 			margin: 179px 0 0 0;
 		}
+		div.page4{
+			padding: 0 148px 0 126px;
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		div.page4 div.contents{
+			width: 100%;
+			height: auto;
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+		}
+		div.page4 div.contents div.text{
+			width: 595px;
+			height: 513px;
+			margin: 149px 0 0 0;
+		}
+		div.page4 div.contents div.text div.title{
+			font: 96px 'Circular Std Bold';
+			width: 100%;
+			height: 73px;
+			position: relative;
+			margin: 0;
+		}
+		div.page4 div.contents div.text div.list ul li{
+			font: 48px 'Circular Std Regular';
+		}
+		div.page4 div.contents div.text div.list{
+			width: 442px;
+			height: 280px;
+			position: relative;
+			margin: 160px 0 0 0;
+		}
+		div.page4 div.contents div.graphics{
+			width: 900px;
+			height: 508px;
+			position: relative;
+			margin: 287px 0 0 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		div.contents{
+			width: 1646px;
+			height: 646px;
+			position: relative;
+		}
+		div.page4 div.contents div.graphics div.center{
+			width: 143px;
+			height: 143px;
+			border: 3px solid #f00;
+			border-radius: 50%;
+		}
+		div.page4 div.contents div.graphics div.center div.logo{
+			width: 59px;
+			height: 90px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+		div.page4 div.contents div.graphics div.center div.logo::before,
+		div.page4 div.contents div.graphics div.center div.logo::after,
+		div.page4 div.contents div.graphics div.center div.logo1,
+		div.page4 div.contents div.graphics div.center div.logo1::before,
+		div.page4 div.contents div.graphics div.center div.logo1::after{
+			content: '';
+			display: block;
+			position: absolute;
+			width: 31px;
+			height: 31px;
+		}
+		
+		div.page4 div.contents div.graphics div.center div.logo::before{
+			border-radius: 50% 0 0 50%;
+			background: #F24E1E;
+			top: 0;
+			left: 0;
+		}
+		div.page4 div.contents div.graphics div.center div.logo1{
+			border-radius: 0 50% 50% 0;
+			background: #FF7262;
+			top: 0;
+			left: 31px;
+		}
+		div.page4 div.contents div.graphics div.center div.logo1::before{
+			border-radius: 50% 0 0 50%;
+			background: #A259FF;
+			top: 31px;
+			left: -31px;
+		}
+		div.page4 div.contents div.graphics div.center div.logo1::after{
+			border-radius: 50%;
+			background: #1ABCFE;
+			top: 31px;
+			left: 0;
+		}
+		div.page4 div.contents div.graphics div.center div.logo::after{
+			border-radius: 50% 0 50% 50%;
+			background: #0ACF83;
+			top: calc(31px *2);
+			left: 0;
+		}
+		div.page4 div.graphics div.center div.line{
+			width: 146px;
+			height: 0;
+			border: 2px dashed #f00;
+			left: 560px;
+			top: 50%;
+			position: absolute;
+		}
+		div.page4 div.graphics div.center div.line div.image{
+			width: 223px;
+			height: 112px;
+			position: absolute;
+			right: 0;
+			transform: translate(calc(100% + 33px),-50%);
+		}
 	</style>
 </head>
 <body>
@@ -443,7 +562,59 @@
 			<div class="logo1"></div>
 		</div>
 	</div>
-	<div class="page page4"></div>
+	<div class="page page4" active>
+		<div class="contents">
+			<div class="text">
+				<div class="title">Who user it ?</div>
+				<div class="list">
+					<ul>
+						<li>Designers</li>
+						<li>Developers</li>
+						<li>Product Managers</li>
+						<li>Teams</li>
+					</ul>
+				</div>
+			</div>
+			<div class="graphics">
+				<div class="center">
+					<div class="logo">
+						<div class="logo1"></div>
+					</div>
+					<div class="line">
+						<div class="image">
+							<img src="./images/image 119.png" alt="image">
+						</div>
+					</div>
+					<div class="line line1">
+						<div class="image">
+							<img src="./images/image 117.png" alt="image">
+						</div>
+					</div>
+					<div class="line line2">
+						<div class="image">
+							<img src="./images/image 116.png" alt="image">
+						</div>
+					</div>
+					<div class="line line3">
+						<div class="image">
+							<img src="./images/image 115.png" alt="image">
+						</div>
+					</div>
+					<div class="line line4">
+						<div class="image">
+							<img src="./images/image 118.png" alt="image">
+						</div>
+					</div>
+					<div class="line line5">
+						<div class="image">
+							<img src="./images/image 114.png" alt="image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">designsystemsforfigma.com</div>
+	</div>
 	<div class="page page5"></div>
 	<div class="page page6"></div>
 	<div class="page page7"></div>
@@ -493,10 +664,12 @@
 	body.onkeypress=function(){
 		key=event.key;
 		if(key=='a'||key=='A'){
+			clickCheck='left';
 			left();
 			slider();
 		}else{
 			if(key=='D'||key=='d'){
+				clickCheck='right';
 				right();
 				slider();
 			}else{};
@@ -510,12 +683,14 @@
 			}else{
 				pageHiddenNumber=sliderCheck+1;
 			};
+			console.log(true);
 		}else{
 			if((sliderCheck-1)==(minSliderCheck-1)){
 				pageHiddenNumber=maxSliderCheck;
 			}else{
 				pageHiddenNumber=sliderCheck-1;
 			};
+			console.log(false);
 		};
 		pageActive=window.document.querySelector('div.page'+pageActiveNumber);
 		pageHidden=window.document.querySelector('div.page'+pageHiddenNumber);
