@@ -8,6 +8,10 @@
 			font-family: 'Circular Std Bold';
 			src: url(./fonts/circularStd/FontsFree-Net-CircularStd-Bold.ttf);
 		}
+		@font-face {
+			font-family: 'Circular Std Regular';
+			src: url(./fonts/circularStd/FontsFree-Net-Circular-Std-Book.ttf);
+		}
 		:root{
 			--white:#fff;
 			--black:#000;
@@ -31,7 +35,7 @@
 		}
 		div.title{
 			font: 95.99px 'Circular Std Bold';
-			margin: 200px auto 0 auto;
+			margin: 170px auto 0 auto;
 			position: relative;
 			width: 760px;
 			height: auto;
@@ -47,11 +51,13 @@
 			height: 52px;
 			margin: 0 auto;
 		}
-		div.page0{
+		div.page{
 			width: 100%;
-			height: 100%;
-			position: relative;
+			height: 0;
+			position: absolute;
 			opacity: 0;
+			top: 0;
+			left: 0;
 		}
 		div.footerPage{
 			width: 482px;
@@ -61,8 +67,9 @@
 			justify-content: space-between;
 			align-items: center;
 		}
-		div[active]{
+		div.page[active]{
 			opacity: 1;
+			height: 100%;
 		}
 		div.navigationButton{
 			width: 100vw;
@@ -79,10 +86,175 @@
 			height: 100%;
 			position: relative;
 		}
+		div.page1 div.title{
+			font: 147.99px 'Circular Std Bold';
+			width: 770px;
+			height: 178px;
+			margin: 70px auto 0 auto;
+			position: relative;
+		}
+		div.page1 div.image{
+			margin: 77px auto 0 auto;
+			position: relative;
+			width: 882px;
+			height: 548px;
+		}
+		div.page1 div.image img{
+			width: 882px;
+			height: 548px;
+		}
+		div.page1 div.image svg{
+			position: absolute;
+		}
+		div.page1 div.image svg.stick0DegTopRight{
+			width: 9px;
+			height: 45px;
+			top: calc(-22px + -45px);
+			right: 5px;
+		}
+		div.page1 div.image svg.stick45DegTopRight{
+			width: 32px;
+			height: 50px;
+			top: calc(-12px + -50px);
+			left: calc(100% + 37px);
+		}
+		div.page1 div.image svg.stick90DegTopRight{
+			width: 43px;
+			height: 16px;
+			top: 24px;
+			left: calc(100% + 53px);
+		}
+		div.page1 div.image svg.stick0DegBottomLeft{
+			width: 9px;
+			height: 45px;
+			bottom: calc(-22px + -45px);
+			left: 5px;
+		}
+		div.page1 div.image svg.stick45DegBottomLeft{
+			width: 32px;
+			height: 50px;
+			bottom: calc(-12px + -50px);
+			right: calc(100% + 37px);
+		}
+		div.page1 div.image svg.stick90DegBottomLeft{
+			width: 43px;
+			height: 16px;
+			bottom: 24px;
+			right: calc(100% + 53px);
+		}
+		div.page2 div.text{
+			width: 532px;
+			height: 590px;
+			position: relative;
+		}
+		div.page2{
+			padding: 0 210px 0 259px;
+			display: flex;
+			justify-content: space-between;
+		}
+		div.page2 div.image{
+			width: 350px;
+			height: 616px;
+			position: relative;
+			margin: 232px 0 0 0;
+		}
+		div.page2 div.image img{
+			width: 350px;
+			height: 616px;
+		}
+		div.page2 div.text div.title{
+			font: 99px 'Circular Std Bold';
+			margin: 170px 0 0 0;
+		}
+		div.page2 div.text div.list{
+			font:50px 'Circular Std Regular';
+			margin: 169px 0 0 33px;
+		}
+		div.page2 div.text div.list b{
+			font-family: 'Circular Std Bold';
+		}
+		div.page3 div.text div.title{
+			font: 96px 'Circular Std Bold';
+			margin: 0;
+			width: auto;
+			height: auto;
+		}
+		div.page3 div.text div.content{
+			font: 53px 'Circular Std Regular';
+			width: 910px;
+			height: 295px;
+		}
+		div.page3{
+			display: flex;
+			justify-content: space-between;
+			padding: 0 213px 0 126px;
+		}
+		div.page3 div.image span,div.page3 div.image{
+			width: 165px;
+			height: 78px;
+			position: relative;
+		}
+		div.page3 div.text{
+			width: 944px;
+			height: 608px;
+			position: relative;
+			display: flex;
+			align-content: space-between;
+			flex-wrap: wrap;
+			margin: 149px 0 0 0;
+		}
+		div.page3 div.logo{
+			width: 267px;
+			height: 399px;
+			position: relative;
+			margin: 351px 0 0 0;
+		}
+		div.page3 div.logo::before,div.page3 div.logo::after,div.page3 div.logo div.logo1,div.page3 div.logo div.logo1::before,div.page3 div.logo div.logo1:after{
+			content: '';
+			display: block;
+			position: absolute;
+			width: 134px;
+			height: 134px;
+		}
+		div.page3 div.logo::before{
+			border-radius: 50% 0 0 50%;
+			background: #F24E1E;
+			top: 0;
+			left: 0;
+		}
+		div.page3 div.logo div.logo1{
+			border-radius: 0 50% 50% 0;
+			background: #FF7262;
+			top: 0;
+			left: 134px;
+		}
+		div.page3 div.logo div.logo1::before{
+			border-radius: 50% 0 0 50%;
+			background: #A259FF;
+			top: 134px;
+			left: -134px;
+		}
+		div.page3 div.logo div.logo1::after{
+			border-radius: 50%;
+			background: #1ABCFE;
+			top: 134px;
+			left: 0;
+		}
+		div.page3 div.logo::after{
+			border-radius: 50% 0 50% 50%;
+			background: #0ACF83;
+			top: calc(134px * 2);
+			left: 0;
+		}
+		div.page3 div.arrow{
+			width: 165px;
+			height: 78px;
+			margin: 179px 0 0 0;
+		}
 	</style>
 </head>
 <body>
-	<div class="page0">
+	<div class="page page0">
 		<div class="title">UI UX Appetizers</div>
 		<div class="glassOfWater">
 			<svg xmlns="http://www.w3.org/2000/svg" width="201" height="275" viewBox="0 0 201 275" fill="none">
@@ -217,15 +389,65 @@
 			</svg>
 		</div>
 	</div>
-	<div class="page1"></div>
-	<div class="page2"></div>
-	<div class="page3"></div>
-	<div class="page4"></div>
-	<div class="page5"></div>
-	<div class="page6"></div>
-	<div class="page7"></div>
-	<div class="page8"></div>
-	<div class="tutorial"></div>
+	<div class="page page1">
+		<div class="title">Who am I ?</div>
+		<div class="image">
+			<img src="./images/image 113.png" alt="image">
+			<svg class="stick45DegTopRight" width="32" height="50" viewBox="0 0 32 50" fill="none">
+				<path d="M0.974121 47.0114C1.41162 45.2697 1.66684 43.8546 2.14079 42.4758C6.88038 28.5425 14.5002 16.1331 23.1773 4.34057C24.1981 2.96175 25.4741 1.6555 26.896 0.784664C27.6616 0.312962 29.1929 0.385533 30.0679 0.857235C30.7241 1.22008 31.1981 2.63518 31.0523 3.43345C30.7971 4.95741 30.2502 6.51765 29.4846 7.89647C24.4533 17.0039 19.3856 26.0751 14.245 35.11C12.3127 38.4845 10.271 41.8227 8.26579 45.1609C7.60954 46.2857 6.88037 47.3743 6.11475 48.3902C5.2762 49.5513 4.00017 50.2407 2.72413 49.4788C1.88558 48.9708 0.974121 48.6079 0.974121 47.0114Z" fill="black"/>
+			</svg>
+			<svg class="stick90DegTopRight" width="43" height="16" viewBox="0 0 43 16" fill="none">
+				<path d="M36.5994 15.0404C34.8494 14.7501 32.8077 14.5324 30.839 14.097C23.0734 12.3553 15.3077 10.6136 7.57857 8.7994C5.90149 8.40027 4.26087 7.71086 2.76607 6.91259C0.760865 5.86034 0.0681656 4.37266 0.396291 2.73984C0.724416 1.10703 2.03691 0.0910686 4.33378 0.0547839C5.90149 0.0184992 7.57859 0.0547783 9.07338 0.417625C18.8807 2.88499 28.688 5.42492 38.4588 8.00113C39.5525 8.29141 40.6827 8.79939 41.5213 9.52508C43.6359 11.303 42.9796 14.097 40.2817 14.7864C39.2244 15.0404 38.0213 14.9315 36.5994 15.0404Z" fill="black"/>
+			</svg>
+			<svg class="stick0DegTopRight" width="9" height="45" viewBox="0 0 9 45" fill="none">
+				<path d="M1.15133 8.76046C1.29716 7.05508 1.66175 5.34969 2.09925 3.6806C2.50029 2.19292 3.52112 1.14067 5.16175 0.995528C6.54716 0.886674 8.04195 2.26549 8.2607 4.07973C8.55237 6.51081 8.80758 8.97817 8.69821 11.4092C8.37008 18.7388 7.89612 26.1046 7.3857 33.4341C7.20341 35.8652 6.87529 38.2962 6.47425 40.7273C6.32841 41.5619 6.03675 42.4327 5.56279 43.0858C4.28675 44.9363 1.95341 44.7912 1.04196 42.7955C0.531539 41.6707 0.31279 40.2919 0.31279 39.0582C0.130498 34.9943 0.677372 14.7837 1.15133 8.76046Z" fill="black"/>
+			</svg>
+			<svg class="stick45DegBottomLeft" width="32" height="50" viewBox="0 0 32 50" fill="none">
+				<path d="M0.974121 47.0114C1.41162 45.2697 1.66684 43.8546 2.14079 42.4758C6.88038 28.5425 14.5002 16.1331 23.1773 4.34057C24.1981 2.96175 25.4741 1.6555 26.896 0.784664C27.6616 0.312962 29.1929 0.385533 30.0679 0.857235C30.7241 1.22008 31.1981 2.63518 31.0523 3.43345C30.7971 4.95741 30.2502 6.51765 29.4846 7.89647C24.4533 17.0039 19.3856 26.0751 14.245 35.11C12.3127 38.4845 10.271 41.8227 8.26579 45.1609C7.60954 46.2857 6.88037 47.3743 6.11475 48.3902C5.2762 49.5513 4.00017 50.2407 2.72413 49.4788C1.88558 48.9708 0.974121 48.6079 0.974121 47.0114Z" fill="black"/>
+			</svg>
+			<svg class="stick90DegBottomLeft" width="43" height="16" viewBox="0 0 43 16" fill="none">
+				<path d="M36.5994 15.0404C34.8494 14.7501 32.8077 14.5324 30.839 14.097C23.0734 12.3553 15.3077 10.6136 7.57857 8.7994C5.90149 8.40027 4.26087 7.71086 2.76607 6.91259C0.760865 5.86034 0.0681656 4.37266 0.396291 2.73984C0.724416 1.10703 2.03691 0.0910686 4.33378 0.0547839C5.90149 0.0184992 7.57859 0.0547783 9.07338 0.417625C18.8807 2.88499 28.688 5.42492 38.4588 8.00113C39.5525 8.29141 40.6827 8.79939 41.5213 9.52508C43.6359 11.303 42.9796 14.097 40.2817 14.7864C39.2244 15.0404 38.0213 14.9315 36.5994 15.0404Z" fill="black"/>
+			</svg>
+			<svg class="stick0DegBottomLeft" width="9" height="45" viewBox="0 0 9 45" fill="none">
+				<path d="M1.15133 8.76046C1.29716 7.05508 1.66175 5.34969 2.09925 3.6806C2.50029 2.19292 3.52112 1.14067 5.16175 0.995528C6.54716 0.886674 8.04195 2.26549 8.2607 4.07973C8.55237 6.51081 8.80758 8.97817 8.69821 11.4092C8.37008 18.7388 7.89612 26.1046 7.3857 33.4341C7.20341 35.8652 6.87529 38.2962 6.47425 40.7273C6.32841 41.5619 6.03675 42.4327 5.56279 43.0858C4.28675 44.9363 1.95341 44.7912 1.04196 42.7955C0.531539 41.6707 0.31279 40.2919 0.31279 39.0582C0.130498 34.9943 0.677372 14.7837 1.15133 8.76046Z" fill="black"/>
+			</svg>
+		</div>
+	</div>
+	<div class="page page2">
+		<div class="text">
+			<div class="title">Menu</div>
+			<div class="list">
+				<ul>
+					<li>What is this <b>Figma</b> ??</li>
+					<li>UI Appetizers</li>
+					<li>UX Appetizers</li>
+					<li>What's Next !</li>
+				</ul>
+			</div>
+		</div>
+		<div class="image">
+			<img src="./images/Image.png" alt="image">
+		</div>
+	</div>
+	<div class="page page3">
+		<div class="text">
+			<div class="title">What is this Figma ??</div>
+			<div class="content">A design software and collaborative tool where you can create wireframes, prototypes, social media posts, illustration an a lot more...</div>
+		</div>
+		<div class="arrow">
+			<svg xmlns="http://www.w3.org/2000/svg" width="165" height="78" viewBox="0 0 165 78" fill="none">
+				<path d="M144.583 65.6158L97.2402 65.666C95.7185 65.6582 94.2508 66.236 93.1413 67.2798C92.0317 68.3236 91.3653 69.7534 91.2801 71.2729C91.1949 72.7925 91.6974 74.2853 92.6835 75.4422C93.6697 76.5991 95.0639 77.3314 96.5773 77.4873L97.2276 77.5202L158.858 77.4547C160.318 77.453 161.727 76.9126 162.815 75.9371C163.903 74.9616 164.593 73.6196 164.754 72.1684L164.792 71.5214L164.857 9.89057C164.868 8.36884 164.294 6.90241 163.252 5.79507C162.211 4.68773 160.782 4.02436 159.263 3.94237C157.744 3.86038 156.25 4.36607 155.091 5.35467C153.932 6.34327 153.196 7.73902 153.037 9.25275L153.006 9.8998L152.956 57.2091L122.883 27.1364C111.986 16.2392 99.433 8.52519 86.0177 4.36567L83.8963 3.74102C69.953 -0.195422 55.1824 -0.180905 41.2301 3.78296C27.0082 7.79748 13.6874 15.7736 2.1965 27.2644C1.08392 28.377 0.45794 29.8851 0.456271 31.4568C0.454603 33.0286 1.07738 34.5353 2.1876 35.6455C3.29781 36.7557 4.80452 37.3785 6.37627 37.3768C7.94802 37.3751 9.45606 36.7492 10.5686 35.6366C20.6533 25.5519 32.203 18.637 44.4329 15.1878C56.2837 11.8149 68.8317 11.8005 80.6759 15.146C92.2182 18.3856 103.15 24.7067 112.806 33.8787L114.494 35.5263L144.583 65.6158Z" fill="#545454"/>
+			</svg>
+		</div>
+		<div class="logo">
+			<div class="logo1"></div>
+		</div>
+	</div>
+	<div class="page page4"></div>
+	<div class="page page5"></div>
+	<div class="page page6"></div>
+	<div class="page page7"></div>
+	<div class="page page8"></div>
 	<div class="navigationButton">
 		<div class="leftNavigationButton"></div>
 		<div class="rightNavigationButton"></div>
@@ -289,19 +511,16 @@
 				pageHiddenNumber=sliderCheck+1;
 			};
 		}else{
-		if((sliderCheck-1)==(minSliderCheck-1)){
-			pageHiddenNumber=maxSliderCheck;
-		}else{
-			pageHiddenNumber=sliderCheck-1;
+			if((sliderCheck-1)==(minSliderCheck-1)){
+				pageHiddenNumber=maxSliderCheck;
+			}else{
+				pageHiddenNumber=sliderCheck-1;
+			};
 		};
-	}
-		console.log('active',pageActiveNumber);
-		console.log('hidden',pageHiddenNumber);
 		pageActive=window.document.querySelector('div.page'+pageActiveNumber);
 		pageHidden=window.document.querySelector('div.page'+pageHiddenNumber);
 		pageActive.setAttribute('active','');
 		pageHidden.removeAttribute('active');
-	console.log(clickCheck);
 	};
 </script>
 </html>
