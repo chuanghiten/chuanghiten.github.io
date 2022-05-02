@@ -536,6 +536,36 @@
 			width: 968px;
 			height: 542px;
 		}
+		div.page28{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: nowrap;
+		}
+		div.page28 div.pressHere,div.page28 div.notPress{
+			position: relative;
+			width: 50%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font: 20px 'Circular Std Bold';
+			align-content: center;
+		}
+		div.page28 div.iconKeyA,div.page28 div.iconKeyD{
+			padding: 5px;
+			border: 2px solid #000;
+			border-radius: 5px;
+			margin: 0 5px;
+			display: inline;
+		}
+		div.page28 div.notPress{
+			background: #00000040;
+			box-shadow: 0 0 50px 0 #fff inset;
+		}
+		div.page28 div.notPress{
+			flex-wrap: wrap;
+		}
 	</style>
 </head>
 <body>
@@ -823,8 +853,20 @@
 	<div class="page page24"></div>
 	<div class="page page25"></div>
 	<div class="page page26"></div>
-	<div class="page page27 tutorialLeft"></div>
-	<div class="page page28 tutorialRight"></div>
+	<div class="page page27"></div>
+	<div class="page page28" active>
+		<div class="pressHere">
+			Click here or press the <div class="iconKeyA">A</div> key on the keyboard to go back.
+		</div>
+		<div class="notPress">
+			<div>
+				Press the left half of the screen or press the <div class="iconKeyA">A</div> key on the keyboard to go back.
+			</div>
+			<div style="margin: 20px;color:#00000080;">
+				(Click here or press the <div class="iconKeyD" style="border-color: #00000080;">D</div> key on your keyboard to skip the tutorial.)
+			</div>
+	</div>
+	</div>
 	<div class="navigationButton">
 		<div class="leftNavigationButton"></div>
 		<div class="rightNavigationButton"></div>
@@ -835,7 +877,7 @@
 	var rightNavigationButton=window.document.querySelector('div.rightNavigationButton');
 	var body=window.document.querySelector('body');
 	var key;
-	var maxSliderCheck=10;
+	var maxSliderCheck=28;
 	var sliderCheck=maxSliderCheck;
 	var minSliderCheck=0;
 	var pageActive;
