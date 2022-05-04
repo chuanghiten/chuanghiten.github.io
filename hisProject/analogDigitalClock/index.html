@@ -231,10 +231,27 @@
       transform:rotate(45deg)
     }
     div.dayProgressBar{
-      width:100%;
-      height:100%;
+      width:760px;
+      height:760px;
       border-radius:50%;
-      background:radial-gradient(var(--white) 0 calc((790px / 2) - 10px),transparent calc((790px / 2) - 10px) calc(790px / 2)),conic-gradient(transparent 0 90deg,var(--red) 90deg 170deg);
+      background:radial-gradient(var(--white) 0 calc((760px / 2) - 10px),transparent calc((760px / 2) - 10px) calc(760px / 2)),conic-gradient(transparent 0 90deg,var(--red) 90deg 360deg,transparent 360deg 360deg);
+    }
+    div.dayProgressBar,div.monthProgressBar,div.yearProgressBar{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%)
+    }
+    div.dayProgressBar:before{
+      content:'';
+      display:block;
+      position:absolute;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      top:calc(50% + 30px);
+      right:0;
+      background:#0f0
     }
   </style>
 </head>
