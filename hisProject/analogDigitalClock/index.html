@@ -278,6 +278,9 @@
   </style>
 </head>
 <body>
+  <audio class='hourAudio'>
+    <source src='./audio/Beep.ogg' type='audio/ogg'>
+  </audio>
   <div class='clockBody'>
     <div class='second'>
       <div class='secondTitle' style='--secondTitleRotate:0'>
@@ -749,9 +752,11 @@
   var minute=window.document.querySelector('div.minute');
   var hour=window.document.querySelector('div.hour');
   var days=window.document.querySelector('div.days');
+  var hourAudio=window.document.querySelector('audio.hourAudio');
   var date;
   var month;
   lightButton.onclick=function(){
+    hourAudio.play();
     if(lightCheck==0){
       lightCheck=1;
       body.setAttribute('light','');
