@@ -19,7 +19,8 @@
     :root{
       --naviBlue:#191a2e;
       --red:#F00;
-      --white:#fff
+      --white:#fff;
+      --hourDeg:360deg
     }
     body[light]{
       --naviBlue:#fff;
@@ -234,7 +235,7 @@
       width:760px;
       height:760px;
       border-radius:50%;
-      background:radial-gradient(var(--white) 0 calc((760px / 2) - 10px),transparent calc((760px / 2) - 10px) calc(760px / 2)),conic-gradient(transparent 0 90deg,var(--red) 90deg 360deg,transparent 360deg 360deg);
+      background:radial-gradient(var(--white) 0 calc((760px / 2) - 10px),transparent calc((760px / 2) - 10px) calc(760px / 2)),conic-gradient(transparent 0 95.3deg,var(--naviBlue) 95.3deg calc(var(--hourDeg) - 5.3deg),transparent calc(var(--hourDeg) - 5.3deg) 360deg);
     }
     div.dayProgressBar,div.monthProgressBar,div.yearProgressBar{
       position:absolute;
@@ -250,8 +251,29 @@
       height:10px;
       border-radius:50%;
       top:calc(50% + 30px);
-      right:0;
-      background:#0f0
+      right:1.5px;
+      background:var(--naviBlue)
+    }
+    div.dot{
+      width:100%;
+      height:100%;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%) rotate(-264.7deg);
+      background:transparent
+    }
+    div.dot:before{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--red);
+      content:'';
+      display:block;
+      position:absolute;
+      left:50%;
+      top:0;
+      transform:translate(-50%,0)
     }
   </style>
 </head>
@@ -699,9 +721,13 @@
       <div class='halfCircle45Deg'></div>
       <div class='halfCircleNot45Deg'></div>
       <div class='dateProgressBar'>
-        <div class='yearProgressBar'></div>
+        <div class='yearProgressBar'>
+          <div class='dot'></div>
+        </div>
         <div class='monthProgressBar'></div>
-        <div class='dayProgressBar'></div>
+        <div class='dayProgressBar'>
+          <div class='dot'></div>
+        </div>
       </div>
       <div class='halfCircleCenter'>
         <div class='days'>?<span>?</span></div>
