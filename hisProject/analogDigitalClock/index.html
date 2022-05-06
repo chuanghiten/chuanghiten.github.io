@@ -278,8 +278,8 @@
   </style>
 </head>
 <body>
-  <audio class='hourAudio'>
-    <source src='./audio/Beep.ogg' type='audio/ogg'>
+  <audio class='switchSound'>
+    <source src='./audio/switch-1.mp3' type='audio/mp3'>
   </audio>
   <div class='clockBody'>
     <div class='second'>
@@ -752,11 +752,11 @@
   var minute=window.document.querySelector('div.minute');
   var hour=window.document.querySelector('div.hour');
   var days=window.document.querySelector('div.days');
-  var hourAudio=window.document.querySelector('audio.hourAudio');
+  var switchSound=window.document.querySelector('audio.switchSound');
   var date;
   var month;
   lightButton.onclick=function(){
-    hourAudio.play();
+    switchSound.play();
     if(lightCheck==0){
       lightCheck=1;
       body.setAttribute('light','');
