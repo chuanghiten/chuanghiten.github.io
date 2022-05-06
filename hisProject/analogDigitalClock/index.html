@@ -275,10 +275,14 @@
       top:0;
       transform:translate(-50%,0)
     }
+    /*
+     95.3  ~  360
+    -264.7 ~ -5.3             
+    */
   </style>
 </head>
 <body>
-  <audio class='switchSound'>
+  <audio class='switchSound' style='display:none'>
     <source src='./audio/switch-1.mp3' type='audio/mp3'>
   </audio>
   <div class='clockBody'>
@@ -753,6 +757,7 @@
   var hour=window.document.querySelector('div.hour');
   var days=window.document.querySelector('div.days');
   var switchSound=window.document.querySelector('audio.switchSound');
+  var secondSound=window.document.querySelector('audio.secondSound');
   var date;
   var month;
   lightButton.onclick=function(){
