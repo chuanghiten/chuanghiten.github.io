@@ -17,15 +17,17 @@
       src:url('../analogClockPlus/fonts/pacificoVietnamese.woff2'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
     }
     :root{
-      --naviBlue:#191a2e;
+      --sambucus:#191a2e;
       --red:#F00;
       --white:#fff;
-      --hourDeg:360deg
-    }
-    body[light]{
-      --naviBlue:#fff;
-      --white:#191a2e;
-      --red:#f00
+      --blueCola:#078cdc;
+      --vaporwaveBlue:#1ec5fc;
+      --orangeBellPepper:#f88a44;
+      --fingerBanana:#e5c22c;
+      --indianRed:#880f04;
+      --pumpkin:#ff7617;
+      --daintree:#08273a;
+      --beyondTheStars:#0a3455
     }
     *,:before,:after{
       margin:0;
@@ -33,11 +35,31 @@
       border:0;
       box-sizing:border-box;
       transition:all .25s ease-in-out
-    }
+    }          
     body{
-      background:var(--naviBlue);
-      font-size:100%
+      background:0 0 / cover linear-gradient(to bottom,var(--bodyBackgroundGradient),var(--bodyBackgroundGradient2)) no-repeat fixed;
+      font-size:100%;
+      min-height:100%;
+      --bodyBackgroundGradient:var(--sambucus);
+      --bodyBackgroundGradient2:var(--sambucus)
     }
+    body[morning]{
+      --bodyBackgroundGradient:var(--blueCola);
+      --bodyBackgroundGradient2:var(--vaporwaveBlue);
+    }
+    body[noon]{
+      --bodyBackgroundGradient:var(--orangeBellPepper);
+      --bodyBackgroundGradient2:var(--fingerBanana);
+    }
+    body[afternoon]{
+      --bodyBackgroundGradient:var(--indianRed);
+      --bodyBackgroundGradient2:var(--pumpkin);
+    }
+    body[night]{
+      --bodyBackgroundGradient:var(--daintree);
+      --bodyBackgroundGradient2:var(--beyondTheStars);
+    }
+    /*
     div.lightButton{
       position:fixed;
       width:100px;
@@ -58,14 +80,15 @@
       border-radius:50%;
       top:10px;
       left:10px;
-      background:var(--naviBlue);
+      background:var(--sambucus);
       box-shadow:0 0 10px 0 var(--white) inset;
       transform:translate(0,0)
     }
     div.lightButton[active]:before{
       transform:translate(100%,0);
-      box-shadow:0 0 10px 0 var(--naviBlue)
+      box-shadow:0 0 10px 0 var(--sambucus)
     }
+    */
     div.clockBody{
       position:relative;
       width:830px;
@@ -80,7 +103,8 @@
       border-radius:50%;
       border:10px solid var(--white);
       box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white),0 0 10px 0 var(--white) inset,0 0 20px 0 var(--white) inset;
-      position:relative
+      position:relative;
+      background:var(--sambucus)
     }
     body[light] div.second{
       box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
@@ -124,7 +148,7 @@
       
     }              
     div.minuteTitle span{
-      color:var(--naviBlue)
+      color:var(--sambucus)
     }
     div.hour{
       width:440px;
@@ -133,7 +157,7 @@
       top:50%;
       left:50%;
       transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
-      background:var(--naviBlue);
+      background:var(--sambucus);
       border-radius:50%;
       box-shadow:0 0 15px 0 var(--white) inset,0 0 25px 0 var(--white)
     }
@@ -198,7 +222,7 @@
       justify-content:center;
       align-items:center;
       font:55px Pacifico;
-      color:var(--naviBlue);
+      color:var(--sambucus);
       flex-wrap:wrap
     }
     div.days span{
@@ -222,69 +246,9 @@
     div.second,div.minute,div.hour{
       transition: all .35s cubic-bezier(.39,1.62,.49,1.87);
     }
-    div.dateProgressBar{
-      width:790px;
-      height:100%;
-      position:absolute;
-      top:0;
-      left:0;
-      clip-path:polygon(calc(50% - 30px) 0,calc(50% - 30px) calc(50% + 30px),100% calc(50% + 30px),100% 100%,0 100%,0 0);
-      transform:rotate(45deg)
-    }
-    div.dayProgressBar{
-      width:760px;
-      height:760px;
-      border-radius:50%;
-      background:radial-gradient(var(--white) 0 calc((760px / 2) - 10px),transparent calc((760px / 2) - 10px) calc(760px / 2)),conic-gradient(transparent 0 95.3deg,var(--naviBlue) 95.3deg calc(var(--hourDeg) - 5.3deg),transparent calc(var(--hourDeg) - 5.3deg) 360deg);
-    }
-    div.dayProgressBar,div.monthProgressBar,div.yearProgressBar{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%)
-    }
-    div.dayProgressBar:before{
-      content:'';
-      display:block;
-      position:absolute;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      top:calc(50% + 30px);
-      right:1.5px;
-      background:var(--naviBlue)
-    }
-    div.dot{
-      width:100%;
-      height:100%;
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%) rotate(-264.7deg);
-      background:transparent
-    }
-    div.dot:before{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--red);
-      content:'';
-      display:block;
-      position:absolute;
-      left:50%;
-      top:0;
-      transform:translate(-50%,0)
-    }
-    /*
-     95.3  ~  360
-    -264.7 ~ -5.3             
-    */
   </style>
 </head>
-<body>
-  <audio class='switchSound' style='display:none'>
-    <source src='./audio/switch-1.mp3' type='audio/mp3'>
-  </audio>
+<body morning>
   <div class='clockBody'>
     <div class='second'>
       <div class='secondTitle' style='--secondTitleRotate:0'>
@@ -727,15 +691,6 @@
     <div class='halfCircle'>
       <div class='halfCircle45Deg'></div>
       <div class='halfCircleNot45Deg'></div>
-      <div class='dateProgressBar'>
-        <div class='yearProgressBar'>
-          <div class='dot'></div>
-        </div>
-        <div class='monthProgressBar'></div>
-        <div class='dayProgressBar'>
-          <div class='dot'></div>
-        </div>
-      </div>
       <div class='halfCircleCenter'>
         <div class='days'>?<span>?</span></div>
         <div class='startLine'>
@@ -746,32 +701,15 @@
       </div>
     </div>
   </div>
-  <div class='lightButton'></div>
 </body>
 <script>
   var body=window.document.querySelector('body');
-  var lightButton=window.document.querySelector('div.lightButton');
-  var lightCheck=0;
   var second=window.document.querySelector('div.second');
   var minute=window.document.querySelector('div.minute');
   var hour=window.document.querySelector('div.hour');
   var days=window.document.querySelector('div.days');
-  var switchSound=window.document.querySelector('audio.switchSound');
-  var secondSound=window.document.querySelector('audio.secondSound');
   var date;
   var month;
-  lightButton.onclick=function(){
-    switchSound.play();
-    if(lightCheck==0){
-      lightCheck=1;
-      body.setAttribute('light','');
-      lightButton.setAttribute('active','');
-    }else{
-      lightCheck=0;
-      body.removeAttribute('light');
-      lightButton.removeAttribute('active');
-    };
-  };
   setInterval(function(){
     var time=new Date();
     var secondTime=time.getSeconds();
@@ -796,7 +734,28 @@
     second.style.transform='rotate('+secondDeg+'deg)';
     minute.style.transform='translate(-50%,-50%) rotate(calc('+minuteDeg+'deg + 90deg))';
     hour.style.transform='translate(-50%,-50%) rotate(calc('+hourDeg+'deg + 90deg))';
-    days.innerHTML=day+'<span>'+date+'/'+month+'/'+year+'</span>';
+    days.innerHTML=day+'<span>'+date+'/'+month+'/'+year+'</span>';/*
+    if(hourTime>=4&&hourTime<11){
+      body.setAttribute('morning','');
+      body.removeAttribute('noon');
+      body.removeAttribute('afternoon');
+      body.removeAttribute('night');
+    }else if(hourTime>=11&&hourTime<16){
+      body.removeAttribute('morning');
+      body.setAttribute('noon','');
+      body.removeAttribute('afternoon');
+      body.removeAttribute('night');
+    }else if(hourTime>=16&&hourTime<18){
+      body.removeAttribute('morning');
+      body.removeAttribute('noon');
+      body.setAttribute('afternoon','');
+      body.removeAttribute('night');
+    }else{
+      body.removeAttribute('morning');
+      body.removeAttribute('noon');
+      body.removeAttribute('afternoon');
+      body.setAttribute('night','');
+    };*/
   },1000);
 </script>
 </html>
