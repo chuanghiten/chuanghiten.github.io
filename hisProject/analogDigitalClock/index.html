@@ -20,14 +20,22 @@
       --sambucus:#191a2e;
       --red:#F00;
       --white:#fff;
+      /* morning */
       --blueCola:#078cdc;
       --vaporwaveBlue:#1ec5fc;
+      --yellowBuzzing:#F1E110;
+      /* noon */
       --orangeBellPepper:#f88a44;
       --fingerBanana:#e5c22c;
+      --paleAle:#fff16e;
+      /* afternoon */
       --indianRed:#880f04;
       --pumpkin:#ff7617;
+      --sunflower:#ffc712;
+      /* night */
       --daintree:#08273a;
-      --beyondTheStars:#0a3455
+      --beyondTheStars:#0a3455;
+      --prominentBlue:#2b75a4
     }
     *,:before,:after{
       margin:0;
@@ -41,19 +49,25 @@
       font-size:100%;
       min-height:100%;
       --bodyBackgroundGradient:var(--sambucus);
-      --bodyBackgroundGradient2:var(--sambucus)
+      --bodyBackgroundGradient2:var(--sambucus);
+      --sunColor:var(--white);
+      --sunColorShadow:var(--sunColor)
     }
     body[morning]{
-      --bodyBackgroundGradient:var(--blueCola);
-      --bodyBackgroundGradient2:var(--vaporwaveBlue);
+      --bodyBackgroundGradient:var(--white);
+      --bodyBackgroundGradient2:var(--white);
+      --sunColor:var(--yellowBuzzing)
     }
     body[noon]{
       --bodyBackgroundGradient:var(--orangeBellPepper);
       --bodyBackgroundGradient2:var(--fingerBanana);
+      --sunColor:var(--paleAle);
+      --sunColorShadow:var(--yellowBuzzing)
     }
     body[afternoon]{
       --bodyBackgroundGradient:var(--indianRed);
       --bodyBackgroundGradient2:var(--pumpkin);
+      --sunColor:var(--sunflower)
     }
     body[night]{
       --bodyBackgroundGradient:var(--daintree);
@@ -91,18 +105,20 @@
     */
     div.clockBody{
       position:relative;
-      width:830px;
-      height:830px;
+      width:630px;
+      height:630px;
       margin:80px auto;
       padding:15px;
-      overflow:hidden
+      overflow:hidden;
+      background:transparent;
+      border-radius:50%
     }
     div.second{
       width:100%;
       height:100%;
       border-radius:50%;
-      border:10px solid var(--white);
-      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white),0 0 10px 0 var(--white) inset,0 0 20px 0 var(--white) inset;
+      border:10px solid var(--sunColor);
+      box-shadow:0 0 10px 0 var(--sunColorShadow),0 0 20px 0 var(--sunColorShadow),0 0 10px 0 var(--sunColorShadow) inset,0 0 20px 0 var(--sunColorShadow) inset;
       position:relative;
       background:var(--sambucus)
     }
@@ -112,7 +128,7 @@
     div.secondTitle,div.minuteTitle,div.hourTitle{
       width:100%;
       height:auto;
-      padding:0 30px;
+      padding:0 20px;
       position:absolute;
       top:50%;
       left:50%;
@@ -121,7 +137,7 @@
     div.secondTitle span,div.minuteTitle span,div.hour span{
       color:var(--white);
       display:inline-block;
-      font:30px 'Seven Segment';
+      font:21px 'Seven Segment';
       text-shadow:0 0 10px var(--white);
       transform:rotate(180deg)
     }
@@ -130,15 +146,15 @@
       font-weight:600
     }
     div.minute{
-      width:610px;
-      height:610px;
+      width:460px;
+      height:460px;
       border-radius:50%;
-      background:var(--white);
+      background:var(--sunColor);
       top:50%;
       left:50%;
       position:absolute;
       transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
-      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
+      box-shadow:0 0 10px 0 var(--sunColor),0 0 20px 0 var(--sunColor)
     }
     body[light] div.minute{
       box-shadow:unset
@@ -151,15 +167,15 @@
       color:var(--sambucus)
     }
     div.hour{
-      width:440px;
-      height:440px;
+      width:340px;
+      height:340px;
       position:absolute;
       top:50%;
       left:50%;
       transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
       background:var(--sambucus);
       border-radius:50%;
-      box-shadow:0 0 15px 0 var(--white) inset,0 0 25px 0 var(--white)
+      box-shadow:0 0 15px 0 var(--sunColor) inset,0 0 25px 0 var(--sunColor)
     }
     body[light] div.hour{
       box-shadow:unset
@@ -168,19 +184,19 @@
       transform:translate(-50%,-50%) rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg))
     }
     div.halfCircle{
-      width:390px;
-      height:790px;
+      width:290px;
+      height:590px;
       position:absolute;
       top:20px;
       left:20px
     }
     div.halfCircleCenter{
       position:absolute;
-      background:var(--white);
-      width:260px;
-      height:260px;
+      background:var(--sunColor);
+      width:220px;
+      height:220px;
       border-radius:50%;
-      box-shadow:0 0 20px 0 var(--white);
+      box-shadow:0 0 20px 0 var(--sunColor);
       top:50%;
       right:0;
       transform:translate(50%,-50%);
@@ -192,23 +208,23 @@
       width:0;
       height:0;
       border:15px solid transparent;
-      border-left-color:var(--white);
+      border-left-color:var(--sunColor);
       position:absolute;
       top:50%;
       right:1px;
       transform:translate(100%,-50%)
     }
     div.line{
-      width:237px;
-      height:50px;
-      border:5px solid var(--red);
+      width:160px;
+      height:40px;
+      border:3px solid var(--red);
       transform:translate(0,-50%)
     }
     div.endLine{
       width:0;
       height:0;
       border:15px solid transparent;
-      border-right-color:var(--white);
+      border-right-color:var(--sunColor);
       position:absolute;
       top:50%;
       right:0;
@@ -221,20 +237,20 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      font:55px Pacifico;
-      color:var(--sambucus);
+      font:40px Pacifico;
+      color:var(--white);
       flex-wrap:wrap
     }
     div.days span{
-      font-size:40px
+      font-size:28px
     }
     div.halfCircle45Deg,div.halfCircleNot45Deg{
       transform:rotate(45deg);
       width:100%;
       height:100%;
       border-radius:400px 0 0 400px;
-      background:var(--white);
-      box-shadow:0 0 20px 0 var(--white);
+      background:var(--sunColor);
+      box-shadow:0 0 20px 0 var(--sunColor);
       position:absolute;
       top:0;
       left:0;
@@ -245,6 +261,12 @@
     }
     div.second,div.minute,div.hour{
       transition: all .35s cubic-bezier(.39,1.62,.49,1.87);
+    }
+    body img{
+      width:100%;
+      height:auto;
+      position:fixed;
+      bottom:0;
     }
   </style>
 </head>
@@ -701,6 +723,7 @@
       </div>
     </div>
   </div>
+  <img src='./images/tree.svg' alt='image'>
 </body>
 <script>
   var body=window.document.querySelector('body');
