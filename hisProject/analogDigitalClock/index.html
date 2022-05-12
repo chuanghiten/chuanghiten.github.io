@@ -103,7 +103,7 @@
       box-shadow:0 0 10px 0 var(--sambucus)
     }
     */
-    div.clockBody{
+    div.sun{
       position:relative;
       width:630px;
       height:630px;
@@ -262,16 +262,52 @@
     div.second,div.minute,div.hour{
       transition: all .35s cubic-bezier(.39,1.62,.49,1.87);
     }
-    body img{
+    div.scenery{
       width:100%;
       height:auto;
       position:fixed;
       bottom:0;
     }
+    div.mountain7,div.mountain6,div.mountain5,div.mountain4,div.mountain3,div.minTree,div.mountain2,div.tree,div.mountain{
+      width:100%;
+      height:auto;
+      position:absolute;
+      bottom:0;
+      right:0;
+      background:transparent;
+      filter:invert(.96) sepia(.67) saturate(5216%) hue-rotate(359deg) brightness(.98) contrast(1.01)
+    }
+    div.scenery img{
+      width:100%;
+      height:100%;
+    }
+    div.mountain6,div.mountain4,div.minTree,div.mountant2{
+      right:unset;
+      left:0;
+      filter:invert(.76) sepia(.80) saturate(8.27) hue-rotate(10deg) brightness(1.05) contrast(.98)
+    }
+    div.mountain5{
+      filter:invert(.85) sepia(.36) saturate(17.84) hue-rotate(11deg) brightness(.96) contrast(.97)
+    }
+    div.mountain4{
+      filter:invert(.73) sepia(.71) saturate(5.55) hue-rotate(16deg) brightness(.90) contrast(.98)
+    }
+    div.mountain3{
+      filter:invert(.77) sepia(.41) saturate(53.09) hue-rotate(29deg) brightness(.98) contrast(.94)
+    }
+    div.minTree,div.tree{
+      filter:unset
+    }
+    div.mountain2{
+      filter:invert(.50) sepia(.99) saturate(8.32) hue-rotate(37deg) brightness(.96) contrast(.92) 
+    }
+    div.mountain{
+      filter:invert(.43) sepia(.87) saturate(4.22) hue-rotate(35deg) brightness(1.02) contrast(.96) 
+    }
   </style>
 </head>
 <body morning>
-  <div class='clockBody'>
+  <div class='sun'>
     <div class='second'>
       <div class='secondTitle' style='--secondTitleRotate:0'>
         <span>59</span>
@@ -723,7 +759,35 @@
       </div>
     </div>
   </div>
-  <img src='./images/tree.svg' alt='image'>
+  <div class='scenery'>
+    <div class='mountain7'>
+      <img src='./images/mountain7.svg' alt='image'>
+    </div>
+    <div class='mountain6'>
+      <img src='./images/mountain6.svg' alt='image'>
+    </div>
+    <div class='mountain5'>
+      <img src='./images/mountain5.svg' alt='image'>
+    </div>
+    <div class='mountain4'>
+      <img src='./images/mountain4.svg' alt='image'>
+    </div>
+    <div class='mountain3'>
+      <img src='./images/mountain3.svg' alt='image'>
+    </div>
+    <div class='minTree'>
+      <img src='./images/minTree.svg' alt='image'>
+    </div>
+    <div class='mountain2'>
+      <img src='./images/mountain2.svg' alt='image'>
+    </div>
+    <div class='tree'>
+      <img src='./images/tree.svg' alt='image'>
+    </div>
+    <div class='mountain'>
+      <img src='./images/mountain.svg' alt='image'>
+    </div>
+  </div>
 </body>
 <script>
   var body=window.document.querySelector('body');
