@@ -19,9 +19,10 @@
     :root{
       --sambucus:#191a2e;
       --red:#F00;
-      --white:#fff;
+      --white:#fff;      
       /* morning */
       --blueCola:#078cdc;
+      --blueMana:#61bfff;
       --vaporwaveBlue:#1ec5fc;
       --yellowBuzzing:#F1E110;
       /* noon */
@@ -43,20 +44,27 @@
       border:0;
       box-sizing:border-box;
       transition:all .25s ease-in-out
-    }          
+    }
     body{
       background:0 0 / cover linear-gradient(to bottom,var(--bodyBackgroundGradient),var(--bodyBackgroundGradient2)) no-repeat fixed;
-      font-size:100%;
+      font-size:16px;
       min-height:100%;
       --bodyBackgroundGradient:var(--sambucus);
       --bodyBackgroundGradient2:var(--sambucus);
       --sunColor:var(--white);
-      --sunColorShadow:var(--sunColor)
+      --sunColorShadow:var(--sunColor);
+      --dateTextColor:var(--sambucus);
+      --secondAndHourTextColor:var(--white);
+      --minuteTextColor:var(--sambucus);
+      --secondAndHourBackgroundColor:var(--sambucus);
+      --cloudColor:var(--white)
     }
     body[morning]{
-      --bodyBackgroundGradient:var(--white);
+      --bodyBackgroundGradient:var(--blueMana);
       --bodyBackgroundGradient2:var(--white);
-      --sunColor:var(--yellowBuzzing)
+      --sunColor:var(--yellowBuzzing);
+      --dateTextColor:var(--white);
+      --secondAndHourBackgroundColor:var(--blueMana)
     }
     body[noon]{
       --bodyBackgroundGradient:var(--orangeBellPepper);
@@ -120,7 +128,7 @@
       border:10px solid var(--sunColor);
       box-shadow:0 0 10px 0 var(--sunColorShadow),0 0 20px 0 var(--sunColorShadow),0 0 10px 0 var(--sunColorShadow) inset,0 0 20px 0 var(--sunColorShadow) inset;
       position:relative;
-      background:var(--sambucus)
+      background:var(--secondAndHourBackgroundColor)
     }
     body[light] div.second{
       box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
@@ -135,11 +143,11 @@
       transform:translate(-50%,-50%) rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)))
     }
     div.secondTitle span,div.minuteTitle span,div.hour span{
-      color:var(--white);
+      color:var(--secondAndHourTextColor);
       display:inline-block;
       font:21px 'Seven Segment';
-      text-shadow:0 0 10px var(--white);
-      transform:rotate(180deg)
+      transform:rotate(180deg);
+      font-weight:600
     }
     body[light] div.secondTitle span,div.minuteTitle span,body[light] div.hour span{
       text-shadow:unset;
@@ -149,12 +157,12 @@
       width:460px;
       height:460px;
       border-radius:50%;
-      background:var(--sunColor);
+      background:var(--white);
       top:50%;
       left:50%;
       position:absolute;
       transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
-      box-shadow:0 0 10px 0 var(--sunColor),0 0 20px 0 var(--sunColor)
+      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
     }
     body[light] div.minute{
       box-shadow:unset
@@ -164,7 +172,10 @@
       
     }              
     div.minuteTitle span{
-      color:var(--sambucus)
+      color:var(--minuteTextColor)
+    }              
+    div.hourTitle span{
+      color:var(--secondAndHourTextColor)
     }
     div.hour{
       width:340px;
@@ -173,9 +184,9 @@
       top:50%;
       left:50%;
       transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
-      background:var(--sambucus);
+      background:var(--secondAndHourBackgroundColor);
       border-radius:50%;
-      box-shadow:0 0 15px 0 var(--sunColor) inset,0 0 25px 0 var(--sunColor)
+      box-shadow:0 0 15px 0 var(--white) inset,0 0 25px 0 var(--white)
     }
     body[light] div.hour{
       box-shadow:unset
@@ -238,7 +249,7 @@
       justify-content:center;
       align-items:center;
       font:40px Pacifico;
-      color:var(--white);
+      color:var(--dateTextColor);
       flex-wrap:wrap
     }
     div.days span{
@@ -265,10 +276,10 @@
     div.scenery{
       width:100%;
       height:auto;
-      position:fixed;
+      position:absolute;
       bottom:0;
     }
-    div.mountain7,div.mountain6,div.mountain5,div.mountain4,div.mountain3,div.minTree,div.mountain2,div.tree,div.mountain{
+    div.mountain7,div.mountain6,div.mountain5,div.mountain4,div.mountain3,div.minTree,div.mountain2,div.tree,div.mountain,div.minTreeShadow,div.minTrunk,div.minLeaf3,div.minLeaf2,div.minLeaf,div.treeShadow,div.trunk,div.leaf3,div.leaf2,div.leaf{
       width:100%;
       height:auto;
       position:absolute;
@@ -281,7 +292,7 @@
       width:100%;
       height:100%;
     }
-    div.mountain6,div.mountain4,div.minTree,div.mountant2{
+    div.mountain6,div.mountain4,div.minTree,div.mountant2,div.treeShadow,div.trunk,div.leaf3,div.leaf2,div.leaf{
       right:unset;
       left:0;
       filter:invert(.76) sepia(.80) saturate(8.27) hue-rotate(10deg) brightness(1.05) contrast(.98)
@@ -303,6 +314,170 @@
     }
     div.mountain{
       filter:invert(.43) sepia(.87) saturate(4.22) hue-rotate(35deg) brightness(1.02) contrast(.96) 
+    }
+    div.minTreeShadow,div.minTrunk{
+      bottom:0;
+      left:0;
+      filter:invert(.86) sepia(1) saturate(.2) hue-rotate(123deg) brightness(1.09) contrast(1)
+    }
+    div.minTrunk{
+      filter:invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95)
+    }
+    div.minLeaf3{
+      filter:invert(.59) sepia(.1) saturate(23.22) hue-rotate(61deg) brightness(.99) contrast(.92)
+    }
+    div.minLeaf2{
+      filter:invert(.56) sepia(.26) saturate(10.06) hue-rotate(60deg) brightness(.91) contrast(.91)
+    }
+    div.minLeaf{
+      filter:invert(.67) sepia(.52) saturate(4.99) hue-rotate(49deg) brightness(.96) contrast(.84)
+    }
+    div.treeShadow,div.trunk{
+      bottom:0;
+      right:0;
+      filter:invert(.86) sepia(1) saturate(.2) hue-rotate(123deg) brightness(1.09) contrast(1)
+    }
+    div.trunk{
+      filter:invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95)
+    }
+    div.leaf3{
+      filter:invert(.59) sepia(.1) saturate(23.22) hue-rotate(61deg) brightness(.99) contrast(.92)
+    }
+    div.leaf2{
+      filter:invert(.56) sepia(.26) saturate(10.06) hue-rotate(60deg) brightness(.91) contrast(.91)
+    }
+    div.leaf{
+      filter:invert(.67) sepia(.52) saturate(4.99) hue-rotate(49deg) brightness(.96) contrast(.84)
+    }
+    div.clouds{
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:50%;
+      transform:translate(-50%,0);
+      background:transparent
+    }
+    div.cloud1{
+      position:absolute;
+      width:350px;
+      height:200px;
+      background:transparent;
+      top:550px;
+      right:70px
+    }
+    div.circle{
+      border-radius:50%;
+      background:var(--cloudColor);
+      position:absolute
+    }
+    div.circle1{
+      width:150px;
+      height:150px;
+      bottom:0;
+      left:0
+    }
+    div.circle2{
+      width:70px;
+      height:70px;
+      bottom:0;
+      right:0
+    }
+    div.circle3{
+      width:130px;
+      height:130px;
+      top:0;
+      left:70px
+    }
+    div.circle4{
+      width:100px;
+      height:100px;
+      top:50px;
+      right:100px
+    }
+    div.circle5{
+      width:100px;
+      height:100px;
+      top:60px;
+      right:30px
+    }
+    div.rectangle{
+      position:absolute;
+      left:75px;
+      bottom:0;
+      width:240px;
+      height:70px;
+      background:var(--cloudColor)
+    }
+    div.rectangle:before{
+      content:'';
+      display:block;
+      position:absolute;
+      width:50px;
+      height:50px;
+      background:var(--cloudColor);
+      transform:translate(0,-50%);
+      left:50px
+    }
+    div.cloud1 *,div.cloud2 *{
+      box-shadow:0 0 10px 0 var(--cloudColor),0 0 20px 0 var(--cloudColor),0 0 40px 0 var(--cloudColor)
+    }
+    div.cloud2{
+      position:absolute;
+      width:350px;
+      height:200px;
+      background:transparent;
+      top:50px;
+      left:70px
+    }
+    div.circle6{
+      width:100px;
+      height:100px;
+      top:50%;
+      transform:translate(0,-50%)
+    }
+    div.circle7{
+      width:70px;
+      height:70px;
+      top:50%;
+      right:0;
+      transform:translate(0,-30%)
+    }
+    div.circle8{
+      width:150px;
+      height:150px;
+      left:50px
+    }
+    div.circle9{
+      width:120px;
+      height:120px;
+      right:70px;
+      top:30px
+    }
+    div.circle10{
+      width:50px;
+      height:50px;
+      top:50%;
+      transform:translate(0,-50%);
+      right:50px
+    }
+    div.circle11{
+      width:70px;
+      height:70px;
+      bottom:30px;
+      left:50px
+    }
+    div.circle12{
+      width:50px;
+      height:50px;
+      bottom:40px;
+      right:50px
+    }
+    div.circle13{
+      width:150px;
+      height:150px;
+      bottom:0;
+      left:110px
     }
   </style>
 </head>
@@ -776,16 +951,64 @@
       <img src='./images/mountain3.svg' alt='image'>
     </div>
     <div class='minTree'>
-      <img src='./images/minTree.svg' alt='image'>
+      <div class='minTreeShadow'>
+        <img src='./images/minTreeShadow.svg' alt='image'>
+      </div>
+      <div class='minTrunk'>
+        <img src='./images/minTrunk.svg' alt='image'>
+      </div>
+      <div class='minLeaf3'>
+        <img src='./images/minLeaf3.svg' alt='image'>
+      </div>
+      <div class='minLeaf2'>
+        <img src='./images/minLeaf2.svg' alt='image'>
+      </div>
+      <div class='minLeaf'>
+        <img src='./images/minLeaf.svg' alt='image'>
+      </div>
     </div>
     <div class='mountain2'>
       <img src='./images/mountain2.svg' alt='image'>
     </div>
     <div class='tree'>
-      <img src='./images/tree.svg' alt='image'>
+      <div class='treeShadow'>
+        <img src='./images/treeShadow.svg' alt='image'>
+      </div>
+      <div class='trunk'>
+        <img src='./images/trunk.svg' alt='image'>
+      </div>
+      <div class='leaf3'>
+        <img src='./images/leaf3.svg' alt='image'>
+      </div>
+      <div class='leaf2'>
+        <img src='./images/leaf2.svg' alt='image'>
+      </div>
+      <div class='leaf'>
+        <img src='./images/leaf.svg' alt='image'>
+      </div>
     </div>
     <div class='mountain'>
       <img src='./images/mountain.svg' alt='image'>
+    </div>
+  </div>
+  <div class='clouds'>
+    <div class='cloud1'>
+      <div class='circle circle1'></div>
+      <div class='circle circle2'></div>
+      <div class='circle circle3'></div>
+      <div class='circle circle4'></div>
+      <div class='circle circle5'></div>
+      <div class='rectangle'></div>
+    </div>
+    <div class='cloud2'>
+      <div class='circle circle6'></div>
+      <div class='circle circle7'></div>
+      <div class='circle circle8'></div>
+      <div class='circle circle9'></div>
+      <div class='circle circle10'></div>
+      <div class='circle circle11'></div>
+      <div class='circle circle12'></div>
+      <div class='circle circle13'></div>
     </div>
   </div>
 </body>
