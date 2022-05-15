@@ -18,13 +18,43 @@
     }
     :root{
       --sambucus:#191a2e;
+      --sambucusFilter:invert(.7) sepia(.1) saturate(36.22) hue-rotate(199deg) brightness(.99) contrast(.92);
       --red:#F00;
-      --white:#fff;      
+      --white:#fff;
       /* morning */
+      --abiBlue:#61a9ff;
+      --honeyAndThyme:#adad00;
+      --honeyAndThymeFilter:invert(66%) sepia(42%) saturate(2440%) hue-rotate(22deg) brightness(92%) contrast(105%);
+      --peaSoup:#989c01;
+      --peaSoupFilter:invert(52%) sepia(79%) saturate(1102%) hue-rotate(29deg) brightness(91%) contrast(99%);
+      --drablyOlive:#848c02;
+      --drablyOliveFilter:invert(39%) sepia(99%) saturate(1054%) hue-rotate(41deg) brightness(95%) contrast(98%);
+      --flagGreen:#707e03;
+      --flagGreenFilter:invert(40%) sepia(37%) saturate(7200%) hue-rotate(52deg) brightness(100%) contrast(98%);
+      --mudGreen:#5b6a04;
+      --mudGreenFilter:invert(36%) sepia(7%) saturate(6762%) hue-rotate(34deg) brightness(97%) contrast(97%);
+      --highlandsMoss:#495a05;
+      --highlandsMossFilter:invert(30%) sepia(54%) saturate(631%) hue-rotate(31deg) brightness(92%) contrast(99%);
+      --godzilla:#364905;
+      --godzillaFilter: invert(24%) sepia(45%) saturate(641%) hue-rotate(36deg) brightness(100%) contrast(107%);
       --blueCola:#078cdc;
       --blueMana:#61bfff;
       --vaporwaveBlue:#1ec5fc;
       --yellowBuzzing:#F1E110;
+      --delayedYellow:#fafa00;
+      --delayedYellowFilter:invert(.96) sepia(.67) saturate(52.16) hue-rotate(359deg) brightness(.98) contrast(1.01);
+      --peridot:#e3e902;
+      --peridotFilter:invert(71%) sepia(94%) saturate(517%) hue-rotate(11deg) brightness(107%) contrast(99%);
+      --octarine:#ccd904;
+      --octarineFilter:invert(93%) sepia(36%) saturate(3070%) hue-rotate(4deg) brightness(86%) contrast(97%);
+      --limeRasp:#b5cb06;
+      --limeRaspFilter:invert(59%) sepia(92%) saturate(445%) hue-rotate(25deg) brightness(104%) contrast(95%);
+      --citrus:#9eb708;
+      --citrusFilter:invert(64%) sepia(83%) saturate(480%) hue-rotate(23deg) brightness(89%) contrast(94%);
+      --ufoDefenseGreen:#87a70a;
+      --ufoDefenseGreenFilter:invert(58%) sepia(96%) saturate(1633%) hue-rotate(35deg) brightness(92%) contrast(92%);
+      --canopy:#70960c;
+      --canopyFilter:invert(61%) sepia(79%) saturate(4497%) hue-rotate(48deg) brightness(95%) contrast(91%);
       /* noon */
       --orangeBellPepper:#f88a44;
       --fingerBanana:#e5c22c;
@@ -59,14 +89,28 @@
       --secondAndHourTextColor:var(--white);
       --minuteTextColor:var(--sambucus);
       --secondAndHourBackgroundColor:var(--sambucus);
-      --cloudColor:var(--white)
+      --cloudColor:var(--white);
+      --mountain7Color:var(--sambucusFilter);
+      --mountain6Color:var(--sambucusFilter);
+      --mountain5Color:var(--sambucusFilter);
+      --mountain4Color:var(--sambucusFilter);
+      --mountain3Color:var(--sambucusFilter);
+      --mountain2Color:var(--sambucusFilter);
+      --mountainColor:var(--sambucusFilter)
     }
     body[springMorning01]{
-      --bodyBackgroundGradient:var(--blueMana);
+      --bodyBackgroundGradient:var(--abiBlue);
       --bodyBackgroundGradient2:var(--white);
       --sunColor:var(--yellowBuzzing);
       --dateTextColor:var(--white);
-      --secondAndHourBackgroundColor:var(--blueMana)
+      --secondAndHourBackgroundColor:var(--abiBlue);
+      --mountain7Color:var(--honeyAndThymeFilter);
+      --mountain6Color:var(--peaSoupFilter);
+      --mountain5Color:var(--drablyOliveFilter);
+      --mountain4Color:var(--flagGreenFilter);
+      --mountain3Color:var(--mudGreenFilter);
+      --mountain2Color:var(--highlandsMossFilter);
+      --mountainColor:var(--godzillaFilter)
     }
     body[springMorning01] div.clouds,body[springNoon01] div.clouds{
       display:none
@@ -283,7 +327,7 @@
       bottom:0;
       right:0;
       background:transparent;
-      filter:invert(.96) sepia(.67) saturate(5216%) hue-rotate(359deg) brightness(.98) contrast(1.01)
+      filter:var(--mountain7Color)
     }
     div.scenery img{
       width:100%;
@@ -292,25 +336,25 @@
     div.mountain6,div.mountain4,div.minTree,div.mountant2,div.treeShadow,div.trunk,div.leaf3,div.leaf2,div.leaf{
       right:unset;
       left:0;
-      filter:invert(.76) sepia(.80) saturate(8.27) hue-rotate(10deg) brightness(1.05) contrast(.98)
+      filter:var(--mountain6Color)
     }
     div.mountain5{
-      filter:invert(.85) sepia(.36) saturate(17.84) hue-rotate(11deg) brightness(.96) contrast(.97)
+      filter:var(--mountain5Color)
     }
     div.mountain4{
-      filter:invert(.73) sepia(.71) saturate(5.55) hue-rotate(16deg) brightness(.90) contrast(.98)
+      filter:var(--mountain4Color)
     }
     div.mountain3{
-      filter:invert(.77) sepia(.41) saturate(53.09) hue-rotate(29deg) brightness(.98) contrast(.94)
+      filter:var(--mountain3Color)
     }
     div.minTree,div.tree{
       filter:unset
     }
     div.mountain2{
-      filter:invert(.50) sepia(.99) saturate(8.32) hue-rotate(37deg) brightness(.96) contrast(.92) 
+      filter:var(--mountain2Color)
     }
     div.mountain{
-      filter:invert(.43) sepia(.87) saturate(4.22) hue-rotate(35deg) brightness(1.02) contrast(.96) 
+      filter:var(--mountainColor)
     }
     div.minTreeShadow,div.minTrunk{
       bottom:0;
@@ -521,7 +565,7 @@
     }
   </style>
 </head>
-<body springNoon01>
+<body springMorning01>
   <div class='clouds'>
     <div class='cloud3'>
       <div class='circle circle14'></div>
