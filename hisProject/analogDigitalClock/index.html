@@ -36,7 +36,9 @@
       /* night */
       --daintree:#08273a;
       --beyondTheStars:#0a3455;
-      --prominentBlue:#2b75a4
+      --prominentBlue:#2b75a4;
+      --mysteriousDepths:#000928;
+      --catalinaBlue:#0f267a
     }
     *,:before,:after{
       margin:0;
@@ -59,27 +61,22 @@
       --secondAndHourBackgroundColor:var(--sambucus);
       --cloudColor:var(--white)
     }
-    body[morning]{
+    body[springMorning01]{
       --bodyBackgroundGradient:var(--blueMana);
       --bodyBackgroundGradient2:var(--white);
       --sunColor:var(--yellowBuzzing);
       --dateTextColor:var(--white);
       --secondAndHourBackgroundColor:var(--blueMana)
     }
-    body[noon]{
-      --bodyBackgroundGradient:var(--orangeBellPepper);
-      --bodyBackgroundGradient2:var(--fingerBanana);
-      --sunColor:var(--paleAle);
-      --sunColorShadow:var(--yellowBuzzing)
+    body[springMorning01] div.clouds,body[springNoon01] div.clouds{
+      display:none
     }
-    body[afternoon]{
-      --bodyBackgroundGradient:var(--indianRed);
-      --bodyBackgroundGradient2:var(--pumpkin);
-      --sunColor:var(--sunflower)
-    }
-    body[night]{
-      --bodyBackgroundGradient:var(--daintree);
-      --bodyBackgroundGradient2:var(--beyondTheStars);
+    body[springNoon01]{
+      --bodyBackgroundGradient:var(--mysteriousDepths);
+      --bodyBackgroundGradient2:var(--catalinaBlue);
+      --sunColor:var(--yellowBuzzing);
+      --dateTextColor:var(--white);
+      --secondAndHourBackgroundColor:var(--blueMana)
     }
     /*
     div.lightButton{
@@ -524,7 +521,7 @@
     }
   </style>
 </head>
-<body morning>
+<body springNoon01>
   <div class='clouds'>
     <div class='cloud3'>
       <div class='circle circle14'></div>
@@ -1123,10 +1120,22 @@
 </script>
 </html>
 <!--
-weather.description
-main.temp
-main.temp_min
-main.temp_max
-name
-weather.icon
+trạng thái thời tiết: weather.description
+nhiệt độ hiện tại: main.temp
+nhiệt độ cao nhất: main.temp_min
+nhiệt độ thấp nhất: main.temp_max
+tên thành phố: name
+mã biểu tượng: weather.icon
+
+spring
+summer
+fall
+winter
+
+morning
+noon
+afternoon
+night
+
+weatherCodeIcon
 -->
