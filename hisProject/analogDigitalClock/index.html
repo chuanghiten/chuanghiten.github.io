@@ -18,11 +18,12 @@
     }
     :root{
       --sambucus:#191a2e;
-      --sambucusFilter:invert(.7) sepia(.1) saturate(36.22) hue-rotate(199deg) brightness(.99) contrast(.92);
+      --sambucusFilter:invert(.5) sepia(.76) saturate(12.42) hue-rotate(216deg) brightness(1) contrast(.9);
       --red:#F00;
       --white:#fff;
+      --whiteFilter:invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01);
       /* morning */
-      --abiBlue:#61a9ff;
+      --abiBlue:#61a9ff;      
       --honeyAndThyme:#adad00;
       --honeyAndThymeFilter:invert(66%) sepia(42%) saturate(2440%) hue-rotate(22deg) brightness(92%) contrast(105%);
       --peaSoup:#989c01;
@@ -37,6 +38,14 @@
       --highlandsMossFilter:invert(30%) sepia(54%) saturate(631%) hue-rotate(31deg) brightness(92%) contrast(99%);
       --godzilla:#364905;
       --godzillaFilter: invert(24%) sepia(45%) saturate(641%) hue-rotate(36deg) brightness(100%) contrast(107%);
+      --axeHandle:#6d4a2f;
+      --axeHandleFilter:invert(.28) sepia(.21) saturate(11.22) hue-rotate(344deg) brightness(.99) contrast(.88);
+      --fijiPalm:#4d8b3a;
+      --fijiPalmFilter:invert(.49) sepia(.12) saturate(20.13) hue-rotate(61deg) brightness(.93) contrast(.88);
+      --bilbao:#43812e;
+      --bilbaoFilter:invert(.42) sepia(.14) saturate(21.15) hue-rotate(60deg) brightness(.96) contrast(.83);
+      --hiddenValley:#699e39;
+      --hiddenValleyFilter:invert(.50) sepia(.79) saturate(3.52) hue-rotate(49deg) brightness(.95) contrast(.85);
       --blueCola:#078cdc;
       --blueMana:#61bfff;
       --vaporwaveBlue:#1ec5fc;
@@ -55,6 +64,14 @@
       --ufoDefenseGreenFilter:invert(58%) sepia(96%) saturate(1633%) hue-rotate(35deg) brightness(92%) contrast(92%);
       --canopy:#70960c;
       --canopyFilter:invert(61%) sepia(79%) saturate(4497%) hue-rotate(48deg) brightness(95%) contrast(91%);
+      --arganOil:#885c3b;
+      --arganOilFilter:invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95);
+      --sourCandy:#60ae49;
+      --sourCandyFilter:invert(.56) sepia(.57) saturate(4.35) hue-rotate(61deg) brightness(.96) contrast(.91);
+      --ballyhoo:#54a139;
+      --ballyhooFilter:invert(.52) sepia(.35) saturate(7.08) hue-rotate(60deg) brightness(.96) contrast(.98);
+      --jasmineGreen:#83c547;
+      --jasmineGreenFilter: invert(.64) sepia(.37) saturate(6.89) hue-rotate(49deg) brightness(1.04) contrast(.82);
       /* noon */
       --orangeBellPepper:#f88a44;
       --fingerBanana:#e5c22c;
@@ -96,7 +113,12 @@
       --mountain4Color:var(--sambucusFilter);
       --mountain3Color:var(--sambucusFilter);
       --mountain2Color:var(--sambucusFilter);
-      --mountainColor:var(--sambucusFilter)
+      --mountainColor:var(--sambucusFilter);
+      --treeShadowColor:var(--sambucusFilter);
+      --trunkColor:var(--sambucusFilter);
+      --leaf3Color:var(--sambucusFilter);
+      --leaf2Color:var(--sambucusFilter);
+      --leafColor:var(--sambucusFilter)
     }
     body[springMorning01]{
       --bodyBackgroundGradient:var(--abiBlue);
@@ -110,17 +132,53 @@
       --mountain4Color:var(--flagGreenFilter);
       --mountain3Color:var(--mudGreenFilter);
       --mountain2Color:var(--highlandsMossFilter);
-      --mountainColor:var(--godzillaFilter)
+      --mountainColor:var(--godzillaFilter);
+      --treeShadowColor:var(--whiteFilter);
+      --trunkColor:var(--axeHandleFilter);
+      --leaf3Color:var(--fijiPalmFilter);
+      --leaf2Color:var(--bilbaoFilter);
+      --leafColor:var(--hiddenValleyFilter)
     }
-    body[springMorning01] div.clouds,body[springNoon01] div.clouds{
+    body[springMorning01] div.clouds,body[springNoon01] div.clouds,body[springAfternoon01] div.clouds,body[springNight01] div.clouds{
       display:none
     }
     body[springNoon01]{
-      --bodyBackgroundGradient:var(--mysteriousDepths);
-      --bodyBackgroundGradient2:var(--catalinaBlue);
+      --bodyBackgroundGradient:var(--blueMana);
+      --bodyBackgroundGradient2:var(--white);
       --sunColor:var(--yellowBuzzing);
       --dateTextColor:var(--white);
-      --secondAndHourBackgroundColor:var(--blueMana)
+      --secondAndHourBackgroundColor:var(--blueMana);
+      --mountain7Color:var(--delayedYellowFilter);
+      --mountain6Color:var(--peridotFilter);
+      --mountain5Color:var(--octarineFilter);
+      --mountain4Color:var(--limeRaspFilter);
+      --mountain3Color:var(--citrusFilter);
+      --mountain2Color:var(--ufoDefenseGreenFilter);
+      --mountainColor:var(--canopyFilter);
+      --treeShadowColor:var(--whiteFilter);
+      --trunkColor:var(--arganOilFilter);
+      --leaf3Color:var(--sourCandyFilter);
+      --leaf2Color:var(--ballyhooFilter);
+      --leafColor:var(--jasmineGreenFilter)
+    }
+    body[springAfternoon01]{
+      --bodyBackgroundGradient:var(--blueMana);
+      --bodyBackgroundGradient2:var(--white);
+      --sunColor:var(--yellowBuzzing);
+      --dateTextColor:var(--white);
+      --secondAndHourBackgroundColor:var(--blueMana);
+      --mountain7Color:var(--delayedYellowFilter);
+      --mountain6Color:var(--peridotFilter);
+      --mountain5Color:var(--octarineFilter);
+      --mountain4Color:var(--limeRaspFilter);
+      --mountain3Color:var(--citrusFilter);
+      --mountain2Color:var(--ufoDefenseGreenFilter);
+      --mountainColor:var(--canopyFilter);
+      --treeShadowColor:var(--whiteFilter);
+      --trunkColor:var(--arganOilFilter);
+      --leaf3Color:var(--sourCandyFilter);
+      --leaf2Color:var(--ballyhooFilter);
+      --leafColor:var(--jasmineGreenFilter)
     }
     /*
     div.lightButton{
@@ -359,36 +417,36 @@
     div.minTreeShadow,div.minTrunk{
       bottom:0;
       left:0;
-      filter:invert(.86) sepia(1) saturate(.2) hue-rotate(123deg) brightness(1.09) contrast(1)
+      filter:var(--treeShadowColor)
     }
     div.minTrunk{
-      filter:invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95)
+      filter:var(--trunkColor)
     }
     div.minLeaf3{
-      filter:invert(.59) sepia(.1) saturate(23.22) hue-rotate(61deg) brightness(.99) contrast(.92)
+      filter:var(--leaf3Color)
     }
     div.minLeaf2{
-      filter:invert(.56) sepia(.26) saturate(10.06) hue-rotate(60deg) brightness(.91) contrast(.91)
+      filter:var(--leaf2Color)
     }
     div.minLeaf{
-      filter:invert(.67) sepia(.52) saturate(4.99) hue-rotate(49deg) brightness(.96) contrast(.84)
+      filter:var(--leafColor)
     }
     div.treeShadow,div.trunk{
       bottom:0;
       right:0;
-      filter:invert(.86) sepia(1) saturate(.2) hue-rotate(123deg) brightness(1.09) contrast(1)
+      filter:var(--treeShadowColor)
     }
     div.trunk{
-      filter:invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95)
+      filter:var(--trunkColor)
     }
     div.leaf3{
-      filter:invert(.59) sepia(.1) saturate(23.22) hue-rotate(61deg) brightness(.99) contrast(.92)
+      filter:var(--leaf3Color)
     }
     div.leaf2{
-      filter:invert(.56) sepia(.26) saturate(10.06) hue-rotate(60deg) brightness(.91) contrast(.91)
+      filter:var(--leaf2Color)
     }
     div.leaf{
-      filter:invert(.67) sepia(.52) saturate(4.99) hue-rotate(49deg) brightness(.96) contrast(.84)
+      filter:var(--leafColor)
     }
     div.clouds{
       position:absolute;
@@ -565,7 +623,7 @@
     }
   </style>
 </head>
-<body springMorning01>
+<body springAfternoon01>
   <div class='clouds'>
     <div class='cloud3'>
       <div class='circle circle14'></div>
@@ -1030,59 +1088,59 @@
   </div>
   <div class='scenery'>
     <div class='mountain7'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain7.svg' alt='image'>
+      <img src='./images/mountain7.svg' alt='image'>
     </div>
     <div class='mountain6'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain6.svg' alt='image'>
+      <img src='./images/mountain6.svg' alt='image'>
     </div>
     <div class='mountain5'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain5.svg' alt='image'>
+      <img src='./images/mountain5.svg' alt='image'>
     </div>
     <div class='mountain4'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain4.svg' alt='image'>
+      <img src='./images/mountain4.svg' alt='image'>
     </div>
     <div class='mountain3'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain3.svg' alt='image'>
+      <img src='./images/mountain3.svg' alt='image'>
     </div>
     <div class='minTree'>
       <div class='minTreeShadow'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTreeShadow.svg' alt='image'>
+        <img src='./images/minTreeShadow.svg' alt='image'>
       </div>
       <div class='minTrunk'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTrunk.svg' alt='image'>
+        <img src='./images/minTrunk.svg' alt='image'>
       </div>
       <div class='minLeaf3'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf3.svg' alt='image'>
+        <img src='./images/minLeaf3.svg' alt='image'>
       </div>
       <div class='minLeaf2'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf2.svg' alt='image'>
+        <img src='./images/minLeaf2.svg' alt='image'>
       </div>
       <div class='minLeaf'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf.svg' alt='image'>
+        <img src='./images/minLeaf.svg' alt='image'>
       </div>
     </div>
     <div class='mountain2'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain2.svg' alt='image'>
+      <img src='./images/mountain2.svg' alt='image'>
     </div>
     <div class='tree'>
       <div class='treeShadow'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/treeShadow.svg' alt='image'>
+        <img src='./images/treeShadow.svg' alt='image'>
       </div>
       <div class='trunk'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/trunk.svg' alt='image'>
+        <img src='./images/trunk.svg' alt='image'>
       </div>
       <div class='leaf3'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf3.svg' alt='image'>
+        <img src='./images/leaf3.svg' alt='image'>
       </div>
       <div class='leaf2'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf2.svg' alt='image'>
+        <img src='./images/leaf2.svg' alt='image'>
       </div>
       <div class='leaf'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf.svg' alt='image'>
+        <img src='./images/leaf.svg' alt='image'>
       </div>
     </div>
     <div class='mountain'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain.svg' alt='image'>
+      <img src='./images/mountain.svg' alt='image'>
     </div>
   </div>
   <div class='clouds'>
