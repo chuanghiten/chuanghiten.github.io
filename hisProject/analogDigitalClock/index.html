@@ -85,7 +85,36 @@
       --beyondTheStars:#0a3455;
       --prominentBlue:#2b75a4;
       --mysteriousDepths:#000928;
-      --catalinaBlue:#0f267a
+      --catalinaBlue:#0f267a;
+      /* ??? */
+      --turbo:#e1e100;
+      --turboFilter:invert(.71) sepia(.93) saturate(20.21) hue-rotate(18deg) brightness(1.15) contrast(1);
+      --goldenFoil:#ccd202;
+      --goldenFoilFilter:invert(.76) sepia(.67) saturate(6.95) hue-rotate(11deg) brightness(.95) contrast(.98);
+      --leafySeadragon:#b8c304;
+      --leafySeadragonFilter:brightness(0) saturate(100%) invert(84%) sepia(51%) saturate(2561%) hue-rotate(14deg) brightness(90%) contrast(97%);
+      --mustardGreen:#a3b705;
+      --mustardGreenFilter:brightness(0) saturate(100%) invert(68%) sepia(14%) saturate(6260%) hue-rotate(28deg) brightness(98%) contrast(96%);
+      --augustusAsparagus:#8ea507;
+      --augustusAsparagusFilter:brightness(0) saturate(100%) invert(61%) sepia(52%) saturate(3382%) hue-rotate(35deg) brightness(96%) contrast(94%);
+      --mossyWoods:#7a9609;
+      --mossyWoodsFilter:brightness(0) saturate(100%) invert(47%) sepia(65%) saturate(885%) hue-rotate(37deg) brightness(93%) contrast(93%);
+      --sapGreen:#65870b;
+      --sapGreenFilter:brightness(0) saturate(100%) invert(36%) sepia(97%) saturate(960%) hue-rotate(48deg) brightness(96%) contrast(91%);
+      --pheasantBrown:#7a5335;
+      --pheasantBrownFilter:brightness(0) saturate(100%) invert(28%) sepia(50%) saturate(490%) hue-rotate(344deg) brightness(106%) contrast(86%);
+      --greenAcres:#569d42;
+      --greenAcresFilter:brightness(0) saturate(100%) invert(49%) sepia(72%) saturate(389%) hue-rotate(61deg) brightness(96%) contrast(83%);
+      --beerGarden:#4c9133;
+      --beerGardenFilter:brightness(0) saturate(100%) invert(49%) sepia(11%) saturate(2539%) hue-rotate(59deg) brightness(96%) contrast(85%);
+      --sparklingApple:#76b140;
+      --sparklingAppleFilter:brightness(0) saturate(100%) invert(63%) sepia(56%) saturate(451%) hue-rotate(49deg) brightness(89%) contrast(90%);
+      --poutPink:#fc7ccc;
+      --poutPinkFilter:brightness(0) saturate(100%) invert(60%) sepia(25%) saturate(902%) hue-rotate(272deg) brightness(97%) contrast(105%);
+      --princessPerfume:#fc89d1;
+      --princessPerfumeFilter:brightness(0) saturate(100%) invert(91%) sepia(19%) saturate(7094%) hue-rotate(283deg) brightness(101%) contrast(98%);
+      --pinkCondition:#fc96d6;
+      --pinkConditionFilter:brightness(0) saturate(100%) invert(86%) sepia(22%) saturate(1502%) hue-rotate(281deg) brightness(94%) contrast(110%);
     }
     *,:before,:after{
       margin:0;
@@ -126,18 +155,18 @@
       --sunColor:var(--yellowBuzzing);
       --dateTextColor:var(--white);
       --secondAndHourBackgroundColor:var(--abiBlue);
-      --mountain7Color:var(--honeyAndThymeFilter);
-      --mountain6Color:var(--peaSoupFilter);
-      --mountain5Color:var(--drablyOliveFilter);
-      --mountain4Color:var(--flagGreenFilter);
-      --mountain3Color:var(--mudGreenFilter);
-      --mountain2Color:var(--highlandsMossFilter);
-      --mountainColor:var(--godzillaFilter);
+      --mountain7Color:var(--turboFilter);
+      --mountain6Color:var(--goldenFoilFilter);
+      --mountain5Color:var(--leafySeadragonFilter);
+      --mountain4Color:var(--mustardGreenFilter);
+      --mountain3Color:var(--augustusAsparagusFilter);
+      --mountain2Color:var(--mossyWoodsFilter);
+      --mountainColor:var(--sapGreenFilter);
       --treeShadowColor:var(--whiteFilter);
-      --trunkColor:var(--axeHandleFilter);
-      --leaf3Color:var(--fijiPalmFilter);
-      --leaf2Color:var(--bilbaoFilter);
-      --leafColor:var(--hiddenValleyFilter)
+      --trunkColor:var(--pheasantBrownFilter);
+      --leaf3Color:var(--poutPinkFilter);
+      --leaf2Color:var(--princessPerfumeFilter);
+      --leafColor:var(--pinkConditionFilter)
     }
     body[springMorning01] div.clouds,body[springNoon01] div.clouds,body[springAfternoon01] div.clouds,body[springNight01] div.clouds{
       display:none
@@ -163,7 +192,7 @@
     }
     body[springAfternoon01]{
       --bodyBackgroundGradient:var(--blueMana);
-      --bodyBackgroundGradient2:var(--white);
+      --bodyBackgroundGradient2:var(--whit,#fff1e0);
       --sunColor:var(--yellowBuzzing);
       --dateTextColor:var(--white);
       --secondAndHourBackgroundColor:var(--blueMana);
@@ -623,7 +652,7 @@
     }
   </style>
 </head>
-<body springAfternoon01>
+<body springMorning01>
   <div class='clouds'>
     <div class='cloud3'>
       <div class='circle circle14'></div>
@@ -1088,6 +1117,62 @@
   </div>
   <div class='scenery'>
     <div class='mountain7'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain7.svg' alt='image'>
+    </div>
+    <div class='mountain6'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain6.svg' alt='image'>
+    </div>
+    <div class='mountain5'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain5.svg' alt='image'>
+    </div>
+    <div class='mountain4'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain4.svg' alt='image'>
+    </div>
+    <div class='mountain3'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain3.svg' alt='image'>
+    </div>
+    <div class='minTree'>
+      <div class='minTreeShadow'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTreeShadow.svg' alt='image'>
+      </div>
+      <div class='minTrunk'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTrunk.svg' alt='image'>
+      </div>
+      <div class='minLeaf3'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf3.svg' alt='image'>
+      </div>
+      <div class='minLeaf2'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf2.svg' alt='image'>
+      </div>
+      <div class='minLeaf'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf.svg' alt='image'>
+      </div>
+    </div>
+    <div class='mountain2'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain2.svg' alt='image'>
+    </div>
+    <div class='tree'>
+      <div class='treeShadow'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/treeShadow.svg' alt='image'>
+      </div>
+      <div class='trunk'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/trunk.svg' alt='image'>
+      </div>
+      <div class='leaf3'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf3.svg' alt='image'>
+      </div>
+      <div class='leaf2'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf2.svg' alt='image'>
+      </div>
+      <div class='leaf'>
+        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf.svg' alt='image'>
+      </div>
+    </div>
+    <div class='mountain'>
+      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain.svg' alt='image'>
+    </div>
+    <!--
+    <div class='mountain7'>
       <img src='./images/mountain7.svg' alt='image'>
     </div>
     <div class='mountain6'>
@@ -1142,6 +1227,7 @@
     <div class='mountain'>
       <img src='./images/mountain.svg' alt='image'>
     </div>
+     -->
   </div>
   <div class='clouds'>
     <div class='cloud1'>
@@ -1222,6 +1308,7 @@
 </script>
 </html>
 <!--
+openweathermap.org/api:
 trạng thái thời tiết: weather.description
 nhiệt độ hiện tại: main.temp
 nhiệt độ cao nhất: main.temp_min
