@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Analog Digital Clock</title>
   <style>
-    @font-face{
-      font-family:'Seven Segment';
-      src:url('./fonts/sevenSegment/Seven Segment.ttf'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/fonts/sevenSegment/Seven%20Segment.ttf')
+    @font-face {
+      font-family: 'Seven Segment';
+      src: url('./fonts/sevenSegment/Seven Segment.ttf'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/fonts/sevenSegment/Seven%20Segment.ttf')
     }
-    @font-face{
-      font-family:Pacifico;
-      src:url('../analogClockPlus/fonts/pacificoLatin.woff2'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoLatin.woff2')
+
+    @font-face {
+      font-family: Pacifico;
+      src: url('../analogClockPlus/fonts/pacificoLatin.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoLatin.woff2')
     }
-    @font-face{
-      font-family:Pacifico;
-      src:url('../analogClockPlus/fonts/pacificoVietnamese.woff2'),url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
+
+    @font-face {
+      font-family: Pacifico;
+      src: url('../analogClockPlus/fonts/pacificoVietnamese.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
     }
-    :root{
-      --sambucus:#191a2e;
-      --red:#F00;
-      --white:#fff;
-      --whiteFilter:invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01);
+
+    :root {
+      --sambucus: #191a2e;
+      --red: #F00;
+      --white: #fff;
+      --whiteFilter: invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01);
       /* morning */
       /*
       --honeyAndThyme:#adad00;
@@ -45,82 +49,88 @@
       --bilbaoFilter:invert(.42) sepia(.14) saturate(21.15) hue-rotate(60deg) brightness(.96) contrast(.83);
       --hiddenValley:#699e39;
       --hiddenValleyFilter:invert(.50) sepia(.79) saturate(3.52) hue-rotate(49deg) brightness(.95) contrast(.85); */
-      --blueCola:#078cdc;
-      
-      --vaporwaveBlue:#1ec5fc;
-      
-      
-      
-      --arganOil:#885c3b;
-      --arganOilFilter:invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95);
-      --sourCandy:#60ae49;
-      --sourCandyFilter:invert(.56) sepia(.57) saturate(4.35) hue-rotate(61deg) brightness(.96) contrast(.91);
-      --ballyhoo:#54a139;
-      --ballyhooFilter:invert(.52) sepia(.35) saturate(7.08) hue-rotate(60deg) brightness(.96) contrast(.98);
-      --jasmineGreen:#83c547;
+      --blueCola: #078cdc;
+
+      --vaporwaveBlue: #1ec5fc;
+
+
+
+      --arganOil: #885c3b;
+      --arganOilFilter: invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95);
+      --sourCandy: #60ae49;
+      --sourCandyFilter: invert(.56) sepia(.57) saturate(4.35) hue-rotate(61deg) brightness(.96) contrast(.91);
+      --ballyhoo: #54a139;
+      --ballyhooFilter: invert(.52) sepia(.35) saturate(7.08) hue-rotate(60deg) brightness(.96) contrast(.98);
+      --jasmineGreen: #83c547;
       --jasmineGreenFilter: invert(.64) sepia(.37) saturate(6.89) hue-rotate(49deg) brightness(1.04) contrast(.82);
       /* noon */
-      --orangeBellPepper:#f88a44;
-      --fingerBanana:#e5c22c;
-      --paleAle:#fff16e;
+      --orangeBellPepper: #f88a44;
+      --fingerBanana: #e5c22c;
+      --paleAle: #fff16e;
       /* afternoon */
-      --indianRed:#880f04;
-      --pumpkin:#ff7617;
-      --sunflower:#ffc712;
+      --indianRed: #880f04;
+      --pumpkin: #ff7617;
+      --sunflower: #ffc712;
       /* night */
-      --daintree:#08273a;
-      --beyondTheStars:#0a3455;
-      --prominentBlue:#2b75a4;
-      --mysteriousDepths:#000928;
-      --catalinaBlue:#0f267a;
+      --daintree: #08273a;
+      --beyondTheStars: #0a3455;
+      --prominentBlue: #2b75a4;
+      --mysteriousDepths: #000928;
+      --catalinaBlue: #0f267a;
       /* ??? */
-      
-      
-      
-      
-      
-      
-      
-      --greenAcres:#569d42;
-      --greenAcresFilter:brightness(0) saturate(100%) invert(49%) sepia(72%) saturate(389%) hue-rotate(61deg) brightness(96%) contrast(83%);
-      --beerGarden:#4c9133;
-      --beerGardenFilter:brightness(0) saturate(100%) invert(49%) sepia(11%) saturate(2539%) hue-rotate(59deg) brightness(96%) contrast(85%);
-      --sparklingApple:#76b140;
-      --sparklingAppleFilter:brightness(0) saturate(100%) invert(63%) sepia(56%) saturate(451%) hue-rotate(49deg) brightness(89%) contrast(90%);
-      
-      
-      
-      
-      
+
+
+
+
+
+
+
+      --greenAcres: #569d42;
+      --greenAcresFilter: brightness(0) saturate(100%) invert(49%) sepia(72%) saturate(389%) hue-rotate(61deg) brightness(96%) contrast(83%);
+      --beerGarden: #4c9133;
+      --beerGardenFilter: brightness(0) saturate(100%) invert(49%) sepia(11%) saturate(2539%) hue-rotate(59deg) brightness(96%) contrast(85%);
+      --sparklingApple: #76b140;
+      --sparklingAppleFilter: brightness(0) saturate(100%) invert(63%) sepia(56%) saturate(451%) hue-rotate(49deg) brightness(89%) contrast(90%);
+
+
+
+
+
     }
-    *,:before,:after{
-      margin:0;
-      padding:0;
-      border:0;
-      box-sizing:border-box;
-      transition:all .25s ease-in-out
+
+    *,
+    :before,
+    :after {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+      transition: all .25s ease-in-out
     }
-    body{
-      background:0 0 / cover linear-gradient(to bottom,var(--bodyBackgroundGradient),var(--bodyBackgroundGradient2)) no-repeat fixed;
-      font-size:16px;
-      min-height:100%;
-      --bodyBackgroundGradient:var(--sambucus);
-      --bodyBackgroundGradient2:var(--sambucus);
-      --sunColor:var(--white);
-      --sunColorShadow:var(--sunColor);
-      --dateTextColor:var(--sambucus);
-      --secondAndHourTextColor:var(--white);
-      --minuteTextColor:var(--sambucus);
-      --secondAndHourBackgroundColor:var(--sambucus)
+
+    body {
+      background: 0 0 / cover linear-gradient(to bottom, var(--bodyBackgroundGradient), var(--bodyBackgroundGradient2)) no-repeat fixed;
+      font-size: 16px;
+      min-height: 100%;
+      --bodyBackgroundGradient: var(--sambucus);
+      --bodyBackgroundGradient2: var(--sambucus);
+      --sunColor: var(--white);
+      --sunColorShadow: var(--sunColor);
+      --dateTextColor: var(--sambucus);
+      --secondAndHourTextColor: var(--white);
+      --minuteTextColor: var(--sambucus);
+      --secondAndHourBackgroundColor: var(--sambucus)
     }
-    div.clouds{
-      display:none
+
+    div.clouds {
+      display: none
     }
-    div.scenery{
-      display:none
+
+    div.scenery {
+      display: none
     }
   </style>
-  <link class='display' rel='stylesheet' type='text/css'/>
+  <link class='display' rel='stylesheet' type='text/css' />
   <style>
     /*
     div.lightButton{
@@ -152,419 +162,530 @@
       box-shadow:0 0 10px 0 var(--sambucus)
     }
     */
-    div.sun{
-      position:relative;
-      width:630px;
-      height:630px;
-      margin:80px auto;
-      padding:15px;
-      overflow:hidden;
-      background:transparent;
-      border-radius:50%
-    }
-    div.second{
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      border:10px solid var(--sunColor);
-      box-shadow:0 0 10px 0 var(--sunColorShadow),0 0 20px 0 var(--sunColorShadow),0 0 10px 0 var(--sunColorShadow) inset,0 0 20px 0 var(--sunColorShadow) inset;
-      position:relative;
-      background:var(--secondAndHourBackgroundColor)
-    }
-    body[light] div.second{
-      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
-    }
-    div.secondTitle,div.minuteTitle,div.hourTitle{
-      width:100%;
-      height:auto;
-      padding:0 20px;
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%) rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)))
-    }
-    div.secondTitle span,div.minuteTitle span,div.hour span{
-      color:var(--secondAndHourTextColor);
-      display:inline-block;
-      font:21px 'Seven Segment';
-      transform:rotate(180deg);
-      font-weight:600
-    }
-    body[light] div.secondTitle span,div.minuteTitle span,body[light] div.hour span{
-      text-shadow:unset;
-      font-weight:600
-    }
-    div.minute{
-      width:460px;
-      height:460px;
-      border-radius:50%;
-      background:var(--white);
-      top:50%;
-      left:50%;
-      position:absolute;
-      transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
-      box-shadow:0 0 10px 0 var(--white),0 0 20px 0 var(--white)
-    }
-    body[light] div.minute{
-      box-shadow:unset
-    }
-    div.minuteTitle{
-      transform:translate(-50%,-50%) rotate(calc((var(--minuteTitleRotate) * 6deg) + 96deg));
-      
-    }              
-    div.minuteTitle span{
-      color:var(--minuteTextColor)
-    }              
-    div.hourTitle span{
-      color:var(--secondAndHourTextColor)
-    }
-    div.hour{
-      width:340px;
-      height:340px;
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%) rotate(calc(0deg + 90deg));
-      background:var(--secondAndHourBackgroundColor);
-      border-radius:50%;
-      box-shadow:0 0 15px 0 var(--white) inset,0 0 25px 0 var(--white)
-    }
-    body[light] div.hour{
-      box-shadow:unset
-    }
-    div.hourTitle{
-      transform:translate(-50%,-50%) rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg))
-    }
-    div.halfCircle{
-      width:290px;
-      height:590px;
-      position:absolute;
-      top:20px;
-      left:20px
-    }
-    div.halfCircleCenter{
-      position:absolute;
-      background:var(--sunColor);
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      box-shadow:0 0 20px 0 var(--sunColor);
-      top:50%;
-      right:0;
-      transform:translate(50%,-50%);
-      display:flex;
-      justify-content:center;
-      align-items:center
-    }
-    div.startLine{
-      width:0;
-      height:0;
-      border:15px solid transparent;
-      border-left-color:var(--sunColor);
-      position:absolute;
-      top:50%;
-      right:1px;
-      transform:translate(100%,-50%)
-    }
-    div.line{
-      width:160px;
-      height:40px;
-      border:3px solid var(--red);
-      transform:translate(0,-50%)
-    }
-    div.endLine{
-      width:0;
-      height:0;
-      border:15px solid transparent;
-      border-right-color:var(--sunColor);
-      position:absolute;
-      top:50%;
-      right:0;
-      transform:translate(calc(50% + 5px),-50%)
-    }
-    div.days{
-      width:auto;
-      height:auto;
-      position:relative;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font:40px Pacifico;
-      color:var(--dateTextColor);
-      flex-wrap:wrap
-    }
-    div.days span{
-      font-size:28px
-    }
-    div.halfCircle45Deg,div.halfCircleNot45Deg{
-      transform:rotate(45deg);
-      width:100%;
-      height:100%;
-      border-radius:400px 0 0 400px;
-      background:var(--sunColor);
-      box-shadow:0 0 20px 0 var(--sunColor);
-      position:absolute;
-      top:0;
-      left:0;
-      transform-origin:100% 50%
-    }
-    div.halfCircleNot45Deg{
-      transform:rotate(-45deg)
-    }
-    div.second,div.minute,div.hour{
-      transition: all .35s cubic-bezier(.39,1.62,.49,1.87);
-    }
-    div.scenery{
-      width:100%;
-      height:auto;
-      position:absolute;
-      bottom:0;
-    }
-    div.mountain7,div.mountain6,div.mountain5,div.mountain4,div.mountain3,div.minTree,div.mountain2,div.tree,div.mountain,div.minTreeShadow,div.minTrunk,div.minLeaf3,div.minLeaf2,div.minLeaf,div.treeShadow,div.trunk,div.leaf3,div.leaf2,div.leaf{
-      width:100%;
-      height:auto;
-      position:absolute;
-      bottom:0;
-      right:0;
-      background:transparent;
-      filter:var(--mountain7Color)
-    }
-    div.scenery img{
-      width:100%;
-      height:100%;
-    }
-    div.mountain6,div.mountain4,div.minTree,div.mountant2,div.treeShadow,div.trunk,div.leaf3,div.leaf2,div.leaf{
-      right:unset;
-      left:0;
-      filter:var(--mountain6Color)
-    }
-    div.mountain5{
-      filter:var(--mountain5Color)
-    }
-    div.mountain4{
-      filter:var(--mountain4Color)
-    }
-    div.mountain3{
-      filter:var(--mountain3Color)
-    }
-    div.minTree,div.tree{
-      filter:unset
-    }
-    div.mountain2{
-      filter:var(--mountain2Color)
-    }
-    div.mountain{
-      filter:var(--mountainColor)
-    }
-    div.minTreeShadow,div.minTrunk{
-      bottom:0;
-      left:0;
-      filter:var(--treeShadowColor)
-    }
-    div.minTrunk{
-      filter:var(--trunkColor)
-    }
-    div.minLeaf3{
-      filter:var(--leaf3Color)
-    }
-    div.minLeaf2{
-      filter:var(--leaf2Color)
-    }
-    div.minLeaf{
-      filter:var(--leafColor)
-    }
-    div.treeShadow,div.trunk{
-      bottom:0;
-      right:0;
-      filter:var(--treeShadowColor)
-    }
-    div.trunk{
-      filter:var(--trunkColor)
-    }
-    div.leaf3{
-      filter:var(--leaf3Color)
-    }
-    div.leaf2{
-      filter:var(--leaf2Color)
-    }
-    div.leaf{
-      filter:var(--leafColor)
-    }
-    div.clouds{
-      position:absolute;
-      width:100%;
-      height:100%;
-      top:0;
-      left:50%;
-      transform:translate(-50%,0);
-      background:transparent
-    }
-    div.cloud1{
-      position:absolute;
-      width:350px;
-      height:200px;
-      background:transparent;
-      top:550px;
-      right:70px
-    }
-    div.circle{
-      border-radius:50%;
-      background:var(--cloudColor);
-      position:absolute
-    }
-    div.circle1{
-      width:150px;
-      height:150px;
-      bottom:0;
-      left:0
-    }
-    div.circle2{
-      width:70px;
-      height:70px;
-      bottom:0;
-      right:0
-    }
-    div.circle3{
-      width:130px;
-      height:130px;
-      top:0;
-      left:70px
-    }
-    div.circle4{
-      width:100px;
-      height:100px;
-      top:50px;
-      right:100px
-    }
-    div.circle5{
-      width:100px;
-      height:100px;
-      top:60px;
-      right:30px
-    }
-    div.rectangle{
-      position:absolute;
-      left:75px;
-      bottom:0;
-      width:240px;
-      height:70px;
-      background:var(--cloudColor)
-    }
-    div.rectangle:before{
-      content:'';
-      display:block;
-      position:absolute;
-      width:50px;
-      height:50px;
-      background:var(--cloudColor);
-      transform:translate(0,-50%);
-      left:50px
-    }
-    div.cloud1 *,div.cloud2 *,div.cloud3 *{
-      box-shadow:0 0 10px 0 var(--cloudColor),0 0 20px 0 var(--cloudColor),0 0 40px 0 var(--cloudColor)
-    }
-    div.cloud2{
-      position:absolute;
-      width:350px;
-      height:200px;
-      background:transparent;
-      top:50px;
-      left:70px
-    }
-    div.circle6{
-      width:100px;
-      height:100px;
-      top:50%;
-      transform:translate(0,-50%)
-    }
-    div.circle7{
-      width:70px;
-      height:70px;
-      top:50%;
-      right:0;
-      transform:translate(0,-30%)
-    }
-    div.circle8{
-      width:150px;
-      height:150px;
-      left:50px
-    }
-    div.circle9{
-      width:120px;
-      height:120px;
-      right:70px;
-      top:30px
-    }
-    div.circle10{
-      width:50px;
-      height:50px;
-      top:50%;
-      transform:translate(0,-50%);
-      right:50px
-    }
-    div.circle11{
-      width:70px;
-      height:70px;
-      bottom:30px;
-      left:50px
-    }
-    div.circle12{
-      width:50px;
-      height:50px;
-      bottom:40px;
-      right:50px
-    }
-    div.circle13{
-      width:150px;
-      height:150px;
-      bottom:0;
-      left:110px
-    }
-    div.cloud3{
-      width:200px;
-      height:170px;
-      position:absolute;
-      background:transparent;
-      top:120px;
-      right:70px
-    }
-    div.circle14{
-      width:50px;
-      height:50px;
-      top:80px
-    }
-    div.circle15{
-      width:60px;
-      height:60px;
-      top:50px;
-      left:25px
-    }
-    div.circle16{
-      width:80px;
-      height:80px;
-      left:60px;
-      top:20px
-    }
-    div.circle17{
-      width:70px;
-      height:70px;
-      top:60px;
-      right:20px
-    }
-    div.circle18{
-      width:50px;
-      height:50px;
-      left:30px;
-      bottom:20px
-    }
-    div.circle19{
-      width:80px;
-      height:80px;
-      left:60px;
-      bottom:10px
+    div.sun {
+      position: relative;
+      width: 630px;
+      height: 630px;
+      margin: 80px auto;
+      padding: 15px;
+      overflow: hidden;
+      background: transparent;
+      border-radius: 50%
+    }
+
+    div.second {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 10px solid var(--sunColor);
+      box-shadow: 0 0 10px 0 var(--sunColorShadow), 0 0 20px 0 var(--sunColorShadow), 0 0 10px 0 var(--sunColorShadow) inset, 0 0 20px 0 var(--sunColorShadow) inset;
+      position: relative;
+      background: var(--secondAndHourBackgroundColor)
+    }
+
+    body[light] div.second {
+      box-shadow: 0 0 10px 0 var(--white), 0 0 20px 0 var(--white)
+    }
+
+    div.secondTitle,
+    div.minuteTitle,
+    div.hourTitle {
+      width: 100%;
+      height: auto;
+      padding: 0 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)))
+    }
+
+    div.secondTitle span,
+    div.minuteTitle span,
+    div.hour span {
+      color: var(--secondAndHourTextColor);
+      display: inline-block;
+      font: 21px 'Seven Segment';
+      transform: rotate(180deg);
+      font-weight: 600
+    }
+
+    body[light] div.secondTitle span,
+    div.minuteTitle span,
+    body[light] div.hour span {
+      text-shadow: unset;
+      font-weight: 600
+    }
+
+    div.minute {
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: var(--white);
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
+      box-shadow: 0 0 10px 0 var(--white), 0 0 20px 0 var(--white)
+    }
+
+    body[light] div.minute {
+      box-shadow: unset
+    }
+
+    div.minuteTitle {
+      transform: translate(-50%, -50%) rotate(calc((var(--minuteTitleRotate) * 6deg) + 96deg));
+
+    }
+
+    div.minuteTitle span {
+      color: var(--minuteTextColor)
+    }
+
+    div.hourTitle span {
+      color: var(--secondAndHourTextColor)
+    }
+
+    div.hour {
+      width: 340px;
+      height: 340px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
+      background: var(--secondAndHourBackgroundColor);
+      border-radius: 50%;
+      box-shadow: 0 0 15px 0 var(--white) inset, 0 0 25px 0 var(--white)
+    }
+
+    body[light] div.hour {
+      box-shadow: unset
+    }
+
+    div.hourTitle {
+      transform: translate(-50%, -50%) rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg))
+    }
+
+    div.halfCircle {
+      width: 290px;
+      height: 590px;
+      position: absolute;
+      top: 20px;
+      left: 20px
+    }
+
+    div.halfCircleCenter {
+      position: absolute;
+      background: var(--sunColor);
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px 0 var(--sunColor);
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center
+    }
+
+    div.startLine {
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+      border-left-color: var(--sunColor);
+      position: absolute;
+      top: 50%;
+      right: 1px;
+      transform: translate(100%, -50%)
+    }
+
+    div.line {
+      width: 160px;
+      height: 40px;
+      border: 3px solid var(--red);
+      transform: translate(0, -50%)
+    }
+
+    div.endLine {
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+      border-right-color: var(--sunColor);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(calc(50% + 5px), -50%)
+    }
+
+    div.days {
+      width: auto;
+      height: auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font: 40px Pacifico;
+      color: var(--dateTextColor);
+      flex-wrap: wrap
+    }
+
+    div.days span {
+      font-size: 28px
+    }
+
+    div.halfCircle45Deg,
+    div.halfCircleNot45Deg {
+      transform: rotate(45deg);
+      width: 100%;
+      height: 100%;
+      border-radius: 400px 0 0 400px;
+      background: var(--sunColor);
+      box-shadow: 0 0 20px 0 var(--sunColor);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 100% 50%
+    }
+
+    div.halfCircleNot45Deg {
+      transform: rotate(-45deg)
+    }
+
+    div.second,
+    div.minute,
+    div.hour {
+      transition: all .35s cubic-bezier(.39, 1.62, .49, 1.87);
+    }
+
+    div.scenery {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+    }
+
+    div.mountain7,
+    div.mountain6,
+    div.mountain5,
+    div.mountain4,
+    div.mountain3,
+    div.minTree,
+    div.mountain2,
+    div.tree,
+    div.mountain,
+    div.minTreeShadow,
+    div.minTrunk,
+    div.minLeaf3,
+    div.minLeaf2,
+    div.minLeaf,
+    div.treeShadow,
+    div.trunk,
+    div.leaf3,
+    div.leaf2,
+    div.leaf {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: transparent;
+      filter: var(--mountain7Color)
+    }
+
+    div.scenery img {
+      width: 100%;
+      height: 100%;
+    }
+
+    div.mountain6,
+    div.mountain4,
+    div.minTree,
+    div.mountant2,
+    div.treeShadow,
+    div.trunk,
+    div.leaf3,
+    div.leaf2,
+    div.leaf {
+      right: unset;
+      left: 0;
+      filter: var(--mountain6Color)
+    }
+
+    div.mountain5 {
+      filter: var(--mountain5Color)
+    }
+
+    div.mountain4 {
+      filter: var(--mountain4Color)
+    }
+
+    div.mountain3 {
+      filter: var(--mountain3Color)
+    }
+
+    div.minTree,
+    div.tree {
+      filter: unset
+    }
+
+    div.mountain2 {
+      filter: var(--mountain2Color)
+    }
+
+    div.mountain {
+      filter: var(--mountainColor)
+    }
+
+    div.minTreeShadow,
+    div.minTrunk {
+      bottom: 0;
+      left: 0;
+      filter: var(--treeShadowColor)
+    }
+
+    div.minTrunk {
+      filter: var(--trunkColor)
+    }
+
+    div.minLeaf3 {
+      filter: var(--leaf3Color)
+    }
+
+    div.minLeaf2 {
+      filter: var(--leaf2Color)
+    }
+
+    div.minLeaf {
+      filter: var(--leafColor)
+    }
+
+    div.treeShadow,
+    div.trunk {
+      bottom: 0;
+      right: 0;
+      filter: var(--treeShadowColor)
+    }
+
+    div.trunk {
+      filter: var(--trunkColor)
+    }
+
+    div.leaf3 {
+      filter: var(--leaf3Color)
+    }
+
+    div.leaf2 {
+      filter: var(--leaf2Color)
+    }
+
+    div.leaf {
+      filter: var(--leafColor)
+    }
+
+    div.clouds {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background: transparent
+    }
+
+    div.cloud1 {
+      position: absolute;
+      width: 350px;
+      height: 200px;
+      background: transparent;
+      top: 550px;
+      right: 70px
+    }
+
+    div.circle {
+      border-radius: 50%;
+      background: var(--cloudColor);
+      position: absolute
+    }
+
+    div.circle1 {
+      width: 150px;
+      height: 150px;
+      bottom: 0;
+      left: 0
+    }
+
+    div.circle2 {
+      width: 70px;
+      height: 70px;
+      bottom: 0;
+      right: 0
+    }
+
+    div.circle3 {
+      width: 130px;
+      height: 130px;
+      top: 0;
+      left: 70px
+    }
+
+    div.circle4 {
+      width: 100px;
+      height: 100px;
+      top: 50px;
+      right: 100px
+    }
+
+    div.circle5 {
+      width: 100px;
+      height: 100px;
+      top: 60px;
+      right: 30px
+    }
+
+    div.rectangle {
+      position: absolute;
+      left: 75px;
+      bottom: 0;
+      width: 240px;
+      height: 70px;
+      background: var(--cloudColor)
+    }
+
+    div.rectangle:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: var(--cloudColor);
+      transform: translate(0, -50%);
+      left: 50px
+    }
+
+    div.cloud1 *,
+    div.cloud2 *,
+    div.cloud3 * {
+      box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor), 0 0 40px 0 var(--cloudColor)
+    }
+
+    div.cloud2 {
+      position: absolute;
+      width: 350px;
+      height: 200px;
+      background: transparent;
+      top: 50px;
+      left: 70px
+    }
+
+    div.circle6 {
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      transform: translate(0, -50%)
+    }
+
+    div.circle7 {
+      width: 70px;
+      height: 70px;
+      top: 50%;
+      right: 0;
+      transform: translate(0, -30%)
+    }
+
+    div.circle8 {
+      width: 150px;
+      height: 150px;
+      left: 50px
+    }
+
+    div.circle9 {
+      width: 120px;
+      height: 120px;
+      right: 70px;
+      top: 30px
+    }
+
+    div.circle10 {
+      width: 50px;
+      height: 50px;
+      top: 50%;
+      transform: translate(0, -50%);
+      right: 50px
+    }
+
+    div.circle11 {
+      width: 70px;
+      height: 70px;
+      bottom: 30px;
+      left: 50px
+    }
+
+    div.circle12 {
+      width: 50px;
+      height: 50px;
+      bottom: 40px;
+      right: 50px
+    }
+
+    div.circle13 {
+      width: 150px;
+      height: 150px;
+      bottom: 0;
+      left: 110px
+    }
+
+    div.cloud3 {
+      width: 200px;
+      height: 170px;
+      position: absolute;
+      background: transparent;
+      top: 120px;
+      right: 70px
+    }
+
+    div.circle14 {
+      width: 50px;
+      height: 50px;
+      top: 80px
+    }
+
+    div.circle15 {
+      width: 60px;
+      height: 60px;
+      top: 50px;
+      left: 25px
+    }
+
+    div.circle16 {
+      width: 80px;
+      height: 80px;
+      left: 60px;
+      top: 20px
+    }
+
+    div.circle17 {
+      width: 70px;
+      height: 70px;
+      top: 60px;
+      right: 20px
+    }
+
+    div.circle18 {
+      width: 50px;
+      height: 50px;
+      left: 30px;
+      bottom: 20px
+    }
+
+    div.circle19 {
+      width: 80px;
+      height: 80px;
+      left: 60px;
+      bottom: 10px
     }
   </style>
 </head>
+
 <body>
   <div class='clouds'>
     <div class='cloud3'>
@@ -1030,59 +1151,93 @@
   </div>
   <div class='scenery'>
     <div class='mountain7'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain7.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain7.svg'
+        alt='image'>
     </div>
     <div class='mountain6'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain6.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain6.svg'
+        alt='image'>
     </div>
     <div class='mountain5'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain5.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain5.svg'
+        alt='image'>
     </div>
     <div class='mountain4'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain4.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain4.svg'
+        alt='image'>
     </div>
     <div class='mountain3'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain3.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain3.svg'
+        alt='image'>
     </div>
     <div class='minTree'>
       <div class='minTreeShadow'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTreeShadow.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTreeShadow.svg'
+          alt='image'>
       </div>
       <div class='minTrunk'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTrunk.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minTrunk.svg'
+          alt='image'>
       </div>
       <div class='minLeaf3'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf3.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf3.svg'
+          alt='image'>
       </div>
       <div class='minLeaf2'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf2.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf2.svg'
+          alt='image'>
       </div>
       <div class='minLeaf'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/minLeaf.svg'
+          alt='image'>
       </div>
     </div>
     <div class='mountain2'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain2.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain2.svg'
+        alt='image'>
     </div>
     <div class='tree'>
       <div class='treeShadow'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/treeShadow.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/treeShadow.svg'
+          alt='image'>
       </div>
       <div class='trunk'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/trunk.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/trunk.svg'
+          alt='image'>
       </div>
       <div class='leaf3'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf3.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf3.svg'
+          alt='image'>
       </div>
       <div class='leaf2'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf2.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf2.svg'
+          alt='image'>
       </div>
       <div class='leaf'>
-        <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf.svg' alt='image'>
+        <img
+          src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/leaf.svg'
+          alt='image'>
       </div>
     </div>
     <div class='mountain'>
-      <img src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain.svg' alt='image'>
+      <img
+        src='https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/images/mountain.svg'
+        alt='image'>
     </div>
     <div class='mountain7'>
       <img src='./images/mountain7.svg' alt='image'>
@@ -1139,7 +1294,6 @@
     <div class='mountain'>
       <img src='./images/mountain.svg' alt='image'>
     </div>
-     
   </div>
   <div class='clouds'>
     <div class='cloud1'>
@@ -1163,45 +1317,84 @@
   </div>
 </body>
 <script>
-  var body=window.document.querySelector('body');
-  var second=window.document.querySelector('div.second');
-  var minute=window.document.querySelector('div.minute');
-  var hour=window.document.querySelector('div.hour');
-  var days=window.document.querySelector('div.days');
-  var cssDisplay=window.document.querySelector('link.display');
+  var body = window.document.querySelector('body');
+  var second = window.document.querySelector('div.second');
+  var minute = window.document.querySelector('div.minute');
+  var hour = window.document.querySelector('div.hour');
+  var days = window.document.querySelector('div.days');
+  var cssDisplay = window.document.querySelector('link.display');
   var date;
   var month;
   var season;
+  var seasonCheck;
   var session;
-  setInterval(function(){
-    var time=new Date();
-    var secondTime=time.getSeconds();
-    var secondDeg=(secondTime*360)/60;
-    var minuteTime=time.getMinutes();
-    var minuteDeg=(minuteTime*360)/60;
-    var hourTime=time.getHours();
-    var hourDeg=(hourTime*360)/24;
-    var dates=['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
-    var day=dates[time.getDay()];
-    if(time.getDate()<10){
-      date='0'+time.getDate();
-    }else{
-      date=time.getDate();
+  var sessionData;
+  var sessionDataUrl;
+  var latitudeData;
+  var longitudeData;
+  var weatherData;
+  var weatherDataUrl;
+  var sunrise;
+  var sunset;
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(positionData);
+  };
+  async function positionData(position){
+    latitudeData=position.coords.latitude;
+    longitudeData=position.coords.longitude;
+    sessionDataUrl='https://api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat='+latitudeData+'&long='+longitudeData;
+    weatherDataUrl='https://api.openweathermap.org/data/2.5/weather?lat='+latitudeData+'&lon='+longitudeData+'&appid=5298f9131293054b9041c1008d027218';
+    sessionData=await fetch(sessionDataUrl).then(data=>data.json());
+    weatherData=await fetch(weatherDataUrl).then(data=>data.json());
+    sunrise=(parseInt((sessionData.sunrise).slice(0,2)))+(parseInt((sessionData.sunrise).slice(-2.0))/60);
+    sunset=(parseInt((sessionData.sunset).slice(0,2)))+(parseInt((sessionData.sunset).slice(-2.0))/60);
+    console.log('sunrise',sunrise,'sunset',sunset);
+  };
+  setInterval(function () {
+    var time = new Date();
+    var secondTime = time.getSeconds();
+    var secondDeg = (secondTime * 360) / 60;
+    var minuteTime = time.getMinutes();
+    var minuteDeg = (minuteTime * 360) / 60;
+    var hourTime = time.getHours();
+    var hourDeg = (hourTime * 360) / 24;
+    var dates = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+    var day = dates[time.getDay()];
+    if (time.getDate() < 10) {
+      date = '0' + time.getDate();
+    } else {
+      date = time.getDate();
     };
-    if((time.getMonth()+1)<10){
-      month='0'+(time.getMonth()+1);
-    }else{
-      month=time.getMonth+1;
+    if ((time.getMonth() + 1) < 10) {
+      month = '0' + (time.getMonth() + 1);
+    } else {
+      month = time.getMonth + 1;
     };
-    year=time.getFullYear();
-    second.style.transform='rotate('+secondDeg+'deg)';
-    minute.style.transform='translate(-50%,-50%) rotate(calc('+minuteDeg+'deg + 90deg))';
-    hour.style.transform='translate(-50%,-50%) rotate(calc('+hourDeg+'deg + 90deg))';
-    days.innerHTML=day+'<span>'+date+'/'+month+'/'+year+'</span>';
-  },1000);
-  season='spring';
-  session='afternoon';
-  cssDisplay.setAttribute('href','./css/'+season+'/'+session+'/01/style.css');
+    year = time.getFullYear();
+    second.style.transform = 'rotate(' + secondDeg + 'deg)';
+    minute.style.transform = 'translate(-50%,-50%) rotate(calc(' + minuteDeg + 'deg + 90deg))';
+    hour.style.transform = 'translate(-50%,-50%) rotate(calc(' + hourDeg + 'deg + 90deg))';
+    days.innerHTML = day + '<span>' + date + '/' + month + '/' + year + '</span>';
+    if((time.getMonth()+1)>=3&&(time.getMonth()+1)<=5){
+      season='spring';
+    }else if((time.getMonth()+1)>=6&&(time.getMonth()+1)<=8){
+      season='summer';
+    }else if((time.getMonth()+1)>=9&&(time.getMonth()+1)<=11){
+      season='fall';
+    }else{
+      season='winter';
+    };
+    if(hourTime>=sunrise&&hourTime<=10){
+      session='morning';
+    }else if(hourTime>=11&&hourTime<=15){
+      session='noon';
+    }else if(hourTime>=16&&hourTime<=sunset){
+      session='afternoon';
+    }else{
+      session='night';
+    };
+    cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/'+'01'+'/style.css');
+  }, 1000);
 </script>
 </html>
 <!--

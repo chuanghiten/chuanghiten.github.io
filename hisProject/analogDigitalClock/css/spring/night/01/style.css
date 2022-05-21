@@ -1,0 +1,60 @@
+:root {
+  --yellowBuzzing: #f1e110;
+  --fountainsOfBudapest: #b8dbf0;
+  --axolotl: #fff1e0;
+  --rioGrande: #cbcb00;
+  --rioGrandeFilter: brightness(0) saturate(100%) invert(71%) sepia(98%)
+    saturate(1014%) hue-rotate(13deg) brightness(95%) contrast(105%);
+  --bile: #b8bd02;
+  --bileFilter: brightness(0) saturate(100%) invert(63%) sepia(44%)
+    saturate(1096%) hue-rotate(22deg) brightness(100%) contrast(98%);
+  --pistachio: #a6b004;
+  --pistachioFilter: brightness(0) saturate(100%) invert(69%) sepia(29%)
+    saturate(4726%) hue-rotate(26deg) brightness(97%) contrast(97%);
+  --barfGreen: #93a505;
+  --barfGreenFilter: brightness(0) saturate(100%) invert(54%) sepia(70%)
+    saturate(1163%) hue-rotate(32deg) brightness(94%) contrast(96%);
+  --limeade: #809506;
+  --limeadeFilter: brightness(0) saturate(100%) invert(44%) sepia(97%)
+    saturate(370%) hue-rotate(29deg) brightness(98%) contrast(104%);
+  --swampGreen: #6e8708;
+  --swampGreenFilter: brightness(0) saturate(100%) invert(34%) sepia(26%)
+    saturate(6372%) hue-rotate(55deg) brightness(106%) contrast(94%);
+  --avocado: #5b7a0a;
+  --avocadoFilter: brightness(0) saturate(100%) invert(39%) sepia(10%)
+    saturate(4096%) hue-rotate(36deg) brightness(102%) contrast(92%);
+  --oldCopper: #6e4b30;
+  --oldCopperFilter: brightness(0) saturate(100%) invert(27%) sepia(50%)
+    saturate(479%) hue-rotate(344deg) brightness(97%) contrast(88%);
+  --fuchsiaBlush: #e370b8;
+  --fuchsiaBlushFilter: brightness(0) saturate(100%) invert(73%) sepia(22%)
+    saturate(4911%) hue-rotate(286deg) brightness(94%) contrast(89%);
+  --shocking: #e37bbc;
+  --shockingFilter: brightness(0) saturate(100%) invert(63%) sepia(29%)
+    saturate(853%) hue-rotate(277deg) brightness(93%) contrast(90%);
+  --pinkPunk: #e387c1;
+  --pinkPunkFilter: brightness(0) saturate(100%) invert(65%) sepia(54%)
+    saturate(425%) hue-rotate(281deg) brightness(91%) contrast(95%);
+}
+body {
+  --bodyBackgroundGradient: var(--fountainsOfBudapes,#3d2a90);
+  --bodyBackgroundGradient2: var(--axolot,#5e6afd);
+  --sunColor: var(--yellowBuzzing);
+  --dateTextColor: var(--white);
+  --secondAndHourBackgroundColor: var(--fountainsOfBudapes,#4a57d9);
+  --mountain7Color: var(--rioGrandeFilter);
+  --mountain6Color: var(--bileFilter);
+  --mountain5Color: var(--pistachioFilter);
+  --mountain4Color: var(--barfGreenFilter);
+  --mountain3Color: var(--limeadeFilter);
+  --mountain2Color: var(--swampGreenFilter);
+  --mountainColor: var(--avocadoFilter);
+  --treeShadowColor: var(--whiteFilter);
+  --trunkColor: var(--oldCopperFilter);
+  --leaf3Color: var(--fuchsiaBlushFilter);
+  --leaf2Color: var(--shockingFilter);
+  --leafColor: var(--pinkPunkFilter);
+}
+div.scenery {
+  display: block;
+}
