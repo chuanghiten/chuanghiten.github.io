@@ -25,9 +25,17 @@
   --circumorbitalRingFilter: brightness(0) saturate(100%) invert(33%) sepia(76%) saturate(1001%) hue-rotate(216deg) brightness(91%) contrast(86%);
   --c64Purple:#716cce;
   --c64PurpleFilter: brightness(0) saturate(100%) invert(43%) sepia(80%) saturate(1012%) hue-rotate(217deg) brightness(86%) contrast(85%);
+  --galacticCivilization:#3d2a90;
+  --galacticCivilizationFilter: brightness(0) saturate(100%) invert(12%) sepia(80%) saturate(3406%) hue-rotate(248deg) brightness(89%) contrast(90%);
+  --bluishPurpleAnemone:#6661b9;
+  --bluishPurpleAnemoneFilter: brightness(0) saturate(100%) invert(51%) sepia(20%) saturate(2552%) hue-rotate(209deg) brightness(75%) contrast(90%);
+  --yueGuangLanMoonlight:#5a56a5;
+  --yueGuangLanMoonlightFilter: brightness(0) saturate(100%) invert(32%) sepia(81%) saturate(423%) hue-rotate(204deg) brightness(92%) contrast(90%);
+  --twilight:#4f4c90;
+  --twilightFilter: brightness(0) saturate(100%) invert(31%) sepia(9%) saturate(3520%) hue-rotate(204deg) brightness(93%) contrast(87%);
 }
 body {
-  --bodyBackgroundGradient: #3d2a90;
+  --bodyBackgroundGradient: var(--galacticCivilization);
   --bodyBackgroundGradient2: #5e6afd;
   --sunColor: var(--white);
   --dateTextColor: #3d2a90;
@@ -41,11 +49,14 @@ body {
   --mountain2Color: var(--cosmicCobaltFilter);
   --mountainColor: var(--blueRoseFilter);
   --treeShadowColor: var(--whiteFilter);
-  --trunkColor: var(--oldCopperFilter);
-  --leaf3Color: var(--fuchsiaBlushFilter);
-  --leaf2Color: var(--shockingFilter);
-  --leafColor: var(--pinkPunkFilter);
+  --trunkColor: var(--galacticCivilizationFilter);
+  --leaf3Color: var(--bluishPurpleAnemoneFilter);
+  --leaf2Color: var(--twilightFilter);
+  --leafColor: var(--yueGuangLanMoonlightFilter);
 }
 div.scenery {
+  display: block;
+}
+div.stars{
   display: block;
 }
