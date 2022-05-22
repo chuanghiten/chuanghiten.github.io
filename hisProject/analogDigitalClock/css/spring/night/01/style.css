@@ -1,28 +1,4 @@
 :root {
-  --yellowBuzzing: #f1e110;
-  --fountainsOfBudapest: #b8dbf0;
-  --axolotl: #fff1e0;
-  --rioGrande: #cbcb00;
-  --rioGrandeFilter: brightness(0) saturate(100%) invert(71%) sepia(98%)
-    saturate(1014%) hue-rotate(13deg) brightness(95%) contrast(105%);
-  --bile: #b8bd02;
-  --bileFilter: brightness(0) saturate(100%) invert(63%) sepia(44%)
-    saturate(1096%) hue-rotate(22deg) brightness(100%) contrast(98%);
-  --pistachio: #a6b004;
-  --pistachioFilter: brightness(0) saturate(100%) invert(69%) sepia(29%)
-    saturate(4726%) hue-rotate(26deg) brightness(97%) contrast(97%);
-  --barfGreen: #93a505;
-  --barfGreenFilter: brightness(0) saturate(100%) invert(54%) sepia(70%)
-    saturate(1163%) hue-rotate(32deg) brightness(94%) contrast(96%);
-  --limeade: #809506;
-  --limeadeFilter: brightness(0) saturate(100%) invert(44%) sepia(97%)
-    saturate(370%) hue-rotate(29deg) brightness(98%) contrast(104%);
-  --swampGreen: #6e8708;
-  --swampGreenFilter: brightness(0) saturate(100%) invert(34%) sepia(26%)
-    saturate(6372%) hue-rotate(55deg) brightness(106%) contrast(94%);
-  --avocado: #5b7a0a;
-  --avocadoFilter: brightness(0) saturate(100%) invert(39%) sepia(10%)
-    saturate(4096%) hue-rotate(36deg) brightness(102%) contrast(92%);
   --oldCopper: #6e4b30;
   --oldCopperFilter: brightness(0) saturate(100%) invert(27%) sepia(50%)
     saturate(479%) hue-rotate(344deg) brightness(97%) contrast(88%);
@@ -35,20 +11,35 @@
   --pinkPunk: #e387c1;
   --pinkPunkFilter: brightness(0) saturate(100%) invert(65%) sepia(54%)
     saturate(425%) hue-rotate(281deg) brightness(91%) contrast(95%);
+  --blueRose:##2e2b74;
+  --blueRoseFilter:brightness(0) saturate(100%) invert(10%) sepia(98%) saturate(2260%) hue-rotate(237deg) brightness(94%) contrast(89%);
+  --cosmicCobalt:#363288;
+  --cosmicCobaltFilter:brightness(0) saturate(100%) invert(14%) sepia(34%) saturate(5180%) hue-rotate(235deg) brightness(102%) contrast(89%);
+  --purpleCabbage:#3e399b;
+  --purpleCabbageFilter:brightness(0) saturate(100%) invert(21%) sepia(48%) saturate(2439%) hue-rotate(227deg) brightness(92%) contrast(95%);
+  --megadriveScreen:#4540af;
+  --megadriveScreenFilter: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2247%) hue-rotate(231deg) brightness(87%) contrast(90%);
+  --blueWithAHintOfPurple:#4d47c2;
+  --blueWithAHintOfPurpleFilter: brightness(0) saturate(100%) invert(25%) sepia(90%) saturate(1712%) hue-rotate(231deg) brightness(83%) contrast(90%);
+  --circumorbitalRing:#5f59c8;
+  --circumorbitalRingFilter: brightness(0) saturate(100%) invert(33%) sepia(76%) saturate(1001%) hue-rotate(216deg) brightness(91%) contrast(86%);
+  --c64Purple:#716cce;
+  --c64PurpleFilter: brightness(0) saturate(100%) invert(43%) sepia(80%) saturate(1012%) hue-rotate(217deg) brightness(86%) contrast(85%);
 }
 body {
-  --bodyBackgroundGradient: var(--fountainsOfBudapes,#3d2a90);
-  --bodyBackgroundGradient2: var(--axolot,#5e6afd);
-  --sunColor: var(--yellowBuzzing);
-  --dateTextColor: var(--white);
-  --secondAndHourBackgroundColor: var(--fountainsOfBudapes,#4a57d9);
-  --mountain7Color: var(--rioGrandeFilter);
-  --mountain6Color: var(--bileFilter);
-  --mountain5Color: var(--pistachioFilter);
-  --mountain4Color: var(--barfGreenFilter);
-  --mountain3Color: var(--limeadeFilter);
-  --mountain2Color: var(--swampGreenFilter);
-  --mountainColor: var(--avocadoFilter);
+  --bodyBackgroundGradient: #3d2a90;
+  --bodyBackgroundGradient2: #5e6afd;
+  --sunColor: var(--white);
+  --dateTextColor: #3d2a90;
+  --minuteTextColor:#3d2a90;
+  --secondAndHourBackgroundColor: #4a57d9;
+  --mountain7Color: var(--c64PurpleFilter);
+  --mountain6Color: var(--circumorbitalRingFilter);
+  --mountain5Color: var(--blueWithAHintOfPurpleFilter);
+  --mountain4Color: var(--megadriveScreenFilter);
+  --mountain3Color: var(--purpleCabbageFilter);
+  --mountain2Color: var(--cosmicCobaltFilter);
+  --mountainColor: var(--blueRoseFilter);
   --treeShadowColor: var(--whiteFilter);
   --trunkColor: var(--oldCopperFilter);
   --leaf3Color: var(--fuchsiaBlushFilter);
