@@ -1,16 +1,4 @@
 :root {
-  --oldCopper: #6e4b30;
-  --oldCopperFilter: brightness(0) saturate(100%) invert(27%) sepia(50%)
-    saturate(479%) hue-rotate(344deg) brightness(97%) contrast(88%);
-  --fuchsiaBlush: #e370b8;
-  --fuchsiaBlushFilter: brightness(0) saturate(100%) invert(73%) sepia(22%)
-    saturate(4911%) hue-rotate(286deg) brightness(94%) contrast(89%);
-  --shocking: #e37bbc;
-  --shockingFilter: brightness(0) saturate(100%) invert(63%) sepia(29%)
-    saturate(853%) hue-rotate(277deg) brightness(93%) contrast(90%);
-  --pinkPunk: #e387c1;
-  --pinkPunkFilter: brightness(0) saturate(100%) invert(65%) sepia(54%)
-    saturate(425%) hue-rotate(281deg) brightness(91%) contrast(95%);
   --blueRose:##2e2b74;
   --blueRoseFilter:brightness(0) saturate(100%) invert(10%) sepia(98%) saturate(2260%) hue-rotate(237deg) brightness(94%) contrast(89%);
   --cosmicCobalt:#363288;

@@ -1574,7 +1574,6 @@
     weatherData=await fetch(weatherDataUrl).then(data=>data.json());
     sunrise=(parseInt((sessionData.sunrise).slice(0,2)))+(parseInt((sessionData.sunrise).slice(-2.0))/60);
     sunset=(parseInt((sessionData.sunset).slice(0,2)))+(parseInt((sessionData.sunset).slice(-2.0))/60);
-    console.log('sunrise',sunrise,'sunset',sunset);
   };
   setInterval(function () {
     var time = new Date();
