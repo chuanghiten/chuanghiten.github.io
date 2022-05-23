@@ -1,0 +1,52 @@
+:root{
+  --abiBlue:#61a9ff;
+  --yellowBuzzing:#F1E110;
+  --turbo:#e1e100;
+  --turboFilter:invert(.71) sepia(.93) saturate(20.21) hue-rotate(18deg) brightness(1.15) contrast(1);
+  --goldenFoil:#ccd202;
+  --goldenFoilFilter:invert(.76) sepia(.67) saturate(6.95) hue-rotate(11deg) brightness(.95) contrast(.98);
+  --leafySeadragon:#b8c304;
+  --leafySeadragonFilter:brightness(0) saturate(100%) invert(84%) sepia(51%) saturate(2561%) hue-rotate(14deg) brightness(90%) contrast(97%);
+  --mustardGreen:#a3b705;
+  --mustardGreenFilter:brightness(0) saturate(100%) invert(68%) sepia(14%) saturate(6260%) hue-rotate(28deg) brightness(98%) contrast(96%);
+  --augustusAsparagus:#8ea507;
+  --augustusAsparagusFilter:brightness(0) saturate(100%) invert(61%) sepia(52%) saturate(3382%) hue-rotate(35deg) brightness(96%) contrast(94%);
+  --mossyWoods:#7a9609;
+  --mossyWoodsFilter:brightness(0) saturate(100%) invert(47%) sepia(65%) saturate(885%) hue-rotate(37deg) brightness(93%) contrast(93%);
+  --sapGreen:#65870b;
+  --sapGreenFilter:brightness(0) saturate(100%) invert(36%) sepia(97%) saturate(960%) hue-rotate(48deg) brightness(96%) contrast(91%);
+  --pheasantBrown:#7a5335;
+  --pheasantBrownFilter:brightness(0) saturate(100%) invert(28%) sepia(50%) saturate(490%) hue-rotate(344deg) brightness(106%) contrast(86%);
+  --poutPink:#fc7ccc;
+  --poutPinkFilter:brightness(0) saturate(100%) invert(60%) sepia(25%) saturate(902%) hue-rotate(272deg) brightness(97%) contrast(105%);
+  --princessPerfume:#fc89d1;
+  --princessPerfumeFilter:brightness(0) saturate(100%) invert(91%) sepia(19%) saturate(7094%) hue-rotate(283deg) brightness(101%) contrast(98%);
+  --pinkCondition:#fc96d6;
+  --pinkConditionFilter:brightness(0) saturate(100%) invert(86%) sepia(22%) saturate(1502%) hue-rotate(281deg) brightness(94%) contrast(110%);
+  --cloudColor:var(--white)
+}
+body{
+  --bodyBackgroundGradient:var(--abiBlue);
+  --bodyBackgroundGradient2:var(--white);
+  --sunColor:var(--yellowBuzzing);
+  --dateTextColor:var(--white);
+  --secondAndHourBackgroundColor:var(--abiBlue);
+  --mountain7Color:var(--turboFilter);
+  --mountain6Color:var(--goldenFoilFilter);
+  --mountain5Color:var(--leafySeadragonFilter);
+  --mountain4Color:var(--mustardGreenFilter);
+  --mountain3Color:var(--augustusAsparagusFilter);
+  --mountain2Color:var(--mossyWoodsFilter);
+  --mountainColor:var(--sapGreenFilter);
+  --treeShadowColor:var(--whiteFilter);
+  --trunkColor:var(--pheasantBrownFilter);
+  --leaf3Color:var(--poutPinkFilter);
+  --leaf2Color:var(--princessPerfumeFilter);
+  --leafColor:var(--pinkConditionFilter)
+}
+div.scenery{
+  display:block
+}
+div.clouds{
+  display:block
+}
