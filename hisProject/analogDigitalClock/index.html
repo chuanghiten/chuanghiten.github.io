@@ -717,6 +717,122 @@
       top: 1270px;
       right: 60px;
     }
+    div.starDot{
+      width:10px;
+      height:10px;
+      background:var(--white);
+      border-radius:50%;
+      box-shadow:0 0 5px 0 var(--white),0 0 10px 0 var(--white),0 0 20px 0 var(--white)
+    }
+    div.starDot.big{
+      width:15px;
+      height:15px
+    }
+    div.starDot.small{
+      width:5px;
+      height:5px;
+      box-shadow:0 0 5px 0 var(--white),0 0 10px 0 var(--white),0 0 15px 0 var(--white),0 0 20px 0 var(--white)
+    }
+    div.dot1{
+      top:30px;
+      left:70px
+    }
+    div.dot2{
+      top:240px;
+      left:100px
+    }
+    div.dot3{
+      top:147px;
+      left:265px
+    }
+    div.dot4{
+      top:60px;
+      left:300px
+    }
+    div.dot5{
+      top:40px;
+      left:500px
+    }
+    div.dot6{
+      top:170px;
+      right:85px
+    }
+    div.dot7{
+      top:340px;
+      right:100px
+    }
+    div.dot8{
+      top:700px;
+      left:144px
+    }
+    div.dot9{
+      top:720px;
+      right:98px
+    }
+    div.dot10{
+      top:780px;
+      left:500px
+    }
+    div.dot11{
+      top:980px;
+      left:250px
+    }
+    div.dot12{
+      top:1000px;
+      right:300px
+    }
+    div.dot13{
+      top:1309px;
+      left:430px
+    }
+    div.dot14{
+      top:1200px;
+      left:160px
+    }
+    div.dot15{
+      top:1305px;
+      right:140px
+    }
+    div.dot16{
+      top:950px;
+      left:50px
+    }
+    div.dot17{
+      top:800px;
+      right:300px
+    }
+    div.dot18{
+      top:1100px;
+      right:100px
+    }
+    div.dot19{
+      top:1200px;
+      right:200px
+    }
+    div.dot20{
+      top:30px;
+      right:300px
+    }
+    div.dot21{
+      top:600px;
+      left:100px
+    }
+    div.dot22{
+      top:809px;
+      right:200px
+    }
+    div.dot23{
+      top:950px;
+      left:500px
+    }
+    div.dot24{
+      top:900px;
+      left:300px
+    }
+    div.dot25{
+      top:910px;
+      right:300px
+    }
   </style>
 </head>
 <body>
@@ -771,6 +887,31 @@
         <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
+    <div class='star starDot dot1'></div>
+    <div class='star starDot dot2'></div>
+    <div class='star starDot dot3'></div>
+    <div class='star starDot dot4'></div>
+    <div class='star starDot dot5'></div>
+    <div class='star starDot dot6'></div>
+    <div class='star starDot dot7'></div>
+    <div class='star starDot dot8'></div>
+    <div class='star starDot dot9'></div>
+    <div class='star starDot dot10'></div>
+    <div class='star starDot dot11'></div>
+    <div class='star starDot dot12'></div>
+    <div class='star starDot dot13'></div>
+    <div class='star starDot dot14'></div>
+    <div class='star starDot dot15'></div>
+    <div class='star starDot dot16 big'></div>
+    <div class='star starDot dot17 big'></div>
+    <div class='star starDot dot18 small'></div>
+    <div class='star starDot dot19 small'></div>
+    <div class='star starDot dot20 small'></div>
+    <div class='star starDot dot21 small'></div>
+    <div class='star starDot dot22 small'></div>
+    <div class='star starDot dot23 small'></div>
+    <div class='star starDot dot24 small'></div>
+    <div class='star starDot dot25 small'></div>
   </div>
   <div class='clouds'>
     <div class='cloud3'>
@@ -1423,6 +1564,8 @@
   var sunset;
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(positionData);
+  }else{
+    alert('Positioning is off');
   };
   async function positionData(position){
     latitudeData=position.coords.latitude;
