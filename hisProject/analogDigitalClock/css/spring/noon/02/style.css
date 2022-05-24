@@ -31,7 +31,6 @@
   --roseDaphne: #fca1da;
   --roseDaphneFilter: brightness(0) saturate(100%) invert(77%) sepia(43%)
     saturate(699%) hue-rotate(285deg) brightness(104%) contrast(98%);
-  --cloudColor:var(--white)
 }
 body {
   --bodyBackgroundGradient: var(--blueMana);
@@ -51,6 +50,7 @@ body {
   --leaf3Color: var(--princessPerfumeFilter);
   --leaf2Color: var(--pinkConditionFilter);
   --leafColor: var(--roseDaphneFilter);
+  --cloudColor:var(--white)
 }
 div.scenery {
   display: block;

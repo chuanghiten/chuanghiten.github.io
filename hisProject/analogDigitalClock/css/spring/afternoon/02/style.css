@@ -35,7 +35,6 @@
   --pinkPunk: #e387c1;
   --pinkPunkFilter: brightness(0) saturate(100%) invert(65%) sepia(54%)
     saturate(425%) hue-rotate(281deg) brightness(91%) contrast(95%);
-  --cloudColor:var(--white)
 }
 body {
   --bodyBackgroundGradient: var(--fountainsOfBudapest);
@@ -55,6 +54,7 @@ body {
   --leaf3Color: var(--fuchsiaBlushFilter);
   --leaf2Color: var(--shockingFilter);
   --leafColor: var(--pinkPunkFilter);
+  --cloudColor:var(--white)
 }
 div.scenery {
   display: block;

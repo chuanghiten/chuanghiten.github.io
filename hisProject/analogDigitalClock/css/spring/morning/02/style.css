@@ -23,7 +23,6 @@
   --princessPerfumeFilter:brightness(0) saturate(100%) invert(91%) sepia(19%) saturate(7094%) hue-rotate(283deg) brightness(101%) contrast(98%);
   --pinkCondition:#fc96d6;
   --pinkConditionFilter:brightness(0) saturate(100%) invert(86%) sepia(22%) saturate(1502%) hue-rotate(281deg) brightness(94%) contrast(110%);
-  --cloudColor:var(--white)
 }
 body{
   --bodyBackgroundGradient:var(--abiBlue);
@@ -42,7 +41,8 @@ body{
   --trunkColor:var(--pheasantBrownFilter);
   --leaf3Color:var(--poutPinkFilter);
   --leaf2Color:var(--princessPerfumeFilter);
-  --leafColor:var(--pinkConditionFilter)
+  --leafColor:var(--pinkConditionFilter);
+  --cloudColor:var(--white)
 }
 div.scenery{
   display:block

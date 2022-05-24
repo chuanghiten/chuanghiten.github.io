@@ -130,6 +130,9 @@
     div.stars{
       display: none;
     }
+    div.cloud4{
+      display:none
+    }
   </style>
   <link class='display' rel='stylesheet' type='text/css' />
   <style>
@@ -535,7 +538,7 @@
 
     div.cloud1 *,
     div.cloud2 *,
-    div.cloud3 * {
+    div.cloud3 *,div.cloud4 * {
       box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor), 0 0 40px 0 var(--cloudColor)
     }
 
@@ -831,6 +834,18 @@
       top:910px;
       right:300px
     }
+    div.cloud4{
+      position:absolute;
+      background:var(--red);
+      width:600px;
+      height:300px;
+      top:800px
+    }
+    div.circle20{
+      width:150px;
+      height:150px;
+      top:50%;
+    }
   </style>
 </head>
 <body>
@@ -919,6 +934,14 @@
       <div class='circle circle17'></div>
       <div class='circle circle18'></div>
       <div class='circle circle19'></div>
+    </div>
+    <div class='cloud4'>
+      <div class='circle circle20'></div>
+      <div class='circle circle21'></div>
+      <div class='circle circle22'></div>
+      <div class='circle circle23'></div>
+      <div class='circle circle24'></div>
+      <div class='circle circle25'></div>
     </div>
   </div>
   <div class='sun'>
@@ -1618,6 +1641,7 @@
     }else{
       session='night';
     };
+    session='night';
     cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/'+'03'+'/style.css');
   }, 1000);
 </script>

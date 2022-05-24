@@ -1,5 +1,5 @@
 :root {
-  --blueRose:##2e2b74;
+  --blueRose:#2e2b74;
   --blueRoseFilter:brightness(0) saturate(100%) invert(10%) sepia(98%) saturate(2260%) hue-rotate(237deg) brightness(94%) contrast(89%);
   --cosmicCobalt:#363288;
   --cosmicCobaltFilter:brightness(0) saturate(100%) invert(14%) sepia(34%) saturate(5180%) hue-rotate(235deg) brightness(102%) contrast(89%);
@@ -21,15 +21,17 @@
   --yueGuangLanMoonlightFilter: brightness(0) saturate(100%) invert(32%) sepia(81%) saturate(423%) hue-rotate(204deg) brightness(92%) contrast(90%);
   --twilight:#4f4c90;
   --twilightFilter: brightness(0) saturate(100%) invert(31%) sepia(9%) saturate(3520%) hue-rotate(204deg) brightness(93%) contrast(87%);
-  --cloudColor:var(--white)
+  --blueGenie:#5e6afd;
+  --warmBlue:#4a57d9;
 }
 body {
   --bodyBackgroundGradient: var(--galacticCivilization);
-  --bodyBackgroundGradient2: #5e6afd;
-  --sunColor: var(--white);
-  --dateTextColor: #3d2a90;
-  --minuteTextColor:#3d2a90;
-  --secondAndHourBackgroundColor: #4a57d9;
+  --cloudColor:var(--blueGenie);
+  --bodyBackgroundGradient2: var(--blueGenie);
+  --sunColor: var(--blueGenie);
+  --dateTextColor: var(--white);
+  --minuteTextColor:var(--galacticCivilization);
+  --secondAndHourBackgroundColor: var(--warmBlue);
   --mountain7Color: var(--c64PurpleFilter);
   --mountain6Color: var(--circumorbitalRingFilter);
   --mountain5Color: var(--blueWithAHintOfPurpleFilter);
@@ -50,5 +52,8 @@ div.stars{
   display: block;
 }
 div.clouds{
+  display:block
+}
+div.cloud4{
   display:block
 }
