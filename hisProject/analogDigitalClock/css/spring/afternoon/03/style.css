@@ -39,8 +39,8 @@
 body {
   --bodyBackgroundGradient: var(--fountainsOfBudapest);
   --bodyBackgroundGradient2: var(--axolotl);
-  --sunColor: var(--yellowBuzzing);
-  --dateTextColor: var(--white);
+  --sunColor: var(--white);
+  --dateTextColor: var(--sambucus);
   --secondAndHourBackgroundColor: var(--fountainsOfBudapest);
   --mountain7Color: var(--rioGrandeFilter);
   --mountain6Color: var(--bileFilter);
@@ -60,5 +60,8 @@ div.scenery {
   display: block;
 }
 div.clouds{
+  display:block
+}
+div.cloud4,div.cloud5,div.cloud6,div.cloud7{
   display:block
 }
