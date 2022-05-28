@@ -113,23 +113,15 @@
       min-height: 100%;
       --bodyBackgroundGradient: var(--sambucus);
       --bodyBackgroundGradient2: var(--sambucus);
-      --sunColor: var(--white);
+      --sunColor:#fff;
       --sunColorShadow: var(--sunColor);
       --dateTextColor: var(--sambucus);
-      --secondAndHourTextColor: var(--white);
+      --secondAndHourTextColor:#fff;
       --minuteTextColor: var(--sambucus);
-      --secondAndHourBackgroundColor: var(--sambucus)
+      --secondAndHourBackgroundColor: var(--sambucus);
+      --minuteBackgroundColor:#fff
     }
-    div.clouds {
-      display: none
-    }
-    div.scenery {
-      display: none
-    }
-    div.stars{
-      display: none;
-    }
-    div.cloud4,div.cloud5,div.cloud6,div.cloud7{
+    div.clouds,div.scenery,div.stars,div.cloud4,div.cloud5,div.cloud6,div.cloud7{
       display:none
     }
   </style>
@@ -193,12 +185,12 @@
       width: 460px;
       height: 460px;
       border-radius: 50%;
-      background: var(--white);
+      background: var(--minuteBackgroundColor);
       top: 50%;
       left: 50%;
       position: absolute;
       transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
-      box-shadow: 0 0 10px 0 var(--white), 0 0 20px 0 var(--white)
+      box-shadow: 0 0 10px 0 var(--minuteBackgroundColor), 0 0 20px 0 var(--minuteBackgroundColor)
     }
 
     body[light] div.minute {
@@ -227,7 +219,7 @@
       transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
       background: var(--secondAndHourBackgroundColor);
       border-radius: 50%;
-      box-shadow: 0 0 15px 0 var(--white) inset, 0 0 25px 0 var(--white)
+      box-shadow: 0 0 15px 0 var(--minuteBackgroundColor) inset, 0 0 25px 0 var(--minuteBackgroundColor) inset
     }
 
     body[light] div.hour {
@@ -1918,7 +1910,7 @@
       session='night';
     };
     session='morning';
-    cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/'+'803'+'/style.css');
+    cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/'+'802'+'/style.css');
   }, 1000);
 </script>
 </html>

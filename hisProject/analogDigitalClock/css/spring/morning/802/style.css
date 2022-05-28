@@ -1,6 +1,4 @@
 :root{
-  --abiBlue:#61a9ff;
-  --yellowBuzzing:#F1E110;
   --turbo:#e1e100;
   --turboFilter:invert(.71) sepia(.93) saturate(20.21) hue-rotate(18deg) brightness(1.15) contrast(1);
   --goldenFoil:#ccd202;
@@ -25,11 +23,11 @@
   --pinkConditionFilter:brightness(0) saturate(100%) invert(86%) sepia(22%) saturate(1502%) hue-rotate(281deg) brightness(94%) contrast(110%);
 }
 body{
-  --bodyBackgroundGradient:var(--abiBlue);
-  --bodyBackgroundGradient2:var(--white);
-  --sunColor:var(--white);
-  --dateTextColor:var(--sambucus);
-  --secondAndHourBackgroundColor:var(--abiBlue);
+  --bodyBackgroundGradient:#61a9ff;
+  --bodyBackgroundGradient2:#fff;
+  --sunColor:#fff;
+  --dateTextColor:#191a2e;
+  --secondAndHourBackgroundColor:#61a9ff;
   --mountain7Color:var(--turboFilter);
   --mountain6Color:var(--goldenFoilFilter);
   --mountain5Color:var(--leafySeadragonFilter);
@@ -42,14 +40,8 @@ body{
   --leaf3Color:var(--poutPinkFilter);
   --leaf2Color:var(--princessPerfumeFilter);
   --leafColor:var(--pinkConditionFilter);
-  --cloudColor:var(--white)
+  --cloudColor:#fff
 }
-div.scenery{
-  display:block
-}
-div.clouds{
-  display:block
-}
-div.cloud4,div.cloud5,div.cloud6,div.cloud7{
+div.scenery,div.clouds,div.cloud4,div.cloud5,div.cloud6,div.cloud7{
   display:block
 }

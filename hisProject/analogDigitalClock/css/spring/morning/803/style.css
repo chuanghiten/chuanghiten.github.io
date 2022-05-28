@@ -1,55 +1,26 @@
-:root{
-  --abiBlue:#61a9ff;
-  --yellowBuzzing:#F1E110;
-  --turbo:#e1e100;
-  --turboFilter:invert(.71) sepia(.93) saturate(20.21) hue-rotate(18deg) brightness(1.15) contrast(1);
-  --goldenFoil:#ccd202;
-  --goldenFoilFilter:invert(.76) sepia(.67) saturate(6.95) hue-rotate(11deg) brightness(.95) contrast(.98);
-  --leafySeadragon:#b8c304;
-  --leafySeadragonFilter:brightness(0) saturate(100%) invert(84%) sepia(51%) saturate(2561%) hue-rotate(14deg) brightness(90%) contrast(97%);
-  --mustardGreen:#a3b705;
-  --mustardGreenFilter:brightness(0) saturate(100%) invert(68%) sepia(14%) saturate(6260%) hue-rotate(28deg) brightness(98%) contrast(96%);
-  --augustusAsparagus:#8ea507;
-  --augustusAsparagusFilter:brightness(0) saturate(100%) invert(61%) sepia(52%) saturate(3382%) hue-rotate(35deg) brightness(96%) contrast(94%);
-  --mossyWoods:#7a9609;
-  --mossyWoodsFilter:brightness(0) saturate(100%) invert(47%) sepia(65%) saturate(885%) hue-rotate(37deg) brightness(93%) contrast(93%);
-  --sapGreen:#65870b;
-  --sapGreenFilter:brightness(0) saturate(100%) invert(36%) sepia(97%) saturate(960%) hue-rotate(48deg) brightness(96%) contrast(91%);
-  --pheasantBrown:#7a5335;
-  --pheasantBrownFilter:brightness(0) saturate(100%) invert(28%) sepia(50%) saturate(490%) hue-rotate(344deg) brightness(106%) contrast(86%);
-  --poutPink:#fc7ccc;
-  --poutPinkFilter:brightness(0) saturate(100%) invert(60%) sepia(25%) saturate(902%) hue-rotate(272deg) brightness(97%) contrast(105%);
-  --princessPerfume:#fc89d1;
-  --princessPerfumeFilter:brightness(0) saturate(100%) invert(91%) sepia(19%) saturate(7094%) hue-rotate(283deg) brightness(101%) contrast(98%);
-  --pinkCondition:#fc96d6;
-  --pinkConditionFilter:brightness(0) saturate(100%) invert(86%) sepia(22%) saturate(1502%) hue-rotate(281deg) brightness(94%) contrast(110%);
-}
-body{
-  --bodyBackgroundGradient:var(--abiBlue);
+
+lbody{
+  --bodyBackgroundGradient:#b8d8ff;
   --bodyBackgroundGradient2:var(--white);
-  --sunColor:var(--white);
-  --dateTextColor:var(--sambucus);
-  --secondAndHourBackgroundColor:var(--abiBlue);
-  --mountain7Color:var(--turboFilter);
-  --mountain6Color:var(--goldenFoilFilter);
-  --mountain5Color:var(--leafySeadragonFilter);
-  --mountain4Color:var(--mustardGreenFilter);
-  --mountain3Color:var(--augustusAsparagusFilter);
-  --mountain2Color:var(--mossyWoodsFilter);
-  --mountainColor:var(--sapGreenFilter);
+  --sunColor:#d9d7d8;
+  --dateTextColor:var(--white);
+  --minuteBackgroundColor:#d9d7d8;
+  --secondAndHourBackgroundColor:#b8d8ff;
+  --mountain7Color:brightness(0) saturate(100%) invert(76%) sepia(80%) saturate(3447%) hue-rotate(22deg) brightness(101%) contrast(128%)/* #cbcb00 */;
+  --mountain6Color:brightness(0) saturate(100%) invert(72%) sepia(53%) saturate(1497%) hue-rotate(17deg) brightness(93%) contrast(98%)/* #b8bd02 */;
+  --mountain5Color:brightness(0) saturate(100%) invert(65%) sepia(86%) saturate(1384%) hue-rotate(21deg) brightness(91%) contrast(97%)/* #a6b004 */;
+  --mountain4Color:brightness(0) saturate(100%) invert(57%) sepia(46%) saturate(3629%) hue-rotate(36deg) brightness(100%) contrast(96%)/* #93a505 */;
+  --mountain3Color:brightness(0) saturate(100%) invert(51%) sepia(32%) saturate(4980%) hue-rotate(43deg) brightness(97%) contrast(95%)/* #809506 */;
+  --mountain2Color:brightness(0) saturate(100%) invert(36%) sepia(76%) saturate(1377%) hue-rotate(48deg) brightness(97%) contrast(94%)/* #6e8708 */;
+  --mountainColor:brightness(0) saturate(100%) invert(37%) sepia(62%) saturate(893%) hue-rotate(40deg) brightness(95%) contrast(92%)/* #5b7a0a */;
   --treeShadowColor:var(--whiteFilter);
-  --trunkColor:var(--pheasantBrownFilter);
-  --leaf3Color:var(--poutPinkFilter);
-  --leaf2Color:var(--princessPerfumeFilter);
-  --leafColor:var(--pinkConditionFilter);
-  --cloudColor:var(--white)
+  --trunkColor:brightness(0) saturate(100%) invert(27%) sepia(31%) saturate(745%) hue-rotate(344deg) brightness(100%) contrast(88%)/* #6e4b30 */;
+  --leaf3Color:brightness(0) saturate(100%) invert(70%) sepia(11%) saturate(5795%) hue-rotate(286deg) brightness(95%) contrast(88%)/* #FC7CCC */;
+  --leaf2Color:brightness(0) saturate(100%) invert(75%) sepia(39%) saturate(1595%) hue-rotate(284deg) brightness(94%) contrast(89%)/* #e37bbc */;
+  --leafColor:brightness(0) saturate(100%) invert(66%) sepia(85%) saturate(420%) hue-rotate(285deg) brightness(97%) contrast(82%)/* #e387c1 */;
+  --cloudColor:#d9d7d8;
+  --minuteTextColor:var(--white)
 }
-div.scenery{
-  display:block
-}
-div.clouds{
-  display:block
-}
-div.cloud4,div.cloud5,div.cloud6,div.cloud7{
+div.clouds,div.scenery,div.cloud4,div.cloud5,div.cloud6,div.cloud7{
   display:block
 }
