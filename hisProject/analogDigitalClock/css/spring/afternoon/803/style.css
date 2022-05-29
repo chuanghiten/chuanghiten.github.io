@@ -1,67 +1,25 @@
-:root {
-  --yellowBuzzing: #f1e110;
-  --fountainsOfBudapest: #b8dbf0;
-  --axolotl: #fff1e0;
-  --rioGrande: #cbcb00;
-  --rioGrandeFilter: brightness(0) saturate(100%) invert(71%) sepia(98%)
-    saturate(1014%) hue-rotate(13deg) brightness(95%) contrast(105%);
-  --bile: #b8bd02;
-  --bileFilter: brightness(0) saturate(100%) invert(63%) sepia(44%)
-    saturate(1096%) hue-rotate(22deg) brightness(100%) contrast(98%);
-  --pistachio: #a6b004;
-  --pistachioFilter: brightness(0) saturate(100%) invert(69%) sepia(29%)
-    saturate(4726%) hue-rotate(26deg) brightness(97%) contrast(97%);
-  --barfGreen: #93a505;
-  --barfGreenFilter: brightness(0) saturate(100%) invert(54%) sepia(70%)
-    saturate(1163%) hue-rotate(32deg) brightness(94%) contrast(96%);
-  --limeade: #809506;
-  --limeadeFilter: brightness(0) saturate(100%) invert(44%) sepia(97%)
-    saturate(370%) hue-rotate(29deg) brightness(98%) contrast(104%);
-  --swampGreen: #6e8708;
-  --swampGreenFilter: brightness(0) saturate(100%) invert(34%) sepia(26%)
-    saturate(6372%) hue-rotate(55deg) brightness(106%) contrast(94%);
-  --avocado: #5b7a0a;
-  --avocadoFilter: brightness(0) saturate(100%) invert(39%) sepia(10%)
-    saturate(4096%) hue-rotate(36deg) brightness(102%) contrast(92%);
-  --oldCopper: #6e4b30;
-  --oldCopperFilter: brightness(0) saturate(100%) invert(27%) sepia(50%)
-    saturate(479%) hue-rotate(344deg) brightness(97%) contrast(88%);
-  --fuchsiaBlush: #e370b8;
-  --fuchsiaBlushFilter: brightness(0) saturate(100%) invert(73%) sepia(22%)
-    saturate(4911%) hue-rotate(286deg) brightness(94%) contrast(89%);
-  --shocking: #e37bbc;
-  --shockingFilter: brightness(0) saturate(100%) invert(63%) sepia(29%)
-    saturate(853%) hue-rotate(277deg) brightness(93%) contrast(90%);
-  --pinkPunk: #e387c1;
-  --pinkPunkFilter: brightness(0) saturate(100%) invert(65%) sepia(54%)
-    saturate(425%) hue-rotate(281deg) brightness(91%) contrast(95%);
+body{
+  --bodyBackgroundGradient:#c6e0ff;
+  --bodyBackgroundGradient2:#fff;
+  --sunColor:var(--cloudColor);
+  --dateTextColor:#fff;
+  --minuteBackgroundColor:var(--cloudColor);
+  --secondAndHourBackgroundColor:var(--bodyBackgroundGradient);
+  --mountain7Color:brightness(0) saturate(100%) invert(97%) sepia(9%) saturate(4768%) hue-rotate(348deg) brightness(117%) contrast(67%)/* #d5d533 */;
+  --mountain6Color:brightness(0) saturate(100%) invert(77%) sepia(41%) saturate(683%) hue-rotate(15deg) brightness(94%) contrast(94%)/* #c6ca35 */;
+  --mountain5Color:brightness(0) saturate(100%) invert(81%) sepia(48%) saturate(655%) hue-rotate(12deg) brightness(89%) contrast(82%)/* #b8c036 */;
+  --mountain4Color:brightness(0) saturate(100%) invert(74%) sepia(10%) saturate(2632%) hue-rotate(25deg) brightness(96%) contrast(78%)/* #a9b737 */;
+  --mountain3Color:brightness(0) saturate(100%) invert(59%) sepia(84%) saturate(321%) hue-rotate(29deg) brightness(91%) contrast(90%)/* #99aa38 */;
+  --mountain2Color:brightness(0) saturate(100%) invert(52%) sepia(72%) saturate(347%) hue-rotate(31deg) brightness(98%) contrast(90%)/* #8b9f39 */;
+  --mountainColor:brightness(0) saturate(100%) invert(61%) sepia(11%) saturate(2055%) hue-rotate(36deg) brightness(88%) contrast(87%)/* #7c953b */;
+  --treeShadowColor:invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01)/* #fff */;
+  --trunkColor:brightness(0) saturate(100%) invert(45%) sepia(5%) saturate(3029%) hue-rotate(344deg) brightness(96%) contrast(75%)/* #8b6f59 */;
+  --leaf3Color:brightness(0) saturate(100%) invert(85%) sepia(8%) saturate(6827%) hue-rotate(285deg) brightness(107%) contrast(98%)/* #fd96d6 */;
+  --leaf2Color:brightness(0) saturate(100%) invert(70%) sepia(33%) saturate(659%) hue-rotate(284deg) brightness(99%) contrast(84%)/* #e995c9 */;
+  --leafColor:brightness(0) saturate(100%) invert(89%) sepia(66%) saturate(1605%) hue-rotate(278deg) brightness(98%) contrast(86%)/* #e99fcd */;
+  --cloudColor:#e1dfe0;
+  --minuteTextColor:#fff
 }
-body {
-  --bodyBackgroundGradient: var(--fountainsOfBudapest);
-  --bodyBackgroundGradient2: var(--axolotl);
-  --sunColor: var(--white);
-  --dateTextColor: var(--sambucus);
-  --secondAndHourBackgroundColor: var(--fountainsOfBudapest);
-  --mountain7Color: var(--rioGrandeFilter);
-  --mountain6Color: var(--bileFilter);
-  --mountain5Color: var(--pistachioFilter);
-  --mountain4Color: var(--barfGreenFilter);
-  --mountain3Color: var(--limeadeFilter);
-  --mountain2Color: var(--swampGreenFilter);
-  --mountainColor: var(--avocadoFilter);
-  --treeShadowColor: var(--whiteFilter);
-  --trunkColor: var(--oldCopperFilter);
-  --leaf3Color: var(--fuchsiaBlushFilter);
-  --leaf2Color: var(--shockingFilter);
-  --leafColor: var(--pinkPunkFilter);
-  --cloudColor:var(--white)
-}
-div.scenery {
-  display: block;
-}
-div.clouds{
-  display:block
-}
-div.cloud4,div.cloud5,div.cloud6,div.cloud7{
+div.clouds,div.scenery,div.cloud4,div.cloud5,div.cloud6,div.cloud7{
   display:block
 }
