@@ -1,23 +1,23 @@
 body{
-  --bodyBackgroundGradient:#c6e0ff;
+  --bodyBackgroundGradient:#dfe1ff;
   --bodyBackgroundGradient2:#fff;
   --sunColor:var(--cloudColor);
   --dateTextColor:#fff;
   --minuteBackgroundColor:var(--cloudColor);
   --secondAndHourBackgroundColor:var(--bodyBackgroundGradient);
-  --mountain7Color:brightness(0) saturate(100%) invert(97%) sepia(9%) saturate(4768%) hue-rotate(348deg) brightness(117%) contrast(67%)/* #d5d533 */;
-  --mountain6Color:brightness(0) saturate(100%) invert(77%) sepia(41%) saturate(683%) hue-rotate(15deg) brightness(94%) contrast(94%)/* #c6ca35 */;
-  --mountain5Color:brightness(0) saturate(100%) invert(81%) sepia(48%) saturate(655%) hue-rotate(12deg) brightness(89%) contrast(82%)/* #b8c036 */;
-  --mountain4Color:brightness(0) saturate(100%) invert(74%) sepia(10%) saturate(2632%) hue-rotate(25deg) brightness(96%) contrast(78%)/* #a9b737 */;
-  --mountain3Color:brightness(0) saturate(100%) invert(59%) sepia(84%) saturate(321%) hue-rotate(29deg) brightness(91%) contrast(90%)/* #99aa38 */;
-  --mountain2Color:brightness(0) saturate(100%) invert(52%) sepia(72%) saturate(347%) hue-rotate(31deg) brightness(98%) contrast(90%)/* #8b9f39 */;
-  --mountainColor:brightness(0) saturate(100%) invert(61%) sepia(11%) saturate(2055%) hue-rotate(36deg) brightness(88%) contrast(87%)/* #7c953b */;
+  --mountain7Color:brightness(0) saturate(100%) invert(77%) sepia(10%) saturate(1754%) hue-rotate(23deg) brightness(95%) contrast(86%)/* #bbbd60% */;
+  --mountain6Color:brightness(0) saturate(100%) invert(80%) sepia(14%) saturate(1284%) hue-rotate(21deg) brightness(81%) contrast(86%)/* #a8aa56 */;
+  --mountain5Color:brightness(0) saturate(100%) invert(58%) sepia(7%) saturate(2345%) hue-rotate(23deg) brightness(99%) contrast(93%)/* #97994d */;
+  --mountain4Color:brightness(0) saturate(100%) invert(53%) sepia(24%) saturate(782%) hue-rotate(23deg) brightness(94%) contrast(88%)/* #888a45 */;
+  --mountain3Color:brightness(0) saturate(100%) invert(49%) sepia(20%) saturate(901%) hue-rotate(23deg) brightness(91%) contrast(91%)/* #7a7c3e */;
+  --mountain2Color:brightness(0) saturate(100%) invert(44%) sepia(17%) saturate(1057%) hue-rotate(23deg) brightness(91%) contrast(90%)/* #6e7038 */;
+  --mountainColor:brightness(0) saturate(100%) invert(37%) sepia(58%) saturate(377%) hue-rotate(23deg) brightness(87%) contrast(85%)/* #636532  */;
   --treeShadowColor:invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01)/* #fff */;
-  --trunkColor:brightness(0) saturate(100%) invert(45%) sepia(5%) saturate(3029%) hue-rotate(344deg) brightness(96%) contrast(75%)/* #8b6f59 */;
-  --leaf3Color:brightness(0) saturate(100%) invert(85%) sepia(8%) saturate(6827%) hue-rotate(285deg) brightness(107%) contrast(98%)/* #fd96d6 */;
-  --leaf2Color:brightness(0) saturate(100%) invert(70%) sepia(33%) saturate(659%) hue-rotate(284deg) brightness(99%) contrast(84%)/* #e995c9 */;
-  --leafColor:brightness(0) saturate(100%) invert(89%) sepia(66%) saturate(1605%) hue-rotate(278deg) brightness(98%) contrast(86%)/* #e99fcd */;
-  --cloudColor:#e1dfe0;
+  --trunkColor:brightness(0) saturate(100%) invert(51%) sepia(24%) saturate(236%) hue-rotate(289deg) brightness(82%) contrast(85%)/* #836e75 */;
+  --leaf3Color:brightness(0) saturate(100%) invert(62%) sepia(42%) saturate(463%) hue-rotate(254deg) brightness(99%) contrast(85%)/* #e18edc */;
+  --leaf2Color:brightness(0) saturate(100%) invert(54%) sepia(20%) saturate(950%) hue-rotate(254deg) brightness(107%) contrast(86%)/* #cb80c6 */;
+  --leafColor:brightness(0) saturate(100%) invert(52%) sepia(24%) saturate(907%) hue-rotate(254deg) brightness(98%) contrast(76%)/* #b773b2 */;
+  --cloudColor:#c6c6e6;
   --minuteTextColor:#fff
 }
 div.clouds,div.scenery,div.cloud4,div.cloud5,div.cloud6,div.cloud7{
