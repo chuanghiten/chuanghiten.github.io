@@ -1920,14 +1920,14 @@
     a = [(14 - tháng)/ 12]
     y = năm + 4800 - a
     m= tháng + 12a - 3
-    
+    ngày + [(153m + 2)/5] + 365y + [y/4] - [y/100] + [y/400] - 32045;
     JD= JDN + (giờ - 12)/24 + phút/1440 + giây/86400
-    
+    juliusTime=(time.getDate()-1+(((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)-((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)%5))/5)+365*(time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12))+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%4))/4)-((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%100))/100)+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%400))/400)-32045)+((hourTime-12)-((hourTime-12)%24))/24+(minuteTime-(minuteTime%1440))/1440+(secondTime-(secondTime%86400))/86400;
     */
     
     
-    juliusTime=(time.getDate()+(((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-(14-(time.getMonth()+1))%12)/12)-3)+2)-(153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-(14-(time.getMonth()+1))%12)/12)-3)+2)%5)/5)+ 365*(time.getFullYear()+4800-((14-(time.getMonth()+1))-(14-(time.getMonth()+1)%12)/12) + ((time.getFullYear()+4800-(14-(time.getMonth()+1))/12)/4) - ((time.getFullYear()+4800-(14-(time.getMonth()+1))/12)/100) + ((time.getFullYear()+4800-(14-(time.getMonth()+1))/12)/400) - 32045)+(hourTime-12)/24+minuteTime/1440+secondTime/86400;
-    console.log(juliusTime);
+    juliusTime=(time.getDate()+(((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)-((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)%5))/5)+365*(time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12))+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%4))/4)-((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%100))/100)+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%400))/400)-32045)+((hourTime-12)-((hourTime-12)%24))/24+(minuteTime-(minuteTime%1440))/1440+(secondTime-(secondTime%86400))/86400;
+    console.log(juliusTime%7);
   }, 1000);
 </script>
 </html>
