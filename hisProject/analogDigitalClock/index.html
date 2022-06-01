@@ -124,6 +124,7 @@
     }
   </style>
   <link class='display' rel='stylesheet' type='text/css' />
+  <link class='leaf' rell='stylesheet' type='text/css' />
   <style>
     div.sun {
       position: relative;
@@ -1849,6 +1850,7 @@
   var weatherDataUrl;
   var sunrise;
   var sunset;
+  var juliusTime;
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(positionData);
   }else{
@@ -1907,8 +1909,25 @@
     }else{
       session='night';
     };
+    season='spring';
     session='noon';
     cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/'+'804'+'/style.css');
+    
+    
+    /*
+    
+    
+    a = [(14 - tháng)/ 12]
+    y = năm + 4800 - a
+    m= tháng + 12a - 3
+    
+    JD= JDN + (giờ - 12)/24 + phút/1440 + giây/86400
+    
+    */
+    
+    
+    juliusTime=(time.getDate()+(((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-(14-(time.getMonth()+1))%12)/12)-3)+2)-(153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-(14-(time.getMonth()+1))%12)/12)-3)+2)%5)/5)+ 365*(time.getFullYear()+4800-((14-(time.getMonth()+1))-(14-(time.getMonth()+1)%12)/12) + ((time.getFullYear()+4800-(14-(time.getMonth()+1))/12)/4) - ((time.getFullYear()+4800-(14-(time.getMonth()+1))/12)/100) + ((time.getFullYear()+4800-(14-(time.getMonth()+1))/12)/400) - 32045)+(hourTime-12)/24+minuteTime/1440+secondTime/86400;
+    console.log(juliusTime);
   }, 1000);
 </script>
 </html>
@@ -1932,4 +1951,5 @@ afternoon
 night
 
 weatherCodeIcon
+
 -->
