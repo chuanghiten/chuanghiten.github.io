@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Analog Digital Clock</title>
@@ -112,23 +111,16 @@
       min-height: 100%;
       --bodyBackgroundGradient: var(--sambucus);
       --bodyBackgroundGradient2: var(--sambucus);
-      --sunColor: #fff;
+      --sunColor:#fff;
       --sunColorShadow: var(--sunColor);
       --dateTextColor: var(--sambucus);
-      --secondAndHourTextColor: #fff;
+      --secondAndHourTextColor:#fff;
       --minuteTextColor: var(--sambucus);
       --secondAndHourBackgroundColor: var(--sambucus);
-      --minuteBackgroundColor: #fff
+      --minuteBackgroundColor:#fff
     }
-
-    div.clouds,
-    div.scenery,
-    div.stars,
-    div.cloud4,
-    div.cloud5,
-    div.cloud6,
-    div.cloud7 {
-      display: none
+    div.clouds,div.scenery,div.stars,div.cloud4,div.cloud5,div.cloud6,div.cloud7{
+      display:none
     }
   </style>
   <link class='display' rel='stylesheet' type='text/css' />
@@ -454,8 +446,7 @@
       filter: var(--leafColor)
     }
 
-    div.clouds,
-    div.stars {
+    div.clouds,div.stars {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -537,11 +528,7 @@
 
     div.cloud1 *,
     div.cloud2 *,
-    div.cloud3 *,
-    div.cloud4 *,
-    div.cloud5 *,
-    div.cloud6 *,
-    div.cloud7 * {
+    div.cloud3 *,div.cloud4 *,div.cloud5 *,div.cloud6 *,div.cloud7 *{
       box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor), 0 0 40px 0 var(--cloudColor)
     }
 
@@ -660,585 +647,484 @@
       left: 60px;
       bottom: 10px
     }
-
-    div.stars {
-      bottom: unset;
-      top: 0;
+    div.stars{
+      bottom:unset;
+      top:0;
     }
-
-    div.star {
+    div.star{
       position: absolute;
       width: 25px;
       height: 35px;
     }
-
-    div.star path {
-      fill: var(--white);
+    div.star path{
+      fill:var(--white);
     }
-
-    div.star.big {
+    div.star.big{
       transform: scale(1.5);
     }
-
-    div.star.small {
+    div.star.small{
       transform: scale(.5);
     }
-
-    div.star svg {
+    div.star svg{
       filter: drop-shadow(0 0 5px var(--white)) drop-shadow(0 0 10px var(--white)) drop-shadow(0 0 20px var(--white));
     }
-
-    div.star1 {
+    div.star1{
       top: 50px;
       left: 100px;
     }
-
-    div.star2 {
+    div.star2{
       top: 400px;
       left: 70px;
     }
-
-    div.star3 {
+    div.star3{
       top: 500px;
       left: 800px;
     }
-
-    div.star4 {
+    div.star4{
       top: 700px;
       left: 300px;
     }
-
-    div.star5 {
+    div.star5{
       top: 75px;
       right: 150px;
     }
-
-    div.star6 {
+    div.star6{
       top: 843px;
       right: 128px;
     }
-
-    div.star7 {
+    div.star7{
       top: 1000px;
       left: 500px;
     }
-
-    div.star8 {
+    div.star8{
       top: 1240px;
       left: 90px;
     }
-
-    div.star9 {
+    div.star9{
       top: 1500px;
       left: 500px;
     }
-
-    div.star10 {
+    div.star10{
       top: 1270px;
       right: 60px;
     }
-
-    div.starDot {
-      width: 10px;
-      height: 10px;
-      background: var(--white);
-      border-radius: 50%;
-      box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 20px 0 var(--white)
-    }
-
-    div.starDot.big {
-      width: 15px;
-      height: 15px
-    }
-
-    div.starDot.small {
-      width: 5px;
-      height: 5px;
-      box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 15px 0 var(--white), 0 0 20px 0 var(--white)
-    }
-
-    div.dot1 {
-      top: 30px;
-      left: 70px
-    }
-
-    div.dot2 {
-      top: 240px;
-      left: 100px
-    }
-
-    div.dot3 {
-      top: 147px;
-      left: 265px
-    }
-
-    div.dot4 {
-      top: 60px;
-      left: 300px
-    }
-
-    div.dot5 {
-      top: 40px;
-      left: 500px
-    }
-
-    div.dot6 {
-      top: 170px;
-      right: 85px
-    }
-
-    div.dot7 {
-      top: 340px;
-      right: 100px
-    }
-
-    div.dot8 {
-      top: 700px;
-      left: 144px
-    }
-
-    div.dot9 {
-      top: 720px;
-      right: 98px
-    }
-
-    div.dot10 {
-      top: 780px;
-      left: 500px
-    }
-
-    div.dot11 {
-      top: 980px;
-      left: 250px
-    }
-
-    div.dot12 {
-      top: 1000px;
-      right: 300px
-    }
-
-    div.dot13 {
-      top: 1309px;
-      left: 430px
-    }
-
-    div.dot14 {
-      top: 1200px;
-      left: 160px
-    }
-
-    div.dot15 {
-      top: 1305px;
-      right: 140px
-    }
-
-    div.dot16 {
-      top: 950px;
-      left: 50px
-    }
-
-    div.dot17 {
-      top: 800px;
-      right: 300px
-    }
-
-    div.dot18 {
-      top: 1100px;
-      right: 100px
-    }
-
-    div.dot19 {
-      top: 1200px;
-      right: 200px
-    }
-
-    div.dot20 {
-      top: 30px;
-      right: 300px
-    }
-
-    div.dot21 {
-      top: 600px;
-      left: 100px
-    }
-
-    div.dot22 {
-      top: 809px;
-      right: 200px
-    }
-
-    div.dot23 {
-      top: 950px;
-      left: 500px
-    }
-
-    div.dot24 {
-      top: 900px;
-      left: 300px
-    }
-
-    div.dot25 {
-      top: 910px;
-      right: 300px
-    }
-
-    div.cloud4 {
-      position: absolute;
-      width: 600px;
-      height: 300px;
-      top: 550px
-    }
-
-    div.circle20 {
-      width: 150px;
-      height: 150px;
-      top: 50%;
-      transform: translate(0, -50%);
-      right: 0
-    }
-
-    div.circle21 {
-      width: 250px;
-      height: 250px;
-      right: 70px
-    }
-
-    div.circle22 {
-      width: 100px;
-      height: 100px;
-      top: 40px;
-      right: 290px
-    }
-
-    div.circle23 {
-      width: 120px;
-      height: 120px;
-      top: 30px;
-      left: 120px
-    }
-
-    div.circle24 {
-      width: 100px;
-      height: 100px;
-      top: 60px;
-      left: 50px
-    }
-
-    div.circle25 {
-      width: 90px;
-      height: 90px;
-      top: 80px
-    }
-
-    div.circle26 {
-      width: 110px;
-      height: 110px;
-      bottom: 80px;
-      left: 60px
-    }
-
-    div.circle27 {
-      width: 200px;
-      height: 200px;
-      bottom: 65px;
-      left: 135px
-    }
-
-    div.circle28 {
-      width: 100px;
-      height: 100px;
-      bottom: 85px;
-      left: 110px;
-    }
-
-    div.circle29 {
-      width: 200px;
-      height: 200px;
-      bottom: 30px;
-      right: 170px
-    }
-
-    div.cloud5 {
-      right: 0;
-      width: 700px;
-      height: 200px;
-      position: absolute;
-    }
-
-    div.circle30 {
-      width: 70px;
-      height: 70px;
-      top: 50px
-    }
-
-    div.circle31 {
-      width: 60px;
-      height: 60px;
-      top: 40px;
-      left: 35px
-    }
-
-    div.circle32 {
-      width: 130px;
-      height: 130px;
-      left: 70px
-    }
-
-    div.circle33 {
-      width: 70px;
-      height: 70px;
-      top: 70px;
-      left: 165px
-    }
-
-    div.circle34 {
-      width: 80px;
-      height: 80px;
-      top: 65px;
-      left: 200px
-    }
-
-    div.circle35 {
-      width: 100px;
-      height: 100px;
-      top: 40px;
-      left: 250px
-    }
-
-    div.circle36 {
-      width: 170px;
-      height: 170px;
-      bottom: 0;
-      left: 300px
-    }
-
-    div.circle37 {
-      width: 70px;
-      height: 70px;
-      top: 20px;
-      left: 400px
-    }
-
-    div.circle38 {
-      width: 130px;
-      height: 130px;
-      top: 50px;
-      right: 150px
-    }
-
-    div.circle39 {
-      width: 100px;
-      height: 100px;
-      top: 40px;
-      right: 100px
-    }
-
-    div.circle40 {
-      width: 90px;
-      height: 90px;
-      right: 0;
-      top: 70px
-    }
-
-    div.circle41 {
-      width: 70px;
-      height: 70px;
-      top: 70px;
-      right: 70px
-    }
-
-    div.circle42 {
-      width: 100px;
-      height: 100px;
-      bottom: 30px;
-      right: 60px
-    }
-
-    div.circle43 {
-      width: 100px;
-      height: 100px;
-      bottom: 40px;
-      left: 60px
-    }
-
-    div.circle44 {
-      width: 100px;
-      height: 100px;
-      bottom: 30px;
-      left: 100px
-    }
-
-    div.cloud6 {
-      position: absolute;
-      width: 300px;
-      height: 250px;
-      right: 0;
-      top: 400px;
-    }
-
-    div.circle45 {
-      width: 100px;
-      height: 100px;
-      right: 0;
-      top: 70px
-    }
-
-    div.circle46 {
-      width: 200px;
-      height: 200px;
-      right: 60px
-    }
-
-    div.circle47 {
-      width: 70px;
-      height: 70px;
-      bottom: 60px
-    }
-
-    div.circle48 {
-      width: 100px;
-      height: 100px;
-      left: 40px;
-      bottom: 30px
-    }
-
-    div.circle49 {
-      width: 150px;
-      height: 150px;
-      bottom: 15px;
-      right: 30px
-    }
-
-    div.cloud7 {
-      position: absolute;
-      width: 300px;
-      height: 150px;
-      top: 150px
-    }
-
-    div.circle50 {
-      width: 100px;
-      height: 100px;
-      right: 0;
-      top: 40px
-    }
-
-    div.circle51 {
-      width: 70px;
-      height: 70px;
-      top: 0;
-      right: 50px
-    }
-
-    div.circle52 {
-      width: 90px;
-      height: 90px;
-      top: 30px;
-      right: 70px
-    }
-
-    div.circle53 {
-      width: 50px;
-      height: 50px;
-      bottom: 20px;
-      right: 125px
-    }
-
-    div.circle54 {
-      width: 70px;
-      height: 70px;
-      top: 40px;
-      left: 90px
-    }
-
-    div.circle55 {
-      width: 100px;
-      height: 100px;
-      top: 30px
-    }
-
-    div.circle56,
-    div.circle57,
-    div.circle58 {
-      width: 50px;
-      height: 50px;
-      top: 30px;
-      left: 70px
-    }
-
-    div.circle57,
-    div.circle58 {
-      top: unset;
-      bottom: 20px
-    }
-
-    div.circle58 {
-      bottom: 0;
-      left: 20px
+    div.starDot{
+      width:10px;
+      height:10px;
+      background:var(--white);
+      border-radius:50%;
+      box-shadow:0 0 5px 0 var(--white),0 0 10px 0 var(--white),0 0 20px 0 var(--white)
+    }
+    div.starDot.big{
+      width:15px;
+      height:15px
+    }
+    div.starDot.small{
+      width:5px;
+      height:5px;
+      box-shadow:0 0 5px 0 var(--white),0 0 10px 0 var(--white),0 0 15px 0 var(--white),0 0 20px 0 var(--white)
+    }
+    div.dot1{
+      top:30px;
+      left:70px
+    }
+    div.dot2{
+      top:240px;
+      left:100px
+    }
+    div.dot3{
+      top:147px;
+      left:265px
+    }
+    div.dot4{
+      top:60px;
+      left:300px
+    }
+    div.dot5{
+      top:40px;
+      left:500px
+    }
+    div.dot6{
+      top:170px;
+      right:85px
+    }
+    div.dot7{
+      top:340px;
+      right:100px
+    }
+    div.dot8{
+      top:700px;
+      left:144px
+    }
+    div.dot9{
+      top:720px;
+      right:98px
+    }
+    div.dot10{
+      top:780px;
+      left:500px
+    }
+    div.dot11{
+      top:980px;
+      left:250px
+    }
+    div.dot12{
+      top:1000px;
+      right:300px
+    }
+    div.dot13{
+      top:1309px;
+      left:430px
+    }
+    div.dot14{
+      top:1200px;
+      left:160px
+    }
+    div.dot15{
+      top:1305px;
+      right:140px
+    }
+    div.dot16{
+      top:950px;
+      left:50px
+    }
+    div.dot17{
+      top:800px;
+      right:300px
+    }
+    div.dot18{
+      top:1100px;
+      right:100px
+    }
+    div.dot19{
+      top:1200px;
+      right:200px
+    }
+    div.dot20{
+      top:30px;
+      right:300px
+    }
+    div.dot21{
+      top:600px;
+      left:100px
+    }
+    div.dot22{
+      top:809px;
+      right:200px
+    }
+    div.dot23{
+      top:950px;
+      left:500px
+    }
+    div.dot24{
+      top:900px;
+      left:300px
+    }
+    div.dot25{
+      top:910px;
+      right:300px
+    }
+    div.cloud4{
+      position:absolute;
+      width:600px;
+      height:300px;
+      top:550px
+    }
+    div.circle20{
+      width:150px;
+      height:150px;
+      top:50%;
+      transform:translate(0,-50%);
+      right:0
+    }
+    div.circle21{
+      width:250px;
+      height:250px;
+      right:70px
+    }
+    div.circle22{
+      width:100px;
+      height:100px;
+      top:40px;
+      right:290px
+    }
+    div.circle23{
+      width:120px;
+      height:120px;
+      top:30px;
+      left:120px
+    }
+    div.circle24{
+      width:100px;
+      height:100px;
+      top:60px;
+      left:50px
+    }
+    div.circle25{
+      width:90px;
+      height:90px;
+      top:80px
+    }
+    div.circle26{
+      width:110px;
+      height:110px;
+      bottom:80px;
+      left:60px
+    }
+    div.circle27{
+      width:200px;
+      height:200px;
+      bottom:65px;
+      left:135px
+    }
+    div.circle28{
+      width:100px;
+      height:100px;
+      bottom:85px;
+      left:110px;
+    }
+    div.circle29{
+      width:200px;
+      height:200px;
+      bottom:30px;
+      right:170px
+    }
+    div.cloud5{
+      right:0;
+      width:700px;
+      height:200px;
+      position:absolute;
+    }
+    div.circle30{
+      width:70px;
+      height:70px;
+      top:50px
+    }
+    div.circle31{
+      width:60px;
+      height:60px;
+      top:40px;
+      left:35px
+    }
+    div.circle32{
+      width:130px;
+      height:130px;
+      left:70px
+    }
+    div.circle33{
+      width:70px;
+      height:70px;
+      top:70px;
+      left:165px
+    }
+    div.circle34{
+      width:80px;
+      height:80px;
+      top:65px;
+      left:200px
+    }
+    div.circle35{
+      width:100px;
+      height:100px;
+      top:40px;
+      left:250px
+    }
+    div.circle36{
+      width:170px;
+      height:170px;
+      bottom:0;
+      left:300px
+    }
+    div.circle37{
+      width:70px;
+      height:70px;
+      top:20px;
+      left:400px
+    }
+    div.circle38{
+      width:130px;
+      height:130px;
+      top:50px;
+      right:150px
+    }
+    div.circle39{
+      width:100px;
+      height:100px;
+      top:40px;
+      right:100px
+    }
+    div.circle40{
+      width:90px;
+      height:90px;
+      right:0;
+      top:70px
+    }
+    div.circle41{
+      width:70px;
+      height:70px;
+      top:70px;
+      right:70px
+    }
+    div.circle42{
+      width:100px;
+      height:100px;
+      bottom:30px;
+      right:60px
+    }
+    div.circle43{
+      width:100px;
+      height:100px;
+      bottom:40px;
+      left:60px
+    }
+    div.circle44{
+      width:100px;
+      height:100px;
+      bottom:30px;
+      left:100px
+    }
+    div.cloud6{
+      position:absolute;
+      width:300px;
+      height:250px;
+      right:0;
+      top:400px;
+    }
+    div.circle45{
+      width:100px;
+      height:100px;
+      right:0;
+      top:70px
+    }
+    div.circle46{
+      width:200px;
+      height:200px;
+      right:60px
+    }
+    div.circle47{
+      width:70px;
+      height:70px;
+      bottom:60px
+    }
+    div.circle48{
+      width:100px;
+      height:100px;
+      left:40px;
+      bottom:30px
+    }
+    div.circle49{
+      width:150px;
+      height:150px;
+      bottom:15px;
+      right:30px
+    }
+    div.cloud7{
+      position:absolute;
+      width:300px;
+      height:150px;
+      top:150px
+    }
+    div.circle50{
+      width:100px;
+      height:100px;
+      right:0;
+      top:40px
+    }
+    div.circle51{
+      width:70px;
+      height:70px;
+      top:0;
+      right:50px
+    }
+    div.circle52{
+      width:90px;
+      height:90px;
+      top:30px;
+      right:70px
+    }
+    div.circle53{
+      width:50px;
+      height:50px;
+      bottom:20px;
+      right:125px
+    }
+    div.circle54{
+      width:70px;
+      height:70px;
+      top:40px;
+      left:90px
+    }
+    div.circle55{
+      width:100px;
+      height:100px;
+      top:30px
+    }
+    div.circle56,div.circle57,div.circle58{
+      width:50px;
+      height:50px;
+      top:30px;
+      left:70px
+    }
+    div.circle57,div.circle58{
+    top:unset;
+      bottom:20px
+    }
+    div.circle58{
+      bottom:0;
+      left:20px
     }
   </style>
 </head>
-
 <body>
   <div class="stars">
     <div class="star star1 big">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star2">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star3 big">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star4">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star5">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star6">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star7 big">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star8">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star9 min">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class="star star10">
       <svg viewBox="0 0 25 35" width="25" height="35">
-        <path
-          d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z" />
+        <path d="m0 17.5c0 0 0-0.5 0.6-0.7 0 0 6.4-1.6 6.4-1.6 2.1-0.7 2.6-3.2 2.6-3.2l2.2-11.6c0 0 0.1-0.4 0.5-0.4 0.5 0 0.5 0.4 0.5 0.4 0 0 2.2 11.6 2.2 11.6 0.5 2.8 3.1 3.3 3.1 3.3l6 1.5c0 0 0.5 0.1 0.5 0.7 0 0.6-0.5 0.7-0.5 0.7 0 0-4.3 1.1-6 1.5-2.5 0.4-3 3-3 3l-2.2 11.7c0 0-0.1 0.6-0.6 0.6-0.4 0-0.5-0.5-0.5-0.5 0 0-2.3-11.8-2.3-11.9-0.8-2.6-2.7-2.8-2.7-2.8 0 0-6-1.5-6-1.5-0.9-0.2-0.8-0.8-0.8-0.8z"/>
       </svg>
     </div>
     <div class='star starDot dot1'></div>
@@ -1951,22 +1837,100 @@
   var hour = window.document.querySelector('div.hour');
   var days = window.document.querySelector('div.days');
   var cssDisplay = window.document.querySelector('link.display');
-  var date, month, season, seasonCheck, session, sessionData, sessionDataUrl, latitudeData, longitudeData, weatherData, weatherDataUrl, sunrise, sunset;
-  if (navigator.geolocation) {
+  var newMoonK=2;
+  var timeZone=7;
+  var date,month,season,seasonCheck,session,sessionData,sessionDataUrl,latitudeData,longitudeData,weatherData,weatherDataUrl,sunrise,sunset,juliusTime,deltaT;
+  if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(positionData);
-  } else {
+  }else{
     alert('Positioning is off');
   };
-  async function positionData(position) {
-    latitudeData = position.coords.latitude;
-    longitudeData = position.coords.longitude;
-    sessionDataUrl = 'https://api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat=' + latitudeData + '&long=' + longitudeData;
-    weatherDataUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitudeData + '&lon=' + longitudeData + '&appid=5298f9131293054b9041c1008d027218';
-    sessionData = await fetch(sessionDataUrl).then(data => data.json());
-    weatherData = await fetch(weatherDataUrl).then(data => data.json());
-    sunrise = (parseInt((sessionData.sunrise).slice(0, 2))) + (parseInt((sessionData.sunrise).slice(-2.0)) / 60);
-    sunset = (parseInt((sessionData.sunset).slice(0, 2))) + (parseInt((sessionData.sunset).slice(-2.0)) / 60);
+  async function positionData(position){
+    latitudeData=position.coords.latitude;
+    longitudeData=position.coords.longitude;
+    sessionDataUrl='https://api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat='+latitudeData+'&long='+longitudeData;
+    weatherDataUrl='https://api.openweathermap.org/data/2.5/weather?lat='+latitudeData+'&lon='+longitudeData+'&appid=5298f9131293054b9041c1008d027218';
+    sessionData=await fetch(sessionDataUrl).then(data=>data.json());
+    weatherData=await fetch(weatherDataUrl).then(data=>data.json());
+    sunrise=(parseInt((sessionData.sunrise).slice(0,2)))+(parseInt((sessionData.sunrise).slice(-2.0))/60);
+    sunset=(parseInt((sessionData.sunset).slice(0,2)))+(parseInt((sessionData.sunset).slice(-2.0))/60);
   };
+  
+  
+  
+  /*
+function NewMoon(k) {
+	var T, T2, T3, dr, Jd1, M, Mpr, F, C1, deltat, JdNew;
+	T = k/1236.85; // Time in Julian centuries from 1900 January 0.5
+	T2 = T * T;
+	T3 = T2 * T;
+	dr = PI/180;
+	Jd1 = (2415020.75933 + 29.53058868*newMoonK + 0.0001178*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.000000155*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)) + 0.00033*Math.sin((166.56 + 132.87*(newMoonK/1236.85) - 0.009173*((newMoonK/1236.85)*(newMoonK/1236.85)))*(Math.PI/180)); // Mean new moon
+	M = (359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))); // Sun's mean anomaly
+	Mpr = (306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))); // Moon's mean anomaly
+	F = (21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))); // Moon's argument of latitude
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	C1 = (((((((((0.1734 - 0.000393*(newMoonK/1236.85))*Math.sin((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))*(Math.PI/180)) + 0.0021*Math.sin(2*(Math.PI/180)*(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.4068*Math.sin((306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))*(Math.PI/180)) + 0.0161*Math.sin((Math.PI/180)*2* (306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.0004*Math.sin((Math.PI/180)*3*(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0104*Math.sin((Math.PI/180)*2* (21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))) - 0.0051*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) - 0.0074*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0004*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) - 0.0004*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.0006*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) + 0.0010*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0005*Math.sin((Math.PI/180)*(2*(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))));
+
+
+
+
+
+
+
+var newMoonDay=(((((()())((()())())((()(()()))())))(((((()())((()())())((()(()()))())))))/24;
+  */
+  
+  
+  if((newMoonK/1236.85)<-11){
+    deltaT=0.001+0.000839*(newMoonK/1236.85)+0.0002261*((newMoonK/1236.85)*(newMoonK/1236.85))-0.00000845*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))-0.000000081*(newMoonK/1236.85)*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85));
+  }else{
+    deltaT=-0.000278+0.000265*(newMoonK/1236.85)+0.000262*((newMoonK/1236.85)*(newMoonK/1236.85));
+  };
+  
+  var newMoonDay=((((2415020.75933 + 29.53058868*newMoonK + 0.0001178*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.000000155*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)) + 0.00033*Math.sin((166.56 + 132.87*(newMoonK/1236.85) - 0.009173*((newMoonK/1236.85)*(newMoonK/1236.85)))*(Math.PI/180))+(((((((((0.1734 - 0.000393*(newMoonK/1236.85))*Math.sin((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))*(Math.PI/180)) + 0.0021*Math.sin(2*(Math.PI/180)*(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.4068*Math.sin((306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))*(Math.PI/180)) + 0.0161*Math.sin((Math.PI/180)*2* (306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.0004*Math.sin((Math.PI/180)*3*(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0104*Math.sin((Math.PI/180)*2* (21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))) - 0.0051*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) - 0.0074*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0004*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) - 0.0004*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.0006*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) + 0.0010*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0005*Math.sin((Math.PI/180)*(2*(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))))-deltaT)+0.5+timeZone)-((((2415020.75933 + 29.53058868*newMoonK + 0.0001178*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.000000155*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)) + 0.00033*Math.sin((166.56 + 132.87*(newMoonK/1236.85) - 0.009173*((newMoonK/1236.85)*(newMoonK/1236.85)))*(Math.PI/180))+(((((((((0.1734 - 0.000393*(newMoonK/1236.85))*Math.sin((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))*(Math.PI/180)) + 0.0021*Math.sin(2*(Math.PI/180)*(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.4068*Math.sin((306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))*(Math.PI/180)) + 0.0161*Math.sin((Math.PI/180)*2* (306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.0004*Math.sin((Math.PI/180)*3*(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0104*Math.sin((Math.PI/180)*2* (21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))) - 0.0051*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) - 0.0074*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0004*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) - 0.0004*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) - 0.0006*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))) + 0.0010*Math.sin((Math.PI/180)*(2*(21.2964 + 390.67050646*newMoonK - 0.0016528*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000239*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))-(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85))))) + 0.0005*Math.sin((Math.PI/180)*(2*(306.0253 + 385.81691806*newMoonK + 0.0107306*((newMoonK/1236.85)*(newMoonK/1236.85)) + 0.00001236*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))+(359.2242 + 29.10535608*newMoonK - 0.0000333*((newMoonK/1236.85)*(newMoonK/1236.85)) - 0.00000347*(((newMoonK/1236.85)*(newMoonK/1236.85))*(newMoonK/1236.85)))))))-deltaT)+0.5+timeZone)%24))))/24;
+  
+  
+  /*
+  function newMoonDay(){
+  var k =0;
+  var PI=Math.PI/180;
+    var T, T2, T3, dr, Jd1, M, Mpr, F, C1, deltat, JdNew;
+    T = k/1236.85; // Time in Julian centuries from 1900 January 0.5 
+    T2 = T * T; 
+    T3 = T2 * T; 
+    dr = PI/180; 
+    Jd1 = 2415020.75933 + 29.53058868*k + 0.0001178*T2 - 0.000000155*T3; 
+    Jd1 = Jd1 + 0.00033*Math.sin((166.56 + 132.87*T - 0.009173*T2)*dr); // Mean new moon 
+    M = 359.2242 + 29.10535608*k - 0.0000333*T2 - 0.00000347*T3; // Sun's mean anomaly 
+    Mpr = 306.0253 + 385.81691806*k + 0.0107306*T2 + 0.00001236*T3; // Moon's mean anomaly 
+    F = 21.2964 + 390.67050646*k - 0.0016528*T2 - 0.00000239*T3; // Moon's argument of latitude 
+    C1=(0.1734 - 0.000393*T)*Math.sin(M*dr) + 0.0021*Math.sin(2*dr*M); 
+    C1 = C1 - 0.4068*Math.sin(Mpr*dr) + 0.0161*Math.sin(dr*2*Mpr); 
+    C1 = C1 - 0.0004*Math.sin(dr*3*Mpr); 
+    C1 = C1 + 0.0104*Math.sin(dr*2*F) - 0.0051*Math.sin(dr*(M+Mpr)); 
+    C1 = C1 - 0.0074*Math.sin(dr*(M-Mpr)) + 0.0004*Math.sin(dr*(2*F+M)); 
+    C1 = C1 - 0.0004*Math.sin(dr*(2*F-M)) - 0.0006*Math.sin(dr*(2*F+Mpr)); 
+    C1 = C1 + 0.0010*Math.sin(dr*(2*F-Mpr)) + 0.0005*Math.sin(dr*(2*Mpr+M)); 
+    if (T < -11) { 	deltat= 0.001 + 0.000839*T + 0.0002261*T2 - 0.00000845*T3 - 0.000000081*T*T3; } else { 	deltat= -0.000278 + 0.000265*T + 0.000262*T2; };
+    JdNew = Jd1 + C1 - deltat; 
+    return ((JdNew + 0.5 + timeZone)-((JdNew + 0.5 + timeZone)%24))/24
+  }
+  */
+  
+  
+  
   setInterval(function () {
     var time = new Date();
     var secondTime = time.getSeconds();
@@ -1992,156 +1956,44 @@
     minute.style.transform = 'translate(-50%,-50%) rotate(calc(' + minuteDeg + 'deg + 90deg))';
     hour.style.transform = 'translate(-50%,-50%) rotate(calc(' + hourDeg + 'deg + 90deg))';
     days.innerHTML = day + '<span>' + date + '/' + month + '/' + year + '</span>';
-    if ((time.getMonth() + 1) >= 3 && (time.getMonth() + 1) <= 5) {
-      season = 'spring';
-    } else if ((time.getMonth() + 1) >= 6 && (time.getMonth() + 1) <= 8) {
-      season = 'summer';
-    } else if ((time.getMonth() + 1) >= 9 && (time.getMonth() + 1) <= 11) {
-      season = 'fall';
-    } else {
-      season = 'winter';
+    if((time.getMonth()+1)>=3&&(time.getMonth()+1)<=5){
+      season='spring';
+    }else if((time.getMonth()+1)>=6&&(time.getMonth()+1)<=8){
+      season='summer';
+    }else if((time.getMonth()+1)>=9&&(time.getMonth()+1)<=11){
+      season='fall';
+    }else{
+      season='winter';
     };
-    if ((hourTime + (minuteTime / 60)) >= sunrise && (hourTime + (minuteTime / 60)) <= 10) {
-      session = 'morning';
-    } else if ((hourTime + (minuteTime / 60)) >= 11 && (hourTime + (minuteTime / 60)) <= 15) {
-      session = 'noon';
-    } else if ((hourTime + (minuteTime / 60)) >= 16 && (hourTime + (minuteTime / 60)) <= sunset) {
-      session = 'afternoon';
-    } else {
-      session = 'night';
+    if((hourTime+(minuteTime/60))>=sunrise&&(hourTime+(minuteTime/60))<=10){
+      session='morning';
+    }else if((hourTime+(minuteTime/60))>=11&&(hourTime+(minuteTime/60))<=15){
+      session='noon';
+    }else if((hourTime+(minuteTime/60))>=16&&(hourTime+(minuteTime/60))<=sunset){
+      session='afternoon';
+    }else{
+      session='night';
     };
-    season = 'spring';
-    session = 'noon';
-    cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/' + '804' + '/style.css');
-/*
- * Copyright 2004 Ho Ngoc Duc [http://come.to/duc]. All Rights Reserved.<p>
- * Permission to use, copy, modify, and redistribute this software and its
- * documentation for personal, non-commercial use is hereby granted provided that
- * this copyright notice appears in all copies.
- */
-    pi=Math.PI;
-    function int(divisor,dividend){
-      return (divisor-(divisor%dividend))/dividend;
-    };
-    function dateToJulius(dd,mm,yy){
-      var a, y, m, jd;
-      a=int((14 - mm) , 12);
-      y=yy+4800-a;
-      m=mm+12*a-3;
-      jd=dd + int((153*m+2),5) + 365*y + int(y,4) - int(y,100) + int(y,400) - 32045;
-      if (jd < 2299161) {
-        jd = dd + int((153*m+2),5) + 365*y + int(y,4) - 32083;
-      }
-      return jd;
-    };
-    function getNewMoonDay(k, timeZone){
-      var T, T2, T3, dr, Jd1, M, Mpr, F, C1, deltat, JdNew;
-      T = k/1236.85;
-      T2 = T * T;
-      T3 = T2 * T;
-      dr = pi/180;
-      Jd1 = 2415020.75933 + 29.53058868*k + 0.0001178*T2 - 0.000000155*T3;
-      Jd1 = Jd1 + 0.00033*Math.sin((166.56 + 132.87*T - 0.009173*T2)*dr);
-      M = 359.2242 + 29.10535608*k - 0.0000333*T2 - 0.00000347*T3;
-      Mpr = 306.0253 + 385.81691806*k + 0.0107306*T2 + 0.00001236*T3;
-      F = 21.2964 + 390.67050646*k - 0.0016528*T2 - 0.00000239*T3;
-      C1=(0.1734 - 0.000393*T)*Math.sin(M*dr) + 0.0021*Math.sin(2*dr*M);
-      C1 = C1 - 0.4068*Math.sin(Mpr*dr) + 0.0161*Math.sin(dr*2*Mpr);
-      C1 = C1 - 0.0004*Math.sin(dr*3*Mpr);
-      C1 = C1 + 0.0104*Math.sin(dr*2*F) - 0.0051*Math.sin(dr*(M+Mpr));
-      C1 = C1 - 0.0074*Math.sin(dr*(M-Mpr)) + 0.0004*Math.sin(dr*(2*F+M));
-      C1 = C1 - 0.0004*Math.sin(dr*(2*F-M)) - 0.0006*Math.sin(dr*(2*F+Mpr));
-      C1 = C1 + 0.0010*Math.sin(dr*(2*F-Mpr)) + 0.0005*Math.sin(dr*(2*Mpr+M));
-      if (T < -11) {
-        deltaT= 0.001 + 0.000839*T + 0.0002261*T2 - 0.00000845*T3 - 0.000000081*T*T3;
-      } else {
-        deltaT= -0.000278 + 0.000265*T + 0.000262*T2;
-      };
-      JdNew = Jd1 + C1 - deltaT;
-      return int(JdNew + 0.5 + timeZone,24)
-    };
-    function getSunLongitude(jdn, timeZone){
-      var T, T2, dr, M, L0, DL, L;
-      T = (jdn - 2451545.5 - timeZone/24) / 36525;
-      T2 = T*T;
-      dr = pi/180;
-      M = 357.52910 + 35999.05030*T - 0.0001559*T2 - 0.00000048*T*T2;
-      L0 = 280.46645 + 36000.76983*T + 0.0003032*T2;
-      DL = (1.914600 - 0.004817*T - 0.000014*T2)*Math.sin(dr*M);
-      DL = DL + (0.019993 - 0.000101*T)*Math.sin(dr*2*M) + 0.000290*Math.sin(dr*3*M);
-      L = L0 + DL;
-      L = L*dr;
-      L = L - pi*2*(int(L,(pi*2)));
-      return int(L , pi * 6)
-    };
-    function getLunarMonth11(yy, timeZone){
-      var k, off, nm, sunLong;
-      off = dateToJulius(31, 12, yy) - 2415021;
-      k = int(off , 29.530588853);
-      nm = getNewMoonDay(k, timeZone);
-      sunLong = getSunLongitude(nm, timeZone);
-      if (sunLong >= 9) {
-        nm = getNewMoonDay(k-1, timeZone);
-      }
-      return nm;
-    };
-    function getLeapMonthOffset(a11, timeZone){
-      var k, last, arc, i;
-      k = int((a11 - 2415021.076998695) , 29.530588853 + 0.5);
-      last = 0;
-      i = 1; // We start with the month following lunar month 11
-      arc = getSunLongitude(getNewMoonDay(k+i, timeZone), timeZone);
-      do {
-        last = arc;
-        i++;
-        arc = getSunLongitude(getNewMoonDay(k+i, timeZone), timeZone);
-      } while (arc != last && i < 14);
-      return i-1;
-    }
-    function convertSolar2Lunar(dd,mm,yy,timeZone){
-      var k, dayNumber, monthStart, a11, b11, lunarDay, lunarMonth, lunarYear, lunarLeap;
-      dayNumber=dateToJulius(dd,mm,yy);
-      k = int((dayNumber - 2415021.076998695) , 29.530588853);
-      monthStart = getNewMoonDay(k+1, timeZone);
-      if (monthStart > dayNumber) {
-        monthStart = getNewMoonDay(k, timeZone);
-      };
-      a11 = getLunarMonth11(yy, timeZone);
-      b11 = a11;
-      if (a11 >= monthStart) {
-        lunarYear = yy;
-        a11 = getLunarMonth11(yy-1, timeZone);
-      } else {
-        lunarYear = yy+1;
-        b11 = getLunarMonth11(yy+1, timeZone);
-      };
-      lunarDay = dayNumber-monthStart+1;
-      diff = int((monthStart - a11),29);
-      lunarLeap = 0;
-      lunarMonth = diff+11;
-      if (b11 - a11 > 365) {
-        leapMonthDiff = getLeapMonthOffset(a11, timeZone);
-        if (diff >= leapMonthDiff) {
-          lunarMonth = diff + 10;
-          if (diff == leapMonthDiff) {
-            lunarLeap = 1;
-          };
-        };
-      };
-      if (lunarMonth > 12) {
-        lunarMonth = lunarMonth - 12;
-      };
-      if (lunarMonth >= 11 && diff < 4) {
-        lunarYear -= 1;
-      };
-      return [lunarDay, lunarMonth, lunarYear, lunarLeap];
-    };
-    console.log(convertSolar2Lunar(time.getDate(),time.getMonth()+1,time.getFullYear(),7));
-
-
+    season='spring';
+    session='noon';
+    cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/'+'804'+'/style.css');
+    
+    
+    juliusTime=(time.getDate()+(((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)-((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)%5))/5)+365*(time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12))+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%4))/4)-((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%100))/100)+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%400))/400)-32045)+((hourTime-12)-((hourTime-12)%24))/24+(minuteTime-(minuteTime%1440))/1440+(secondTime-(secondTime%86400))/86400;
+    
+    /*
+    
+    
+    a = [(14 - tháng)/ 12]
+    y = năm + 4800 - a
+    m= tháng + 12a - 3
+    ngày + [(153m + 2)/5] + 365y + [y/4] - [y/100] + [y/400] - 32045;
+    JD= JDN + (giờ - 12)/24 + phút/1440 + giây/86400
+    juliusTime=(time.getDate()-1+(((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)-((153*((time.getMonth()+1)+12*(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)-3)+2)%5))/5)+365*(time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12))+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%4))/4)-((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%100))/100)+((((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))-(((time.getFullYear()+4800-(((14-(time.getMonth()+1))-((14-(time.getMonth()+1))%12))/12)))%400))/400)-32045)+((hourTime-12)-((hourTime-12)%24))/24+(minuteTime-(minuteTime%1440))/1440+(secondTime-(secondTime%86400))/86400;
+    */
+    console.log(newMoonDay);
   }, 1000);
 </script>
-
 </html>
 <!--
 https://api.openweathermap.org/data/2.5/weather?lat=21.028511&lon=105.804817&appid=5298f9131293054b9041c1008d027218
