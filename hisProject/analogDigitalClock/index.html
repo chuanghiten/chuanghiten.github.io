@@ -132,7 +132,6 @@
     }
   </style>
   <link class='display' rel='stylesheet' type='text/css' />
-  <link class='leaf' rell='stylesheet' type='text/css' />
   <style>
     div.sun {
       position: relative;
@@ -1951,7 +1950,7 @@
   var hour = window.document.querySelector('div.hour');
   var days = window.document.querySelector('div.days');
   var cssDisplay = window.document.querySelector('link.display');
-  var date, month, season, seasonCheck, session, sessionData, sessionDataUrl, latitudeData, longitudeData, weatherData, weatherDataUrl, sunrise, sunset;
+  var date, month, season, seasonCheck, session, sessionData, sessionDataUrl, latitudeData, longitudeData, weatherData, weatherDataUrl, sunrise, sunset,juliusDate;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(positionData);
   } else {
@@ -2013,6 +2012,136 @@
     season = 'spring';
     session = 'noon';
     cssDisplay.setAttribute('href', './css/' + season + '/' + session + '/' + '804' + '/style.css');
+    /*
+     * Copyright (c) 2006 Ho Ngoc Duc. All Rights Reserved.
+     * Astronomical algorithms from the book "Astronomical Algorithms" by Jean Meeus, 1998
+     *
+     * Permission to use, copy, modify, and redistribute this software and its
+     * documentation for personal, non-commercial use is hereby granted provided that
+     * this copyright notice and appropriate documentation appears in all copies.
+     */
+    function dateToJulius(date, month, year) {
+    	juliusDate = date + Math.floor((153*(month+12*(Math.floor((14 - month) / 12))-3)+2)/5) + 365*(year+4800-(Math.floor((14 - month) / 12))) + Math.floor((year+4800-(Math.floor((14 - month) / 12)))/4) - Math.floor((year+4800-(Math.floor((14 - month) / 12)))/100) + Math.floor((year+4800-(Math.floor((14 - month) / 12)))/400) - 32045;
+    	if (juliusDate < 2299161) {
+	    	juliusDate = date + Math.floor((153*(month+12*(Math.floor((14 - month) / 12))-3)+2)/5) + 365*(year+4800-(Math.floor((14 - month) / 12))) + Math.floor((year+4800-(Math.floor((14 - month) / 12)))/4) - 32083;
+    	};
+    	return juliusDate;
+    };
+    function NewMoon(k) {
+	    var Mpr, F, C1, deltat, JdNew;
+	    /*
+    	T = (k/1236.85);	    
+    	T2 = ((k/1236.85) * (k/1236.85));
+	    T3 = (((k/1236.85) * (k/1236.85)) * (k/1236.85));
+    	dr = (Math.PI/180);
+	    Jd1 = (2415020.75933 + 29.53058868*k + 0.0001178*((k/1236.85) * (k/1236.85)) - 0.000000155*(((k/1236.85) * (k/1236.85)) * (k/1236.85)));
+	    Jd1 = (2415020.75933 + 29.53058868*k + 0.0001178*((k/1236.85) * (k/1236.85)) - 0.000000155*(((k/1236.85) * (k/1236.85)) * (k/1236.85))) + 0.00033*Math.sin((166.56 + 132.87*(k/1236.85) - 0.009173*((k/1236.85) * (k/1236.85)))*(Math.PI/180));
+	    M = (359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85)));
+	    */
+	    Mpr = 306.0253 + 385.81691806*k + 0.0107306*((k/1236.85) * (k/1236.85)) + 0.00001236*(((k/1236.85) * (k/1236.85)) * (k/1236.85));
+    	F = 21.2964 + 390.67050646*k - 0.0016528*((k/1236.85) * (k/1236.85)) - 0.00000239*(((k/1236.85) * (k/1236.85)) * (k/1236.85));
+	    C1=(0.1734 - 0.000393*(k/1236.85))*Math.sin((359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85)))*(Math.PI/180)) + 0.0021*Math.sin(2*(Math.PI/180)*(359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85))));
+    	C1 = C1 - 0.4068*Math.sin(Mpr*(Math.PI/180)) + 0.0161*Math.sin((Math.PI/180)*2*Mpr);
+	    C1 = C1 - 0.0004*Math.sin((Math.PI/180)*3*Mpr);
+	    C1 = C1 + 0.0104*Math.sin((Math.PI/180)*2*F) - 0.0051*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85)))+Mpr));
+	    C1 = C1 - 0.0074*Math.sin((Math.PI/180)*((359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85)))-Mpr)) + 0.0004*Math.sin((Math.PI/180)*(2*F+(359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85)))));
+	    C1 = C1 - 0.0004*Math.sin((Math.PI/180)*(2*F-(359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85))))) - 0.0006*Math.sin((Math.PI/180)*(2*F+Mpr));
+      C1 = C1 + 0.0010*Math.sin((Math.PI/180)*(2*F-Mpr)) + 0.0005*Math.sin((Math.PI/180)*(2*Mpr+(359.2242 + 29.10535608*k - 0.0000333*((k/1236.85) * (k/1236.85)) - 0.00000347*(((k/1236.85) * (k/1236.85)) * (k/1236.85)))));
+      if ((k/1236.85) < -11) {
+        deltat= 0.001 + 0.000839*(k/1236.85) + 0.0002261*((k/1236.85) * (k/1236.85)) - 0.00000845*(((k/1236.85) * (k/1236.85)) * (k/1236.85)) - 0.000000081*(k/1236.85)*(((k/1236.85) * (k/1236.85)) * (k/1236.85));
+      } else {
+        deltat= -0.000278 + 0.000265*(k/1236.85) + 0.000262*((k/1236.85) * (k/1236.85));
+      };
+      JdNew = (2415020.75933 + 29.53058868*k + 0.0001178*((k/1236.85) * (k/1236.85)) - 0.000000155*(((k/1236.85) * (k/1236.85)) * (k/1236.85))) + 0.00033*Math.sin((166.56 + 132.87*(k/1236.85) - 0.009173*((k/1236.85) * (k/1236.85)))*(Math.PI/180)) + C1 - deltat;
+      return JdNew;
+    };
+    function getNewMoonDay(k, timeZone) {
+      return Math.floor(NewMoon(k) + 0.5 + timeZone/24);
+    };
+    function SunLongitude(jdn) {
+      var T, T2, dr, M, L0, DL, L;
+      T = (jdn - 2451545.0 ) / 36525;
+      T2 = T*T;
+      dr = Math.PI/180;
+      M = 357.52910 + 35999.05030*T - 0.0001559*T2 - 0.00000048*T*T2;
+      L0 = 280.46645 + 36000.76983*T + 0.0003032*T2;
+      DL = (1.914600 - 0.004817*T - 0.000014*T2)*Math.sin(dr*M);
+      DL = DL + (0.019993 - 0.000101*T)*Math.sin(dr*2*M) + 0.000290*Math.sin(dr*3*M);
+      L = L0 + DL;
+      L = L*dr;
+      L = L - Math.PI*2*(Math.floor(L/(Math.PI*2)));
+      return L;
+    };
+    function getSunLongitude(dayNumber, timeZone) {
+      return Math.floor(SunLongitude(dayNumber - 0.5 - timeZone/24)/Math.PI*6);
+    };
+    function getLunarMonth11(year, timeZone) {
+      var k, off, nm, sunLong;
+      off = dateToJulius(31, 12, year) - 2415021;
+      k = Math.floor(off / 29.530588853);
+      nm = getNewMoonDay(k, timeZone);
+      sunLong = getSunLongitude(nm, timeZone);
+      if (sunLong >= 9) {
+        nm = getNewMoonDay(k-1, timeZone);
+      };
+      return nm;
+    };
+    function getLeapMonthOffset(a11, timeZone) {
+      var k, last, arc, i;
+      k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
+      last = 0;
+      i = 1;
+      arc = getSunLongitude(getNewMoonDay(k+i, timeZone), timeZone);
+      do {
+        last = arc;
+        i++;
+        arc = getSunLongitude(getNewMoonDay(k+i, timeZone), timeZone);
+      } while (arc != last && i < 14);
+      return i-1;
+    }
+    function convertSolar2Lunar(date, month, year, timeZone) {
+      var k, dayNumber, monthStart, a11, b11, lunarDay, lunarMonth, lunarYear, lunarLeap;
+	    dayNumber = dateToJulius(date,month, year);
+	    k = Math.floor((dayNumber - 2415021.076998695) / 29.530588853);
+	    monthStart = getNewMoonDay(k+1, timeZone);
+	    if (monthStart > dayNumber) {
+  		  monthStart = getNewMoonDay(k, timeZone);
+  	  };
+  	  a11 = getLunarMonth11(year, timeZone);
+	    b11 = a11;
+	    if (a11 >= monthStart) {
+	  	  lunarYear = year;
+		    a11 = getLunarMonth11(year-1, timeZone);
+	    } else {
+		    lunarYear = year+1;
+		    b11 = getLunarMonth11(year+1, timeZone);
+	    };
+	    lunarDay = dayNumber-monthStart+1;
+  	  diff = Math.floor((monthStart - a11)/29);
+	    lunarLeap = 0;
+	    lunarMonth = diff+11;
+	    if (b11 - a11 > 365) {
+		    leapMonthDiff = getLeapMonthOffset(a11, timeZone);
+		    if (diff >= leapMonthDiff) {
+			    lunarMonth = diff + 10;
+			    if (diff == leapMonthDiff) {
+				    lunarLeap = 1;
+			    };
+  		  };
+	    };
+    	if (lunarMonth > 12) {
+    		lunarMonth = lunarMonth - 12;
+	    };
+	    if (lunarMonth >= 11 && diff < 4) {
+	    	lunarYear -= 1;
+	    };
+	    return new Array(lunarDay, lunarMonth, lunarYear, lunarLeap);
+    };
+    /*
+     * End!
+     * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!
+     */
+     console.log(convertSolar2Lunar(time.getDate(), time.getMonth()+1, time.getFullYear(),7));
   }, 1000);
 </script>
 </html>
