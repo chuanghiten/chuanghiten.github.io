@@ -132,6 +132,7 @@
     }
   </style>
   <link class='display' rel='stylesheet' type='text/css' />
+  <link class='leaf' rel='stylesheet' type='text/css' />
   <style>
     div.sun {
       position: relative;
@@ -2124,9 +2125,6 @@
      * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!
      */
     console.log(convertSolar2Lunar(time.getDate(), time.getMonth() + 1, time.getFullYear(), timeZone));
-    //console.log(SunLongitude(2459937 - 0.5 - timeZone / 24)); 4.726867531317538
-     console.log(getLunarMonth11(time.getFullYear(),timeZone)); //2459908
-    // console.log(Math.floor((153 * (12 + 12 * (Math.floor((14 - 12) / 12)) - 3) + 2) / 5));
   }, 1000);
 </script>
 
