@@ -20,13 +20,9 @@ body {
     brightness(95%) contrast(91%);/* #70960c; */
   --treeShadowColor: invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01)/* #fff */;
   --trunkColor: invert(.39) sepia(.11) saturate(17.53) hue-rotate(343deg) brightness(.94) contrast(.95);/* #885c3b */
-  /*--leaf3Color: brightness(0) saturate(100%) invert(91%) sepia(19%)
-    saturate(7094%) hue-rotate(283deg) brightness(101%) contrast(98%); #fc89d1; 
-  --leaf2Color: brightness(0) saturate(100%) invert(86%) sepia(22%)
-    saturate(1502%) hue-rotate(281deg) brightness(94%) contrast(110%);/* #fc96d6; 
-  --leafColor: brightness(0) saturate(100%) invert(77%) sepia(43%)
-    saturate(699%) hue-rotate(285deg) brightness(104%) contrast(98%);/* #fca1da; 
-    */
+  --leaf3Color: brightness(0) saturate(100%) invert(58%) sepia(95%) saturate(329%) hue-rotate(37deg) brightness(92%) contrast(87%);/*#89b12e;*/ 
+  --leaf2Color: brightness(0) saturate(100%) invert(74%) sepia(45%) saturate(466%) hue-rotate(34deg) brightness(91%) contrast(84%);/*#a1c058*/; 
+  --leafColor: brightness(0) saturate(100%) invert(75%) sepia(19%) saturate(920%) hue-rotate(37deg) brightness(101%) contrast(80%);/*#aac669*/; 
   --cloudColor:#fff;
 }
 div.scenery,div.clouds {

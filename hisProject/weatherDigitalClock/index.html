@@ -2014,7 +2014,7 @@
     };
     season = 'spring';
     session = 'afternoon';
-    weatherId='802';
+    weatherId='803';
     cssDisplay.setAttribute('href', './css/' + season + '/session/' + session + '/' + weatherId + '/style.css');
     /*
      * Copyright (c) 2006 Ho Ngoc Duc. All Rights Reserved.
@@ -2023,6 +2023,7 @@
      * Permission to use, copy, modify, and redistribute this software and its
      * documentation for personal, non-commercial use is hereby granted provided that
      * this copyright notice and appropriate documentation appears in all copies.
+     * The algorithm is explained by Ho Ngoc Duc at "http://www.informatik.uni-leipzig.de/~duc/amlich/"
      */
     function getNewMoonDay(k, timeZone) {
       if ((k / 1236.85) < -11) {
@@ -2137,7 +2138,7 @@
     }else{
     		leaf='default';
     };
-    leaf='peachBlossom';
+    leaf='default';
     if(leaf=='default'||session=='night'){
     		cssLeaf.setAttribute('href','./css/leafDefault.css');
     }else{

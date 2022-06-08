@@ -21,9 +21,9 @@ body {
   --treeShadowColor: invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01);/*#fff*/;
   --trunkColor: brightness(0) saturate(100%) invert(27%) sepia(50%)
     saturate(479%) hue-rotate(344deg) brightness(97%) contrast(88%)/*#6e4b30*/;
-  --leaf3Color: var(--fuchsiaBlushFilter);
-  --leaf2Color: var(--shockingFilter);
-  --leafColor: var(--pinkPunkFilter);
+  --leaf3Color: brightness(0) saturate(100%) invert(54%) sepia(44%) saturate(632%) hue-rotate(37deg) brightness(96%) contrast(92%);/*7b9f29 */
+  --leaf2Color: brightness(0) saturate(100%) invert(64%) sepia(43%) saturate(470%) hue-rotate(37deg) brightness(92%) contrast(87%);/*91ad4f*/
+  --leafColor: brightness(0) saturate(100%) invert(63%) sepia(44%) saturate(382%) hue-rotate(37deg) brightness(98%) contrast(89%);/*99b25f*/
 }
 div.scenery {
   display: block;
