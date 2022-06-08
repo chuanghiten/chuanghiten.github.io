@@ -1,0 +1,23 @@
+body {
+  --bodyBackgroundGradient: #3d2a90;
+  --bodyBackgroundGradient2: #5e6afd;
+  --sunColor: #fff;
+  --dateTextColor: var(--bodyBackgroundGradient);
+  --minuteTextColor:var(--bodyBackgroundGradient);
+  --secondAndHourBackgroundColor: #4a57d9;
+  --mountain7Color: brightness(0) saturate(100%) invert(43%) sepia(80%) saturate(1012%) hue-rotate(217deg) brightness(86%) contrast(85%)/*#716cce*/;
+  --mountain6Color: brightness(0) saturate(100%) invert(33%) sepia(76%) saturate(1001%) hue-rotate(216deg) brightness(91%) contrast(86%);/*#5f59c8*/
+  --mountain5Color: brightness(0) saturate(100%) invert(25%) sepia(90%) saturate(1712%) hue-rotate(231deg) brightness(83%) contrast(90%);/*#4d47c2*/
+  --mountain4Color: brightness(0) saturate(100%) invert(22%) sepia(69%) saturate(2247%) hue-rotate(231deg) brightness(87%) contrast(90%);/*#4540af*/
+  --mountain3Color: brightness(0) saturate(100%) invert(21%) sepia(48%) saturate(2439%) hue-rotate(227deg) brightness(92%) contrast(95%);/*#3e399b*/
+  --mountain2Color: brightness(0) saturate(100%) invert(14%) sepia(34%) saturate(5180%) hue-rotate(235deg) brightness(102%) contrast(89%);/*#363288*/
+  --mountainColor: brightness(0) saturate(100%) invert(10%) sepia(98%) saturate(2260%) hue-rotate(237deg) brightness(94%) contrast(89%);/*#2e2b74*/
+  --treeShadowColor: invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01);/*#fff*/
+  --trunkColor: brightness(0) saturate(100%) invert(12%) sepia(80%) saturate(3406%) hue-rotate(248deg) brightness(89%) contrast(90%);
+  --leaf3Color: brightness(0) saturate(100%) invert(51%) sepia(20%) saturate(2552%) hue-rotate(209deg) brightness(75%) contrast(90%);/*#6661b9*/
+  --leaf2Color: brightness(0) saturate(100%) invert(31%) sepia(9%) saturate(3520%) hue-rotate(204deg) brightness(93%) contrast(87%);/*#4f4c90*/
+  --leafColor: brightness(0) saturate(100%) invert(32%) sepia(81%) saturate(423%) hue-rotate(204deg) brightness(92%) contrast(90%);/*#5a56a5*/
+}
+div.scenery,div.stars {
+  display: block;
+}
