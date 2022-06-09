@@ -1,0 +1,110 @@
+:root {
+      --sambucus: #191a2e;
+      --red: #F00;
+      --white: #fff;
+      --whiteFilter: invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01);
+      /* morning */
+      /*
+      --honeyAndThyme:#adad00;
+      --honeyAndThymeFilter:invert(66%) sepia(42%) saturate(2440%) hue-rotate(22deg) brightness(92%) contrast(105%);
+      --peaSoup:#989c01;
+      --peaSoupFilter:invert(52%) sepia(79%) saturate(1102%) hue-rotate(29deg) brightness(91%) contrast(99%);
+      --drablyOlive:#848c02;
+      --drablyOliveFilter:invert(39%) sepia(99%) saturate(1054%) hue-rotate(41deg) brightness(95%) contrast(98%);
+      --flagGreen:#707e03;
+      --flagGreenFilter:invert(40%) sepia(37%) saturate(7200%) hue-rotate(52deg) brightness(100%) contrast(98%);
+      --mudGreen:#5b6a04;
+      --mudGreenFilter:invert(36%) sepia(7%) saturate(6762%) hue-rotate(34deg) brightness(97%) contrast(97%);
+      --highlandsMoss:#495a05;
+      --highlandsMossFilter:invert(30%) sepia(54%) saturate(631%) hue-rotate(31deg) brightness(92%) contrast(99%);
+      --godzilla:#364905;
+      --godzillaFilter: invert(24%) sepia(45%) saturate(641%) hue-rotate(36deg) brightness(100%) contrast(107%);
+      --axeHandle:#6d4a2f;
+      --axeHandleFilter:invert(.28) sepia(.21) saturate(11.22) hue-rotate(344deg) brightness(.99) contrast(.88);
+      --fijiPalm:#4d8b3a;
+      --fijiPalmFilter:invert(.49) sepia(.12) saturate(20.13) hue-rotate(61deg) brightness(.93) contrast(.88);
+      --bilbao:#43812e;
+      --bilbaoFilter:invert(.42) sepia(.14) saturate(21.15) hue-rotate(60deg) brightness(.96) contrast(.83);
+      --hiddenValley:#699e39;
+      --hiddenValleyFilter:invert(.50) sepia(.79) saturate(3.52) hue-rotate(49deg) brightness(.95) contrast(.85); */
+      --blueCola: #078cdc;
+
+      --vaporwaveBlue: #1ec5fc;
+
+
+
+      --sourCandy: #60ae49;
+      --sourCandyFilter: invert(.56) sepia(.57) saturate(4.35) hue-rotate(61deg) brightness(.96) contrast(.91);
+      --ballyhoo: #54a139;
+      --ballyhooFilter: invert(.52) sepia(.35) saturate(7.08) hue-rotate(60deg) brightness(.96) contrast(.98);
+      --jasmineGreen: #83c547;
+      --jasmineGreenFilter: invert(.64) sepia(.37) saturate(6.89) hue-rotate(49deg) brightness(1.04) contrast(.82);
+      /* noon */
+      --orangeBellPepper: #f88a44;
+      --fingerBanana: #e5c22c;
+      --paleAle: #fff16e;
+      /* afternoon */
+      --indianRed: #880f04;
+      --pumpkin: #ff7617;
+      --sunflower: #ffc712;
+      /* night */
+      --daintree: #08273a;
+      --beyondTheStars: #0a3455;
+      --prominentBlue: #2b75a4;
+      --mysteriousDepths: #000928;
+      --catalinaBlue: #0f267a;
+      /* ??? */
+
+
+
+
+
+
+
+      --greenAcres: #569d42;
+      --greenAcresFilter: brightness(0) saturate(100%) invert(49%) sepia(72%) saturate(389%) hue-rotate(61deg) brightness(96%) contrast(83%);
+      --beerGarden: #4c9133;
+      --beerGardenFilter: brightness(0) saturate(100%) invert(49%) sepia(11%) saturate(2539%) hue-rotate(59deg) brightness(96%) contrast(85%);
+      --sparklingApple: #76b140;
+      --sparklingAppleFilter: brightness(0) saturate(100%) invert(63%) sepia(56%) saturate(451%) hue-rotate(49deg) brightness(89%) contrast(90%);
+
+
+
+
+
+    }
+
+    *,
+    :before,
+    :after {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+      transition: all .25s ease-in-out
+    }
+
+    body {
+      background: 0 0 / cover linear-gradient(to bottom, var(--bodyBackgroundGradient), var(--bodyBackgroundGradient2)) no-repeat fixed;
+      font-size: 16px;
+      min-height: 100%;
+      --bodyBackgroundGradient: var(--sambucus);
+      --bodyBackgroundGradient2: var(--sambucus);
+      --sunColor: #fff;
+      --sunColorShadow: var(--sunColor);
+      --dateTextColor: var(--sambucus);
+      --secondAndHourTextColor: #fff;
+      --minuteTextColor: var(--sambucus);
+      --secondAndHourBackgroundColor: var(--sambucus);
+      --minuteBackgroundColor: #fff
+    }
+
+    div.clouds,
+    div.scenery,
+    div.stars,
+    div.cloud4,
+    div.cloud5,
+    div.cloud6,
+    div.cloud7 {
+      display: none
+    }

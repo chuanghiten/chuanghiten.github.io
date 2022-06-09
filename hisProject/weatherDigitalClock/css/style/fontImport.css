@@ -1,0 +1,14 @@
+@font-face {
+      font-family: 'Seven Segment';
+      src: url('../../fonts/sevenSegment/Seven Segment.ttf'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogDigitalClock/fonts/sevenSegment/Seven%20Segment.ttf')
+    }
+
+    @font-face {
+      font-family: Pacifico;
+      src: url('../../../analogClockPlus/fonts/pacificoLatin.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoLatin.woff2')
+    }
+
+    @font-face {
+      font-family: Pacifico;
+      src: url('../../../analogClockPlus/fonts/pacificoVietnamese.woff2'), url('https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/analogClockPlus/fonts/pacificoVietnamese.woff2')
+    }
