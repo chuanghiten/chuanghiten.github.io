@@ -142,19 +142,6 @@ setInterval(function () {
   } else {
     session = "night";
   }
-  season = "spring";
-  session = "noon";
-  weatherId = "804";
-  cssDisplay.setAttribute(
-    "href",
-    "./css/season/" +
-      season +
-      "/session/" +
-      session +
-      "/" +
-      weatherId +
-      "/style.css"
-  );
   /*
    * Copyright (c) 2006 Ho Ngoc Duc. All Rights Reserved.
    * Astronomical algorithms from the book "Astronomical Algorithms" by Jean Meeus, 1998
@@ -611,7 +598,20 @@ setInterval(function () {
   } else {
     leaf = "default";
   }
-  leaf = "default";
+  season = "spring";
+  session = "afternoon";
+  weatherId = "804";
+  leaf = "peachBlossom";
+  cssDisplay.setAttribute(
+    "href",
+    "./css/season/" +
+      season +
+      "/session/" +
+      session +
+      "/" +
+      weatherId +
+      "/style.css"
+  );
   if (leaf == "default" || session == "night") {
     cssLeaf.setAttribute("href", "./css/season/spring/leaf/leafDefault.css");
   } else {
