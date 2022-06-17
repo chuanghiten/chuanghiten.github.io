@@ -603,7 +603,6 @@ setInterval(function () {
   } else {
     leaf = "default";
   }
-  season = "spring";
   session = "afternoon";
   weatherId = "804";
   leaf = "peachBlossom";
