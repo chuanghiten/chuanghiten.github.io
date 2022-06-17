@@ -63,8 +63,7 @@ async function positionData(position) {
     "&appid=5298f9131293054b9041c1008d027218";
   sessionData = await fetch(sessionDataUrl).then((data) => data.json());
   weatherData = await fetch(weatherDataUrl).then((data) => data.json());
-  sunrise =
-    parseInt(sessionData.sunrise.slice(0, 2)) +
+  sunrise= parseInt(sessionData.sunrise.slice(0, 2)) +
     parseInt(sessionData.sunrise.slice(-2.0)) / 60;
   sunset =
     parseInt(sessionData.sunset.slice(0, 2)) +
@@ -124,6 +123,12 @@ setInterval(function () {
   } else {
     season = "winter";
   }
+  if (sunrise) {}else {
+  	sunrise=5;    
+  };
+  if (sunset) {}else {
+  	sunset=18;
+  };
   if (
     hourTime + minuteTime / 60 >= sunrise &&
     hourTime + minuteTime / 60 <= 10
@@ -628,6 +633,9 @@ setInterval(function () {
         weatherId +
         "/style.css"
     );
+    console.log(sunrise,sunset);
+    //alert(sunrise+', '+sunset);
   }
   //console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
+  //console.log(session);
 }, 1000);
