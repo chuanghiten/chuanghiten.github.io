@@ -46,7 +46,7 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(positionData);
 } else {
   alert("Positioning is off");
-}
+};
 async function positionData(position) {
   latitudeData = position.coords.latitude;
   longitudeData = position.coords.longitude;
@@ -68,7 +68,7 @@ async function positionData(position) {
   sunset =
     parseInt(sessionData.sunset.slice(0, 2)) +
     parseInt(sessionData.sunset.slice(-2.0)) / 60;
-}
+};
 setInterval(function () {
   time = new Date();
   secondTime = time.getSeconds();
@@ -101,12 +101,12 @@ setInterval(function () {
     date = "0" + time.getDate();
   } else {
     date = time.getDate();
-  }
+  };
   if (time.getMonth() + 1 < 10) {
     month = "0" + (time.getMonth() + 1);
   } else {
     month = time.getMonth + 1;
-  }
+  };
   year = time.getFullYear();
   second.style.transform = "rotate(" + secondDeg + "deg)";
   minute.style.transform =
@@ -122,7 +122,7 @@ setInterval(function () {
     season = "fall";
   } else {
     season = "winter";
-  }
+  };
   if (sunrise) {}else {
   	sunrise=5;    
   };
@@ -146,7 +146,7 @@ setInterval(function () {
     session = "afternoon";
   } else {
     session = "night";
-  }
+  };
   /*
    * Copyright (c) 2006 Ho Ngoc Duc. All Rights Reserved.
    * Astronomical algorithms from the book "Astronomical Algorithms" by Jean Meeus, 1998
@@ -603,9 +603,9 @@ setInterval(function () {
   } else {
     leaf = "default";
   }
-  session = "afternoon";
-  weatherId = "804";
-  leaf = "peachBlossom";
+  session = "morning";
+  weatherId = "800";
+  leaf = "default";
   cssDisplay.setAttribute(
     "href",
     "./css/season/" +
