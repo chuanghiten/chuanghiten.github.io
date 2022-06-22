@@ -41,7 +41,7 @@ var date,
   lunar,
   leapMonth,
   leaf,
-  weatherId;
+  weatherId,cityNameDataUrl,cityNameData,cityName,countryNameDataUrl,countryNameData,countryName;
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(positionData);
 } else {
@@ -49,25 +49,35 @@ if (navigator.geolocation) {
 };
 async function positionData(position) {
   latitudeData = position.coords.latitude;
+  //latitudeData=15;
   longitudeData = position.coords.longitude;
+  //longitudeData=108;
   sessionDataUrl =
-    "https://api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat=" +
+    "https:/"+"/api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat=" +
     latitudeData +
     "&long=" +
     longitudeData;
   weatherDataUrl =
-    "https://api.openweathermap.org/data/2.5/weather?lat=" +
+    "https:/"+"/api.openweathermap.org/data/2.5/weather?lat=" +
     latitudeData +
     "&lon=" +
     longitudeData +
     "&appid=5298f9131293054b9041c1008d027218";
+  cityNameDataUrl='https:/'+'/api.openweathermap.org/geo/1.0/reverse?lat='+latitudeData+'&lon='+longitudeData+'&appid=5298f9131293054b9041c1008d027218';
+  countryNameDataUrl="http:/"+"/api.geonames.org/countryCodeJSON?lat="+latitudeData+"&lng="+longitudeData+"&username=chuanghiten";
   sessionData = await fetch(sessionDataUrl).then((data) => data.json());
   weatherData = await fetch(weatherDataUrl).then((data) => data.json());
+  cityNameData=await fetch(cityNameDataUrl).then((data)=>data.json());
+  countryNameData=await fetch(countryNameDataUrl).then((data)=>data.json());
   sunrise= parseInt(sessionData.sunrise.slice(0, 2)) +
     parseInt(sessionData.sunrise.slice(-2.0)) / 60;
   sunset =
     parseInt(sessionData.sunset.slice(0, 2)) +
     parseInt(sessionData.sunset.slice(-2.0)) / 60;
+ 	//alert(navigator.language);
+  //alert(cityNameData[0].local_names.vi);
+  //alert(typeof countryNameData.countryCode);
+  countryName=countryNameData.countryCode;
 };
 setInterval(function () {
   time = new Date();
@@ -599,13 +609,17 @@ setInterval(function () {
     (lunar[1] == 1 && lunar[0] >= 1 && lunar[0] <= 5) ||
     (lunar[1] == 12 && lunar[0] >= 28)
   ) {
-    leaf = "peachBlossom";
+  	if (latitudeData<16&&countryName=="VN") {
+  		leaf="apricotBlossom";
+  	}else{
+  		leaf="peachBlossom";
+  	};
   } else {
     leaf = "default";
   }
   session = "morning";
-  weatherId = "800";
-  leaf = "default";
+  weatherId = "803";
+  leaf = "apricotBlossom";
   cssDisplay.setAttribute(
     "href",
     "./css/season/" +
@@ -632,9 +646,9 @@ setInterval(function () {
         weatherId +
         "/style.css"
     );
-    console.log(sunrise,sunset);
     //alert(sunrise+', '+sunset);
-  }
+  };
+  //alert(navigator.language);
   //console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
   //console.log(session);
 }, 1000);
