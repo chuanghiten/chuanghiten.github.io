@@ -1,11 +1,4 @@
-var body = window.document.querySelector("body");
-var second = window.document.querySelector("div.second");
-var minute = window.document.querySelector("div.minute");
-var hour = window.document.querySelector("div.hour");
-var days = window.document.querySelector("div.days");
-var cssDisplay = window.document.querySelector("link.display");
-var cssLeaf = window.document.querySelector("link.leaf");
-var date,
+var body = window.document.querySelector("body"),second = window.document.querySelector("div.second"),minute = window.document.querySelector("div.minute"),hour = window.document.querySelector("div.hour"),days = window.document.querySelector("div.days"),cssDisplay = window.document.querySelector("link.display"),cssLeaf = window.document.querySelector("link.leaf"),date,
   month,
   season,
   seasonCheck,
@@ -41,7 +34,7 @@ var date,
   lunar,
   leapMonth,
   leaf,
-  weatherId,cityNameDataUrl,cityNameData,cityName,countryNameDataUrl,countryNameData,countryName;
+  weatherId,cityNameDataUrl,cityNameData,cityName,countryCodeDataUrl,countryCodeData,countryCode;
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(positionData);
 } else {
@@ -49,9 +42,8 @@ if (navigator.geolocation) {
 };
 async function positionData(position) {
   latitudeData = position.coords.latitude;
-  //latitudeData=15;
   longitudeData = position.coords.longitude;
-  //longitudeData=108;
+  //latitudeData=15;longitudeData=108;
   sessionDataUrl =
     "https:/"+"/api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat=" +
     latitudeData +
@@ -64,20 +56,21 @@ async function positionData(position) {
     longitudeData +
     "&appid=5298f9131293054b9041c1008d027218";
   cityNameDataUrl='https:/'+'/api.openweathermap.org/geo/1.0/reverse?lat='+latitudeData+'&lon='+longitudeData+'&appid=5298f9131293054b9041c1008d027218';
-  countryNameDataUrl="http:/"+"/api.geonames.org/countryCodeJSON?lat="+latitudeData+"&lng="+longitudeData+"&username=chuanghiten";
+  countryCodeDataUrl="https:/"+"/api.opencagedata.com/geocode/v1/json?q="+latitudeData+"+"+longitudeData+"&key=2dc8792399604acb8a984d4d32ac03d1&pretty=0";
   sessionData = await fetch(sessionDataUrl).then((data) => data.json());
   weatherData = await fetch(weatherDataUrl).then((data) => data.json());
   cityNameData=await fetch(cityNameDataUrl).then((data)=>data.json());
-  countryNameData=await fetch(countryNameDataUrl).then((data)=>data.json());
+  countryCodeData=await fetch(countryCodeDataUrl).then((data)=>data.json());
   sunrise= parseInt(sessionData.sunrise.slice(0, 2)) +
     parseInt(sessionData.sunrise.slice(-2.0)) / 60;
   sunset =
     parseInt(sessionData.sunset.slice(0, 2)) +
     parseInt(sessionData.sunset.slice(-2.0)) / 60;
- 	//alert(navigator.language);
-  //alert(cityNameData[0].local_names.vi);
-  //alert(typeof countryNameData.countryCode);
-  countryName=countryNameData.countryCode;
+ 	//console.log(navigator.language);
+  //console.log(cityNameData[0].local_names.vi);
+  //console.log(typeof countryCodeData.countryCode);
+  countryCode=countryCodeData.results[0].components.country_code;
+  //console.log(countryCode);
 };
 setInterval(function () {
   time = new Date();
@@ -107,6 +100,7 @@ setInterval(function () {
         )
     ) /
       60;
+  //timeZone=8;
   if (time.getDate() < 10) {
     date = "0" + time.getDate();
   } else {
@@ -164,7 +158,7 @@ setInterval(function () {
    * Permission to use, copy, modify, and redistribute this software and its
    * documentation for personal, non-commercial use is hereby granted provided that
    * this copyright notice and appropriate documentation appears in all copies.
-   * The algorithm is explained by Ho Ngoc Duc at "http://www.informatik.uni-leipzig.de/~duc/amlich/"
+   * The algorithm is explained by Ho Ngoc Duc at "https://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html"
    */
   function getNewMoonDay(k, timeZone) {
     if (k / 1236.85 < -11) {
@@ -609,7 +603,7 @@ setInterval(function () {
     (lunar[1] == 1 && lunar[0] >= 1 && lunar[0] <= 5) ||
     (lunar[1] == 12 && lunar[0] >= 28)
   ) {
-  	if (latitudeData<16&&countryName=="VN") {
+  	if (latitudeData<16&&countryCode=="vn") {
   		leaf="apricotBlossom";
   	}else{
   		leaf="peachBlossom";
@@ -618,7 +612,7 @@ setInterval(function () {
     leaf = "default";
   }
   session = "morning";
-  weatherId = "803";
+  weatherId = "801";
   leaf = "apricotBlossom";
   cssDisplay.setAttribute(
     "href",
@@ -646,9 +640,9 @@ setInterval(function () {
         weatherId +
         "/style.css"
     );
-    //alert(sunrise+', '+sunset);
+    //console.log(sunrise+', '+sunset);
   };
-  //alert(navigator.language);
-  //console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
+  //console.log(navigator.language);
+  console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
   //console.log(session);
 }, 1000);
