@@ -95,7 +95,8 @@ function lunarTable(year,timeZone){
 		ret[i]=[a[0],a[1],a[2],0,0];
 	};
 	for(var i2=0;i2<ret.length;i2++){
-		ret[i2][3]=(i2+11)/12;
+		ret[i2][3]=(i2+11)%12;
 	};
 	return ret;
 }
+console.log(lunarTable(2022,7))
