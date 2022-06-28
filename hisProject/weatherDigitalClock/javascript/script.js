@@ -352,7 +352,7 @@ setInterval(function () {
     );
   }
   function s(t, d) {
-  let ai=t - .5 - d / 24 - 2451545;
+  let ai=t- .5 - d / 24 - 2451545;
     return ab(
       (((280.46645 +
         36000.76983 * ((ai) / 36525) +
