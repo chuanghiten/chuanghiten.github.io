@@ -489,7 +489,7 @@ setInterval(function () {
         6
     );
   }
-  function getLunarMonth11(year, timeZone) {
+  function q(year, timeZone) {
     date3112ToJulius =
       365 * (year + 4800) +
       Math.floor((year + 4800) / 4) -
@@ -555,14 +555,14 @@ setInterval(function () {
       f = p(e, d);
     }
     i = m - f + 1;
-    g = getLunarMonth11(c, d);
+    g = q(c, d);
     h = g;
     if (g >= f) {
       k = c;
-      g = getLunarMonth11(c - 1, d);
+      g = q(c - 1, d);
     } else {
       k = c + 1;
-      h = getLunarMonth11(c + 1, d);
+      h = q(c + 1, d);
     }
     n = Math.floor((f - g) / 29);
     l = 0;
