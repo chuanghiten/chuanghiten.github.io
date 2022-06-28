@@ -160,7 +160,7 @@ setInterval(function () {
    * this copyright notice and appropriate documentation appears in all copies.
    * The algorithm is explained by Ho Ngoc Duc at "https://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html"
    */
-  function getNewMoonDay(k, timeZone) {
+  function p(k, timeZone) {
     if (k / 1236.85 < -11) {
       deltaT =
         0.001 +
@@ -500,13 +500,13 @@ setInterval(function () {
       date3112ToJulius =
         365 * (year + 4800) + Math.floor((year + 4800) / 4) - 31777;
     }
-    nm = getNewMoonDay(
+    nm = p(
       Math.floor((date3112ToJulius - 2415021) / 29.530588853),
       timeZone
     );
     sunLong = getSunLongitude(nm, timeZone);
     if (sunLong >= 9) {
-      nm = getNewMoonDay(
+      nm = p(
         Math.floor((date3112ToJulius - 2415021) / 29.530588853) - 1,
         timeZone
       );
@@ -517,18 +517,18 @@ setInterval(function () {
     k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
     last = 0;
     i = 1;
-    arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+    arc = getSunLongitude(p(k + i, timeZone), timeZone);
     do {
       last = arc;
       i++;
-      arc = getSunLongitude(getNewMoonDay(k + i, timeZone), timeZone);
+      arc = getSunLongitude(p(k + i, timeZone), timeZone);
     } while (arc != last && i < 14);
     return i - 1;
   }
   function getLunar(a, b, c,d) {
-    let e, f, g, h, i, j, k, l;
+    let e, f, g, h, i, j, k, l,m;
 
-    dateToJulius =
+    m =
       a +
       Math.floor(
         (153 * (b + 12 * Math.floor((14 - b) / 12) - 3) + 2) / 5
@@ -538,8 +538,8 @@ setInterval(function () {
       Math.floor((c + 4800 - Math.floor((14 - b) / 12)) / 100) +
       Math.floor((c + 4800 - Math.floor((14 - b) / 12)) / 400) -
       32045;
-    if (dateToJulius < 2299161) {
-      dateToJulius =
+    if (m < 2299161) {
+      m =
         a +
         Math.floor(
           (153 * (b + 12 * Math.floor((14 - b) / 12) - 3) + 2) / 5
@@ -549,12 +549,12 @@ setInterval(function () {
         32083;
     }
 
-    e = Math.floor((dateToJulius - 2415021.076998695) / 29.530588853);
-    f = getNewMoonDay(e + 1, d);
-    if (f > dateToJulius) {
-      f = getNewMoonDay(e, d);
+    e = Math.floor((m - 2415021.076998695) / 29.530588853);
+    f = p(e + 1, d);
+    if (f > m) {
+      f = p(e, d);
     }
-    i = dateToJulius - f + 1;
+    i = m - f + 1;
     g = getLunarMonth11(c, d);
     h = g;
     if (g >= f) {
@@ -564,14 +564,14 @@ setInterval(function () {
       k = c + 1;
       h = getLunarMonth11(c + 1, d);
     }
-    diff = Math.floor((f - g) / 29);
+    n = Math.floor((f - g) / 29);
     l = 0;
-    j = diff + 11;
+    j = n + 11;
     if (h - g > 365) {
-      leapMonthDiff = getLeapMonthOffset(g, d);
-      if (diff >= leapMonthDiff) {
-        j = diff + 10;
-        if (diff == leapMonthDiff) {
+      o = getLeapMonthOffset(g, d);
+      if (n >= o) {
+        j = n + 10;
+        if (n == o) {
           l = 1;
         }
       }
