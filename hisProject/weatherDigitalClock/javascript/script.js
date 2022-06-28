@@ -526,7 +526,7 @@ setInterval(function () {
     return i - 1;
   }
   function getLunar(a, b, c,d) {
-    let e, f, g, h, i, j, k, lunarLeap;
+    let e, f, g, h, i, j, k, l;
 
     dateToJulius =
       a +
@@ -565,14 +565,14 @@ setInterval(function () {
       h = getLunarMonth11(c + 1, d);
     }
     diff = Math.floor((f - g) / 29);
-    lunarLeap = 0;
+    l = 0;
     j = diff + 11;
     if (h - g > 365) {
       leapMonthDiff = getLeapMonthOffset(g, d);
       if (diff >= leapMonthDiff) {
         j = diff + 10;
         if (diff == leapMonthDiff) {
-          lunarLeap = 1;
+          l = 1;
         }
       }
     }
@@ -582,7 +582,7 @@ setInterval(function () {
     if (j >= 11 && diff < 4) {
       k -= 1;
     }
-    return [i, j, k, lunarLeap];
+    return [i, j, k, l];
   }
   /*
    * End!
