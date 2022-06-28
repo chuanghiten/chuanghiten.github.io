@@ -23,10 +23,7 @@ var body = window.document.querySelector("body"),second = window.document.queryS
   timeZone,
   dateToJulius,
   juliusDate,
-  deltaT,
   JdNew,
-  nm,
-  sunLong,
   k,
   last,
   arc,
@@ -160,9 +157,10 @@ setInterval(function () {
    * this copyright notice and appropriate documentation appears in all copies.
    * The algorithm is explained by Ho Ngoc Duc at "https://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html"
    */
-  function p(k, timeZone) {
+  function p(k, d) {
+  	let u;
     if (k / 1236.85 < -11) {
-      deltaT =
+      u =
         0.001 +
         0.000839 * (k / 1236.85) +
         0.0002261 * ((k / 1236.85) * (k / 1236.85)) -
@@ -171,7 +169,7 @@ setInterval(function () {
           (k / 1236.85) *
           ((k / 1236.85) * (k / 1236.85) * (k / 1236.85));
     } else {
-      deltaT =
+      u =
         -0.000278 +
         0.000265 * (k / 1236.85) +
         0.000262 * ((k / 1236.85) * (k / 1236.85));
@@ -341,52 +339,52 @@ setInterval(function () {
                     0.00000347 *
                       ((k / 1236.85) * (k / 1236.85) * (k / 1236.85))))
             )) -
-        deltaT +
+        u +
         0.5 +
-        timeZone / 24
+        d / 24
     );
   }
-  function getSunLongitude(dayNumber, timeZone) {
+  function s(t, d) {
     return Math.floor(
       (((280.46645 +
-        36000.76983 * ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) +
+        36000.76983 * ((t - 0.5 - d / 24 - 2451545.0) / 36525) +
         0.0003032 *
-          (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-            ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) +
+          (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+            ((t - 0.5 - d / 24 - 2451545.0) / 36525)) +
         ((1.9146 -
-          0.004817 * ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) -
+          0.004817 * ((t - 0.5 - d / 24 - 2451545.0) / 36525) -
           0.000014 *
-            (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-              ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525))) *
+            (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+              ((t - 0.5 - d / 24 - 2451545.0) / 36525))) *
           Math.sin(
             (Math.PI / 180) *
               (357.5291 +
                 35999.0503 *
-                  ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) -
+                  ((t - 0.5 - d / 24 - 2451545.0) / 36525) -
                 0.0001559 *
-                  (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) -
+                  (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525)) -
                 0.00000048 *
-                  ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                  (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)))
+                  ((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                  (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525)))
           ) +
           (0.019993 -
             0.000101 *
-              ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) *
+              ((t - 0.5 - d / 24 - 2451545.0) / 36525)) *
             Math.sin(
               (Math.PI / 180) *
                 2 *
                 (357.5291 +
                   35999.0503 *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) -
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525) -
                   0.0001559 *
-                    (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                      ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) -
+                    (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                      ((t - 0.5 - d / 24 - 2451545.0) / 36525)) -
                   0.00000048 *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                    (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                      ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)))
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                    (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                      ((t - 0.5 - d / 24 - 2451545.0) / 36525)))
             ) +
           0.00029 *
             Math.sin(
@@ -394,14 +392,14 @@ setInterval(function () {
                 3 *
                 (357.5291 +
                   35999.0503 *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) -
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525) -
                   0.0001559 *
-                    (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                      ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) -
+                    (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                      ((t - 0.5 - d / 24 - 2451545.0) / 36525)) -
                   0.00000048 *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                    (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                      ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)))
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                    (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                      ((t - 0.5 - d / 24 - 2451545.0) / 36525)))
             ))) *
         (Math.PI / 180) -
         Math.PI *
@@ -409,56 +407,56 @@ setInterval(function () {
           Math.floor(
             ((280.46645 +
               36000.76983 *
-                ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) +
+                ((t - 0.5 - d / 24 - 2451545.0) / 36525) +
               0.0003032 *
-                (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                  ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) +
+                (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                  ((t - 0.5 - d / 24 - 2451545.0) / 36525)) +
               ((1.9146 -
                 0.004817 *
-                  ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) -
+                  ((t - 0.5 - d / 24 - 2451545.0) / 36525) -
                 0.000014 *
-                  (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525) *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525))) *
+                  (((t - 0.5 - d / 24 - 2451545.0) / 36525) *
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525))) *
                 Math.sin(
                   (Math.PI / 180) *
                     (357.5291 +
                       35999.0503 *
-                        ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                        ((t - 0.5 - d / 24 - 2451545.0) /
                           36525) -
                       0.0001559 *
-                        (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                        (((t - 0.5 - d / 24 - 2451545.0) /
                           36525) *
-                          ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          ((t - 0.5 - d / 24 - 2451545.0) /
                             36525)) -
                       0.00000048 *
-                        ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                        ((t - 0.5 - d / 24 - 2451545.0) /
                           36525) *
-                        (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                        (((t - 0.5 - d / 24 - 2451545.0) /
                           36525) *
-                          ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          ((t - 0.5 - d / 24 - 2451545.0) /
                             36525)))
                 ) +
                 (0.019993 -
                   0.000101 *
-                    ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) / 36525)) *
+                    ((t - 0.5 - d / 24 - 2451545.0) / 36525)) *
                   Math.sin(
                     (Math.PI / 180) *
                       2 *
                       (357.5291 +
                         35999.0503 *
-                          ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          ((t - 0.5 - d / 24 - 2451545.0) /
                             36525) -
                         0.0001559 *
-                          (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          (((t - 0.5 - d / 24 - 2451545.0) /
                             36525) *
-                            ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                            ((t - 0.5 - d / 24 - 2451545.0) /
                               36525)) -
                         0.00000048 *
-                          ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          ((t - 0.5 - d / 24 - 2451545.0) /
                             36525) *
-                          (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          (((t - 0.5 - d / 24 - 2451545.0) /
                             36525) *
-                            ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                            ((t - 0.5 - d / 24 - 2451545.0) /
                               36525)))
                   ) +
                 0.00029 *
@@ -467,19 +465,19 @@ setInterval(function () {
                       3 *
                       (357.5291 +
                         35999.0503 *
-                          ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          ((t - 0.5 - d / 24 - 2451545.0) /
                             36525) -
                         0.0001559 *
-                          (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          (((t - 0.5 - d / 24 - 2451545.0) /
                             36525) *
-                            ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                            ((t - 0.5 - d / 24 - 2451545.0) /
                               36525)) -
                         0.00000048 *
-                          ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          ((t - 0.5 - d / 24 - 2451545.0) /
                             36525) *
-                          (((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                          (((t - 0.5 - d / 24 - 2451545.0) /
                             36525) *
-                            ((dayNumber - 0.5 - timeZone / 24 - 2451545.0) /
+                            ((t - 0.5 - d / 24 - 2451545.0) /
                               36525)))
                   ))) *
               (Math.PI / 180)) /
@@ -490,39 +488,41 @@ setInterval(function () {
     );
   }
   function q(c, d) {
-    date3112ToJulius =
+  	let v,x,y;
+    v =
       365 * (c + 4800) +
       Math.floor((c + 4800) / 4) -
       Math.floor((c + 4800) / 100) +
       Math.floor((c + 4800) / 400) -
       31739;
-    if (date3112ToJulius < 2299161) {
-      date3112ToJulius =
+    if (v < 2299161) {
+      v =
         365 * (c + 4800) + Math.floor((c + 4800) / 4) - 31777;
     }
-    nm = p(
-      Math.floor((date3112ToJulius - 2415021) / 29.530588853),
+    x = p(
+      Math.floor((v - 2415021) / 29.530588853),
       d
     );
-    sunLong = getSunLongitude(nm, d);
-    if (sunLong >= 9) {
-      nm = p(
-        Math.floor((date3112ToJulius - 2415021) / 29.530588853) - 1,
+    y = s(x, d);
+    if (y >= 9) {
+      x = p(
+        Math.floor((v - 2415021) / 29.530588853) - 1,
         d
       );
     }
-    return nm;
+    return x;
   }
-  function r(a11, d) {
-    k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
-    last = 0;
+  function r(z, d) {
+  let w,aa;
+    k = Math.floor((z - 2415021.076998695) / 29.530588853 + 0.5);
+    w = 0;
     i = 1;
-    arc = getSunLongitude(p(k + i, d), d);
+    aa = s(p(k + i, d), d);
     do {
-      last = arc;
+      w = aa;
       i++;
-      arc = getSunLongitude(p(k + i, d), d);
-    } while (arc != last && i < 14);
+      aa = s(p(k + i, d), d);
+    } while (aa != w && i < 14);
     return i - 1;
   }
   function getLunar(a, b, c,d) {
