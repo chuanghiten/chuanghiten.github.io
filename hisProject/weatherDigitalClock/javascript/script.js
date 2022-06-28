@@ -489,39 +489,39 @@ setInterval(function () {
         6
     );
   }
-  function q(year, timeZone) {
+  function q(c, d) {
     date3112ToJulius =
-      365 * (year + 4800) +
-      Math.floor((year + 4800) / 4) -
-      Math.floor((year + 4800) / 100) +
-      Math.floor((year + 4800) / 400) -
+      365 * (c + 4800) +
+      Math.floor((c + 4800) / 4) -
+      Math.floor((c + 4800) / 100) +
+      Math.floor((c + 4800) / 400) -
       31739;
-    if (dateToJulius < 2299161) {
+    if (date3112ToJulius < 2299161) {
       date3112ToJulius =
-        365 * (year + 4800) + Math.floor((year + 4800) / 4) - 31777;
+        365 * (c + 4800) + Math.floor((c + 4800) / 4) - 31777;
     }
     nm = p(
       Math.floor((date3112ToJulius - 2415021) / 29.530588853),
-      timeZone
+      d
     );
-    sunLong = getSunLongitude(nm, timeZone);
+    sunLong = getSunLongitude(nm, d);
     if (sunLong >= 9) {
       nm = p(
         Math.floor((date3112ToJulius - 2415021) / 29.530588853) - 1,
-        timeZone
+        d
       );
     }
     return nm;
   }
-  function getLeapMonthOffset(a11, timeZone) {
+  function r(a11, d) {
     k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
     last = 0;
     i = 1;
-    arc = getSunLongitude(p(k + i, timeZone), timeZone);
+    arc = getSunLongitude(p(k + i, d), d);
     do {
       last = arc;
       i++;
-      arc = getSunLongitude(p(k + i, timeZone), timeZone);
+      arc = getSunLongitude(p(k + i, d), d);
     } while (arc != last && i < 14);
     return i - 1;
   }
@@ -568,7 +568,7 @@ setInterval(function () {
     l = 0;
     j = n + 11;
     if (h - g > 365) {
-      o = getLeapMonthOffset(g, d);
+      o = r(g, d);
       if (n >= o) {
         j = n + 10;
         if (n == o) {
