@@ -525,64 +525,64 @@ setInterval(function () {
     } while (arc != last && i < 14);
     return i - 1;
   }
-  function getLunar(date, month, year, timeZone) {
-    var k, monthStart, a11, b11, lunarDay, lunarMonth, lunarYear, lunarLeap;
+  function getLunar(a, b, c,d) {
+    let e, f, g, h, i, j, k, lunarLeap;
 
     dateToJulius =
-      date +
+      a +
       Math.floor(
-        (153 * (month + 12 * Math.floor((14 - month) / 12) - 3) + 2) / 5
+        (153 * (b + 12 * Math.floor((14 - b) / 12) - 3) + 2) / 5
       ) +
-      365 * (year + 4800 - Math.floor((14 - month) / 12)) +
-      Math.floor((year + 4800 - Math.floor((14 - month) / 12)) / 4) -
-      Math.floor((year + 4800 - Math.floor((14 - month) / 12)) / 100) +
-      Math.floor((year + 4800 - Math.floor((14 - month) / 12)) / 400) -
+      365 * (c + 4800 - Math.floor((14 - b) / 12)) +
+      Math.floor((c + 4800 - Math.floor((14 - b) / 12)) / 4) -
+      Math.floor((c + 4800 - Math.floor((14 - b) / 12)) / 100) +
+      Math.floor((c + 4800 - Math.floor((14 - b) / 12)) / 400) -
       32045;
     if (dateToJulius < 2299161) {
       dateToJulius =
-        date +
+        a +
         Math.floor(
-          (153 * (month + 12 * Math.floor((14 - month) / 12) - 3) + 2) / 5
+          (153 * (b + 12 * Math.floor((14 - b) / 12) - 3) + 2) / 5
         ) +
-        365 * (year + 4800 - Math.floor((14 - month) / 12)) +
-        Math.floor((year + 4800 - Math.floor((14 - month) / 12)) / 4) -
+        365 * (c + 4800 - Math.floor((14 - b) / 12)) +
+        Math.floor((c + 4800 - Math.floor((14 - b) / 12)) / 4) -
         32083;
     }
 
-    k = Math.floor((dateToJulius - 2415021.076998695) / 29.530588853);
-    monthStart = getNewMoonDay(k + 1, timeZone);
-    if (monthStart > dateToJulius) {
-      monthStart = getNewMoonDay(k, timeZone);
+    e = Math.floor((dateToJulius - 2415021.076998695) / 29.530588853);
+    f = getNewMoonDay(e + 1, d);
+    if (f > dateToJulius) {
+      f = getNewMoonDay(e, d);
     }
-    lunarDay = dateToJulius - monthStart + 1;
-    a11 = getLunarMonth11(year, timeZone);
-    b11 = a11;
-    if (a11 >= monthStart) {
-      lunarYear = year;
-      a11 = getLunarMonth11(year - 1, timeZone);
+    i = dateToJulius - f + 1;
+    g = getLunarMonth11(c, d);
+    h = g;
+    if (g >= f) {
+      k = c;
+      g = getLunarMonth11(c - 1, d);
     } else {
-      lunarYear = year + 1;
-      b11 = getLunarMonth11(year + 1, timeZone);
+      k = c + 1;
+      h = getLunarMonth11(c + 1, d);
     }
-    diff = Math.floor((monthStart - a11) / 29);
+    diff = Math.floor((f - g) / 29);
     lunarLeap = 0;
-    lunarMonth = diff + 11;
-    if (b11 - a11 > 365) {
-      leapMonthDiff = getLeapMonthOffset(a11, timeZone);
+    j = diff + 11;
+    if (h - g > 365) {
+      leapMonthDiff = getLeapMonthOffset(g, d);
       if (diff >= leapMonthDiff) {
-        lunarMonth = diff + 10;
+        j = diff + 10;
         if (diff == leapMonthDiff) {
           lunarLeap = 1;
         }
       }
     }
-    if (lunarMonth > 12) {
-      lunarMonth = lunarMonth - 12;
+    if (j > 12) {
+      j = j - 12;
     }
-    if (lunarMonth >= 11 && diff < 4) {
-      lunarYear -= 1;
+    if (j >= 11 && diff < 4) {
+      k -= 1;
     }
-    return [lunarDay, lunarMonth, lunarYear, lunarLeap];
+    return [i, j, k, lunarLeap];
   }
   /*
    * End!

@@ -1,4 +1,5 @@
-function dateToJulius(date,month,year,timeZone){
+//a function = dateToJulius
+function a(date,month,year,timeZone){
 	if(year>1582||(year==1582&&month>10)||(year==1582&&month>10&&date>14)){
 		return ((367*year - Math.floor(7*(year+Math.floor((month+9)/12))/4) - Math.floor(3*(Math.floor((year+(month-9)/7)/100)+1)/4) + Math.floor(275*month/9)+date+1721028.5)-(timeZone/24));
 	}else{
@@ -6,17 +7,17 @@ function dateToJulius(date,month,year,timeZone){
 	};
 };
 function juliusToDate(juliusDay,timeZone){
-	let z,a,alpha,b,c,d,e,f,localJuliusDay,juliusDate,juliusMonth,juliusYear;
+	let z,aa,alpha,b,c,d,e,f,localJuliusDay,juliusDate,juliusMonth,juliusYear;
 	localJuliusDay=juliusDay+timeZone/24;
 	z = Math.floor(localJuliusDay+0.5);
 	f = (localJuliusDay+0.5)-z;
 	if (z < 2299161) {
-	  a = z;
+	  aa = z;
 	} else {
 	  alpha = Math.floor((z-1867216.25)/36524.25);
-	  a = z + 1 + alpha - Math.floor(alpha/4);
+	  aa = z + 1 + alpha - Math.floor(alpha/4);
 	};
-	b = a + 1524;
+	b = aa + 1524;
 	c = Math.floor((b-122.1)/365.25);
 	d = Math.floor( 365.25*c );
 	e = Math.floor( (b-d)/30.6001 );
@@ -63,25 +64,24 @@ function sunLongitude(juliusDay){
 };
 function winterSolstice(year,timeZone){
 	let off,k,jd,ret,sunLong;
-	off = dateToJulius(31, 12, year,timeZone) - 2415021.076998695;
+	off = a(31, 12, year,timeZone) - 2415021.076998695;
 	k = Math.floor(off / 29.530588853);
 	jd = newMoonDayX(k);
 	ret = juliusToDate(jd,timeZone);
-	sunLong = sunLongitude(dateToJulius(ret[0], ret[1], ret[2],timeZone));
+	sunLong = sunLongitude(a(ret[0], ret[1], ret[2],timeZone));
 	if (sunLong > 3*Math.PI/2) {
 		jd = newMoonDayX(k-1);
 	}
 	return juliusToDate(jd,timeZone);
 };
 function lunarTable(year,timeZone){
-	let a,ret,month11a,jdMonth11a,k,month11b,off,nm;
+	let aa,ret,month11a,jdMonth11a,k,month11b,off,nm;
 	ret=[];
 	month11a=winterSolstice(year-1,timeZone);
-	jdMonth11a=dateToJulius(month11a[0],month11a[1],month11a[2],timeZone);
+	jdMonth11a=a(month11a[0],month11a[1],month11a[2],timeZone);
 	k = Math.floor(0.5 + (jdMonth11a - 2415021.076998695) / 29.530588853);
 	month11b=winterSolstice(year,timeZone);
-	off=dateToJulius(month11b[0],month11b[1],month11b[2],timeZone)-jdMonth11a;
-	console.log(off);
+	off=a(month11b[0],month11b[1],month11b[2],timeZone)-jdMonth11a;
 	if(off>365){
 		ret[13]=null;
 	}else{
@@ -91,12 +91,37 @@ function lunarTable(year,timeZone){
 	ret[ret.length-1]=[month11b[0],month11b[1],month11b[2],0,0];
 	for(var i=1;i<(ret.length-1);i++){
 		nm=newMoonDayX(k+i);
-		a=juliusToDate(nm,timeZone);
-		ret[i]=[a[0],a[1],a[2],0,0];
+		aa=juliusToDate(nm,timeZone);
+		ret[i]=[aa[0],aa[1],aa[2],0,0];
 	};
 	for(var i2=0;i2<ret.length;i2++){
 		ret[i2][3]=(i2+11)%12;
 	};
 	return ret;
-}
-console.log(lunarTable(2022,7))
+};
+function dateToLunar(date,month,year,timeZone){
+	let ly,month11,jdToday,jdMonth11,dd,mm,yy,i;
+	yy=year
+	ly = lunarTable(year,timeZone); // Please cache the result of this computation for later use!!!
+	month11 = ly[ly.length - 1];
+	jdToday = a(date, month, year,timeZone);
+	//console.log(jdToday);
+	jdMonth11 = a(month11[0], month11[1], month11[2],timeZone);
+	if (jdToday >= jdMonth11) {
+		ly = lunarTable(year+1);
+		yy = year + 1;
+		console.log(true);
+	};
+	i = ly.length - 1;
+	while (jdToday < a(ly[i][0], ly[i][1], ly[i][2],timeZone)) {
+		i--;
+	};
+	dd = (jdToday -a(ly[i][0], ly[i][1], ly[i][2],timeZone)) + 1;
+	mm = ly[i][3];
+	if (mm >= 11) {
+		yy--;
+	};
+	return [dd, mm, yy];
+};
+console.log(dateToLunar(28,6,2022,7))
+dateToLunar(28,6,2022,7);

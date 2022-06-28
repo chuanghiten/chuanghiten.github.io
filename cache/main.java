@@ -97,6 +97,32 @@ public class main{
 		}
 		return localFromJD(jd,timeZone);
 	}
+	static void initLeapYear(int[][] ret,double timeZone) {
+		double[] sunLongitudes = new double[ret.length];
+		//return sunLongitudes;
+		
+		for (int i = 0; i < ret.length; i++) {
+			int[] a = ret[i];
+			double jdAtMonthBegin = localToJD(a[0], a[1], a[2],timeZone);
+			sunLongitudes[i] = SunLongitude(jdAtMonthBegin);
+		}
+		boolean found = false;
+		for (int i = 0; i < ret.length; i++) {
+			if (found) {
+				ret[i][3] = MOD(i+10, 12);
+				continue;
+			}
+			double sl1 = sunLongitudes[i];
+			double sl2 = sunLongitudes[i+1];
+			boolean hasMajorTerm = Math.floor(sl1/Math.PI*6) != Math.floor(sl2/Math.PI*6);
+			if (!hasMajorTerm) {
+				found = true;
+				ret[i][4] = 1;
+				ret[i][3] = MOD(i+10, 12);
+			}
+		}
+		
+	}
 	public static int[][] LunarYear(int Y,double timeZone) {
 		int[][] ret = null;
 		int[] month11A = LunarMonth11(Y-1,timeZone);
@@ -119,19 +145,21 @@ public class main{
 		}
 		for (int i = 0; i < ret.length; i++) {
 			ret[i][3] = MOD(i + 11, 12);
-		}/*
+		}
 		if (leap) {
-			initLeapYear(ret);
-		}*/
-		return ret;
+			initLeapYear(ret,timeZone);
+		}
+		double retLeng=ret.length;		
+		return retLength;
 	}
 	public static void main(String[] args){
-		int moonDate=9999;
-		int testYear=2021;
-		System.out.println(localFromJD(NewMoon(moonDate),7)[0]+"/"+localFromJD(NewMoon(moonDate),7)[1]+"/"+localFromJD(NewMoon(moonDate),7)[2]);
-		System.out.println(SunLongitude(localToJD(7,1,2000,7)));
-		System.out.println(LunarMonth11(testYear,7)[0]+"/"+LunarMonth11(testYear,7)[1]+"/"+LunarMonth11(testYear,7)[2]);
-		System.out.println(LunarYear(2022,7)[0][3]);
-		System.out.println(LunarYear(2022,7)[12][3]);
+		/*
+		for(int x=0;x<13;x++){
+			for(int y=0;y<5;y++){
+				System.out.println("["+x+"]"+"["+y+"]: "+LunarYear(2022,7)[x][y]);
+			}
+		}
+		*/
+		System.out.println(LunarYear(2022,7));
 	}
 }
