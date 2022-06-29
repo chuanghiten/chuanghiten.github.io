@@ -1,4 +1,4 @@
-										var body = window.document.querySelector("body"),second = window.document.querySelector("div.second"),minute = window.document.querySelector("div.minute"),hour = window.document.querySelector("div.hour"),days = window.document.querySelector("div.days"),cssDisplay = window.document.querySelector("link.display"),cssLeaf = window.document.querySelector("link.leaf"),date,
+var body = window.document.querySelector("body"),second = window.document.querySelector("div.second"),minute = window.document.querySelector("div.minute"),hour = window.document.querySelector("div.hour"),days = window.document.querySelector("div.days"),cssDisplay = window.document.querySelector("link.display"),cssLeaf = window.document.querySelector("link.leaf"),date,
   month,
   season,
   seasonCheck,
@@ -165,72 +165,9 @@ setInterval(function () {
     if(ah<-11){u=.001+.000839*ah+.0002261*ak-.00000845*al-.000000081*ah*al;}else{u=-.000278+.000265*ah+.000262*ak;};
     return ab(2415020.75933+29.53058868*k+.0001178*ak-.000000155*al+.00033*ad((166.56+132.87*ah-.009173*ak)*am)+((.1734-.000393*ah)*ad((359.2242+29.10535608*k-.0000333*ak-.00000347*al)*am)+.0021*ad(2*am*(359.2242+29.10535608*k-.0000333*ak-.00000347*al))-.4068*ad((306.0253+385.81691806*k+.0107306*ak+.00001236*al)*am)+.0161*ad(am*2*(306.0253+385.81691806*k+.0107306*ak+.00001236*al))-.0004*ad(am*3*(306.0253+385.81691806*k+.0107306*ak+.00001236*al))+.0104*ad(am*2*(21.2964+390.67050646*k-.0016528*ak-.00000239*al))-.0051*ad(am*(359.2242+29.10535608*k-.0000333*ak-.00000347*al+(306.0253+385.81691806*k+.0107306*ak+.00001236*al)))-.0074*ad(am*(359.2242+29.10535608*k-.0000333*ak-.00000347*al-(306.0253+385.81691806*k+.0107306*ak+.00001236*al)))+.0004*ad(am*(2*(21.2964+390.67050646*k-.0016528*ak-.00000239*al)+(359.2242+29.10535608*k-.0000333*ak-.00000347*al)))-.0004*ad(am*(2*(21.2964+390.67050646*k-.0016528*ak-.00000239*al)-(359.2242+29.10535608*k-.0000333*ak-.00000347*al)))-.0006*ad(am*(2*(21.2964+390.67050646*k-.0016528*ak-.00000239*al)+(306.0253+385.81691806*k+.0107306*ak+.00001236*al)))+.001*ad(am*(2*(21.2964+390.67050646*k-.0016528*ak-.00000239*al)-(306.0253+385.81691806*k+.0107306*ak+.00001236*al)))+.0005*ad(am*(2*(306.0253+385.81691806*k+.0107306*ak+.00001236*al)+(359.2242+29.10535608*k-.0000333*ak-.00000347*al))))-u+.5+d/24);
   };
-  function s(t, d) {
-  let ai=t-.5 - d / 24 - 2451545,aj=ai / 36525,an=ai/36525,ao=an*an,ap=an*ao,aq=357.5291 +35999.0503 *an -.0001559 *ao -.00000048 *ap,ar=357.5291 +35999.0503 *an -.0001559 *ao -.00000048 *ap;
-    return ab(
-      (((280.46645 +
-        36000.76983 * an +
-        0.0003032 * ao +
-        ((1.9146 -
-          0.004817 * an -
-          0.000014 *
-            ao) *
-          ad(
-            am *
-              aq
-          ) +
-          (0.019993 -
-            0.000101 *
-              an) *
-            ad(
-              am *
-                2 *
-                aq
-            ) +
-          0.00029 *
-            ad(
-              am *
-                3 *
-                aq
-            ))) *
-        am -
-        ag *
-          2 *
-          ab(
-            ((280.46645 +
-              36000.76983 *
-                an +
-              0.0003032 *
-                ao +
-              ((1.9146 -
-                0.004817 *
-                  an -
-                0.000014 *
-                  ao) *
-                ad(
-                  am *
-                    ar
-                ) +
-                (0.019993 -
-                  0.000101 *
-                    an) *
-                  ad(
-                    am *
-                      2 *
-                      ar
-                  ) +
-                0.00029 *
-                  ad(
-                    am *
-                      3 *
-                      ar
-                  ))) *
-              am) /
-              (ag * 2)
-          )) /
-        ag) *
-        6
-    );
+  function s(t,d){
+  	let ai=t-.5-d/24-2451545,aj=ai/36525,an=ai/36525,ao=an*an,ap=an*ao,aq=357.5291+35999.0503*an-.0001559*ao-.00000048*ap,ar=357.5291+35999.0503*an-.0001559*ao-.00000048*ap;
+    return ab((((280.46645+36000.76983*an+.0003032*ao+((1.9146-.004817*an-.000014*ao)*ad(am*aq)+(.019993-.000101*an)*ad(am*2*aq)+.00029*ad(am*3*aq)))*am-ag*2*ab(((280.46645+36000.76983*an+.0003032*ao+((1.9146-.004817*an-.000014*ao)*ad(am*ar)+(.019993-.000101*an)*ad(am*2*ar)+.00029*ad(am*3*ar)))*am)/(ag*2)))/ag)*6);
   }
   function q(c, d) {
   	let v,x,y;
