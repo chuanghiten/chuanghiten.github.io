@@ -194,55 +194,37 @@ setInterval(function () {
   function getLunar(a,b,c,d){
     let e,f,g,h,i,j,k,m;
 		m=a+ab((153*(b+12*ab((14-b)/12)-3)+2)/5)+365*(c+4800-ab((14-b)/12))+ab((c+4800-ab((14-b)/12))/4)-ab((c+4800-ab((14-b)/12))/100)+ab((c+4800-ab((14-b)/12))/400)-32045;
-    if (m < 2299161) {
-      m =
-        a +
-        ab(
-          (153 * (b + 12 * ab((14 - b) / 12) - 3) + 2) / 5
-        ) +
-        365 * (c + 4800 - ab((14 - b) / 12)) +
-        ab((c + 4800 - ab((14 - b) / 12)) / 4) -
-        32083;
-    }
-
-    e = ab((m - 2415021.076998695) / 29.530588853);
-    f = p(e + 1, d);
-    if (f > m) {
-      f = p(e, d);
-    }
-    i = m - f + 1;
-    g = q(c, d);
-    h = g;
-    if (g >= f) {
-      k = c;
-      g = q(c - 1, d);
-    } else {
-      k = c + 1;
-      h = q(c + 1, d);
-    }
-    n = ab((f - g) / 29);
-    l = 0;
-    j = n + 11;
-    if (h - g > 365) {
-      o = r(g, d);
-      if (n >= o) {
-        j = n + 10;
-        if (n == o) {
-          l = 1;
-        }
-      }
-    }
-    if (j > 12) {
-      j = j - 12;
-    }
-    if (j >= 11 && n < 4) {
-      k -= 1;
-    }
-    return [i, j, k, l];
+    if(m<2299161){m=a+ab((153*(b+12*ab((14-b)/12)-3)+2)/5)+365*(c+4800-ab((14-b)/12))+ab((c+4800-ab((14-b)/12))/4)-32083;};
+    e=ab((m-2415021.076998695)/29.530588853);
+    f=p(e+1,d);
+    if(f>m){f=p(e,d);};
+    i=m-f+1;
+    g=q(c,d);
+    h=g;
+    if(g>=f){
+      k=c;
+      g=q(c-1,d);
+    }else{
+      k=c+1;
+      h=q(c+1,d);
+    };
+    n=ab((f-g)/29);
+    l=0;
+    j=n+11;
+    if(h-g>365){
+      o=r(g,d);
+      if(n>=o){
+        j=n+10;
+        if(n==o){l=1;};
+      };
+    };
+    if(j>12){j=j-12;};
+    if(j>=11&&n<4){k-=1;};
+    return [i,j,k,l];
   }
   /*
    * End!
-   * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!bccbadbbdaaddbdbbcbcadcbacbbacabbdadacabaddaccbadd
+   * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!
    */
   lunar = getLunar(
     time.getDate(),
