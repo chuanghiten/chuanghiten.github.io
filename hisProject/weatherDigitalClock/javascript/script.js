@@ -168,58 +168,32 @@ setInterval(function () {
   function s(t,d){
   	let ai=t-.5-d/24-2451545,aj=ai/36525,an=ai/36525,ao=an*an,ap=an*ao,aq=357.5291+35999.0503*an-.0001559*ao-.00000048*ap,ar=357.5291+35999.0503*an-.0001559*ao-.00000048*ap;
     return ab((((280.46645+36000.76983*an+.0003032*ao+((1.9146-.004817*an-.000014*ao)*ad(am*aq)+(.019993-.000101*an)*ad(am*2*aq)+.00029*ad(am*3*aq)))*am-ag*2*ab(((280.46645+36000.76983*an+.0003032*ao+((1.9146-.004817*an-.000014*ao)*ad(am*ar)+(.019993-.000101*an)*ad(am*2*ar)+.00029*ad(am*3*ar)))*am)/(ag*2)))/ag)*6);
-  }
-  function q(c, d) {
+  };
+  function q(c,d){
   	let v,x,y;
-    v =
-      365 * (c + 4800) +
-      ab((c + 4800) / 4) -
-      ab((c + 4800) / 100) +
-      ab((c + 4800) / 400) -
-      31739;
-    if (v < 2299161) {
-      v =
-        365 * (c + 4800) + ab((c + 4800) / 4) - 31777;
-    }
-    x = p(
-      ab((v - 2415021) / 29.530588853),
-      d
-    );
-    y = s(x, d);
-    if (y >= 9) {
-      x = p(
-        ab((v - 2415021) / 29.530588853) - 1,
-        d
-      );
-    }
+  	v=365*(c+4800)+ab((c+4800)/4)-ab((c+4800)/100)+ab((c+4800)/400)-31739;  	
+    if(v<2299161){v=365*(c+4800)+ab((c+4800)/4)-31777;};
+    x=p(ab((v-2415021)/29.530588853),d);        
+    y=s(x,d);
+    if(y>=9){x=p(ab((v-2415021)/29.530588853)-1,d);}
     return x;
-  }
-  function r(z, d) {
-  let w,aa,k,i;
-    k = ab((z - 2415021.076998695) / 29.530588853 + 0.5);
-    w = 0;
-    i = 1;
-    aa = s(p(k + i, d), d);
-    do {
-      w = aa;
+  };
+  function r(z,d){
+ 		let w,aa,k,i;
+    k=ab((z-2415021.076998695)/29.530588853+.5);
+    w=0;
+    i=1;
+    aa=s(p(k+i,d),d);
+    do{
+      w=aa;
       i++;
-      aa = s(p(k + i, d), d);
-    } while (aa != w && i < 14);
-    return i - 1;
-  }
-  function getLunar(a, b, c,d) {
-    let e, f, g, h, i, j, k, l,m;
-
-    m =
-      a +
-      ab(
-        (153 * (b + 12 * ab((14 - b) / 12) - 3) + 2) / 5
-      ) +
-      365 * (c + 4800 - ab((14 - b) / 12)) +
-      ab((c + 4800 - ab((14 - b) / 12)) / 4) -
-      ab((c + 4800 - ab((14 - b) / 12)) / 100) +
-      ab((c + 4800 - ab((14 - b) / 12)) / 400) -
-      32045;
+      aa=s(p(k+i,d),d);
+    }while(aa!=w&&i<14);
+    return i-1;
+  };
+  function getLunar(a,b,c,d){
+    let e,f,g,h,i,j,k,m;
+		m=a+ab((153*(b+12*ab((14-b)/12)-3)+2)/5)+365*(c+4800-ab((14-b)/12))+ab((c+4800-ab((14-b)/12))/4)-ab((c+4800-ab((14-b)/12))/100)+ab((c+4800-ab((14-b)/12))/400)-32045;
     if (m < 2299161) {
       m =
         a +
@@ -268,7 +242,7 @@ setInterval(function () {
   }
   /*
    * End!
-   * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!
+   * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!bccbadbbdaaddbdbbcbcadcbacbbacabbdadacabaddaccbadd
    */
   lunar = getLunar(
     time.getDate(),
