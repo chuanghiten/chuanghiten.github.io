@@ -217,6 +217,6 @@ setInterval(function () {
     //console.log(sunrise+', '+sunset);
   };
   //console.log(navigator.language);
-  console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
+  //console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
   //console.log(session);
 }, 1000);
