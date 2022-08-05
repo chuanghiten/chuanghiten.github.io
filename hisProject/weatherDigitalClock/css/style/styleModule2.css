@@ -100,19 +100,23 @@ div.halfCircle {
   top: 20px;
   left: 20px;
 }
-div.halfCircleCenter {
+div.halfCircleCenter,.temperatureProgressbar {
   position: absolute;
   background: var(--sunColor);
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  box-shadow: 0 0 20px 0 var(--sunColor);
+  box-shadow: 0 0 20px var(--sunColor);
   top: 50%;
   right: 0;
   transform: translate(50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.temperatureProgressbar{
+		background:transparent;
+		box-shadow:unset;
 }
 div.startLine {
   width: 0;

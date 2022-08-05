@@ -1,5 +1,5 @@
 body {
-		--leaf3Color:brightness(0) saturate(100%) invert(55%) sepia(36%) saturate(771%) hue-rotate(272deg) brightness(83%) contrast(87%)/* #ca63a3 */;
-  --leaf2Color:brightness(0) saturate(100%) invert(45%) sepia(12%) saturate(2184%) hue-rotate(270deg) brightness(95%) contrast(89%)/* #b65993 */;
-  --leafColor:brightness(0) saturate(100%) invert(42%) sepia(9%) saturate(3371%) hue-rotate(270deg) brightness(88%) contrast(82%)/* #a45084 */;
+		--leaf3Color:brightness(0) saturate(100%) invert(65%) sepia(82%) saturate(436%) hue-rotate(15deg) brightness(97%) contrast(104%)/* #cfc70d */;
+  --leaf2Color:brightness(0) saturate(100%) invert(77%) sepia(65%) saturate(1111%) hue-rotate(9deg) brightness(86%) contrast(91%)/* #bab30c */;
+  --leafColor:brightness(0) saturate(100%) invert(68%) sepia(39%) saturate(4118%) hue-rotate(23deg) brightness(93%) contrast(91%)/* #a7a10b */;
 }
