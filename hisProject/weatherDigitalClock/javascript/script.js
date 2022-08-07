@@ -185,12 +185,14 @@ setInterval(function () {
   } else {
     leaf = "default";
   }
-  session = "morning";
-  weatherId = "801";
-  leaf = "default";
+  session = "noon";
+  weatherId = "802";
+  leaf = "apricotBlossom";
   /*
   test done:
   		morning apricotBlossom 801 - 804
+  ?
+      noon apricotBlossom 802
   */
   cssDisplay.setAttribute(
     "href",

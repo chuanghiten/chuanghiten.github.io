@@ -1,5 +1,10 @@
-body{
-  --leafColor:brightness(0) saturate(100%) invert(71%) sepia(100%) saturate(388%) hue-rotate(3deg) brightness(109%) contrast(110%)/* #fff510 */;
-  --leaf2Color:brightness(0) saturate(100%) invert(58%) sepia(93%) saturate(482%) hue-rotate(18deg) brightness(123%) contrast(89%)/* #e6dd0e */;
-  --leaf3Color:brightness(0) saturate(100%) invert(85%) sepia(13%) saturate(4177%) hue-rotate(8deg) brightness(96%) contrast(90%);/* #cfc70d */
+body {
+  --leafColor: brightness(0) saturate(100%) invert(71%) sepia(100%) saturate(388%) hue-rotate(3deg) brightness(109%) contrast(110%)
+    /* #fff510 */
+  ;
+  --leaf2Color: brightness(0) saturate(100%) invert(58%) sepia(93%) saturate(482%) hue-rotate(18deg) brightness(123%) contrast(89%)
+    /* #e6dd0e */
+  ;
+  --leaf3Color: brightness(0) saturate(100%) invert(85%) sepia(13%) saturate(4177%) hue-rotate(8deg) brightness(96%) contrast(90%);
+  /* #cfc70d */
 }
