@@ -908,17 +908,17 @@ div.circle58 {
 }
 .temperatureProgressbar .hideLineBefore,
 .temperatureProgressbar .hideLineAfter {
-  width: 100%;
-  height: 100%;
+  width: 222px;
+  height: 222px;
   position: absolute;
   background: conic-gradient(
     transparent 0deg calc(360deg - 10deg),
     var(--sunColor) calc(360deg - 10deg) 10deg
   );
-  transform: rotate(45deg);
+  transform: rotate(46deg);
   clip-path: url(#hideLine);
 }
 .temperatureProgressbar .hideLineAfter {
   background:conic-gradient(var(--sunColor) 0deg 10deg,transparent 10deg 360deg);
-  transform:rotate(calc(45deg + 90deg))
+  transform:rotate(calc(44deg + 90deg));
 }
