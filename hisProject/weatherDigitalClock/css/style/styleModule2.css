@@ -942,3 +942,22 @@ div.circle58 {
 .temperatureProgressbar .dot+.dot{
 	transform:rotate(36deg)
 }
+.temperatureProgressbar .arrow{
+	width:250px;
+	height:250px;
+	overflow:hidden;
+	position:absolute;
+	border-radius:50%;
+}
+.temperatureProgressbar .arrow:before{
+	content:'';
+	position:absolute;
+	display:block;
+	width:0;
+	height:0;
+	border:7px solid var(--dateTextColor);
+	border-right-color:transparent;
+	border-top-color:transparent;
+	left:50%;
+	transform:translate(0,-8px) rotate(-45deg);
+}
