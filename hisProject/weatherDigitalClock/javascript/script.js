@@ -185,9 +185,10 @@ setInterval(function () {
   } else {
     leaf = "default";
   }
-  session = "noon";
-  weatherId = "802";
-  leaf = "apricotBlossom";
+  season="spring";
+  session = "morning";
+  weatherId = "800";
+  leaf = "default";
   /*
   test done:
   		morning apricotBlossom 801 - 804

@@ -897,3 +897,19 @@ div.circle58 {
   bottom: 0;
   left: 20px;
 }
+.temperatureProgressbar .progressbar{
+		width:100%;
+		height:100%;
+		position:absolute;
+		border-radius:50%;
+		border:5px solid var(--bodyBackgroundGradient);
+		border-right-color:transparent;
+}
+.temperatureProgressbar .progressbar .hideLineBefore,.temperatureProgressbar .progressbar .hideLineAfter{
+		width:100%;
+		height:100%;
+		position:absolute;
+		background:#f00;
+		top:0;
+		left:0
+}
