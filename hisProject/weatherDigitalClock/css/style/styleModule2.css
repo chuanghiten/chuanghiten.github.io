@@ -898,12 +898,12 @@ div.circle58 {
   bottom: 0;
   left: 20px;
 }
-.temperatureProgressbar .progressbar {
+.temperatureProgressbar .progressbarLine {
   width: 100%;
   height: 100%;
   position: absolute;
   border-radius: 50%;
-  border: 5px solid var(--bodyBackgroundGradient);
+  border: 5px solid var(--dateTextColor);
   border-right-color: transparent;
 }
 .temperatureProgressbar .hideLineBefore,
@@ -921,4 +921,24 @@ div.circle58 {
 .temperatureProgressbar .hideLineAfter {
   background:conic-gradient(var(--sunColor) 0deg 10deg,transparent 10deg 360deg);
   transform:rotate(calc(44deg + 90deg));
+}
+.temperatureProgressbar .dot{
+	width:100%;
+	height:100%;
+	position:absolute;
+	transform:rotate(calc((44deg + 90deg) + 10deg))
+}
+.temperatureProgressbar .dot:before{
+	content:'';
+	display:block;
+	position:absolute;
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	left:50%;
+	transform:translate(-50%,-2.5px);
+	background:var(--dateTextColor)
+}
+.temperatureProgressbar .dot+.dot{
+	transform:rotate(36deg)
 }
