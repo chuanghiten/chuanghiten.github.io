@@ -611,9 +611,15 @@
         </div>
       </div>
       <div class='temperatureProgressbar'>
-      		<div class="progressbar"></div>
-      		<div class='hideLineBefore'></div>
-      		<div class='hideLineAfter'></div>
+        <svg style="position:absolute;opacity:0" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220"
+          height="220">
+          <clipPath id="hideLine">
+            <path fill="transparent" d="m110 220c-60.8 0-110-49.2-110-110 0-60.8 49.2-110 110-110 60.8 0 110 49.2 110 110 0 60.8-49.2 110-110 110zm104-110c0-57.5-46.5-104-104-104-57.5 0-104 46.5-104 104 0 57.5 46.5 104 104 104 57.5 0 104-46.5 104-104z" />
+          </clipPath>
+        </svg>
+        <div class="progressbar"></div>
+        <div class='hideLineBefore'></div>
+        <div class='hideLineAfter'></div>
       </div>
     </div>
   </div>
