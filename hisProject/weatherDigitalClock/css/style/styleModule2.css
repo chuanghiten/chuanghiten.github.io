@@ -948,6 +948,7 @@ div.circle58 {
 	overflow:hidden;
 	position:absolute;
 	border-radius:50%;
+  transform:rotate(33deg)/*33-141*/
 }
 .temperatureProgressbar .arrow:before{
 	content:'';
@@ -960,4 +961,26 @@ div.circle58 {
 	border-top-color:transparent;
 	left:50%;
 	transform:translate(0,-8px) rotate(-45deg);
+}
+.temperatureProgressbar .arrowLine{
+  width:254px;
+  height:254px;
+  border-radius:50%;
+  position:absolute;
+  clip-path:url(#hideArrowLine);
+  background:#f00
+}
+.temperatureProgressbar .maxInfo,.temperatureProgressbar .minInfo{
+  width:274px;
+  height:274px;
+  position:absolute;
+  border:4px solid transparent;
+  border-radius:50%;
+  transform:rotate(-7deg);
+  border-top-color: var(--dateTextColor);
+}
+.temperatureProgressbar .minInfo{
+  transform:rotate(7deg);
+  border-top-color:transparent;
+  border-bottom-color:var(--dateTextColor)
 }
