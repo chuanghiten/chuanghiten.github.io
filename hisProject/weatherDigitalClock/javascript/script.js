@@ -31,7 +31,7 @@ var body = window.document.querySelector("body"),second = window.document.queryS
   lunar,
   leapMonth,
   leaf,
-  weatherId,cityNameDataUrl,cityNameData,cityName,countryCodeDataUrl,countryCodeData,countryCode;
+  weatherId,cityNameDataUrl,cityNameData,cityName,countryCodeDataUrl,countryCodeData,countryCode,temperature,temperatureMax,temperatureMin,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureMedium .temperatureInfo .content"),temperatureMinPrint=document.querySelector(".sun .weatherInfo .temperatureMin .temperatureInfo .content"),temperatureMaxPrint=document.querySelector(".sun .weatherInfo .temperatureMax .temperatureInfo .content");
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(positionData);
 } else {
@@ -68,11 +68,14 @@ async function positionData(position) {
   //console.log(typeof countryCodeData.countryCode);
   countryCode=countryCodeData.results[0].components.country_code;
   //console.log(countryCode);
+  temperature=(weatherData.main.temp - 273.15).toFixed(0);
+  temperatureMax=(weatherData.main.temp_max - 273.15).toFixed(0);
+  temperatureMin=(weatherData.main.temp_min - 273.15).toFixed(0);
 };
 setInterval(function () {
   time = new Date();
   secondTime = time.getSeconds();
-//  secondTime=0;
+  secondTime=0;
   secondDeg = (secondTime * 360) / 60;
   minuteTime = time.getMinutes();
   minuteDeg = (minuteTime * 360) / 60;
@@ -227,4 +230,7 @@ setInterval(function () {
   //console.log(navigator.language);
   console.log('lunar = '+lunar[0]+'/'+lunar[1]+'/'+lunar[2]+' - leapMonth = '+leapMonth);
   //console.log(session);
+  temperaturePrint.innerHTML=temperature + "<span>°C</span>"
+  temperatureMinPrint.innerHTML=temperatureMin + "<span>°C</span>"
+  temperatureMaxPrint.innerHTML=temperatureMax + "<span>°C</span>"
 }, 1000);
