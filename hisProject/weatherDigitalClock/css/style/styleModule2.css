@@ -1041,5 +1041,45 @@ div.circle58 {
   transform: translate(0,-50%);
 }
 .sun .weatherInfo{
-  transform:translate(-50%,-50%)
+  transform:translate(-50%,-50%);
+  display:flex;
+  justify-content:center;
+  align-items:center
+}
+.sun .weatherInfo .temperatureMin,.sun .weatherInfo .temperatureMedium,.sun .weatherInfo .temperatureMax{
+	position:absolute;
+	width:400px;
+	height:170px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.sun .weatherInfo .temperatureMax{
+	top:0
+}
+.sun .weatherInfo .temperatureMin{
+	bottom:0
+}
+.sun .weatherInfo .temperatureMedium{
+	left:0;
+	width:170px;
+	height:400px
+}
+.sun .weatherInfo .temperatureInfo{
+	font:70px Pacifico;
+	color:var(--dateTextColor);
+	display:flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	align-items:center
+}
+.sun .weatherInfo .temperatureInfo span{
+	font-size:30px;
+}
+.sun .weatherInfo .temperatureInfo .title{
+	font-size:30px;
+}
+.sun .weatherInfo .temperatureInfo .content{
+	background:#f00;
+	margin:0 50px
 }
