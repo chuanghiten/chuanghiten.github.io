@@ -1,3 +1,11 @@
+body,html{
+  background: 0 0 / cover no-repeat fixed
+    linear-gradient(
+      to bottom,
+      var(--bodyBackgroundGradient),
+      var(--bodyBackgroundGradient2)
+    ),var(--mountain1BackgroundColor);
+}
 div.sun {
   position: relative;
   width: 630px;
@@ -191,6 +199,7 @@ div.mountain6,
 div.mountain5,
 div.mountain4,
 div.mountain3,
+div.mountain1,
 div.minTree,
 div.mountain2,
 div.tree,
@@ -245,6 +254,9 @@ div.tree {
 }
 div.mountain2 {
   filter: var(--mountain2Color);
+}
+div.mountain1 {
+  filter: var(--mountain1Color);
 }
 div.mountain {
   filter: var(--mountainColor);

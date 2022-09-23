@@ -68,13 +68,6 @@
   transition: all 0.25s ease-in-out;
 }
 body {
-  background: 0 0 / cover
-    linear-gradient(
-      to bottom,
-      var(--bodyBackgroundGradient),
-      var(--bodyBackgroundGradient2)
-    )
-    no-repeat fixed;
   font-size: 16px;
   --bodyBackgroundGradient: var(--sambucus);
   --bodyBackgroundGradient2: var(--sambucus);
