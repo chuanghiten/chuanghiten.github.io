@@ -1066,20 +1066,38 @@ div.circle58 {
 	height:400px
 }
 .sun .weatherInfo .temperatureInfo{
-	font:70px Pacifico;
+	font:60px Pacifico;
 	color:var(--dateTextColor);
 	display:flex;
 	justify-content:center;
-	flex-wrap:wrap;
-	align-items:center
+	align-items:center;
+	flex-wrap:wrap
 }
 .sun .weatherInfo .temperatureInfo span{
 	font-size:30px;
 }
 .sun .weatherInfo .temperatureInfo .title{
 	font-size:30px;
+	position:absolute
 }
 .sun .weatherInfo .temperatureInfo .content{
-	background:#f00;
+	position:absolute
+}
+.sun .weatherInfo .temperatureMedium .temperatureInfo .content,.sun .weatherInfo .temperatureMedium .temperatureInfo .title{
+	position:relative
+}
+.sun .weatherInfo .temperatureMedium .temperatureInfo .content{
 	margin:0 50px
+}
+.sun .weatherInfo .temperatureMax .temperatureInfo .title{
+	top:15px
+}
+.sun .weatherInfo .temperatureMax .temperatureInfo .content{
+	bottom:20px
+}
+.sun .weatherInfo .temperatureMin .temperatureInfo .title{
+	bottom:15px
+}
+.sun .weatherInfo .temperatureMin .temperatureInfo .content{
+	top:10px
 }
