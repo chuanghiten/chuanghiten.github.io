@@ -72,6 +72,7 @@ async function positionData(position) {
 setInterval(function () {
   time = new Date();
   secondTime = time.getSeconds();
+  secondTime=0;
   secondDeg = (secondTime * 360) / 60;
   minuteTime = time.getMinutes();
   minuteDeg = (minuteTime * 360) / 60;
