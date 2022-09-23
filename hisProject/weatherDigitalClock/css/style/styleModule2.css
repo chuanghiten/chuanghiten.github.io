@@ -988,11 +988,55 @@ div.circle58 {
   position:absolute;
   clip-path:url(#hideArrowLine);
 }
-.temperatureProgressbar .infoLine{
+.temperatureProgressbar .infoLine,.temperatureProgressbar .infoLineBefore,.temperatureProgressbar .infoLineAfter{
   width:274px;
   height:274px;
   position:absolute;
   border-radius:50%;
   clip-path: url(#infoLine);
   background:conic-gradient(var(--dateTextColor) 0 36deg,transparent 36deg 144deg,var(--dateTextColor) 144deg calc(180deg + 45deg),transparent calc(180deg + 45deg) calc(360deg - 45deg ),var(--dateTextColor) calc(360deg - 45deg ) 360deg)
+}
+.temperatureProgressbar .infoLineBefore,.temperatureProgressbar .infoLineAfter{
+  clip-path: unset;
+  background:transparent
+}
+.temperatureProgressbar .infoLineBefore:before,.temperatureProgressbar .infoLineAfter:before{
+  width:4px;
+  height:30px;
+  background:var(--dateTextColor);
+  content:'';
+  display:block;
+  position:relative;
+  margin:0 auto auto auto
+}
+.temperatureProgressbar .infoLineBefore{
+  transform:rotate(36deg)
+}
+.temperatureProgressbar .infoLineAfter{
+  transform:rotate(calc((44deg + 90deg) + 10deg));
+}
+.sun>.infoLine{
+  width:calc(100% - 60px);
+  height:calc(100% - 60px);
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-45deg)
+}
+.sun>.infoLine:before,.sun>.infoLine::after{
+  content:'';
+  display:block;
+  position:absolute;
+  width:4px;
+  height:145px;
+  left:50%;
+  transform:translate(-50%,0);
+  background:var(--dateTextColor)
+}
+.sun>.infoLine::after{
+  width:145px;
+  height:4px;
+  top:50%;
+  left:0;
+  transform: translate(0,-50%);
 }

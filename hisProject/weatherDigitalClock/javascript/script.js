@@ -191,10 +191,10 @@ setInterval(function () {
   weatherId = "800";
   leaf = "default";
   /*
-  test done:
-  		morning apricotBlossom 801 - 804
-  ?
-      noon apricotBlossom 802
+  season="spring";
+  session = "morning";
+  weatherId = "800";
+  leaf = "default";
   */
   cssDisplay.setAttribute(
     "href",
