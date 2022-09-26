@@ -51,12 +51,6 @@ var body = window.document.querySelector("body"),
   temperaturePrint = document.querySelector(
     ".sun .weatherInfo .temperatureMedium .temperatureInfo .content"
   ),
-  temperatureMinPrint = document.querySelector(
-    ".sun .weatherInfo .temperatureMin .temperatureInfo .content"
-  ),
-  temperatureMaxPrint = document.querySelector(
-    ".sun .weatherInfo .temperatureMax .temperatureInfo .content"
-  ),
   oldValue;
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(positionData);
@@ -110,8 +104,6 @@ async function positionData(position) {
   countryCode = countryCodeData.results[0].components.country_code;
   //console.log(countryCode);
   temperature = (weatherData.main.temp - 273.15).toFixed(0);
-  temperatureMax = (weatherData.main.temp_max - 273.15).toFixed(0);
-  temperatureMin = (weatherData.main.temp_min - 273.15).toFixed(0);
 }
 function main() {
   time = new Date();
@@ -570,9 +562,10 @@ function main() {
       leapMonth
   );
   //console.log(session);
+  if(temperature==undefined){
+  	temperature="?";
+  };
   temperaturePrint.innerHTML = temperature + "<span>°C</span>";
-  temperatureMinPrint.innerHTML = temperatureMin + "<span>°C</span>";
-  temperatureMaxPrint.innerHTML = temperatureMax + "<span>°C</span>";
   return [season, session, weatherId, leaf];
 }
 function updateRealTimeActive(displayData, fileSelector) {
