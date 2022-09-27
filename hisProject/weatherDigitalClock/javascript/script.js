@@ -52,15 +52,11 @@ var body = window.document.querySelector("body"),
     ".sun .weatherInfo .temperatureMedium .temperatureInfo .content"
   ),
   oldValue;
-if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(positionData);
-} else {
-  alert("Positioning is off");
-}
 async function positionData(position) {
   latitudeData = position.coords.latitude;
   longitudeData = position.coords.longitude;
-  //latitudeData=15;longitudeData=108;
+//  latitudeData=15;longitudeData=108;
   sessionDataUrl =
     "https:/" +
     "/api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat=" +
@@ -88,6 +84,10 @@ async function positionData(position) {
     "+" +
     longitudeData +
     "&key=2dc8792399604acb8a984d4d32ac03d1&pretty=0";
+  console.log(sessionDataUrl);
+  console.log(weatherDataUrl);
+  console.log(cityNameDataUrl);
+  console.log(countryCodeDataUrl);
   sessionData = await fetch(sessionDataUrl).then((data) => data.json());
   weatherData = await fetch(weatherDataUrl).then((data) => data.json());
   cityNameData = await fetch(cityNameDataUrl).then((data) => data.json());
@@ -106,9 +106,11 @@ async function positionData(position) {
   temperature = (weatherData.main.temp - 273.15).toFixed(0);
 }
 function main() {
+	
+	//console.log(sessionData.message);
   time = new Date();
   secondTime = time.getSeconds();
-  //  secondTime=0;
+  //secondTime=0;
   secondDeg = (secondTime * 360) / 60;
   minuteTime = time.getMinutes();
   minuteDeg = (minuteTime * 360) / 60;
@@ -551,6 +553,7 @@ function main() {
   };
   */
   //console.log(navigator.language);
+  /*
   console.log(
     "lunar = " +
       lunar[0] +
@@ -561,10 +564,13 @@ function main() {
       " - leapMonth = " +
       leapMonth
   );
+  */
   //console.log(session);
+  
   if(temperature==undefined){
   	temperature="?";
   };
+  
   temperaturePrint.innerHTML = temperature + "<span>°C</span>";
   return [season, session, weatherId, leaf];
 }

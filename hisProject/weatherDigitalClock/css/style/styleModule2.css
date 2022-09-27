@@ -1046,19 +1046,13 @@ div.circle58 {
   justify-content:center;
   align-items:center
 }
-.sun .weatherInfo .temperatureMin,.sun .weatherInfo .temperatureMedium,.sun .weatherInfo .temperatureMax{
+.sun .weatherInfo .temperatureMedium{
 	position:absolute;
 	width:400px;
 	height:170px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
-}
-.sun .weatherInfo .temperatureMax{
-	top:0
-}
-.sun .weatherInfo .temperatureMin{
-	bottom:0
 }
 .sun .weatherInfo .temperatureMedium{
 	left:0;
@@ -1088,16 +1082,4 @@ div.circle58 {
 }
 .sun .weatherInfo .temperatureMedium .temperatureInfo .content{
 	margin:0 50px
-}
-.sun .weatherInfo .temperatureMax .temperatureInfo .title{
-	top:15px
-}
-.sun .weatherInfo .temperatureMax .temperatureInfo .content{
-	bottom:20px
-}
-.sun .weatherInfo .temperatureMin .temperatureInfo .title{
-	bottom:15px
-}
-.sun .weatherInfo .temperatureMin .temperatureInfo .content{
-	top:10px
 }
