@@ -51,7 +51,7 @@ var body = window.document.querySelector("body"),
   temperaturePrint = document.querySelector(
     ".sun .weatherInfo .temperatureMedium .temperatureInfo .content"
   ),
-  oldValue;
+  oldValue,weatherDescription,weatherDescriptionPrint=document.querySelector(".sun .weatherInfo .temperatureMedium .temperatureInfo .weatherDescription"),cityNameCommand,cityNamePrint=document.querySelector(".sun .weatherInfo .temperatureMedium .temperatureInfo .cityName");
   navigator.geolocation.getCurrentPosition(positionData);
 async function positionData(position) {
   latitudeData = position.coords.latitude;
@@ -63,13 +63,14 @@ async function positionData(position) {
     latitudeData +
     "&long=" +
     longitudeData;
+    //console.log(navigator.language);
   weatherDataUrl =
     "https:/" +
     "/api.openweathermap.org/data/2.5/weather?lat=" +
     latitudeData +
     "&lon=" +
     longitudeData +
-    "&appid=5298f9131293054b9041c1008d027218";
+    "&appid=5298f9131293054b9041c1008d027218&lang="+navigator.language||navigator.userlanguage;
   cityNameDataUrl =
     "https:/" +
     "/api.openweathermap.org/geo/1.0/reverse?lat=" +
@@ -99,14 +100,28 @@ async function positionData(position) {
     parseInt(sessionData.sunset.slice(0, 2)) +
     parseInt(sessionData.sunset.slice(-2.0)) / 60;
   //console.log(navigator.language);
-  //console.log(cityNameData[0].local_names.vi);
+  //console.log(cityNameData[0].local_names.navigator.language);
   //console.log(typeof countryCodeData.countryCode);
   countryCode = countryCodeData.results[0].components.country_code;
   //console.log(countryCode);
   temperature = (weatherData.main.temp - 273.15).toFixed(0);
+  weatherDescription=weatherData.weather[0].description;
+  //console.log(weatherDescription);
+  cityNameCommand="cityNameData[0].local_names."+navigator.language||navigator.userlanguage;
+  function cityNameFunction(command) {
+  	return Function(`"use strict";return (${command})`)();
+  };
+  cityName=cityNameFunction(cityNameCommand);
+  console.log(cityName);
+  if(((navigator.language||navigator.userlanguage)=="vi")&&(cityName.search(/phố/i)!=-1)){
+  	cityName=cityName.slice(cityName.search(/phố/i)+3)
+  }
+  
 }
+//console.log(sessionData);
+//setInterval(console.log(sessionData),2000);
+//positionData();
 function main() {
-	
 	//console.log(sessionData.message);
   time = new Date();
   secondTime = time.getSeconds();
@@ -570,8 +585,15 @@ function main() {
   if(temperature==undefined){
   	temperature="?";
   };
-  
+  if(weatherDescription==undefined){
+  	weatherDescription="?";
+  };
   temperaturePrint.innerHTML = temperature + "<span>°C</span>";
+  weatherDescriptionPrint.innerHTML=weatherDescription;
+  if(cityName==undefined){
+  	cityName="?"
+  }
+  cityNamePrint.innerHTML=cityName;
   return [season, session, weatherId, leaf];
 }
 function updateRealTimeActive(displayData, fileSelector) {
