@@ -48,12 +48,11 @@ var body = window.document.querySelector("body"),
   temperature,
   temperatureMax,
   temperatureMin,
-  temperaturePrint = document.querySelector(
-    ".sun .weatherInfo .temperatureMedium .temperatureInfo .content"
-  ),
-  oldValue,weatherDescription,weatherDescriptionPrint=document.querySelector(".sun .weatherInfo .temperatureMedium .temperatureInfo .weatherDescription"),cityNameCommand,cityNamePrint=document.querySelector(".sun .weatherInfo .temperatureMedium .temperatureInfo .cityName");
+  
+  oldValue,locationData;
   navigator.geolocation.getCurrentPosition(positionData);
 async function positionData(position) {
+//console.log("hello");
   latitudeData = position.coords.latitude;
   longitudeData = position.coords.longitude;
 //  latitudeData=15;longitudeData=108;
@@ -89,10 +88,12 @@ async function positionData(position) {
   console.log(weatherDataUrl);
   console.log(cityNameDataUrl);
   console.log(countryCodeDataUrl);
-  sessionData = await fetch(sessionDataUrl).then((data) => data.json());
-  weatherData = await fetch(weatherDataUrl).then((data) => data.json());
-  cityNameData = await fetch(cityNameDataUrl).then((data) => data.json());
+  sessionData = await fetch(sessionDataUrl).then((sessionResponse) => sessionResponse.json());
+  weatherData = await fetch(weatherDataUrl).then((weatherResponse) => weatherResponse.json());
+  cityNameData = await fetch(cityNameDataUrl).then((cityNameResponse) => cityNameResponse.json());
   countryCodeData = await fetch(countryCodeDataUrl).then((data) => data.json());
+  //locationData=await fetch("https:/"+"/dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&q="+latitudeData+"%2C"+longitudeData+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((locationResponse)=>locationResponse.json());
+  //console.log([sessionData,weatherData,cityNameData,countryCodeData,locationData]);
   sunrise =
     parseInt(sessionData.sunrise.slice(0, 2)) +
     parseInt(sessionData.sunrise.slice(-2.0)) / 60;
@@ -104,18 +105,7 @@ async function positionData(position) {
   //console.log(typeof countryCodeData.countryCode);
   countryCode = countryCodeData.results[0].components.country_code;
   //console.log(countryCode);
-  temperature = (weatherData.main.temp - 273.15).toFixed(0);
-  weatherDescription=weatherData.weather[0].description;
-  //console.log(weatherDescription);
-  cityNameCommand="cityNameData[0].local_names."+navigator.language||navigator.userlanguage;
-  function cityNameFunction(command) {
-  	return Function(`"use strict";return (${command})`)();
-  };
-  cityName=cityNameFunction(cityNameCommand);
-  console.log(cityName);
-  if(((navigator.language||navigator.userlanguage)=="vi")&&(cityName.search(/phố/i)!=-1)){
-  	cityName=cityName.slice(cityName.search(/phố/i)+3)
-  }
+  
   
 }
 //console.log(sessionData);
@@ -582,18 +572,7 @@ function main() {
   */
   //console.log(session);
   
-  if(temperature==undefined){
-  	temperature="?";
-  };
-  if(weatherDescription==undefined){
-  	weatherDescription="?";
-  };
-  temperaturePrint.innerHTML = temperature + "<span>°C</span>";
-  weatherDescriptionPrint.innerHTML=weatherDescription;
-  if(cityName==undefined){
-  	cityName="?"
-  }
-  cityNamePrint.innerHTML=cityName;
+  
   return [season, session, weatherId, leaf];
 }
 function updateRealTimeActive(displayData, fileSelector) {

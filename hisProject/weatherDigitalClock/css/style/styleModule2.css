@@ -922,24 +922,8 @@ div.circle58 {
   height: 100%;
   position: absolute;
   border-radius: 50%;
-  border: 5px solid var(--dateTextColor);
-  border-right-color: transparent;
-}
-.temperatureProgressbar .hideLineBefore,
-.temperatureProgressbar .hideLineAfter {
-  width: 222px;
-  height: 222px;
-  position: absolute;
-  background: conic-gradient(
-    transparent 0deg calc(360deg - 10deg),
-    var(--sunColor) calc(360deg - 10deg) 10deg
-  );
-  transform: rotate(46deg);
+  background:transparent;
   clip-path: url(#hideLine);
-}
-.temperatureProgressbar .hideLineAfter {
-  background:conic-gradient(var(--sunColor) 0deg 10deg,transparent 10deg 360deg);
-  transform:rotate(calc(44deg + 90deg));
 }
 .temperatureProgressbar .dot{
 	width:100%;
@@ -956,66 +940,17 @@ div.circle58 {
 	border-radius:50%;
 	left:50%;
 	transform:translate(-50%,-2.5px);
+	background:#f00
+}
+.temperatureProgressbar .dot+.dot:before{
+	width:5px;
+	height:5px;
+	transform:translate(-50%,0);
 	background:var(--dateTextColor)
 }
 .temperatureProgressbar .dot+.dot{
 	transform:rotate(36deg)
 }
-.temperatureProgressbar .arrow{
-	width:250px;
-	height:250px;
-	overflow:hidden;
-	position:absolute;
-	border-radius:50%;
-  transform:rotate(33deg)/*33-141*/
-}
-.temperatureProgressbar .arrow:before{
-	content:'';
-	position:absolute;
-	display:block;
-	width:0;
-	height:0;
-	border:7px solid var(--dateTextColor);
-	border-right-color:transparent;
-	border-top-color:transparent;
-	left:50%;
-	transform:translate(0,-8px) rotate(-45deg);
-}
-.temperatureProgressbar .arrowLine{
-  width:254px;
-  height:254px;
-  border-radius:50%;
-  position:absolute;
-  clip-path:url(#hideArrowLine);
-}
-.temperatureProgressbar .infoLine,.temperatureProgressbar .infoLineBefore,.temperatureProgressbar .infoLineAfter{
-  width:274px;
-  height:274px;
-  position:absolute;
-  border-radius:50%;
-  clip-path: url(#infoLine);
-  background:conic-gradient(var(--dateTextColor) 0 36deg,transparent 36deg 144deg,var(--dateTextColor) 144deg calc(180deg + 44deg),transparent calc(180deg + 44deg) calc(360deg - 44deg ),var(--dateTextColor) calc(360deg - 44deg ) 360deg)
-}
-.temperatureProgressbar .infoLineBefore,.temperatureProgressbar .infoLineAfter{
-  clip-path: unset;
-  background:transparent
-}
-.temperatureProgressbar .infoLineBefore:before,.temperatureProgressbar .infoLineAfter:before{
-  width:4px;
-  height:30px;
-  background:var(--dateTextColor);
-  content:'';
-  display:block;
-  position:relative;
-  margin:0 auto auto auto
-}
-.temperatureProgressbar .infoLineBefore{
-  transform:rotate(36deg)
-}
-.temperatureProgressbar .infoLineAfter{
-  transform:rotate(calc((44deg + 90deg) + 10deg));
-}
-.sun>.infoLine,.sun .weatherInfo{
   width:calc(100% - 60px);
   height:calc(100% - 60px);
   position: absolute;
@@ -1023,64 +958,36 @@ div.circle58 {
   left:50%;
   transform:translate(-50%,-50%) rotate(-45deg)
 }
-.sun>.infoLine:before,.sun>.infoLine::after{
-  content:'';
-  display:block;
-  position:absolute;
-  width:4px;
-  height:145px;
-  left:50%;
-  transform:translate(-50%,0);
-  background:var(--dateTextColor)
-}
-.sun>.infoLine::after{
-  width:145px;
-  height:4px;
-  top:50%;
-  left:0;
-  transform: translate(0,-50%);
-}
 .sun .weatherInfo{
   transform:translate(-50%,-50%);
   display:flex;
   justify-content:center;
-  align-items:center
+  align-items:center;
 }
-.sun .weatherInfo .temperatureMedium{
+
+.halfCircleCenter .circle,.halfCircleCenter .progressbar{
+	width:100%;
+	height:100%;
+	background:conic-gradient(transparent 0 calc(90deg + 18deg),var(--dateTextColor) calc(90deg + 18deg) 360deg);
+	border-radius:50%;
+	transform:rotate(calc(45deg - 9deg));
+	position:absolute
+}
+.halfCircleCenter .hideCircle{
+	width:calc(100% - 10px);
+	height:calc(100% - 10px);
 	position:absolute;
-	width:400px;
-	height:170px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
+	background:var(--sunColor);
+	border-radius:50%
 }
-.sun .weatherInfo .temperatureMedium{
-	left:0;
-	width:170px;
-	height:400px
+.halfCircleCenter .progressbar{
+	background:conic-gradient(#f00 0 calc(360deg - (90deg + 18deg + 126deg)),transparent calc(360deg - (90deg + 18deg + 126deg)) 360deg);
+	transform:rotate(calc(45deg - 9deg + 90deg + 18deg))
 }
-.sun .weatherInfo .temperatureInfo{
-	font:70px Pacifico;
-	color:var(--dateTextColor);
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	flex-flow:nowrap column;
-	text-align:center
+/* 252 - 0 */
+.temperatureProgressbar .dot.progressbar{
+	transform:rotate(calc(45deg - 9deg - 126deg))
 }
-.sun .weatherInfo .temperatureMedium .temperatureInfo span,.sun .weatherInfo .temperatureMedium .temperatureInfo .cityName,.sun .weatherInfo .temperatureMedium .temperatureInfo .title{
-	font-size:30px;
-}
-.sun .weatherInfo .temperatureMedium .temperatureInfo .content{
-	margin:-35px 50px -15px 50px
-}
-.sun .weatherInfo .temperatureMedium .temperatureInfo .weatherDescription{
-	font-size:35px;
-	margin:-5px 0;
-	text-transform:capitalize
-}
-/*
-.sun .weatherInfo .temperatureMedium .temperatureInfo{
+.temperatureProgressbar .dot.progressbar:before{
 	background:#f00
 }
-*/

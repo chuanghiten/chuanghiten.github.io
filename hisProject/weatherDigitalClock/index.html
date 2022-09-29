@@ -604,6 +604,9 @@
       <div class='halfCircle45Deg'></div>
       <div class='halfCircleNot45Deg'></div>
       <div class='halfCircleCenter'>
+      		<div class="circle"></div>
+      		<div class="progressbar"></div>
+      		<div class="hideCircle"></div>
         <div class='days'>?<span>?</span></div>
         <div class='startLine'>
           <div class='line'>
@@ -612,26 +615,9 @@
         </div>
       </div>
       <div class='temperatureProgressbar'>
-        <svg style="position:absolute;top:0;left:0;opacity:0" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 222 222" width="222" height="222">
-          <clipPath id="hideLine">
-            <path d="m111 222c-61.4 0-111-49.6-111-111 0-61.4 49.6-111 111-111 61.4 0 111 49.6 111 111 0 61.4-49.6 111-111 111zm103-111c0-57-46-103-103-103-57 0-103 46-103 103 0 57 46 103 103 103 57 0 103-46 103-103z"/>
-        </clipPath>
-        </svg>
-        <svg style="position:absolute;top:0;left:0;opacity:0" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 254 254" width="254" height="254">
-          <clipPath id="hideArrowLine">
-            <path d="m127 254c-70.2 0-127-56.8-127-127 0-70.2 56.8-127 127-127 70.2 0 127 56.8 127 127 0 70.2-56.8 127-127 127zm122-127c0-67.5-54.5-122-122-122-67.5 0-122 54.5-122 122 0 67.5 54.5 122 122 122 67.5 0 122-54.5 122-122z"/>
-          </clipPath>
-        </svg>
-        <svg style="position:absolute;top:0;left:0;opacity:0" xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 274 274" width="274" height="274">
-          <clipPath id="infoLine">
-            <path d="m137 274c-75.8 0-137-61.2-137-137 0-75.8 61.2-137 137-137 75.8 0 137 61.2 137 137 0 75.8-61.2 137-137 137zm133-137c0-73.5-59.5-133-133-133-73.5 0-133 59.5-133 133 0 73.5 59.5 133 133 133 73.5 0 133-59.5 133-133z"/>
-          </clipPath>
-        </svg>
-        <div class="progressbarLine"></div>
-        <div class='hideLineBefore'></div>
-        <div class='hideLineAfter'></div>
         <div class="dot"></div>
         <div class="dot"></div>
+        <div class="dot progressbar"></div>
         <!--
         <div class="arrow"></div>
         <div class="arrowLine"></div>
@@ -643,22 +629,10 @@
     </div>
     <!--<div class="infoLine"></div>-->
     <div class="weatherInfo">
-    		<div class="temperatureMedium">
-    			<div class="temperatureInfo">
-    				<div class="title">
-    					Hiện tại:
-    				</div>
-    				<div class="content">
-    					?<span>°C</span>
-    				</div>
-    				<div class="cityName">
-    					?
-    				</div>
-    				<div class="weatherDescription">
-    					?
-    				</div>
-    			</div>
-    		</div>
+    	<div class="temperatureMax"></div>
+    	<div class="temperatureNow"></div>
+    	<div class="temperatureMin"></div>
+    </div>
     </div>
   </div>
   <div class='scenery'>
