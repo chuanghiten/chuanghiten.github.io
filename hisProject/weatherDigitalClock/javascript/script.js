@@ -49,7 +49,7 @@ var body = window.document.querySelector("body"),
   temperatureMax,
   temperatureMin,
   
-  oldValue,locationData;
+  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg;
   navigator.geolocation.getCurrentPosition(positionData);
 async function positionData(position) {
 //console.log("hello");
@@ -105,7 +105,9 @@ async function positionData(position) {
   //console.log(typeof countryCodeData.countryCode);
   countryCode = countryCodeData.results[0].components.country_code;
   //console.log(countryCode);
-  
+  temperature=25;
+  temperatureMin=24;
+  temperatureMax=29;
   
 }
 //console.log(sessionData);
@@ -572,7 +574,13 @@ function main() {
   */
   //console.log(session);
   
-  
+ temperatureDeg=252*((temperatureMax-temperature)/(temperatureMax-temperatureMin));
+ if(temperatureDeg){
+ 		temperatureProgressbar.setAttribute("style","--temperatureProgressbarDeg:"+temperatureDeg+"deg");
+ }else{
+ 		temperatureProgressbar.setAttribute("style","--temperatureProgressbarDeg:100deg");
+ }
+	
   return [season, session, weatherId, leaf];
 }
 function updateRealTimeActive(displayData, fileSelector) {

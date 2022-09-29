@@ -981,12 +981,12 @@ div.circle58 {
 	border-radius:50%
 }
 .halfCircleCenter .progressbar{
-	background:conic-gradient(#f00 0 calc(360deg - (90deg + 18deg + 126deg)),transparent calc(360deg - (90deg + 18deg + 126deg)) 360deg);
+	background:conic-gradient(#f00 0 calc(360deg - (90deg + 18deg + var(--temperatureProgressbarDeg,100deg))),transparent calc(360deg - (90deg + 18deg + var(--temperatureProgressbarDeg,100deg))) 360deg);
 	transform:rotate(calc(45deg - 9deg + 90deg + 18deg))
 }
 /* 252 - 0 */
 .temperatureProgressbar .dot.progressbar{
-	transform:rotate(calc(45deg - 9deg - 126deg))
+	transform:rotate(calc(45deg - 9deg - var(--temperatureProgressbarDeg,100deg)))
 }
 .temperatureProgressbar .dot.progressbar:before{
 	background:#f00
