@@ -991,3 +991,33 @@ div.circle58 {
 .temperatureProgressbar .dot.progressbar:before{
 	background:#f00
 }
+.sun .weatherInfo .temperatureNow{
+	position:absolute;
+	width:calc(50% - 30px);
+	height:calc(100% - 60px);
+	top:30px;
+	left:30px;
+	border-radius:999px 0 0 999px;
+	font-family:Pacifico;
+	display:flex;
+	align-items:center;
+	align-content:center;
+	color:var(--dateTextColor);
+}
+.sun .weatherInfo .temperatureNow .info{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	flex-flow:wrap column;
+	margin:30px 0 0 0
+}
+.sun .weatherInfo .temperatureNow .content{
+	font-size:90px;
+	margin:-60px 0 0 0
+}
+.sun .weatherInfo .temperatureNow .content span,.sun .weatherInfo .temperatureNow .title{
+	font-size:30px
+}
+.sun .weatherInfo .temperatureNow .content .decimal{
+	font-size:40px
+}

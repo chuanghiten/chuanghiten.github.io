@@ -49,7 +49,14 @@ var body = window.document.querySelector("body"),
   temperatureMax,
   temperatureMin,
   
-  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg;
+  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast;
+
+
+
+
+
+
+
   navigator.geolocation.getCurrentPosition(positionData);
 async function positionData(position) {
 //console.log("hello");
@@ -91,8 +98,11 @@ async function positionData(position) {
   sessionData = await fetch(sessionDataUrl).then((sessionResponse) => sessionResponse.json());
   weatherData = await fetch(weatherDataUrl).then((weatherResponse) => weatherResponse.json());
   cityNameData = await fetch(cityNameDataUrl).then((cityNameResponse) => cityNameResponse.json());
-  countryCodeData = await fetch(countryCodeDataUrl).then((data) => data.json());
-  //locationData=await fetch("https:/"+"/dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&q="+latitudeData+"%2C"+longitudeData+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((locationResponse)=>locationResponse.json());
+  countryCodeData = await fetch(countryCodeDataUrl).then((countryCodeResponse) => countryCodeResponse.json());
+  locationData=await fetch("https:/"+"/dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&q="+latitudeData+"%2C"+longitudeData+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((locationResponse)=>locationResponse.json());
+  weatherNow=await fetch("https:/"+"/dataservice.accuweather.com/currentconditions/v1/"+locationData.Key+"?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((weatherNowResponse)=>weatherNowResponse.json());
+  forecast=await fetch("https:/"+"/dataservice.accuweather.com/forecasts/v1/daily/1day/"+locationData.Key+"?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&language="+(navigator.language||navigator.userlanguage)+"&details=false&metric=true").then((forecastResponse)=>forecastResponse.json());
+  //console.log(weatherNow);
   //console.log([sessionData,weatherData,cityNameData,countryCodeData,locationData]);
   sunrise =
     parseInt(sessionData.sunrise.slice(0, 2)) +
@@ -105,10 +115,11 @@ async function positionData(position) {
   //console.log(typeof countryCodeData.countryCode);
   countryCode = countryCodeData.results[0].components.country_code;
   //console.log(countryCode);
-  temperature=25;
-  temperatureMin=24;
-  temperatureMax=29;
-  
+  temperature=weatherNow[0].Temperature.Metric.Value;
+  temperatureMin=forecast.DailyForecasts[0].Temperature.Minimum.Value;
+  temperatureMax=forecast.DailyForecasts[0].Temperature.Maximum.Value;
+  //console.log(temperatureMin+" "+temperatureMax);
+  //console.log(sunrise + " " + sunset);
 }
 //console.log(sessionData);
 //setInterval(console.log(sessionData),2000);
@@ -575,10 +586,19 @@ function main() {
   //console.log(session);
   
  temperatureDeg=252*((temperatureMax-temperature)/(temperatureMax-temperatureMin));
- if(temperatureDeg){
+ //console.log(temperatureDeg);
+ if(temperatureDeg||temperatureDeg==0){
  		temperatureProgressbar.setAttribute("style","--temperatureProgressbarDeg:"+temperatureDeg+"deg");
  }else{
  		temperatureProgressbar.setAttribute("style","--temperatureProgressbarDeg:100deg");
+ }
+ if(temperature&&temperature.toString().search("\[.]")!=-1){
+	 temperaturePrint.innerHTML=temperature.toString().slice(0,temperature.toString().search("\[.]"))+"<span class='decimal'>"+temperature.toString().slice(temperature.toString().search("\[.]"))+"</span><span>°C</span>";
+	 	//console.log(temperature.toString().slice(temperature.toString().search("\[.]")));
+ }else if(temperature){
+ 	temperaturePrint.innerHTML=temperature+"<span class='decimal'>.0</span><span>°C</span>";
+ }else{
+ 		temperaturePrint.innerHTML="?<span class='decimal'></span><span>°C</span>";
  }
 	
   return [season, session, weatherId, leaf];
