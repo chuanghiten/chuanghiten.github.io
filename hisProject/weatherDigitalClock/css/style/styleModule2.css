@@ -160,6 +160,7 @@ div.endLine {
   right: 0;
   transform: translate(calc(50% + 5px), -50%);
 }
+/*
 div.days {
   width: auto;
   height: auto;
@@ -174,6 +175,7 @@ div.days {
 div.days span {
   font-size: 28px;
 }
+*/
 div.halfCircle45Deg,
 div.halfCircleNot45Deg {
   transform: rotate(45deg);
@@ -991,7 +993,7 @@ div.circle58 {
 .temperatureProgressbar .dot.progressbar:before{
 	background:#f00
 }
-.sun .weatherInfo .temperatureNow{
+.sun .weatherInfo .temperatureNow,.sun .weatherInfo .temperatureMin,.sun .weatherInfo .temperatureMax{
 	position:absolute;
 	width:calc(50% - 30px);
 	height:calc(100% - 60px);
@@ -1004,20 +1006,77 @@ div.circle58 {
 	align-content:center;
 	color:var(--dateTextColor);
 }
-.sun .weatherInfo .temperatureNow .info{
+.sun .weatherInfo .info{
 	display:flex;
 	justify-content: center;
 	align-items:center;
 	flex-flow:wrap column;
+}
+.sun .weatherInfo .temperatureNow .info{
 	margin:30px 0 0 0
 }
-.sun .weatherInfo .temperatureNow .content{
+.sun .weatherInfo .content{
 	font-size:90px;
 	margin:-60px 0 0 0
 }
-.sun .weatherInfo .temperatureNow .content span,.sun .weatherInfo .temperatureNow .title{
+.sun .weatherInfo .content span,.sun .weatherInfo .title{
 	font-size:30px
 }
-.sun .weatherInfo .temperatureNow .content .decimal{
+.sun .weatherInfo .content .decimal{
 	font-size:40px
+}
+.sun .halfCircle .halfCircleCenter .dates{
+	background:transparent;
+	position:relative;
+	color:var(--dateTextColor);
+	font-family:Pacifico;
+	display:flex;
+	flex-flow:wrap column;
+	justify-content: center;
+	align-items:center;
+}
+.sun .halfCircle .halfCircleCenter .dates .city span{
+	height:15px;
+	width:15px;
+	display:inline-block;
+	margin-right:5px
+}
+.sun .halfCircle .halfCircleCenter .dates .day{
+	font-size:40px
+}
+.sun .halfCircle .halfCircleCenter .dates .date{
+	font-size:30px;
+	margin:-10px 0 0 0;
+}
+.sun .halfCircle .halfCircleCenter .dates .city{
+	font-size:25px;
+	background:transparent;
+	max-width:150px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden
+}
+.sun .halfCircle .halfCircleCenter .dates .city span svg path{
+	fill:var(--dateTextColor)
+}
+.sun .weatherInfo .temperatureMin,.sun .weatherInfo .temperatureMax{
+	width:calc(100% - 60px);
+	height:calc(50% - 30px);
+	align-items:unset;
+	align-content:unset;
+	justify-content:center;
+}
+.sun .weatherInfo .temperatureMin{
+	border-radius:0 0 999px 999px;
+	top:unset;
+	bottom:30px
+}
+.sun .weatherInfo .temperatureMax{
+	border-radius:999px 999px 0 0
+}
+.sun .weatherInfo .temperatureMin .info{
+	margin:130px 0 0 0
+}
+.sun .weatherInfo .temperatureMax .info{
+	margin:-80px 0 0 0
 }

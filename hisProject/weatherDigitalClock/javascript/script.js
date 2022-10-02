@@ -2,7 +2,6 @@ var body = window.document.querySelector("body"),
   second = window.document.querySelector("div.second"),
   minute = window.document.querySelector("div.minute"),
   hour = window.document.querySelector("div.hour"),
-  days = window.document.querySelector("div.days"),
   cssDisplay = window.document.querySelector("link.display"),
   cssLeaf = window.document.querySelector("link.leaf"),
   date,
@@ -25,8 +24,7 @@ var body = window.document.querySelector("body"),
   minuteDeg,
   hourTime,
   hourDeg,
-  dates,
-  day,
+  days,
   timeZone,
   dateToJulius,
   juliusDate,
@@ -49,7 +47,7 @@ var body = window.document.querySelector("body"),
   temperatureMax,
   temperatureMin,
   
-  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast;
+  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast,city,dayPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .day"),datePrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .date"),cityPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .city");
 
 
 
@@ -62,6 +60,7 @@ async function positionData(position) {
 //console.log("hello");
   latitudeData = position.coords.latitude;
   longitudeData = position.coords.longitude;
+  //console.log(api("hello"));
 //  latitudeData=15;longitudeData=108;
   sessionDataUrl =
     "https:/" +
@@ -91,10 +90,12 @@ async function positionData(position) {
     "+" +
     longitudeData +
     "&key=2dc8792399604acb8a984d4d32ac03d1&pretty=0";
+  /*
   console.log(sessionDataUrl);
   console.log(weatherDataUrl);
   console.log(cityNameDataUrl);
   console.log(countryCodeDataUrl);
+  */
   sessionData = await fetch(sessionDataUrl).then((sessionResponse) => sessionResponse.json());
   weatherData = await fetch(weatherDataUrl).then((weatherResponse) => weatherResponse.json());
   cityNameData = await fetch(cityNameDataUrl).then((cityNameResponse) => cityNameResponse.json());
@@ -120,6 +121,7 @@ async function positionData(position) {
   temperatureMax=forecast.DailyForecasts[0].Temperature.Maximum.Value;
   //console.log(temperatureMin+" "+temperatureMax);
   //console.log(sunrise + " " + sunset);
+  city=locationData.LocalizedName;
 }
 //console.log(sessionData);
 //setInterval(console.log(sessionData),2000);
@@ -134,8 +136,7 @@ function main() {
   minuteDeg = (minuteTime * 360) / 60;
   hourTime = time.getHours();
   hourDeg = (hourTime * 360) / 24;
-  dates = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
-  day = dates[time.getDay()];
+  days = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
   timeZone =
     Number(
       time
@@ -163,15 +164,22 @@ function main() {
   if (time.getMonth() + 1 < 10) {
     month = "0" + (time.getMonth() + 1);
   } else {
-    month = time.getMonth + 1;
+    month = time.getMonth() + 1;
   }
+  //console.log(time.getMonth());
   year = time.getFullYear();
   second.style.transform = "rotate(" + secondDeg + "deg)";
   minute.style.transform =
     "translate(-50%,-50%) rotate(calc(" + minuteDeg + "deg + 90deg))";
   hour.style.transform =
     "translate(-50%,-50%) rotate(calc(" + hourDeg + "deg + 90deg))";
-  days.innerHTML = day + "<span>" + date + "/" + month + "/" + year + "</span>";
+  //days.innerHTML = day + "<span>" + date + "/" + month + "/" + year + "</span>";
+	dayPrint.innerHTML=days[time.getDay()];
+	datePrint.innerHTML=date+"/"+month+"/"+year;
+	if(city){}else{
+		city="?"
+	}
+	cityPrint.innerHTML="<span><svg xmlns=\"http:/\/www.w3.org/2000/svg\" viewBox=\"0 0 384 512\"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https:/\/fontawesome.com License - https:/\/fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d=\"M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z\"/></svg></span>"+city;
   if (time.getMonth() + 1 >= 3 && time.getMonth() + 1 <= 5) {
     season = "spring";
   } else if (time.getMonth() + 1 >= 6 && time.getMonth() + 1 <= 8) {
@@ -316,7 +324,32 @@ function main() {
  }else{
  		temperaturePrint.innerHTML="?<span class='decimal'></span><span>°C</span>";
  }
-	
+ if(temperatureMax&&temperatureMax.toString().search("\[.]")!=-1){
+	 document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML=temperatureMax.toString().slice(0,temperatureMax.toString().search("\[.]"))+"<span class='decimal'>"+temperatureMax.toString().slice(temperatureMax.toString().search("\[.]"))+"</span><span>°C</span>";
+	 	//console.log(temperature.toString().slice(temperature.toString().search("\[.]")));
+ }else if(temperatureMax){
+ 	document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML=temperatureMax+"<span class='decimal'>.0</span><span>°C</span>";
+ }else{
+ 		document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML="?<span class='decimal'></span><span>°C</span>";
+ }
+ if(temperatureMin&&temperatureMin.toString().search("\[.]")!=-1){
+	 document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML=temperatureMin.toString().slice(0,temperatureMin.toString().search("\[.]"))+"<span class='decimal'>"+temperatureMin.toString().slice(temperatureMin.toString().search("\[.]"))+"</span><span>°C</span>";
+	 	//console.log(temperature.toString().slice(temperature.toString().search("\[.]")));
+ }else if(temperatureMin){
+ 	document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML=temperatureMin+"<span class='decimal'>.0</span><span>°C</span>";
+ }else{
+ 		document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML="?<span class='decimal'></span><span>°C</span>";
+ }
+ //console.log(navigator.language||navigator.userlanguage);
+ if((navigator.language||navigator.userlanguage)=="vi"&&temperature){
+ 	if(temperature==temperatureMax){
+ 		document.querySelector(".sun .weatherInfo .temperatureNow .info .title").innerHTML="Đù? Cao thế!";
+ 	}else if(temperature==temperatureMin){
+ 		document.querySelector(".sun .weatherInfo .temperatureNow .info .title").innerHTML="Thấp ghê!";
+ 	}else{
+ 		document.querySelector(".sun .weatherInfo .temperatureNow .info .title").innerHTML="Nhiệt "+(((temperature-temperatureMin)/(temperatureMax-temperatureMin))*100).toFixed(1)+"%";
+ 	}
+ }
   return [season, session, weatherId, leaf];
 }
 function updateRealTimeActive(displayData, fileSelector) {

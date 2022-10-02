@@ -607,7 +607,11 @@
       		<div class="circle"></div>
       		<div class="progressbar"></div>
       		<div class="hideCircle"></div>
-        <div class='days'>?<span>?</span></div>
+        <div class='dates'>
+        		<div class="day">?</div>
+        		<div class="date">?/?/?</div>
+        		<div class="city"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"/></svg></span>?</div>
+        </div>
         <div class='startLine'>
           <div class='line'>
             <div class='endLine'></div>
@@ -629,14 +633,24 @@
     </div>
     <!--<div class="infoLine"></div>-->
     <div class="weatherInfo">
-    	<div class="temperatureMax"></div>
+    	<div class="temperatureMax">
+    		<div class="info">
+    			<div class="title">Cao nhất:</div>
+    			<div class="content">?<span class="decimal"></span><span>°C</span></div>
+    		</div>
+    	</div>
     	<div class="temperatureNow">
     		<div class="info">
     			<div class="title">Hiện tại:</div>
  		   		<div class="content">?<span class="decimal"></span><span>°C</span></div>
     		</div>
     	</div>
-    	<div class="temperatureMin"></div>
+    	<div class="temperatureMin">
+    		<div class="info">
+    			<div class="title">Thấp nhất:</div>
+    			<div class="content">?<span class="decimal"></span><span>°C</span></div>
+    		</div>
+    	</div>
     </div>
     </div>
   </div>
@@ -722,6 +736,7 @@
   </div>
 </body>
 <script src="./javascript/lunar.js"></script>
+<script src="./javascript/api.js"></script>
 <script src="./javascript/script.js"></script>
 
 </html>

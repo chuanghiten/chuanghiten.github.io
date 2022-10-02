@@ -13,7 +13,7 @@
   function ad(ae) {
     return Math.sin(ae);
   }
-  var ag = Math.PI,
+  let ag = Math.PI,
     am = ag / 180;
   function p(k, d) {
     let u,
