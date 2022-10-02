@@ -55,7 +55,7 @@ var body = window.document.querySelector("body"),
 
 
 
-  //navigator.geolocation.getCurrentPosition(positionData);
+  navigator.geolocation.getCurrentPosition(positionData);
 async function positionData(position) {
 //console.log("hello");
   latitudeData = position.coords.latitude;
@@ -100,9 +100,9 @@ async function positionData(position) {
   weatherData = await fetch(weatherDataUrl).then((weatherResponse) => weatherResponse.json());
   cityNameData = await fetch(cityNameDataUrl).then((cityNameResponse) => cityNameResponse.json());
   countryCodeData = await fetch(countryCodeDataUrl).then((countryCodeResponse) => countryCodeResponse.json());
-  locationData=await fetch("https:/"+"/dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&q="+latitudeData+"%2C"+longitudeData+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((locationResponse)=>locationResponse.json());
-  weatherNow=await fetch("https:/"+"/dataservice.accuweather.com/currentconditions/v1/"+locationData.Key+"?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((weatherNowResponse)=>weatherNowResponse.json());
-  forecast=await fetch("https:/"+"/dataservice.accuweather.com/forecasts/v1/daily/1day/"+locationData.Key+"?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&language="+(navigator.language||navigator.userlanguage)+"&details=false&metric=true").then((forecastResponse)=>forecastResponse.json());
+  locationData=await fetch("https:/"+"/dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey="+api("accuweather")+"&q="+latitudeData+"%2C"+longitudeData+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((locationResponse)=>locationResponse.json());
+  weatherNow=await fetch("https:/"+"/dataservice.accuweather.com/currentconditions/v1/"+locationData.Key+"?apikey="+api("accuweather")+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((weatherNowResponse)=>weatherNowResponse.json());
+  forecast=await fetch("https:/"+"/dataservice.accuweather.com/forecasts/v1/daily/1day/"+locationData.Key+"?apikey="+api("accuweather")+"&language="+(navigator.language||navigator.userlanguage)+"&details=false&metric=true").then((forecastResponse)=>forecastResponse.json());
   //console.log(weatherNow);
   //console.log([sessionData,weatherData,cityNameData,countryCodeData,locationData]);
   sunrise =
@@ -119,7 +119,7 @@ async function positionData(position) {
   temperature=weatherNow[0].Temperature.Metric.Value;
   temperatureMin=forecast.DailyForecasts[0].Temperature.Minimum.Value;
   temperatureMax=forecast.DailyForecasts[0].Temperature.Maximum.Value;
-  //console.log(temperatureMin+" "+temperatureMax);
+  console.log(temperatureMin+" "+temperatureMax);
   //console.log(sunrise + " " + sunset);
   city=locationData.LocalizedName;
 }
