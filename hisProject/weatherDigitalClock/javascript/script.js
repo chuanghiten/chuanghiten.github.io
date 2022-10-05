@@ -47,7 +47,7 @@ var body = window.document.querySelector("body"),
   temperatureMax,
   temperatureMin,
   
-  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast,city,dayPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .day"),datePrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .date"),cityPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .city");
+  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast,city,dayPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .day"),datePrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .date"),cityPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .city"),sunriseTime,sunsetTime,sunAltitude,moonAltitude,sunDeg;
 
 
 
@@ -56,6 +56,7 @@ var body = window.document.querySelector("body"),
 
 
   navigator.geolocation.getCurrentPosition(positionData);
+  //api("ipgeolocation");
 async function positionData(position) {
 //console.log("hello");
   latitudeData = position.coords.latitude;
@@ -64,18 +65,20 @@ async function positionData(position) {
 //  latitudeData=15;longitudeData=108;
   sessionDataUrl =
     "https:/" +
-    "/api.ipgeolocation.io/astronomy?apiKey=7e95d0e738164ff9a60bb77fbe2fdb0a&lat=" +
+    "/api.ipgeolocation.io/astronomy?apiKey="+api("ipgeolocation")+"&lat=" +
     latitudeData +
     "&long=" +
     longitudeData;
     //console.log(navigator.language);
+    /*
   weatherDataUrl =
     "https:/" +
     "/api.openweathermap.org/data/2.5/weather?lat=" +
     latitudeData +
     "&lon=" +
     longitudeData +
-    "&appid=5298f9131293054b9041c1008d027218&lang="+navigator.language||navigator.userlanguage;
+    "&appid=&lang="+navigator.language||navigator.userlanguage;
+    
   cityNameDataUrl =
     "https:/" +
     "/api.openweathermap.org/geo/1.0/reverse?lat=" +
@@ -83,34 +86,48 @@ async function positionData(position) {
     "&lon=" +
     longitudeData +
     "&appid=5298f9131293054b9041c1008d027218";
+    */
   countryCodeDataUrl =
     "https:/" +
     "/api.opencagedata.com/geocode/v1/json?q=" +
     latitudeData +
     "+" +
     longitudeData +
-    "&key=2dc8792399604acb8a984d4d32ac03d1&pretty=0";
+    "&key="+api("opencagedata")+"&pretty=0";
   /*
-  console.log(sessionDataUrl);
+  ;
   console.log(weatherDataUrl);
   console.log(cityNameDataUrl);
   console.log(countryCodeDataUrl);
   */
+  console.log(sessionDataUrl)
   sessionData = await fetch(sessionDataUrl).then((sessionResponse) => sessionResponse.json());
+  //console.log(sessionData);
+  /*
   weatherData = await fetch(weatherDataUrl).then((weatherResponse) => weatherResponse.json());
+  
   cityNameData = await fetch(cityNameDataUrl).then((cityNameResponse) => cityNameResponse.json());
+  */
   countryCodeData = await fetch(countryCodeDataUrl).then((countryCodeResponse) => countryCodeResponse.json());
+  //console.log(countryCodeData);
   locationData=await fetch("https:/"+"/dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey="+api("accuweather")+"&q="+latitudeData+"%2C"+longitudeData+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((locationResponse)=>locationResponse.json());
+  //console.log(locationData);
   weatherNow=await fetch("https:/"+"/dataservice.accuweather.com/currentconditions/v1/"+locationData.Key+"?apikey="+api("accuweather")+"&language="+(navigator.language||navigator.userlanguage)+"&details=false").then((weatherNowResponse)=>weatherNowResponse.json());
   forecast=await fetch("https:/"+"/dataservice.accuweather.com/forecasts/v1/daily/1day/"+locationData.Key+"?apikey="+api("accuweather")+"&language="+(navigator.language||navigator.userlanguage)+"&details=false&metric=true").then((forecastResponse)=>forecastResponse.json());
   //console.log(weatherNow);
   //console.log([sessionData,weatherData,cityNameData,countryCodeData,locationData]);
   sunrise =
     parseInt(sessionData.sunrise.slice(0, 2)) +
-    parseInt(sessionData.sunrise.slice(-2.0)) / 60;
+    parseInt(sessionData.sunrise.slice(-2,0)) / 60;
   sunset =
     parseInt(sessionData.sunset.slice(0, 2)) +
-    parseInt(sessionData.sunset.slice(-2.0)) / 60;
+    parseInt(sessionData.sunset.slice(-2,0)) / 60;
+  sunriseTime=sessionData.sunrise;
+  sunsetTime=sessionData.sunset;
+  //moonrise=parseInt(sessionData.moonrise.slice(0,2))+parseInt(sessionData.moonrise.slice(-2,0))/60;
+  //moonset=parseInt(sessionData.moonset.slice(0,2))+parseInt(sessionData.moonset.slice(-2,0))/60;
+  
+  //console.log("sunrise:"+sunriseTime+" sunset:"+sunsetTime+" moonrise:"+moonriseTime+" moonset:"+moonsetTime);
   //console.log(navigator.language);
   //console.log(cityNameData[0].local_names.navigator.language);
   //console.log(typeof countryCodeData.countryCode);
@@ -119,13 +136,20 @@ async function positionData(position) {
   temperature=weatherNow[0].Temperature.Metric.Value;
   temperatureMin=forecast.DailyForecasts[0].Temperature.Minimum.Value;
   temperatureMax=forecast.DailyForecasts[0].Temperature.Maximum.Value;
-  console.log(temperatureMin+" "+temperatureMax);
+  //console.log(temperatureMin+" "+temperatureMax);
   //console.log(sunrise + " " + sunset);
   city=locationData.LocalizedName;
 }
 //console.log(sessionData);
 //setInterval(console.log(sessionData),2000);
 //positionData();
+
+
+
+
+
+
+
 function main() {
 	//console.log(sessionData.message);
   time = new Date();
@@ -197,6 +221,16 @@ function main() {
   } else {
     sunset = 18;
   }
+  /*
+  if (moonrise) {
+  } else {
+    moonrise = 14;
+  }
+  if (moonset) {
+  } else {
+    moonset = 1;
+  }
+  */
   if (
     hourTime + minuteTime / 60 >= sunrise &&
     hourTime + minuteTime / 60 <= 10
@@ -322,7 +356,7 @@ function main() {
  }else if(temperature){
  	temperaturePrint.innerHTML=temperature+"<span class='decimal'>.0</span><span>°C</span>";
  }else{
- 		temperaturePrint.innerHTML="?<span class='decimal'></span><span>°C</span>";
+ 		temperaturePrint.innerHTML="88<span class='decimal'>.8</span><span>°C</span>";
  }
  if(temperatureMax&&temperatureMax.toString().search("\[.]")!=-1){
 	 document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML=temperatureMax.toString().slice(0,temperatureMax.toString().search("\[.]"))+"<span class='decimal'>"+temperatureMax.toString().slice(temperatureMax.toString().search("\[.]"))+"</span><span>°C</span>";
@@ -330,7 +364,7 @@ function main() {
  }else if(temperatureMax){
  	document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML=temperatureMax+"<span class='decimal'>.0</span><span>°C</span>";
  }else{
- 		document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML="?<span class='decimal'></span><span>°C</span>";
+ 		document.querySelector(".sun .weatherInfo .temperatureMax .info .content").innerHTML="88<span class='decimal'>.8</span><span>°C</span>";
  }
  if(temperatureMin&&temperatureMin.toString().search("\[.]")!=-1){
 	 document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML=temperatureMin.toString().slice(0,temperatureMin.toString().search("\[.]"))+"<span class='decimal'>"+temperatureMin.toString().slice(temperatureMin.toString().search("\[.]"))+"</span><span>°C</span>";
@@ -338,7 +372,7 @@ function main() {
  }else if(temperatureMin){
  	document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML=temperatureMin+"<span class='decimal'>.0</span><span>°C</span>";
  }else{
- 		document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML="?<span class='decimal'></span><span>°C</span>";
+ 		document.querySelector(".sun .weatherInfo .temperatureMin .info .content").innerHTML="88<span class='decimal'>.8</span><span>°C</span>";
  }
  //console.log(navigator.language||navigator.userlanguage);
  if((navigator.language||navigator.userlanguage)=="vi"&&temperature){
@@ -350,6 +384,29 @@ function main() {
  		document.querySelector(".sun .weatherInfo .temperatureNow .info .title").innerHTML="Nhiệt "+(((temperature-temperatureMin)/(temperatureMax-temperatureMin))*100).toFixed(1)+"%";
  	}
  }
+ if(sunriseTime||sunsetTime){
+ 		document.querySelector(".sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle .sunrise").innerHTML=sunriseTime;
+ 		document.querySelector(".sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle .sunset").innerHTML=sunsetTime;
+ }else{
+ 		document.querySelector(".sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle .sunrise").innerHTML=document.querySelector(".sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle .sunset").innerHTML="88:88";
+ }
+ 
+ 
+ 
+ //console.log(-1*(.5-((-65/65)/2))*180);
+ //console.log(sunDeg+" "+sunAltitude/65);
+ //moonDeg=-1*(.5-((moonAltitude/65)/2))*180;
+ 
+ //
+ //sunDeg=-1*(.5-((-50/65)/2))*180;
+ sunDeg=-1*((.5-((sunrise-(hourTime+(minuteTime/60)))/(sunrise-sunset)))*180);
+ //moonDeg=-1*((.5-((moonrise-(hourTime+(minuteTime/60)))/(moonrise-moonset)))*180);
+ 
+ 
+ 
+ //console.log((sunrise-(hourTime+(minuteTime/60)))/(sunrise-sunset));
+ document.querySelector(".sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .iconBox .sunIcon").setAttribute("style","transform:rotate("+sunDeg+"deg)");
+ 
   return [season, session, weatherId, leaf];
 }
 function updateRealTimeActive(displayData, fileSelector) {
@@ -428,5 +485,7 @@ function updateRealTime() {
       oldValue=main();
     }
   }
+  //alert("hello");
+  //console.log("hello")
 }
 setInterval(updateRealTime, 1000);

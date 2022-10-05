@@ -1080,3 +1080,88 @@ div.circle58 {
 .sun .weatherInfo .temperatureMax .info{
 	margin:-80px 0 0 0
 }
+.sun .weatherInfo .temperatureNow .sunInfo{
+	width:165px;
+	
+	margin:-36px 0 -30px 10px;
+	
+}
+.sun .weatherInfo .temperatureNow{
+	flex-flow:nowrap column;
+	justify-content:center;
+	align-items:flex-start;
+	align-content:flex-start
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle{
+	width:100%;
+	color:var(--dateTextColor);
+	font-family:Pacifico;
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent{
+	border-bottom:3px solid var(--dateTextColor);
+	width:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	position:relative
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle {
+	display:flex;
+	justify-content:space-between
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle span{
+	font-size:22px;
+	margin:-5px 0 -5px 0
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .house{
+	width:40px;
+	height:40px;
+	margin:0 0 -6px 0
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .house path{
+	fill:var(--dateTextColor)
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .sunIcon{
+	width:165px;
+	height:165px;
+	border-radius:50%;
+	
+	position:absolute;
+	top:0;
+	
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .icon path{
+	fill:var(--dateTextColor)
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .icon{
+	width:20px;
+	height:20px;
+	margin:0 auto
+}
+
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .circle,.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .iconBox{
+	width:calc(165px - 19.5px);
+	height: 70px;
+	position:absolute;
+	overflow:hidden;
+	bottom:0;
+	border-radius:0
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .iconBox{
+	height:80px;
+	width:165px;
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .circle:before{
+	content:'';
+	display:block;
+	top:0;
+	width:100%;
+	height:calc(165px - 19.5px);
+	border:2px solid var(--dateTextColor99);
+	border-radius:50%
+}
+.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .moonIcon .icon{
+	width:15px;
+	height:20px;
+	transform:rotate(calc(var(--moonDeg,0deg) * -1))
+}

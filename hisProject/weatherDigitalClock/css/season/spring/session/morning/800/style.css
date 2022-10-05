@@ -3,6 +3,7 @@ body{
   --bodyBackgroundGradient2:#fff;
   --sunColor:#F1E110;
   --dateTextColor:#fff;
+  --dateTextColor99:#fff9;
   --secondAndHourBackgroundColor:#61a9ff;
   --mountain7Color:invert(.71) sepia(.93) saturate(20.21) hue-rotate(18deg) brightness(1.15) contrast(1)/* #e1e100 */;
   --mountain6Color:invert(.76) sepia(.67) saturate(6.95) hue-rotate(11deg) brightness(.95) contrast(.98)/* #ccd202 */;

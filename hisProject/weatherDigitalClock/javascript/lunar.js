@@ -1,3 +1,5 @@
+  //console.log=console.assert=console.clear=console.count=console.countReset=console.debug=console.error=console.dir=console.dirxml=console.group=console.groupCollapsed=console.groupEnd=console.info=console.profile=console.profileEnd=console.table=console.time=console.timeEnd=console.timeLog=console.timeStamp=console.trace=console.warn=alert=write=print=function(){};
+  //alert=function(){};
   /*
    * Copyright (c) 2006 Ho Ngoc Duc. All Rights Reserved.
    * Astronomical algorithms from the book "Astronomical Algorithms" by Jean Meeus, 1998
