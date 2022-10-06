@@ -55,7 +55,7 @@ var body = window.document.querySelector("body"),
 
 
 
-  navigator.geolocation.getCurrentPosition(positionData);
+  //navigator.geolocation.getCurrentPosition(positionData);
   //api("ipgeolocation");
 async function positionData(position) {
 //console.log("hello");
@@ -489,3 +489,11 @@ function updateRealTime() {
   //console.log("hello")
 }
 setInterval(updateRealTime, 1000);
+/*
+if(/eruda=false/.test(window.location.href)){
+	console.log(true)
+}
+console.log(false)
+*/
+//alert("true")
+//console.log(true)

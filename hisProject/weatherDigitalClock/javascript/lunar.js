@@ -9,6 +9,7 @@
    * this copyright notice and appropriate documentation appears in all copies.
    * The algorithm is explained by Ho Ngoc Duc at "https://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html"
    */
+   //console.log(true);
   function abFunction(ac) {
     return Math.floor(ac);
   }

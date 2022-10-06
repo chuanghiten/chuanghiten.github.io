@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" translate="no">
-<script src="../../../node_modules/eruda/eruda.js"></script>
+<!--
 <script>eruda.init();</script>
-
+-->
 <head>
   <meta charset="UTF-8">
   <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
@@ -12,6 +12,7 @@
   <link class='display' rel='stylesheet' type='text/css' />
   <link class='leaf' rel='stylesheet' type='text/css' />
   <link rel='stylesheet' type='text/css' href='./css/style/styleModule2.css' />
+  
 </head>
 
 <body>
@@ -662,6 +663,7 @@
     			<div class="title">Hiện tại:</div>
  		   		<div class="content">?<span class="decimal"></span><span>°C</span></div>
     		</div>
+    		<div class="weatherDescription">Có mây một phần với mưa rào</div>
     	</div>
     	<div class="temperatureMin">
     		<div class="info">
@@ -753,6 +755,15 @@
     </div>
   </div>
 </body>
+
+<!--<script src="../../../node_modules/eruda/eruda.js"></script>-->
+<script class="eruda"></script>
+<script>
+	if(/eruda/.test(window.location.href)){
+		document.write("<scr" + "ipt src=\"../../../node_modules/eruda/eruda.js\"></scr" + "ipt>");
+	document.write('<scr' + 'ipt>eruda.init({tool:[\'console\',\'elements\'],autoScale:\'false\',defaults:{displaySize:50,transparency: 0.8,theme:\'Dracula\'}});eruda.scale(2);</scr' + 'ipt>');
+	}
+</script>
 <script src="./javascript/lunar.js"></script>
 <script src="./javascript/api.js"></script>
 <script src="./javascript/script.js"></script>
