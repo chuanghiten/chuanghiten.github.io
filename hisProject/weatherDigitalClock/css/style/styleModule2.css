@@ -1,70 +1,50 @@
-body,html{
-  background: 0 0 / cover no-repeat fixed
-    linear-gradient(
-      to bottom,
-      var(--bodyBackgroundGradient),
-      var(--bodyBackgroundGradient2)
-    ),var(--mountain1BackgroundColor);
+html {
+  background: 0 0/cover no-repeat fixed linear-gradient(to bottom, var(--bodyBackgroundGradient), var(--bodyBackgroundGradient2)), var(--mountain1BackgroundColor);
 }
-.backgroundPrevetine{
-  position:absolute;
-  bottom:0;
-  width:100%;
+html body {
+  background: 0 0/cover no-repeat fixed linear-gradient(to bottom, var(--bodyBackgroundGradient), var(--bodyBackgroundGradient2)), var(--mountain1BackgroundColor);
+}
+html body .backgroundPrevetine {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 12%;
-  background:var(--mountain1BackgroundColor)
+  background: var(--mountain1BackgroundColor);
 }
-div.sun {
+html body .sun {
   position: relative;
   width: 630px;
   height: 630px;
   margin: 80px auto;
-  padding: 15px;
   overflow: hidden;
-  background: transparent;
   border-radius: 50%;
 }
-div.second {
+html body .sun .second {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   border: 10px solid var(--sunColor);
-  box-shadow: 0 0 10px 0 var(--sunColorShadow), 0 0 20px 0 var(--sunColorShadow),
-    0 0 10px 0 var(--sunColorShadow) inset,
-    0 0 20px 0 var(--sunColorShadow) inset;
+  box-shadow: 0 0 10px 0 var(--sunColorShadow), 0 0 20px 0 var(--sunColorShadow), 0 0 10px 0 var(--sunColorShadow) inset, 0 0 20px 0 var(--sunColorShadow) inset;
   position: relative;
   background: var(--secondAndHourBackgroundColor);
 }
-body[light] div.second {
-  box-shadow: 0 0 10px 0 var(--white), 0 0 20px 0 var(--white);
-}
-div.secondTitle,
-div.minuteTitle,
-div.hourTitle {
+html body .sun .secondTitle, html body .sun .minuteTitle, html body .sun .hourTitle {
   width: 100%;
   height: auto;
   padding: 0 20px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)
-    rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)));
+  transform: translate(-50%, -50%) rotate(calc(180deg + (var(--secondTitleRotate) + 1) * 6deg));
 }
-div.secondTitle span,
-div.minuteTitle span,
-div.hour span {
+html body .sun .secondTitle span, html body .sun .minuteTitle span, html body .sun .hourTitle span {
   color: var(--secondAndHourTextColor);
   display: inline-block;
   font: 21px "Seven Segment";
   transform: rotate(180deg);
   font-weight: 600;
 }
-body[light] div.secondTitle span,
-div.minuteTitle span,
-body[light] div.hour span {
-  text-shadow: unset;
-  font-weight: 600;
-}
-div.minute {
+html body .sun .minute {
   width: 460px;
   height: 460px;
   border-radius: 50%;
@@ -72,51 +52,42 @@ div.minute {
   top: 50%;
   left: 50%;
   position: absolute;
-  transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
-  box-shadow: 0 0 10px 0 var(--minuteBackgroundColor),
-    0 0 20px 0 var(--minuteBackgroundColor);
+  transform: translate(-50%, -50%) rotate(90deg);
+  box-shadow: 0 0 10px 0 var(--minuteBackgroundColor), 0 0 20px 0 var(--minuteBackgroundColor);
 }
-body[light] div.minute {
-  box-shadow: unset;
+html body .sun .minute .minuteTitle {
+  transform: translate(-50%, -50%) rotate(calc(var(--minuteTitleRotate) * 6deg + 96deg));
 }
-div.minuteTitle {
-  transform: translate(-50%, -50%)
-    rotate(calc((var(--minuteTitleRotate) * 6deg) + 96deg));
-}
-div.minuteTitle span {
+html body .sun .minute .minuteTitle span {
   color: var(--minuteTextColor);
+  text-shadow: unset;
+  font-weight: 600;
 }
-div.hourTitle span {
-  color: var(--secondAndHourTextColor);
-}
-div.hour {
+html body .sun .hour {
   width: 340px;
   height: 340px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
+  transform: translate(-50%, -50%) rotate(90deg);
   background: var(--secondAndHourBackgroundColor);
   border-radius: 50%;
-  box-shadow: 0 0 15px 0 var(--minuteBackgroundColor) inset,
-    0 0 25px 0 var(--minuteBackgroundColor) inset;
+  box-shadow: 0 0 15px 0 var(--minuteBackgroundColor) inset, 0 0 25px 0 var(--minuteBackgroundColor) inset;
 }
-body[light] div.hour {
-  box-shadow: unset;
+html body .sun .hour .hourTitle {
+  transform: translate(-50%, -50%) rotate(calc(var(--hourTitleRotate) * 15deg + 105deg));
 }
-div.hourTitle {
-  transform: translate(-50%, -50%)
-    rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg));
+html body .sun .hour .hourTitle span {
+  color: var(--secondAndHourTextColor);
 }
-div.halfCircle {
+html body .sun .halfCircle {
   width: 290px;
   height: 590px;
   position: absolute;
   top: 20px;
   left: 20px;
 }
-div.halfCircleCenter,
-.temperatureProgressbar {
+html body .sun .halfCircle .halfCircleCenter, html body .sun .halfCircle .temperatureProgressbar {
   position: absolute;
   background: var(--sunColor);
   width: 220px;
@@ -130,11 +101,11 @@ div.halfCircleCenter,
   justify-content: center;
   align-items: center;
 }
-.temperatureProgressbar {
+html body .sun .halfCircle .temperatureProgressbar {
   background: transparent;
   box-shadow: unset;
 }
-div.startLine {
+html body .sun .halfCircle .halfCircleCenter .startLine {
   width: 0;
   height: 0;
   border: 15px solid transparent;
@@ -144,13 +115,13 @@ div.startLine {
   right: 1px;
   transform: translate(100%, -50%);
 }
-div.line {
+html body .sun .halfCircle .halfCircleCenter .startLine .line {
   width: 160px;
   height: 40px;
   border: 3px solid var(--red);
   transform: translate(0, -50%);
 }
-div.endLine {
+html body .sun .halfCircle .halfCircleCenter .startLine .line .endLine {
   width: 0;
   height: 0;
   border: 15px solid transparent;
@@ -160,24 +131,7 @@ div.endLine {
   right: 0;
   transform: translate(calc(50% + 5px), -50%);
 }
-/*
-div.days {
-  width: auto;
-  height: auto;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font: 40px Pacifico;
-  color: var(--dateTextColor);
-  flex-wrap: wrap;
-}
-div.days span {
-  font-size: 28px;
-}
-*/
-div.halfCircle45Deg,
-div.halfCircleNot45Deg {
+html body .sun .halfCircle .halfCircle45Deg, html body .sun .halfCircle .halfCircleNot45Deg {
   transform: rotate(45deg);
   width: 100%;
   height: 100%;
@@ -189,40 +143,19 @@ div.halfCircleNot45Deg {
   left: 0;
   transform-origin: 100% 50%;
 }
-div.halfCircleNot45Deg {
+html body .sun .halfCircle .halfCircleNot45Deg {
   transform: rotate(-45deg);
 }
-div.second,
-div.minute,
-div.hour {
+html body .sun .second, html body .sun .minute, html body .sun .hour {
   transition: all 0.35s cubic-bezier(0.39, 1.62, 0.49, 1.87);
 }
-div.scenery {
+html body .scenery {
   width: 100%;
   height: 700px;
   position: relative;
-  margin:auto 0 0 0
+  margin: auto 0 0 0;
 }
-div.mountain7,
-div.mountain6,
-div.mountain5,
-div.mountain4,
-div.mountain3,
-div.mountain1,
-div.minTree,
-div.mountain2,
-div.tree,
-div.mountain,
-div.minTreeShadow,
-div.minTrunk,
-div.minLeaf3,
-div.minLeaf2,
-div.minLeaf,
-div.treeShadow,
-div.trunk,
-div.leaf3,
-div.leaf2,
-div.leaf {
+html body .scenery .mountain7, html body .scenery .mountain6, html body .scenery .mountain5, html body .scenery .mountain4, html body .scenery .mountain3, html body .scenery .mountain1, html body .scenery .minTree, html body .scenery .mountain2, html body .scenery .tree, html body .scenery .mountain, html body .scenery .minTreeShadow, html body .scenery .minTrunk, html body .scenery .minLeaf3, html body .scenery .minLeaf2, html body .scenery .minLeaf, html body .scenery .treeShadow, html body .scenery .trunk, html body .scenery .leaf3, html body .scenery .leaf2, html body .scenery .leaf {
   width: 100%;
   height: auto;
   position: absolute;
@@ -231,83 +164,71 @@ div.leaf {
   background: transparent;
   filter: var(--mountain7Color);
 }
-div.scenery img {
+html body .scenery img {
   width: 100%;
   height: 100%;
 }
-div.mountain6,
-div.mountain4,
-div.minTree,
-div.mountant2,
-div.treeShadow,
-div.trunk,
-div.leaf3,
-div.leaf2,
-div.leaf {
+html body .scenery .mountain6, html body .scenery .mountain4, html body .scenery .minTree, html body .scenery .mountant2, html body .scenery .treeShadow, html body .scenery .trunk, html body .scenery .leaf3, html body .scenery .leaf2, html body .scenery .leaf {
   right: unset;
   left: 0;
   filter: var(--mountain6Color);
 }
-div.mountain5 {
+html body .scenery .mountain5 {
   filter: var(--mountain5Color);
 }
-div.mountain4 {
+html body .scenery .mountain4 {
   filter: var(--mountain4Color);
 }
-div.mountain3 {
+html body .scenery .mountain3 {
   filter: var(--mountain3Color);
 }
-div.minTree,
-div.tree {
-  filter: unset;
-}
-div.mountain2 {
+html body .scenery .mountain2 {
   filter: var(--mountain2Color);
 }
-div.mountain1 {
+html body .scenery .mountain1 {
   filter: var(--mountain1Color);
 }
-div.mountain {
+html body .scenery .mountain {
   filter: var(--mountainColor);
 }
-div.minTreeShadow,
-div.minTrunk {
+html body .scenery .minTree, html body .scenery .tree {
+  filter: unset;
+}
+html body .scenery .minTree .minTreeShadow, html body .scenery .minTree .minTrunk {
   bottom: 0;
   left: 0;
   filter: var(--treeShadowColor);
 }
-div.minTrunk {
+html body .scenery .minTree .minTrunk {
   filter: var(--trunkColor);
 }
-div.minLeaf3 {
+html body .scenery .minTree .minLeaf3 {
   filter: var(--leaf3Color);
 }
-div.minLeaf2 {
+html body .scenery .minTree .minLeaf2 {
   filter: var(--leaf2Color);
 }
-div.minLeaf {
+html body .scenery .minTree .minLeaf {
   filter: var(--leafColor);
 }
-div.treeShadow,
-div.trunk {
+html body .scenery .tree .treeShadow, html body .scenery .tree .trunk {
   bottom: 0;
   right: 0;
   filter: var(--treeShadowColor);
 }
-div.trunk {
+html body .scenery .tree .trunk {
   filter: var(--trunkColor);
 }
-div.leaf3 {
+html body .scenery .tree .leaf3 {
   filter: var(--leaf3Color);
 }
-div.leaf2 {
+html body .scenery .tree .leaf2 {
   filter: var(--leaf2Color);
 }
-div.leaf {
+html body .scenery .tree .leaf {
   filter: var(--leafColor);
 }
-div.clouds,
-div.stars {
+html body .clouds, html body .stars {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -316,7 +237,7 @@ div.stars {
   transform: translate(-50%, 0);
   background: transparent;
 }
-div.cloud1 {
+html body .clouds .clouds1 {
   position: absolute;
   width: 350px;
   height: 200px;
@@ -324,42 +245,37 @@ div.cloud1 {
   top: 550px;
   right: 70px;
 }
-div.circle {
-  border-radius: 50%;
-  background: var(--cloudColor);
-  position: absolute;
-}
-div.circle1 {
+html body .clouds .clouds1 .circle1 {
   width: 150px;
   height: 150px;
   bottom: 0;
   left: 0;
 }
-div.circle2 {
+html body .clouds .clouds1 .circle2 {
   width: 70px;
   height: 70px;
   bottom: 0;
   right: 0;
 }
-div.circle3 {
+html body .clouds .clouds1 .circle3 {
   width: 130px;
   height: 130px;
   top: 0;
   left: 70px;
 }
-div.circle4 {
+html body .clouds .clouds1 .circle4 {
   width: 100px;
   height: 100px;
   top: 50px;
   right: 100px;
 }
-div.circle5 {
+html body .clouds .clouds1 .circle5 {
   width: 100px;
   height: 100px;
   top: 60px;
   right: 30px;
 }
-div.rectangle {
+html body .clouds .clouds1 .rectangle {
   position: absolute;
   left: 75px;
   bottom: 0;
@@ -367,7 +283,7 @@ div.rectangle {
   height: 70px;
   background: var(--cloudColor);
 }
-div.rectangle:before {
+html body .clouds .clouds1 .rectangle:before {
   content: "";
   display: block;
   position: absolute;
@@ -377,17 +293,15 @@ div.rectangle:before {
   transform: translate(0, -50%);
   left: 50px;
 }
-div.cloud1 *,
-div.cloud2 *,
-div.cloud3 *,
-div.cloud4 *,
-div.cloud5 *,
-div.cloud6 *,
-div.cloud7 * {
-  box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor),
-    0 0 40px 0 var(--cloudColor);
+html body .clouds .circle {
+  border-radius: 50%;
+  background: var(--cloudColor);
+  position: absolute;
 }
-div.cloud2 {
+html body .clouds .cloud1 *, html body .clouds .cloud2 *, html body .clouds .cloud3 *, html body .clouds .cloud4 *, html body .clouds .cloud5 *, html body .clouds .cloud6 *, html body .clouds .cloud7 * {
+  box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor), 0 0 40px 0 var(--cloudColor);
+}
+html body .clouds .cloud2 {
   position: absolute;
   width: 350px;
   height: 200px;
@@ -395,56 +309,56 @@ div.cloud2 {
   top: 50px;
   left: 70px;
 }
-div.circle6 {
+html body .clouds .cloud2 .circle6 {
   width: 100px;
   height: 100px;
   top: 50%;
   transform: translate(0, -50%);
 }
-div.circle7 {
+html body .clouds .cloud2 .circle7 {
   width: 70px;
   height: 70px;
   top: 50%;
   right: 0;
   transform: translate(0, -30%);
 }
-div.circle8 {
+html body .clouds .cloud2 .circle8 {
   width: 150px;
   height: 150px;
   left: 50px;
 }
-div.circle9 {
+html body .clouds .cloud2 .circle9 {
   width: 120px;
   height: 120px;
   right: 70px;
   top: 30px;
 }
-div.circle10 {
+html body .clouds .cloud2 .circle10 {
   width: 50px;
   height: 50px;
   top: 50%;
   transform: translate(0, -50%);
   right: 50px;
 }
-div.circle11 {
+html body .clouds .cloud2 .circle11 {
   width: 70px;
   height: 70px;
   bottom: 30px;
   left: 50px;
 }
-div.circle12 {
+html body .clouds .cloud2 .circle12 {
   width: 50px;
   height: 50px;
   bottom: 40px;
   right: 50px;
 }
-div.circle13 {
+html body .clouds .cloud2 .circle13 {
   width: 150px;
   height: 150px;
   bottom: 0;
   left: 110px;
 }
-div.cloud3 {
+html body .clouds .cloud3 {
   width: 200px;
   height: 170px;
   position: absolute;
@@ -452,740 +366,376 @@ div.cloud3 {
   top: 120px;
   right: 70px;
 }
-div.circle14 {
+html body .clouds .cloud3 .circle14 {
   width: 50px;
   height: 50px;
   top: 80px;
 }
-div.circle15 {
+html body .clouds .cloud3 .circle15 {
   width: 60px;
   height: 60px;
   top: 50px;
   left: 25px;
 }
-div.circle16 {
+html body .clouds .cloud3 .circle16 {
   width: 80px;
   height: 80px;
   left: 60px;
   top: 20px;
 }
-div.circle17 {
+html body .clouds .cloud3 .circle17 {
   width: 70px;
   height: 70px;
   top: 60px;
   right: 20px;
 }
-div.circle18 {
+html body .clouds .cloud3 .circle18 {
   width: 50px;
   height: 50px;
   left: 30px;
   bottom: 20px;
 }
-div.circle19 {
+html body .clouds .cloud3 .circle19 {
   width: 80px;
   height: 80px;
   left: 60px;
   bottom: 10px;
 }
-div.stars {
-  bottom: unset;
-  top: 0;
-}
-div.star {
-  position: absolute;
-  width: 25px;
-  height: 35px;
-}
-div.star path {
-  fill: var(--white);
-}
-div.star.big {
-  transform: scale(1.5);
-}
-div.star.small {
-  transform: scale(0.5);
-}
-div.star svg {
-  filter: drop-shadow(0 0 5px var(--white)) drop-shadow(0 0 10px var(--white))
-    drop-shadow(0 0 20px var(--white));
-}
-div.star1 {
-  top: 50px;
-  left: 100px;
-}
-div.star2 {
-  top: 400px;
-  left: 70px;
-}
-div.star3 {
-  top: 500px;
-  left: 800px;
-}
-div.star4 {
-  top: 700px;
-  left: 300px;
-}
-div.star5 {
-  top: 75px;
-  right: 150px;
-}
-div.star6 {
-  top: 843px;
-  right: 128px;
-}
-div.star7 {
-  top: 1000px;
-  left: 500px;
-}
-div.star8 {
-  top: 1240px;
-  left: 90px;
-}
-div.star9 {
-  top: 1500px;
-  left: 500px;
-}
-div.star10 {
-  top: 1270px;
-  right: 60px;
-}
-div.starDot {
-  width: 10px;
-  height: 10px;
-  background: var(--white);
-  border-radius: 50%;
-  box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white),
-    0 0 20px 0 var(--white);
-}
-div.starDot.big {
-  width: 15px;
-  height: 15px;
-}
-div.starDot.small {
-  width: 5px;
-  height: 5px;
-  box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white),
-    0 0 15px 0 var(--white), 0 0 20px 0 var(--white);
-}
-div.dot1 {
-  top: 30px;
-  left: 70px;
-}
-div.dot2 {
-  top: 240px;
-  left: 100px;
-}
-div.dot3 {
-  top: 147px;
-  left: 265px;
-}
-div.dot4 {
-  top: 60px;
-  left: 300px;
-}
-div.dot5 {
-  top: 40px;
-  left: 500px;
-}
-div.dot6 {
-  top: 170px;
-  right: 85px;
-}
-div.dot7 {
-  top: 340px;
-  right: 100px;
-}
-div.dot8 {
-  top: 700px;
-  left: 144px;
-}
-div.dot9 {
-  top: 720px;
-  right: 98px;
-}
-div.dot10 {
-  top: 780px;
-  left: 500px;
-}
-div.dot11 {
-  top: 980px;
-  left: 250px;
-}
-div.dot12 {
-  top: 1000px;
-  right: 300px;
-}
-div.dot13 {
-  top: 1309px;
-  left: 430px;
-}
-div.dot14 {
-  top: 1200px;
-  left: 160px;
-}
-div.dot15 {
-  top: 1305px;
-  right: 140px;
-}
-div.dot16 {
-  top: 950px;
-  left: 50px;
-}
-div.dot17 {
-  top: 800px;
-  right: 300px;
-}
-div.dot18 {
-  top: 1100px;
-  right: 100px;
-}
-div.dot19 {
-  top: 1200px;
-  right: 200px;
-}
-div.dot20 {
-  top: 30px;
-  right: 300px;
-}
-div.dot21 {
-  top: 600px;
-  left: 100px;
-}
-div.dot22 {
-  top: 809px;
-  right: 200px;
-}
-div.dot23 {
-  top: 950px;
-  left: 500px;
-}
-div.dot24 {
-  top: 900px;
-  left: 300px;
-}
-div.dot25 {
-  top: 910px;
-  right: 300px;
-}
-div.cloud4 {
+html body .clouds .cloud4 {
   position: absolute;
   width: 600px;
   height: 300px;
   top: 550px;
 }
-div.circle20 {
+html body .clouds .cloud4 .circle20 {
   width: 150px;
   height: 150px;
   top: 50%;
   transform: translate(0, -50%);
   right: 0;
 }
-div.circle21 {
+html body .clouds .cloud4 .circle21 {
   width: 250px;
   height: 250px;
   right: 70px;
 }
-div.circle22 {
+html body .clouds .cloud4 .circle22 {
   width: 100px;
   height: 100px;
   top: 40px;
   right: 290px;
 }
-div.circle23 {
+html body .clouds .cloud4 .circle23 {
   width: 120px;
   height: 120px;
   top: 30px;
   left: 120px;
 }
-div.circle24 {
+html body .clouds .cloud4 .circle24 {
   width: 100px;
   height: 100px;
   top: 60px;
   left: 50px;
 }
-div.circle25 {
+html body .clouds .cloud4 .circle25 {
   width: 90px;
   height: 90px;
   top: 80px;
 }
-div.circle26 {
+html body .clouds .cloud4 .circle26 {
   width: 110px;
   height: 110px;
   bottom: 80px;
   left: 60px;
 }
-div.circle27 {
+html body .clouds .cloud4 .circle27 {
   width: 200px;
   height: 200px;
   bottom: 65px;
   left: 135px;
 }
-div.circle28 {
+html body .clouds .cloud4 .circle28 {
   width: 100px;
   height: 100px;
   bottom: 85px;
   left: 110px;
 }
-div.circle29 {
+html body .clouds .cloud4 .circle29 {
   width: 200px;
   height: 200px;
   bottom: 30px;
   right: 170px;
 }
-div.cloud5 {
+html body .clouds .cloud5 {
   right: 0;
   width: 700px;
   height: 200px;
   position: absolute;
 }
-div.circle30 {
+html body .clouds .cloud5 .circle30 {
   width: 70px;
   height: 70px;
   top: 50px;
 }
-div.circle31 {
+html body .clouds .cloud5 .circle31 {
   width: 60px;
   height: 60px;
   top: 40px;
   left: 35px;
 }
-div.circle32 {
+html body .clouds .cloud5 .circle32 {
   width: 130px;
   height: 130px;
   left: 70px;
 }
-div.circle33 {
+html body .clouds .cloud5 .circle33 {
   width: 70px;
   height: 70px;
   top: 70px;
   left: 165px;
 }
-div.circle34 {
+html body .clouds .cloud5 .circle34 {
   width: 80px;
   height: 80px;
   top: 65px;
   left: 200px;
 }
-div.circle35 {
+html body .clouds .cloud5 .circle35 {
   width: 100px;
   height: 100px;
   top: 40px;
   left: 250px;
 }
-div.circle36 {
+html body .clouds .cloud5 .circle36 {
   width: 170px;
   height: 170px;
   bottom: 0;
   left: 300px;
 }
-div.circle37 {
+html body .clouds .cloud5 .circle37 {
   width: 70px;
   height: 70px;
   top: 20px;
   left: 400px;
 }
-div.circle38 {
+html body .clouds .cloud5 .circle38 {
   width: 130px;
   height: 130px;
   top: 50px;
   right: 150px;
 }
-div.circle39 {
+html body .clouds .cloud5 .circle39 {
   width: 100px;
   height: 100px;
   top: 40px;
   right: 100px;
 }
-div.circle40 {
+html body .clouds .cloud5 .circle40 {
   width: 90px;
   height: 90px;
   right: 0;
   top: 70px;
 }
-div.circle41 {
+html body .clouds .cloud5 .circle41 {
   width: 70px;
   height: 70px;
   top: 70px;
   right: 70px;
 }
-div.circle42 {
+html body .clouds .cloud5 .circle42 {
   width: 100px;
   height: 100px;
   bottom: 30px;
   right: 60px;
 }
-div.circle43 {
+html body .clouds .cloud5 .circle43 {
   width: 100px;
   height: 100px;
   bottom: 40px;
   left: 60px;
 }
-div.circle44 {
+html body .clouds .cloud5 .circle44 {
   width: 100px;
   height: 100px;
   bottom: 30px;
   left: 100px;
 }
-div.cloud6 {
-  position: absolute;
-  width: 300px;
-  height: 250px;
-  right: 0;
-  top: 400px;
-}
-div.circle45 {
-  width: 100px;
-  height: 100px;
-  right: 0;
-  top: 70px;
-}
-div.circle46 {
-  width: 200px;
-  height: 200px;
-  right: 60px;
-}
-div.circle47 {
-  width: 70px;
-  height: 70px;
-  bottom: 60px;
-}
-div.circle48 {
-  width: 100px;
-  height: 100px;
-  left: 40px;
-  bottom: 30px;
-}
-div.circle49 {
-  width: 150px;
-  height: 150px;
-  bottom: 15px;
-  right: 30px;
-}
-div.cloud7 {
-  position: absolute;
-  width: 300px;
-  height: 150px;
-  top: 150px;
-}
-div.circle50 {
-  width: 100px;
-  height: 100px;
-  right: 0;
-  top: 40px;
-}
-div.circle51 {
-  width: 70px;
-  height: 70px;
+html body .stars {
+  bottom: unset;
   top: 0;
-  right: 50px;
 }
-div.circle52 {
-  width: 90px;
-  height: 90px;
-  top: 30px;
-  right: 70px;
+html body .stars .star {
+  position: absolute;
+  width: 25px;
+  height: 35px;
 }
-div.circle53 {
-  width: 50px;
-  height: 50px;
-  bottom: 20px;
-  right: 125px;
+html body .stars .star path {
+  fill: var(--white);
 }
-div.circle54 {
-  width: 70px;
-  height: 70px;
-  top: 40px;
+html body .stars .star.big {
+  transform: scale(1.5);
+}
+html body .stars .star.small {
+  transform: scale(0.5);
+}
+html body .stars .star svg {
+  filter: drop-shadow(0 0 5px var(--white)) drop-shadow(0 0 10px var(--white)) drop-shadow(0 0 20px var(--white));
+}
+html body .stars .star.starDot {
+  width: 10px;
+  height: 10px;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 20px 0 var(--white);
+}
+html body .stars .star.starDot.big {
+  width: 15px;
+  height: 15px;
+}
+html body .stars .star.starDot.small {
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 15px 0 var(--white), 0 0 20px 0 var(--white);
+}
+html body .stars .star1 {
+  top: 50px;
+  left: 100px;
+}
+html body .stars .star2 {
+  top: 400px;
+  left: 70px;
+}
+html body .stars .star3 {
+  top: 500px;
+  left: 800px;
+}
+html body .stars .star4 {
+  top: 700px;
+  left: 300px;
+}
+html body .stars .star5 {
+  top: 75px;
+  right: 150px;
+}
+html body .stars .star6 {
+  top: 843px;
+  right: 128px;
+}
+html body .stars .star7 {
+  top: 1000px;
+  left: 500px;
+}
+html body .stars .star8 {
+  top: 1240px;
   left: 90px;
 }
-div.circle55 {
-  width: 100px;
-  height: 100px;
-  top: 30px;
+html body .stars .star9 {
+  top: 1500px;
+  left: 500px;
 }
-div.circle56,
-div.circle57,
-div.circle58 {
-  width: 50px;
-  height: 50px;
+html body .stars .star10 {
+  top: 1270px;
+  right: 60px;
+}
+html body .stars .dot1 {
   top: 30px;
   left: 70px;
 }
-div.circle57,
-div.circle58 {
-  top: unset;
-  bottom: 20px;
+html body .stars .dot2 {
+  top: 240px;
+  left: 100px;
 }
-div.circle58 {
-  bottom: 0;
-  left: 20px;
+html body .stars .dot3 {
+  top: 147px;
+  left: 265px;
 }
-.temperatureProgressbar .progressbarLine {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 50%;
-  background:transparent;
-  clip-path: url(#hideLine);
+html body .stars .dot4 {
+  top: 60px;
+  left: 300px;
 }
-.temperatureProgressbar .dot{
-	width:100%;
-	height:100%;
-	position:absolute;
-	transform:rotate(calc((44deg + 90deg) + 10deg))
+html body .stars .dot5 {
+  top: 40px;
+  left: 500px;
 }
-.temperatureProgressbar .dot:before{
-	content:'';
-	display:block;
-	position:absolute;
-	width:10px;
-	height:10px;
-	border-radius:50%;
-	left:50%;
-	transform:translate(-50%,-2.5px);
-	background:#f00
+html body .stars .dot6 {
+  top: 170px;
+  right: 85px;
 }
-.temperatureProgressbar .dot+.dot:before{
-	width:5px;
-	height:5px;
-	transform:translate(-50%,0);
-	background:var(--dateTextColor)
+html body .stars .dot7 {
+  top: 340px;
+  right: 100px;
 }
-.temperatureProgressbar .dot+.dot{
-	transform:rotate(36deg)
+html body .stars .dot8 {
+  top: 700px;
+  left: 144px;
 }
-  width:calc(100% - 60px);
-  height:calc(100% - 60px);
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) rotate(-45deg)
+html body .stars .dot9 {
+  top: 720px;
+  right: 98px;
 }
-.sun .weatherInfo{
-  transform:translate(-50%,-50%);
-  display:flex;
-  justify-content:center;
-  align-items:center;
+html body .stars .dot10 {
+  top: 780px;
+  left: 500px;
 }
-
-.halfCircleCenter .circle,.halfCircleCenter .progressbar{
-	width:100%;
-	height:100%;
-	background:conic-gradient(transparent 0 calc(90deg + 18deg),var(--dateTextColor) calc(90deg + 18deg) 360deg);
-	border-radius:50%;
-	transform:rotate(calc(45deg - 9deg));
-	position:absolute
+html body .stars .dot11 {
+  top: 980px;
+  left: 250px;
 }
-.halfCircleCenter .hideCircle{
-	width:calc(100% - 10px);
-	height:calc(100% - 10px);
-	position:absolute;
-	background:var(--sunColor);
-	border-radius:50%
+html body .stars .dot12 {
+  top: 1000px;
+  right: 300px;
 }
-.halfCircleCenter .progressbar{
-	background:conic-gradient(#f00 0 calc(360deg - (90deg + 18deg + var(--temperatureProgressbarDeg,100deg))),transparent calc(360deg - (90deg + 18deg + var(--temperatureProgressbarDeg,100deg))) 360deg);
-	transform:rotate(calc(45deg - 9deg + 90deg + 18deg))
+html body .stars .dot13 {
+  top: 1309px;
+  left: 430px;
 }
-/* 252 - 0 */
-.temperatureProgressbar .dot.progressbar{
-	transform:rotate(calc(45deg - 9deg - var(--temperatureProgressbarDeg,100deg)))
+html body .stars .dot14 {
+  top: 1200px;
+  left: 160px;
 }
-.temperatureProgressbar .dot.progressbar:before{
-	background:#f00
+html body .stars .dot15 {
+  top: 1305px;
+  right: 140px;
 }
-.sun .weatherInfo .temperatureNow,.sun .weatherInfo .temperatureMin,.sun .weatherInfo .temperatureMax{
-	position:absolute;
-	width:calc(50% - 30px);
-	height:calc(100% - 60px);
-	top:30px;
-	left:30px;
-	border-radius:999px 0 0 999px;
-	font-family:Pacifico;
-	display:flex;
-	align-items:center;
-	align-content:center;
-	color:var(--dateTextColor);
+html body .stars .dot16 {
+  top: 950px;
+  left: 50px;
 }
-.sun .weatherInfo .info{
-	display:flex;
-	justify-content: center;
-	align-items:center;
-	flex-flow:wrap column;
+html body .stars .dot17 {
+  top: 800px;
+  right: 300px;
 }
-.sun .weatherInfo .temperatureNow .info{
-	margin:30px 0 -20px 0
+html body .stars .dot18 {
+  top: 1100px;
+  right: 100px;
 }
-.sun .weatherInfo .content{
-	font-size:90px;
-	margin:-60px 0 0 0
+html body .stars .dot19 {
+  top: 1200px;
+  right: 200px;
 }
-.sun .weatherInfo .content span,.sun .weatherInfo .title{
-	font-size:30px
+html body .stars .dot20 {
+  top: 30px;
+  right: 300px;
 }
-.sun .weatherInfo .content .decimal{
-	font-size:40px
+html body .stars .dot21 {
+  top: 600px;
+  left: 100px;
 }
-.sun .halfCircle .halfCircleCenter .dates{
-	background:transparent;
-	position:relative;
-	color:var(--dateTextColor);
-	font-family:Pacifico;
-	display:flex;
-	flex-flow:wrap column;
-	justify-content: center;
-	align-items:center;
+html body .stars .dot22 {
+  top: 809px;
+  right: 200px;
 }
-.sun .halfCircle .halfCircleCenter .dates .city span{
-	height:15px;
-	width:15px;
-	display:inline-block;
-	margin-right:5px
+html body .stars .dot23 {
+  top: 950px;
+  left: 500px;
 }
-.sun .halfCircle .halfCircleCenter .dates .day{
-	font-size:40px
+html body .stars .dot24 {
+  top: 900px;
+  left: 300px;
 }
-.sun .halfCircle .halfCircleCenter .dates .date{
-	font-size:30px;
-	margin:-10px 0 0 0;
-}
-.sun .halfCircle .halfCircleCenter .dates .city{
-	font-size:25px;
-	background:transparent;
-	max-width:150px;
-	text-overflow:ellipsis;
-	white-space:nowrap;
-	overflow:hidden
-}
-.sun .halfCircle .halfCircleCenter .dates .city span svg path{
-	fill:var(--dateTextColor)
-}
-.sun .weatherInfo .temperatureMin,.sun .weatherInfo .temperatureMax{
-	width:calc(100% - 60px);
-	height:calc(50% - 30px);
-	align-items:unset;
-	align-content:unset;
-	justify-content:center;
-}
-.sun .weatherInfo .temperatureMin{
-	border-radius:0 0 999px 999px;
-	top:unset;
-	bottom:30px
-}
-.sun .weatherInfo .temperatureMax{
-	border-radius:999px 999px 0 0
-}
-.sun .weatherInfo .temperatureMin .info{
-	margin:130px 0 0 0
-}
-.sun .weatherInfo .temperatureMax .info{
-	margin:-80px 0 0 0
-}
-.sun .weatherInfo .temperatureNow .sunInfo{
-	width:165px;
-	
-	margin:-36px 0 -30px 10px;
-	
-}
-.sun .weatherInfo .temperatureNow{
-	flex-flow:nowrap column;
-	justify-content:center;
-	align-items:flex-start;
-	align-content:flex-start
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle{
-	width:100%;
-	color:var(--dateTextColor);
-	font-family:Pacifico;
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent{
-	border-bottom:3px solid var(--dateTextColor);
-	width:100%;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	position:relative
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle {
-	display:flex;
-	justify-content:space-between
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoTitle span{
-	font-size:22px;
-	margin:-5px 0 -5px 0
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .house{
-	width:40px;
-	height:40px;
-	margin:0 0 -6px 0
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .house path{
-	fill:var(--dateTextColor)
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .sunIcon{
-	width:165px;
-	height:165px;
-	border-radius:50%;
-	
-	position:absolute;
-	top:0;
-	
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .icon path{
-	fill:var(--dateTextColor)
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .icon{
-	width:20px;
-	height:20px;
-	margin:0 auto
+html body .stars .dot25 {
+  top: 910px;
+  right: 300px;
 }
 
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .circle,.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .iconBox{
-	width:calc(165px - 19.5px);
-	height: 70px;
-	position:absolute;
-	overflow:hidden;
-	bottom:0;
-	border-radius:0
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .iconBox{
-	height:80px;
-	width:165px;
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .circle:before{
-	content:'';
-	display:block;
-	top:0;
-	width:100%;
-	height:calc(165px - 19.5px);
-	border:2px solid var(--dateTextColor99);
-	border-radius:50%
-}
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .moonIcon .icon{
-	width:15px;
-	height:20px;
-	transform:rotate(calc(var(--moonDeg,0deg) * -1))
-}
-.sun .weatherInfo .temperatureNow .weatherDescription{
-	
-	height:200px;
-	width:200px;
-	margin:0 0 -200px 10px;
-	
-	
-	position:relative;
-	text-overflow:ellipsis;
-	text-align: center;
-	overflow:hidden;
-	font-size:27px
-}
-.sun .weatherInfo .temperatureNow .weatherDescription:before{
-	content:'';
-	display:inline-block;
-	position:relative;
-	width:100%;
-	height:100%;
-	float:left;
-	
-	shape-outside:polygon(0 30%,80% 100%, 0 100%,0 30%);
-	clip-path:polygon(0 30%,80% 100%, 0 100%,0 30%);
-}
+/*# sourceMappingURL=styleModule2.css.map */
