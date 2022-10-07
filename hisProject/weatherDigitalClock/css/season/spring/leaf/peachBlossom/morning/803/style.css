@@ -1,5 +1,0 @@
-body{
-		--leaf3Color:brightness(0) saturate(100%) invert(70%) sepia(11%) saturate(5795%) hue-rotate(286deg) brightness(95%) contrast(88%)/* #FC7CCC */;
-  --leaf2Color:brightness(0) saturate(100%) invert(75%) sepia(39%) saturate(1595%) hue-rotate(284deg) brightness(94%) contrast(89%)/* #e37bbc */;
-  --leafColor:brightness(0) saturate(100%) invert(66%) sepia(85%) saturate(420%) hue-rotate(285deg) brightness(97%) contrast(82%)/* #e387c1 */;
-}

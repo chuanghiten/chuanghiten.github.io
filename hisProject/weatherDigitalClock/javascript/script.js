@@ -47,7 +47,7 @@ var body = window.document.querySelector("body"),
   temperatureMax,
   temperatureMin,
   
-  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast,city,dayPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .day"),datePrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .date"),cityPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .city"),sunriseTime,sunsetTime,sunAltitude,moonAltitude,sunDeg;
+  oldValue,locationData,temperatureProgressbar=document.querySelector(".halfCircle"),temperatureDeg,temperaturePrint=document.querySelector(".sun .weatherInfo .temperatureNow .info .content"),weatherNow,forecast,city,dayPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .day"),datePrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .date"),cityPrint=document.querySelector(".sun .halfCircle .halfCircleCenter .dates .city"),sunriseTime,sunsetTime,sunAltitude,moonAltitude,sunDeg,weatherDescription;
 
 
 
@@ -136,6 +136,8 @@ async function positionData(position) {
   temperature=weatherNow[0].Temperature.Metric.Value;
   temperatureMin=forecast.DailyForecasts[0].Temperature.Minimum.Value;
   temperatureMax=forecast.DailyForecasts[0].Temperature.Maximum.Value;
+  weatherDescription=weatherNow[0].WeatherText;
+  weatherId=weatherNow[0].WeatherIcon;
   //console.log(temperatureMin+" "+temperatureMax);
   //console.log(sunrise + " " + sunset);
   city=locationData.LocalizedName;
@@ -275,7 +277,7 @@ function main() {
   }
   season = "spring";
   session = "morning";
-  weatherId = "800";
+  weatherId = "1";
   leaf = "default";
 
   /*
@@ -295,7 +297,7 @@ function main() {
 
   season="spring";
   session = "morning";
-  weatherId = "800";
+  weatherId = "1";
   leaf = "default";
   *
   cssDisplay.setAttribute(
@@ -406,6 +408,10 @@ function main() {
  
  //console.log((sunrise-(hourTime+(minuteTime/60)))/(sunrise-sunset));
  document.querySelector(".sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .iconBox .sunIcon").setAttribute("style","transform:rotate("+sunDeg+"deg)");
+ if(weatherDescription){}else{
+ 	weatherDescription="?";
+ }
+ document.querySelector(".sun .weatherInfo .temperatureNow .weatherDescription").innerHTML=weatherDescription;
  
   return [season, session, weatherId, leaf];
 }
