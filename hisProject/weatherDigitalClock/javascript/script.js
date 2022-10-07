@@ -55,7 +55,7 @@ var body = window.document.querySelector("body"),
 
 
 
-  //navigator.geolocation.getCurrentPosition(positionData);
+  navigator.geolocation.getCurrentPosition(positionData);
   //api("ipgeolocation");
 async function positionData(position) {
 //console.log("hello");

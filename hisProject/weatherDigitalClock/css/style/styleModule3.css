@@ -1161,11 +1161,6 @@ div.circle58 {
 	border:2px solid var(--dateTextColor99);
 	border-radius:50%
 }
-.sun .weatherInfo .temperatureNow .sunInfo .sunInfoContent .moonIcon .icon{
-	width:15px;
-	height:20px;
-	transform:rotate(calc(var(--moonDeg,0deg) * -1))
-}
 .sun .weatherInfo .temperatureNow .weatherDescription{
 	
 	height:200px;

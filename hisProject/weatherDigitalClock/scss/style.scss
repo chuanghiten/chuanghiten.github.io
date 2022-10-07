@@ -1,52 +1,47 @@
-html{
-  background: 0 0 / cover no-repeat fixed
-    linear-gradient(
-      to bottom,
-      var(--bodyBackgroundGradient),
-      var(--bodyBackgroundGradient2)
-    ),var(--mountain1BackgroundColor);
-	body{
+html {
+	background: 0 0 / cover no-repeat fixed
+			linear-gradient(to bottom, var(--bodyBackgroundGradient), var(--bodyBackgroundGradient2)),
+		var(--mountain1BackgroundColor);
+	body {
 		background: 0 0 / cover no-repeat fixed
-			linear-gradient(
-				to bottom,
-				var(--bodyBackgroundGradient),
-				var(--bodyBackgroundGradient2)
-			),var(--mountain1BackgroundColor);
-		.backgroundPrevetine{
+				linear-gradient(to bottom, var(--bodyBackgroundGradient), var(--bodyBackgroundGradient2)),
+			var(--mountain1BackgroundColor);
+		.backgroundPrevetine {
 			position: absolute;
-			bottom:0;
-			width:100%;
-			height:12%;
-			background:var(--mountain1BackgroundColor)
+			bottom: 0;
+			width: 100%;
+			height: 12%;
+			background: var(--mountain1BackgroundColor);
 		}
-		.sun{
-			position:relative;
-			width:630px;
+		.sun {
+			position: relative;
+			width: 630px;
 			height: 630px;
-			margin:80px auto;
-			overflow:hidden;
-			border-radius:50%;
-			.second{
+			margin: 80px auto;
+			overflow: hidden;
+			border-radius: 50%;
+			padding: 15px;
+			.second {
 				width: 100%;
 				height: 100%;
 				border-radius: 50%;
 				border: 10px solid var(--sunColor);
 				box-shadow: 0 0 10px 0 var(--sunColorShadow), 0 0 20px 0 var(--sunColorShadow),
-					0 0 10px 0 var(--sunColorShadow) inset,
-					0 0 20px 0 var(--sunColorShadow) inset;
+					0 0 10px 0 var(--sunColorShadow) inset, 0 0 20px 0 var(--sunColorShadow) inset;
 				position: relative;
 				background: var(--secondAndHourBackgroundColor);
 			}
-			.secondTitle,.minuteTitle,.hourTitle{
+			.secondTitle,
+			.minuteTitle,
+			.hourTitle {
 				width: 100%;
 				height: auto;
 				padding: 0 20px;
 				position: absolute;
 				top: 50%;
 				left: 50%;
-				transform: translate(-50%, -50%)
-					rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)));
-				span{
+				transform: translate(-50%, -50%) rotate(calc(180deg + ((var(--secondTitleRotate) + 1) * 6deg)));
+				span {
 					color: var(--secondAndHourTextColor);
 					display: inline-block;
 					font: 21px "Seven Segment";
@@ -54,7 +49,7 @@ html{
 					font-weight: 600;
 				}
 			}
-			.minute{
+			.minute {
 				width: 460px;
 				height: 460px;
 				border-radius: 50%;
@@ -63,19 +58,17 @@ html{
 				left: 50%;
 				position: absolute;
 				transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
-				box-shadow: 0 0 10px 0 var(--minuteBackgroundColor),
-					0 0 20px 0 var(--minuteBackgroundColor);
-				.minuteTitle{
-					transform: translate(-50%, -50%)
-						rotate(calc((var(--minuteTitleRotate) * 6deg) + 96deg));
-					span{
+				box-shadow: 0 0 10px 0 var(--minuteBackgroundColor), 0 0 20px 0 var(--minuteBackgroundColor);
+				.minuteTitle {
+					transform: translate(-50%, -50%) rotate(calc((var(--minuteTitleRotate) * 6deg) + 96deg));
+					span {
 						color: var(--minuteTextColor);
 						text-shadow: unset;
 						font-weight: 600;
 					}
 				}
 			}
-			.hour{
+			.hour {
 				width: 340px;
 				height: 340px;
 				position: absolute;
@@ -84,23 +77,22 @@ html{
 				transform: translate(-50%, -50%) rotate(calc(0deg + 90deg));
 				background: var(--secondAndHourBackgroundColor);
 				border-radius: 50%;
-				box-shadow: 0 0 15px 0 var(--minuteBackgroundColor) inset,
-					0 0 25px 0 var(--minuteBackgroundColor) inset;
-				.hourTitle{
-					transform: translate(-50%, -50%)
-						rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg));
-					span{
+				box-shadow: 0 0 15px 0 var(--minuteBackgroundColor) inset, 0 0 25px 0 var(--minuteBackgroundColor) inset;
+				.hourTitle {
+					transform: translate(-50%, -50%) rotate(calc((var(--hourTitleRotate) * 15deg) + 105deg));
+					span {
 						color: var(--secondAndHourTextColor);
 					}
 				}
 			}
-			.halfCircle{
+			.halfCircle {
 				width: 290px;
 				height: 590px;
 				position: absolute;
 				top: 20px;
 				left: 20px;
-				.halfCircleCenter,.temperatureProgressbar{
+				.halfCircleCenter,
+				.temperatureProgressbar {
 					position: absolute;
 					background: var(--sunColor);
 					width: 220px;
@@ -114,71 +106,132 @@ html{
 					justify-content: center;
 					align-items: center;
 				}
-				.temperatureProgressbar{
+				.temperatureProgressbar {
 					background: transparent;
 					box-shadow: unset;
-					progressbarLine {
-					  width: 100%;
-					  height: 100%;
-					  position: absolute;
-					  border-radius: 50%;
-					  background:transparent;
-					  clip-path: url(#hideLine);
-					}
-					.dot{
-						width:100%;
-						height:100%;
-						position:absolute;
-						transform:rotate(calc((44deg + 90deg) + 10deg));
-						&:before{
-							content:'';
-							display:block;
-							position:absolute;
-							width:10px;
-							height:10px;
-							border-radius:50%;
-							left:50%;
-							transform:translate(-50%,-2.5px);
-							background:#f00;
+					.dot {
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						transform: rotate(calc((44deg + 90deg) + 10deg));
+						&:before {
+							content: "";
+							display: block;
+							position: absolute;
+							width: 10px;
+							height: 10px;
+							border-radius: 50%;
+							left: 50%;
+							transform: translate(-50%, -2.5px);
+							background: #f00;
 						}
-						&+.dot{
-							transform:rotate(36deg);
-							&:before{
-								width:5px;
-								height:5px;
-								transform:translate(-50%,0);
-								background:var(--dateTextColor);
+						& + .dot {
+							transform: rotate(36deg);
+							&:before {
+								width: 5px;
+								height: 5px;
+								transform: translate(-50%, 0);
+								background: var(--dateTextColor);
 							}
 						}
 					}
-				}
-				.halfCircleCenter .startLine{
-					width: 0;
-					height: 0;
-					border: 15px solid transparent;
-					border-left-color: var(--sunColor);
-					position: absolute;
-					top: 50%;
-					right: 1px;
-					transform: translate(100%, -50%);
-					.line{
-						width: 160px;
-						height: 40px;
-						border: 3px solid var(--red);
-						transform: translate(0, -50%);
-						.endLine{
-							width: 0;
-							height: 0;
-							border: 15px solid transparent;
-							border-right-color: var(--sunColor);
-							position: absolute;
-							top: 50%;
-							right: 0;
-							transform: translate(calc(50% + 5px), -50%);
+					.dot.progressbar {
+						transform: rotate(calc(45deg - 9deg - var(--temperatureProgressbarDeg, 100deg)));
+						&:before {
+							background: #f00;
 						}
 					}
 				}
-				.halfCircle45Deg,.halfCircleNot45Deg{
+				.halfCircleCenter {
+					.startLine {
+						width: 0;
+						height: 0;
+						border: 15px solid transparent;
+						border-left-color: var(--sunColor);
+						position: absolute;
+						top: 50%;
+						right: 1px;
+						transform: translate(100%, -50%);
+						.line {
+							width: 160px;
+							height: 40px;
+							border: 3px solid var(--red);
+							transform: translate(0, -50%);
+							.endLine {
+								width: 0;
+								height: 0;
+								border: 15px solid transparent;
+								border-right-color: var(--sunColor);
+								position: absolute;
+								top: 50%;
+								right: 0;
+								transform: translate(calc(50% + 5px), -50%);
+							}
+						}
+					}
+					.circle,
+					.progressbar {
+						width: 100%;
+						height: 100%;
+						background: conic-gradient(
+							transparent 0 calc(90deg + 18deg),
+							var(--dateTextColor) calc(90deg + 18deg) 360deg
+						);
+						border-radius: 50%;
+						transform: rotate(calc(45deg - 9deg));
+						position: absolute;
+					}
+					.hideCircle {
+						width: calc(100% - 10px);
+						height: calc(100% - 10px);
+						position: absolute;
+						background: var(--sunColor);
+						border-radius: 50%;
+					}
+					.progressbar {
+						background: conic-gradient(
+							#f00 0 calc(360deg - (90deg + 18deg + var(--temperatureProgressbarDeg, 100deg))),
+							transparent calc(360deg - (90deg + 18deg + var(--temperatureProgressbarDeg, 100deg))) 360deg
+						);
+						transform: rotate(calc(45deg - 9deg + 90deg + 18deg));
+					}
+					.dates {
+						background: transparent;
+						position: relative;
+						color: var(--dateTextColor);
+						font-family: Pacifico;
+						display: flex;
+						flex-flow: wrap column;
+						justify-content: center;
+						align-items: center;
+						.city {
+							span {
+								height: 15px;
+								width: 15px;
+								display: inline-block;
+								margin-right: 5px;
+								svg path {
+									fill: var(--dateTextColor);
+								}
+							}
+							font-size: 25px;
+							background: transparent;
+							max-width: 150px;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							overflow: hidden;
+						}
+						.day {
+							font-size: 40px;
+						}
+						.date {
+							font-size: 30px;
+							margin: -10px 0 0 0;
+						}
+					}
+				}
+				.halfCircle45Deg,
+				.halfCircleNot45Deg {
 					transform: rotate(45deg);
 					width: 100%;
 					height: 100%;
@@ -190,21 +243,200 @@ html{
 					left: 0;
 					transform-origin: 100% 50%;
 				}
-				.halfCircleNot45Deg{
+				.halfCircleNot45Deg {
 					transform: rotate(-45deg);
 				}
-				
 			}
-			.second,.minute,.hour{
+			.second,
+			.minute,
+			.hour {
 				transition: all 0.35s cubic-bezier(0.39, 1.62, 0.49, 1.87);
 			}
+			.weatherInfo {
+				.temperature {
+					&Now,
+					&Min,
+					&Max {
+						position: absolute;
+						width: calc(50% - 30px);
+						height: calc(100% - 60px);
+						top: 30px;
+						left: 30px;
+						border-radius: 999px 0 0 999px;
+						font-family: Pacifico;
+						display: flex;
+						align-items: center;
+						align-content: center;
+						color: var(--dateTextColor);
+					}
+					&Now {
+						.info {
+							margin: 30px 0 -20px 0;
+						}
+						.sunInfo {
+							width: 165px;
+
+							margin: -36px 0 -30px 10px;
+							.sunInfoTitle {
+								width: 100%;
+								color: var(--dateTextColor);
+								font-family: Pacifico;
+								display: flex;
+								justify-content: space-between;
+								span {
+									font-size: 22px;
+									margin: -5px 0 -5px 0;
+								}
+							}
+							.sunInfoContent {
+								border-bottom: 3px solid var(--dateTextColor);
+								width: 100%;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								position: relative;
+								.house {
+									width: 40px;
+									height: 40px;
+									margin: 0 0 -6px 0;
+									path {
+										fill: var(--dateTextColor);
+									}
+								}
+								.sunIcon {
+									width: 165px;
+									height: 165px;
+									border-radius: 50%;
+
+									position: absolute;
+									top: 0;
+								}
+								.icon {
+									path {
+										fill: var(--dateTextColor);
+									}
+									width: 20px;
+									height: 20px;
+									margin: 0 auto;
+								}
+								.circle,
+								.iconBox {
+									width: calc(165px - 19.5px);
+									height: 70px;
+									position: absolute;
+									overflow: hidden;
+									bottom: 0;
+									border-radius: 0;
+								}
+								.iconBox {
+									height: 80px;
+									width: 165px;
+								}
+								.circle:before {
+									content: "";
+									display: block;
+									top: 0;
+									width: 100%;
+									height: calc(165px - 19.5px);
+									border: 2px solid var(--dateTextColor99);
+									border-radius: 50%;
+								}
+							}
+						}
+						flex-flow: nowrap column;
+						justify-content: center;
+						align-items: flex-start;
+						align-content: flex-start;
+						.weatherDescription {
+							height: 200px;
+							width: 200px;
+							margin: 0 0 -200px 10px;
+
+							position: relative;
+							text-overflow: ellipsis;
+							text-align: center;
+							overflow: hidden;
+							font-size: 27px;
+							&:before {
+								content: "";
+								display: inline-block;
+								position: relative;
+								width: 100%;
+								height: 100%;
+								float: left;
+
+								shape-outside: polygon(0 30%, 80% 100%, 0 100%, 0 30%);
+								clip-path: polygon(0 30%, 80% 100%, 0 100%, 0 30%);
+							}
+						}
+					}
+					&Min,
+					&Max {
+						width: calc(100% - 60px);
+						height: calc(50% - 30px);
+						align-items: unset;
+						align-content: unset;
+						justify-content: center;
+					}
+					&Min {
+						border-radius: 0 0 999px 999px;
+						top: unset;
+						bottom: 30px;
+						.info {
+							margin: 130px 0 0 0;
+						}
+					}
+					&Max {
+						border-radius: 999px 999px 0 0;
+						.info {
+							margin: -80px 0 0 0;
+						}
+					}
+				}
+				.info {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					flex-flow: wrap column;
+				}
+				.content {
+					font-size: 90px;
+					margin: -60px 0 0 0;
+					.decimal {
+						font-size: 40px;
+					}
+				}
+				.content span,
+				.title {
+					font-size: 30px;
+				}
+			}
 		}
-		.scenery{
+		.scenery {
 			width: 100%;
 			height: 700px;
 			position: relative;
-			margin:auto 0 0 0;
-			.mountain7,.mountain6,.mountain5,.mountain4,.mountain3,.mountain1,.minTree,.mountain2,.tree,.mountain,.minTreeShadow,.minTrunk,.minLeaf3,.minLeaf2,.minLeaf,.treeShadow,.trunk,.leaf3,.leaf2,.leaf{
+			margin: auto 0 0 0;
+			.mountain7,
+			.mountain6,
+			.mountain5,
+			.mountain4,
+			.mountain3,
+			.mountain1,
+			.minTree,
+			.mountain2,
+			.tree,
+			.mountain,
+			.minTreeShadow,
+			.minTrunk,
+			.minLeaf3,
+			.minLeaf2,
+			.minLeaf,
+			.treeShadow,
+			.trunk,
+			.leaf3,
+			.leaf2,
+			.leaf {
 				width: 100%;
 				height: auto;
 				position: absolute;
@@ -213,76 +445,88 @@ html{
 				background: transparent;
 				filter: var(--mountain7Color);
 			}
-			img{
+			img {
 				width: 100%;
 				height: 100%;
 			}
-			.mountain6,.mountain4,.minTree,.mountant2,.treeShadow,.trunk,.leaf3,.leaf2,.leaf{
+			.mountain6,
+			.mountain4,
+			.minTree,
+			.mountant2,
+			.treeShadow,
+			.trunk,
+			.leaf3,
+			.leaf2,
+			.leaf {
 				right: unset;
 				left: 0;
 				filter: var(--mountain6Color);
 			}
-			.mountain5{
-				filter:var(--mountain5Color)
+			.mountain5 {
+				filter: var(--mountain5Color);
 			}
-			.mountain4{
-				filter:var(--mountain4Color)
+			.mountain4 {
+				filter: var(--mountain4Color);
 			}
-			.mountain3{
-				filter:var(--mountain3Color)
+			.mountain3 {
+				filter: var(--mountain3Color);
 			}
-			.mountain2{
-				filter:var(--mountain2Color)
+			.mountain2 {
+				filter: var(--mountain2Color);
 			}
-			.mountain1{
-				filter:var(--mountain1Color)
+			.mountain1 {
+				filter: var(--mountain1Color);
 			}
-			.mountain{
-				filter:var(--mountainColor)
+			.mountain {
+				filter: var(--mountainColor);
 			}
-			.minTree,.tree{
+			.minTree,
+			.tree {
 				filter: unset;
 			}
-			.minTree{
-				.minTreeShadow,.minTrunk{
+			.minTree {
+				.minTreeShadow,
+				.minTrunk {
 					bottom: 0;
 					left: 0;
 					filter: var(--treeShadowColor);
 				}
-				.minTrunk{
+				.minTrunk {
 					filter: var(--trunkColor);
 				}
-				.minLeaf3{
+				.minLeaf3 {
 					filter: var(--leaf3Color);
 				}
-				.minLeaf2{
+				.minLeaf2 {
 					filter: var(--leaf2Color);
 				}
-				.minLeaf{
+				.minLeaf {
 					filter: var(--leafColor);
 				}
 			}
-			.tree{
-				.treeShadow,.trunk{
+			.tree {
+				.treeShadow,
+				.trunk {
 					bottom: 0;
 					right: 0;
 					filter: var(--treeShadowColor);
 				}
-				.trunk{
+				.trunk {
 					filter: var(--trunkColor);
 				}
-				.leaf3{
+				.leaf3 {
 					filter: var(--leaf3Color);
 				}
-				.leaf2{
+				.leaf2 {
 					filter: var(--leaf2Color);
 				}
-				.leaf{
+				.leaf {
 					filter: var(--leafColor);
 				}
 			}
 		}
-		.clouds,.stars{
+		.clouds,
+		.stars {
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -291,52 +535,52 @@ html{
 			transform: translate(-50%, 0);
 			background: transparent;
 		}
-		.clouds{
-			.clouds1{
+		.clouds {
+			.clouds1 {
 				position: absolute;
 				width: 350px;
 				height: 200px;
 				background: transparent;
 				top: 550px;
 				right: 70px;
-				.circle1{
+				.circle1 {
 					width: 150px;
 					height: 150px;
 					bottom: 0;
 					left: 0;
 				}
-				.circle2{
+				.circle2 {
 					width: 70px;
 					height: 70px;
 					bottom: 0;
 					right: 0;
 				}
-				.circle3{
+				.circle3 {
 					width: 130px;
 					height: 130px;
 					top: 0;
 					left: 70px;
 				}
-				.circle4{
+				.circle4 {
 					width: 100px;
 					height: 100px;
 					top: 50px;
 					right: 100px;
 				}
-				.circle5{
+				.circle5 {
 					width: 100px;
 					height: 100px;
 					top: 60px;
 					right: 30px;
 				}
-				.rectangle{
+				.rectangle {
 					position: absolute;
 					left: 75px;
 					bottom: 0;
 					width: 240px;
 					height: 70px;
 					background: var(--cloudColor);
-					&:before{
+					&:before {
 						content: "";
 						display: block;
 						position: absolute;
@@ -348,544 +592,550 @@ html{
 					}
 				}
 			}
-			.circle{
+			.circle {
 				border-radius: 50%;
 				background: var(--cloudColor);
 				position: absolute;
 			}
-			.cloud1,.cloud2,.cloud3,.cloud4,.cloud5,.cloud6,.cloud7{
-				*{
-					box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor),
-						0 0 40px 0 var(--cloudColor);
+			.cloud1,
+			.cloud2,
+			.cloud3,
+			.cloud4,
+			.cloud5,
+			.cloud6,
+			.cloud7 {
+				* {
+					box-shadow: 0 0 10px 0 var(--cloudColor), 0 0 20px 0 var(--cloudColor), 0 0 40px 0 var(--cloudColor);
 				}
 			}
-			.cloud2{
+			.cloud2 {
 				position: absolute;
 				width: 350px;
 				height: 200px;
 				background: transparent;
 				top: 50px;
 				left: 70px;
-				.circle6{
+				.circle6 {
 					width: 100px;
 					height: 100px;
 					top: 50%;
 					transform: translate(0, -50%);
 				}
-				.circle7{
+				.circle7 {
 					width: 70px;
 					height: 70px;
 					top: 50%;
 					right: 0;
 					transform: translate(0, -30%);
 				}
-				.circle8{
+				.circle8 {
 					width: 150px;
 					height: 150px;
 					left: 50px;
 				}
-				.circle9{
+				.circle9 {
 					width: 120px;
 					height: 120px;
 					right: 70px;
 					top: 30px;
 				}
-				.circle10{
+				.circle10 {
 					width: 50px;
 					height: 50px;
 					top: 50%;
 					transform: translate(0, -50%);
 					right: 50px;
 				}
-				.circle11{
+				.circle11 {
 					width: 70px;
 					height: 70px;
 					bottom: 30px;
 					left: 50px;
 				}
-				.circle12{
+				.circle12 {
 					width: 50px;
 					height: 50px;
 					bottom: 40px;
 					right: 50px;
 				}
-				.circle13{
+				.circle13 {
 					width: 150px;
 					height: 150px;
 					bottom: 0;
 					left: 110px;
 				}
 			}
-			.cloud3{
+			.cloud3 {
 				width: 200px;
 				height: 170px;
 				position: absolute;
 				background: transparent;
 				top: 120px;
 				right: 70px;
-				.circle14{
+				.circle14 {
 					width: 50px;
 					height: 50px;
 					top: 80px;
 				}
-				.circle15{
+				.circle15 {
 					width: 60px;
 					height: 60px;
 					top: 50px;
 					left: 25px;
 				}
-				.circle16{
+				.circle16 {
 					width: 80px;
 					height: 80px;
 					left: 60px;
 					top: 20px;
 				}
-				.circle17{
+				.circle17 {
 					width: 70px;
 					height: 70px;
 					top: 60px;
 					right: 20px;
 				}
-				.circle18{
+				.circle18 {
 					width: 50px;
 					height: 50px;
 					left: 30px;
 					bottom: 20px;
 				}
-				.circle19{
+				.circle19 {
 					width: 80px;
 					height: 80px;
 					left: 60px;
 					bottom: 10px;
 				}
 			}
-			.cloud4{
+			.cloud4 {
 				position: absolute;
 				width: 600px;
 				height: 300px;
 				top: 550px;
-				.circle20{
+				.circle20 {
 					width: 150px;
 					height: 150px;
 					top: 50%;
 					transform: translate(0, -50%);
 					right: 0;
 				}
-				.circle21{
+				.circle21 {
 					width: 250px;
 					height: 250px;
 					right: 70px;
 				}
-				.circle22{
+				.circle22 {
 					width: 100px;
 					height: 100px;
 					top: 40px;
 					right: 290px;
 				}
-				.circle23{
+				.circle23 {
 					width: 120px;
 					height: 120px;
 					top: 30px;
 					left: 120px;
 				}
-				.circle24{
+				.circle24 {
 					width: 100px;
 					height: 100px;
 					top: 60px;
 					left: 50px;
 				}
-				.circle25{
+				.circle25 {
 					width: 90px;
 					height: 90px;
 					top: 80px;
 				}
-				.circle26{
+				.circle26 {
 					width: 110px;
 					height: 110px;
 					bottom: 80px;
 					left: 60px;
 				}
-				.circle27{
+				.circle27 {
 					width: 200px;
 					height: 200px;
 					bottom: 65px;
 					left: 135px;
 				}
-				.circle28{
+				.circle28 {
 					width: 100px;
 					height: 100px;
 					bottom: 85px;
 					left: 110px;
 				}
-				.circle29{
+				.circle29 {
 					width: 200px;
 					height: 200px;
 					bottom: 30px;
 					right: 170px;
 				}
 			}
-			.cloud5{
+			.cloud5 {
 				right: 0;
 				width: 700px;
 				height: 200px;
 				position: absolute;
-				.circle30{
+				.circle30 {
 					width: 70px;
 					height: 70px;
 					top: 50px;
 				}
-				.circle31{
+				.circle31 {
 					width: 60px;
 					height: 60px;
 					top: 40px;
 					left: 35px;
 				}
-				.circle32{
+				.circle32 {
 					width: 130px;
 					height: 130px;
 					left: 70px;
 				}
-				.circle33{
+				.circle33 {
 					width: 70px;
 					height: 70px;
 					top: 70px;
 					left: 165px;
 				}
-				.circle34{
+				.circle34 {
 					width: 80px;
 					height: 80px;
 					top: 65px;
 					left: 200px;
 				}
-				.circle35{
+				.circle35 {
 					width: 100px;
 					height: 100px;
 					top: 40px;
 					left: 250px;
 				}
-				.circle36{
+				.circle36 {
 					width: 170px;
 					height: 170px;
 					bottom: 0;
 					left: 300px;
-					
 				}
-				.circle37{
+				.circle37 {
 					width: 70px;
 					height: 70px;
 					top: 20px;
 					left: 400px;
 				}
-				.circle38{
+				.circle38 {
 					width: 130px;
 					height: 130px;
 					top: 50px;
 					right: 150px;
 				}
-				.circle39{
+				.circle39 {
 					width: 100px;
 					height: 100px;
 					top: 40px;
 					right: 100px;
 				}
-				.circle40{
+				.circle40 {
 					width: 90px;
 					height: 90px;
 					right: 0;
 					top: 70px;
 				}
-				.circle41{
+				.circle41 {
 					width: 70px;
 					height: 70px;
 					top: 70px;
 					right: 70px;
 				}
-				.circle42{
+				.circle42 {
 					width: 100px;
 					height: 100px;
 					bottom: 30px;
 					right: 60px;
 				}
-				.circle43{
+				.circle43 {
 					width: 100px;
 					height: 100px;
 					bottom: 40px;
 					left: 60px;
 				}
-				.circle44{
+				.circle44 {
 					width: 100px;
 					height: 100px;
 					bottom: 30px;
 					left: 100px;
 				}
 			}
-			.cloud6{
-				position:absolute;
-				width:300px;
-				height:250px;
-				right:0;
-				top:400px;
+			.cloud6 {
+				position: absolute;
+				width: 300px;
+				height: 250px;
+				right: 0;
+				top: 400px;
 				.circle45 {
 					width: 100px;
-  				height: 100px;
-  				right: 0;
-  				top: 70px;
+					height: 100px;
+					right: 0;
+					top: 70px;
 				}
 				.circle46 {
-  				width: 200px;
-  				height: 200px;
-  				right: 60px;
+					width: 200px;
+					height: 200px;
+					right: 60px;
 				}
 				.circle47 {
-				  width: 70px;
-				  height: 70px;
-				  bottom: 60px;
+					width: 70px;
+					height: 70px;
+					bottom: 60px;
 				}
 				.circle48 {
-				  width: 100px;
-				  height: 100px;
-				  left: 40px;
-				  bottom: 30px;
+					width: 100px;
+					height: 100px;
+					left: 40px;
+					bottom: 30px;
 				}
 				.circle49 {
-				  width: 150px;
-				  height: 150px;
-				  bottom: 15px;
-				  right: 30px;
+					width: 150px;
+					height: 150px;
+					bottom: 15px;
+					right: 30px;
 				}
 			}
 			.cloud7 {
-			  position: absolute;
-			  width: 300px;
-			  height: 150px;
-			  top: 150px;
-			  .circle50 {
-				  width: 100px;
-				  height: 100px;
-				  right: 0;
-				  top: 40px;
+				position: absolute;
+				width: 300px;
+				height: 150px;
+				top: 150px;
+				.circle50 {
+					width: 100px;
+					height: 100px;
+					right: 0;
+					top: 40px;
 				}
 				.circle51 {
-				  width: 70px;
-				  height: 70px;
-				  top: 0;
-				  right: 50px;
+					width: 70px;
+					height: 70px;
+					top: 0;
+					right: 50px;
 				}
 				.circle52 {
-				  width: 90px;
-				  height: 90px;
-				  top: 30px;
-				  right: 70px;
+					width: 90px;
+					height: 90px;
+					top: 30px;
+					right: 70px;
 				}
 				.circle53 {
-				  width: 50px;
-				  height: 50px;
-				  bottom: 20px;
-				  right: 125px;
+					width: 50px;
+					height: 50px;
+					bottom: 20px;
+					right: 125px;
 				}
 				.circle54 {
-				  width: 70px;
-				  height: 70px;
-				  top: 40px;
-  				left: 90px;
+					width: 70px;
+					height: 70px;
+					top: 40px;
+					left: 90px;
 				}
 				.circle55 {
-				  width: 100px;
-				  height: 100px;
-				  top: 30px;
+					width: 100px;
+					height: 100px;
+					top: 30px;
 				}
-				.circle56,.circle57,.circle58 {
-				  width: 50px;
-				  height: 50px;
-				  top: 30px;
-				  left: 70px;
+				.circle56,
+				.circle57,
+				.circle58 {
+					width: 50px;
+					height: 50px;
+					top: 30px;
+					left: 70px;
 				}
-				.circle57,.circle58 {
-				  top: unset;
-				  bottom: 20px;
+				.circle57,
+				.circle58 {
+					top: unset;
+					bottom: 20px;
 				}
 				.circle58 {
-				  bottom: 0;
-				  left: 20px;
+					bottom: 0;
+					left: 20px;
 				}
 			}
 		}
-		.stars{
+		.stars {
 			bottom: unset;
 			top: 0;
-			.star{
+			.star {
 				position: absolute;
 				width: 25px;
 				height: 35px;
-				path{
+				path {
 					fill: var(--white);
 				}
-				&.big{
+				&.big {
 					transform: scale(1.5);
 				}
-				&.small{
+				&.small {
 					transform: scale(0.5);
 				}
-				svg{
+				svg {
 					filter: drop-shadow(0 0 5px var(--white)) drop-shadow(0 0 10px var(--white))
 						drop-shadow(0 0 20px var(--white));
 				}
-				&.starDot{
+				&.starDot {
 					width: 10px;
 					height: 10px;
 					background: var(--white);
 					border-radius: 50%;
-					box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white),
-						0 0 20px 0 var(--white);
-					&.big{
+					box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 20px 0 var(--white);
+					&.big {
 						width: 15px;
 						height: 15px;
 					}
-					&.small{
+					&.small {
 						width: 5px;
 						height: 5px;
-						box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white),
-							0 0 15px 0 var(--white), 0 0 20px 0 var(--white);
+						box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 15px 0 var(--white),
+							0 0 20px 0 var(--white);
 					}
 				}
 			}
-			.star1{
+			.star1 {
 				top: 50px;
 				left: 100px;
 			}
-			.star2{
+			.star2 {
 				top: 400px;
 				left: 70px;
 			}
-			.star3{
+			.star3 {
 				top: 500px;
 				left: 800px;
 			}
-			.star4{
+			.star4 {
 				top: 700px;
 				left: 300px;
 			}
-			.star5{
+			.star5 {
 				top: 75px;
 				right: 150px;
 			}
-			.star6{
+			.star6 {
 				top: 843px;
 				right: 128px;
 			}
-			.star7{
+			.star7 {
 				top: 1000px;
 				left: 500px;
 			}
-			.star8{
+			.star8 {
 				top: 1240px;
 				left: 90px;
 			}
-			.star9{
+			.star9 {
 				top: 1500px;
 				left: 500px;
 			}
-			.star10{
+			.star10 {
 				top: 1270px;
 				right: 60px;
 			}
-			.dot1{
+			.dot1 {
 				top: 30px;
 				left: 70px;
 			}
-			.dot2{
+			.dot2 {
 				top: 240px;
 				left: 100px;
 			}
-			.dot3{
+			.dot3 {
 				top: 147px;
 				left: 265px;
 			}
-			.dot4{
+			.dot4 {
 				top: 60px;
 				left: 300px;
 			}
-			.dot5{
+			.dot5 {
 				top: 40px;
 				left: 500px;
 			}
-			.dot6{
+			.dot6 {
 				top: 170px;
 				right: 85px;
 			}
-			.dot7{
+			.dot7 {
 				top: 340px;
 				right: 100px;
 			}
-			.dot8{
+			.dot8 {
 				top: 700px;
 				left: 144px;
 			}
-			.dot9{
+			.dot9 {
 				top: 720px;
 				right: 98px;
 			}
-			.dot10{
+			.dot10 {
 				top: 780px;
 				left: 500px;
 			}
-			.dot11{
+			.dot11 {
 				top: 980px;
 				left: 250px;
 			}
-			.dot12{
+			.dot12 {
 				top: 1000px;
 				right: 300px;
 			}
-			.dot13{
+			.dot13 {
 				top: 1309px;
 				left: 430px;
 			}
-			.dot14{
+			.dot14 {
 				top: 1200px;
 				left: 160px;
 			}
-			.dot15{
+			.dot15 {
 				top: 1305px;
 				right: 140px;
 			}
-			.dot16{
+			.dot16 {
 				top: 950px;
 				left: 50px;
 			}
-			.dot17{
+			.dot17 {
 				top: 800px;
 				right: 300px;
 			}
-			.dot18{
+			.dot18 {
 				top: 1100px;
 				right: 100px;
 			}
-			.dot19{
+			.dot19 {
 				top: 1200px;
 				right: 200px;
 			}
-			.dot20{
+			.dot20 {
 				top: 30px;
 				right: 300px;
 			}
-			.dot21{
+			.dot21 {
 				top: 600px;
 				left: 100px;
 			}
-			.dot22{
+			.dot22 {
 				top: 809px;
 				right: 200px;
 			}
-			.dot23{
+			.dot23 {
 				top: 950px;
 				left: 500px;
 			}
-			.dot24{
+			.dot24 {
 				top: 900px;
 				left: 300px;
 			}
-			.dot25{
+			.dot25 {
 				top: 910px;
 				right: 300px;
 			}
