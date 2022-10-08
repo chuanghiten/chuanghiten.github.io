@@ -1,0 +1,145 @@
+*,:before,:after{
+	margin:0;
+	padding:0;
+	border:0;
+	box-sizing:border-box
+}
+@font-face {
+	font-family: Inter;
+	src: url(../fonts/Inter/static/Inter-Regular.ttf);
+}
+body{
+	background:#fff;
+	display: flex;
+	align-items:center;
+	flex-flow:nowrap column;
+	.free{
+		width:180px;
+		height:92.5px;
+		color:#424242b3;
+		background:#42424211;
+		font:700 45.6px Inter;
+		margin:60px 0 0 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius:92.7px;
+		line-height: 51.8px;
+		letter-spacing: -0.4px;
+	}
+	&>.title{
+		margin:40px 0 0 0;
+		font:700 88.9px Inter;
+		color:#424242;
+		line-height: 112.9px;
+		letter-spacing: -0.8px;
+		text-align: center;
+		padding: 0 50px;
+	}
+	.medallions{
+		margin:85px 0 0 0;
+		display:flex;
+		.medallion{
+			width:179.1px;
+			height:179.1px;
+			position: relative;
+			margin:0 38px 0 0;
+			&:last-child{
+				margin:0
+			}
+			img{
+				width: 415px;
+				height:401px;
+				position: absolute;
+				top:-134px;
+				left:-130px;
+			}
+		}
+	}
+	.medalStatTile{
+		margin:98px 0 0 0;
+		display: flex;
+		&>div{
+			width:218.6px;
+			height:229.4px;
+			margin:0 57px 0 0;
+			&:last-child{
+				margin:0;
+			}
+			box-shadow: 3px 3px 15px 0 #0003;
+			border-radius:43.2px;
+			display: flex;
+			align-items: center;
+			flex-flow: nowrap column;
+			.icon{
+				width:60.6px;
+				height:60.6px;
+				margin:32.4px 0 0 0;
+				position: relative;
+				img{
+					position: absolute;
+					top:-10px;
+					left:-26px;
+				}
+			}
+			.title{
+				color:#000;
+				font:600 25.9px Inter;
+				line-height: 31.4px;
+				letter-spacing: .04px;
+				margin:15px 0 0 0
+			}
+			.content{
+				font:600 25.9px Inter;
+				line-height: 31.4px;
+				letter-spacing: .04px;
+				margin: 30px 0 0 0;
+				border-radius:999px;
+				padding:2px 12px
+			}
+		}
+		.gold .content{
+			color:#EDB552;
+			background: #EDB55233;
+		}
+		.silver .content{
+			color:#828697;
+			background: #82869733;
+		}
+		.bronze .content{
+			color:#A2857B;
+			background: #A2857B33;
+		}
+	}
+}
+@media screen and (max-width:1080px) {
+	body{
+		.medallions{
+			justify-content: center;
+			flex-wrap: wrap;
+			margin:85px 100px 0;
+			.medallion{
+				margin:0 40px 30px;
+				&:last-child{
+					margin:0 40px 30px
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:850px) {
+	body{
+		.medalStatTile{
+			margin: 98px 50px 0;
+			flex-wrap: wrap;
+			justify-content: center;
+			&>div{
+				margin:0 50px 30px;
+				&:last-child{
+					margin: 0 50px 30px;
+				}
+			}
+		}
+	}
+}
