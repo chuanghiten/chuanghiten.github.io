@@ -327,9 +327,9 @@ function main() {
     leaf = "default";
   }
   season = "spring";
-  session = "morning";
   weatherId = "1";
-  leaf = "apricotBlossom";
+  session = "noon";
+  leaf = "default";
 
   /*
 

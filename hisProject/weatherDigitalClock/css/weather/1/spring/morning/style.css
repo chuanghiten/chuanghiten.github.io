@@ -5,20 +5,19 @@ body{
   --dateTextColor:#fff;
   --dateTextColor99:#fff9;
   --secondAndHourBackgroundColor:#61a9ff;
-  --mountain7Color:invert(.71) sepia(.93) saturate(20.21) hue-rotate(18deg) brightness(1.15) contrast(1)/* #e1e100 */;
-  --mountain6Color:invert(.76) sepia(.67) saturate(6.95) hue-rotate(11deg) brightness(.95) contrast(.98)/* #ccd202 */;
-  --mountain5Color:brightness(0) saturate(100%) invert(84%) sepia(51%) saturate(2561%) hue-rotate(14deg) brightness(90%) contrast(97%)/* #b8c304 */;
-  --mountain4Color:brightness(0) saturate(100%) invert(68%) sepia(14%) saturate(6260%) hue-rotate(28deg) brightness(98%) contrast(96%)/* #a3b705 */;
-  --mountain3Color:brightness(0) saturate(100%) invert(61%) sepia(52%) saturate(3382%) hue-rotate(35deg) brightness(96%) contrast(94%)/* #8ea507 */;
-  --mountain2Color:brightness(0) saturate(100%) invert(47%) sepia(65%) saturate(885%) hue-rotate(37deg) brightness(93%) contrast(93%)/* #7a9609 */;
-  --mountainColor:brightness(0) saturate(100%) invert(36%) sepia(97%) saturate(960%) hue-rotate(48deg) brightness(96%) contrast(91%)/* #65870b */;
-  --mountain1Color:brightness(0) saturate(100%) invert(30%) sepia(76%) saturate(3455%) hue-rotate(61deg) brightness(100%) contrast(92%)/* #5b7a0a */;
-  --mountain1BackgroundColor:#5b7a0a;
-  --treeShadowColor:invert(.99) sepia(.53) saturate(.2) hue-rotate(133deg) brightness(1.1) contrast(1.01)/* #fff */;
-  --trunkColor:brightness(0) saturate(100%) invert(28%) sepia(50%) saturate(490%) hue-rotate(344deg) brightness(106%) contrast(86%)/* #7a5335 */;
-  --leaf3Color:brightness(0) saturate(100%) invert(52%) sepia(100%) saturate(355%) hue-rotate(37deg) brightness(93%) contrast(94%);/* 7ca817 ;*/
-  --leaf2Color:brightness(0) saturate(100%) invert(71%) sepia(24%) saturate(959%) hue-rotate(37deg) brightness(93%) contrast(84%);/* 96b945 ;*/
-  --leafColor:brightness(0) saturate(100%) invert(92%) sepia(73%) saturate(488%) hue-rotate(18deg) brightness(75%) contrast(100%);/* #a1c058 ;*/
+  --mountain7Color:#e1e100;
+  --mountain6Color:#ccd202;
+  --mountain5Color:#b8c304;
+  --mountain4Color:#a3b705;
+  --mountain3Color:#8ea507;
+  --mountain2Color:#7a9609;
+  --mountain1Color:#65870b;
+  --mountain0Color:#5b7a0a;
+  --treeShadowColor:#fff;
+  --trunkColor:#7a5335;
+  --leaf3Color:#7ca817 ;
+  --leaf2Color:#96b945 ;
+  --leaf1Color:#a1c058 ;
 }
 div.scenery{
   display:block
