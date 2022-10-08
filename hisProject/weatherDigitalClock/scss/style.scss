@@ -896,7 +896,7 @@ html {
 				width: 25px;
 				height: 35px;
 				path {
-					fill: var(--white);
+					fill: var(--starColor);
 				}
 				&.big {
 					transform: scale(1.5);
@@ -905,15 +905,15 @@ html {
 					transform: scale(0.5);
 				}
 				svg {
-					filter: drop-shadow(0 0 5px var(--white)) drop-shadow(0 0 10px var(--white))
-						drop-shadow(0 0 20px var(--white));
+					filter: drop-shadow(0 0 5px var(--starColor)) drop-shadow(0 0 10px var(--starColor))
+						drop-shadow(0 0 20px var(--starColor));
 				}
 				&.starDot {
 					width: 10px;
 					height: 10px;
-					background: var(--white);
+					background: var(--starColor);
 					border-radius: 50%;
-					box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 20px 0 var(--white);
+					box-shadow: 0 0 5px 0 var(--starColor), 0 0 10px 0 var(--starColor), 0 0 20px 0 var(--starColor);
 					&.big {
 						width: 15px;
 						height: 15px;
@@ -921,8 +921,8 @@ html {
 					&.small {
 						width: 5px;
 						height: 5px;
-						box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 15px 0 var(--white),
-							0 0 20px 0 var(--white);
+						box-shadow: 0 0 5px 0 var(--starColor), 0 0 10px 0 var(--starColor), 0 0 15px 0 var(--starColor),
+							0 0 20px 0 var(--starColor);
 					}
 				}
 			}

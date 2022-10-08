@@ -90,6 +90,6 @@ div.stars,
 div.cloud4,
 div.cloud5,
 div.cloud6,
-div.cloud7 {
+div.cloud7,div.stars>* {
   display: none;
 }

@@ -18,7 +18,8 @@ body{
   --leaf3Color:#709715;
   --leaf2Color: #87a73e;
   --leaf1Color:#91ad4f;
+  --starColor:#fbf9f333;
 }
-div.scenery{
+div.scenery,div.stars,div.stars .star2,div.stars .star3,div.stars .star4,div.stars .star5,div.stars .star6,div.stars .star7,div.stars .star8,div.stars .star9,div.stars .star10{
   display:block
 }

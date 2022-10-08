@@ -878,7 +878,7 @@ html body .stars .star {
   height: 35px;
 }
 html body .stars .star path {
-  fill: var(--white);
+  fill: var(--starColor);
 }
 html body .stars .star.big {
   transform: scale(1.5);
@@ -887,14 +887,14 @@ html body .stars .star.small {
   transform: scale(0.5);
 }
 html body .stars .star svg {
-  filter: drop-shadow(0 0 5px var(--white)) drop-shadow(0 0 10px var(--white)) drop-shadow(0 0 20px var(--white));
+  filter: drop-shadow(0 0 5px var(--starColor)) drop-shadow(0 0 10px var(--starColor)) drop-shadow(0 0 20px var(--starColor));
 }
 html body .stars .star.starDot {
   width: 10px;
   height: 10px;
-  background: var(--white);
+  background: var(--starColor);
   border-radius: 50%;
-  box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 20px 0 var(--white);
+  box-shadow: 0 0 5px 0 var(--starColor), 0 0 10px 0 var(--starColor), 0 0 20px 0 var(--starColor);
 }
 html body .stars .star.starDot.big {
   width: 15px;
@@ -903,7 +903,7 @@ html body .stars .star.starDot.big {
 html body .stars .star.starDot.small {
   width: 5px;
   height: 5px;
-  box-shadow: 0 0 5px 0 var(--white), 0 0 10px 0 var(--white), 0 0 15px 0 var(--white), 0 0 20px 0 var(--white);
+  box-shadow: 0 0 5px 0 var(--starColor), 0 0 10px 0 var(--starColor), 0 0 15px 0 var(--starColor), 0 0 20px 0 var(--starColor);
 }
 html body .stars .star1 {
   top: 50px;
