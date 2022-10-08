@@ -1,0 +1,25 @@
+body{
+  --bodyBackgroundGradient:#BCE8FF;
+  --bodyBackgroundGradient2:#FFFFDC;
+  --sunColor:#FDF200;/*#FDF200*/
+  --dateTextColor:#EB8B2C;
+  --dateTextColor99:#EB8B2C99;
+  --secondAndHourBackgroundColor:#BCE8FF;
+  --secondAndHourTextColor:#EB8B2C;
+  --mountain7Color:#D7F50F;
+  --mountain6Color:#c2dd0e;
+  --mountain5Color:#afc70d;
+  --mountain4Color:#9eb30c;
+  --mountain3Color:#8ea10b;
+  --mountain2Color:#80910a;
+  --mountain1Color:#738309;
+  --mountain0Color:#687608;
+  --treeShadowColor:#FFFFDC;
+  --trunkColor:#8e7462;
+  --leaf3Color:#849b4b;
+  --leaf2Color:#93ac53;
+  --leaf1Color:#a3bf5c;
+}
+div.scenery{
+  display:block
+}

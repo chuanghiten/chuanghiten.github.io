@@ -286,16 +286,16 @@ function main() {
   */
   if (
     hourTime + minuteTime / 60 >= sunrise &&
-    hourTime + minuteTime / 60 <= 10
+    hourTime + minuteTime / 60 < 10+30/60
   ) {
     session = "morning";
   } else if (
-    hourTime + minuteTime / 60 >= 11 &&
-    hourTime + minuteTime / 60 <= 15
+    hourTime + minuteTime / 60 >= 10+30/60 &&
+    hourTime + minuteTime / 60 < 16+30/60
   ) {
     session = "noon";
   } else if (
-    hourTime + minuteTime / 60 >= 16 &&
+    hourTime + minuteTime / 60 >= 16+30/60 &&
     hourTime + minuteTime / 60 <= sunset
   ) {
     session = "afternoon";
@@ -323,12 +323,13 @@ function main() {
     } else {
       leaf = "peachBlossom"; /* đào */
     }
+  } else if(time.getMonth()+1>=5&&time.getMonth()+1<=7){
+    leaf="poinciana";
   } else {
     leaf = "default";
   }
   season = "spring";
   weatherId = "1";
-  session = "noon";
   leaf = "default";
 
   /*
