@@ -1,0 +1,116 @@
+*,:before,:after{
+	margin:0;
+	padding:0;
+	border:0;
+	box-sizing: border-box;
+}
+@font-face {
+	font-family: Inter;
+	src: url(../fonts/Inter/static/Inter-Regular.ttf);
+}
+body{
+	display: flex;
+	align-items: center;
+	flex-flow: nowrap column;
+	.topBar{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: calc(100% - (140px * 2));
+		height: 100px;
+		position: relative;
+		.logo{
+			display: block;
+			width: 147px;
+			height: 38px;
+			svg{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.navBar{
+			width: auto;
+			height: auto;
+			display: flex;
+			a{
+				color: #030303;
+				text-decoration: none;
+				margin: 0 45px 0 0;
+				font: 400 15px Inter;
+				&:last-child{
+					margin: 0;
+				}
+				&:hover{
+					font-weight: 600;
+				}
+			}
+		}
+		.signIn{
+			color: #2378ff;
+			text-decoration: none;
+			font: 600 16px Inter;
+			padding: 16px 37px;
+			border-radius: 12px;
+			background: #E8F1FF;
+		}
+	}
+	.footer{
+		width: calc(100% - (140px * 2));
+		height: 402px;
+		margin: 0 0 38px 0;
+		.row{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			.column{
+				display: flex;
+				align-items: center;
+				flex-flow: nowrap column;
+				&:nth-child(1){
+					width: 290px;
+					display: block;
+					.title{
+						width: 147px;
+						height: 38px;
+						.logo{
+							display: block;
+							width: 100%;
+							height: 100%;
+							svg{
+								width: 100%;
+								height: 100%;
+							}
+						}
+					}
+					.contents{
+						color: #606176;
+						font: 400 18px Inter;
+						line-height: 26px;
+						display: block;
+					}
+				}
+				.title{
+					color: #101130;
+					font: 600 24px Inter;
+					line-height: 29.05px;
+				}
+				&>.contents{
+					display: flex;
+					align-items: flex-start;
+					flex-flow: nowrap column;
+					margin: 30px 0 0 0;
+					a{
+						text-decoration: none;
+						color: #606176;
+						font: 400 16px Inter;
+						line-height: 19.36px;
+						margin: 0 0 21px 0;
+						&:last-child{
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
