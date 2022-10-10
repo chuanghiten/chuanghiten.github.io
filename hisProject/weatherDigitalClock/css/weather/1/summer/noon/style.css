@@ -19,6 +19,7 @@ body{
   --leaf3Color:#849b4b;
   --leaf2Color:#93ac53;
   --leaf1Color:#a3bf5c;
+  --temperatureProgressbarBackgroundColor:#fff;
 }
 div.scenery{
   display:block
