@@ -3,11 +3,16 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  transition: all 0.15s linear;
 }
 
 @font-face {
   font-family: Inter;
   src: url(../fonts/Inter/static/Inter-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
 }
 body {
   display: flex;
@@ -20,7 +25,8 @@ body .topBar {
   align-items: center;
   width: calc(100% - 280px);
   height: 100px;
-  position: relative;
+  position: fixed;
+  z-index: 1;
 }
 body .topBar .logo {
   display: block;
@@ -56,15 +62,31 @@ body .topBar .signIn {
   border-radius: 12px;
   background: #E8F1FF;
 }
+body .topBar[scroll] {
+  height: 55px;
+  width: calc(100% - 900px);
+  border-radius: 0 0 20px 20px;
+  border: 2px solid #F77E53;
+  border-top: 0;
+  padding: 0 15px;
+  background: rgba(255, 255, 255, 0.3333333333);
+  backdrop-filter: blur(5px);
+}
+body .topBar[scroll] .signIn {
+  padding: 6px 17px;
+  border-radius: 50px;
+}
 body .footer {
   width: calc(100% - 280px);
   height: 402px;
-  margin: 0 0 38px 0;
+  margin: 130px 0 38px 0;
 }
 body .footer .row {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0 0 100px 0;
+  border-bottom: 1px solid rgba(96, 97, 118, 0.5019607843);
 }
 body .footer .row .column {
   display: flex;
@@ -103,7 +125,7 @@ body .footer .row .column > .contents {
   display: flex;
   align-items: flex-start;
   flex-flow: nowrap column;
-  margin: 30px 0 0 0;
+  margin: 36px 0 0 0;
 }
 body .footer .row .column > .contents a {
   text-decoration: none;
@@ -114,6 +136,298 @@ body .footer .row .column > .contents a {
 }
 body .footer .row .column > .contents a:last-child {
   margin: 0;
+}
+body .footer .row .column > .contents a:hover {
+  font-weight: 600;
+}
+body .footer .row .column:last-child .contents a {
+  width: 135px;
+  height: 40px;
+}
+body .footer .row .column:last-child .contents a svg {
+  width: 100%;
+  height: 100%;
+}
+body .footer .row .column:last-child .contents .googlePlay {
+  margin: 0 0 18px 0;
+}
+body .footer .copyright {
+  margin: 40px 0 0 0;
+  font: 400 15px Inter;
+  line-height: 18.15px;
+  color: #606176;
+}
+body .mainContents {
+  margin: 170px 0 0 0;
+  display: flex;
+  align-items: center;
+  flex-flow: nowrap column;
+  width: calc(100% - 280px);
+}
+body .mainContents .discover {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+body .mainContents .discover > .contents {
+  width: 521px;
+  margin: 40px 0 0 0;
+}
+body .mainContents .discover > .contents .title {
+  font: 700 60px Inter;
+  line-height: 72px;
+  color: #101130;
+}
+body .mainContents .discover > .contents .content {
+  margin: 28px 0 0 0;
+  font: 400 20px/32px Roboto;
+  color: #606176;
+}
+body .mainContents .discover > .contents .getStarted {
+  text-decoration: none;
+  font: 600 18px/21.78px Inter;
+  color: #FEF4F1;
+  padding: 20px 50px;
+  background-color: #F77E53;
+  border-radius: 16px;
+  margin: 28px 0 0 0;
+  display: inline-block;
+}
+body .mainContents .discover > .contents .learnMore {
+  margin: 35px 0 0 0;
+  font: 400 18px/21.09px Roboto;
+  color: #606176;
+}
+body .mainContents .discover > .contents .learnMore a {
+  color: #2076FF;
+}
+body .mainContents .discover .image {
+  width: 594px;
+  height: 560px;
+  position: relative;
+}
+body .mainContents .discover .image .rectangle {
+  width: 480px;
+  height: 195px;
+  background: #E3EFFF;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 82px;
+}
+body .mainContents .discover .image .man {
+  width: 452px;
+  height: 100%;
+  position: absolute;
+  left: 110px;
+}
+body .mainContents .discover .image .man img {
+  width: 100%;
+  height: 100%;
+}
+body .mainContents .discover .image .send {
+  width: 63.31px;
+  height: 62.92px;
+  position: absolute;
+  top: 111.33px;
+  left: 39.33px;
+}
+body .mainContents .discover .image .send svg {
+  width: 100%;
+  height: 100%;
+}
+body .mainContents .discover .image .counting {
+  width: 200.29px;
+  height: 115px;
+  position: absolute;
+  bottom: 32px;
+}
+body .mainContents .discover .image .counting .circle {
+  position: absolute;
+  background: #B8DCFF;
+  border-radius: 50%;
+  bottom: 0;
+  width: 47.35px;
+  height: 47.35px;
+}
+body .mainContents .discover .image .counting .card {
+  position: absolute;
+  width: 180px;
+  height: 90px;
+  padding: 21px 14px 11px 24px;
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 11.27px;
+  right: 0;
+}
+body .mainContents .discover .image .counting .card > .contents {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+body .mainContents .discover .image .counting .card > .contents .logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #F9AE34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .mainContents .discover .image .counting .card > .contents .logo svg {
+  width: 15.68px;
+  height: 16.67px;
+}
+body .mainContents .discover .image .counting .card > .contents > .contents .title {
+  color: #111231;
+  font: 500 9px/10.89px Inter;
+}
+body .mainContents .discover .image .counting .card > .contents > .contents .content {
+  color: #111231;
+  font: 600 20px/24.2px Inter;
+}
+body .mainContents .discover .image .counting .card .description {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #297CFD;
+  font: 500 8px/9.68px Inter;
+}
+body .mainContents .discover .image .increaseAudience {
+  width: 156px;
+  height: 180px;
+  position: absolute;
+  right: 0;
+  top: 78px;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: nowrap column;
+  padding: 15px;
+}
+body .mainContents .discover .image .increaseAudience .title {
+  color: #111231;
+  font: 500 12px/14.52px Inter;
+}
+body .mainContents .discover .image .increaseAudience .title .check {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  background: #2076FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .mainContents .discover .image .increaseAudience > .contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: nowrap column;
+  width: 100%;
+  height: 100%;
+  margin: 20px 0 0 0;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar .circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(#F77E53 0 45deg, #297CFD 45deg 100deg, transparent 100deg 260deg, #F77E53 260deg 360deg);
+  position: relative;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-100deg);
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:before, body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:before {
+  width: 10px;
+  height: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #F77E53;
+  border-radius: 50%;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:not(.dot.progressbar):after {
+  content: "0%";
+  color: #606176;
+  font: 400 8px/9.68px Inter;
+  left: 30%;
+  transform: rotate(100deg);
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:nth-child(2) {
+  transform: rotate(100deg);
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:nth-child(2):before {
+  background: #297CFD;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot:nth-child(2):after {
+  content: "50%" !important;
+  right: 30% !important;
+  left: unset !important;
+  transform: rotate(-100deg) !important;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar > .dot.progressbar {
+  transform: rotate(45deg);
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar .mainCircle {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background: conic-gradient(#fff 0 105deg, transparent 105deg 255deg, #fff 255deg 360deg);
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-flow: nowrap column;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar .mainCircle .dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #F77E53;
+  margin: 15px 0 0 0;
+}
+body .mainContents .discover .image .increaseAudience > .contents > .progressbar .mainCircle .content {
+  color: #111231;
+  font: 600 28px/33.89px Inter;
+  margin: 5px 0 0 0;
+}
+body .mainContents .discover .image .increaseAudience > .contents .follower {
+  color: #111231;
+  font: 500 12px/14.06px Roboto;
+}
+body .mainContents .discover .image .hat {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #F77E53;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 85px;
+  left: 431px;
+}
+body .mainContents .discover .image .hat svg {
+  width: 49.27px;
+  height: 34.1px;
 }
 
 /*# sourceMappingURL=main.css.map */
