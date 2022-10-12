@@ -590,7 +590,7 @@ body .mainContents .howItWorks > .contents > .contents .contents .text {
 }
 body .mainContents .howItWorks > .contents > .contents .contents .text .title {
   color: #101100;
-  font: 600px 20px/24.2px Inter;
+  font: 600 20px/24.2px Inter;
 }
 body .mainContents .howItWorks > .contents > .contents .contents .text .content {
   color: #606176;
@@ -603,6 +603,7 @@ body .mainContents .howItWorks2 {
   display: flex;
   align-items: center;
   flex-flow: nowrap column;
+  position: relative;
 }
 body .mainContents .howItWorks2 .titles {
   display: flex;
@@ -622,6 +623,80 @@ body .mainContents .howItWorks2 .titles .view {
   padding: 19px 22px;
   display: block;
   height: 61px;
+}
+body .mainContents .howItWorks2 .titles .view:hover {
+  color: #fff;
+  background: #2076FF;
+}
+body .mainContents .howItWorks2 .cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 60px 0 0 0;
+}
+body .mainContents .howItWorks2 .cards .card {
+  width: 270px;
+  padding: 12px 15px 20px;
+  position: relative;
+}
+body .mainContents .howItWorks2 .cards .card .image {
+  width: 100%;
+  height: 165px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+body .mainContents .howItWorks2 .cards .card .image img {
+  width: 100%;
+  height: 100%;
+}
+body .mainContents .howItWorks2 .cards .card .title {
+  margin: 16px 0 0 0;
+  color: #101130;
+  font: 600 20px/26px Inter;
+}
+body .mainContents .howItWorks2 .cards .card .contents {
+  display: flex;
+  margin: 40px 0 0 0;
+}
+body .mainContents .howItWorks2 .cards .card .contents .user, body .mainContents .howItWorks2 .cards .card .contents .monts {
+  display: flex;
+  align-items: center;
+  color: #606176;
+  font: 400 14px/22px Roboto;
+}
+body .mainContents .howItWorks2 .cards .card .contents .user svg, body .mainContents .howItWorks2 .cards .card .contents .monts svg {
+  width: 18.33px;
+  height: 13.33px;
+  margin: 0 4px 0 0;
+}
+body .mainContents .howItWorks2 .cards .card .contents .monts {
+  margin: 0 0 0 40px;
+}
+body .mainContents .howItWorks2 .cards .card .cart {
+  cursor: pointer;
+  width: 100%;
+  padding: 9px;
+  border: 2px solid #2076FF;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2076FF;
+  font: 400 14px/22px Inter;
+  background: #fff;
+  margin: 25px 0 0 0;
+}
+body .mainContents .howItWorks2 .cards .card .cart svg {
+  width: 16.67px;
+  height: 16.67px;
+  margin: 0 11.67px 0 0;
+}
+body .mainContents .howItWorks2 .cards .card .cart:hover {
+  color: #fff;
+  background: #2076FF;
+}
+body .mainContents .howItWorks2 .cards .card .cart:hover svg path {
+  fill: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

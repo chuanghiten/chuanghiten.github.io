@@ -588,7 +588,7 @@ body{
 							margin:26px 0 0 0;
 							.title{
 								color:#101100;
-								font:600px 20px/24.2px Inter;
+								font:600 20px/24.2px Inter;
 							}
 							.content{
 								color:#606176;
@@ -606,6 +606,7 @@ body{
 			display: flex;
 			align-items: center;
 			flex-flow:nowrap column;
+			position: relative;
 			.titles{
 				display: flex;
 				align-items: flex-end;
@@ -623,6 +624,80 @@ body{
 					padding:19px 22px;
 					display: block;
 					height:61px;
+					&:hover{
+						color: #fff;
+						background: #2076FF;
+					}
+				}
+			}
+			.cards{
+				width: 100%;
+				display: flex;
+				justify-content: space-evenly;
+				margin:60px 0 0 0;
+				.card{
+					width: 270px;
+					padding:12px 15px 20px;
+					position: relative;
+					.image{
+						width: 100%;
+						height:165px;
+						border-radius: 12px;
+						overflow:hidden;
+						img{
+							width: 100%;
+							height:100%;
+						}
+					}
+					.title{
+						margin:16px 0 0 0;
+						color:#101130;
+						font: 600 20px/26px Inter;
+					}
+					.contents{
+						display:flex;
+						margin:40px 0 0 0;
+						.user,.monts{
+							display: flex;
+							align-items:center;
+							color:#606176;
+							font:400 14px/22px Roboto;
+							svg{
+								width: 18.33px;
+								height: 13.33px;
+								margin:0 4px 0 0;
+							}
+						}
+						.monts{
+							margin:0 0 0 40px;
+						}
+					}
+					.cart{
+						cursor:pointer;
+						width:100%;
+						padding:9px;
+						border:2px solid #2076FF;
+						border-radius:7px;
+						display:flex;
+						align-items:center;
+						justify-content:center;
+						color:#2076FF;
+						font:400 14px/22px Inter;
+						background:#fff;
+						margin:25px 0 0 0;
+						svg{
+							width:16.67px;
+							height:16.67px;
+							margin:0 11.67px 0 0;
+						}
+						&:hover{
+							color:#fff;
+							background:#2076FF;
+							svg path{
+								fill:#fff;
+							}
+						}
+					}
 				}
 			}
 		}
