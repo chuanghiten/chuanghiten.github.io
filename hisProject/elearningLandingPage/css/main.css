@@ -5,6 +5,11 @@
   box-sizing: border-box;
   background: transparent;
   transition: all 0.15s linear;
+  position: relative;
+}
+
+[hide] {
+  display: none !important;
 }
 
 @font-face {
@@ -757,7 +762,7 @@ body .mainContents .features .videos .mainVideo {
   overflow: hidden;
   background: #000;
 }
-body .mainContents .features .videos .mainVideo video {
+body .mainContents .features .videos .mainVideo .videoPlayer {
   width: 100%;
   height: 100%;
 }
@@ -767,7 +772,7 @@ body .mainContents .features .videos .mainVideo .control {
   height: 65px;
   border-radius: 50%;
   background: #2076FF;
-  displat: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -775,7 +780,7 @@ body .mainContents .features .videos .mainVideo .control {
 body .mainContents .features .videos .mainVideo .control svg {
   width: 15px;
   height: 20px;
-  margin: 3px 0 0 5px;
+  margin: 0 0 0 5px;
 }
 body .mainContents .features .videos .moreVideos {
   margin: 82px 0 0 0;
