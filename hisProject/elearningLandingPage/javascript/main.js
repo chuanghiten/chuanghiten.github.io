@@ -1,3 +1,4 @@
+var teacherCardSlider=0;
 window.onscroll=function(){
 	if(document.documentElement.scrollTop>50){
 		document.querySelector(".topBar").setAttribute("scroll","");
@@ -31,4 +32,21 @@ if(/duckBatman/.test(window.location.href)){
 		document.querySelector("body .mainContents .features .videos .mainVideo .videoPlayer").removeAttribute("controls");
 		document.querySelector("body .mainContents .features .videos .mainVideo .videoPlayer").setAttribute("src","./mp4/Cách đối phó với các fan cuồng Rapper.mp4");
 	}
+}
+document.querySelector("body .mainContents .testimonial .title .button .right").onclick=function(){
+	if(teacherCardSlider<4){
+		teacherCardSlider+=1;
+		console.log(teacherCardSlider);
+		teacherCardScroll(teacherCardSlider);
+	}
+};
+document.querySelector("body .mainContents .testimonial .title .button .left").onclick=function(){
+	if(teacherCardSlider>0){
+		teacherCardSlider-=1;
+		console.log(teacherCardSlider);
+		teacherCardScroll(teacherCardSlider);
+	}
+};
+function teacherCardScroll(cardScroll){
+	document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(452+190)*cardScroll;
 }
