@@ -36,17 +36,27 @@ if(/duckBatman/.test(window.location.href)){
 document.querySelector("body .mainContents .testimonial .title .button .right").onclick=function(){
 	if(teacherCardSlider<4){
 		teacherCardSlider+=1;
-		teacherCardScroll(teacherCardSlider);
+		teacherCardScroll(teacherCardSlider,document.querySelector("body .mainContents .testimonial>.contents .teacherCard").clientWidth,document.querySelector("body .mainContents .testimonial .contents").clientWidth);
 	}
 };
 document.querySelector("body .mainContents .testimonial .title .button .left").onclick=function(){
 	if(teacherCardSlider>0){
 		teacherCardSlider-=1;
-		teacherCardScroll(teacherCardSlider);
+		teacherCardScroll(teacherCardSlider,document.querySelector("body .mainContents .testimonial>.contents .teacherCard").clientWidth,document.querySelector("body .mainContents .testimonial .contents").clientWidth);
 	}
 };
-function teacherCardScroll(cardScroll){
-	document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(452+190)*cardScroll;
+function teacherCardScroll(cardScroll,cardWidth,cardsWidth){
+	if(cardsWidth>=995){
+		document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(cardWidth+190)*cardScroll;
+	}else if(cardsWidth>=955){
+		document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(cardWidth+90)*cardScroll;
+	}else if(cardsWidth>=925){
+		document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(cardWidth+50)*cardScroll;
+	}
+	else{
+		document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(cardWidth+20)*cardScroll;
+	}
+	
 	if(cardScroll>=4){
 		document.querySelector("body .mainContents .testimonial .title .button .right svg path").setAttribute("stroke","#606176");
 	}else if(cardScroll<=0){

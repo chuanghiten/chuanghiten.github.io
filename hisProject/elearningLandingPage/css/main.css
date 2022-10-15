@@ -32,6 +32,9 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+body .responsiveShow {
+  display: none;
+}
 body .topBar {
   display: flex;
   justify-content: space-between;
@@ -1006,6 +1009,126 @@ body .mainContents .pricing .cards .card .buyPlan {
 body .mainContents .pricing .cards .card .buyPlan:hover {
   color: #fff;
   background: var(--currentColor);
+}
+
+@media screen and (max-width: 1700px) {
+  body .mainContents .howItWorks, body .mainContents .features {
+    width: 100%;
+  }
+  body .mainContents .testimonial .title {
+    justify-content: space-between;
+  }
+  body .mainContents .testimonial .contents {
+    width: 994px;
+  }
+  body .mainContents .testimonial .contents .teacherCard {
+    margin: 0 90px 0 0;
+  }
+  body .mainContents .testimonial .contents .teacherCard:last-child {
+    margin: 0;
+  }
+  body .topBar[scroll] {
+    width: calc(100% - 800px);
+  }
+}
+@media screen and (max-width: 1571px) {
+  body .mainContents .howItWorks2 .titles {
+    justify-content: space-between;
+    width: 100%;
+  }
+  body .mainContents .howItWorks2 .titles .title {
+    margin: 0;
+  }
+  body .mainContents .howItWorks2 .cards {
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 1500px) {
+  body .topBar[scroll] {
+    width: calc(100% - 800px);
+  }
+  body .mainContents .testimonial .contents {
+    width: 954px;
+  }
+  body .mainContents .testimonial .contents .teacherCard {
+    margin: 0 50px 0 0;
+  }
+  body .mainContents .testimonial .contents .teacherCard:last-child {
+    margin: 0;
+  }
+  body .mainContents .pricing .titles, body .mainContents .pricing .cards {
+    justify-content: space-between;
+  }
+  body .mainContents .pricing .cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  body .mainContents .pricing .cards .regular {
+    margin: 0 10px 0 0;
+  }
+  body .mainContents .pricing .cards .medium {
+    margin: 0 0 0 10px;
+  }
+  body .mainContents .pricing .cards .premium {
+    margin: 20px 0 0 0;
+  }
+}
+@media screen and (max-width: 1450px) {
+  body .topBar[scroll] {
+    width: calc(100% - 600px);
+  }
+}
+@media screen and (max-width: 1400px) {
+  body .mainContents > .logos {
+    justify-content: space-between;
+  }
+  body .mainContents > .logos .logos {
+    width: 420px;
+    flex-wrap: wrap;
+  }
+  body .mainContents > .logos .logos .logo {
+    width: 205px;
+    margin: 0 5px 0 0;
+  }
+  body .mainContents > .logos .logos .logo:nth-child(2) {
+    margin: 0;
+  }
+  body .mainContents > .logos .logos .logo:nth-child(3) {
+    margin: 5px 5px 0 0;
+  }
+  body .mainContents > .logos .logos .logo:nth-child(4) {
+    margin: 5px 0 0 0;
+  }
+  body .mainContents .testimonial .contents {
+    width: 924px;
+  }
+  body .mainContents .testimonial .contents .teacherCard {
+    margin: 0 20px 0 0;
+  }
+  body .mainContents .testimonial .contents .teacherCard:last-child {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 1360px) {
+  body .mainContents .howItWorks2 .cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1323px) {
+  body > * {
+    display: none !important;
+  }
+  body .responsiveShow {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font: 700 50px/80px Inter;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

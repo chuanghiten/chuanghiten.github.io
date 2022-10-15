@@ -28,6 +28,9 @@ body{
 	&::-webkit-scrollbar{
 		display:none;
 	}
+	.responsiveShow{
+		display:none;
+	}
 	.topBar{
 		display: flex;
 		justify-content: space-between;
@@ -1012,6 +1015,161 @@ body{
 					}
 				}
 			}
+		}
+	}
+}
+@media screen and (max-width:1700px) {
+	body{
+		.mainContents{
+			.howItWorks,.features{
+				width:100%;
+			}
+			.testimonial{
+				.title{
+					justify-content: space-between;
+				}
+				.contents{
+					width:calc((452px * 2) + 90px);
+					.teacherCard{
+						margin: 0 90px 0 0;
+						&:last-child{
+							margin:0;
+						}
+					}
+				}
+			}
+		}
+		.topBar[scroll]{
+			width:calc(100% - 800px)
+		}
+	}
+}
+@media screen and (max-width:1571px){
+	body{
+		.mainContents{
+			.howItWorks2{
+				.titles{
+					justify-content: space-between;
+					width: 100%;
+					.title{
+						margin:0;
+					}
+				}
+				.cards{
+					justify-content: space-between;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:1500px) {
+	body{
+		.topBar[scroll]{
+			width:calc(100% - 800px)
+		}
+		.mainContents{
+			.testimonial{
+				.contents{
+					width:calc((452px * 2) + 50px);
+					.teacherCard{
+						margin: 0 50px 0 0;
+						&:last-child{
+							margin:0;
+						}
+					}
+				}
+			}
+			.pricing{
+				.titles,.cards{
+					justify-content: space-between;
+				}
+				.cards{
+					flex-wrap:wrap;
+					justify-content: center;
+					.regular{
+						margin:0 10px 0 0;
+					}
+					.medium{
+						margin:0 0 0 10px;
+					}
+					.premium{
+						margin:20px 0 0 0;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:1450px) {
+	body{
+		.topBar[scroll]{
+			width:calc(100% - 600px)
+		}
+	}
+}
+@media screen and (max-width:1400px) {
+	body{
+		.mainContents{
+			&>.logos{
+				justify-content:space-between;
+				.logos{
+					width:420px;
+					flex-wrap:wrap;
+					.logo{
+						width:205px;
+						margin:0 5px 0 0;
+						&:nth-child(2){
+							margin: 0;
+						}
+						&:nth-child(3){
+							margin:5px 5px 0 0
+						}
+						&:nth-child(4){
+							margin: 5px 0 0 0;
+						}
+					}
+				}
+			}
+			.testimonial{
+				.contents{
+					width:calc((452px * 2) + 20px);
+					.teacherCard{
+						margin: 0 20px 0 0;
+						&:last-child{
+							margin:0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:1360px) {
+	body{
+		.mainContents{
+			.howItWorks2{
+				.cards{
+					flex-wrap:wrap;
+					justify-content: center;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width:1323px) {
+	body{
+		&>*{
+			display: none !important;
+		}
+		.responsiveShow{
+			display: flex !important;
+			justify-content: center;
+			align-items: center;
+			color:#333;
+			font:700 50px/80px Inter;
+			text-align: center;
+			width: 100%;
+			height: 100vh;
 		}
 	}
 }
