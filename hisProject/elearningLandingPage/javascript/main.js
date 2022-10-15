@@ -36,17 +36,25 @@ if(/duckBatman/.test(window.location.href)){
 document.querySelector("body .mainContents .testimonial .title .button .right").onclick=function(){
 	if(teacherCardSlider<4){
 		teacherCardSlider+=1;
-		console.log(teacherCardSlider);
 		teacherCardScroll(teacherCardSlider);
 	}
 };
 document.querySelector("body .mainContents .testimonial .title .button .left").onclick=function(){
 	if(teacherCardSlider>0){
 		teacherCardSlider-=1;
-		console.log(teacherCardSlider);
 		teacherCardScroll(teacherCardSlider);
 	}
 };
 function teacherCardScroll(cardScroll){
 	document.querySelector("body .mainContents .testimonial .contents").scrollLeft=(452+190)*cardScroll;
+	if(cardScroll>=4){
+		document.querySelector("body .mainContents .testimonial .title .button .right svg path").setAttribute("stroke","#606176");
+	}else if(cardScroll<=0){
+		document.querySelector("body .mainContents .testimonial .title .button .left svg path").setAttribute("stroke","#606176");
+	}else{
+		document.querySelector("body .mainContents .testimonial .title .button .left svg path").setAttribute("stroke","#111030");
+		document.querySelector("body .mainContents .testimonial .title .button .right svg path").setAttribute("stroke","#111030");
+	}
 }
+document.querySelector("body .mainContents .testimonial .title .button .right svg path").setAttribute("stroke","#111030");
+teacherCardScroll(0);

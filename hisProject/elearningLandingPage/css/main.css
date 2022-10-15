@@ -842,14 +842,8 @@ body .mainContents .testimonial .title .button button svg {
   width: 100%;
   height: 100%;
 }
-body .mainContents .testimonial .title .button button svg path {
-  stroke: #606176;
-}
 body .mainContents .testimonial .title .button .left {
   margin: 0 34px 0 0;
-}
-body .mainContents .testimonial .title .button .right svg path {
-  stroke: #111030;
 }
 body .mainContents .testimonial .contents {
   margin: 60px 0 0 0;
@@ -908,6 +902,110 @@ body .mainContents .testimonial .contents .teacherCard .teacherInfo .texts .star
   margin: 8px 0 0 0;
   width: 79px;
   height: 15px;
+}
+body .mainContents .pricing {
+  margin: 130px 0 0 0;
+  width: calc(100% - 280px);
+}
+body .mainContents .pricing .titles {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+body .mainContents .pricing .titles .text {
+  color: #101130;
+  font: 700 44px/56px Inter;
+  width: 595px;
+}
+body .mainContents .pricing .titles .upgradeNow {
+  color: #2076FF;
+  font: 400 18px/21.78px Inter;
+  text-decoration: none;
+  padding: 19px 23px;
+  border: 2px solid #2076FF;
+  border-radius: 12px;
+  height: 60px;
+}
+body .mainContents .pricing .titles .upgradeNow:hover {
+  color: #fff;
+  background: #2076FF;
+}
+body .mainContents .pricing .cards {
+  margin: 60px 0 0 0;
+  display: flex;
+  justify-content: space-around;
+}
+body .mainContents .pricing .cards .regular {
+  --currentColor:#2076ff;
+  --currentBackgroundColor:#EDF3FF4d;
+}
+body .mainContents .pricing .cards .medium {
+  --currentColor:#F6C07A;
+  --currentBackgroundColor:#FEF0C34d;
+}
+body .mainContents .pricing .cards .premium {
+  --currentColor:#F77E53;
+  --currentBackgroundColor:#FEE6DC4d;
+}
+body .mainContents .pricing .cards .card {
+  width: 305px;
+  display: flex;
+  align-items: center;
+  flex-flow: nowrap column;
+  background: var(--currentBackgroundColor);
+  border-radius: 18px;
+}
+body .mainContents .pricing .cards .card .title {
+  width: 100%;
+  background: var(--currentColor);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font: 600 26px/38px Inter;
+  border-radius: 18px 18px 0 0;
+}
+body .mainContents .pricing .cards .card .price {
+  margin: 40px 0 0 0;
+  color: #101130;
+  font: 700 44px/38px Inter;
+  display: flex;
+}
+body .mainContents .pricing .cards .card .price span {
+  font: 500 22px/26.63px Inter;
+  margin: -8px 0 0 0;
+}
+body .mainContents .pricing .cards .card .description {
+  margin: 40px 0 0 0;
+}
+body .mainContents .pricing .cards .card .description ul li {
+  margin: 30px 0 0 0;
+  font: 400 20px/24.2px Inter;
+  color: #606176;
+}
+body .mainContents .pricing .cards .card .description ul li:first-child {
+  margin: 0;
+}
+body .mainContents .pricing .cards .card .description ul li::marker {
+  color: var(--currentColor);
+}
+body .mainContents .pricing .cards .card .buyPlan {
+  margin: 83px 0 0 0;
+  color: var(--currentColor);
+  font: 600 20px/24.2px Inter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  border-radius: 14px;
+  border: 2px solid var(--currentColor);
+  text-decoration: none;
+}
+body .mainContents .pricing .cards .card .buyPlan:hover {
+  color: #fff;
+  background: var(--currentColor);
 }
 
 /*# sourceMappingURL=main.css.map */
