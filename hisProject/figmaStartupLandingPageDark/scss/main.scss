@@ -1,0 +1,220 @@
+@mixin size ($width:auto,$height:auto) {
+	width:$width;
+	height:$height;
+}
+*,:before,:after{
+	margin:0;
+	padding:0;
+	border:0;
+	box-sizing:border-box;
+	background:transparent;
+	position:relative;
+	transition:all .15s linear;
+}
+@font-face {
+	font-family: Graphik;
+	src: url(../fonts/EM-Graphik/EM-Graphik/TTF/Graphik-Medium.ttf),url(../fonts/EM-Graphik/EM-Graphik/OTF/Graphik-Medium.otf);
+	font-weight: 401 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: Graphik;
+	src: url(../fonts/EM-Graphik/EM-Graphik/TTF/Graphik-Regular.ttf),url(../fonts/EM-Graphik/EM-Graphik/OTF/Graphik-Regular.otf);
+	font-weight: 301 400;
+	font-style: normal;
+}
+body{
+	&::-webkit-scrollbar{
+		display:none;
+	}
+	@include size(100%);
+	font-family:Graphik;
+	background:#181818;
+	display:flex;
+	align-items:center;
+	flex-flow:nowrap column;
+	.topBar{
+		@include size(100%,119px);
+		display:flex;
+		justify-content:space-evenly;
+		align-items:center;
+		position:fixed;
+		top:0;
+		z-index:1;
+		.logo{
+			@include size(186px,58px);
+			img{
+				@include size(100%,100%);
+			}
+		}
+		.navBar{
+			display:flex;
+			a{
+				text-decoration:none;
+				color:#fff;
+				font:500 16px/24px Graphik;
+				margin:0 20px;
+				&:first-child{
+					margin:0 20px 0 0;
+				}
+				&:last-child{
+					margin:0 0 0 20px;
+				}
+			}
+		}
+		.login{
+			color:#fff;
+			text-decoration:none;
+			font:500 17px/25px Graphik;
+			padding:13.5px 46px;
+			border:1px solid #fff;
+			box-shadow:0 4px 31px 0 rgba(0,0,0,.15);
+			&:hover{
+				border-color:#4452FE;
+				background:#4452FE;
+			}
+		}
+		&[scroll]{
+			@include size(50%,55px);
+			background:#18181899;
+			border:1px solid #fff;
+			border-radius:0 0 15px 15px;
+			justify-content:space-between;
+			padding:0 30px;
+			backdrop-filter:blur(5px);
+			border-top:0;
+			.login{
+				padding:5px 20px;
+				border-radius:50px;
+			}
+		}
+	}
+	.preamble{
+		width:100%;
+		align-items:center;
+		flex-flow:nowrap column;
+		display:flex;
+		.title{
+			width:710px;
+			color:#fff;
+			font:500 80px/88px Graphik;
+			margin:calc(95px + 119px) 0 0 0;
+			text-align:center;
+		}
+		.content{
+			text-align:center;
+			margin:27px 0 0 0;
+			color:#fff;
+			font:400 20px/30px Graphik;
+			width:585px; 
+		}
+		.button{
+			margin:95px 0 0 0;
+			display:flex;
+			a{
+				text-decoration:none;
+				color:#fff;
+				font:500 17px/25px Graphik;
+				padding:20px 40px;
+				border:1px solid #fff;
+				margin:0 calc(35px / 2);
+				box-shadow:0 4px 31px 0 rgba(0,0,0,.15);
+				&:hover{
+					border-color:#4452FE;
+					background:#4452FE;
+				}
+			}
+		}
+		.images{
+			margin:35px 0 0 0;
+			@include size(1444px,841px);
+			display:flex;
+			justify-content:center;
+			.image{
+				position:absolute;
+				&:nth-child(1){
+					bottom:0;
+					left:0;
+					@include size(714px,543px);
+				}
+				&:nth-child(3){
+					bottom:0;
+					right:0;
+					@include size(731px,557px);
+				}
+				&:nth-child(2){
+					@include size(714px,543px)
+				}
+				img{
+					@include size(100%,100%);
+				}
+			}
+			.gradient{
+				position:absolute;
+				@include size(100vw,551px);
+				background:linear-gradient(to bottom,transparent,#0e0e0e);
+				bottom:0;
+			}
+		}
+	}
+	.features{
+		margin:162px 0 0 0;
+		width:100%;
+		display:flex;
+		align-items:center;
+		flex-flow:nowrap column;
+		&>.title{
+			color:#fff;
+			font:400 52px/62px Graphik;
+		}
+		&>.content{
+			width:585px;
+			color:#fff;
+			font:400 20px/30px Graphik;
+			margin:27px 0 0 0;
+		}
+		&>.images{
+			margin:80px 0 0 0;
+			display:flex;
+			align-items:center;
+			.images{
+				@include size(724px,759px);
+				margin:0 47px 0 0;
+				img{
+					position: absolute;
+					&:nth-child(1){
+						@include size(696px,659px);
+					}
+					&:nth-child(2){
+						@include size(400px,276px);
+						bottom:0;
+						right:0;
+					}
+				}
+			}
+			.texts{
+				width:270px;
+				.text{
+					width:100%;
+					margin:0 0 45px 0;
+					&:last-child{
+						margin:0;
+					}
+					.title{
+						display:flex;
+						color:#fff;
+						font:500 20px/30px Graphik;
+						.icon{
+							margin:0 10px 0 0;
+						}
+					}
+					.content{
+						margin:20px 0 0 0;
+						color:#fff;
+						font:400 16px/24px Graphik;
+					}
+				}
+			}
+		}
+	}
+}
