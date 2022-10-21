@@ -1,4 +1,6 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   border: 0;
@@ -20,9 +22,13 @@
   font-weight: 301 400;
   font-style: normal;
 }
+@font-face {
+  font-family: Roboto;
+  src: url(../../elearningLandingPage/fonts/Roboto/Roboto-Regular.ttf);
+  font-weight: 301 400;
+}
 body {
   width: 100%;
-  height: auto;
   font-family: Graphik;
   background: #181818;
   display: flex;
@@ -66,16 +72,16 @@ body .topBar .navBar a:last-child {
   margin: 0 0 0 20px;
 }
 body .topBar .login {
-  color: #fff;
   text-decoration: none;
+  color: #fff;
   font: 500 17px/25px Graphik;
   padding: 13.5px 46px;
   border: 1px solid #fff;
   box-shadow: 0 4px 31px 0 rgba(0, 0, 0, 0.15);
 }
 body .topBar .login:hover {
-  border-color: #4452FE;
-  background: #4452FE;
+  border-color: #4452fe;
+  background: #4452fe;
 }
 body .topBar[scroll] {
   width: 50%;
@@ -92,31 +98,31 @@ body .topBar[scroll] .login {
   padding: 5px 20px;
   border-radius: 50px;
 }
-body .preamble {
+body .mainContents .preamble {
   width: 100%;
   align-items: center;
   flex-flow: nowrap column;
   display: flex;
 }
-body .preamble .title {
+body .mainContents .preamble .title {
   width: 710px;
   color: #fff;
   font: 500 80px/88px Graphik;
   margin: 214px 0 0 0;
   text-align: center;
 }
-body .preamble .content {
+body .mainContents .preamble .content {
   text-align: center;
   margin: 27px 0 0 0;
   color: #fff;
   font: 400 20px/30px Graphik;
   width: 585px;
 }
-body .preamble .button {
+body .mainContents .preamble .button {
   margin: 95px 0 0 0;
   display: flex;
 }
-body .preamble .button a {
+body .mainContents .preamble .button a {
   text-decoration: none;
   color: #fff;
   font: 500 17px/25px Graphik;
@@ -125,132 +131,132 @@ body .preamble .button a {
   margin: 0 17.5px;
   box-shadow: 0 4px 31px 0 rgba(0, 0, 0, 0.15);
 }
-body .preamble .button a:hover {
-  border-color: #4452FE;
-  background: #4452FE;
+body .mainContents .preamble .button a:hover {
+  border-color: #4452fe;
+  background: #4452fe;
 }
-body .preamble .images {
+body .mainContents .preamble .images {
   margin: 35px 0 0 0;
   width: 1444px;
   height: 841px;
   display: flex;
   justify-content: center;
 }
-body .preamble .images .image {
+body .mainContents .preamble .images .image {
   position: absolute;
 }
-body .preamble .images .image:nth-child(1) {
+body .mainContents .preamble .images .image:nth-child(1) {
   bottom: 0;
   left: 0;
   width: 714px;
   height: 543px;
 }
-body .preamble .images .image:nth-child(3) {
+body .mainContents .preamble .images .image:nth-child(3) {
   bottom: 0;
   right: 0;
   width: 731px;
   height: 557px;
 }
-body .preamble .images .image:nth-child(2) {
+body .mainContents .preamble .images .image:nth-child(2) {
   width: 714px;
   height: 543px;
 }
-body .preamble .images .image img {
+body .mainContents .preamble .images .image img {
   width: 100%;
   height: 100%;
 }
-body .preamble .images .gradient {
+body .mainContents .preamble .images .gradient {
   position: absolute;
   width: 100vw;
   height: 551px;
   background: linear-gradient(to bottom, transparent, #0e0e0e);
   bottom: 0;
 }
-body .features {
+body .mainContents .features {
   margin: 162px 0 0 0;
   width: 100%;
   display: flex;
   align-items: center;
   flex-flow: nowrap column;
 }
-body .features > .title {
+body .mainContents .features > .title {
   color: #fff;
   font: 400 52px/62px Graphik;
 }
-body .features > .content {
+body .mainContents .features > .content {
   width: 585px;
   color: #fff;
   font: 400 20px/30px Graphik;
   margin: 27px 0 0 0;
 }
-body .features > .images {
+body .mainContents .features > .images {
   margin: 80px 0 0 0;
   display: flex;
   align-items: center;
 }
-body .features > .images .images {
+body .mainContents .features > .images .images {
   width: 724px;
   height: 759px;
   margin: 0 47px 0 0;
 }
-body .features > .images .images img {
+body .mainContents .features > .images .images img {
   position: absolute;
 }
-body .features > .images .images img:nth-child(1) {
+body .mainContents .features > .images .images img:nth-child(1) {
   width: 696px;
   height: 659px;
 }
-body .features > .images .images img:nth-child(2) {
+body .mainContents .features > .images .images img:nth-child(2) {
   width: 400px;
   height: 276px;
   bottom: 0;
   right: 0;
 }
-body .features > .images .texts {
+body .mainContents .features > .images .texts {
   width: 270px;
 }
-body .features > .images .texts .text {
+body .mainContents .features > .images .texts .text {
   width: 100%;
   margin: 0 0 45px 0;
 }
-body .features > .images .texts .text:last-child {
+body .mainContents .features > .images .texts .text:last-child {
   margin: 0;
 }
-body .features > .images .texts .text .title {
+body .mainContents .features > .images .texts .text .title {
   display: flex;
   color: #fff;
   font: 500 20px/30px Graphik;
 }
-body .features > .images .texts .text .title .icon {
+body .mainContents .features > .images .texts .text .title .icon {
   margin: 0 10px 0 0;
 }
-body .features > .images .texts .text .content {
+body .mainContents .features > .images .texts .text .content {
   margin: 20px 0 0 0;
   color: #fff;
   font: 400 16px/24px Graphik;
 }
-body .contents {
+body .mainContents .contents {
   display: flex;
   align-items: center;
   flex-flow: nowrap column;
   margin: 160px 0 0 0;
 }
-body .contents .title {
+body .mainContents .contents .title {
   color: #fff;
   font: 400 52px/62px Graphik;
 }
-body .contents .content {
+body .mainContents .contents .content {
   margin: 20px;
   text-align: center;
   width: 575px;
   color: #fff;
   font: 400 20px/30px Graphik;
 }
-body .contents .cards {
+body .mainContents .contents .cards {
   margin: 54px 0 0 0;
   display: flex;
 }
-body .contents .cards .card {
+body .mainContents .contents .cards .card {
   width: 476px;
   background: #fff;
   border-radius: 10px;
@@ -260,109 +266,109 @@ body .contents .cards .card {
   flex-flow: nowrap column;
   align-items: center;
 }
-body .contents .cards .card .title {
+body .mainContents .contents .cards .card .title {
   color: #000;
   font: 500 20px/30px Graphik;
   margin: 50px 0 0 0;
 }
-body .contents .cards .card .content {
+body .mainContents .contents .cards .card .content {
   color: #5c5c5c;
   font: 400 16px/24px Graphik;
   margin: 30px 0 0 0;
   width: 270px;
 }
-body .contents .cards .card a {
+body .mainContents .contents .cards .card a {
   margin: 67px 0 0 0;
   padding: 13px 46px;
-  background: #4452FE;
+  background: #4452fe;
   color: #fff;
   font: 500 17px/25px Graphik;
   text-decoration: none;
 }
-body .contents .cards .card:first-child {
+body .mainContents .contents .cards .card:first-child {
   margin: 0 33px 0 0;
 }
-body .contents .cards .card:first-child .image {
+body .mainContents .contents .cards .card:first-child .image {
   margin: 57px 0 0 0;
   display: flex;
   flex-flow: nowrap column;
   align-items: center;
 }
-body .contents .cards .card:first-child .image .screen {
+body .mainContents .contents .cards .card:first-child .image .screen {
   background: #000;
   border: 1.5px solid #9fa2a5;
   border-radius: 4.56px 4.56px 0 0;
   padding: 9.13px;
   border-bottom: 0;
 }
-body .contents .cards .card:first-child .image .screen img {
+body .mainContents .contents .cards .card:first-child .image .screen img {
   width: 312.33px;
   height: 195.18px;
   border-radius: 4.56px;
 }
-body .contents .cards .card:first-child .image .keyboard {
+body .mainContents .contents .cards .card:first-child .image .keyboard {
   width: 405.12px;
 }
-body .contents .cards .card:first-child .image .keyboard .base {
+body .mainContents .contents .cards .card:first-child .image .keyboard .base {
   width: 100%;
   height: 8.37px;
-  background: #D8D8D8;
+  background: #d8d8d8;
   display: flex;
   justify-content: center;
 }
-body .contents .cards .card:first-child .image .keyboard .base .grip {
+body .mainContents .contents .cards .card:first-child .image .keyboard .base .grip {
   width: 54.16px;
   height: 5.02px;
-  background: #9FA2A5;
+  background: #9fa2a5;
   border-radius: 0 0 100px 100px;
 }
-body .contents .cards .card:first-child .image .keyboard .baseBottom {
+body .mainContents .contents .cards .card:first-child .image .keyboard .baseBottom {
   width: 100%;
   height: 4.72px;
   background: #9fa2a5;
   border-radius: 0 0 100px 100px;
 }
-body .contents .cards .card:last-child .image {
+body .mainContents .contents .cards .card:last-child .image {
   width: 442px;
   height: 339px;
 }
-body .contents .cards .card:last-child .image img {
+body .mainContents .contents .cards .card:last-child .image img {
   width: 100%;
   height: 100%;
 }
-body .gallery {
+body .mainContents .gallery {
   display: flex;
   flex-flow: nowrap column;
   align-items: center;
   margin: 160px 0 0 0;
 }
-body .gallery .title {
+body .mainContents .gallery .title {
   color: #fff;
   font: 400 52px/62px Graphik;
 }
-body .gallery .content {
+body .mainContents .gallery .content {
   margin: 20px 0 0 0;
   width: 575px;
   color: #fff;
   font: 400 20px/30px Graphik;
   text-align: center;
 }
-body .gallery .images {
+body .mainContents .gallery .images {
   margin: 54px 0 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   max-width: 1090px;
 }
-body .gallery .images img {
+body .mainContents .gallery .images img {
   flex-shrink: 0;
   border-radius: 12px;
   overflow: hidden;
 }
-body .gallery .images img:nth-child(5), body .gallery .images img:nth-child(6), body .gallery .images img:nth-child(7) {
+body .mainContents .gallery .images img:nth-child(5), body .mainContents .gallery .images img:nth-child(6), body .mainContents .gallery .images img:nth-child(7) {
   margin: 44px 0 0 0;
 }
-body .gallery .seeMore {
+body .mainContents .gallery .seeMore {
   margin: 44px 0 0 0;
   text-decoration: none;
   padding: 13.5px 40px;
@@ -370,38 +376,38 @@ body .gallery .seeMore {
   color: #fff;
   font: 500 17px/25px Graphik;
 }
-body .gallery .seeMore:hover {
-  border-color: #4452FE;
-  background: #4452FE;
+body .mainContents .gallery .seeMore:hover {
+  border-color: #4452fe;
+  background: #4452fe;
 }
-body .partners {
+body .mainContents .partners {
   margin: 160px 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-body .partners .title {
+body .mainContents .partners .title {
   color: #fff;
   font: 400 52px/62px Graphik;
 }
-body .partners .content {
+body .mainContents .partners .content {
   margin: 20px 0 0 0;
   width: 575px;
   color: #fff;
   font: 400 20px/30px Graphik;
   text-align: center;
 }
-body .partners .logos {
+body .mainContents .partners .logos {
   margin: 60px 0 0 0;
   display: flex;
 }
-body .partners .logos a {
+body .mainContents .partners .logos a {
   margin: 0 74px 0 0;
 }
-body .partners .logos a:last-child {
+body .mainContents .partners .logos a:last-child {
   margin: 0;
 }
-body .partners .allPartners {
+body .mainContents .partners .allPartners {
   text-decoration: none;
   padding: 13.5px 40px;
   border: 1px solid #fff;
@@ -409,9 +415,145 @@ body .partners .allPartners {
   font: 500 17px/25px Graphik;
   margin: 63px 0 0 0;
 }
-body .partners .allPartners:hover {
-  border-color: #4452FE;
-  background: #4452FE;
+body .mainContents .partners .allPartners:hover {
+  border-color: #4452fe;
+  background: #4452fe;
+}
+body .mainContents .testimonials {
+  margin: 210px 0 0 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+body .mainContents .testimonials .title {
+  color: #fff;
+  font: 400 52px/62px Graphik;
+}
+body .mainContents .testimonials .cards {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 885px;
+  margin: 60px 0 0 0;
+}
+body .mainContents .testimonials .cards .card {
+  padding: 40px;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  width: 430px;
+  flex-shrink: 0;
+}
+body .mainContents .testimonials .cards .card .title {
+  display: flex;
+}
+body .mainContents .testimonials .cards .card .title .avatar {
+  width: 50px;
+  height: 50px;
+  margin: 0 23px 0 0;
+}
+body .mainContents .testimonials .cards .card .title .avatar img {
+  width: 100%;
+  height: 100%;
+}
+body .mainContents .testimonials .cards .card .title .texts {
+  color: #fff;
+  font: 500 16px/24px Graphik;
+}
+body .mainContents .testimonials .cards .card .content {
+  margin: 30px 0 0 0;
+  color: #fff;
+  font: 400 16px/24px Roboto;
+}
+body .mainContents .testimonials .cards .card:nth-child(1) {
+  margin: 0 23px 0 0;
+}
+body .mainContents .testimonials .cards .card:nth-child(2) {
+  margin: 0;
+}
+body .mainContents .testimonials .cards .card:nth-child(3) {
+  margin: 20px 23px 0 0;
+}
+body .mainContents .testimonials .cards .card:nth-child(4) {
+  margin: 20px 0 0 0;
+}
+body .mainContents .end {
+  margin: 230px 0 0 0;
+  display: flex;
+  align-items: center;
+  background: #343434;
+  border-radius: 33px;
+  overflow: hidden;
+  justify-content: center;
+}
+body .mainContents .end .texts {
+  margin: 0 50px 0 0;
+}
+body .mainContents .end .texts .content {
+  color: #fff;
+  font: 400 52px/62px Graphik;
+  width: 480px;
+  margin: 0 0 37px 104px;
+}
+body .mainContents .end .texts .tryForFree {
+  margin: 0 0 0 94px;
+  padding: 13.5px 67px;
+  text-decoration: none;
+  color: #fff;
+  font: 500 17px/25px Graphik;
+  background: #4452fe;
+}
+body .mainContents .end .image {
+  width: 585px;
+  height: 365px;
+}
+body .mainContents .end .image img {
+  width: 100%;
+  height: 100%;
+}
+body .footer {
+  margin: 290px 0 0 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0 0 110px 0;
+}
+body .footer .column .title {
+  color: #fff;
+  font: 500 20px/30px Graphik;
+}
+body .footer .column .contents {
+  margin: 40px 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
+body .footer .column .contents a {
+  text-decoration: none;
+  color: #fff;
+  font: 500 16px/24px Graphik;
+  margin: 0 0 20px 0;
+}
+body .footer .column .contents a:last-child {
+  margin: 0;
+}
+body .footer .column:last-child .location, body .footer .column:last-child .phoneNumber {
+  display: flex;
+  align-items: center;
+}
+body .footer .column:last-child .location .icon, body .footer .column:last-child .phoneNumber .icon {
+  margin: 0 17px 0 0;
+}
+body .footer .column:last-child .phoneNumber {
+  margin: 20px 0 0 0;
+}
+body .footer .column:last-child .socialNetwork {
+  margin: 40px 0 0 0;
+  display: flex;
+  align-items: center;
+}
+body .footer .column:last-child .socialNetwork a {
+  margin: 0 32px 0 0;
+}
+body .footer .column:last-child .socialNetwork a:last-child {
+  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
