@@ -1,0 +1,445 @@
+/* ==UserStyle==
+@name           Youtube Kinetic Kudu (developing)
+@namespace      github.com/openstyles/stylus
+@version        2022.10.23.13.18
+@description    I love ubuntu so I created this style, it is also convenient for me to learn the Stylus. HeHeHe!
+@author         ChuaNghiTen
+@homepageURL    https://chuanghiten.github.io
+@preprocessor   stylus
+@advanced		dropdown mainBackground "Main Background"{
+	1 "Kinetic Kudu" <<<EOT url("https://www.omgubuntu.co.uk/wp-content/uploads/2022/09/ubuntu-kudu-wallpaper.jpg") EOT;
+	2 "Jammy Jellyfish" <<<EOT url("https://149366088.v2.pressablecdn.com/wp-content/uploads/2022/03/jammy-jellyfish-wallpaper.jpg") EOT;
+	3 "Impish Indri" <<<EOT url("https://149366088.v2.pressablecdn.com/wp-content/uploads/2021/09/Impish-Indri-wallpaper-compressed.jpg") EOT;
+	4 "Hirsute Hippo" <<<EOT url("https://149366088.v2.pressablecdn.com/wp-content/uploads/2010/09/ubuntu-21.04-default-wallpaper.jpg") EOT;
+	5 "Groovy Gorilla" <<<EOT url("https://pbs.twimg.com/media/Ek9JGVkXEAQUCTa?format=jpg&name=4096x4096") EOT;
+	6 "Focal Fossa" <<<EOT url("https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/02/Focal-Fossa-wallpaper.jpg") EOT;
+	7 "Eoan Ermine" <<<EOT url("https://cdn.neow.in/news/images/uploaded/2019/09/1569595700_warty-final-ubuntu.jpg") EOT;
+	8 "Disco Dingo" <<<EOT url("https://linuxinarabicfree4u.files.wordpress.com/2019/03/disco-dingo_wp_4096x2304.png") EOT;
+	9 "Cosmic Cuttlefish" <<<EOT url("https://wallpapers.com/images/hd/ubuntu-cosmic-cuttlefish-31gjaphpls36a3bw.jpg") EOT;
+	10 "Bionic Beaver" <<<EOT url("https://trisquel.info/files/warty-final-ubuntu.png") EOT;
+	11 "Artful Aardvark" <<<EOT url("https://i0.wp.com/static.kyleabaker.com/wp-content/uploads/2018/04/ubuntu-17-10-artful-aardvark.png?ssl=1") EOT;
+	12 "Zesty Zapus" <<<EOT url("https://img.linux.net.cn/data/attachment/album/202005/16/093923flwohwolos1ljeaz.jpg") EOT;
+	13 "Yakkety Yak" <<<EOT url("https://cutewallpaper.org/29/download-ubuntu-wallpaper/878121880.jpg") EOT;
+	14 "Xenial Xerus" <<<EOT url("https://i.imgur.com/s46X9zA.jpg") EOT;
+	15 "Wily Werewolf" <<<EOT url("https://img.wallpapersafari.com/desktop/1920/1080/49/27/dm4s0S.png") EOT;
+	16 "Vivid Vervet" <<<EOT url("https://149366088.v2.pressablecdn.com/wp-content/uploads/2015/03/suru-desktop-wallpaper-ubuntu-vivid.jpg") EOT;
+	17 "Trusty Tahr" <<<EOT url("https://pbs.twimg.com/media/ETPwq62WoAMZqIs?format=jpg&name=4096x4096") EOT;
+	18 "Saucy Salamander" <<<EOT url("http://www.linuxexpres.cz/uploads/gallery/original/7994.jpg") EOT;
+	19 "Raring Ringtail" <<<EOT url("https://tapety.tja.pl/obrazki/tja_normalne/156572.jpg") EOT;
+	20 "Quantal Quetzal" <<<EOT url("https://i.imgur.com/GD3w6.jpg") EOT;
+	21 "Precise Pangolin" <<<EOT url("https://i.imgur.com/DCNhq.jpg") EOT;
+	22 "Oneiric Ocelot" <<<EOT url("https://cutewallpaper.org/21/chromium-wallpaper/The-Ubuntu-11.10-Default-Wallpaper-OMG-Ubuntu_.jpg") EOT;
+	23 "Lucid Lynx" <<<EOT url("https://i.imgur.com/LRJzb.jpg") EOT;
+	98 "Image Custom" <<<EOT url(mainBackgroundUrl) EOT;
+	99 "Gradient" <<<EOT mainBackgroundGradient EOT;
+}
+@var			text mainBackgroundUrl "Main Background (URL) (If Main Background=Image Custom) (Paste in quotes)" "PasteYourImageURL"
+@var			select mainBackgroundGradient "Gradient Style (If Main Background=Gradient)"{
+	"Linear":"linear-gradient(gradientDirection,gradientColor)",
+	"Radial":"radial-gradient(gradientColor)",
+	"Conic":"conic-gradient(gradientColor)"
+}
+@var			text gradientDirection "Gradient Direction (for Linear) (Xdeg or 'to top left')" "to bottom right"
+@var			text gradientColor "Gradient Color (#dd5c3d START1px STOP1px, #652347 START2px STOP2px; X% for all, Xdeg for Conic)" "#dd5c3d 0 50%, #652347 50% 100%"
+@var			text mainBackgroundSize "Main Background Size (px or %) (Xpx Ypx) or (Xpx auto)" "cover"
+@var			text mainBackgroundPosition "Main Background Position (px or %) (Xpx Ypx) (top, bottom, left, right)" "center center"
+@var			checkbox mainBackgroundFixed "Main Background Fixed" 1
+@var			checkbox mainBackgroundRepeat "Main Background Repeat" 0
+@var			color endMainBackground "End Main Background" #f00
+@var			color startItemsCustom "Start Items Custom" #f00
+@var			color itemsBackgroundColor "Items Background Color" #5d173c88
+@var			range itemsBackdropFilter "Items Background Blur" [2,0.1,10,0.1,"px"]
+@var			color itemsBorderColor "Items Border Color" #dd5d3c
+@var			range itemsBorderWidth "Items Border Width" [2,0.1,10,0.1,"px"]
+@var			select itemsBorderStyle "Items Border Style" {
+	"Solid":"solid",
+	"Dotted":"dotted",
+	"Dashed":"dashed"
+}
+@var			color endItemsCustom "End Items Custom" #f00
+@var			color startTopBarCustom "Start Top Bar Custom" #f00
+@var			checkbox dynamicIslandSearchBar "\"Dynamic Island\" Search Bar" 1
+@var			select logos "Logo" {
+	"Mini":"1",
+	"International Cat Day (8/8)":"9",
+	"World Tarot Day (25/5 & 7/6)":"11",
+	"Celebrating Latino Creators (15/9)":"4",
+	"Earth Day (22/4)":"13",
+	"What's Old Is New Again (8/9)":"7",
+	"World Mental Health Day (10/10)":"2",
+	"International Day of Sign Language (23/9)":"3",
+	"Celebrating Speedrunners And Speedrunning Creators (12/9)":"5",
+	"Commemorating Queen Elizabeth II (9/9)":"6",
+	"Petra (9/8)":"8",
+	"Pride Month (1/6)":"10",
+	"Celebrating Asian Creativity (6/5)":"12",
+	"International Women's Day (8/3)":"14",
+	"Default":"0"
+}
+==/UserStyle== */
+@-moz-document domain("youtube.com")
+	itemsStyle(backgroundColor,blur,borderWidth,borderStyle,borderColor)
+		background: backgroundColor
+		backdrop-filter: blur
+		border: borderWidth borderStyle borderColor
+		box-sizing: border-box
+	@keyframes logoAnimation
+		0%
+			transform:translate(var(--Xtranslate0), var(--Ytranslate0)) rotate(var(--rotate0))
+			width: var(--width0)
+			margin: var(--margin0)
+		50%
+			transform:translate(var(--Xtranslate50), var(--Ytranslate50)) rotate(var(--rotate50))
+			width: var(--width50)
+			margin: var(--margin50)
+		50.1%
+			transform:translate(var(--Xtranslate501), var(--Ytranslate501)) rotate(var(--rotate501))
+			width: var(--width501)
+			margin: var(--margin501)
+		100%
+			transform:translate(var(--Xtranslate100), var(--Ytranslate100)) rotate(var(--rotate100))
+			width: var(--width100)
+			margin: var(--margin100)
+	html
+		--mainBackground: url("https://149366088.v2.pressablecdn.com/wp-content/uploads/2022/09/kudu-light-.jpg")
+		--itemsBackgroundColor: itemsBackgroundColor
+		--itemsBackdropFilter: blur(itemsBackdropFilter)
+		--itemsBorderColor: itemsBorderColor
+		--itemsBorderWidth: itemsBorderWidth
+		--itemsBorderStyle: itemsBorderStyle
+		--linkColor: #ffbd99
+		body
+			ytd-app
+				background: var(--mainBackground) no-repeat mainBackgroundPosition / mainBackgroundSize fixed
+	html[dark]
+		--mainBackground: mainBackground
+		scroll-behavior: smooth
+		body
+
+			/*Start Scroll Bar*/
+
+			&:not([no-y-overflow])::-webkit-scrollbar
+				width: 10px
+				background: #6a1544
+				&-thumb
+					border: 3px solid #6a1544
+					border-radius: 5px
+					background: linear-gradient(to bottom,#6a1544,#c953cb,#d97b47,#6a1544)
+					&:hover
+						background: linear-gradient(to bottom,#c953cb,#d97b47)
+				&-button
+					display: none
+
+			/*Stop Scrollbar*/
+
+			ytd-app
+				background: var(--mainBackground) no-repeat mainBackgroundPosition / mainBackgroundSize fixed
+				if mainBackgroundRepeat
+					background-repeat: repeat
+				if not mainBackgroundFixed
+					background-attachment: scroll
+				#content
+						
+					/*Start Top Bar*/
+
+					#masthead-container
+						ytd-masthead
+							background: transparent
+							justify-content: center
+							#container
+								#start
+								
+									/*Start Hamburger Button*/
+
+									yt-icon-button#guide-button
+										itemsStyle(var(--itemsBackgroundColor),var(--itemsBackdropFilter),var(--itemsBorderWidth),var(--itemsBorderStyle),var(--itemsBorderColor))
+										border-radius:50% 0 0 50%
+										padding: 0
+										box-shadow: 0px 0px 10px 0 var(--itemsBackgroundColor)
+										border-right-width: calc(var(--itemsBorderWidth) / 2)
+										display: inline-flex
+										justify-content: center
+										align-items: center
+											
+										
+									/*Stop Hamburger Button*/
+
+									/*Start Logo*/
+
+									ytd-topbar-logo-renderer#logo
+										--timingFunction: .5s
+										--animationDelay: .2s
+										height: 40px
+										width: auto
+										overflow: hidden
+										if logos == 1
+											width: 70.06px
+										min-width: 70px
+										align-items: center
+										itemsStyle(var(--itemsBackgroundColor),var(--itemsBackdropFilter),var(--itemsBorderWidth),var(--itemsBorderStyle),var(--itemsBorderColor))
+										border-left-width: calc(var(--itemsBorderWidth) / 2)
+										border-radius: 0 20px 20px 0
+										box-shadow: 0 0 10px 0 var(--itemsBackgroundColor)
+										transition: all calc(var(--timingFunction) / 2) .1s cubic-bezier(.18, 0.89, 0.37, 1.15)
+										&:hover
+											if logos == 1
+												min-width: 135.17px
+												width: 135.17px
+												transition-delay: var(--animationDelay)
+												#country-code
+													animation: var(--timingFunction) linear var(--animationDelay) 1 forwards logoAnimation
+												#logo
+													div.ytd-topbar-logo-renderer
+														animation: var(--timingFunction) linear var(--animationDelay) 1 forwards logoAnimation
+														ytd-logo
+															animation: var(--timingFunction) linear var(--animationDelay) 1 forwards logoAnimation
+														&+ytd-yoodle-renderer
+															animation: var(--timingFunction) linear var(--animationDelay) 1 forwards logoAnimation
+													
+										#country-code
+											display: block
+											margin: 0 14px 15px 0
+											if logos == 0
+												margin: 0 13px 15px -10px
+											if logos == 1
+												--Xtranslate0: 0
+												--Ytranslate0: 0
+												--rotate0: 0
+												--width0:auto
+												--margin0: 0 10px 15px 0
+												--Xtranslate50: 0
+												--Ytranslate50: 0
+												--rotate50: 0
+												--width50:auto
+												--margin50: 0 14px 15px 0
+												--Xtranslate501: 0
+												--Ytranslate501: 0
+												--rotate501: 0
+												--width501:auto
+												--margin501: 0 14px 15px 0
+												--Xtranslate100: 0
+												--Ytranslate100: 0
+												--rotate100: 0
+												--width100:auto
+												--margin100: 0 14px 15px 0
+												//margin: 0 10px 15px 0
+												//margin: 0 14px 15px 0
+												margin: var(--margin0)
+										#logo
+											if logos == 1
+												div.ytd-topbar-logo-renderer
+													ytd-logo
+														--rotate0: 0
+														--rotate50: 360deg
+														--rotate501: 0
+														--rotate100: 0
+														--margin0: 0
+														--margin50: 0
+														--margin501: 0
+														--margin100: 0
+														background: url(https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/youtubeStyle/images/youtubeLogo.svg) no-repeat center center
+														height: 20px
+														width: 28.57px
+														display: block
+													--Xtranslate0: 0
+													--Ytranslate0: 0
+													--rotate0: 0
+													--width0:28.57px
+													--margin0: 0 0 0 10px
+													--Xtranslate50: 0
+													--Ytranslate50: 0
+													--rotate50: 0
+													--width50:28.57px
+													--margin50: 0 0 0 77px
+													--Xtranslate501: 0
+													--Ytranslate501: 0
+													--rotate501: 0
+													--width501:28.57px
+													--margin501: 0 0 0 77px
+													--Xtranslate100: 0
+													--Ytranslate100: 0
+													--rotate100: 0
+													--width100:28.57px
+													--margin100: 0 0 0 16px
+													width: var(--width0)
+													padding: 0
+													margin: var(--margin0)
+													//margin: 0 0 0 16px
+													height: 20px
+													*:not(ytd-logo.ytd-topbar-logo-renderer)
+														display: none !important
+													&+ytd-yoodle-renderer
+														--Xtranslate0: 0
+														--Ytranslate0: 0
+														--rotate0: 0
+														--width0: 0
+														--margin0: 0 5px 0 0
+														--Xtranslate50: 0
+														--Ytranslate50: 0
+														--rotate50: 0
+														--width50: 0
+														--margin50: 0 5px 0 0
+														--Xtranslate501: 0
+														--Ytranslate501: 0
+														--rotate501: 0
+														--width501: 0
+														--margin501: 0 5px 0 0
+														--Xtranslate100: 0
+														--Ytranslate100: 0
+														--rotate100: 0
+														--width100: 58.12px
+														--margin100: 0 5px 0 3px
+														display: block !important
+														width: 0 //58.12px
+														transform-origin: 100% 0 
+														overflow: hidden
+														height: 20px
+														background: url(https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/youtubeStyle/images/youtubeTextLogo.svg) no-repeat 100% center
+														filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7482%) hue-rotate(75deg) brightness(99%) contrast(106%)
+														padding: 0
+														margin: 0 5px 0 0
+														//margin: 0 5px 0 3px
+														*
+															display: none !important
+											if logos == 2 || logos == 3 || logos == 4 || logos == 5 || logos == 6 || logos == 7 || logos == 8 || logos == 9 || logos == 10 || logos == 11 || logos == 12 || logos == 13 || logos == 14
+												width: 122px
+												height: 56px
+												*
+													display: none !important
+											if logos == 2
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/worldMentalHealthDay.gif) no-repeat center center / 122px 56px
+											if logos == 3
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/internationalDayOfSignLanguage.gif) no-repeat center center / 122px 56px
+											if logos == 4
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/celebratingLatinoCreators.gif) no-repeat center center / 122px 56px
+											if logos == 5
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/celebratingSpeedrunnersAndSpeedrunningCreators.gif) no-repeat center center / 122px 56px
+											if logos == 6
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/commemoratingQueenElizabethII.png) no-repeat center center / 102px 20px
+												width: 102px
+												height: 20px
+												margin: 0 0 0 14px
+											if logos == 7
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/whatsOldIsNewAgain.gif) no-repeat center center / 122px 56px
+											if logos == 8
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/petra.gif) no-repeat center center / 122px calc(96px / 2)
+												height: calc(96px / 2)
+											if logos == 10
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/prideMonth.gif) no-repeat center center / 122px 56px
+											if logos == 11
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/worldTarotDay.gif) no-repeat center center / 122px 56px
+											if logos == 12
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/celebratingAsianCreativity.gif) no-repeat center center / 122px 37px
+												height: 37px
+												margin: -2px 0 0 0
+											if logos == 13
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/earthDay.gif) no-repeat center center / 122px 56px
+											if logos == 14
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/womensDay.gif) no-repeat center center / 122px 56px
+											if logos == 9
+												background: url(https://chuanghiten.github.io/youtubeStyle/images/internationalCatDay.gif) no-repeat center center / 122px 56px
+										
+
+									/*Stop Logo*/
+
+									#skip-navigation
+										display: none
+
+								#center
+									transition: all .35s 1s ease-out
+								
+									/*Start Search Bar*/
+
+									if dynamicIslandSearchBar
+										flex-basis: auto
+										width: 320px
+										&:hover,:focus
+											width: 40%
+											transition-timing-function: cubic-bezier(.18, 0.89, 0.37, 1.15)
+											transition-delay: .25s
+									ytd-searchbox
+										#search-form
+											#container
+												border-radius: 99px 0 0 99px
+												overflow: hidden
+												itemsStyle(var(--itemsBackgroundColor),var(--itemsBackdropFilter),var(--itemsBorderWidth),var(--itemsBorderStyle),var(--itemsBorderColor))
+												border-right-width: calc(var(--itemsBorderWidth) / 2)
+												padding:2px 6px 2px 16px
+												
+										button#search-icon-legacy
+											border-radius: 0 99px 99px 0
+											itemsStyle(var(--itemsBackgroundColor),var(--itemsBackdropFilter),var(--itemsBorderWidth),var(--itemsBorderStyle),var(--itemsBorderColor))
+											border-left-width: calc(var(--itemsBorderWidth) / 2)
+										&[has-focus]
+											#search-form
+												#container
+													padding: 2px 6px 2px 40px
+											
+								
+									/*Stop Search Bar*/
+
+									/*Start Voice Search Button*/
+
+									#voice-search-button
+										itemsStyle(var(--itemsBackgroundColor),var(--itemsBackdropFilter),var(--itemsBorderWidth),var(--itemsBorderStyle),var(--itemsBorderColor))
+										height: 40px
+										width: 40px
+										ytd-button-renderer
+											width: 100%
+											height:100%
+											yt-button-shape
+												width: 100%
+												height: 100%
+												button
+													width: 100%
+													height: 100%
+													
+									/*Stop Voice Search Button*/
+
+			/*Start Search Menu*/
+
+			.gstl_50.sbdd_a
+				margin: 10px 0 0 0
+				.sbdd_b
+					itemsStyle(var(--itemsBackgroundColor),var(--itemsBackdropFilter),var(--itemsBorderWidth),var(--itemsBorderStyle),var(--itemsBorderColor))
+					border-radius: 10px
+					overflow: hidden
+					.sbsb_a
+						background:transparent
+						.sbsb_b
+							.sbsb_c.gsfs
+								color: #fff9
+								cursor: pointer
+								.sbse
+									.sbqs_c
+										b
+											color: #fff
+										&:before
+											filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7482%) hue-rotate(75deg) brightness(99%) contrast(106%)
+								&.sbsb_d
+									background: var(--itemsBorderColor)
+									.sbpqs_d.sbse
+										.fr.sbpqs_b
+											a
+												color: #702d51
+									
+								.sbfl_a
+									.sbfl_b
+										background: transparent
+										color: #fff9
+										&:hover
+											color: var(--linkColor)
+								.sbpqs_d.sbse
+									.sbpqs_a
+										color: #fff
+										&:before
+											filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7482%) hue-rotate(75deg) brightness(99%) contrast(106%)
+									.fr.sbpqs_b
+										a
+											color: var(--linkColor)
+									.sbpqs_c
+										color: #fff9
+
+			/*Stop Search Menu*/
+
+					/*Stop Top Bar*/
