@@ -137,7 +137,7 @@ body .mainContents .preamble .button a:hover {
 }
 body .mainContents .preamble .images {
   margin: 35px 0 0 0;
-  width: 1444px;
+  width: 100%;
   height: 841px;
   display: flex;
   justify-content: center;
@@ -147,13 +147,15 @@ body .mainContents .preamble .images .image {
 }
 body .mainContents .preamble .images .image:nth-child(1) {
   bottom: 0;
-  left: 0;
+  right: 50%;
+  transform: translateX(100%);
   width: 714px;
   height: 543px;
 }
 body .mainContents .preamble .images .image:nth-child(3) {
   bottom: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-100%);
   width: 731px;
   height: 557px;
 }
@@ -537,9 +539,11 @@ body .footer .column .contents a:last-child {
 body .footer .column:last-child .location, body .footer .column:last-child .phoneNumber {
   display: flex;
   align-items: center;
+  color: #fff;
+  font: 500 16px/24px Graphik;
 }
 body .footer .column:last-child .location .icon, body .footer .column:last-child .phoneNumber .icon {
-  margin: 0 17px 0 0;
+  margin: 0 10px 0 0;
 }
 body .footer .column:last-child .phoneNumber {
   margin: 20px 0 0 0;
