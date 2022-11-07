@@ -1,0 +1,19 @@
+*,*:before,*:after
+	margin: 0
+	padding: 0
+	border: 0
+	background: transparent
+	box-sizing: border-box
+	position: relative
+body
+	--toolbarSize: 50px
+	.toolbar
+		height: 100vh
+		width: var(--toolbarSize)
+		position: fixed
+		top: 0
+		left: 0
+	.contents
+		width: 100%
+		height: 100vh
+		padding: 0 0 0 var(--toolbarSize)
