@@ -7,21 +7,40 @@
   position: relative;
 }
 
+@font-face {
+  font-family: "Circuit Bored";
+  src: url(../fonts/CircuitBoredNF.ttf);
+}
+body {
+  display: flex;
+  flex-direction: row;
+  width: var(--innerWidth, 100%);
+  height: var(--innerHeight, 100vh);
+}
+body::-webkit-scrollbar {
+  display: none;
+}
 body[editing] {
   --toolbarSize: 50px;
 }
 body .toolbar {
-  height: var(--innerHeight, 100vh);
+  height: var(--innerHeight, 100%);
   width: var(--toolbarSize, 0px);
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 body .contents {
   width: calc(var(--innerWidth, 100%) - var(--toolbarSize, 0px));
-  height: var(--innerHeight, 100vh);
-  margin: 0 0 0 var(--toolbarSize, 0px);
-  background: #0f0;
+  height: var(--innerHeight, 100%);
+}
+body .contents .landingScreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body[editing] .contents .landingScreen {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

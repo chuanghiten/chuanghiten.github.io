@@ -5,17 +5,33 @@
 	background: transparent
 	box-sizing: border-box
 	position: relative
+@font-face 
+	font-family: "Circuit Bored"
+	src: url(../fonts/CircuitBoredNF.ttf)
 body
+	display: flex
+	flex-direction: row
+	width: var(--innerWidth, 100%)
+	height: var(--innerHeight, 100vh)
+	&::-webkit-scrollbar
+		display: none
 	&[editing]
 		--toolbarSize: 50px
 	.toolbar
-		height: var(--innerHeight,100vh)
+		height: var(--innerHeight,100%)
 		width: var(--toolbarSize,0px)
-		position: fixed
-		top: 0
-		left: 0
 	.contents
 		width: calc(var(--innerWidth,100%) - var(--toolbarSize,0px))
-		height: var(--innerHeight,100vh)
-		margin: 0 0 0 var(--toolbarSize,0px)
-		background: #0f0
+		height: var(--innerHeight,100%)
+		.landingScreen
+			width: 100%
+			height: 100%
+			display: flex
+			flex-direction: column
+			align-items: center
+			justify-content: center
+			
+	&[editing]
+		.contents
+			.landingScreen
+				display: none
