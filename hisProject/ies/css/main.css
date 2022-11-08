@@ -21,6 +21,7 @@ body .contents {
   width: calc(var(--innerWidth, 100%) - var(--toolbarSize, 0px));
   height: var(--innerHeight, 100vh);
   margin: 0 0 0 var(--toolbarSize, 0px);
+  background: #0f0;
 }
 
 /*# sourceMappingURL=main.css.map */
