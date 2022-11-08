@@ -10,6 +10,7 @@
 @font-face {
   font-family: "Circuit Bored";
   src: url(../fonts/CircuitBoredNF.ttf);
+  font-weight: 0 500;
 }
 body {
   display: flex;
@@ -38,6 +39,13 @@ body .contents .landingScreen {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+body .contents .landingScreen .logos {
+  text-decoration: none;
+  color: #222;
+}
+body .contents .landingScreen .logos .logo {
+  font: 500 200px "Circuit Bored";
 }
 body[editing] .contents .landingScreen {
   display: none;

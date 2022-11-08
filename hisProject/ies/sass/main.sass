@@ -8,6 +8,7 @@
 @font-face 
 	font-family: "Circuit Bored"
 	src: url(../fonts/CircuitBoredNF.ttf)
+	font-weight: 0 500
 body
 	display: flex
 	flex-direction: row
@@ -30,7 +31,11 @@ body
 			flex-direction: column
 			align-items: center
 			justify-content: center
-			
+			.logos
+				text-decoration: none
+				color: #222
+				.logo
+					font: 500 200px "Circuit Bored" 
 	&[editing]
 		.contents
 			.landingScreen
