@@ -10,6 +10,12 @@
 <body>
 	<div class="toolbar"></div>
 	<div class="contents"></div>
-</body>
+</body> 
+<script>
+  if (/eruda/.test(window.location.href)) {
+    document.write("<scr" + "ipt src=\"../../../node_modules/eruda/eruda.js\"></scr" + "ipt>");
+    document.write('<scr' + 'ipt>eruda.init({tool:[\'console\',\'elements\'],autoScale:\'false\',defaults:{displaySize:50,transparency: 0.8,theme:\'Dracula\'}});eruda.scale(0.9);</scr' + 'ipt>');
+  }
+</script>
 <script src="./js/main.js"></script>
 </html>
