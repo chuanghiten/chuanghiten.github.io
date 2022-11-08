@@ -6,14 +6,15 @@
 	box-sizing: border-box
 	position: relative
 body
-	--toolbarSize: 50px
+	&[editing]
+		--toolbarSize: 50px
 	.toolbar
-		height: 100vh
-		width: var(--toolbarSize)
+		height: var(--innerHeight,100vh)
+		width: var(--toolbarSize,0px)
 		position: fixed
 		top: 0
 		left: 0
 	.contents
-		width: 100%
-		height: 100vh
-		padding: 0 0 0 var(--toolbarSize)
+		width: calc(var(--innerWidth,100%) - var(--toolbarSize,0px))
+		height: var(--innerHeight,100vh)
+		margin: 0 0 0 var(--toolbarSize,0px)

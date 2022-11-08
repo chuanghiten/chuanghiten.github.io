@@ -1,0 +1,1 @@
+window.document.querySelector('body').setAttribute('style',`--innerWidth:${window.innerWidth}px;--innerHeight:${window.innerHeight}px;`);
