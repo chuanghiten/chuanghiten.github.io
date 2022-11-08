@@ -5,38 +5,120 @@
 	background: transparent
 	box-sizing: border-box
 	position: relative
+	font-size: 16px
 @font-face 
 	font-family: "Circuit Bored"
 	src: url(../fonts/CircuitBoredNF.ttf)
-	font-weight: 0 500
-body
-	display: flex
-	flex-direction: row
-	width: var(--innerWidth, 100%)
-	height: var(--innerHeight, 100vh)
-	&::-webkit-scrollbar
-		display: none
-	&[editing]
-		--toolbarSize: 50px
-	.toolbar
-		height: var(--innerHeight,100%)
-		width: var(--toolbarSize,0px)
-	.contents
-		width: calc(var(--innerWidth,100%) - var(--toolbarSize,0px))
-		height: var(--innerHeight,100%)
-		.landingScreen
-			width: 100%
-			height: 100%
-			display: flex
-			flex-direction: column
-			align-items: center
-			justify-content: center
-			.logos
-				text-decoration: none
-				color: #222
-				.logo
-					font: 500 200px "Circuit Bored" 
-	&[editing]
+	font-weight: 301 400
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-Black.ttf)
+	font-weight: 801 900
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-Bold.ttf)
+	font-weight: 601 700
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-ExtraBold.ttf)
+	font-weight: 701 800
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-ExtraLight.ttf)
+	font-weight: 101 200
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-Light.ttf)
+	font-weight: 201 300
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-Medium.ttf)
+	font-weight: 401 500
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-Regular.ttf)
+	font-weight: 301 400
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-SemiBold.ttf)
+	font-weight: 501 600
+	font-style: normal
+@font-face 
+	font-family: Inter
+	src: url(../fonts/Inter/static/Inter-Thin.ttf)
+	font-weight: 1 100
+	font-style: normal
+html
+	font-size: 6.25%
+	body
+		display: flex
+		flex-direction: row
+		width: var(--innerWidth, 100%)
+		height: var(--innerHeight, 100vh)
+		&::-webkit-scrollbar
+			display: none
+		&[editing]
+			--toolbarSize: 50rem
+		.toolbar
+			height: var(--innerHeight,100%)
+			width: var(--toolbarSize,0px)
 		.contents
+			width: calc(var(--innerWidth,100%) - var(--toolbarSize,0px))
+			height: var(--innerHeight,100%)
 			.landingScreen
-				display: none
+				width: 100%
+				height: 100%
+				display: flex
+				flex-direction: column
+				align-items: center
+				justify-content: center
+				.logos
+					text-decoration: none
+					color: #222
+					display: flex
+					flex-direction: column
+					align-items: center
+					.logo
+						font: 400 200rem "Circuit Bored" 
+					.descriptionLogo
+						font: 500 40rem Inter
+						margin: -40rem 0 0 0
+						color: #444
+						letter-spacing: 2rem
+						text-align: center
+						span
+							font-size: 50rem
+							color: #222
+						.viTranslate
+							color: #222
+							font-size: 20rem
+							margin: 10rem 0 0 0
+				.buttons
+					display: flex
+					flex-direction: row
+					margin: 40rem 0 0 0
+					div
+						padding: 15rem 25rem
+						border: 1rem solid #222
+						border-radius: 10rem
+						font: 500 20rem Inter
+						transition: background .15s linear
+						margin: 0 10rem
+						&:hover
+							color: #fff
+							background: #222
+				.dropFile
+					margin: 50rem 0 0 0
+					
+		&[editing]
+			.contents
+				.landingScreen
+					display: none
