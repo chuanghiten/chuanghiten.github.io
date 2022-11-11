@@ -4,22 +4,20 @@ function addScreenSizeToBodyElement () {
 }
 addScreenSizeToBodyElement();
 bodyElement.onresize = addScreenSizeToBodyElement;
-window.document.querySelector("input#fileInput").onchange=function(event){
-	let uploadedFile = event.target.files[0];
-	//console.log(uploadedFile);
+window.document.querySelector("input#fileInput").onchange=function(input){
+	let uploadedFile = input.target.files;
 	let readFile = new FileReader();
-	readFile.readAsText(uploadedFile);
-	readFile.onload = function(e) { 
-		let contents = e.target.result;
-		let json = JSON.parse(contents);
-		console.log(json);
+	readFile.readAsText(uploadedFile[0],'utf-8');
+	readFile.onload = function() {
+		console.log(readFile.result);
 	};
 };
 window.document.querySelector('.dropFile').ondragover=window.document.querySelector('.dropFile').ondrop=window.document.querySelector('.dropFile').ondragover=function(event){
 	event.preventDefault();
 }
-window.document.querySelector('.dropFile').ondrop=function(event){
-	event.preventDefault();
+window.document.querySelector('.dropFile').ondrop=function(input){
+	input.preventDefault();
+	console.log(input);
 	/*
 	readFile.onload = function(e) { 
 		let contents = e.target.result;
