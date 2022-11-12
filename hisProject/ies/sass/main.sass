@@ -89,9 +89,9 @@ html
 					cursor: default
 					.logo
 						font: 400 200rem "Circuit Bored" 
+						margin: -50rem 0 -40rem 0
 					.descriptionLogo
 						font: 500 40rem Inter
-						margin: -40rem 0 0 0
 						color: #444
 						letter-spacing: 2rem
 						text-align: center
@@ -106,17 +106,22 @@ html
 					display: flex
 					flex-direction: row
 					margin: 40rem 0 0 0
+					.newFile
+						--currentColor: #EB5353
+					.openFile
+						--currentColor: #36AE7C
 					&>*
 						padding: 15rem 25rem
-						border: 1rem solid #222
+						border: 1rem solid var(--currentColor)
 						border-radius: 10rem
 						font: 500 20rem Inter
 						transition: background .15s linear
 						margin: 0 20rem
 						cursor: pointer
+						color: var(--currentColor)
 						&:hover
 							color: #fff
-							background: #222
+							background: var(--currentColor)
 				.dropFile
 					margin: 50rem 0 100rem 0
 					display: flex
