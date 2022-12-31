@@ -1,5 +1,6 @@
 var bodyElement = window.document.querySelector("body"),
-  inputCommand = document.querySelector("#inputCommands");
+  inputCommand = document.querySelector("#inputCommands"),
+  lableElement = document.querySelector("label");
 function addScreenSizeToBodyElement() {
   bodyElement.setAttribute(
     "style",
@@ -11,6 +12,7 @@ bodyElement.onresize = addScreenSizeToBodyElement;
 inputCommand.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
-    console.log(inputCommand.value);
+    //    console.log(inputCommand.value);
+    lableElement.innerHTML = inputCommand.value;
   }
 });
