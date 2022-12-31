@@ -34,6 +34,9 @@ body {
   flex-direction: column;
   justify-content: flex-end;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 body label {
   width: var(--innerWidth, 100%);
   height: calc(var(--innerHeight) - 1rem);
@@ -54,12 +57,25 @@ body label .commandHistory {
   animation: up 0.025s linear 0s 1 normal forwards;
   word-break: break-word;
 }
-body input {
-  font-size: 1rem;
+body .input {
   border-top: 1px solid #fff;
+  width: var(--innerWidth, 100%);
+  display: unset;
+  overflow-y: unset;
+  min-height: 1rem;
+  height: auto;
 }
-body input:focus-visible {
-  outline: unset;
+body .input .text {
+  max-width: 100%;
+  font-size: 1rem;
+  word-break: break-word;
+  display: inline-block;
+}
+body .input .cursor {
+  font-size: 1rem;
+  display: inline;
+  margin: 0 0 0 -8px;
+  background: #fff;
 }
 
 /*# sourceMappingURL=main.css.map */

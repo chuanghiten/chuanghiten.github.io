@@ -1,6 +1,6 @@
 var bodyElement = window.document.querySelector("body"),
-  inputCommand = document.querySelector("#inputCommands"),
-  labelElement = document.querySelector("label");
+  inputCommand = window.document.querySelector("#inputCommands"),
+  labelElement = window.document.querySelector("label"), displayCommandInput = window.document.querySelector(".input .text"), contentCommand;
 function addScreenSizeToBodyElement() {
   bodyElement.setAttribute(
     "style",
@@ -16,6 +16,7 @@ function addNewHistoryCommand(command) {
 }
 addScreenSizeToBodyElement();
 bodyElement.onresize = addScreenSizeToBodyElement;
+inputCommand.addEventListener("input", (event) => displayCommandInput.textContent = event.target.value)
 inputCommand.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -37,5 +38,6 @@ inputCommand.addEventListener("keypress", (event) => {
     }
     labelElement.scrollTop = labelElement.scrollHeight;
     inputCommand.value = "";
+    displayCommandInput.innerHTML = "";
   }
 });

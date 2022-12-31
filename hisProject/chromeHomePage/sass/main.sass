@@ -27,6 +27,8 @@ body
     display: flex
     flex-direction: column
     justify-content: flex-end
+    &::-webkit-scrollbar
+        display: none
     label
         width: var(--innerWidth, 100%)
         height: calc(var(--innerHeight) - 1rem)
@@ -44,8 +46,20 @@ body
             animation: up .025s linear 0s 1 normal forwards
             word-break: break-word
 
-    input
-        font-size: 1rem
+    .input
         border-top: 1px solid #fff
-        &:focus-visible
-            outline: unset
+        width: var(--innerWidth, 100%)
+        display: unset
+        overflow-y: unset
+        min-height: 1rem
+        height: auto
+        .text
+            max-width: 100%
+            font-size: 1rem
+            word-break: break-word
+            display: inline-block
+        .cursor
+            font-size: 1rem
+            display: inline
+            margin: 0 0 0 -8px
+            background: #fff
