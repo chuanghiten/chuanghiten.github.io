@@ -1,0 +1,42 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: transparent;
+  position: relative;
+  font-size: 16px;
+  color: #fff;
+  font-variant-ligatures: normal;
+  font-family: CascadiaCode;
+}
+
+@font-face {
+  font-family: CascadiaCode;
+  src: url(../fonts/CascadiaCode-2111.01/ttf/static/CascadiaCode-Regular.ttf);
+}
+body {
+  background: #000;
+  width: var(--innerWidth, 100%);
+  font-size: 6.25%;
+  height: var(--innerHeight, 100%);
+  min-height: var(--innerHeight, 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+body label {
+  width: var(--innerWidth, 100%);
+  height: calc(var(--innerHeight) - 2rem);
+  display: block;
+  color: #fff;
+  font-size: 2rem;
+}
+body input {
+  font-size: 2rem;
+}
+body input:focus-visible {
+  outline: unset;
+}
+
+/*# sourceMappingURL=main.css.map */
