@@ -41,7 +41,13 @@ body label {
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow-y: auto;
+}
+body label::-webkit-scrollbar {
+  display: none;
+}
+body label > .commandHistory:first-child {
+  margin: auto 0 0 0;
 }
 body label .commandHistory {
   font-size: 1rem;

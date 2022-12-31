@@ -35,6 +35,7 @@ inputCommand.addEventListener("keypress", (event) => {
     } else {
       addNewHistoryCommand(inputCommand.value);
     }
+    labelElement.scrollTop = labelElement.scrollHeight;
     inputCommand.value = "";
   }
 });

@@ -34,7 +34,11 @@ body
         color: #fff
         display: flex
         flex-direction: column
-        justify-content: flex-end
+        overflow-y: auto
+        &::-webkit-scrollbar
+            display: none
+        &>.commandHistory:first-child
+            margin: auto 0 0 0
         .commandHistory
             font-size: 1rem
             animation: up .025s linear 0s 1 normal forwards
