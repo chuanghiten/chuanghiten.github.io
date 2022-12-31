@@ -9,11 +9,20 @@
   color: #fff;
   font-variant-ligatures: normal;
   font-family: CascadiaCode;
+  transition: all 0.025s linear;
 }
 
 @font-face {
   font-family: CascadiaCode;
   src: url(../fonts/CascadiaCode-2111.01/ttf/static/CascadiaCode-Regular.ttf);
+}
+@keyframes up {
+  0% {
+    transform: translate(0, 1rem);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 body {
   background: #000;
@@ -27,13 +36,21 @@ body {
 }
 body label {
   width: var(--innerWidth, 100%);
-  height: calc(var(--innerHeight) - 2rem);
+  height: calc(var(--innerHeight) - 1rem);
   display: block;
   color: #fff;
-  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+body label .commandHistory {
+  font-size: 1rem;
+  animation: up 0.025s linear 0s 1 normal forwards;
+  word-break: break-word;
 }
 body input {
-  font-size: 2rem;
+  font-size: 1rem;
+  border-top: 1px solid #fff;
 }
 body input:focus-visible {
   outline: unset;
