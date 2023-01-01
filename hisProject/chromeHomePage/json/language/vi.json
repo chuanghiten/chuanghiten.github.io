@@ -1,0 +1,8 @@
+{
+	"clear":{
+		"help":"Dùng để xóa toàn bộ màn hình."
+	}
+	"url":{
+		"help":"Dùng để mở một đường link được chỉ định\n Cách dùng như sau:\n"
+	}
+}
