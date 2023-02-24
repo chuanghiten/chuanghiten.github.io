@@ -60,9 +60,12 @@ body
         .text
             //max-width: calc(100% - 1rem)
             font-size: 1rem
-            overflow-x: auto
+            overflow: auto hidden
             display: inline-block
-            
+            word-wrap: normal
+            word-break: normal
+            &::-webkit-scrollbar
+                display: none
         .cursor
             font-size: 1rem
             display: inline

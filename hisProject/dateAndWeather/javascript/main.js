@@ -10,11 +10,9 @@ function fullScreen(){
 		document.documentElement.requestFullscreen
 	}
 }
+function consoleTest(){
+	console.log(true);
+}
 addScreenSizeToBodyElement();
 bodyElement.onresize = addScreenSizeToBodyElement;
-/*
-bodyElement.addEventListener("click", function(){
-	const elem=document.documentElement;
-	if (elem.) {elem.requestFullscreen()}
-}, false);
-*/
+window.document.querySelector(".background").onclick = fullScreen;
