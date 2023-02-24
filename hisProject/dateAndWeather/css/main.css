@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: transparent;
+  position: relative;
+  font-size: 16px;
+}
+
+html {
+  font-size: 62.5%;
+}
+html body {
+  background: #191a2e;
+}
+html body .background {
+  width: var(--innerWidth, 100%);
+  height: calc(var(--innerHeight, 216rem) + 0rem);
+}
+
+/*# sourceMappingURL=main.css.map */
