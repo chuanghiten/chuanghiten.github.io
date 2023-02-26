@@ -1,41 +1,17 @@
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  background: transparent;
-  position: relative;
-  font-size: 16px;
-}
+/* Error: semicolons aren't allowed in the indented syntax.
+ *   ,
+ * 2 |   font-family: 'YouTube Sans';
+ *   |                              ^
+ *   '
+ *   sass/main.sass 2:30  root stylesheet */
 
-html {
-  font-size: 62.5%;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: semicolons aren't allowed in the indented syntax.\a   \2577 \a 2 \2502    font-family: 'YouTube Sans';\a   \2502                               ^\a   \2575 \a   sass/main.sass 2:30  root stylesheet";
 }
-html body .background, html body .mainContents {
-  width: var(--innerWidth, 100%);
-  height: var(--innerHeight, 216rem);
-  background: url(../images/clearSkySpringMorning.jpg) no-repeat center bottom/cover;
-}
-html body .background {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-html body .mainContents {
-  display: flex;
-  flex-flow: nowrap column;
-  justify-content: space-between;
-}
-html body .mainContents .dateContents, html body .mainContents .weatherContents {
-  width: 100%;
-  height: 30%;
-}
-html body .mainContents .dateContents {
-  background: rgba(255, 0, 0, 0.5333333333);
-}
-html body .mainContents .weatherContents {
-  background: rgba(0, 255, 0, 0.5333333333);
-}
-
-/*# sourceMappingURL=main.css.map */
