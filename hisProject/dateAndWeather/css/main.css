@@ -1,17 +1,87 @@
-/* Error: semicolons aren't allowed in the indented syntax.
- *   ,
- * 2 |   font-family: 'YouTube Sans';
- *   |                              ^
- *   '
- *   sass/main.sass 2:30  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: semicolons aren't allowed in the indented syntax.\a   \2577 \a 2 \2502    font-family: 'YouTube Sans';\a   \2502                               ^\a   \2575 \a   sass/main.sass 2:30  root stylesheet";
+@font-face {
+  font-family: "Modulus Pro";
+  font-style: normal;
+  font-weight: 100;
+  src: url(../fonts/modulusPro/modulusProThin.ttf) format("ttf");
 }
+@font-face {
+  font-family: "Modulus Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/modulusPro/modulusProLight.ttf) format("ttf");
+}
+@font-face {
+  font-family: "Modulus Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/modulusPro/modulusProRegular.ttf) format("ttf");
+}
+@font-face {
+  font-family: "Modulus Pro";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/modulusPro/modulusProMedium.ttf) format("ttf");
+}
+@font-face {
+  font-family: "Modulus Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/modulusPro/modulusProBold.ttf) format("ttf");
+}
+@font-face {
+  font-family: "Modulus Pro";
+  font-style: normal;
+  font-weight: 900;
+  src: url(../fonts/modulusPro/modulusProBlack.ttf) format("ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: transparent;
+  position: relative;
+  font-size: 16px;
+  font-family: "Modulus Pro";
+}
+
+html {
+  font-size: 62.5%;
+}
+html body .background, html body .mainContents {
+  width: var(--innerWidth, 100%);
+  height: var(--innerHeight, 216rem);
+  background: url(../images/clearSkySpringMorning.jpg) no-repeat center bottom/cover;
+}
+html body .background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+html body .mainContents {
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: space-between;
+}
+html body .mainContents .dateContents, html body .mainContents .weatherContents {
+  width: 100%;
+  height: auto;
+}
+html body .mainContents .dateContents {
+  background: rgba(255, 0, 0, 0.5333333333);
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: center;
+  text-align: center;
+}
+html body .mainContents .dateContents .day {
+  color: #fff;
+  font-size: 5rem;
+  font-weight: 500;
+}
+html body .mainContents .weatherContents {
+  background: rgba(0, 255, 0, 0.5333333333);
+}
+
+/*# sourceMappingURL=main.css.map */
