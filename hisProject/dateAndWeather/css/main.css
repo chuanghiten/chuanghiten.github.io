@@ -76,9 +76,10 @@ html body .mainContents .dateContents {
   text-align: center;
   margin: 12rem 0 0 0;
   color: #fff;
+  text-shadow: 0.1rem 0.1rem 0.1rem #000;
 }
 html body .mainContents .dateContents .day {
-  font-size: 8rem;
+  font-size: 7rem;
   font-weight: 500;
 }
 html body .mainContents .dateContents .calendar {
@@ -86,7 +87,7 @@ html body .mainContents .dateContents .calendar {
 }
 html body .mainContents .dateContents .calendar div {
   font-weight: 400;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 html body .mainContents .weatherContents {
   background: rgba(0, 255, 0, 0.5333333333);
