@@ -74,12 +74,12 @@ html body .mainContents .dateContents {
   flex-flow: nowrap column;
   justify-content: center;
   text-align: center;
-  margin: 12rem 0 0 0;
+  margin: 10rem 0 0 0;
   color: #fff;
   text-shadow: 0.1rem 0.1rem 0.1rem #000;
 }
 html body .mainContents .dateContents .day {
-  font-size: 5rem;
+  font-size: 5.5rem;
   font-weight: 500;
 }
 html body .mainContents .dateContents .calendar {
@@ -87,7 +87,7 @@ html body .mainContents .dateContents .calendar {
 }
 html body .mainContents .dateContents .calendar div {
   font-weight: 400;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
 }
 html body .mainContents .dateContents .calendar div.lunar {
   margin: 0.4rem 0 0 0;
