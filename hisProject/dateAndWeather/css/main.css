@@ -2,37 +2,41 @@
   font-family: "Modulus Pro";
   font-style: normal;
   font-weight: 100;
-  src: url(../fonts/modulusPro/modulusProThin.ttf) format("ttf");
+  src: url(../fonts/modulusPro/modulusProThin.ttf) format(".ttf");
 }
 @font-face {
   font-family: "Modulus Pro";
   font-style: normal;
   font-weight: 300;
-  src: url(../fonts/modulusPro/modulusProLight.ttf) format("ttf");
+  src: url(../fonts/modulusPro/modulusProLight.ttf) format(".ttf");
 }
 @font-face {
   font-family: "Modulus Pro";
   font-style: normal;
   font-weight: 400;
-  src: url(../fonts/modulusPro/modulusProRegular.ttf) format("ttf");
+  src: url(../fonts/modulusPro/modulusProRegular.ttf) format(".ttf");
 }
 @font-face {
   font-family: "Modulus Pro";
   font-style: normal;
   font-weight: 500;
-  src: url(../fonts/modulusPro/modulusProMedium.ttf) format("ttf");
+  src: url(../fonts/modulusPro/modulusProMedium.ttf) format(".ttf");
 }
 @font-face {
   font-family: "Modulus Pro";
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/modulusPro/modulusProBold.ttf) format("ttf");
+  src: url(../fonts/modulusPro/modulusProBold.ttf) format(".ttf");
 }
 @font-face {
   font-family: "Modulus Pro";
   font-style: normal;
   font-weight: 900;
-  src: url(../fonts/modulusPro/modulusProBlack.ttf) format("ttf");
+  src: url(../fonts/modulusPro/modulusProBlack.ttf) format(".ttf");
+}
+@font-face {
+  font-family: "Youtube Sans";
+  src: url(../fonts/youtubeSans/youtubeSans.woff2) format(".woff2");
 }
 * {
   margin: 0;
@@ -42,7 +46,7 @@
   background: transparent;
   position: relative;
   font-size: 16px;
-  font-family: "Modulus Pro";
+  font-family: "Youtube Sans";
 }
 
 html {
