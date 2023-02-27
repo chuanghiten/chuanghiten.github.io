@@ -51,13 +51,20 @@ html {
 html body .background, html body .mainContents {
   width: var(--innerWidth, 100%);
   height: var(--innerHeight, 216rem);
-  background: url(../images/clearSkySpringMorning.jpg) no-repeat center bottom/cover;
 }
 html body .background {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(to bottom, #dd1c5d, #e63f3c);
+}
+html body .background svg {
+  width: 100%;
+  height: auto;
 }
 html body .mainContents {
   display: flex;
