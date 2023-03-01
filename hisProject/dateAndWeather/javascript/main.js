@@ -2,8 +2,11 @@ var bodyElement = window.document.querySelector("body"),
   dayText = window.document.querySelector(".dateContents .day"),
   solarText = window.document.querySelector(".dateContents .calendar .solar"),
   lunarText = window.document.querySelector(".dateContents .calendar .lunar"),
+  weatherContentsElement = window.document.querySelector(".weatherContents"),
+  boxTestElement = window.document.querySelector(".background .boxTest"),
   oldClockForClockPulse,
-  oldDayOfWeek;
+  oldDayOfWeek,
+  oldWeatherContentsElementHeight;
 function addScreenSizeToBodyElement() {
   bodyElement.setAttribute(
     "style",
@@ -91,6 +94,9 @@ function updateDateContent(data) {
     lunarText.innerHTML = dateLunarName + " / " + monthLunarName + " âm lịch";
   }
 }
+function setOldWeatherContentsElementHeight(data) {
+  oldWeatherContentsElementHeight = data;
+}
 function clockPulse() {
   let timeData = new Date();
   if (timeData.getMinutes() != oldClockForClockPulse) {
@@ -100,6 +106,15 @@ function clockPulse() {
       updateDateContent(timeData);
     }
   }
+  if (weatherContentsElement.offsetHeight != oldWeatherContentsElementHeight) {
+    setOldWeatherContentsElementHeight(weatherContentsElement.offsetHeight);
+    setHeightFormWeatherContentsElementToBoxTestElement(
+      weatherContentsElement.offsetHeight
+    );
+  }
+}
+function setHeightFormWeatherContentsElementToBoxTestElement(data) {
+  boxTestElement.setAttribute("style", "--height: " + data +"px");
 }
 addScreenSizeToBodyElement();
 bodyElement.onresize = addScreenSizeToBodyElement;
