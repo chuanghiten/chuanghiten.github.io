@@ -33,19 +33,23 @@ function updateDateContent(data) {
     ],
     dateSolarName,
     monthSolarName,
-    timeZone, lunarData, dateLunarName, monthLunarName;
+    timeZone,
+    lunarData,
+    dateLunarName,
+    monthLunarName;
   dayText.innerHTML = dayName[data.getDay()];
-//  if (data.getDate() <= 9) {
-//    dateSolarName = "0" + data.getDate();
-//  } else {
+  //  if (data.getDate() <= 9) {
+  //    dateSolarName = "0" + data.getDate();
+  //  } else {
   dateSolarName = data.getDate();
-//  }
-//  if (data.getMonth() + 1 <= 9) {
-//    monthSolarName = "0" + (1 + data.getMonth());
-//  } else {
+  //  }
+  //  if (data.getMonth() + 1 <= 9) {
+  //    monthSolarName = "0" + (1 + data.getMonth());
+  //  } else {
   monthSolarName = data.getMonth() + 1;
-//  }
-  solarText.innerHTML = dateSolarName + " / " + monthSolarName + " / " + data.getFullYear();
+  //  }
+  solarText.innerHTML =
+    dateSolarName + " / " + monthSolarName + " / " + data.getFullYear();
   timeZone =
     Number(
       data
@@ -70,19 +74,20 @@ function updateDateContent(data) {
     data.getFullYear(),
     timeZone
   );
-//  if (lunarData[0] <= 9) {
-//    dateLunarName = "0" + lunarData[0];
-//  } else {
+  //  if (lunarData[0] <= 9) {
+  //    dateLunarName = "0" + lunarData[0];
+  //  } else {
   dateLunarName = lunarData[0];
-//  }
-//  if (lunarData[1] + 1 <= 9) {
-//    monthLunarName = "0" + lunarData[1];
-//  } else {
+  //  }
+  //  if (lunarData[1] + 1 <= 9) {
+  //    monthLunarName = "0" + lunarData[1];
+  //  } else {
   monthLunarName = lunarData[1];
-//  }
-  if(data.getFullYear()!=lunarData[2]){
-    lunarText.innerHTML = dateLunarName + " / " + monthLunarName + " âm lịch " + lunarData[2];
-  }else{
+  //  }
+  if (data.getFullYear() != lunarData[2]) {
+    lunarText.innerHTML =
+      dateLunarName + " / " + monthLunarName + " âm lịch " + lunarData[2];
+  } else {
     lunarText.innerHTML = dateLunarName + " / " + monthLunarName + " âm lịch";
   }
 }
