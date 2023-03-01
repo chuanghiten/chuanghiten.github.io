@@ -84,7 +84,6 @@ html body .mainContents .dateContents {
   margin: 10rem 0 0 0;
   color: #fff;
   text-shadow: 0.1rem 0.1rem 0.1rem #000;
-  letter-spacing: 0.7rem;
 }
 html body .mainContents .dateContents .day {
   font-size: 7rem;
