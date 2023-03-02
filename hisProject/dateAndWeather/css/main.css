@@ -143,7 +143,7 @@ html body .mainContents .weatherContents .text .description {
 }
 html body .mainContents .weatherContents .icon {
   height: auto;
-  width: 20rem;
+  width: 18rem;
 }
 html body .mainContents .weatherContents .icon img {
   width: 100%;
