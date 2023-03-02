@@ -34,6 +34,18 @@
   font-weight: 900;
   src: url("../fonts/modulusPro/modulusProBlack.ttf");
 }
+@font-face {
+  font-family: "Number One Line";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/numberOneLine/numberOneLine.ttf");
+}
+@font-face {
+  font-family: "Number Cat";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/numberCat/numberCat.ttc");
+}
 * {
   margin: 0;
   padding: 0;
@@ -68,9 +80,13 @@ html body .background svg {
   height: auto;
   display: block;
 }
-html body .background .boxTest {
+html body .background svg * {
+  transform: translate(0, 1.5rem);
+}
+html body .background .backgroundFooter {
   width: 100%;
-  background: rgba(255, 0, 0, 0.5333333333);
+  height: var(--height);
+  background: #5e284f;
 }
 html body .mainContents {
   display: flex;
@@ -106,7 +122,32 @@ html body .mainContents .dateContents .calendar div.lunar {
   margin: 0.4rem 0 0 0;
 }
 html body .mainContents .weatherContents {
-  background: rgba(0, 255, 0, 0.5333333333);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem 5rem 2rem;
+}
+html body .mainContents .weatherContents .text {
+  color: #fff;
+}
+html body .mainContents .weatherContents .text .temperature {
+  font-size: 3.5rem;
+}
+html body .mainContents .weatherContents .text .temperature span {
+  font-size: 14rem;
+  font-weight: 900;
+  font-family: "Number One Line";
+}
+html body .mainContents .weatherContents .text .description {
+  font-size: 3.5rem;
+}
+html body .mainContents .weatherContents .icon {
+  height: auto;
+  width: 15rem;
+}
+html body .mainContents .weatherContents .icon img {
+  width: 100%;
+  heihht: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

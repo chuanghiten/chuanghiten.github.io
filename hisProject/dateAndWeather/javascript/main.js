@@ -3,7 +3,7 @@ var bodyElement = window.document.querySelector("body"),
   solarText = window.document.querySelector(".dateContents .calendar .solar"),
   lunarText = window.document.querySelector(".dateContents .calendar .lunar"),
   weatherContentsElement = window.document.querySelector(".weatherContents"),
-  boxTestElement = window.document.querySelector(".background .boxTest"),
+  backgroundFooterElement = window.document.querySelector(".background .backgroundFooter"),
   oldClockForClockPulse,
   oldDayOfWeek,
   oldWeatherContentsElementHeight;
@@ -108,13 +108,13 @@ function clockPulse() {
   }
   if (weatherContentsElement.offsetHeight != oldWeatherContentsElementHeight) {
     setOldWeatherContentsElementHeight(weatherContentsElement.offsetHeight);
-    setHeightFormWeatherContentsElementToBoxTestElement(
+    setHeightFormWeatherContentsElementToBackgroundFooterElement(
       weatherContentsElement.offsetHeight
     );
   }
 }
-function setHeightFormWeatherContentsElementToBoxTestElement(data) {
-  boxTestElement.setAttribute("style", "--height: " + data +"px");
+function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {
+	backgroundFooterElement.setAttribute("style", "--height: " + (data - 1.5) +"px");
 }
 addScreenSizeToBodyElement();
 bodyElement.onresize = addScreenSizeToBodyElement;

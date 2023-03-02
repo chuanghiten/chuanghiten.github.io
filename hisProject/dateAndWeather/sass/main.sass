@@ -28,6 +28,16 @@
 	font-style: normal
 	font-weight: 900
 	src: url("../fonts/modulusPro/modulusProBlack.ttf")
+@font-face
+	font-family: 'Number One Line'
+	font-style: normal
+	font-weight: 600
+	src: url("../fonts/numberOneLine/numberOneLine.ttf")
+@font-face
+	font-family: 'Number Cat'
+	font-style: normal
+	font-weight: 600
+	src: url("../fonts/numberCat/numberCat.ttc")
 *
 	margin: 0
 	padding: 0
@@ -59,11 +69,14 @@ html
 				width: 100%
 				height: auto
 				display: block
+				*
+					transform: translate(0, 1.5rem)
 				//*
 				//	width: 100%
-			.boxTest
+			.backgroundFooter
 				width: 100%
-				background: #f008
+				height: var(--height)
+				background: #5e284f
 		.mainContents
 			display: flex
 			flex-flow: nowrap column
@@ -92,4 +105,54 @@ html
 						&.lunar
 							margin: .4rem 0 0 0
 			.weatherContents
-				background: #0f08
+				//background: #0f00
+				//height: auto
+				//width: 100%
+				//padding: 0 2.5rem 10rem 2.5rem
+				//.temepratureAndIcon, .description
+				//	transform: translate(0, -3rem)
+				//.temperatureAndIcon
+				//	display: flex
+				//	justify-content: space-between
+				//	align-items: center
+				//	.temperature
+				//		font-size: 3.5rem
+				//		font-weight: 600
+				//		color: #fff
+				//		span
+				//			font-size: 14rem
+				//			font-weight: 900
+				//			font-family: 'Number One Line'
+				//	.icon
+				//		width: 15rem
+				//		height: auto
+				//		img
+				//			width: 100%
+				//			height: 100%
+				//.description
+				//	font-size: 3.5rem
+				//	color: #fff
+				//		margin: 2rem 0 0 0
+				display: flex
+				justify-content: space-between
+				align-items: center
+				padding: 0 2rem 5rem 2rem
+				.text
+					color: #fff
+					//background: #f00
+					.temperature
+						font-size: 3.5rem
+						span
+							font-size: 14rem
+							font-weight: 900
+							font-family: 'Number One Line'
+					.description
+						font-size: 3.5rem
+				.icon
+					height: auto
+					width: 15rem
+					img
+						width: 100%
+						heihht: 100%
+					
+					
