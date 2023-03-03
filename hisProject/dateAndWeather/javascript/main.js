@@ -128,11 +128,11 @@ function updateWeatherContents(temperature, descriptionText, icon) {
     descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[9];
     weatherIconElement.innerHTML =
       '<img src="./images/cloud1.svg" alt="cloud1">';
-  } else {
-    temperatureTextElement.innerHTML = "";
-    descriptionTextElement.innerHTML = "";
-    weatherIconElement.innerHTML = "";
-  }
+  } //else {
+  //   temperatureTextElement.innerHTML = "";
+  //   descriptionTextElement.innerHTML = "";
+  //   weatherIconElement.innerHTML = "";
+  // }
 }
 async function getWeatherData(lat, long) {
   // console.log("getting");
