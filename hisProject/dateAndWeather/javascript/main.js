@@ -112,15 +112,16 @@ function setOldWeatherContentsElementHeight(data) {
 function updateWeatherContents(temperature, descriptionText, icon) {
   if (temperature && descriptionText && icon) {
     temperatureTextElement.innerHTML =
-      "<span>" + (temperature - 273.15).toFixed(1) + "</span>℃";
+      "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
     descriptionTextElement.innerHTML = descriptionText;
-  } //else {
-  //   temperatureTextElement.innerHTML = "";
-  //   descriptionTextElement.innerHTML = "";
-  //   weatherIconElement.innerHTML = "";
-  // }
+  } else {
+    temperatureTextElement.innerHTML = "";
+    descriptionTextElement.innerHTML = "";
+    weatherIconElement.innerHTML = "";
+  }
 }
 async function getWeatherData(lat, long) {
+  // console.log("getting");
   weatherData = await fetch(
     "https:/" +
       "/api.openweathermap.org/data/2.5/weather?lat=" +
@@ -176,7 +177,19 @@ function clockPulse() {
       (timeData.getHours() == 16 && timeData.getMinutes() == 0)
     ) {
       if (window.navigator.onLine) {
-        window.navigator.geolocation.getCurrentPosition(getPosition);
+        if (latitude && longitude) {
+          getWeatherData(latitude, longitude);
+        } else {
+          window.navigator.geolocation.getCurrentPosition(getPosition);
+        }
+      } else {
+        window.addEventListener("online", () => {
+          if (latitude && longitude) {
+            getWeatherData(latitude, longitude);
+          } else {
+            window.navigator.geolocation.getCurrentPosition(getPosition);
+          }
+        });
       }
     }
   }
@@ -194,5 +207,17 @@ bodyElement.onclick = fullScreen;
 setInterval(clockPulse, 1);
 clockPulse();
 if (window.navigator.onLine) {
-  window.navigator.geolocation.getCurrentPosition(getPosition);
+  if (latitude && longitude) {
+    getWeatherData(latitude, longitude);
+  } else {
+    window.navigator.geolocation.getCurrentPosition(getPosition);
+  }
+} else {
+  window.addEventListener("online", () => {
+    if (latitude && longitude) {
+      getWeatherData(latitude, longitude);
+    } else {
+      window.navigator.geolocation.getCurrentPosition(getPosition);
+    }
+  });
 }
