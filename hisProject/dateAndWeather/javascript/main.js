@@ -13,6 +13,18 @@ var bodyElement = window.document.querySelector("body"),
     ".weatherContents .text .description"
   ),
   weatherIconElement = window.document.querySelector(".weatherContents .icon"),
+  weatherDescriptionThunderstorm = [
+    "Mưa giông nhẹ",
+    "Mưa giông",
+    "Mưa giông lớn",
+    "Giông nhẹ",
+    "Giông",
+    "Giông lớn",
+    "Giông ngắt quãng",
+    "Giông và mưa phùn nhẹ",
+    "Giông và mưa phùn",
+    "Giông và mưa phùn lớn",
+  ],
   oldClockForClockPulse,
   oldDayOfWeek,
   oldWeatherContentsElementHeight,
@@ -113,7 +125,9 @@ function updateWeatherContents(temperature, descriptionText, icon) {
   if (temperature && descriptionText && icon) {
     temperatureTextElement.innerHTML =
       "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
-    descriptionTextElement.innerHTML = descriptionText;
+    descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[9];
+    weatherIconElement.innerHTML =
+      '<img src="./images/cloud1.svg" alt="cloud1">';
   } else {
     temperatureTextElement.innerHTML = "";
     descriptionTextElement.innerHTML = "";
