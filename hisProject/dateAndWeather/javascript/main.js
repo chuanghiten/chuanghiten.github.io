@@ -114,11 +114,11 @@ function updateWeatherContents(temperature, descriptionText, icon) {
     temperatureTextElement.innerHTML =
       "<span>" + (temperature - 273.15).toFixed(1) + "</span>℃";
     descriptionTextElement.innerHTML = descriptionText;
-  } else {
-    temperatureTextElement.innerHTML = "";
-    descriptionTextElement.innerHTML = "";
-    weatherIconElement.innerHTML = "";
-  }
+  } //else {
+  //   temperatureTextElement.innerHTML = "";
+  //   descriptionTextElement.innerHTML = "";
+  //   weatherIconElement.innerHTML = "";
+  // }
 }
 async function getWeatherData(lat, long) {
   weatherData = await fetch(
