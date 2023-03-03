@@ -136,14 +136,66 @@ async function getWeatherData(lat, long) {
       }
       // console.log(data);
     )
-    .catch((error) => {
-      console.log(error);
-    });
-  updateWeatherContents(
-    weatherData.main.temp,
-    weatherData.weather[0].description,
-    weatherData.weather[0].id
-  );
+    .catch((error) => console.log(error));
+  console.log(weatherData);
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
+        "&appid=a54f9198d868a2a698d450de7cb80b45&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
+        "&appid=ce53f707aec2d95610f20b98cecc0571&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
+        "&appid=7c541caef5fc7467fc7267e2f75649a9&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
+  if (weatherData.cod != 429) {
+    updateWeatherContents(
+      weatherData.main.temp,
+      weatherData.weather[0].description,
+      weatherData.weather[0].id
+    );
+  }
 }
 function getPosition(data) {
   latitude = data.coords.latitude;
