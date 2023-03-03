@@ -3,10 +3,22 @@ var bodyElement = window.document.querySelector("body"),
   solarText = window.document.querySelector(".dateContents .calendar .solar"),
   lunarText = window.document.querySelector(".dateContents .calendar .lunar"),
   weatherContentsElement = window.document.querySelector(".weatherContents"),
-  backgroundFooterElement = window.document.querySelector(".background .backgroundFooter"),
+  backgroundFooterElement = window.document.querySelector(
+    ".background .backgroundFooter"
+  ),
+  temperatureTextElement = window.document.querySelector(
+    ".weatherContents .text .temperature"
+  ),
+  descriptionTextElement = window.document.querySelector(
+    ".weatherContents .text .description"
+  ),
+  weatherIconElement = window.document.querySelector(".weatherContents .icon"),
   oldClockForClockPulse,
   oldDayOfWeek,
-  oldWeatherContentsElementHeight;
+  oldWeatherContentsElementHeight,
+  latitude,
+  longitude,
+  weatherData;
 function addScreenSizeToBodyElement() {
   bodyElement.setAttribute(
     "style",
@@ -97,6 +109,47 @@ function updateDateContent(data) {
 function setOldWeatherContentsElementHeight(data) {
   oldWeatherContentsElementHeight = data;
 }
+function updateWeatherContents(temperature, descriptionText, icon) {
+  if (temperature && descriptionText && icon) {
+    temperatureTextElement.innerHTML =
+      "<span>" + (temperature - 273.15).toFixed(1) + "</span>℃";
+    descriptionTextElement.innerHTML = descriptionText;
+  } else {
+    temperatureTextElement.innerHTML = "";
+    descriptionTextElement.innerHTML = "";
+    weatherIconElement.innerHTML = "";
+  }
+}
+async function getWeatherData(lat, long) {
+  weatherData = await fetch(
+    "https:/" +
+      "/api.openweathermap.org/data/2.5/weather?lat=" +
+      lat +
+      "&lon=" +
+      long +
+      "&appid=5298f9131293054b9041c1008d027218&lang=en"
+  )
+    .then(
+      (data) => {
+        return data.json();
+      }
+      // console.log(data);
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+  updateWeatherContents(
+    weatherData.main.temp,
+    weatherData.weather[0].description,
+    weatherData.weather[0].id
+  );
+}
+function getPosition(data) {
+  latitude = data.coords.latitude;
+  longitude = data.coords.longitude;
+  getWeatherData(latitude, longitude);
+  // console.log(latitude + " " + longitude);
+}
 function clockPulse() {
   let timeData = new Date();
   if (timeData.getMinutes() != oldClockForClockPulse) {
@@ -112,12 +165,34 @@ function clockPulse() {
       weatherContentsElement.offsetHeight
     );
   }
+  if (
+    (timeData.getHours() >= 5 && timeData.getHours() <= 7) ||
+    (timeData.getHours() >= 11 && timeData.getHours() <= 13) ||
+    (timeData.getHours() >= 16 && timeData.getHours() <= 23)
+  ) {
+    if (
+      (timeData.getHours() == 5 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 11 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 16 && timeData.getMinutes() == 0)
+    ) {
+      if (window.navigator.onLine) {
+        window.navigator.geolocation.getCurrentPosition(getPosition);
+      }
+    }
+  }
 }
 function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {
-	backgroundFooterElement.setAttribute("style", "--height: " + (data - 1.5) +"px");
+  backgroundFooterElement.setAttribute(
+    "style",
+    "--height: " + (data - 1.5) + "px"
+  );
 }
+updateWeatherContents(false, false, false);
 addScreenSizeToBodyElement();
 bodyElement.onresize = addScreenSizeToBodyElement;
 bodyElement.onclick = fullScreen;
 setInterval(clockPulse, 1);
 clockPulse();
+if (window.navigator.onLine) {
+  window.navigator.geolocation.getCurrentPosition(getPosition);
+}
