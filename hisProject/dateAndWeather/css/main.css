@@ -55,6 +55,7 @@
   position: relative;
   font-size: 16px;
   font-family: "Modulus Pro";
+  transition: all 0.75s ease;
 }
 
 html {
