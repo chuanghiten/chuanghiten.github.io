@@ -21,10 +21,60 @@ var bodyElement = window.document.querySelector("body"),
     "Giông",
     "Giông lớn",
     "Giông ngắt quãng",
-    "Giông và mưa phùn nhẹ",
-    "Giông và mưa phùn",
-    "Giông và mưa phùn lớn",
+    "Giông và một ít mưa bay",
+    "Mưa bay và giông",
+    "Mưa bụi và giông",
   ],
+  weatherDescriptionDrizzle = [
+    "Mưa bay nhẹ",
+    "Mưa bay",
+    "Mưa bụi",
+    "Mưa phùn nhẹ",
+    "Mưa phùn",
+    "Mưa nặng hạt",
+    "Mưa phùn nặng hạt",
+    "Mưa phùn và một chút mưa nặng hạt",
+    "Mưa phùn và mưa nặng hạt",
+    "Mưa rào nhỏ",
+  ],
+  weatherDescriptionRain = [
+    "Mưa nhẹ",
+    "Mưa vừa",
+    "Mưa lớn",
+    "Mưa rất lớn",
+    "Mưa to",
+    "Mưa lạnh",
+    "Mưa phùn và mưa nhẹ",
+    "Mưa rào",
+    "Mưa rào lớn",
+    "Mưa rào ngắt quãng",
+  ],
+  weatherDescriptionSnow = [
+    "Tuyết nhẹ",
+    "Tuyết",
+    "Tuyết dày",
+    "Mưa đá",
+    "Mưa đá nhẹ",
+    "Mưa đá",
+    "Mưa và tuyết",
+    "Mưa và tuyết dày",
+    "Mưa và tuyết mỏng",
+    "Mưa và tuyết lớn",
+  ],
+  weatherDescriptionAtmosphere = [
+    "Sương ",
+    "Sương mờ",
+    "Sương mù",
+    "Bão cát",
+    "Sương",
+    "Cát",
+    "Bụi đất",
+    "Tro núi lửa",
+    "Gió to",
+    "Cuồng phong",
+  ],
+  weatherDescriptionClear = "Quang đãng",
+  weatherDescriptionClouds = ["Ít mây", "Mây rải rác", "Nhiều mây", "Mây dày"],
   oldClockForClockPulse,
   oldDayOfWeek,
   oldWeatherContentsElementHeight,
@@ -121,18 +171,128 @@ function updateDateContent(data) {
 function setOldWeatherContentsElementHeight(data) {
   oldWeatherContentsElementHeight = data;
 }
-function updateWeatherContents(temperature, descriptionText, icon) {
-  if (temperature && descriptionText && icon) {
+function updateWeatherContents(temperature, icon) {
+  if (temperature && icon) {
     temperatureTextElement.innerHTML =
       "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
-    descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[9];
+    if (icon == 200) {
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[0];
+    } else if (icon == 201){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[1];
+    } else if (icon == 202){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[2];
+    } else if (icon == 210){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[3];
+    } else if (icon == 211){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[4];
+    } else if (icon == 212){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[5];
+    } else if (icon == 221){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[6];
+    } else if (icon == 230){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[7];
+    } else if (icon == 231){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[8];
+    } else if (icon == 232){
+      descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[9];
+    } else if (icon == 300){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[0];
+    } else if (icon == 301){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[1];
+    } else if (icon == 302){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[2];
+    } else if (icon == 310){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[3];
+    } else if (icon == 311){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[4];
+    } else if (icon == 312){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[5];
+    } else if (icon == 313){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[6];
+    } else if (icon == 314){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[7];
+    } else if (icon == 321){
+      descriptionTextElement.innerHTML = weatherDescriptionDrizzle[8];
+    } else if (icon == 500){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[0];
+    } else if (icon == 501){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[1];
+    } else if (icon == 502){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[2];
+    } else if (icon == 503){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[3];
+    } else if (icon == 504){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[4];
+    } else if (icon == 511){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[5];
+    } else if (icon == 520){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[6];
+    } else if (icon == 521){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[7];
+    } else if (icon == 522){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[8];
+    } else if (icon == 531){
+      descriptionTextElement.innerHTML = weatherDescriptionRain[9];
+    } else if (icon == 600){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[0];
+    } else if (icon == 601){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[1];
+    } else if (icon == 602){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[2];
+    } else if (icon == 611){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[3];
+    } else if (icon == 612){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[4];
+    } else if (icon == 613){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[5];
+    } else if (icon == 615){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[6];
+    } else if (icon == 616){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[7];
+    } else if (icon == 620){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[8];
+    } else if (icon == 621){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[9];
+    } else if (icon == 622){
+      descriptionTextElement.innerHTML = weatherDescriptionSnow[10];
+    } else if (icon == 701){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[0];
+    } else if (icon == 711){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[1];
+    } else if (icon == 721){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[2];
+    } else if (icon == 731){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[3];
+    } else if (icon == 741){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[4];
+    } else if (icon == 751){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[5];
+    } else if (icon == 761){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[6];
+    } else if (icon == 762){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[7];
+    } else if (icon == 771){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[8];
+    } else if (icon == 781){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[9];
+    } else if (icon == 800){
+      descriptionTextElement.innerHTML = weatherDescriptionClear;
+    } else if (icon == 801){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[0];
+    } else if (icon == 802){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[1];
+    } else if (icon == 803){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[2];
+    } else if (icon == 804){
+      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[3];
+    }
     weatherIconElement.innerHTML =
       '<img src="./images/cloud1.svg" alt="cloud1">';
-  } //else {
-  //   temperatureTextElement.innerHTML = "";
-  //   descriptionTextElement.innerHTML = "";
-  //   weatherIconElement.innerHTML = "";
-  // }
+  } else {
+    temperatureTextElement.innerHTML = "";
+    descriptionTextElement.innerHTML = "";
+    weatherIconElement.innerHTML = "";
+  }
 }
 async function getWeatherData(lat, long) {
   // console.log("getting");
@@ -206,7 +366,6 @@ async function getWeatherData(lat, long) {
   if (weatherData.cod != 429) {
     updateWeatherContents(
       weatherData.main.temp,
-      weatherData.weather[0].description,
       weatherData.weather[0].id
     );
   }
