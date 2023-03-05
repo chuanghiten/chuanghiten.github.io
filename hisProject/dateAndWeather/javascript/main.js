@@ -12,7 +12,10 @@ var bodyElement = window.document.querySelector("body"),
   descriptionTextElement = window.document.querySelector(
     ".weatherContents .text .description"
   ),
-  weatherIconElement = window.document.querySelector(".weatherContents .icon"),screenOffElement = window.document.querySelector(".screenOff"),mainContentsElement = window.document.querySelector(".mainContents"),backgroundElement=window.document.querySelector(".background"),
+  weatherIconElement = window.document.querySelector(".weatherContents .icon"),
+  screenOffElement = window.document.querySelector(".screenOff"),
+  mainContentsElement = window.document.querySelector(".mainContents"),
+  backgroundElement = window.document.querySelector(".background"),
   weatherDescriptionThunderstorm = [
     "Mưa giông nhẹ",
     "Mưa giông",
@@ -80,7 +83,9 @@ var bodyElement = window.document.querySelector("body"),
   oldWeatherContentsElementHeight,
   latitude,
   longitude,
-  weatherData;
+  weatherData,
+  screenStatus,
+  keepScreenOnStatus = 0;
 function addScreenSizeToBodyElement() {
   bodyElement.setAttribute(
     "style",
@@ -481,6 +486,28 @@ function getPosition(data) {
   getWeatherData(latitude, longitude);
   // console.log(latitude + " " + longitude);
 }
+function setScreenStatus(status) {
+  screenStatus = status;
+}
+function offScreen() {
+  if (screenStatus != 0) {
+    setScreenStatus(0);
+    screenOffElement.setAttribute("style", "display: block");
+    mainContentsElement.setAttribute("style", "display: none");
+    backgroundElement.setAttribute("style", "display: none");
+  }
+}
+function onScreen() {
+  if (screenStatus != 1) {
+    setScreenStatus(1);
+    screenOffElement.removeAttribute("style");
+    mainContentsElement.removeAttribute("style");
+    backgroundElement.removeAttribute("style");
+  }
+}
+function setKeepScreenOnStatus(status) {
+  keepScreenOnStatus = status;
+}
 function clockPulse() {
   let timeData = new Date();
   if (timeData.getMinutes() != oldClockForClockPulse) {
@@ -501,6 +528,7 @@ function clockPulse() {
     (timeData.getHours() >= 11 && timeData.getHours() <= 13) ||
     (timeData.getHours() >= 16 && timeData.getHours() <= 23)
   ) {
+    onScreen();
     if (
       (timeData.getHours() == 5 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 11 && timeData.getMinutes() == 0) ||
@@ -523,9 +551,18 @@ function clockPulse() {
       }
     }
   } else {
-  	screenOffElement.setAttribute("style","display: block");
-  	mainContentsElement.setAttribute("style","display: none");
-  	backgroundElement.setAttribute("style","display: none")
+    if (keepScreenOnStatus == 0) {
+      offScreen();
+    }
+  }
+  if (
+    keepScreenOnStatus == 1 &&
+    timeData.getHours() == 0 &&
+    timeData.getMinutes() == 0
+  ) {
+    if (keepScreenOnStatus != 0) {
+      setKeepScreenOnStatus(0);
+    }
   }
 }
 function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {
@@ -555,3 +592,7 @@ if (window.navigator.onLine) {
     }
   });
 }
+screenOffElement.addEventListener("click", () => {
+  setKeepScreenOnStatus(1);
+  onScreen();
+});
