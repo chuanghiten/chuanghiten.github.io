@@ -499,7 +499,7 @@ async function getWeatherData(lat, long) {
   }
   if (weatherData.cod != 429) {
     updateWeatherContents(weatherData.main.temp, weatherData.weather[0].id);
-    setGetWeatherStatus(0);
+    // setGetWeatherStatus(0);
   }
 }
 function getPosition(data) {
@@ -574,7 +574,10 @@ function clockPulse() {
     if (
       (timeData.getHours() == 5 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 11 && timeData.getMinutes() == 0) ||
-      (timeData.getHours() == 16 && timeData.getMinutes() == 0)
+      (timeData.getHours() == 16 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 18 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 20 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 22 && timeData.getMinutes() == 0)
     ) {
       getWeather();
     } else {
@@ -589,10 +592,7 @@ function clockPulse() {
         (timeData.getHours() == 3 && timeData.getMinutes() == 0) ||
         (timeData.getHours() == 8 && timeData.getMinutes() == 0) ||
         (timeData.getHours() == 9 && timeData.getMinutes() == 30) ||
-        (timeData.getHours() == 13 && timeData.getMinutes() == 30) ||
-        (timeData.getHours() == 18 && timeData.getMinutes() == 0) ||
-        (timeData.getHours() == 20 && timeData.getMinutes() == 0) ||
-        (timeData.getHours() == 22 && timeData.getMinutes() == 0)
+        (timeData.getHours() == 13 && timeData.getMinutes() == 30)
       ) {
         getWeather();
       } else {
