@@ -470,6 +470,57 @@ async function getWeatherData(lat, long) {
         lat +
         "&lon=" +
         long +
+        "&appid=b4a02f3420e98aa54f5a688d40ce527b&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
+        "&appid=c34d0b30de706ed953190741dcd852f2&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
+        "&appid=9a0393c2b96e7e3bba88c9423b3ef185&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
         "&appid=ce53f707aec2d95610f20b98cecc0571&lang=en"
     )
       .then(
