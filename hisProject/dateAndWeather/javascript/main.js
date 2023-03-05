@@ -85,7 +85,8 @@ var bodyElement = window.document.querySelector("body"),
   longitude,
   weatherData,
   screenStatus,
-  keepScreenOnStatus = 0;
+  keepScreenOnStatus = 0,
+  getWeatherStatus;
 function addScreenSizeToBodyElement() {
   bodyElement.setAttribute(
     "style",
@@ -407,6 +408,9 @@ function updateWeatherContents(temperature, icon) {
     weatherIconElement.innerHTML = "";
   }
 }
+function setGetWeatherStatus(status) {
+  getWeatherStatus = status;
+}
 async function getWeatherData(lat, long) {
   // console.log("getting");
   weatherData = await fetch(
@@ -415,7 +419,7 @@ async function getWeatherData(lat, long) {
       lat +
       "&lon=" +
       long +
-      "&appid=5298f9131293054b9041c1008d027218&lang=en"
+      "&appid=5791ae1497531495f4b7dd7c6ca7e084&lang=en"
   )
     .then(
       (data) => {
@@ -424,7 +428,24 @@ async function getWeatherData(lat, long) {
       // console.log(data);
     )
     .catch((error) => console.log(error));
-  console.log(weatherData);
+  // console.log(weatherData);
+  if (weatherData.cod == 429 || weatherData.cod == 401) {
+    weatherData = await fetch(
+      "https:/" +
+        "/api.openweathermap.org/data/2.5/weather?lat=" +
+        lat +
+        "&lon=" +
+        long +
+        "&appid=3d954b7aa57571959e76c053ec2c6e11&lang=en"
+    )
+      .then(
+        (data) => {
+          return data.json();
+        }
+        // console.log(data);
+      )
+      .catch((error) => console.log(error));
+  }
   if (weatherData.cod == 429 || weatherData.cod == 401) {
     weatherData = await fetch(
       "https:/" +
@@ -478,6 +499,7 @@ async function getWeatherData(lat, long) {
   }
   if (weatherData.cod != 429) {
     updateWeatherContents(weatherData.main.temp, weatherData.weather[0].id);
+    setGetWeatherStatus(0);
   }
 }
 function getPosition(data) {
@@ -508,6 +530,26 @@ function onScreen() {
 function setKeepScreenOnStatus(status) {
   keepScreenOnStatus = status;
 }
+function getWeather() {
+  if (getWeatherStatus != 1) {
+    setGetWeatherStatus(1);
+    if (window.navigator.onLine) {
+      if (latitude && longitude) {
+        getWeatherData(latitude, longitude);
+      } else {
+        window.navigator.geolocation.getCurrentPosition(getPosition);
+      }
+    } else {
+      window.addEventListener("online", () => {
+        if (latitude && longitude) {
+          getWeatherData(latitude, longitude);
+        } else {
+          window.navigator.geolocation.getCurrentPosition(getPosition);
+        }
+      });
+    }
+  }
+}
 function clockPulse() {
   let timeData = new Date();
   if (timeData.getMinutes() != oldClockForClockPulse) {
@@ -534,25 +576,28 @@ function clockPulse() {
       (timeData.getHours() == 11 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 16 && timeData.getMinutes() == 0)
     ) {
-      if (window.navigator.onLine) {
-        if (latitude && longitude) {
-          getWeatherData(latitude, longitude);
-        } else {
-          window.navigator.geolocation.getCurrentPosition(getPosition);
-        }
-      } else {
-        window.addEventListener("online", () => {
-          if (latitude && longitude) {
-            getWeatherData(latitude, longitude);
-          } else {
-            window.navigator.geolocation.getCurrentPosition(getPosition);
-          }
-        });
-      }
+      getWeather();
+    } else {
+      setGetWeatherStatus(0);
     }
   } else {
     if (keepScreenOnStatus == 0) {
       offScreen();
+    } else {
+      if (
+        (timeData.getHours() == 1 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 3 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 8 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 9 && timeData.getMinutes() == 30) ||
+        (timeData.getHours() == 13 && timeData.getMinutes() == 30) ||
+        (timeData.getHours() == 18 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 20 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 22 && timeData.getMinutes() == 0)
+      ) {
+        getWeather();
+      } else {
+        setGetWeatherStatus(0);
+      }
     }
   }
   if (
