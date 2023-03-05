@@ -12,7 +12,7 @@ var bodyElement = window.document.querySelector("body"),
   descriptionTextElement = window.document.querySelector(
     ".weatherContents .text .description"
   ),
-  weatherIconElement = window.document.querySelector(".weatherContents .icon"),
+  weatherIconElement = window.document.querySelector(".weatherContents .icon"),screenOffElement = window.document.querySelector(".screenOff"),mainContentsElement = window.document.querySelector(".mainContents"),backgroundElement=window.document.querySelector(".background"),
   weatherDescriptionThunderstorm = [
     "Mưa giông nhẹ",
     "Mưa giông",
@@ -522,6 +522,10 @@ function clockPulse() {
         });
       }
     }
+  } else {
+  	screenOffElement.setAttribute("style","display: block");
+  	mainContentsElement.setAttribute("style","display: none");
+  	backgroundElement.setAttribute("style","display: none")
   }
 }
 function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {

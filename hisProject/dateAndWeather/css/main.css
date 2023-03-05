@@ -61,7 +61,7 @@
 html {
   font-size: 62.5%;
 }
-html body .background, html body .mainContents {
+html body .background, html body .mainContents, html body .screenOff {
   width: var(--innerWidth, 100%);
   height: var(--innerHeight, 216rem);
 }
@@ -75,6 +75,7 @@ html body .background {
   align-items: center;
   background: linear-gradient(to bottom, #dd1c5d, #e63f3c);
   flex-flow: nowrap column;
+  z-index: -1;
 }
 html body .background svg {
   width: 100%;
@@ -93,6 +94,7 @@ html body .mainContents {
   display: flex;
   flex-flow: nowrap column;
   justify-content: space-between;
+  margin: auto;
 }
 html body .mainContents .dateContents, html body .mainContents .weatherContents {
   width: 100%;
@@ -148,7 +150,13 @@ html body .mainContents .weatherContents .icon {
 }
 html body .mainContents .weatherContents .icon img {
   width: 100%;
-  heihht: 100%;
+  height: 100%;
+}
+html body .screenOff {
+  display: none;
+  background: #000;
+  position: absolute;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=main.css.map */
