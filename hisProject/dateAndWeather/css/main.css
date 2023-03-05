@@ -61,6 +61,9 @@
 html {
   font-size: 62.5%;
 }
+html body {
+  background: #000;
+}
 html body .background, html body .mainContents, html body .screenOff {
   width: var(--innerWidth, 100%);
   height: var(--innerHeight, 216rem);
