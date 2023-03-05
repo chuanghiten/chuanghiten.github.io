@@ -177,117 +177,225 @@ function updateWeatherContents(temperature, icon) {
       "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
     if (icon == 200) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[0];
-    } else if (icon == 201){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+    } else if (icon == 201) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[1];
-    } else if (icon == 202){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+    } else if (icon == 202) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[2];
-    } else if (icon == 210){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+    } else if (icon == 210) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[3];
-    } else if (icon == 211){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
+    } else if (icon == 211) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[4];
-    } else if (icon == 212){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
+    } else if (icon == 212) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[5];
-    } else if (icon == 221){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
+    } else if (icon == 221) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[6];
-    } else if (icon == 230){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
+    } else if (icon == 230) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[7];
-    } else if (icon == 231){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+    } else if (icon == 231) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[8];
-    } else if (icon == 232){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+    } else if (icon == 232) {
       descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[9];
-    } else if (icon == 300){
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+    } else if (icon == 300) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[0];
-    } else if (icon == 301){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
+    } else if (icon == 301) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[1];
-    } else if (icon == 302){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
+    } else if (icon == 302) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[2];
-    } else if (icon == 310){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
+    } else if (icon == 310) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[3];
-    } else if (icon == 311){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
+    } else if (icon == 311) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[4];
-    } else if (icon == 312){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
+    } else if (icon == 312) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[5];
-    } else if (icon == 313){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
+    } else if (icon == 313) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[6];
-    } else if (icon == 314){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
+    } else if (icon == 314) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[7];
-    } else if (icon == 321){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
+    } else if (icon == 321) {
       descriptionTextElement.innerHTML = weatherDescriptionDrizzle[8];
-    } else if (icon == 500){
+      weatherIconElement.innerHTML =
+        '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
+    } else if (icon == 500) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[0];
-    } else if (icon == 501){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain1.svg" alt="rain1.svg">';
+    } else if (icon == 501) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[1];
-    } else if (icon == 502){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain1.svg" alt="rain1.svg">';
+    } else if (icon == 502) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[2];
-    } else if (icon == 503){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain1.svg" alt="rain1.svg">';
+    } else if (icon == 503) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[3];
-    } else if (icon == 504){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain2.svg" alt="rain2.svg">';
+    } else if (icon == 504) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[4];
-    } else if (icon == 511){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain2.svg" alt="rain2.svg">';
+    } else if (icon == 511) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[5];
-    } else if (icon == 520){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 520) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[6];
-    } else if (icon == 521){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain3.svg" alt="rain3.svg">';
+    } else if (icon == 521) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[7];
-    } else if (icon == 522){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain3.svg" alt="rain3.svg">';
+    } else if (icon == 522) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[8];
-    } else if (icon == 531){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain3.svg" alt="rain3.svg">';
+    } else if (icon == 531) {
       descriptionTextElement.innerHTML = weatherDescriptionRain[9];
-    } else if (icon == 600){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rain3.svg" alt="rain3.svg">';
+    } else if (icon == 600) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[0];
-    } else if (icon == 601){
+      weatherIconElement.innerHTML =
+        '<img src="./images/snow1.svg" alt="snow1.svg">';
+    } else if (icon == 601) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[1];
-    } else if (icon == 602){
+      weatherIconElement.innerHTML =
+        '<img src="./images/snow1.svg" alt="snow1.svg">';
+    } else if (icon == 602) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[2];
-    } else if (icon == 611){
+      weatherIconElement.innerHTML =
+        '<img src="./images/snow2.svg" alt="snow2.svg">';
+    } else if (icon == 611) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[3];
-    } else if (icon == 612){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 612) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[4];
-    } else if (icon == 613){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 613) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[5];
-    } else if (icon == 615){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 615) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[6];
-    } else if (icon == 616){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 616) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[7];
-    } else if (icon == 620){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 620) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[8];
-    } else if (icon == 621){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 621) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[9];
-    } else if (icon == 622){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 622) {
       descriptionTextElement.innerHTML = weatherDescriptionSnow[10];
-    } else if (icon == 701){
+      weatherIconElement.innerHTML =
+        '<img src="./images/rainIce.svg" alt="rainIce.svg">';
+    } else if (icon == 701) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[0];
-    } else if (icon == 711){
+      weatherIconElement.innerHTML =
+        '<img src="./images/atmosphere.svg" alt="atmosphere.svg">';
+    } else if (icon == 711) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[1];
-    } else if (icon == 721){
+      weatherIconElement.innerHTML =
+        '<img src="./images/atmosphere.svg" alt="atmosphere.svg">';
+    } else if (icon == 721) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[2];
-    } else if (icon == 731){
+      weatherIconElement.innerHTML =
+        '<img src="./images/atmosphere.svg" alt="atmosphere.svg">';
+    } else if (icon == 731) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[3];
-    } else if (icon == 741){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 741) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[4];
-    } else if (icon == 751){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 751) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[5];
-    } else if (icon == 761){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 761) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[6];
-    } else if (icon == 762){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 762) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[7];
-    } else if (icon == 771){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 771) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[8];
-    } else if (icon == 781){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 781) {
       descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[9];
-    } else if (icon == 800){
+      weatherIconElement.innerHTML =
+        '<img src="./images/undefined.svg" alt="undefined.svg">';
+    } else if (icon == 800) {
       descriptionTextElement.innerHTML = weatherDescriptionClear;
-    } else if (icon == 801){
-      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[0];
-    } else if (icon == 802){
-      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[1];
-    } else if (icon == 803){
-      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[2];
-    } else if (icon == 804){
-      descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[3];
+      weatherIconElement.innerHTML =
+        '<img src="./images/clearSky.svg" alt="clearSky.svg">';
+    } else if (icon == 801) {
+      descriptionTextElement.innerHTML = weatherDescriptionClouds[0];
+      weatherIconElement.innerHTML =
+        '<img src="./images/cloud1.svg" alt="cloud1.svg">';
+    } else if (icon == 802) {
+      descriptionTextElement.innerHTML = weatherDescriptionClouds[1];
+      weatherIconElement.innerHTML =
+        '<img src="./images/cloud1.svg" alt="cloud1.svg">';
+    } else if (icon == 803) {
+      descriptionTextElement.innerHTML = weatherDescriptionClouds[2];
+      weatherIconElement.innerHTML =
+        '<img src="./images/cloud2.svg" alt="cloud2.svg">';
+    } else if (icon == 804) {
+      descriptionTextElement.innerHTML = weatherDescriptionClouds[3];
+      weatherIconElement.innerHTML =
+        '<img src="./images/cloud2.svg" alt="cloud2.svg">';
     }
-    weatherIconElement.innerHTML =
-      '<img src="./images/cloud1.svg" alt="cloud1">';
   } else {
     temperatureTextElement.innerHTML = "";
     descriptionTextElement.innerHTML = "";
@@ -364,10 +472,7 @@ async function getWeatherData(lat, long) {
       .catch((error) => console.log(error));
   }
   if (weatherData.cod != 429) {
-    updateWeatherContents(
-      weatherData.main.temp,
-      weatherData.weather[0].id
-    );
+    updateWeatherContents(weatherData.main.temp, weatherData.weather[0].id);
   }
 }
 function getPosition(data) {
