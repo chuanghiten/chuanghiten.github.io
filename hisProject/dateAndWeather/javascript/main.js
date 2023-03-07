@@ -692,3 +692,6 @@ screenOffElement.addEventListener("click", () => {
   setKeepScreenOnStatus(1);
   onScreen();
 });
+// fetch(`/.netlify/functions/fontsFamily?name="nam"`).then((data) =>
+//   console.log(data)
+// );
