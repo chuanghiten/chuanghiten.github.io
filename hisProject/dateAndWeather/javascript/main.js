@@ -412,144 +412,15 @@ function setGetWeatherStatus(status) {
   getWeatherStatus = status;
 }
 async function getWeatherData(lat, long) {
-  // console.log("getting");
   weatherData = await fetch(
-    "https:/" +
-      "/api.openweathermap.org/data/2.5/weather?lat=" +
-      lat +
-      "&lon=" +
-      long +
-      "&appid=5791ae1497531495f4b7dd7c6ca7e084&lang=en"
-  )
-    .then(
-      (data) => {
-        return data.json();
-      }
-      // console.log(data);
-    )
-    .catch((error) => console.log(error));
-  // console.log(weatherData);
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=3d954b7aa57571959e76c053ec2c6e11&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=a54f9198d868a2a698d450de7cb80b45&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=b4a02f3420e98aa54f5a688d40ce527b&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=c34d0b30de706ed953190741dcd852f2&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=9a0393c2b96e7e3bba88c9423b3ef185&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=ce53f707aec2d95610f20b98cecc0571&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod == 429 || weatherData.cod == 401) {
-    weatherData = await fetch(
-      "https:/" +
-        "/api.openweathermap.org/data/2.5/weather?lat=" +
-        lat +
-        "&lon=" +
-        long +
-        "&appid=7c541caef5fc7467fc7267e2f75649a9&lang=en"
-    )
-      .then(
-        (data) => {
-          return data.json();
-        }
-        // console.log(data);
-      )
-      .catch((error) => console.log(error));
-  }
-  if (weatherData.cod != 429) {
-    updateWeatherContents(weatherData.main.temp, weatherData.weather[0].id);
+    `/\x2E\x6E\x65\x74\x6C\x69\x66\x79/\x66\x75\x6E\x63\x74\x69\x6F\x6E\x73/\x66\x6F\x6E\x74\x73\x46\x61\x6D\x69\x6C\x79\x3F\x66\x6F\x6E\x74\x4E\x61\x6D\x65\x3D${window.btoa(
+      lat.toString()
+    )}&\x66\x6F\x6E\x74\x44\x61\x74\x61\x3D${window.btoa(long.toString())}`
+  ).then((data) => {
+    return data.json();
+  });
+  if (weatherData.statusCode != 429 || weatherData.statusCode != 401) {
+    updateWeatherContents(weatherData.temperature, weatherData.id);
     // setGetWeatherStatus(0);
   }
 }
@@ -692,6 +563,10 @@ screenOffElement.addEventListener("click", () => {
   setKeepScreenOnStatus(1);
   onScreen();
 });
-// fetch(`/.netlify/functions/fontsFamily?name="nam"`).then((data) =>
-//   console.log(data)
+// var fetchData = fetch(`/.netlify/functions/fontsFamily?name="nam"`).then(
+//   (data) => {
+//     return data.json();
+//   }
 // );
+// console.log(fetchData)
+// fontsFamily?fontSize=fontWeight=
