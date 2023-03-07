@@ -30,9 +30,14 @@ const handler = async (event) => {
       });
       apiOrder += 1;
     }
+    console.log(weather);
     return {
       statusCode: 200,
-      body: JSON.stringify({statusCode: weather.cod,temperature: weather.main.temp, id: weather.weather[0].id}),
+      body: JSON.stringify({
+        statusCode: weather.cod,
+        temperature: weather.main.temp,
+        id: weather.weather[0].id,
+      }),
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,
