@@ -2,9 +2,7 @@
 const handler = async (event) => {
   try {
     const { data } = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${atob(
-        event.queryStringParameters.fontName
-      )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
+      `https://api.openweathermap.org/data/2.5/weather?lat=21&lon=105&appid=${
         process.env.API_SECRET1
       }&lang=en`
     );
