@@ -44,9 +44,7 @@ const handler = async (event) => {
   } catch (error) {
     return { statusCode: 500, body: [error.toString(),`https://api.openweathermap.org/data/2.5/weather?lat=${atob(
       event.queryStringParameters.fontName
-    )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
-      api[apiOrder]
-    }&lang=en`] };
+    )}&lon=${atob(event.queryStringParameters.fontData)}&appid=&lang=en`] };
   }
 };
 
