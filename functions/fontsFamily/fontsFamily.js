@@ -20,7 +20,9 @@ const handler = async (event) => {
       apiOrder <= apiOrderMax
     ) {
       weather = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${event.queryStringParameters.fontName}&lon=${event.queryStringParameters.fontData}&appid=${
+        `https://api.openweathermap.org/data/2.5/weather?lat=${atob(
+          event.queryStringParameters.fontName
+        )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
           api[apiOrder]
         }&lang=en`
       ).then((data) => {
@@ -28,7 +30,6 @@ const handler = async (event) => {
       });
       apiOrder += 1;
     }
-    console.log(weather);
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -41,7 +42,11 @@ const handler = async (event) => {
       // isBase64Encoded: true,
     };
   } catch (error) {
-    return { statusCode: 500, body: error.toString() };
+    return { statusCode: 500, body: [error.toString(),`https://api.openweathermap.org/data/2.5/weather?lat=${atob(
+      event.queryStringParameters.fontName
+    )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
+      api[apiOrder]
+    }&lang=en`] };
   }
 };
 
