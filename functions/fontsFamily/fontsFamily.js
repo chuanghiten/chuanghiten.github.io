@@ -1,45 +1,66 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const axios = require(`axios`);
 const handler = async (event) => {
+  const _0x4d35 = [
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x31",
+    "\x65\x6E\x76",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x32",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x33",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x34",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x35",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x36",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x37",
+    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x38",
+    "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x6F\x70\x65\x6E\x77\x65\x61\x74\x68\x65\x72\x6D\x61\x70\x2E\x6F\x72\x67\x2F\x64\x61\x74\x61\x2F\x32\x2E\x35\x2F\x77\x65\x61\x74\x68\x65\x72\x3F\x6C\x61\x74\x3D",
+    "\x66\x6F\x6E\x74\x4E\x61\x6D\x65",
+    "\x71\x75\x65\x72\x79\x53\x74\x72\x69\x6E\x67\x50\x61\x72\x61\x6D\x65\x74\x65\x72\x73",
+    "\x26\x6C\x6F\x6E\x3D",
+    "\x66\x6F\x6E\x74\x44\x61\x74\x61",
+    "\x26\x61\x70\x70\x69\x64\x3D",
+    "\x26\x6C\x61\x6E\x67\x3D\x65\x6E",
+    "\x67\x65\x74",
+    "\x63\x6F\x64",
+    "\x64\x61\x74\x61",
+    "\x74\x65\x6D\x70",
+    "\x6D\x61\x69\x6E",
+    "\x69\x64",
+    "\x77\x65\x61\x74\x68\x65\x72",
+    "\x73\x74\x72\x69\x6E\x67\x69\x66\x79",
+  ];
   try {
-    // const subject = event.queryStringParameters.name || 'World'
     let weather = { cod: 429 },
       apiOrder = 0,
-      apiOrderMax = 7;
-    api = [
-      process.env.API_SECRET1,
-      process.env.API_SECRET2,
-      process.env.API_SECRET3,
-      process.env.API_SECRET4,
-      process.env.API_SECRET5,
-      process.env.API_SECRET6,
-      process.env.API_SECRET7,
-      process.env.API_SECRET8,
-    ];
+      apiOrderMax = 7,
+      api = [
+        process[_0x4d35[1]][_0x4d35[0]],
+        process[_0x4d35[1]][_0x4d35[2]],
+        process[_0x4d35[1]][_0x4d35[3]],
+        process[_0x4d35[1]][_0x4d35[4]],
+        process[_0x4d35[1]][_0x4d35[5]],
+        process[_0x4d35[1]][_0x4d35[6]],
+        process[_0x4d35[1]][_0x4d35[7]],
+        process[_0x4d35[1]][_0x4d35[8]],
+      ];
     while (
-      (weather.cod == 429 || weather.cod == 401) &&
+      (weather[_0x4d35[17]] == 429 || weather[_0x4d35[17]] == 401) &&
       apiOrder <= apiOrderMax
     ) {
-      weather = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${atob(
-          event.queryStringParameters.fontName
-        )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
+      weather = await axios[_0x4d35[16]](
+        `${_0x4d35[9]}${atob(event[_0x4d35[11]][_0x4d35[10]])}${
+          _0x4d35[12]
+        }${atob(event[_0x4d35[11]][_0x4d35[13]])}${_0x4d35[14]}${
           api[apiOrder]
-        }&lang=en`
+        }${_0x4d35[15]}`
       );
       apiOrder += 1;
     }
-    // console.log(weather);
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        statusCode: weather.data.cod,
-        temperature: weather.data.main.temp,
-        id: weather.data.weather[0].id,
+      body: JSON[_0x4d35[23]]({
+        statusCode: weather[_0x4d35[18]][_0x4d35[17]],
+        temperature: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[19]],
+        id: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
       }),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
