@@ -19,15 +19,22 @@ const handler = async (event) => {
       (weather.cod == 429 || weather.cod == 401) &&
       apiOrder <= apiOrderMax
     ) {
-      weather = await fetch(
+      // weather = await fetch(
+      //   `https://api.openweathermap.org/data/2.5/weather?lat=${atob(
+      //     event.queryStringParameters.fontName
+      //   )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
+      //     api[apiOrder]
+      //   }&lang=en`
+      // ).then((data) => {
+      //   return data.json();
+      // });
+      weather = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${atob(
           event.queryStringParameters.fontName
         )}&lon=${atob(event.queryStringParameters.fontData)}&appid=${
           api[apiOrder]
         }&lang=en`
-      ).then((data) => {
-        return data.json();
-      });
+      );
       apiOrder += 1;
     }
     return {
@@ -42,9 +49,7 @@ const handler = async (event) => {
       // isBase64Encoded: true,
     };
   } catch (error) {
-    return { statusCode: 500, body: [error.toString(),`https://api.openweathermap.org/data/2.5/weather?lat=${atob(
-      event.queryStringParameters.fontName
-    )}&lon=${atob(event.queryStringParameters.fontData)}&appid=&lang=en`] };
+    return { statusCode: 500, body: error.toString() };
   }
 };
 
