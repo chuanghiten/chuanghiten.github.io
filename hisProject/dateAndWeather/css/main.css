@@ -167,6 +167,7 @@ html body .mainContents .weatherContents .weatherUpdateTime {
   text-align: right;
   padding: 0 1rem 0 0;
   color: #fff;
+  letter-spacing: 0.1rem;
 }
 html body .screenOff {
   display: none;
