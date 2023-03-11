@@ -12,10 +12,15 @@ var bodyElement = window.document.querySelector("body"),
   descriptionTextElement = window.document.querySelector(
     ".weatherContents .weatherMainContents .text .description"
   ),
-  weatherIconElement = window.document.querySelector(".weatherContents .weatherMainContents .icon"),
+  weatherIconElement = window.document.querySelector(
+    ".weatherContents .weatherMainContents .icon"
+  ),
   screenOffElement = window.document.querySelector(".screenOff"),
   mainContentsElement = window.document.querySelector(".mainContents"),
   backgroundElement = window.document.querySelector(".background"),
+  weatherUpdateTimeElement = window.document.querySelector(
+    ".weatherContents .weatherUpdateTime"
+  ),
   oldClockForClockPulse,
   oldDayOfWeek,
   oldWeatherContentsElementHeight,
@@ -191,6 +196,35 @@ function updateDateContent(data) {
 }
 function setOldWeatherContentsElementHeight(data) {
   oldWeatherContentsElementHeight = data;
+}
+function printWeatherUpdateTime(data) {
+  let timeData, minute, month;
+  if (data) {
+    timeData = new Date();
+    if (timeData.getMinutes()<=9){
+      minute = "0"+timeData.getMinutes()
+    }else{
+      minute = timeData.getMinutes()
+    }
+    if (timeData.getMonth()<=9){
+      month = "0"+(timeData.getMonth()+1)
+    }else{
+      month = timeData.getMonth()+1
+    }
+    weatherUpdateTimeElement.innerHTML =
+      "Update: " +
+      timeData.getHours() +
+      ":" +
+      minute +
+      " - " +
+      timeData.getDate() +
+      "/" +
+      month +
+      "/" +
+      timeData.getFullYear();
+  } else {
+    weatherUpdateTimeElement.innerHTML = "";
+  }
 }
 function updateWeatherContents(temperature, icon) {
   if (temperature && icon) {
@@ -417,10 +451,12 @@ function updateWeatherContents(temperature, icon) {
       weatherIconElement.innerHTML =
         '<img src="./images/cloud2.svg" alt="cloud2.svg">';
     }
+    printWeatherUpdateTime(true);
   } else {
     temperatureTextElement.innerHTML = "";
     descriptionTextElement.innerHTML = "";
     weatherIconElement.innerHTML = "";
+    printWeatherUpdateTime(false);
   }
 }
 eval(
