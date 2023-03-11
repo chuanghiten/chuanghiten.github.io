@@ -128,34 +128,47 @@ html body .mainContents .dateContents .calendar div.lunar {
   margin: 0.4rem 0 0 0;
 }
 html body .mainContents .weatherContents {
+  width: auto;
+  height: auto;
+}
+html body .mainContents .weatherContents .weatherMainContents {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem 5rem 2rem;
+  padding: 0 2rem 4rem 2rem;
+  width: auto;
+  height: auto;
 }
-html body .mainContents .weatherContents .text {
+html body .mainContents .weatherContents .weatherMainContents .text {
   color: #fff;
 }
-html body .mainContents .weatherContents .text .temperature {
+html body .mainContents .weatherContents .weatherMainContents .text .temperature {
   font-size: 3.5rem;
 }
-html body .mainContents .weatherContents .text .temperature span {
+html body .mainContents .weatherContents .weatherMainContents .text .temperature span {
   font-size: 10rem;
   font-weight: 900;
   font-family: "Number One Line";
 }
-html body .mainContents .weatherContents .text .description {
+html body .mainContents .weatherContents .weatherMainContents .text .description {
   font-size: 3.5rem;
 }
-html body .mainContents .weatherContents .icon {
-  height: auto;
-  width: 18rem;
+html body .mainContents .weatherContents .weatherMainContents .icon {
+  height: calc(100% - 1rem);
+  width: auto;
 }
-html body .mainContents .weatherContents .icon img {
+html body .mainContents .weatherContents .weatherMainContents .icon img {
   width: 100%;
   height: 100%;
 }
-html body .screenOff {
+html body .mainContents .weatherContents .weatherUpdateTime {
+  width: 100%;
+  height: auto;
+  text-align: right;
+  padding: 0 1rem 0 0;
+  color: #fff;
+}
+html body .mainContents .screenOff {
   display: none;
   background: #000;
   position: absolute;

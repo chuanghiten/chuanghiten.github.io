@@ -7,12 +7,12 @@ var bodyElement = window.document.querySelector("body"),
     ".background .backgroundFooter"
   ),
   temperatureTextElement = window.document.querySelector(
-    ".weatherContents .text .temperature"
+    ".weatherContents .weatherMainContents .text .temperature"
   ),
   descriptionTextElement = window.document.querySelector(
-    ".weatherContents .text .description"
+    ".weatherContents .weeatherMainContents .text .description"
   ),
-  weatherIconElement = window.document.querySelector(".weatherContents .icon"),
+  weatherIconElement = window.document.querySelector(".weatherContents .weatherMainContents .icon"),
   screenOffElement = window.document.querySelector(".screenOff"),
   mainContentsElement = window.document.querySelector(".mainContents"),
   backgroundElement = window.document.querySelector(".background"),

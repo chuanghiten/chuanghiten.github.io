@@ -136,30 +136,41 @@ html
 				//	font-size: 3.5rem
 				//	color: #fff
 				//		margin: 2rem 0 0 0
-				display: flex
-				justify-content: space-between
-				align-items: center
-				padding: 0 2rem 5rem 2rem
-				.text
-					color: #fff
-					//background: #f00
-					.temperature
-						font-size: 3.5rem
-						span
-							font-size: 10rem
-							font-weight: 900
-							font-family: 'Number One Line'
-					.description
-						font-size: 3.5rem
-				.icon
+				width: auto
+				height: auto
+				.weatherMainContents
+					display: flex
+					justify-content: space-between
+					align-items: center
+					padding:0 2rem 4rem 2rem
+					width: auto
 					height: auto
-					width: 18rem
-					img
-						width: 100%
-						height: 100%
-		.screenOff
-			display: none
-			background: #000
-			position: absolute
-			z-index: 1
+					.text
+						color: #fff
+						//background: #f00
+						.temperature
+							font-size: 3.5rem
+							span
+								font-size: 10rem
+								font-weight: 900
+								font-family: 'Number One Line'
+						.description
+							font-size: 3.5rem
+					.icon
+						height: calc(100% - 1rem)
+						width: auto
+						img
+							width: 100%
+							height: 100%
+				.weatherUpdateTime
+					width: 100%
+					height: auto
+					text-align: right
+					padding: 0 1rem 0 0
+					color: #fff
+			.screenOff
+				display: none
+				background: #000
+				position: absolute
+				z-index: 1
 			
