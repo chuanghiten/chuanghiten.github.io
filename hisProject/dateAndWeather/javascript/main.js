@@ -10,7 +10,7 @@ var bodyElement = window.document.querySelector("body"),
     ".weatherContents .weatherMainContents .text .temperature"
   ),
   descriptionTextElement = window.document.querySelector(
-    ".weatherContents .weeatherMainContents .text .description"
+    ".weatherContents .weatherMainContents .text .description"
   ),
   weatherIconElement = window.document.querySelector(".weatherContents .weatherMainContents .icon"),
   screenOffElement = window.document.querySelector(".screenOff"),
