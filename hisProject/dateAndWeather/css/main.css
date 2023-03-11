@@ -128,7 +128,7 @@ html body .mainContents .dateContents .calendar div.lunar {
   margin: 0.4rem 0 0 0;
 }
 html body .mainContents .weatherContents {
-  width: auto;
+  width: 100%;
   height: auto;
 }
 html body .mainContents .weatherContents .weatherMainContents {
@@ -168,7 +168,7 @@ html body .mainContents .weatherContents .weatherUpdateTime {
   padding: 0 1rem 0 0;
   color: #fff;
 }
-html body .mainContents .screenOff {
+html body .screenOff {
   display: none;
   background: #000;
   position: absolute;
