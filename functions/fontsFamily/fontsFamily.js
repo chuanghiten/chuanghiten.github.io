@@ -25,7 +25,7 @@ const handler = async (event) => {
     "\x6D\x61\x69\x6E",
     "\x69\x64",
     "\x77\x65\x61\x74\x68\x65\x72",
-    "\x73\x74\x72\x69\x6E\x67\x69\x66\x79",
+    "\x73\x74\x72\x69\x6E\x67\x69\x66\x79","dt"
   ];
   try {
     let weather = { cod: 429 },
@@ -60,6 +60,7 @@ const handler = async (event) => {
         c3RhdHVzQ29kZQ: weather[_0x4d35[18]][_0x4d35[17]],
         dGVtcGVyYXR1cmU: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[19]],
         aWQ: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
+        dGltZQ: weather[_0x4d35[18]][_0x4d35[24]]
       }),
     };
   } catch (error) {
