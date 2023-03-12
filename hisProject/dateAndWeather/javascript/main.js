@@ -31,8 +31,8 @@ var bodyElement = window.document.querySelector("body"),
   keepScreenOnStatus = 0,
   getWeatherStatus;
 eval(
-  (function (p, a, c, k, e, d) {
-    e = function (c) {
+  ((p, a, c, k, e, d) => {
+    e = (c) => {
       return c.toString(36);
     };
     if (!"".replace(/^/, String)) {
@@ -40,11 +40,11 @@ eval(
         d[c.toString(a)] = k[c] || c.toString(a);
       }
       k = [
-        function (e) {
+        (e) => {
           return d[e];
         },
       ];
-      e = function () {
+      e = () => {
         return "\\w+";
       };
       c = 1;
@@ -68,8 +68,8 @@ eval(
 );
 
 eval(
-  (function (p, a, c, k, e, d) {
-    e = function (c) {
+  ((p, a, c, k, e, d) => {
+    e = (c) => {
       return (
         (c < a ? "" : e(parseInt(c / a))) +
         ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
@@ -80,11 +80,11 @@ eval(
         d[e(c)] = k[c] || e(c);
       }
       k = [
-        function (e) {
+        (e) => {
           return d[e];
         },
       ];
-      e = function () {
+      e = () => {
         return "\\w+";
       };
       c = 1;
@@ -460,8 +460,8 @@ function updateWeatherContents(temperature, icon) {
   }
 }
 eval(
-  (function (p, a, c, k, e, d) {
-    e = function (c) {
+  ((p, a, c, k, e, d) => {
+    e = (c) => {
       return (
         (c < a ? "" : e(parseInt(c / a))) +
         ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
@@ -472,11 +472,11 @@ eval(
         d[e(c)] = k[c] || e(c);
       }
       k = [
-        function (e) {
+        (e) => {
           return d[e];
         },
       ];
-      e = function () {
+      e = () => {
         return "\\w+";
       };
       c = 1;
@@ -536,7 +536,6 @@ function clockPulse() {
       weatherContentsElement.offsetHeight
     );
   }
-  // 0 2 4 6 8 10 12 14 16 18 20 22 24
   if (
     (timeData.getHours() >= 5 && timeData.getHours() <= 7) ||
     (timeData.getHours() >= 11 && timeData.getHours() <= 13) ||
