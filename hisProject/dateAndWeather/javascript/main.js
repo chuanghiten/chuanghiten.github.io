@@ -201,15 +201,15 @@ function printWeatherUpdateTime(data) {
   let timeData, minute, month;
   if (data) {
     timeData = new Date();
-    if (timeData.getMinutes()<=9){
-      minute = "0"+timeData.getMinutes()
-    }else{
-      minute = timeData.getMinutes()
+    if (timeData.getMinutes() <= 9) {
+      minute = "0" + timeData.getMinutes();
+    } else {
+      minute = timeData.getMinutes();
     }
-    if (timeData.getMonth()<=9){
-      month = "0"+(timeData.getMonth()+1)
-    }else{
-      month = timeData.getMonth()+1
+    if (timeData.getMonth() <= 9) {
+      month = "0" + (timeData.getMonth() + 1);
+    } else {
+      month = timeData.getMonth() + 1;
     }
     weatherUpdateTimeElement.innerHTML =
       "Update: " +
@@ -536,6 +536,7 @@ function clockPulse() {
       weatherContentsElement.offsetHeight
     );
   }
+  // 0 2 4 6 8 10 12 14 16 18 20 22 24
   if (
     (timeData.getHours() >= 5 && timeData.getHours() <= 7) ||
     (timeData.getHours() >= 11 && timeData.getHours() <= 13) ||
@@ -544,7 +545,9 @@ function clockPulse() {
     onScreen();
     if (
       (timeData.getHours() == 5 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 6 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 11 && timeData.getMinutes() == 0) ||
+      (timeData.getHours() == 12 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 16 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 18 && timeData.getMinutes() == 0) ||
       (timeData.getHours() == 20 && timeData.getMinutes() == 0) ||
@@ -559,11 +562,12 @@ function clockPulse() {
       offScreen();
     } else {
       if (
-        (timeData.getHours() == 1 && timeData.getMinutes() == 0) ||
-        (timeData.getHours() == 3 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 0 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 2 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 4 && timeData.getMinutes() == 0) ||
         (timeData.getHours() == 8 && timeData.getMinutes() == 0) ||
-        (timeData.getHours() == 9 && timeData.getMinutes() == 30) ||
-        (timeData.getHours() == 13 && timeData.getMinutes() == 30)
+        (timeData.getHours() == 10 && timeData.getMinutes() == 0) ||
+        (timeData.getHours() == 14 && timeData.getMinutes() == 0)
       ) {
         getWeather();
       } else {
