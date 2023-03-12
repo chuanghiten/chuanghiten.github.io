@@ -1,41 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		*{
-			margin:0;
-			padding:0;
-			border: 0;
-			box-sizing: border-box;
-			font-size: 16px;
-		}
-		body{
-			padding: 50px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-		}
-		div{
-			font-family: Roboto;
-			font-size: 50px;
-			margin: 30px;
-			text-align: center;
-		}
-		span{
-			font-family: Roboto;
-			font-size: 25px;
-			margin: 10px;
-			text-align: center;
-		}
-	</style>
-	<title>Tặng Uyên Nè!!!</title>
-</head>
-<body>
-	<img src="./images/hoaHong.jpg" alt="Hoa Hồng">
-	<div>Tặng m bông hoa nè!!!<br><span>Đừng buồn nữa nhaaaaaaaaaa!</span></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      body {
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      div {
+        font-family: Roboto;
+        font-size: 50px;
+        margin: 30px;
+        text-align: center;
+      }
+      span {
+        font-family: Roboto;
+        font-size: 25px;
+        margin: 10px;
+        text-align: center;
+      }
+    </style>
+    <title>Tặng Uyên Nè!!!</title>
+  </head>
+  <body>
+    <img class="bongHoa" src="./images/hoaHong.jpg" alt="Hoa Hồng" />
+    <img
+      class="boHoa"
+      style="display: none"
+      src="./images/boHoaHong.jpg"
+      alt="Hoa Hồng"
+    />
+    <div class="text">
+      Tặng m bông hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span
+      ><br /><span class="button">Quá ít ư? Bấm vô đây!</span>
+    </div>
+  </body>
+  <script>
+    var hoa = "bong";
+    document.querySelector(".text").addEventListener("click", () => {
+      if (hoa == "bong") {
+        hoa = "bo";
+        document
+          .querySelector(".bongHoa")
+          .setAttribute("style", "display: none");
+        document
+          .querySelector(".boHoa")
+          .setAttribute("style", "display: block");
+        document
+          .querySelector(".text").innerHTML = "Tặng m bó hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span><br /><span class=\"button\">Quá nhiều ư? Lại bấm vô chữ!</span>";
+      } else{
+        hoa = "bong";
+        document
+          .querySelector(".bongHoa")
+          .setAttribute("style", "display: block");
+        document
+          .querySelector(".boHoa")
+          .setAttribute("style", "display: none");
+        document
+          .querySelector(".text").innerHTML = "Tặng m bông hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span><br /><span class=\"button\">Quá ít ư? Bấm vô đây!</span>";
+      }
+    });
+  </script>
 </html>
