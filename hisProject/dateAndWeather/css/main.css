@@ -40,12 +40,6 @@
   font-weight: 600;
   src: url("../fonts/numberOneLine/numberOneLine.ttf");
 }
-@font-face {
-  font-family: "Number Cat";
-  font-style: normal;
-  font-weight: 600;
-  src: url("../fonts/numberCat/numberCat.ttc");
-}
 * {
   margin: 0;
   padding: 0;
