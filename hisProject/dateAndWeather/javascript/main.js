@@ -19,8 +19,56 @@ document.addEventListener("DOMContentLoaded", () => {
     screenOffElement = window.document.querySelector(".screenOff"),
     mainContentsElement = window.document.querySelector(".mainContents"),
     backgroundElement = window.document.querySelector(".background"),
+    forecastDate = window.document.querySelector(
+      ".weatherForecastContents .forecastDate"
+    ),
     weatherUpdateTimeElement = window.document.querySelector(
       ".weatherContents .weatherUpdateTime"
+    ),
+    t7TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .t7 .temperature"
+    ),
+    t10TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .t10 .temperature"
+    ),
+    t13TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .t13 .temperature"
+    ),
+    t16TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .t16 .temperature"
+    ),
+    t19TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .t19 .temperature"
+    ),
+    t7TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .t7 .icon"
+    ),
+    t10TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .t10 .icon"
+    ),
+    t13TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .t13 .icon"
+    ),
+    t16TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .t16 .icon"
+    ),
+    t19TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .t19 .icon"
+    ),
+    t7TimeText = window.document.querySelector(
+      ".weatherForecastContents .t7 .time"
+    ),
+    t10TimeText = window.document.querySelector(
+      ".weatherForecastContents .t10 .time"
+    ),
+    t13TimeText = window.document.querySelector(
+      ".weatherForecastContents .t13 .time"
+    ),
+    t16TimeText = window.document.querySelector(
+      ".weatherForecastContents .t16 .time"
+    ),
+    t19TimeText = window.document.querySelector(
+      ".weatherForecastContents .t19 .time"
     ),
     oldClockForClockPulse,
     oldDayOfWeek,
@@ -30,11 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
     weatherData,
     screenStatus,
     keepScreenOnStatus = 0,
-    getWeatherStatus,demo=false;
-  if(/demo/.test(window.location.href)){
-  	demo=true
-  }else{
-  	demo = false
+    getWeatherStatus,
+    demo = false;
+  if (/demo/.test(window.location.href)) {
+    demo = true;
+  } else {
+    demo = false;
   }
   eval(
     (function (p, a, c, k, e, d) {
@@ -232,283 +281,313 @@ document.addEventListener("DOMContentLoaded", () => {
       weatherUpdateTimeElement.innerHTML = "";
     }
   }
-  function updateWeatherContents(temperature, icon, time) {
-    if (temperature && icon) {
+  function updateWeatherContents(
+    temperature,
+    icon,
+    time,
+    t7Temperature,
+    t7Icon,
+    t7Time,
+    t10Temperature,
+    t10Icon,
+    t10Time,
+    t13Temperature,
+    t13Icon,
+    t13Time,
+    t16Temperature,
+    t16Icon,
+    t16Time,
+    t19Temperature,
+    t19Icon,
+    t19Time
+  ) {
+    function returnIcon(data) {
+      if (data == 200) {
+        return [
+          weatherDescriptionThunderstorm[0],
+          "./images/thunderstorm2.svg",
+        ];
+      } else if (data == 201) {
+        return [
+          weatherDescriptionThunderstorm[1],
+          "./images/thunderstorm2.svg",
+        ];
+      } else if (data == 202) {
+        return [
+          weatherDescriptionThunderstorm[2],
+          "./images/thunderstorm2.svg",
+        ];
+      } else if (data == 210) {
+        return [
+          weatherDescriptionThunderstorm[3],
+          "./images/thunderstorm1.svg",
+        ];
+      } else if (data == 211) {
+        return [
+          weatherDescriptionThunderstorm[4],
+          "./images/thunderstorm1.svg",
+        ];
+      } else if (data == 212) {
+        return [
+          weatherDescriptionThunderstorm[5],
+          "./images/thunderstorm1.svg",
+        ];
+      } else if (data == 221) {
+        return [
+          weatherDescriptionThunderstorm[6],
+          "./images/thunderstorm1.svg",
+        ];
+      } else if (data == 230) {
+        return [
+          weatherDescriptionThunderstorm[7],
+          "./images/thunderstorm1.svg",
+        ];
+      } else if (data == 231) {
+        return [
+          weatherDescriptionThunderstorm[8],
+          "./images/thunderstorm2.svg",
+        ];
+      } else if (data == 232) {
+        return [
+          weatherDescriptionThunderstorm[9],
+          "./images/thunderstorm2.svg",
+        ];
+      } else if (data == 300) {
+        return [weatherDescriptionDrizzle[0], "./images/drizzle1.svg"];
+      } else if (data == 301) {
+        return [weatherDescriptionDrizzle[1], "./images/drizzle1.svg"];
+      } else if (data == 302) {
+        return [weatherDescriptionDrizzle[2], "./images/drizzle1.svg"];
+      } else if (data == 310) {
+        return [weatherDescriptionDrizzle[3], "./images/drizzle1.svg"];
+      } else if (data == 311) {
+        return [weatherDescriptionDrizzle[4], "./images/drizzle2.svg"];
+      } else if (data == 312) {
+        return [weatherDescriptionDrizzle[5], "./images/drizzle2.svg"];
+      } else if (data == 313) {
+        return [weatherDescriptionDrizzle[6], "./images/drizzle2.svg"];
+      } else if (data == 314) {
+        return [weatherDescriptionDrizzle[7], "./images/drizzle2.svg"];
+      } else if (data == 321) {
+        return [weatherDescriptionDrizzle[8], "./images/drizzle2.svg"];
+      } else if (data == 500) {
+        return [weatherDescriptionRain[0], "./images/rain1.svg"];
+      } else if (data == 501) {
+        return [weatherDescriptionRain[1], "./images/rain1.svg"];
+      } else if (data == 502) {
+        return [weatherDescriptionRain[2], "./images/rain1.svg"];
+      } else if (data == 503) {
+        return [weatherDescriptionRain[3], "./images/rain1.svg"];
+      } else if (data == 504) {
+        return [weatherDescriptionRain[4], "./images/rain2.svg"];
+      } else if (data == 511) {
+        return [weatherDescriptionRain[5], "./images/rainIce.svg"];
+      } else if (data == 520) {
+        return [weatherDescriptionRain[6], "./images/rain3.svg"];
+      } else if (data == 521) {
+        return [weatherDescriptionRain[7], "./images/rain3.svg"];
+      } else if (data == 522) {
+        return [weatherDescriptionRain[8], "./images/rain3.svg"];
+      } else if (data == 531) {
+        return [weatherDescriptionRain[9], "./images/rain3.svg"];
+      } else if (data == 600) {
+        return [weatherDescriptionSnow[0], "./images/snow1.svg"];
+      } else if (data == 601) {
+        return [weatherDescriptionSnow[1], "./images/snow1.svg"];
+      } else if (data == 602) {
+        return [weatherDescriptionSnow[2], "./images/snow2.svg"];
+      } else if (data == 611) {
+        return [weatherDescriptionSnow[3], "./images/rainIce.svg"];
+      } else if (data == 612) {
+        return [weatherDescriptionSnow[4], "./images/rainIce.svg"];
+      } else if (data == 613) {
+        return [weatherDescriptionSnow[5], "./images/rainIce.svg"];
+      } else if (data == 615) {
+        return [weatherDescriptionSnow[6], "./images/rainIce.svg"];
+      } else if (data == 616) {
+        return [weatherDescriptionSnow[7], "./images/rainIce.svg"];
+      } else if (data == 620) {
+        return [weatherDescriptionSnow[8], "./images/rainIce.svg"];
+      } else if (data == 621) {
+        return [weatherDescriptionSnow[9], "./images/rainIce.svg"];
+      } else if (data == 622) {
+        return [weatherDescriptionSnow[10], "./images/rainIce.svg"];
+      } else if (data == 701) {
+        return [weatherDescriptionAtmosphere[0], "./images/atmosphere.svg"];
+      } else if (data == 711) {
+        return [weatherDescriptionAtmosphere[1], "./images/atmosphere.svg"];
+      } else if (data == 721) {
+        return [weatherDescriptionAtmosphere[2], "./images/atmosphere.svg"];
+      } else if (data == 731) {
+        return [weatherDescriptionAtmosphere[3], "./images/undefined.svg"];
+      } else if (data == 741) {
+        return [weatherDescriptionAtmosphere[4], "./images/undefined.svg"];
+      } else if (data == 751) {
+        return [weatherDescriptionAtmosphere[5], "./images/undefined.svg"];
+      } else if (data == 761) {
+        return [weatherDescriptionAtmosphere[6], "./images/undefined.svg"];
+      } else if (data == 762) {
+        return [weatherDescriptionAtmosphere[7], "./images/undefined.svg"];
+      } else if (data == 771) {
+        return [weatherDescriptionAtmosphere[8], "./images/undefined.svg"];
+      } else if (data == 781) {
+        return [weatherDescriptionAtmosphere[9], "./images/undefined.svg"];
+      } else if (data == 800) {
+        return [weatherDescriptionClear, "./images/clearSky.svg"];
+      } else if (data == 801) {
+        return [weatherDescriptionClouds[0], "./images/cloud1.svg"];
+      } else if (data == 802) {
+        return [weatherDescriptionClouds[1], "./images/cloud1.svg"];
+      } else if (data == 803) {
+        return [weatherDescriptionClouds[2], "./images/cloud2.svg"];
+      } else if (data == 804) {
+        return [weatherDescriptionClouds[3], "./images/cloud2.svg"];
+      }
+    }
+    if (
+      temperature &&
+      icon &&
+      time &&
+      t7Temperature &&
+      t7Icon &&
+      t7Time &&
+      t10Temperature &&
+      t10Icon &&
+      t10Time &&
+      t13Temperature &&
+      t13Icon &&
+      t13Time &&
+      t16Temperature &&
+      t16Icon &&
+      t16Time &&
+      t19Temperature &&
+      t19Icon &&
+      t19Time
+    ) {
       temperatureTextElement.innerHTML =
         "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
-      if (icon == 200) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[0];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      } else if (icon == 201) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[1];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      } else if (icon == 202) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[2];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      } else if (icon == 210) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[3];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
-      } else if (icon == 211) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[4];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
-      } else if (icon == 212) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[5];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
-      } else if (icon == 221) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[6];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm1.svg" alt="thunderstorm1.svg">';
-      } else if (icon == 230) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[7];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      } else if (icon == 231) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[8];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      } else if (icon == 232) {
-        descriptionTextElement.innerHTML = weatherDescriptionThunderstorm[9];
-        weatherIconElement.innerHTML =
-          '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      } else if (icon == 300) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[0];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
-      } else if (icon == 301) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[1];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
-      } else if (icon == 302) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[2];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
-      } else if (icon == 310) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[3];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle1.svg" alt="drizzle1.svg">';
-      } else if (icon == 311) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[4];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
-      } else if (icon == 312) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[5];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
-      } else if (icon == 313) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[6];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
-      } else if (icon == 314) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[7];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
-      } else if (icon == 321) {
-        descriptionTextElement.innerHTML = weatherDescriptionDrizzle[8];
-        weatherIconElement.innerHTML =
-          '<img src="./images/drizzle2.svg" alt="drizzle2.svg">';
-      } else if (icon == 500) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[0];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain1.svg" alt="rain1.svg">';
-      } else if (icon == 501) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[1];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain1.svg" alt="rain1.svg">';
-      } else if (icon == 502) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[2];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain1.svg" alt="rain1.svg">';
-      } else if (icon == 503) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[3];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain2.svg" alt="rain2.svg">';
-      } else if (icon == 504) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[4];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain2.svg" alt="rain2.svg">';
-      } else if (icon == 511) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[5];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 520) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[6];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain3.svg" alt="rain3.svg">';
-      } else if (icon == 521) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[7];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain3.svg" alt="rain3.svg">';
-      } else if (icon == 522) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[8];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain3.svg" alt="rain3.svg">';
-      } else if (icon == 531) {
-        descriptionTextElement.innerHTML = weatherDescriptionRain[9];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rain3.svg" alt="rain3.svg">';
-      } else if (icon == 600) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[0];
-        weatherIconElement.innerHTML =
-          '<img src="./images/snow1.svg" alt="snow1.svg">';
-      } else if (icon == 601) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[1];
-        weatherIconElement.innerHTML =
-          '<img src="./images/snow1.svg" alt="snow1.svg">';
-      } else if (icon == 602) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[2];
-        weatherIconElement.innerHTML =
-          '<img src="./images/snow2.svg" alt="snow2.svg">';
-      } else if (icon == 611) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[3];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 612) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[4];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 613) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[5];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 615) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[6];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 616) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[7];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 620) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[8];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 621) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[9];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 622) {
-        descriptionTextElement.innerHTML = weatherDescriptionSnow[10];
-        weatherIconElement.innerHTML =
-          '<img src="./images/rainIce.svg" alt="rainIce.svg">';
-      } else if (icon == 701) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[0];
-        weatherIconElement.innerHTML =
-          '<img src="./images/atmosphere.svg" alt="atmosphere.svg">';
-      } else if (icon == 711) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[1];
-        weatherIconElement.innerHTML =
-          '<img src="./images/atmosphere.svg" alt="atmosphere.svg">';
-      } else if (icon == 721) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[2];
-        weatherIconElement.innerHTML =
-          '<img src="./images/atmosphere.svg" alt="atmosphere.svg">';
-      } else if (icon == 731) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[3];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 741) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[4];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 751) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[5];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 761) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[6];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 762) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[7];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 771) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[8];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 781) {
-        descriptionTextElement.innerHTML = weatherDescriptionAtmosphere[9];
-        weatherIconElement.innerHTML =
-          '<img src="./images/undefined.svg" alt="undefined.svg">';
-      } else if (icon == 800) {
-        descriptionTextElement.innerHTML = weatherDescriptionClear;
-        weatherIconElement.innerHTML =
-          '<img src="./images/clearSky.svg" alt="clearSky.svg">';
-      } else if (icon == 801) {
-        descriptionTextElement.innerHTML = weatherDescriptionClouds[0];
-        weatherIconElement.innerHTML =
-          '<img src="./images/cloud1.svg" alt="cloud1.svg">';
-      } else if (icon == 802) {
-        descriptionTextElement.innerHTML = weatherDescriptionClouds[1];
-        weatherIconElement.innerHTML =
-          '<img src="./images/cloud1.svg" alt="cloud1.svg">';
-      } else if (icon == 803) {
-        descriptionTextElement.innerHTML = weatherDescriptionClouds[2];
-        weatherIconElement.innerHTML =
-          '<img src="./images/cloud2.svg" alt="cloud2.svg">';
-      } else if (icon == 804) {
-        descriptionTextElement.innerHTML = weatherDescriptionClouds[3];
-        weatherIconElement.innerHTML =
-          '<img src="./images/cloud2.svg" alt="cloud2.svg">';
+      descriptionTextElement.innerHTML = returnIcon(icon)[0];
+      weatherIconElement.innerHTML = `<img src="${
+        returnIcon(icon)[1]
+      }" alt="icon">`;
+      forecastDate.innerHTML =
+        "Mai: " +
+        new Date(t7Time * 1000).getDate() +
+        " / " +
+        (new Date(t7Time * 1000).getMonth() + 1);
+      t7TemperatureText.innerHTML = (t7Temperature - 273.15).toFixed(0) + "℃";
+      t10TemperatureText.innerHTML = (t10Temperature - 273.15).toFixed(0) + "℃";
+      t13TemperatureText.innerHTML = (t13Temperature - 273.15).toFixed(0) + "℃";
+      t16TemperatureText.innerHTML = (t16Temperature - 273.15).toFixed(0) + "℃";
+      t19TemperatureText.innerHTML = (t19Temperature - 273.15).toFixed(0) + "℃";
+      t7TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(t7Icon)[1]
+      }" alt="icon">`;
+      t10TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(t10Icon)[1]
+      }" alt="icon">`;
+      t13TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(t13Icon)[1]
+      }" alt="icon">`;
+      t16TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(t16Icon)[1]
+      }" alt="icon">`;
+      t19TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(t19Icon)[1]
+      }" alt="icon">`;
+      function returnTime(data) {
+        if (new Date(data * 1000).getMinutes() <= 9) {
+          return (
+            new Date(data * 1000).getHours() +
+            ":0" +
+            new Date(data * 1000).getMinutes()
+          );
+        } else {
+          return (
+            new Date(data * 1000).getHours() +
+            ":" +
+            new Date(data * 1000).getMinutes()
+          );
+        }
       }
+      t7TimeText.innerHTML = returnTime(t7Time);
+      t10TimeText.innerHTML = returnTime(t10Time);
+      t13TimeText.innerHTML = returnTime(t13Time);
+      t16TimeText.innerHTML = returnTime(t16Time);
+      t19TimeText.innerHTML = returnTime(t19Time);
       printWeatherUpdateTime(time);
-    } else if(demo){
+    } else if (demo) {
       temperatureTextElement.innerHTML = "<span>22</span>℃";
       descriptionTextElement.innerHTML = "Quang đãng";
-      weatherIconElement.innerHTML = '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+      weatherIconElement.innerHTML =
+        '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
       printWeatherUpdateTime(1600000000000);
-    }else {
+    } else {
       temperatureTextElement.innerHTML = "";
       descriptionTextElement.innerHTML = "";
       weatherIconElement.innerHTML = "";
       printWeatherUpdateTime(false);
     }
   }
-  eval(
-    (function (p, a, c, k, e, d) {
-      e = function (c) {
-        return (
-          (c < a ? "" : e(parseInt(c / a))) +
-          ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
-        );
-      };
-      if (!"".replace(/^/, String)) {
-        while (c--) {
-          d[e(c)] = k[c] || e(c);
+  function setGetWeatherStatus(_0x53b0x2) {
+    getWeatherStatus = _0x53b0x2;
+  }
+  async function getWeatherData(_0x53b0x4, _0x53b0x5) {
+    weatherData = await fetch(
+      `${_0xab36[2]}${window[_0xab36[3]](_0x53b0x4.toString())}${
+        _0xab36[4]
+      }${window[_0xab36[3]](_0x53b0x5.toString())}${_0xab36[5]}`
+    )[_0xab36[1]]((_0x53b0x6) => {
+      return _0x53b0x6[_0xab36[0]]();
+    });
+    if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
+      updateWeatherContents(
+        weatherData[_0xab36[7]],
+        weatherData[_0xab36[8]],
+        weatherData[_0xab36[18]],
+        weatherData.tomorrow.t7.temperature,
+        weatherData.tomorrow.t7.id,
+        weatherData.tomorrow.t7.time,
+        weatherData.tomorrow.t10.temperature,
+        weatherData.tomorrow.t10.id,
+        weatherData.tomorrow.t10.time,
+        weatherData.tomorrow.t13.temperature,
+        weatherData.tomorrow.t13.id,
+        weatherData.tomorrow.t13.time,
+        weatherData.tomorrow.t16.temperature,
+        weatherData.tomorrow.t16.id,
+        weatherData.tomorrow.t16.time,
+        weatherData.tomorrow.t19.temperature,
+        weatherData.tomorrow.t19.id,
+        weatherData.tomorrow.t19.time
+      );
+    }
+  }
+  function getPosition(_0x53b0x6) {
+    latitude = _0x53b0x6[_0xab36[10]][_0xab36[9]];
+    longitude = _0x53b0x6[_0xab36[10]][_0xab36[11]];
+    getWeatherData(latitude, longitude);
+  }
+  function getWeather() {
+    if (getWeatherStatus != 1) {
+      setGetWeatherStatus(1);
+      if (window[_0xab36[13]][_0xab36[12]]) {
+        if (latitude && longitude) {
+          getWeatherData(latitude, longitude);
+        } else {
+          window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
         }
-        k = [
-          function (e) {
-            return d[e];
-          },
-        ];
-        e = function () {
-          return "\\w+";
-        };
-        c = 1;
+      } else {
+        window[_0xab36[17]](_0xab36[16], () => {
+          if (latitude && longitude) {
+            getWeatherData(latitude, longitude);
+          } else {
+            window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
+          }
+        });
       }
-      while (c--) {
-        if (k[c]) {
-          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
-        }
-      }
-      return p;
-    })(
-      "i o(u){p=u}H i h(t,s){e=G F(`${a[2]}${b[a[3]](t.r())}${a[4]}${b[a[3]](s.r())}${a[5]}`)[a[1]]((g)=>{E g[a[0]]()});f(e[a[6]]!=D||e[a[6]]!=C){B(e[a[7]],e[a[8]],e[a[A]])}}i j(g){d=g[a[q]][a[9]];c=g[a[q]][a[z]];h(d,c)}i y(){f(p!=1){o(1);f(b[a[k]][a[x]]){f(d&&c){h(d,c)}l{b[a[k]][a[n]][a[m]](j)}}l{b[a[w]](a[v],()=>{f(d&&c){h(d,c)}l{b[a[k]][a[n]][a[m]](j)}})}}}",
-      44,
-      44,
-      "\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x5F\x30\x78\x61\x62\x33\x36\x7C\x77\x69\x6E\x64\x6F\x77\x7C\x6C\x6F\x6E\x67\x69\x74\x75\x64\x65\x7C\x6C\x61\x74\x69\x74\x75\x64\x65\x7C\x77\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x69\x66\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x36\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x66\x75\x6E\x63\x74\x69\x6F\x6E\x7C\x67\x65\x74\x50\x6F\x73\x69\x74\x69\x6F\x6E\x7C\x31\x33\x7C\x65\x6C\x73\x65\x7C\x31\x34\x7C\x31\x35\x7C\x73\x65\x74\x47\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x31\x30\x7C\x74\x6F\x53\x74\x72\x69\x6E\x67\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x35\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x34\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x32\x7C\x31\x36\x7C\x31\x37\x7C\x31\x32\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x7C\x31\x31\x7C\x31\x38\x7C\x75\x70\x64\x61\x74\x65\x57\x65\x61\x74\x68\x65\x72\x43\x6F\x6E\x74\x65\x6E\x74\x73\x7C\x34\x30\x31\x7C\x34\x32\x39\x7C\x72\x65\x74\x75\x72\x6E\x7C\x66\x65\x74\x63\x68\x7C\x61\x77\x61\x69\x74\x7C\x61\x73\x79\x6E\x63".split(
-        "|"
-      ),
-      0,
-      {}
-    )
-  );
+    }
+  }
 
   function setScreenStatus(status) {
     screenStatus = status;

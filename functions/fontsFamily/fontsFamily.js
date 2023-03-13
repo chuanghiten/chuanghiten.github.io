@@ -2,35 +2,39 @@
 const axios = require(`axios`);
 const handler = async (event) => {
   const _0x4d35 = [
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x31",
-    "\x65\x6E\x76",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x32",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x33",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x34",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x35",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x36",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x37",
-    "\x41\x50\x49\x5F\x53\x45\x43\x52\x45\x54\x38",
-    "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x6F\x70\x65\x6E\x77\x65\x61\x74\x68\x65\x72\x6D\x61\x70\x2E\x6F\x72\x67\x2F\x64\x61\x74\x61\x2F\x32\x2E\x35\x2F\x77\x65\x61\x74\x68\x65\x72\x3F\x6C\x61\x74\x3D",
-    "\x5A\x6D\x39\x75\x64\x45\x35\x68\x62\x57\x55",
-    "\x71\x75\x65\x72\x79\x53\x74\x72\x69\x6E\x67\x50\x61\x72\x61\x6D\x65\x74\x65\x72\x73",
-    "\x26\x6C\x6F\x6E\x3D",
-    "\x5A\x6D\x39\x75\x64\x45\x52\x68\x64\x47\x45",
-    "\x26\x61\x70\x70\x69\x64\x3D",
-    "\x26\x6C\x61\x6E\x67\x3D\x65\x6E",
-    "\x67\x65\x74",
-    "\x63\x6F\x64",
-    "\x64\x61\x74\x61",
-    "\x74\x65\x6D\x70",
-    "\x6D\x61\x69\x6E",
-    "\x69\x64",
-    "\x77\x65\x61\x74\x68\x65\x72",
-    "\x73\x74\x72\x69\x6E\x67\x69\x66\x79","dt"
+    "API_SECRET1",
+    "env",
+    "API_SECRET2",
+    "API_SECRET3",
+    "API_SECRET4",
+    "API_SECRET5",
+    "API_SECRET6",
+    "API_SECRET7",
+    "API_SECRET8",
+    "https://api.openweathermap.org/data/2.5/weather?lat=",
+    "Zm9udE5hbWU",
+    "queryStringParameters",
+    "&lon=",
+    "Zm9udERhdGE",
+    "&appid=",
+    "&lang=en",
+    "get",
+    "cod",
+    "data",
+    "temp",
+    "main",
+    "id",
+    "weather",
+    "stringify",
+    "dt",
   ];
   try {
     let weather = { cod: 429 },
+      weatherTomorrow = { cod: 429 },
       apiOrder = 0,
       apiOrderMax = 7,
+      startForecast,
+      listForecast = 0,
       api = [
         process[_0x4d35[1]][_0x4d35[0]],
         process[_0x4d35[1]][_0x4d35[2]],
@@ -54,13 +58,64 @@ const handler = async (event) => {
       );
       apiOrder += 1;
     }
+    apiOrder = 0;
+    while (
+      (weatherTomorrow[_0x4d35[17]] == 429 || weather[_0x4d35[17]] == 401) &&
+      apiOrder <= apiOrderMax
+    ) {
+      weatherTomorrow = await axios[_0x4d35[16]](
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${atob(
+          event[_0x4d35[11]][_0x4d35[10]]
+        )}&lon=${atob(event[_0x4d35[11]][_0x4d35[13]])}${_0x4d35[14]}${
+          api[apiOrder]
+        }&lang=en`
+      );
+      apiOrder += 1;
+    }
+    startForecast = new Date(
+      weatherTomorrow[_0x4d35[18]].list[0].dt * 1000
+    ).getHours();
+    while (startForecast != 7 && listForecast < 40) {
+      listForecast += 1;
+      startForecast = new Date(
+        weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
+      ).getHours();
+      console.log(startForecast);
+    }
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
         c3RhdHVzQ29kZQ: weather[_0x4d35[18]][_0x4d35[17]],
         dGVtcGVyYXR1cmU: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[19]],
         aWQ: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
-        dGltZQ: weather[_0x4d35[18]][_0x4d35[24]]
+        dGltZQ: weather[_0x4d35[18]][_0x4d35[24]],
+        tomorrow: {
+          t7: {
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast].dt,
+            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast].weather[0].id,
+          },
+          t10: {
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast+1].dt,
+            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+1].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast+1].weather[0].id,
+          },
+          t13: {
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast+2].dt,
+            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+2].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast+2].weather[0].id,
+          },
+          t16: {
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast+3].dt,
+            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+3].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast+3].weather[0].id,
+          },
+          t19: {
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast+4].dt,
+            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+4].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast+4].weather[0].id,
+          },
+        },
       }),
     };
   } catch (error) {
