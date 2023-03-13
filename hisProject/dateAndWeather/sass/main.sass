@@ -109,7 +109,7 @@ html
 					display: flex
 					justify-content: space-between
 					align-items: center
-					padding:0 2rem 4rem 2rem
+					padding:0 2rem 0 2rem
 					width: auto
 					height: auto
 					.text
@@ -129,6 +129,45 @@ html
 						img
 							width: 100%
 							height: 100%
+				.weatherForecastContents
+					width: 90%
+					height: auto
+					padding: 1.5rem
+					//background: #fff1
+					//backdrop-filter: blur(2px)
+					border: .15rem solid #fff
+					border-radius: 1.5rem
+					margin: 3.5rem auto
+					display: flex
+					justify-content: center
+					align-items: center
+					.forecastDate
+						position: absolute
+						color: #fff
+						font-size: 1.75rem
+						background: #5e284f
+						top: -1.3rem
+						left: 1.5rem
+						padding: 0 1rem
+						letter-spacing: .1rem
+					.card
+						color: #fff
+						display: flex
+						flex-direction: column
+						justify-content: center
+						align-content: space-around
+						flex-wrap: nowrap
+						div
+							text-align: center
+							font-size: 2rem
+							letter-spacing: .1rem
+						.icon
+							width: 5.5rem
+							height: auto
+							margin: 1rem 0
+							img
+								width: 100%
+								height: 100%
 				.weatherUpdateTime
 					width: 100%
 					height: auto
@@ -136,6 +175,7 @@ html
 					padding: 0 1rem 0 0
 					color: #fff
 					letter-spacing: .1rem
+					font-size: 1rem
 		.screenOff
 			display: none
 			background: #000

@@ -30,7 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
     weatherData,
     screenStatus,
     keepScreenOnStatus = 0,
-    getWeatherStatus;
+    getWeatherStatus,demo=false;
+  if(/demo/.test(window.location.href)){
+  	demo=true
+  }else{
+  	demo = false
+  }
   eval(
     (function (p, a, c, k, e, d) {
       e = function (c) {
@@ -453,7 +458,12 @@ document.addEventListener("DOMContentLoaded", () => {
           '<img src="./images/cloud2.svg" alt="cloud2.svg">';
       }
       printWeatherUpdateTime(time);
-    } else {
+    } else if(demo){
+      temperatureTextElement.innerHTML = "<span>22</span>℃";
+      descriptionTextElement.innerHTML = "Quang đãng";
+      weatherIconElement.innerHTML = '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+      printWeatherUpdateTime(1600000000000);
+    }else {
       temperatureTextElement.innerHTML = "";
       descriptionTextElement.innerHTML = "";
       weatherIconElement.innerHTML = "";
