@@ -158,12 +158,12 @@ html body .mainContents .weatherContents .weatherMainContents .icon img {
 html body .mainContents .weatherContents .weatherForecastContents {
   width: 90%;
   height: auto;
-  padding: 1.5rem;
+  padding: 3rem 1.5rem 2rem;
   border: 0.15rem solid #fff;
   border-radius: 1.5rem;
-  margin: 3.5rem auto;
+  margin: 3.5rem auto 1.75rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 html body .mainContents .weatherContents .weatherForecastContents .forecastDate {
@@ -181,8 +181,7 @@ html body .mainContents .weatherContents .weatherForecastContents .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: space-around;
-  flex-wrap: nowrap;
+  align-items: center;
 }
 html body .mainContents .weatherContents .weatherForecastContents .card div {
   text-align: center;
