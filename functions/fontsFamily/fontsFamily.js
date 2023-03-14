@@ -80,7 +80,7 @@ const handler = async (event) => {
       startForecast = new Date(
         weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
       ).getHours();
-      console.log(startForecast);
+      // console.log(startForecast);
     }
     return {
       statusCode: 200,
