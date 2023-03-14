@@ -31,6 +31,7 @@ const handler = async (event) => {
     "\x66\x6F\x72\x65\x63\x61\x73\x74",
     "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x6F\x70\x65\x6E\x77\x65\x61\x74\x68\x65\x72\x6D\x61\x70\x2E\x6F\x72\x67\x2F\x64\x61\x74\x61\x2F\x32\x2E\x35\x2F",
     "\x6C\x69\x73\x74",
+    "\x64\x47\x6C\x74\x5A\x51",
   ];
   try {
     let weather = { cod: 429 },
@@ -82,7 +83,7 @@ const handler = async (event) => {
     console.log(new Date());
     while (
       startForecast.getHours() != 0 &&
-      startForecast.getDate() != new Date().getDate() &&
+      startForecast.getDate() != event[_0x4d35[11]][_0x4d35[29]] &&
       listForecast < 40
     ) {
       listForecast = listForecast + 1;
