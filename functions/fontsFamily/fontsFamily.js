@@ -82,7 +82,7 @@ const handler = async (event) => {
       ).getHours();
       // console.log(startForecast);
     }
-    console.log(weatherTomorrow[_0x4d35[18]]);
+    console.log(weatherTomorrow[_0x4d35[18]].list[0].dt);
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
