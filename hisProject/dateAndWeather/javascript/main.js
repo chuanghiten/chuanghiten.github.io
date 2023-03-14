@@ -444,26 +444,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return [weatherDescriptionClouds[3], "./images/cloud2.svg"];
       }
     }
-    console.log(
-      temperature + " " +
-      icon + " " +
-      time + " " +
-      t7Temperature + " " +
-      t7Icon + " " +
-      t7Time + " " +
-      t10Temperature + " " +
-      t10Icon + " " +
-      t10Time + " " +
-      t13Temperature + " " +
-      t13Icon + " " +
-      t13Time + " " +
-      t16Temperature + " " +
-      t16Icon + " " +
-      t16Time + " " +
-      t19Temperature + " " +
-      t19Icon + " " +
-      t19Time
-    )
     if (
       temperature &&
       icon &&
@@ -484,6 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
       t19Icon &&
       t19Time
     ) {
+      window.document.querySelector(".weatherForecastContents").removeAttribute("style")
       temperatureTextElement.innerHTML =
         "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
       descriptionTextElement.innerHTML = returnIcon(icon)[0];
@@ -537,6 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
       t19TimeText.innerHTML = returnTime(t19Time);
       printWeatherUpdateTime(time);
     } else if (demo) {
+      window.document.querySelector(".weatherForecastContents").removeAttribute("style")
       temperatureTextElement.innerHTML = "<span>22</span>℃";
       descriptionTextElement.innerHTML = "Quang đãng";
       weatherIconElement.innerHTML =
@@ -559,7 +541,28 @@ document.addEventListener("DOMContentLoaded", () => {
       forecastDate.innerHTML = "Mai: 21 / 11";
       printWeatherUpdateTime(1600000000000);
     } else {
-      window.document.querySelector(".weatherContents").innerHTML = "";
+      temperatureTextElement.innerHTML = "";
+      descriptionTextElement.innerHTML = "";
+      weatherIconElement.innerHTML =
+        '';
+      t7TimeText.innerHTML = "";
+      t10TimeText.innerHTML = "";
+      t13TimeText.innerHTML = "";
+      t16TimeText.innerHTML = "";
+      t19TimeText.innerHTML = "";
+      t7TemperatureIcon.innerHTML = "";
+      t10TemperatureIcon.innerHTML = "";
+      t13TemperatureIcon.innerHTML = "";
+      t16TemperatureIcon.innerHTML = "";
+      t19TemperatureIcon.innerHTML = "";
+      t7TemperatureText.innerHTML = "";
+      t10TemperatureText.innerHTML = "";
+      t13TemperatureText.innerHTML = "";
+      t16TemperatureText.innerHTML = "";
+      t19TemperatureText.innerHTML = "";
+      forecastDate.innerHTML = "";
+      printWeatherUpdateTime(false);
+      window.document.querySelector(".weatherForecastContents").setAttribute("style","display: none")
     }
   }
   eval(
@@ -694,7 +697,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "--height: " + (data - 1.5) + "px"
     );
   }
-  updateWeatherContents(false, false);
+  updateWeatherContents();
   addScreenSizeToBodyElement();
   bodyElement.onresize = addScreenSizeToBodyElement;
   bodyElement.onclick = fullScreen;
