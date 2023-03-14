@@ -80,18 +80,29 @@ const handler = async (event) => {
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
     );
-    console.log(new Date());
+
+    // while (
+    //   startForecast.getHours() != 0 &&
+    //   startForecast.getDate() != event[_0x4d35[11]][_0x4d35[29]] &&
+    //   listForecast < 40
+    // ) {
+    //   listForecast = listForecast + 1;
+    //   startForecast = new Date(
+    //     weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][_0x4d35[24]] *
+    //       1000
+    //   );
+    // }
     while (
-      startForecast.getHours() != 0 &&
-      startForecast.getDate() != event[_0x4d35[11]][_0x4d35[29]] &&
+      startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]] &&
       listForecast < 40
     ) {
-      listForecast = listForecast + 1;
+      listForecast += 1;
       startForecast = new Date(
         weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][_0x4d35[24]] *
           1000
       );
     }
+    // listForecast += 1;
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
