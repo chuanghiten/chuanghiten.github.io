@@ -101,6 +101,7 @@ const handler = async (event) => {
         weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][_0x4d35[24]] *
           1000
       );
+      console.log(startForecast.getDate());
     }
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 1][_0x4d35[24]] *
