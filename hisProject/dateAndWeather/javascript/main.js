@@ -521,74 +521,65 @@ document.addEventListener("DOMContentLoaded", () => {
       descriptionTextElement.innerHTML = "Quang đãng";
       weatherIconElement.innerHTML =
         '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
+      t7TimeText.innerHTML = "7:00";
+      t10TimeText.innerHTML = "10:00";
+      t13TimeText.innerHTML = "13:00";
+      t16TimeText.innerHTML = "16:00";
+      t19TimeText.innerHTML = "19:00";
+      t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      t7TemperatureText.innerHTML = "22℃";
+      t10TemperatureText.innerHTML = "22℃";
+      t13TemperatureText.innerHTML = "22℃";
+      t16TemperatureText.innerHTML = "22℃";
+      t19TemperatureText.innerHTML = "22℃";
       printWeatherUpdateTime(1600000000000);
     } else {
-      temperatureTextElement.innerHTML = "";
-      descriptionTextElement.innerHTML = "";
-      weatherIconElement.innerHTML = "";
-      printWeatherUpdateTime(false);
+      window.document.querySelector(".weatherContents").innerHTML = "";
     }
   }
-  function setGetWeatherStatus(_0x53b0x2) {
-    getWeatherStatus = _0x53b0x2;
-  }
-  async function getWeatherData(_0x53b0x4, _0x53b0x5) {
-    weatherData = await fetch(
-      `${_0xab36[2]}${window[_0xab36[3]](_0x53b0x4.toString())}${
-        _0xab36[4]
-      }${window[_0xab36[3]](_0x53b0x5.toString())}${_0xab36[5]}`
-    )[_0xab36[1]]((_0x53b0x6) => {
-      return _0x53b0x6[_0xab36[0]]();
-    });
-    if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
-      updateWeatherContents(
-        weatherData[_0xab36[7]],
-        weatherData[_0xab36[8]],
-        weatherData[_0xab36[18]],
-        weatherData.tomorrow.t7.temperature,
-        weatherData.tomorrow.t7.id,
-        weatherData.tomorrow.t7.time,
-        weatherData.tomorrow.t10.temperature,
-        weatherData.tomorrow.t10.id,
-        weatherData.tomorrow.t10.time,
-        weatherData.tomorrow.t13.temperature,
-        weatherData.tomorrow.t13.id,
-        weatherData.tomorrow.t13.time,
-        weatherData.tomorrow.t16.temperature,
-        weatherData.tomorrow.t16.id,
-        weatherData.tomorrow.t16.time,
-        weatherData.tomorrow.t19.temperature,
-        weatherData.tomorrow.t19.id,
-        weatherData.tomorrow.t19.time
-      );
-    }
-  }
-  function getPosition(_0x53b0x6) {
-    latitude = _0x53b0x6[_0xab36[10]][_0xab36[9]];
-    longitude = _0x53b0x6[_0xab36[10]][_0xab36[11]];
-    getWeatherData(latitude, longitude);
-  }
-  function getWeather() {
-    if (getWeatherStatus != 1) {
-      setGetWeatherStatus(1);
-      if (window[_0xab36[13]][_0xab36[12]]) {
-        if (latitude && longitude) {
-          getWeatherData(latitude, longitude);
-        } else {
-          window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
+  eval(
+    (function (p, a, c, k, e, d) {
+      e = function (c) {
+        return (
+          (c < a ? "" : e(parseInt(c / a))) +
+          ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+        );
+      };
+      if (!"".replace(/^/, String)) {
+        while (c--) {
+          d[e(c)] = k[c] || e(c);
         }
-      } else {
-        window[_0xab36[17]](_0xab36[16], () => {
-          if (latitude && longitude) {
-            getWeatherData(latitude, longitude);
-          } else {
-            window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
-          }
-        });
+        k = [
+          function (e) {
+            return d[e];
+          },
+        ];
+        e = function () {
+          return "\\w+";
+        };
+        c = 1;
       }
-    }
-  }
-
+      while (c--) {
+        if (k[c]) {
+          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
+        }
+      }
+      return p;
+    })(
+      "m x(D){y=D}Q m l(C,B){b=P O(`${a[2]}${d[a[3]](C.A())}${a[4]}${d[a[3]](B.A())}${a[5]}`)[a[1]]((h)=>{N h[a[0]]()});g(b[a[6]]!=M||b[a[6]]!=L){K(b[a[7]],b[a[8]],b[a[J]],b.c.u.k,b.c.u.j,b.c.u.i,b.c.t.k,b.c.t.j,b.c.t.i,b.c.s.k,b.c.s.j,b.c.s.i,b.c.r.k,b.c.r.j,b.c.r.i,b.c.q.k,b.c.q.j,b.c.q.i)}}m n(h){f=h[a[z]][a[9]];e=h[a[z]][a[I]];l(f,e)}m H(){g(y!=1){x(1);g(d[a[o]][a[G]]){g(f&&e){l(f,e)}p{d[a[o]][a[w]][a[v]](n)}}p{d[a[F]](a[E],()=>{g(f&&e){l(f,e)}p{d[a[o]][a[w]][a[v]](n)}})}}};",
+      53,
+      53,
+      "\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x7C\x5F\x30\x78\x61\x62\x33\x36\x7C\x77\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x64\x47\x39\x74\x62\x33\x4A\x79\x62\x33\x63\x7C\x77\x69\x6E\x64\x6F\x77\x7C\x6C\x6F\x6E\x67\x69\x74\x75\x64\x65\x7C\x6C\x61\x74\x69\x74\x75\x64\x65\x7C\x69\x66\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x36\x7C\x64\x47\x6C\x74\x5A\x51\x7C\x61\x57\x51\x7C\x64\x47\x56\x74\x63\x47\x56\x79\x59\x58\x52\x31\x63\x6D\x55\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x66\x75\x6E\x63\x74\x69\x6F\x6E\x7C\x67\x65\x74\x50\x6F\x73\x69\x74\x69\x6F\x6E\x7C\x31\x33\x7C\x65\x6C\x73\x65\x7C\x74\x31\x39\x7C\x74\x31\x36\x7C\x74\x31\x33\x7C\x74\x31\x30\x7C\x74\x37\x7C\x31\x34\x7C\x31\x35\x7C\x73\x65\x74\x47\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x31\x30\x7C\x74\x6F\x53\x74\x72\x69\x6E\x67\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x35\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x34\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x32\x7C\x31\x36\x7C\x31\x37\x7C\x31\x32\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x7C\x31\x31\x7C\x31\x38\x7C\x75\x70\x64\x61\x74\x65\x57\x65\x61\x74\x68\x65\x72\x43\x6F\x6E\x74\x65\x6E\x74\x73\x7C\x34\x30\x31\x7C\x34\x32\x39\x7C\x72\x65\x74\x75\x72\x6E\x7C\x66\x65\x74\x63\x68\x7C\x61\x77\x61\x69\x74\x7C\x61\x73\x79\x6E\x63".split(
+        "|"
+      ),
+      0,
+      {}
+    )
+  );
   function setScreenStatus(status) {
     screenStatus = status;
   }
