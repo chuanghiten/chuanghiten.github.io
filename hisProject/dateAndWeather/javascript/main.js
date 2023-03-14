@@ -444,6 +444,26 @@ document.addEventListener("DOMContentLoaded", () => {
         return [weatherDescriptionClouds[3], "./images/cloud2.svg"];
       }
     }
+    console.log(
+      temperature + " " +
+      icon + " " +
+      time + " " +
+      t7Temperature + " " +
+      t7Icon + " " +
+      t7Time + " " +
+      t10Temperature + " " +
+      t10Icon + " " +
+      t10Time + " " +
+      t13Temperature + " " +
+      t13Icon + " " +
+      t13Time + " " +
+      t16Temperature + " " +
+      t16Icon + " " +
+      t16Time + " " +
+      t19Temperature + " " +
+      t19Icon + " " +
+      t19Time
+    )
     if (
       temperature &&
       icon &&
@@ -536,8 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
       t13TemperatureText.innerHTML = "22℃";
       t16TemperatureText.innerHTML = "22℃";
       t19TemperatureText.innerHTML = "22℃";
-      forecastDate.innerHTML =
-        "Mai: 21 / 11";
+      forecastDate.innerHTML = "Mai: 21 / 11";
       printWeatherUpdateTime(1600000000000);
     } else {
       window.document.querySelector(".weatherContents").innerHTML = "";
