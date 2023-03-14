@@ -33,7 +33,7 @@ const handler = async (event) => {
       weatherTomorrow = { cod: 429 },
       apiOrder = 0,
       apiOrderMax = 7,
-      // startForecast,
+      startForecast,
       listForecast = 0,
       api = [
         process[_0x4d35[1]][_0x4d35[0]],
@@ -72,16 +72,17 @@ const handler = async (event) => {
       );
       apiOrder += 1;
     }
-    // startForecast = new Date(
-    //   weatherTomorrow[_0x4d35[18]].list[0].dt * 1000
-    // ).getHours();
-    // while (startForecast != 7 && listForecast < 40) {
-    //   listForecast += 1;
-    //   startForecast = new Date(
-    //     weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
-    //   ).getHours();
-    //   // console.log(startForecast);
-    // }
+    startForecast = new Date(
+      weatherTomorrow[_0x4d35[18]].list[0].dt * 1000
+    ).getHours();
+    console.log(startForecast);
+    while (startForecast != 7 && listForecast < 40) {
+      listForecast = listForecast + 1;
+      startForecast = new Date(
+        weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
+      ).getHours();
+      // console.log(startForecast);
+    }
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
@@ -92,28 +93,37 @@ const handler = async (event) => {
         tomorrow: {
           t7: {
             time: weatherTomorrow[_0x4d35[18]].list[listForecast].dt,
-            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast].main.temp,
+            temperature:
+              weatherTomorrow[_0x4d35[18]].list[listForecast].main.temp,
             id: weatherTomorrow[_0x4d35[18]].list[listForecast].weather[0].id,
           },
           t10: {
-            time: weatherTomorrow[_0x4d35[18]].list[listForecast+1].dt,
-            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+1].main.temp,
-            id: weatherTomorrow[_0x4d35[18]].list[listForecast+1].weather[0].id,
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast + 1].dt,
+            temperature:
+              weatherTomorrow[_0x4d35[18]].list[listForecast + 1].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast + 1].weather[0]
+              .id,
           },
           t13: {
-            time: weatherTomorrow[_0x4d35[18]].list[listForecast+2].dt,
-            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+2].main.temp,
-            id: weatherTomorrow[_0x4d35[18]].list[listForecast+2].weather[0].id,
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast + 2].dt,
+            temperature:
+              weatherTomorrow[_0x4d35[18]].list[listForecast + 2].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast + 2].weather[0]
+              .id,
           },
           t16: {
-            time: weatherTomorrow[_0x4d35[18]].list[listForecast+3].dt,
-            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+3].main.temp,
-            id: weatherTomorrow[_0x4d35[18]].list[listForecast+3].weather[0].id,
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast + 3].dt,
+            temperature:
+              weatherTomorrow[_0x4d35[18]].list[listForecast + 3].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast + 3].weather[0]
+              .id,
           },
           t19: {
-            time: weatherTomorrow[_0x4d35[18]].list[listForecast+4].dt,
-            temperature: weatherTomorrow[_0x4d35[18]].list[listForecast+4].main.temp,
-            id: weatherTomorrow[_0x4d35[18]].list[listForecast+4].weather[0].id,
+            time: weatherTomorrow[_0x4d35[18]].list[listForecast + 4].dt,
+            temperature:
+              weatherTomorrow[_0x4d35[18]].list[listForecast + 4].main.temp,
+            id: weatherTomorrow[_0x4d35[18]].list[listForecast + 4].weather[0]
+              .id,
           },
         },
       }),
