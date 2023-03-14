@@ -79,6 +79,7 @@ const handler = async (event) => {
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
     );
+    console.log(new Date());
     while (
       startForecast.getHours() != 0 &&
       startForecast.getDate() != new Date().getDate() &&
