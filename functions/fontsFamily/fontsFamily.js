@@ -78,13 +78,17 @@ const handler = async (event) => {
     }
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
-    ).getHours();
-    while (startForecast != 0 && listForecast < 40) {
+    );
+    while (
+      startForecast.getHours() != 0 &&
+      startForecast.getDate() != new Date().getDate() &&
+      listForecast < 40
+    ) {
       listForecast = listForecast + 1;
       startForecast = new Date(
         weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][_0x4d35[24]] *
           1000
-      ).getHours();
+      );
     }
     return {
       statusCode: 200,
