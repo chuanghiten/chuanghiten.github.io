@@ -93,7 +93,7 @@ const handler = async (event) => {
     //   );
     // }
     while (
-      startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]] &&
+      startForecast.getDate() != event[_0x4d35[11]][_0x4d35[29]] &&
       listForecast < 40
     ) {
       console.log(startForecast.getDate());
