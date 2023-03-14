@@ -33,7 +33,7 @@ const handler = async (event) => {
       weatherTomorrow = { cod: 429 },
       apiOrder = 0,
       apiOrderMax = 7,
-      startForecast,
+      // startForecast,
       listForecast = 0,
       api = [
         process[_0x4d35[1]][_0x4d35[0]],
@@ -72,17 +72,16 @@ const handler = async (event) => {
       );
       apiOrder += 1;
     }
-    startForecast = new Date(
-      weatherTomorrow[_0x4d35[18]].list[0].dt * 1000
-    ).getHours();
-    while (startForecast != 7 && listForecast < 40) {
-      listForecast += 1;
-      startForecast = new Date(
-        weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
-      ).getHours();
-      // console.log(startForecast);
-    }
-    console.log(weatherTomorrow[_0x4d35[18]].list[0].dt);
+    // startForecast = new Date(
+    //   weatherTomorrow[_0x4d35[18]].list[0].dt * 1000
+    // ).getHours();
+    // while (startForecast != 7 && listForecast < 40) {
+    //   listForecast += 1;
+    //   startForecast = new Date(
+    //     weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
+    //   ).getHours();
+    //   // console.log(startForecast);
+    // }
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
