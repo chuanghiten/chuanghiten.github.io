@@ -185,11 +185,11 @@ html body .mainContents .weatherContents .weatherForecastContents .card {
 }
 html body .mainContents .weatherContents .weatherForecastContents .card div {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1rem;
 }
 html body .mainContents .weatherContents .weatherForecastContents .card .icon {
-  width: 5.5rem;
+  width: 4rem;
   height: auto;
   margin: 1rem 0;
 }

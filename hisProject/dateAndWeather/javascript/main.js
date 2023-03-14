@@ -536,6 +536,8 @@ document.addEventListener("DOMContentLoaded", () => {
       t13TemperatureText.innerHTML = "22℃";
       t16TemperatureText.innerHTML = "22℃";
       t19TemperatureText.innerHTML = "22℃";
+      forecastDate.innerHTML =
+        "Mai: 21 / 11";
       printWeatherUpdateTime(1600000000000);
     } else {
       window.document.querySelector(".weatherContents").innerHTML = "";
