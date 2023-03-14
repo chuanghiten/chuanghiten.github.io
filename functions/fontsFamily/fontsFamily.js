@@ -75,7 +75,7 @@ const handler = async (event) => {
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]].list[0].dt * 1000
     ).getHours();
-    while (startForecast != 7 && listForecast < 40) {
+    while (startForecast != 0 && listForecast < 40) {
       listForecast = listForecast + 1;
       startForecast = new Date(
         weatherTomorrow[_0x4d35[18]].list[listForecast].dt * 1000
