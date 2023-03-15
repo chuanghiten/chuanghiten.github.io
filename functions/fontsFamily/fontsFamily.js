@@ -80,35 +80,6 @@ const handler = async (event) => {
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
     );
-
-    // while (
-    //   startForecast.getHours() != 0 &&
-    //   startForecast.getDate() != event[_0x4d35[11]][_0x4d35[29]] &&
-    //   listForecast < 40
-    // ) {
-    //   listForecast = listForecast + 1;
-    //   startForecast = new Date(
-    //     weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][_0x4d35[24]] *
-    //       1000
-    //   );
-    // }
-    // listForecast += 1;
-    // 15 0
-    // 15 3
-    // 15 6
-    // 15 9
-    // 15 12
-    // 15 15
-    // 15 18
-    // 15 21
-    // 16 0
-    // 16 3
-    // 16 6
-    // 16 9
-    // 16 12
-    // 16 15
-    // 16 18
-    // 16 21
     if (startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]) {
       if (startForecast.getHours() == 0) {
         listForecast = 8;
