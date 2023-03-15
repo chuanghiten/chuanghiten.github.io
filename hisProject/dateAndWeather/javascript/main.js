@@ -570,67 +570,45 @@ document.addEventListener("DOMContentLoaded", () => {
         .setAttribute("style", "display: none");
     }
   }
-  function setGetWeatherStatus(_0x53b0x2) {
-    getWeatherStatus = _0x53b0x2;
-  }
-  async function getWeatherData(_0x53b0x4, _0x53b0x5) {
-    weatherData = await fetch(
-      `https://chuanghiten.netlify.app/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[
-        _0xab36[3]
-      ](_0x53b0x4.toString())}&Zm9udERhdGE=${window[_0xab36[3]](
-        _0x53b0x5.toString()
-      )}&dGltZQ=${new Date().getDate()}`
-    )[_0xab36[1]]((_0x53b0x6) => {
-      return _0x53b0x6[_0xab36[0]]();
-    });
-    if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
-      updateWeatherContents(
-        weatherData[_0xab36[7]],
-        weatherData[_0xab36[8]],
-        weatherData[_0xab36[18]],
-        weatherData.dG9tb3Jyb3c.t7.dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c.t7.aWQ,
-        weatherData.dG9tb3Jyb3c.t7.dGltZQ,
-        weatherData.dG9tb3Jyb3c.t10.dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c.t10.aWQ,
-        weatherData.dG9tb3Jyb3c.t10.dGltZQ,
-        weatherData.dG9tb3Jyb3c.t13.dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c.t13.aWQ,
-        weatherData.dG9tb3Jyb3c.t13.dGltZQ,
-        weatherData.dG9tb3Jyb3c.t16.dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c.t16.aWQ,
-        weatherData.dG9tb3Jyb3c.t16.dGltZQ,
-        weatherData.dG9tb3Jyb3c.t19.dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c.t19.aWQ,
-        weatherData.dG9tb3Jyb3c.t19.dGltZQ
-      );
-    }
-  }
-  function getPosition(_0x53b0x6) {
-    latitude = _0x53b0x6[_0xab36[10]][_0xab36[9]];
-    longitude = _0x53b0x6[_0xab36[10]][_0xab36[11]];
-    getWeatherData(latitude, longitude);
-  }
-  function getWeather() {
-    if (getWeatherStatus != 1) {
-      setGetWeatherStatus(1);
-      if (window[_0xab36[13]][_0xab36[12]]) {
-        if (latitude && longitude) {
-          getWeatherData(latitude, longitude);
-        } else {
-          window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
+  eval(
+    (function (p, a, c, k, e, d) {
+      e = function (c) {
+        return (
+          (c < a ? "" : e(parseInt(c / a))) +
+          ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+        );
+      };
+      if (!"".replace(/^/, String)) {
+        while (c--) {
+          d[e(c)] = k[c] || e(c);
         }
-      } else {
-        window[_0xab36[17]](_0xab36[16], () => {
-          if (latitude && longitude) {
-            getWeatherData(latitude, longitude);
-          } else {
-            window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
-          }
-        });
+        k = [
+          function (e) {
+            return d[e];
+          },
+        ];
+        e = function () {
+          return "\\w+";
+        };
+        c = 1;
       }
-    }
-  }
+      while (c--) {
+        if (k[c]) {
+          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
+        }
+      }
+      return p;
+    })(
+      "j u(A){v=A}S j i(z,y){4=R Q(`P:2[3]](z.x())}&O=${d[2[3]](y.x())}&c=${N M().L()}`)[2[1]]((f)=>{K f[2[0]]()});e(4[2[6]]!=J||4[2[6]]!=I){H(4[2[7]],4[2[8]],4[2[G]],4.5.r.h,4.5.r.g,4.5.r.c,4.5.q.h,4.5.q.g,4.5.q.c,4.5.p.h,4.5.p.g,4.5.p.c,4.5.o.h,4.5.o.g,4.5.o.c,4.5.n.h,4.5.n.g,4.5.n.c)}}j k(f){b=f[2[w]][2[9]];a=f[2[w]][2[F]];i(b,a)}j E(){e(v!=1){u(1);e(d[2[l]][2[D]]){e(b&&a){i(b,a)}m{d[2[l]][2[t]][2[s]](k)}}m{d[2[C]](2[B],()=>{e(b&&a){i(b,a)}m{d[2[l]][2[t]][2[s]](k)}})}}}",
+      55,
+      55,
+      "||_0xab36||weatherData|dG9tb3Jyb3c|||||longitude|latitude|dGltZQ|window|if|_0x53b0x6|aWQ|dGVtcGVyYXR1cmU|getWeatherData|function|getPosition|13|else|t19|t16|t13|t10|t7|14|15|setGetWeatherStatus|getWeatherStatus|10|toString|_0x53b0x5|_0x53b0x4|_0x53b0x2|16|17|12|getWeather|11|18|updateWeatherContents|401|429|return|getDate|Date|new|Zm9udERhdGE|https|fetch|await|async".split(
+        "|"
+      ),
+      0,
+      {}
+    )
+  );
 
   function setScreenStatus(status) {
     screenStatus = status;
