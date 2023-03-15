@@ -570,45 +570,67 @@ document.addEventListener("DOMContentLoaded", () => {
         .setAttribute("style", "display: none");
     }
   }
-  eval(
-    (function (p, a, c, k, e, d) {
-      e = function (c) {
-        return (
-          (c < a ? "" : e(parseInt(c / a))) +
-          ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
-        );
-      };
-      if (!"".replace(/^/, String)) {
-        while (c--) {
-          d[e(c)] = k[c] || e(c);
+  function setGetWeatherStatus(_0x53b0x2) {
+    getWeatherStatus = _0x53b0x2;
+  }
+  async function getWeatherData(_0x53b0x4, _0x53b0x5) {
+    weatherData = await fetch(
+      `https://chuanghiten.netlify.app/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[
+        _0xab36[3]
+      ](_0x53b0x4.toString())}&Zm9udERhdGE=${window[_0xab36[3]](
+        _0x53b0x5.toString()
+      )}&dGltZQ=${new Date().getDate()}`
+    )[_0xab36[1]]((_0x53b0x6) => {
+      return _0x53b0x6[_0xab36[0]]();
+    });
+    if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
+      updateWeatherContents(
+        weatherData[_0xab36[7]],
+        weatherData[_0xab36[8]],
+        weatherData[_0xab36[18]],
+        weatherData.dG9tb3Jyb3c.t7.dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c.t7.aWQ,
+        weatherData.dG9tb3Jyb3c.t7.dGltZQ,
+        weatherData.dG9tb3Jyb3c.t10.dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c.t10.aWQ,
+        weatherData.dG9tb3Jyb3c.t10.dGltZQ,
+        weatherData.dG9tb3Jyb3c.t13.dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c.t13.aWQ,
+        weatherData.dG9tb3Jyb3c.t13.dGltZQ,
+        weatherData.dG9tb3Jyb3c.t16.dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c.t16.aWQ,
+        weatherData.dG9tb3Jyb3c.t16.dGltZQ,
+        weatherData.dG9tb3Jyb3c.t19.dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c.t19.aWQ,
+        weatherData.dG9tb3Jyb3c.t19.dGltZQ
+      );
+    }
+  }
+  function getPosition(_0x53b0x6) {
+    latitude = _0x53b0x6[_0xab36[10]][_0xab36[9]];
+    longitude = _0x53b0x6[_0xab36[10]][_0xab36[11]];
+    getWeatherData(latitude, longitude);
+  }
+  function getWeather() {
+    if (getWeatherStatus != 1) {
+      setGetWeatherStatus(1);
+      if (window[_0xab36[13]][_0xab36[12]]) {
+        if (latitude && longitude) {
+          getWeatherData(latitude, longitude);
+        } else {
+          window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
         }
-        k = [
-          function (e) {
-            return d[e];
-          },
-        ];
-        e = function () {
-          return "\\w+";
-        };
-        c = 1;
+      } else {
+        window[_0xab36[17]](_0xab36[16], () => {
+          if (latitude && longitude) {
+            getWeatherData(latitude, longitude);
+          } else {
+            window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
+          }
+        });
       }
-      while (c--) {
-        if (k[c]) {
-          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
-        }
-      }
-      return p;
-    })(
-      "j u(A){v=A}S j i(z,y){4=R Q(`P:2[3]](z.x())}&O=${d[2[3]](y.x())}&c=${N M().L()}`)[2[1]]((f)=>{K f[2[0]]()});e(4[2[6]]!=J||4[2[6]]!=I){H(4[2[7]],4[2[8]],4[2[G]],4.5.r.h,4.5.r.g,4.5.r.c,4.5.q.h,4.5.q.g,4.5.q.c,4.5.p.h,4.5.p.g,4.5.p.c,4.5.o.h,4.5.o.g,4.5.o.c,4.5.n.h,4.5.n.g,4.5.n.c)}}j k(f){b=f[2[w]][2[9]];a=f[2[w]][2[F]];i(b,a)}j E(){e(v!=1){u(1);e(d[2[l]][2[D]]){e(b&&a){i(b,a)}m{d[2[l]][2[t]][2[s]](k)}}m{d[2[C]](2[B],()=>{e(b&&a){i(b,a)}m{d[2[l]][2[t]][2[s]](k)}})}}}",
-      55,
-      55,
-      "\x7C\x7C\x5F\x30\x78\x61\x62\x33\x36\x7C\x7C\x77\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x64\x47\x39\x74\x62\x33\x4A\x79\x62\x33\x63\x7C\x7C\x7C\x7C\x7C\x6C\x6F\x6E\x67\x69\x74\x75\x64\x65\x7C\x6C\x61\x74\x69\x74\x75\x64\x65\x7C\x64\x47\x6C\x74\x5A\x51\x7C\x77\x69\x6E\x64\x6F\x77\x7C\x69\x66\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x36\x7C\x61\x57\x51\x7C\x64\x47\x56\x74\x63\x47\x56\x79\x59\x58\x52\x31\x63\x6D\x55\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x66\x75\x6E\x63\x74\x69\x6F\x6E\x7C\x67\x65\x74\x50\x6F\x73\x69\x74\x69\x6F\x6E\x7C\x31\x33\x7C\x65\x6C\x73\x65\x7C\x74\x31\x39\x7C\x74\x31\x36\x7C\x74\x31\x33\x7C\x74\x31\x30\x7C\x74\x37\x7C\x31\x34\x7C\x31\x35\x7C\x73\x65\x74\x47\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x31\x30\x7C\x74\x6F\x53\x74\x72\x69\x6E\x67\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x35\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x34\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x32\x7C\x31\x36\x7C\x31\x37\x7C\x31\x32\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x7C\x31\x31\x7C\x31\x38\x7C\x75\x70\x64\x61\x74\x65\x57\x65\x61\x74\x68\x65\x72\x43\x6F\x6E\x74\x65\x6E\x74\x73\x7C\x34\x30\x31\x7C\x34\x32\x39\x7C\x72\x65\x74\x75\x72\x6E\x7C\x67\x65\x74\x44\x61\x74\x65\x7C\x44\x61\x74\x65\x7C\x6E\x65\x77\x7C\x5A\x6D\x39\x75\x64\x45\x52\x68\x64\x47\x45\x7C\x68\x74\x74\x70\x73\x7C\x66\x65\x74\x63\x68\x7C\x61\x77\x61\x69\x74\x7C\x61\x73\x79\x6E\x63".split(
-        "|"
-      ),
-      0,
-      {}
-    )
-  );
+    }
+  }
 
   function setScreenStatus(status) {
     screenStatus = status;
