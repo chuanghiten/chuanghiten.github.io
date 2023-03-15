@@ -117,7 +117,7 @@ const handler = async (event) => {
         while (
           startForecast.getHours() != 0 &&
           listForecast < 40 &&
-          listForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]
+          startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]
         ) {
           listForecast += 1;
           startForecast = new Date(
