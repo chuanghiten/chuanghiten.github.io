@@ -128,6 +128,7 @@ const handler = async (event) => {
         }
       }
     }
+    console.log(listForecast)
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
