@@ -80,16 +80,22 @@ const handler = async (event) => {
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
     );
-    console.log("🚀 ~ file: fontsFamily.js:83 ~ handler ~ startForecast:", startForecast.getTimezoneOffset()/60)
-    if (startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]) {
-      if (startForecast.getHours() == 0) {
+    function returnNumberFormString(string, startCut, endCut) {
+      return Number(string.slice(startCut, endCut));
+    }
+    if (
+      returnNumberFormString(startForecast.toUTCString(), 5, 7) ==
+      event[_0x4d35[11]][_0x4d35[29]]
+    ) {
+      if (returnNumberFormString(startForecast.toUTCString(), 17, 19) == 0) {
         listForecast = 8;
       } else {
         listForecast = 0;
         while (
-          startForecast.getHours() != 0 &&
+          returnNumberFormString(startForecast.toUTCString(), 17, 19) != 0 &&
           listForecast < 40 &&
-          startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]
+          returnNumberFormString(startForecast.toUTCString(), 5, 7) ==
+            event[_0x4d35[11]][_0x4d35[29]]
         ) {
           listForecast += 1;
           startForecast = new Date(
