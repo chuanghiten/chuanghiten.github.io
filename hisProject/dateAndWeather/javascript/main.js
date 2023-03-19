@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     t19TimeText = window.document.querySelector(
       ".weatherForecastContents .t19 .time"
     ),
+    svgBackgroundElement = window.document.querySelector(".svgBackground"),
     oldClockForClockPulse,
     oldDayOfWeek,
     oldWeatherContentsElementHeight,
@@ -700,9 +701,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {
+    let height;
+    if (data-1.5<0){
+      height=0
+    }else{
+      height=data-1.5
+    }
     backgroundFooterElement.setAttribute(
       "style",
-      "--height: " + (data - 1.5) + "px"
+      `--height: ${height}px`
+    );
+    svgBackgroundElement.setAttribute(
+      "style",
+      `--footerHeight: ${height}px`
     );
   }
   updateWeatherContents();

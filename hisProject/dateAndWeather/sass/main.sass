@@ -62,12 +62,19 @@ html
 			background: linear-gradient(to bottom, #dd1c5d, #e63f3c)
 			flex-flow: nowrap column
 			z-index: -1
-			svg
+			.svgBackground
 				width: 100%
-				height: auto
-				display: block
-				*
-					transform: translate(0, 1.5rem)
+				height: calc(100% - var(--footerHeight))
+				overflow: hidden
+				display: flex
+				justify-content: center
+				align-items: flex-end
+				svg
+					width: 100%
+					height: calc( var(--innerWidth) * 1.0196096654275093 )
+					display: block
+					*
+						transform: translate(0, 1.5rem)
 				//*
 				//	width: 100%
 			.backgroundFooter
