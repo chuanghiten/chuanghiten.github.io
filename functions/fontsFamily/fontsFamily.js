@@ -80,6 +80,7 @@ const handler = async (event) => {
     startForecast = new Date(
       weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
     );
+    console.log("🚀 ~ file: fontsFamily.js:83 ~ handler ~ startForecast:", startForecast.getTimezoneOffset()/60)
     if (startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]) {
       if (startForecast.getHours() == 0) {
         listForecast = 8;
