@@ -38,8 +38,8 @@ const handler = async (event) => {
       weatherTomorrow = { cod: 429 },
       apiOrder = 0,
       apiOrderMax = 7,
-      startForecast,
-      listForecast = 0,
+      // startForecast,
+      // listForecast = 0,
       api = [
         process[_0x4d35[1]][_0x4d35[0]],
         process[_0x4d35[1]][_0x4d35[2]],
@@ -77,28 +77,28 @@ const handler = async (event) => {
       );
       apiOrder += 1;
     }
-    startForecast = new Date(
-      weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
-    );
-    if (startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]) {
-      if (startForecast.getHours() == 0) {
-        listForecast = 8;
-      } else {
-        listForecast = 0;
-        while (
-          startForecast.getHours() != 0 &&
-          listForecast < 40 &&
-          startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]
-        ) {
-          listForecast += 1;
-          startForecast = new Date(
-            weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][
-              _0x4d35[24]
-            ] * 1000
-          );
-        }
-      }
-    }
+    // startForecast = new Date(
+    //   weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]] * 1000
+    // );
+    // if (startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]) {
+    //   if (startForecast.getHours() == 0) {
+    //     listForecast = 8;
+    //   } else {
+    //     listForecast = 0;
+    //     while (
+    //       startForecast.getHours() != 0 &&
+    //       listForecast < 40 &&
+    //       startForecast.getDate() == event[_0x4d35[11]][_0x4d35[29]]
+    //     ) {
+    //       listForecast += 1;
+    //       startForecast = new Date(
+    //         weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][
+    //           _0x4d35[24]
+    //         ] * 1000
+    //       );
+    //     }
+    //   }
+    // }
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
@@ -106,73 +106,408 @@ const handler = async (event) => {
         dGVtcGVyYXR1cmU: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[19]],
         aWQ: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
         dGltZQ: weather[_0x4d35[18]][_0x4d35[24]],
-        dG9tb3Jyb3c: {
-          t7: {
-            dGltZQ:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][
-                _0x4d35[24]
-              ],
+        dG9tb3Jyb3c: [
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]],
             dGVtcGVyYXR1cmU:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][
-                _0x4d35[20]
-              ][_0x4d35[19]],
-            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast][
-              _0x4d35[22]
-            ][0][_0x4d35[21]],
-          },
-          t10: {
-            dGltZQ:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 1][
-                _0x4d35[24]
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[20]][
+                _0x4d35[19]
               ],
-            dGVtcGVyYXR1cmU:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 1][
-                _0x4d35[20]
-              ][_0x4d35[19]],
-            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 1][
-              _0x4d35[22]
-            ][0][_0x4d35[21]],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
           },
-          t13: {
-            dGltZQ:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 2][
-                _0x4d35[24]
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][1][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][1][_0x4d35[20]][
+                _0x4d35[19]
               ],
-            dGVtcGVyYXR1cmU:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 2][
-                _0x4d35[20]
-              ][_0x4d35[19]],
-            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 2][
-              _0x4d35[22]
-            ][0][_0x4d35[21]],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][1][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
           },
-          t16: {
-            dGltZQ:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 3][
-                _0x4d35[24]
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][2][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][2][_0x4d35[20]][
+                _0x4d35[19]
               ],
-            dGVtcGVyYXR1cmU:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 3][
-                _0x4d35[20]
-              ][_0x4d35[19]],
-            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 3][
-              _0x4d35[22]
-            ][0][_0x4d35[21]],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][2][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
           },
-          t19: {
-            dGltZQ:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 4][
-                _0x4d35[24]
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][3][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][3][_0x4d35[20]][
+                _0x4d35[19]
               ],
-            dGVtcGVyYXR1cmU:
-              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 4][
-                _0x4d35[20]
-              ][_0x4d35[19]],
-            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][listForecast + 4][
-              _0x4d35[22]
-            ][0][_0x4d35[21]],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][3][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
           },
-        },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][4][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][4][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][4][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][5][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][5][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][5][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][6][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][6][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][6][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][7][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][7][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][7][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][8][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][8][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][8][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][9][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][9][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][9][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][10][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][10][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][10][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][11][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][11][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][11][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][12][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][12][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][12][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][13][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][13][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][13][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][14][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][14][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][14][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][15][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][15][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][15][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][16][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][16][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][16][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][17][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][17][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][17][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][18][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][18][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][18][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][19][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][19][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][19][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][20][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][20][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][20][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][21][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][21][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][21][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][22][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][22][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][22][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][23][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][23][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][23][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][24][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][24][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][24][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][25][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][25][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][25][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][26][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][26][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][26][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][27][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][27][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][27][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][28][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][28][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][28][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][29][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][29][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][29][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][30][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][30][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][30][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][31][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][31][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][31][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][32][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][32][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][32][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][33][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][33][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][33][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][34][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][34][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][34][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][35][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][35][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][35][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][36][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][36][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][36][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][37][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][37][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][37][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][38][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][38][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][38][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+          {
+            dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][39][_0x4d35[24]],
+            dGVtcGVyYXR1cmU:
+              weatherTomorrow[_0x4d35[18]][_0x4d35[28]][39][_0x4d35[20]][
+                _0x4d35[19]
+              ],
+            aWQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][39][_0x4d35[22]][0][
+              _0x4d35[21]
+            ],
+          },
+        ],
       }),
     };
   } catch (error) {

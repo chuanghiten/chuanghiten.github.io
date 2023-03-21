@@ -574,45 +574,87 @@ document.addEventListener("DOMContentLoaded", () => {
         .setAttribute("style", "display: none");
     }
   }
-  eval(
-    (function (p, a, c, k, e, d) {
-      e = function (c) {
-        return (
-          (c < a ? "" : e(parseInt(c / a))) +
-          ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
-        );
-      };
-      if (!"".replace(/^/, String)) {
-        while (c--) {
-          d[e(c)] = k[c] || e(c);
+  function setGetWeatherStatus(_0x53b0x2) {
+    getWeatherStatus = _0x53b0x2;
+  }
+  async function getWeatherData(_0x53b0x4, _0x53b0x5) {
+    let searchForecastData, selectedForecast,timeZone;
+    weatherData = await fetch(
+      `/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[_0xab36[3]](
+        _0x53b0x4.toString()
+      )}${_0xab36[4]}${window[_0xab36[3]](_0x53b0x5.toString())}`
+    )[_0xab36[1]]((_0x53b0x6) => {
+      return _0x53b0x6[_0xab36[0]]();
+    });
+    if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
+      timeZone = new Date().getTimezoneOffset()/60
+      searchForecastData = new Date(weatherData.dG9tb3Jyb3c[0].dGltZQ * 1000 + timeZone * 3600 * 1000);
+      if (searchForecastData.getDate() == new Date().getDate()) {
+        if (searchForecastData.getHours() == 0) {
+          selectedForecast = 8;
+          console.log(true);
+        } else {
+          console.log(searchForecastData);
+          selectedForecast = 0;
+          while (
+            searchForecastData.getHours() != 0 &&
+            selectedForecast < 40 &&
+            searchForecastData.getDate() == new Date().getDate()
+          ) {
+            selectedForecast += 1;
+            searchForecastData = new Date(
+              weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ * 1000 + timeZone * 3600 * 1000
+            );
+          }
         }
-        k = [
-          function (e) {
-            return d[e];
-          },
-        ];
-        e = function () {
-          return "\\w+";
-        };
-        c = 1;
       }
-      while (c--) {
-        if (k[c]) {
-          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
+      updateWeatherContents(
+        weatherData[_0xab36[7]],
+        weatherData[_0xab36[8]],
+        weatherData[_0xab36[18]],
+        weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 1].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 2].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 3].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 4].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGltZQ
+      );
+    }
+  }
+  function getPosition(_0x53b0x6) {
+    latitude = _0x53b0x6[_0xab36[10]][_0xab36[9]];
+    longitude = _0x53b0x6[_0xab36[10]][_0xab36[11]];
+    getWeatherData(latitude, longitude);
+  }
+  function getWeather() {
+    if (getWeatherStatus != 1) {
+      setGetWeatherStatus(1);
+      if (window[_0xab36[13]][_0xab36[12]]) {
+        if (latitude && longitude) {
+          getWeatherData(latitude, longitude);
+        } else {
+          window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
         }
+      } else {
+        window[_0xab36[17]](_0xab36[16], () => {
+          if (latitude && longitude) {
+            getWeatherData(latitude, longitude);
+          } else {
+            window[_0xab36[13]][_0xab36[15]][_0xab36[14]](getPosition);
+          }
+        });
       }
-      return p;
-    })(
-      "l w(D){x=D}S l k(C,B){a=R Q(`${5[2]}${c[5[3]](C.A())}${5[4]}${c[5[3]](B.A())}&${5[z]}=${P O().N()}`)[5[1]]((g)=>{M g[5[0]]()});f(a[5[6]]!=L||a[5[6]]!=K){J(a[5[7]],a[5[8]],a[5[z]],a.b.t.j,a.b.t.i,a.b.t.h,a.b.s.j,a.b.s.i,a.b.s.h,a.b.r.j,a.b.r.i,a.b.r.h,a.b.q.j,a.b.q.i,a.b.q.h,a.b.p.j,a.b.p.i,a.b.p.h)}}l m(g){e=g[5[y]][5[9]];d=g[5[y]][5[I]];k(e,d)}l H(){f(x!=1){w(1);f(c[5[n]][5[G]]){f(e&&d){k(e,d)}o{c[5[n]][5[v]][5[u]](m)}}o{c[5[F]](5[E],()=>{f(e&&d){k(e,d)}o{c[5[n]][5[v]][5[u]](m)}})}}}",
-      55,
-      55,
-      "\x7C\x7C\x7C\x7C\x7C\x5F\x30\x78\x61\x62\x33\x36\x7C\x7C\x7C\x7C\x7C\x77\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x64\x47\x39\x74\x62\x33\x4A\x79\x62\x33\x63\x7C\x77\x69\x6E\x64\x6F\x77\x7C\x6C\x6F\x6E\x67\x69\x74\x75\x64\x65\x7C\x6C\x61\x74\x69\x74\x75\x64\x65\x7C\x69\x66\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x36\x7C\x64\x47\x6C\x74\x5A\x51\x7C\x61\x57\x51\x7C\x64\x47\x56\x74\x63\x47\x56\x79\x59\x58\x52\x31\x63\x6D\x55\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x44\x61\x74\x61\x7C\x66\x75\x6E\x63\x74\x69\x6F\x6E\x7C\x67\x65\x74\x50\x6F\x73\x69\x74\x69\x6F\x6E\x7C\x31\x33\x7C\x65\x6C\x73\x65\x7C\x74\x31\x39\x7C\x74\x31\x36\x7C\x74\x31\x33\x7C\x74\x31\x30\x7C\x74\x37\x7C\x31\x34\x7C\x31\x35\x7C\x73\x65\x74\x47\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x53\x74\x61\x74\x75\x73\x7C\x31\x30\x7C\x31\x38\x7C\x74\x6F\x53\x74\x72\x69\x6E\x67\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x35\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x34\x7C\x5F\x30\x78\x35\x33\x62\x30\x78\x32\x7C\x31\x36\x7C\x31\x37\x7C\x31\x32\x7C\x67\x65\x74\x57\x65\x61\x74\x68\x65\x72\x7C\x31\x31\x7C\x75\x70\x64\x61\x74\x65\x57\x65\x61\x74\x68\x65\x72\x43\x6F\x6E\x74\x65\x6E\x74\x73\x7C\x34\x30\x31\x7C\x34\x32\x39\x7C\x72\x65\x74\x75\x72\x6E\x7C\x67\x65\x74\x44\x61\x74\x65\x7C\x44\x61\x74\x65\x7C\x6E\x65\x77\x7C\x66\x65\x74\x63\x68\x7C\x61\x77\x61\x69\x74\x7C\x61\x73\x79\x6E\x63".split(
-        "|"
-      ),
-      0,
-      {}
-    )
-  );
+    }
+  }
 
   function setScreenStatus(status) {
     screenStatus = status;
