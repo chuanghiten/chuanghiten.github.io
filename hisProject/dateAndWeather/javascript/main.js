@@ -774,22 +774,7 @@ document.addEventListener("DOMContentLoaded", () => {
       c4t16Time &&
       c4t19Temperature &&
       c4t19Icon &&
-      c4t19Time &&
-      c5t7Temperature &&
-      c5t7Icon &&
-      c5t7Time &&
-      c5t10Temperature &&
-      c5t10Icon &&
-      c5t10Time &&
-      c5t13Temperature &&
-      c5t13Icon &&
-      c5t13Time &&
-      c5t16Temperature &&
-      c5t16Icon &&
-      c5t16Time &&
-      c5t19Temperature &&
-      c5t19Icon &&
-      c5t19Time
+      c4t19Time
     ) {
       window.document
         .querySelector(".weatherForecastContents")
@@ -799,13 +784,23 @@ document.addEventListener("DOMContentLoaded", () => {
       weatherIconElement.innerHTML = `<img src="${
         returnIcon(icon)[1]
       }" alt="icon">`;
-      forecastDisplayDate = [
-        new Date(c1t7Time * 1000),
-        new Date(c2t7Time * 1000),
-        new Date(c3t7Time * 1000),
-        new Date(c4t7Time * 1000),
-        new Date(c5t7Time * 1000),
-      ];
+      if (c5t7Temperature) {
+        forecastDisplayDate = [
+          new Date(c1t7Time * 1000),
+          new Date(c2t7Time * 1000),
+          new Date(c3t7Time * 1000),
+          new Date(c4t7Time * 1000),
+          new Date(c5t7Time * 1000),
+        ];
+      } else {
+        forecastDisplayDate = [
+          new Date(c1t7Time * 1000),
+          new Date(c2t7Time * 1000),
+          new Date(c3t7Time * 1000),
+          new Date(c4t7Time * 1000),
+          false,
+        ];
+      }
       forecastDate.innerHTML = `Mai: ${forecastDisplayDate[0].getDate()} / ${
         forecastDisplayDate[0].getMonth() + 1
       }`;
@@ -912,32 +907,37 @@ document.addEventListener("DOMContentLoaded", () => {
       card4t13TimeText.innerHTML = returnTime(c4t13Time);
       card4t16TimeText.innerHTML = returnTime(c4t16Time);
       card4t19TimeText.innerHTML = returnTime(c4t19Time);
-
-      card5t7TemperatureText.innerHTML = `${kToC(c5t7Temperature)}℃`;
-      card5t10TemperatureText.innerHTML = `${kToC(c5t10Temperature)}℃`;
-      card5t13TemperatureText.innerHTML = `${kToC(c5t13Temperature)}℃`;
-      card5t16TemperatureText.innerHTML = `${kToC(c5t16Temperature)}℃`;
-      card5t19TemperatureText.innerHTML = `${kToC(c5t19Temperature)}℃`;
-      card5t7TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(c5t7Icon)[1]
-      }" alt="icon">`;
-      card5t10TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(c5t10Icon)[1]
-      }" alt="icon">`;
-      card5t13TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(c5t13Icon)[1]
-      }" alt="icon">`;
-      card5t16TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(c5t16Icon)[1]
-      }" alt="icon">`;
-      card5t19TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(c5t19Icon)[1]
-      }" alt="icon">`;
-      card5t7TimeText.innerHTML = returnTime(c5t7Time);
-      card5t10TimeText.innerHTML = returnTime(c5t10Time);
-      card5t13TimeText.innerHTML = returnTime(c5t13Time);
-      card5t16TimeText.innerHTML = returnTime(c5t16Time);
-      card5t19TimeText.innerHTML = returnTime(c5t19Time);
+      if (c5t7Temperature) {
+        card5t7TemperatureText.innerHTML = `${kToC(c5t7Temperature)}℃`;
+        card5t10TemperatureText.innerHTML = `${kToC(c5t10Temperature)}℃`;
+        card5t13TemperatureText.innerHTML = `${kToC(c5t13Temperature)}℃`;
+        card5t16TemperatureText.innerHTML = `${kToC(c5t16Temperature)}℃`;
+        card5t19TemperatureText.innerHTML = `${kToC(c5t19Temperature)}℃`;
+        card5t7TemperatureIcon.innerHTML = `<img src="${
+          returnIcon(c5t7Icon)[1]
+        }" alt="icon">`;
+        card5t10TemperatureIcon.innerHTML = `<img src="${
+          returnIcon(c5t10Icon)[1]
+        }" alt="icon">`;
+        card5t13TemperatureIcon.innerHTML = `<img src="${
+          returnIcon(c5t13Icon)[1]
+        }" alt="icon">`;
+        card5t16TemperatureIcon.innerHTML = `<img src="${
+          returnIcon(c5t16Icon)[1]
+        }" alt="icon">`;
+        card5t19TemperatureIcon.innerHTML = `<img src="${
+          returnIcon(c5t19Icon)[1]
+        }" alt="icon">`;
+        card5t7TimeText.innerHTML = returnTime(c5t7Time);
+        card5t10TimeText.innerHTML = returnTime(c5t10Time);
+        card5t13TimeText.innerHTML = returnTime(c5t13Time);
+        card5t16TimeText.innerHTML = returnTime(c5t16Time);
+        card5t19TimeText.innerHTML = returnTime(c5t19Time);
+      } else {
+        window.document
+          .querySelector(".cards5")
+          .setAttribute("style", "display: none");
+      }
       printWeatherUpdateTime(time);
     } else if (demo) {
       window.document
@@ -1134,7 +1134,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (searchForecastData.getDate() == new Date().getDate()) {
         if (searchForecastData.getHours() == 0) {
           selectedForecast = 8;
-          console.log(true);
         } else {
           console.log(searchForecastData);
           selectedForecast = 0;
@@ -1151,87 +1150,155 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       }
-      updateWeatherContents(
-        weatherData[_0xab36[7]],
-        weatherData[_0xab36[8]],
-        weatherData[_0xab36[18]],
-        weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 1].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 2].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 3].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 4].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 8].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 9].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 10].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 11].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 12].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 16].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 17].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 18].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 19].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 20].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 24].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 25].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 26].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 27].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 28].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 32].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 32].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 32].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 33].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 33].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 33].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 34].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 34].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 34].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 35].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 35].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 35].dGltZQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGVtcGVyYXR1cmU,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 36].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGltZQ
-      );
-      console.log(weatherData.dG9tb3Jyb3c[selectedForecast + 32]);
+      if (selectedForecast + 36 >= 40) {
+        updateWeatherContents(
+          weatherData[_0xab36[7]],
+          weatherData[_0xab36[8]],
+          weatherData[_0xab36[18]],
+          weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 1].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 2].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 3].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 4].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 8].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 9].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 10].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 11].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 12].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 16].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 17].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 18].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 19].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 20].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 24].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 25].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 26].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 27].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 28].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGltZQ,
+          false
+        );
+      } else {
+        updateWeatherContents(
+          weatherData[_0xab36[7]],
+          weatherData[_0xab36[8]],
+          weatherData[_0xab36[18]],
+          weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 1].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 1].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 2].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 2].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 3].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 4].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 8].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 9].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 10].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 11].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 12].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 16].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 17].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 18].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 19].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 20].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 24].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 25].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 26].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 27].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 28].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 32].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 32].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 32].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 33].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 33].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 33].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 34].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 34].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 34].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 35].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 35].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 35].dGltZQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGVtcGVyYXR1cmU,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 36].aWQ,
+          weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGltZQ
+        );
+      }
     }
   }
   function getPosition(_0x53b0x6) {
@@ -1387,7 +1454,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setForecastDisplayCard(0);
   forecastRightButton.addEventListener("click", () => {
-    if (forecastDisplayCard != 4) {
+    if (
+      (forecastDisplayCard < 4 && forecastDisplayDate[4]) ||
+      (!forecastDisplayDate[4] && forecastDisplayCard < 3)
+    ) {
       setForecastDisplayCard(forecastDisplayCard + 1);
     } else {
       setForecastDisplayCard(0);
@@ -1398,8 +1468,7 @@ document.addEventListener("DOMContentLoaded", () => {
       forecastDisplayDate[0] &&
       forecastDisplayDate[1] &&
       forecastDisplayDate[2] &&
-      forecastDisplayDate[3] &&
-      forecastDisplayDate[4]
+      forecastDisplayDate[3]
     ) {
       if (forecastDisplayCard == 0) {
         forecastDate.innerHTML = `Mai: ${forecastDisplayDate[
@@ -1420,7 +1489,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (forecastDisplayCard != 0) {
       setForecastDisplayCard(forecastDisplayCard - 1);
     } else {
-      setForecastDisplayCard(4);
+      if (forecastDisplayDate[4]) {
+        setForecastDisplayCard(4);
+      } else {
+        setForecastDisplayCard(3);
+      }
     }
     cardsScrollElement.scrollLeft =
       cardsScrollElement.offsetWidth * forecastDisplayCard;
