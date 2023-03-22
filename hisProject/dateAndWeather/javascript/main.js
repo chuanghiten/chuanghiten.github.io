@@ -799,11 +799,6 @@ document.addEventListener("DOMContentLoaded", () => {
       weatherIconElement.innerHTML = `<img src="${
         returnIcon(icon)[1]
       }" alt="icon">`;
-      // forecastDate.innerHTML =
-      //   "Mai: " +
-      //   new Date(t7Time * 1000).getDate() +
-      //   " / " +
-      //   (new Date(t7Time * 1000).getMonth() + 1);
       forecastDisplayDate = [
         new Date(c1t7Time * 1000),
         new Date(c2t7Time * 1000),
@@ -811,6 +806,8 @@ document.addEventListener("DOMContentLoaded", () => {
         new Date(c4t7Time * 1000),
         new Date(c5t7Time * 1000),
       ];
+      forecastDate.innerHTML =
+        `Mai: ${forecastDisplayDate[0].getDate()} / ${forecastDisplayDate[0].getMonth()+1}`;
       card1t7TemperatureText.innerHTML = `${kToC(c1t7Temperature)}℃`;
       card1t10TemperatureText.innerHTML = `${kToC(c1t10Temperature)}℃`;
       card1t13TemperatureText.innerHTML = `${kToC(c1t13Temperature)}℃`;
@@ -1403,9 +1400,9 @@ document.addEventListener("DOMContentLoaded", () => {
       forecastDisplayDate[4]
     ) {
       if (forecastDisplayCard == 0) {
-        forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+        forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
       }else{
-        forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+        forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
       }
     }
   });
@@ -1425,9 +1422,9 @@ document.addEventListener("DOMContentLoaded", () => {
         forecastDisplayDate[4]
       ) {
         if (forecastDisplayCard == 0) {
-          forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+          forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
         }else{
-          forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+          forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
         }
       }
   });
