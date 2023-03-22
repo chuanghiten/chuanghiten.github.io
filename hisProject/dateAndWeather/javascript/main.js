@@ -1501,8 +1501,7 @@ document.addEventListener("DOMContentLoaded", () => {
       forecastDisplayDate[0] &&
       forecastDisplayDate[1] &&
       forecastDisplayDate[2] &&
-      forecastDisplayDate[3] &&
-      forecastDisplayDate[4]
+      forecastDisplayDate[3]
     ) {
       if (forecastDisplayCard == 0) {
         forecastDate.innerHTML = `Mai: ${forecastDisplayDate[
