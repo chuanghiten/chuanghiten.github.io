@@ -25,52 +25,235 @@ document.addEventListener("DOMContentLoaded", () => {
     weatherUpdateTimeElement = window.document.querySelector(
       ".weatherContents .weatherUpdateTime"
     ),
-    t7TemperatureText = window.document.querySelector(
-      ".weatherForecastContents .t7 .temperature"
+    card1t7TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t7 .temperature"
     ),
-    t10TemperatureText = window.document.querySelector(
-      ".weatherForecastContents .t10 .temperature"
+    card1t10TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t10 .temperature"
     ),
-    t13TemperatureText = window.document.querySelector(
-      ".weatherForecastContents .t13 .temperature"
+    card1t13TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t13 .temperature"
     ),
-    t16TemperatureText = window.document.querySelector(
-      ".weatherForecastContents .t16 .temperature"
+    card1t16TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t16 .temperature"
     ),
-    t19TemperatureText = window.document.querySelector(
-      ".weatherForecastContents .t19 .temperature"
+    card1t19TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t19 .temperature"
     ),
-    t7TemperatureIcon = window.document.querySelector(
-      ".weatherForecastContents .t7 .icon"
+    card1t7TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t7 .icon"
     ),
-    t10TemperatureIcon = window.document.querySelector(
-      ".weatherForecastContents .t10 .icon"
+    card1t10TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t10 .icon"
     ),
-    t13TemperatureIcon = window.document.querySelector(
-      ".weatherForecastContents .t13 .icon"
+    card1t13TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t13 .icon"
     ),
-    t16TemperatureIcon = window.document.querySelector(
-      ".weatherForecastContents .t16 .icon"
+    card1t16TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t16 .icon"
     ),
-    t19TemperatureIcon = window.document.querySelector(
-      ".weatherForecastContents .t19 .icon"
+    card1t19TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t19 .icon"
     ),
-    t7TimeText = window.document.querySelector(
-      ".weatherForecastContents .t7 .time"
+    card1t7TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t7 .time"
     ),
-    t10TimeText = window.document.querySelector(
-      ".weatherForecastContents .t10 .time"
+    card1t10TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t10 .time"
     ),
-    t13TimeText = window.document.querySelector(
-      ".weatherForecastContents .t13 .time"
+    card1t13TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t13 .time"
     ),
-    t16TimeText = window.document.querySelector(
-      ".weatherForecastContents .t16 .time"
+    card1t16TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t16 .time"
     ),
-    t19TimeText = window.document.querySelector(
-      ".weatherForecastContents .t19 .time"
+    card1t19TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards1 .t19 .time"
     ),
+    card2t7TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t7 .temperature"
+    ),
+    card2t10TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t10 .temperature"
+    ),
+    card2t13TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t13 .temperature"
+    ),
+    card2t16TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t16 .temperature"
+    ),
+    card2t19TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t19 .temperature"
+    ),
+    card2t7TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t7 .icon"
+    ),
+    card2t10TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t10 .icon"
+    ),
+    card2t13TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t13 .icon"
+    ),
+    card2t16TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t16 .icon"
+    ),
+    card2t19TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t19 .icon"
+    ),
+    card2t7TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t7 .time"
+    ),
+    card2t10TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t10 .time"
+    ),
+    card2t13TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t13 .time"
+    ),
+    card2t16TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t16 .time"
+    ),
+    card2t19TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards2 .t19 .time"
+    ),
+    card3t7TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t7 .temperature"
+    ),
+    card3t10TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t10 .temperature"
+    ),
+    card3t13TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t13 .temperature"
+    ),
+    card3t16TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t16 .temperature"
+    ),
+    card3t19TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t19 .temperature"
+    ),
+    card3t7TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t7 .icon"
+    ),
+    card3t10TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t10 .icon"
+    ),
+    card3t13TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t13 .icon"
+    ),
+    card3t16TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t16 .icon"
+    ),
+    card3t19TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t19 .icon"
+    ),
+    card3t7TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t7 .time"
+    ),
+    card3t10TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t10 .time"
+    ),
+    card3t13TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t13 .time"
+    ),
+    card3t16TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t16 .time"
+    ),
+    card3t19TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards3 .t19 .time"
+    ),
+    card4t7TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t7 .temperature"
+    ),
+    card4t10TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t10 .temperature"
+    ),
+    card4t13TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t13 .temperature"
+    ),
+    card4t16TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t16 .temperature"
+    ),
+    card4t19TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t19 .temperature"
+    ),
+    card4t7TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t7 .icon"
+    ),
+    card4t10TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t10 .icon"
+    ),
+    card4t13TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t13 .icon"
+    ),
+    card4t16TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t16 .icon"
+    ),
+    card4t19TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t19 .icon"
+    ),
+    card4t7TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t7 .time"
+    ),
+    card4t10TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t10 .time"
+    ),
+    card4t13TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t13 .time"
+    ),
+    card4t16TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t16 .time"
+    ),
+    card4t19TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards4 .t19 .time"
+    ),
+    card5t7TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t7 .temperature"
+    ),
+    card5t10TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t10 .temperature"
+    ),
+    card5t13TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t13 .temperature"
+    ),
+    card5t16TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t16 .temperature"
+    ),
+    card5t19TemperatureText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t19 .temperature"
+    ),
+    card5t7TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t7 .icon"
+    ),
+    card5t10TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t10 .icon"
+    ),
+    card5t13TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t13 .icon"
+    ),
+    card5t16TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t16 .icon"
+    ),
+    card5t19TemperatureIcon = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t19 .icon"
+    ),
+    card5t7TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t7 .time"
+    ),
+    card5t10TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t10 .time"
+    ),
+    card5t13TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t13 .time"
+    ),
+    card5t16TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t16 .time"
+    ),
+    card5t19TimeText = window.document.querySelector(
+      ".weatherForecastContents .cards5 .t19 .time"
+    ),
+    forecastLeftButton = window.document.querySelector(".mask .leftButton"),
+    forecastRightButton = window.document.querySelector(".mask .rightButton"),
     svgBackgroundElement = window.document.querySelector(".svgBackground"),
+    cardsScrollElement = window.document.querySelector(".cardsScroll"),
     oldClockForClockPulse,
     oldDayOfWeek,
     oldWeatherContentsElementHeight,
@@ -80,7 +263,9 @@ document.addEventListener("DOMContentLoaded", () => {
     screenStatus,
     keepScreenOnStatus = 0,
     getWeatherStatus,
-    demo = false;
+    demo = false,
+    forecastDisplayCard,
+    forecastDisplayDate = [];
   if (/demo/.test(window.location.href)) {
     demo = true;
   } else {
@@ -289,21 +474,81 @@ document.addEventListener("DOMContentLoaded", () => {
     temperature,
     icon,
     time,
-    t7Temperature,
-    t7Icon,
-    t7Time,
-    t10Temperature,
-    t10Icon,
-    t10Time,
-    t13Temperature,
-    t13Icon,
-    t13Time,
-    t16Temperature,
-    t16Icon,
-    t16Time,
-    t19Temperature,
-    t19Icon,
-    t19Time
+    c1t7Temperature,
+    c1t7Icon,
+    c1t7Time,
+    c1t10Temperature,
+    c1t10Icon,
+    c1t10Time,
+    c1t13Temperature,
+    c1t13Icon,
+    c1t13Time,
+    c1t16Temperature,
+    c1t16Icon,
+    c1t16Time,
+    c1t19Temperature,
+    c1t19Icon,
+    c1t19Time,
+    c2t7Temperature,
+    c2t7Icon,
+    c2t7Time,
+    c2t10Temperature,
+    c2t10Icon,
+    c2t10Time,
+    c2t13Temperature,
+    c2t13Icon,
+    c2t13Time,
+    c2t16Temperature,
+    c2t16Icon,
+    c2t16Time,
+    c2t19Temperature,
+    c2t19Icon,
+    c2t19Time,
+    c3t7Temperature,
+    c3t7Icon,
+    c3t7Time,
+    c3t10Temperature,
+    c3t10Icon,
+    c3t10Time,
+    c3t13Temperature,
+    c3t13Icon,
+    c3t13Time,
+    c3t16Temperature,
+    c3t16Icon,
+    c3t16Time,
+    c3t19Temperature,
+    c3t19Icon,
+    c3t19Time,
+    c4t7Temperature,
+    c4t7Icon,
+    c4t7Time,
+    c4t10Temperature,
+    c4t10Icon,
+    c4t10Time,
+    c4t13Temperature,
+    c4t13Icon,
+    c4t13Time,
+    c4t16Temperature,
+    c4t16Icon,
+    c4t16Time,
+    c4t19Temperature,
+    c4t19Icon,
+    c4t19Time,
+    c5t7Temperature,
+    c5t7Icon,
+    c5t7Time,
+    c5t10Temperature,
+    c5t10Icon,
+    c5t10Time,
+    c5t13Temperature,
+    c5t13Icon,
+    c5t13Time,
+    c5t16Temperature,
+    c5t16Icon,
+    c5t16Time,
+    c5t19Temperature,
+    c5t19Icon,
+    c5t19Time
   ) {
     function returnIcon(data) {
       if (data == 200) {
@@ -448,80 +693,253 @@ document.addEventListener("DOMContentLoaded", () => {
         return [weatherDescriptionClouds[3], "./images/cloud2.svg"];
       }
     }
+    function kToC(data) {
+      return (data - 273.15).toFixed(0);
+    }
+    function returnTime(data) {
+      if (new Date(data * 1000).getMinutes() <= 9) {
+        return (
+          new Date(data * 1000).getHours() +
+          ":0" +
+          new Date(data * 1000).getMinutes()
+        );
+      } else {
+        return (
+          new Date(data * 1000).getHours() +
+          ":" +
+          new Date(data * 1000).getMinutes()
+        );
+      }
+    }
     if (
       temperature &&
       icon &&
       time &&
-      t7Temperature &&
-      t7Icon &&
-      t7Time &&
-      t10Temperature &&
-      t10Icon &&
-      t10Time &&
-      t13Temperature &&
-      t13Icon &&
-      t13Time &&
-      t16Temperature &&
-      t16Icon &&
-      t16Time &&
-      t19Temperature &&
-      t19Icon &&
-      t19Time
+      c1t7Temperature &&
+      c1t7Icon &&
+      c1t7Time &&
+      c1t10Temperature &&
+      c1t10Icon &&
+      c1t10Time &&
+      c1t13Temperature &&
+      c1t13Icon &&
+      c1t13Time &&
+      c1t16Temperature &&
+      c1t16Icon &&
+      c1t16Time &&
+      c1t19Temperature &&
+      c1t19Icon &&
+      c1t19Time &&
+      c2t7Temperature &&
+      c2t7Icon &&
+      c2t7Time &&
+      c2t10Temperature &&
+      c2t10Icon &&
+      c2t10Time &&
+      c2t13Temperature &&
+      c2t13Icon &&
+      c2t13Time &&
+      c2t16Temperature &&
+      c2t16Icon &&
+      c2t16Time &&
+      c2t19Temperature &&
+      c2t19Icon &&
+      c2t19Time &&
+      c3t7Temperature &&
+      c3t7Icon &&
+      c3t7Time &&
+      c3t10Temperature &&
+      c3t10Icon &&
+      c3t10Time &&
+      c3t13Temperature &&
+      c3t13Icon &&
+      c3t13Time &&
+      c3t16Temperature &&
+      c3t16Icon &&
+      c3t16Time &&
+      c3t19Temperature &&
+      c3t19Icon &&
+      c3t19Time &&
+      c4t7Temperature &&
+      c4t7Icon &&
+      c4t7Time &&
+      c4t10Temperature &&
+      c4t10Icon &&
+      c4t10Time &&
+      c4t13Temperature &&
+      c4t13Icon &&
+      c4t13Time &&
+      c4t16Temperature &&
+      c4t16Icon &&
+      c4t16Time &&
+      c4t19Temperature &&
+      c4t19Icon &&
+      c4t19Time &&
+      c5t7Temperature &&
+      c5t7Icon &&
+      c5t7Time &&
+      c5t10Temperature &&
+      c5t10Icon &&
+      c5t10Time &&
+      c5t13Temperature &&
+      c5t13Icon &&
+      c5t13Time &&
+      c5t16Temperature &&
+      c5t16Icon &&
+      c5t16Time &&
+      c5t19Temperature &&
+      c5t19Icon &&
+      c5t19Time
     ) {
       window.document
         .querySelector(".weatherForecastContents")
         .removeAttribute("style");
-      temperatureTextElement.innerHTML =
-        "<span>" + (temperature - 273.15).toFixed(0) + "</span>℃";
+      temperatureTextElement.innerHTML = `<span>${kToC(temperature)}</span>℃`;
       descriptionTextElement.innerHTML = returnIcon(icon)[0];
       weatherIconElement.innerHTML = `<img src="${
         returnIcon(icon)[1]
       }" alt="icon">`;
-      forecastDate.innerHTML =
-        "Mai: " +
-        new Date(t7Time * 1000).getDate() +
-        " / " +
-        (new Date(t7Time * 1000).getMonth() + 1);
-      t7TemperatureText.innerHTML = (t7Temperature - 273.15).toFixed(0) + "℃";
-      t10TemperatureText.innerHTML = (t10Temperature - 273.15).toFixed(0) + "℃";
-      t13TemperatureText.innerHTML = (t13Temperature - 273.15).toFixed(0) + "℃";
-      t16TemperatureText.innerHTML = (t16Temperature - 273.15).toFixed(0) + "℃";
-      t19TemperatureText.innerHTML = (t19Temperature - 273.15).toFixed(0) + "℃";
-      t7TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(t7Icon)[1]
+      // forecastDate.innerHTML =
+      //   "Mai: " +
+      //   new Date(t7Time * 1000).getDate() +
+      //   " / " +
+      //   (new Date(t7Time * 1000).getMonth() + 1);
+      forecastDisplayDate = [
+        new Date(c1t7Time * 1000),
+        new Date(c2t7Time * 1000),
+        new Date(c3t7Time * 1000),
+        new Date(c4t7Time * 1000),
+        new Date(c5t7Time * 1000),
+      ];
+      card1t7TemperatureText.innerHTML = `${kToC(c1t7Temperature)}℃`;
+      card1t10TemperatureText.innerHTML = `${kToC(c1t10Temperature)}℃`;
+      card1t13TemperatureText.innerHTML = `${kToC(c1t13Temperature)}℃`;
+      card1t16TemperatureText.innerHTML = `${kToC(c1t16Temperature)}℃`;
+      card1t19TemperatureText.innerHTML = `${kToC(c1t19Temperature)}℃`;
+      card1t7TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c1t7Icon)[1]
       }" alt="icon">`;
-      t10TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(t10Icon)[1]
+      card1t10TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c1t10Icon)[1]
       }" alt="icon">`;
-      t13TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(t13Icon)[1]
+      card1t13TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c1t13Icon)[1]
       }" alt="icon">`;
-      t16TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(t16Icon)[1]
+      card1t16TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c1t16Icon)[1]
       }" alt="icon">`;
-      t19TemperatureIcon.innerHTML = `<img src="${
-        returnIcon(t19Icon)[1]
+      card1t19TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c1t19Icon)[1]
       }" alt="icon">`;
-      function returnTime(data) {
-        if (new Date(data * 1000).getMinutes() <= 9) {
-          return (
-            new Date(data * 1000).getHours() +
-            ":0" +
-            new Date(data * 1000).getMinutes()
-          );
-        } else {
-          return (
-            new Date(data * 1000).getHours() +
-            ":" +
-            new Date(data * 1000).getMinutes()
-          );
-        }
-      }
-      t7TimeText.innerHTML = returnTime(t7Time);
-      t10TimeText.innerHTML = returnTime(t10Time);
-      t13TimeText.innerHTML = returnTime(t13Time);
-      t16TimeText.innerHTML = returnTime(t16Time);
-      t19TimeText.innerHTML = returnTime(t19Time);
+      card1t7TimeText.innerHTML = returnTime(c1t7Time);
+      card1t10TimeText.innerHTML = returnTime(c1t10Time);
+      card1t13TimeText.innerHTML = returnTime(c1t13Time);
+      card1t16TimeText.innerHTML = returnTime(c1t16Time);
+      card1t19TimeText.innerHTML = returnTime(c1t19Time);
+
+      card2t7TemperatureText.innerHTML = `${kToC(c2t7Temperature)}℃`;
+      card2t10TemperatureText.innerHTML = `${kToC(c2t10Temperature)}℃`;
+      card2t13TemperatureText.innerHTML = `${kToC(c2t13Temperature)}℃`;
+      card2t16TemperatureText.innerHTML = `${kToC(c2t16Temperature)}℃`;
+      card2t19TemperatureText.innerHTML = `${kToC(c2t19Temperature)}℃`;
+      card2t7TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c2t7Icon)[1]
+      }" alt="icon">`;
+      card2t10TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c2t10Icon)[1]
+      }" alt="icon">`;
+      card2t13TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c2t13Icon)[1]
+      }" alt="icon">`;
+      card2t16TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c2t16Icon)[1]
+      }" alt="icon">`;
+      card2t19TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c2t19Icon)[1]
+      }" alt="icon">`;
+      card2t7TimeText.innerHTML = returnTime(c2t7Time);
+      card2t10TimeText.innerHTML = returnTime(c2t10Time);
+      card2t13TimeText.innerHTML = returnTime(c2t13Time);
+      card2t16TimeText.innerHTML = returnTime(c2t16Time);
+      card2t19TimeText.innerHTML = returnTime(c2t19Time);
+
+      card3t7TemperatureText.innerHTML = `${kToC(c3t7Temperature)}℃`;
+      card3t10TemperatureText.innerHTML = `${kToC(c3t10Temperature)}℃`;
+      card3t13TemperatureText.innerHTML = `${kToC(c3t13Temperature)}℃`;
+      card3t16TemperatureText.innerHTML = `${kToC(c3t16Temperature)}℃`;
+      card3t19TemperatureText.innerHTML = `${kToC(c3t19Temperature)}℃`;
+      card3t7TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c3t7Icon)[1]
+      }" alt="icon">`;
+      card3t10TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c3t10Icon)[1]
+      }" alt="icon">`;
+      card3t13TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c3t13Icon)[1]
+      }" alt="icon">`;
+      card3t16TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c3t16Icon)[1]
+      }" alt="icon">`;
+      card3t19TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c3t19Icon)[1]
+      }" alt="icon">`;
+      card3t7TimeText.innerHTML = returnTime(c3t7Time);
+      card3t10TimeText.innerHTML = returnTime(c3t10Time);
+      card3t13TimeText.innerHTML = returnTime(c3t13Time);
+      card3t16TimeText.innerHTML = returnTime(c3t16Time);
+      card3t19TimeText.innerHTML = returnTime(c3t19Time);
+
+      card4t7TemperatureText.innerHTML = `${kToC(c4t7Temperature)}℃`;
+      card4t10TemperatureText.innerHTML = `${kToC(c4t10Temperature)}℃`;
+      card4t13TemperatureText.innerHTML = `${kToC(c4t13Temperature)}℃`;
+      card4t16TemperatureText.innerHTML = `${kToC(c4t16Temperature)}℃`;
+      card4t19TemperatureText.innerHTML = `${kToC(c4t19Temperature)}℃`;
+      card4t7TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c4t7Icon)[1]
+      }" alt="icon">`;
+      card4t10TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c4t10Icon)[1]
+      }" alt="icon">`;
+      card4t13TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c4t13Icon)[1]
+      }" alt="icon">`;
+      card4t16TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c4t16Icon)[1]
+      }" alt="icon">`;
+      card4t19TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c4t19Icon)[1]
+      }" alt="icon">`;
+      card4t7TimeText.innerHTML = returnTime(c4t7Time);
+      card4t10TimeText.innerHTML = returnTime(c4t10Time);
+      card4t13TimeText.innerHTML = returnTime(c4t13Time);
+      card4t16TimeText.innerHTML = returnTime(c4t16Time);
+      card4t19TimeText.innerHTML = returnTime(c4t19Time);
+
+      card5t7TemperatureText.innerHTML = `${kToC(c5t7Temperature)}℃`;
+      card5t10TemperatureText.innerHTML = `${kToC(c5t10Temperature)}℃`;
+      card5t13TemperatureText.innerHTML = `${kToC(c5t13Temperature)}℃`;
+      card5t16TemperatureText.innerHTML = `${kToC(c5t16Temperature)}℃`;
+      card5t19TemperatureText.innerHTML = `${kToC(c5t19Temperature)}℃`;
+      card5t7TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c5t7Icon)[1]
+      }" alt="icon">`;
+      card5t10TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c5t10Icon)[1]
+      }" alt="icon">`;
+      card5t13TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c5t13Icon)[1]
+      }" alt="icon">`;
+      card5t16TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c5t16Icon)[1]
+      }" alt="icon">`;
+      card5t19TemperatureIcon.innerHTML = `<img src="${
+        returnIcon(c5t19Icon)[1]
+      }" alt="icon">`;
+      card5t7TimeText.innerHTML = returnTime(c5t7Time);
+      card5t10TimeText.innerHTML = returnTime(c5t10Time);
+      card5t13TimeText.innerHTML = returnTime(c5t13Time);
+      card5t16TimeText.innerHTML = returnTime(c5t16Time);
+      card5t19TimeText.innerHTML = returnTime(c5t19Time);
       printWeatherUpdateTime(time);
     } else if (demo) {
       window.document
@@ -531,42 +949,166 @@ document.addEventListener("DOMContentLoaded", () => {
       descriptionTextElement.innerHTML = "Quang đãng";
       weatherIconElement.innerHTML =
         '<img src="./images/thunderstorm2.svg" alt="thunderstorm2.svg">';
-      t7TimeText.innerHTML = "7:00";
-      t10TimeText.innerHTML = "10:00";
-      t13TimeText.innerHTML = "13:00";
-      t16TimeText.innerHTML = "16:00";
-      t19TimeText.innerHTML = "19:00";
-      t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
-      t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
-      t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
-      t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
-      t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
-      t7TemperatureText.innerHTML = "22℃";
-      t10TemperatureText.innerHTML = "22℃";
-      t13TemperatureText.innerHTML = "22℃";
-      t16TemperatureText.innerHTML = "22℃";
-      t19TemperatureText.innerHTML = "22℃";
+      card1t7TimeText.innerHTML = "7:00";
+      card1t10TimeText.innerHTML = "10:00";
+      card1t13TimeText.innerHTML = "13:00";
+      card1t16TimeText.innerHTML = "16:00";
+      card1t19TimeText.innerHTML = "19:00";
+      card1t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card1t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card1t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card1t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card1t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card1t7TemperatureText.innerHTML = "22℃";
+      card1t10TemperatureText.innerHTML = "22℃";
+      card1t13TemperatureText.innerHTML = "22℃";
+      card1t16TemperatureText.innerHTML = "22℃";
+      card1t19TemperatureText.innerHTML = "22℃";
+
+      card2t7TimeText.innerHTML = "7:00";
+      card2t10TimeText.innerHTML = "10:00";
+      card2t13TimeText.innerHTML = "13:00";
+      card2t16TimeText.innerHTML = "16:00";
+      card2t19TimeText.innerHTML = "19:00";
+      card2t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card2t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card2t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card2t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card2t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card2t7TemperatureText.innerHTML = "22℃";
+      card2t10TemperatureText.innerHTML = "22℃";
+      card2t13TemperatureText.innerHTML = "22℃";
+      card2t16TemperatureText.innerHTML = "22℃";
+      card2t19TemperatureText.innerHTML = "22℃";
       forecastDate.innerHTML = "Mai: 21 / 11";
+
+      card3t7TimeText.innerHTML = "7:00";
+      card3t10TimeText.innerHTML = "10:00";
+      card3t13TimeText.innerHTML = "13:00";
+      card3t16TimeText.innerHTML = "16:00";
+      card3t19TimeText.innerHTML = "19:00";
+      card3t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card3t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card3t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card3t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card3t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card3t7TemperatureText.innerHTML = "22℃";
+      card3t10TemperatureText.innerHTML = "22℃";
+      card3t13TemperatureText.innerHTML = "22℃";
+      card3t16TemperatureText.innerHTML = "22℃";
+      card3t19TemperatureText.innerHTML = "22℃";
+
+      card4t7TimeText.innerHTML = "7:00";
+      card4t10TimeText.innerHTML = "10:00";
+      card4t13TimeText.innerHTML = "13:00";
+      card4t16TimeText.innerHTML = "16:00";
+      card4t19TimeText.innerHTML = "19:00";
+      card4t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card4t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card4t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card4t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card4t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card4t7TemperatureText.innerHTML = "22℃";
+      card4t10TemperatureText.innerHTML = "22℃";
+      card4t13TemperatureText.innerHTML = "22℃";
+      card4t16TemperatureText.innerHTML = "22℃";
+      card4t19TemperatureText.innerHTML = "22℃";
+
+      card5t7TimeText.innerHTML = "7:00";
+      card5t10TimeText.innerHTML = "10:00";
+      card5t13TimeText.innerHTML = "13:00";
+      card5t16TimeText.innerHTML = "16:00";
+      card5t19TimeText.innerHTML = "19:00";
+      card5t7TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card5t10TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card5t13TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card5t16TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card5t19TemperatureIcon.innerHTML = `<img src="./images/thunderstorm2.svg" alt="icon">`;
+      card5t7TemperatureText.innerHTML = "22℃";
+      card5t10TemperatureText.innerHTML = "22℃";
+      card5t13TemperatureText.innerHTML = "22℃";
+      card5t16TemperatureText.innerHTML = "22℃";
+      card5t19TemperatureText.innerHTML = "22℃";
       printWeatherUpdateTime(1678878405);
     } else {
       temperatureTextElement.innerHTML = "";
       descriptionTextElement.innerHTML = "";
       weatherIconElement.innerHTML = "";
-      t7TimeText.innerHTML = "";
-      t10TimeText.innerHTML = "";
-      t13TimeText.innerHTML = "";
-      t16TimeText.innerHTML = "";
-      t19TimeText.innerHTML = "";
-      t7TemperatureIcon.innerHTML = "";
-      t10TemperatureIcon.innerHTML = "";
-      t13TemperatureIcon.innerHTML = "";
-      t16TemperatureIcon.innerHTML = "";
-      t19TemperatureIcon.innerHTML = "";
-      t7TemperatureText.innerHTML = "";
-      t10TemperatureText.innerHTML = "";
-      t13TemperatureText.innerHTML = "";
-      t16TemperatureText.innerHTML = "";
-      t19TemperatureText.innerHTML = "";
+      card1t7TimeText.innerHTML = "";
+      card1t10TimeText.innerHTML = "";
+      card1t13TimeText.innerHTML = "";
+      card1t16TimeText.innerHTML = "";
+      card1t19TimeText.innerHTML = "";
+      card1t7TemperatureIcon.innerHTML = "";
+      card1t10TemperatureIcon.innerHTML = "";
+      card1t13TemperatureIcon.innerHTML = "";
+      card1t16TemperatureIcon.innerHTML = "";
+      card1t19TemperatureIcon.innerHTML = "";
+      card1t7TemperatureText.innerHTML = "";
+      card1t10TemperatureText.innerHTML = "";
+      card1t13TemperatureText.innerHTML = "";
+      card1t16TemperatureText.innerHTML = "";
+      card1t19TemperatureText.innerHTML = "";
+      card2t7TimeText.innerHTML = "";
+      card2t10TimeText.innerHTML = "";
+      card2t13TimeText.innerHTML = "";
+      card2t16TimeText.innerHTML = "";
+      card2t19TimeText.innerHTML = "";
+      card2t7TemperatureIcon.innerHTML = "";
+      card2t10TemperatureIcon.innerHTML = "";
+      card2t13TemperatureIcon.innerHTML = "";
+      card2t16TemperatureIcon.innerHTML = "";
+      card2t19TemperatureIcon.innerHTML = "";
+      card2t7TemperatureText.innerHTML = "";
+      card2t10TemperatureText.innerHTML = "";
+      card2t13TemperatureText.innerHTML = "";
+      card2t16TemperatureText.innerHTML = "";
+      card2t19TemperatureText.innerHTML = "";
+      card3t7TimeText.innerHTML = "";
+      card3t10TimeText.innerHTML = "";
+      card3t13TimeText.innerHTML = "";
+      card3t16TimeText.innerHTML = "";
+      card3t19TimeText.innerHTML = "";
+      card3t7TemperatureIcon.innerHTML = "";
+      card3t10TemperatureIcon.innerHTML = "";
+      card3t13TemperatureIcon.innerHTML = "";
+      card3t16TemperatureIcon.innerHTML = "";
+      card3t19TemperatureIcon.innerHTML = "";
+      card3t7TemperatureText.innerHTML = "";
+      card3t10TemperatureText.innerHTML = "";
+      card3t13TemperatureText.innerHTML = "";
+      card3t16TemperatureText.innerHTML = "";
+      card3t19TemperatureText.innerHTML = "";
+      card4t7TimeText.innerHTML = "";
+      card4t10TimeText.innerHTML = "";
+      card4t13TimeText.innerHTML = "";
+      card4t16TimeText.innerHTML = "";
+      card4t19TimeText.innerHTML = "";
+      card4t7TemperatureIcon.innerHTML = "";
+      card4t10TemperatureIcon.innerHTML = "";
+      card4t13TemperatureIcon.innerHTML = "";
+      card4t16TemperatureIcon.innerHTML = "";
+      card4t19TemperatureIcon.innerHTML = "";
+      card4t7TemperatureText.innerHTML = "";
+      card4t10TemperatureText.innerHTML = "";
+      card4t13TemperatureText.innerHTML = "";
+      card4t16TemperatureText.innerHTML = "";
+      card4t19TemperatureText.innerHTML = "";
+      card5t7TimeText.innerHTML = "";
+      card5t10TimeText.innerHTML = "";
+      card5t13TimeText.innerHTML = "";
+      card5t16TimeText.innerHTML = "";
+      card5t19TimeText.innerHTML = "";
+      card5t7TemperatureIcon.innerHTML = "";
+      card5t10TemperatureIcon.innerHTML = "";
+      card5t13TemperatureIcon.innerHTML = "";
+      card5t16TemperatureIcon.innerHTML = "";
+      card5t19TemperatureIcon.innerHTML = "";
+      card5t7TemperatureText.innerHTML = "";
+      card5t10TemperatureText.innerHTML = "";
+      card5t13TemperatureText.innerHTML = "";
+      card5t16TemperatureText.innerHTML = "";
+      card5t19TemperatureText.innerHTML = "";
       forecastDate.innerHTML = "";
       printWeatherUpdateTime(false);
       window.document
@@ -578,7 +1120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getWeatherStatus = _0x53b0x2;
   }
   async function getWeatherData(_0x53b0x4, _0x53b0x5) {
-    let searchForecastData, selectedForecast,timeZone;
+    let searchForecastData, selectedForecast, timeZone;
     weatherData = await fetch(
       `/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[_0xab36[3]](
         _0x53b0x4.toString()
@@ -587,8 +1129,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return _0x53b0x6[_0xab36[0]]();
     });
     if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
-      timeZone = new Date().getTimezoneOffset()/60
-      searchForecastData = new Date(weatherData.dG9tb3Jyb3c[0].dGltZQ * 1000 + timeZone * 3600 * 1000);
+      timeZone = new Date().getTimezoneOffset() / 60;
+      searchForecastData = new Date(
+        weatherData.dG9tb3Jyb3c[0].dGltZQ * 1000 + timeZone * 3600 * 1000
+      );
       if (searchForecastData.getDate() == new Date().getDate()) {
         if (searchForecastData.getHours() == 0) {
           selectedForecast = 8;
@@ -603,7 +1147,8 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             selectedForecast += 1;
             searchForecastData = new Date(
-              weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ * 1000 + timeZone * 3600 * 1000
+              weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ * 1000 +
+                timeZone * 3600 * 1000
             );
           }
         }
@@ -626,7 +1171,67 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherData.dG9tb3Jyb3c[selectedForecast + 3].dGltZQ,
         weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGVtcGVyYXR1cmU,
         weatherData.dG9tb3Jyb3c[selectedForecast + 4].aWQ,
-        weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGltZQ
+        weatherData.dG9tb3Jyb3c[selectedForecast + 4].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 8].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 8].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 9].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 9].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 10].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 10].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 11].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 11].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 12].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 12].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 16].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 16].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 17].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 17].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 18].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 18].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 19].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 19].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 20].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 20].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 24].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 24].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 25].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 25].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 26].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 26].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 27].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 27].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 28].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 28].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 32].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 32].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 32].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 33].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 33].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 33].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 34].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 34].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 34].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 35].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 35].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 35].dGltZQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGVtcGVyYXR1cmU,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 36].aWQ,
+        weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGltZQ
       );
     }
   }
@@ -677,6 +1282,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function setKeepScreenOnStatus(status) {
     keepScreenOnStatus = status;
+  }
+  function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {
+    let height;
+    if (data - 1.5 < 0) {
+      height = 0;
+    } else {
+      height = data - 1.5;
+    }
+    backgroundFooterElement.setAttribute("style", `--height: ${height}px`);
+    svgBackgroundElement.setAttribute("style", `--footerHeight: ${height}px`);
   }
   function clockPulse() {
     let timeData = new Date();
@@ -743,16 +1358,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-  function setHeightFormWeatherContentsElementToBackgroundFooterElement(data) {
-    let height;
-    if (data - 1.5 < 0) {
-      height = 0;
-    } else {
-      height = data - 1.5;
-    }
-    backgroundFooterElement.setAttribute("style", `--height: ${height}px`);
-    svgBackgroundElement.setAttribute("style", `--footerHeight: ${height}px`);
-  }
   updateWeatherContents();
   addScreenSizeToBodyElement();
   bodyElement.onresize = addScreenSizeToBodyElement;
@@ -777,5 +1382,53 @@ document.addEventListener("DOMContentLoaded", () => {
   screenOffElement.addEventListener("click", () => {
     setKeepScreenOnStatus(1);
     onScreen();
+  });
+  function setForecastDisplayCard(data) {
+    forecastDisplayCard = data;
+  }
+  setForecastDisplayCard(0);
+  forecastRightButton.addEventListener("click", () => {
+    if (forecastDisplayCard != 4) {
+      setForecastDisplayCard(forecastDisplayCard + 1);
+    } else {
+      setForecastDisplayCard(0);
+    }
+    cardsScrollElement.scrollLeft =
+      cardsScrollElement.offsetWidth * forecastDisplayCard;
+    if (
+      forecastDisplayDate[0] &&
+      forecastDisplayDate[1] &&
+      forecastDisplayDate[2] &&
+      forecastDisplayDate[3] &&
+      forecastDisplayDate[4]
+    ) {
+      if (forecastDisplayCard == 0) {
+        forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+      }else{
+        forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+      }
+    }
+  });
+  forecastLeftButton.addEventListener("click", () => {
+    if (forecastDisplayCard != 0) {
+      setForecastDisplayCard(forecastDisplayCard - 1);
+    } else {
+      setForecastDisplayCard(4);
+    }
+    cardsScrollElement.scrollLeft =
+      cardsScrollElement.offsetWidth * forecastDisplayCard;
+      if (
+        forecastDisplayDate[0] &&
+        forecastDisplayDate[1] &&
+        forecastDisplayDate[2] &&
+        forecastDisplayDate[3] &&
+        forecastDisplayDate[4]
+      ) {
+        if (forecastDisplayCard == 0) {
+          forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+        }else{
+          forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()}`;
+        }
+      }
   });
 });
