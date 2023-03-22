@@ -806,8 +806,9 @@ document.addEventListener("DOMContentLoaded", () => {
         new Date(c4t7Time * 1000),
         new Date(c5t7Time * 1000),
       ];
-      forecastDate.innerHTML =
-        `Mai: ${forecastDisplayDate[0].getDate()} / ${forecastDisplayDate[0].getMonth()+1}`;
+      forecastDate.innerHTML = `Mai: ${forecastDisplayDate[0].getDate()} / ${
+        forecastDisplayDate[0].getMonth() + 1
+      }`;
       card1t7TemperatureText.innerHTML = `${kToC(c1t7Temperature)}℃`;
       card1t10TemperatureText.innerHTML = `${kToC(c1t10Temperature)}℃`;
       card1t13TemperatureText.innerHTML = `${kToC(c1t13Temperature)}℃`;
@@ -1230,6 +1231,7 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherData.dG9tb3Jyb3c[selectedForecast + 36].aWQ,
         weatherData.dG9tb3Jyb3c[selectedForecast + 36].dGltZQ
       );
+      console.log(weatherData.dG9tb3Jyb3c[selectedForecast + 32]);
     }
   }
   function getPosition(_0x53b0x6) {
@@ -1400,9 +1402,17 @@ document.addEventListener("DOMContentLoaded", () => {
       forecastDisplayDate[4]
     ) {
       if (forecastDisplayCard == 0) {
-        forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
-      }else{
-        forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
+        forecastDate.innerHTML = `Mai: ${forecastDisplayDate[
+          forecastDisplayCard
+        ].getDate()} / ${
+          forecastDisplayDate[forecastDisplayCard].getMonth() + 1
+        }`;
+      } else {
+        forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[
+          forecastDisplayCard
+        ].getDate()} / ${
+          forecastDisplayDate[forecastDisplayCard].getMonth() + 1
+        }`;
       }
     }
   });
@@ -1414,18 +1424,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     cardsScrollElement.scrollLeft =
       cardsScrollElement.offsetWidth * forecastDisplayCard;
-      if (
-        forecastDisplayDate[0] &&
-        forecastDisplayDate[1] &&
-        forecastDisplayDate[2] &&
-        forecastDisplayDate[3] &&
-        forecastDisplayDate[4]
-      ) {
-        if (forecastDisplayCard == 0) {
-          forecastDate.innerHTML = `Mai: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
-        }else{
-          forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[forecastDisplayCard].getDate()} / ${forecastDisplayDate[forecastDisplayCard].getMonth()+1}`;
-        }
+    if (
+      forecastDisplayDate[0] &&
+      forecastDisplayDate[1] &&
+      forecastDisplayDate[2] &&
+      forecastDisplayDate[3] &&
+      forecastDisplayDate[4]
+    ) {
+      if (forecastDisplayCard == 0) {
+        forecastDate.innerHTML = `Mai: ${forecastDisplayDate[
+          forecastDisplayCard
+        ].getDate()} / ${
+          forecastDisplayDate[forecastDisplayCard].getMonth() + 1
+        }`;
+      } else {
+        forecastDate.innerHTML = `Dự báo: ${forecastDisplayDate[
+          forecastDisplayCard
+        ].getDate()} / ${
+          forecastDisplayDate[forecastDisplayCard].getMonth() + 1
+        }`;
       }
+    }
   });
 });
