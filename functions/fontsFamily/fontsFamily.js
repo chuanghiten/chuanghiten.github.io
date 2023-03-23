@@ -522,6 +522,9 @@ const handler = async (event) => {
           },
         ],
       }),
+      headers: {
+        "access-control-allow-origin": "*",
+      },
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
