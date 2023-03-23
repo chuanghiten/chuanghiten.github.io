@@ -1,4 +1,17 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
+let HEADERS = {
+  "Access-Control-Allow-Headers":
+    "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
+  "Content-Type": "application/json", //optional
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Max-Age": "8640",
+};
+
+//This solves the "No ‘Access-Control-Allow-Origin’ header is present on the requested resource."
+
+HEADERS["Access-Control-Allow-Origin"] = "*";
+HEADERS["Vary"] = "Origin";
+
 const axios = require(`axios`);
 const handler = async (event) => {
   const _0x4d35 = [

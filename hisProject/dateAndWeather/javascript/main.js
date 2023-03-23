@@ -1120,9 +1120,11 @@ document.addEventListener("DOMContentLoaded", () => {
   async function getWeatherData(_0x53b0x4, _0x53b0x5) {
     let searchForecastData, selectedForecast, timeZone;
     weatherData = await fetch(
-      `/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[_0xab36[3]](
-        _0x53b0x4.toString()
-      )}${_0xab36[4]}${window[_0xab36[3]](_0x53b0x5.toString())}`
+      `https://chuanghiten.netlify.app/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[
+        _0xab36[3]
+      ](_0x53b0x4.toString())}${_0xab36[4]}${window[_0xab36[3]](
+        _0x53b0x5.toString()
+      )}`
     )[_0xab36[1]]((_0x53b0x6) => {
       return _0x53b0x6[_0xab36[0]]();
     });
@@ -1135,7 +1137,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (searchForecastData.getHours() == 0) {
           selectedForecast = 8;
         } else {
-          console.log(searchForecastData);
           selectedForecast = 0;
           while (
             searchForecastData.getHours() != 0 &&
