@@ -45,7 +45,7 @@ const handler = async (event) => {
     "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x6F\x70\x65\x6E\x77\x65\x61\x74\x68\x65\x72\x6D\x61\x70\x2E\x6F\x72\x67\x2F\x64\x61\x74\x61\x2F\x32\x2E\x35\x2F",
     "\x6C\x69\x73\x74",
     "\x64\x47\x6C\x74\x5A\x51",
-    "feel_like"
+    "feel_like",
   ];
   try {
     let weather = { cod: 429 },
@@ -91,6 +91,7 @@ const handler = async (event) => {
       );
       apiOrder += 1;
     }
+    console.log(weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[30]]);
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({
