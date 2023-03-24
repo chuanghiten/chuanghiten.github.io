@@ -45,6 +45,7 @@ const handler = async (event) => {
     "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x6F\x70\x65\x6E\x77\x65\x61\x74\x68\x65\x72\x6D\x61\x70\x2E\x6F\x72\x67\x2F\x64\x61\x74\x61\x2F\x32\x2E\x35\x2F",
     "\x6C\x69\x73\x74",
     "\x64\x47\x6C\x74\x5A\x51",
+    "feel_like"
   ];
   try {
     let weather = { cod: 429 },
@@ -119,6 +120,7 @@ const handler = async (event) => {
         dGVtcGVyYXR1cmU: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[19]],
         aWQ: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
         dGltZQ: weather[_0x4d35[18]][_0x4d35[24]],
+        ZmVlbExpa2U: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[30]],
         dG9tb3Jyb3c: [
           {
             dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]],

@@ -474,6 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
     temperature,
     icon,
     time,
+    feelLike,
     c1t7Temperature,
     c1t7Icon,
     c1t7Time,
@@ -715,6 +716,7 @@ document.addEventListener("DOMContentLoaded", () => {
       temperature &&
       icon &&
       time &&
+      feelLike &&
       c1t7Temperature &&
       c1t7Icon &&
       c1t7Time &&
@@ -1156,6 +1158,7 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherData[_0xab36[7]],
           weatherData[_0xab36[8]],
           weatherData[_0xab36[18]],
+          weatherData.ZmVlbExpa2U,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
           weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
@@ -1223,6 +1226,7 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherData[_0xab36[7]],
           weatherData[_0xab36[8]],
           weatherData[_0xab36[18]],
+          weatherData.ZmVlbExpa2U,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
           weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
