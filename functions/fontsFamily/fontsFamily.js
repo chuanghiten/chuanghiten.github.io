@@ -91,7 +91,6 @@ const handler = async (event) => {
       );
       apiOrder += 1;
     }
-    console.log(weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[30]]);
     return {
       statusCode: 200,
       body: JSON[_0x4d35[23]]({

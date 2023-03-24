@@ -254,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
     forecastRightButton = window.document.querySelector(".mask .rightButton"),
     svgBackgroundElement = window.document.querySelector(".svgBackground"),
     cardsScrollElement = window.document.querySelector(".cardsScroll"),
+    feelLikeElement = window.document.querySelector(".feelLike"),
     oldClockForClockPulse,
     oldDayOfWeek,
     oldWeatherContentsElementHeight,
@@ -941,10 +942,18 @@ document.addEventListener("DOMContentLoaded", () => {
           .setAttribute("style", "display: none");
       }
       printWeatherUpdateTime(time);
+      if (kToC(feelLike) != kToC(temperature)) {
+        feelLikeElement.removeAttribute("style");
+        feelLikeElement.innerHTML = `Cảm giác như ${kToC(feelLike)}℃`;
+      } else {
+        feelLikeElement.innerHTML = "";
+        feelLikeElement.setAttribute("style", "display: none");
+      }
     } else if (demo) {
       window.document
         .querySelector(".weatherForecastContents")
         .removeAttribute("style");
+      feelLikeElement.removeAttribute("style");
       temperatureTextElement.innerHTML = "<span>22</span>℃";
       descriptionTextElement.innerHTML = "Quang đãng";
       weatherIconElement.innerHTML =
@@ -964,7 +973,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card1t13TemperatureText.innerHTML = "22℃";
       card1t16TemperatureText.innerHTML = "22℃";
       card1t19TemperatureText.innerHTML = "22℃";
-
       card2t7TimeText.innerHTML = "7:00";
       card2t10TimeText.innerHTML = "10:00";
       card2t13TimeText.innerHTML = "13:00";
@@ -981,7 +989,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card2t16TemperatureText.innerHTML = "22℃";
       card2t19TemperatureText.innerHTML = "22℃";
       forecastDate.innerHTML = "Mai: 21 / 11";
-
       card3t7TimeText.innerHTML = "7:00";
       card3t10TimeText.innerHTML = "10:00";
       card3t13TimeText.innerHTML = "13:00";
@@ -997,7 +1004,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card3t13TemperatureText.innerHTML = "22℃";
       card3t16TemperatureText.innerHTML = "22℃";
       card3t19TemperatureText.innerHTML = "22℃";
-
       card4t7TimeText.innerHTML = "7:00";
       card4t10TimeText.innerHTML = "10:00";
       card4t13TimeText.innerHTML = "13:00";
@@ -1013,7 +1019,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card4t13TemperatureText.innerHTML = "22℃";
       card4t16TemperatureText.innerHTML = "22℃";
       card4t19TemperatureText.innerHTML = "22℃";
-
       card5t7TimeText.innerHTML = "7:00";
       card5t10TimeText.innerHTML = "10:00";
       card5t13TimeText.innerHTML = "13:00";
@@ -1110,6 +1115,8 @@ document.addEventListener("DOMContentLoaded", () => {
       card5t16TemperatureText.innerHTML = "";
       card5t19TemperatureText.innerHTML = "";
       forecastDate.innerHTML = "";
+      feelLikeElement.innerHTML = "";
+      feelLikeElement.setAttribute("style", "display: none");
       printWeatherUpdateTime(false);
       window.document
         .querySelector(".weatherForecastContents")
