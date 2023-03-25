@@ -46,6 +46,7 @@ const handler = async (event) => {
     "\x6C\x69\x73\x74",
     "\x64\x47\x6C\x74\x5A\x51",
     "feels_like",
+    "timezone",
   ];
   try {
     let weather = { cod: 429 },
@@ -99,6 +100,7 @@ const handler = async (event) => {
         aWQ: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
         dGltZQ: weather[_0x4d35[18]][_0x4d35[24]],
         zmVlbExpa2U: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[30]],
+        dGltZVpvbmU: weather[_0x4d35[18]][_0x4d35[31]],
         dG9tb3Jyb3c: [
           {
             dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]],
