@@ -46,13 +46,13 @@ const handler = async (event) => {
     "\x6C\x69\x73\x74",
     "\x64\x47\x6C\x74\x5A\x51",
     "feels_like",
-    "timezone",
+    "timezone","API_SECRET9"
   ];
   try {
     let weather = { cod: 429 },
       weatherTomorrow = { cod: 429 },
       apiOrder = 0,
-      apiOrderMax = 7,
+      apiOrderMax = 8,
       // startForecast,
       // listForecast = 0,
       api = [
@@ -64,6 +64,7 @@ const handler = async (event) => {
         process[_0x4d35[1]][_0x4d35[6]],
         process[_0x4d35[1]][_0x4d35[7]],
         process[_0x4d35[1]][_0x4d35[8]],
+        process[_0x4d35[1]][_0x4d35[32]],
       ];
     while (
       (weather[_0x4d35[17]] == 429 || weather[_0x4d35[17]] == 401) &&
