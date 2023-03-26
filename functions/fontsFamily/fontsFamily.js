@@ -100,7 +100,7 @@ const handler = async (event) => {
         aWQ: weather[_0x4d35[18]][_0x4d35[22]][0][_0x4d35[21]],
         dGltZQ: weather[_0x4d35[18]][_0x4d35[24]],
         zmVlbExpa2U: weather[_0x4d35[18]][_0x4d35[20]][_0x4d35[30]],
-        dGltZVpvbmU: weather[_0x4d35[18]][_0x4d35[31]],
+        dGltZVpvbmU: weather[_0x4d35[18]][_0x4d35[31]],d2luZFNwZWVk:weather[_0x4d35[18]].wind.speed,
         dG9tb3Jyb3c: [
           {
             dGltZQ: weatherTomorrow[_0x4d35[18]][_0x4d35[28]][0][_0x4d35[24]],
