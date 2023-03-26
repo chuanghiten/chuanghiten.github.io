@@ -135,15 +135,15 @@ html
 					.cloud1
 						--start: -20%
 						--end: 120%
-						animation: driftingCloud1 1.13s linear 0s infinite normal none
+						animation: driftingCloud1 var(--cloudsDuration) linear 0s infinite normal none
 					.cloud2
 						--start: -100%
 						--end: 30%
-						animation: driftingCloud2 3.39s linear 0s infinite normal none
+						animation: driftingCloud2 calc(var(--cloudsDuration) + 1.5s) linear 0s infinite normal none
 					.cloud3
 						--start: -45%
 						--end: 100%
-						animation: driftingCloud3 2.26s linear 0s infinite normal none
+						animation: driftingCloud3 calc(var(--cloudsDuration) + 0.75s) linear 0s infinite normal none
 				//*
 				//	width: 100%
 			.backgroundFooter

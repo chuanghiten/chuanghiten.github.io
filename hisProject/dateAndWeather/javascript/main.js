@@ -255,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     svgBackgroundElement = window.document.querySelector(".svgBackground"),
     cardsScrollElement = window.document.querySelector(".cardsScroll"),
     feelLikeElement = window.document.querySelector(".feelLike"),
+    svgElement = window.document.querySelector("svg"),
     oldClockForClockPulse,
     oldDayOfWeek,
     oldWeatherContentsElementHeight,
@@ -459,6 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
     icon,
     time,
     feelLike,
+    windSpeed,
     c1t7Temperature,
     c1t7Icon,
     c1t7Time,
@@ -697,70 +699,71 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     if (
-      temperature &&
-      icon &&
-      time &&
-      feelLike &&
-      c1t7Temperature &&
-      c1t7Icon &&
-      c1t7Time &&
-      c1t10Temperature &&
-      c1t10Icon &&
-      c1t10Time &&
-      c1t13Temperature &&
-      c1t13Icon &&
-      c1t13Time &&
-      c1t16Temperature &&
-      c1t16Icon &&
-      c1t16Time &&
-      c1t19Temperature &&
-      c1t19Icon &&
-      c1t19Time &&
-      c2t7Temperature &&
-      c2t7Icon &&
-      c2t7Time &&
-      c2t10Temperature &&
-      c2t10Icon &&
-      c2t10Time &&
-      c2t13Temperature &&
-      c2t13Icon &&
-      c2t13Time &&
-      c2t16Temperature &&
-      c2t16Icon &&
-      c2t16Time &&
-      c2t19Temperature &&
-      c2t19Icon &&
-      c2t19Time &&
-      c3t7Temperature &&
-      c3t7Icon &&
-      c3t7Time &&
-      c3t10Temperature &&
-      c3t10Icon &&
-      c3t10Time &&
-      c3t13Temperature &&
-      c3t13Icon &&
-      c3t13Time &&
-      c3t16Temperature &&
-      c3t16Icon &&
-      c3t16Time &&
-      c3t19Temperature &&
-      c3t19Icon &&
-      c3t19Time &&
-      c4t7Temperature &&
-      c4t7Icon &&
-      c4t7Time &&
-      c4t10Temperature &&
-      c4t10Icon &&
-      c4t10Time &&
-      c4t13Temperature &&
-      c4t13Icon &&
-      c4t13Time &&
-      c4t16Temperature &&
-      c4t16Icon &&
-      c4t16Time &&
-      c4t19Temperature &&
-      c4t19Icon &&
-      c4t19Time
+      (temperature &&
+        icon &&
+        time &&
+        feelLike &&
+        c1t7Temperature &&
+        c1t7Icon &&
+        c1t7Time &&
+        c1t10Temperature &&
+        c1t10Icon &&
+        c1t10Time &&
+        c1t13Temperature &&
+        c1t13Icon &&
+        c1t13Time &&
+        c1t16Temperature &&
+        c1t16Icon &&
+        c1t16Time &&
+        c1t19Temperature &&
+        c1t19Icon &&
+        c1t19Time &&
+        c2t7Temperature &&
+        c2t7Icon &&
+        c2t7Time &&
+        c2t10Temperature &&
+        c2t10Icon &&
+        c2t10Time &&
+        c2t13Temperature &&
+        c2t13Icon &&
+        c2t13Time &&
+        c2t16Temperature &&
+        c2t16Icon &&
+        c2t16Time &&
+        c2t19Temperature &&
+        c2t19Icon &&
+        c2t19Time &&
+        c3t7Temperature &&
+        c3t7Icon &&
+        c3t7Time &&
+        c3t10Temperature &&
+        c3t10Icon &&
+        c3t10Time &&
+        c3t13Temperature &&
+        c3t13Icon &&
+        c3t13Time &&
+        c3t16Temperature &&
+        c3t16Icon &&
+        c3t16Time &&
+        c3t19Temperature &&
+        c3t19Icon &&
+        c3t19Time &&
+        c4t7Temperature &&
+        c4t7Icon &&
+        c4t7Time &&
+        c4t10Temperature &&
+        c4t10Icon &&
+        c4t10Time &&
+        c4t13Temperature &&
+        c4t13Icon &&
+        c4t13Time &&
+        c4t16Temperature &&
+        c4t16Icon &&
+        c4t16Time &&
+        c4t19Temperature &&
+        c4t19Icon &&
+        c4t19Time,
+      windSpeed)
     ) {
       window.document
         .querySelector(".weatherForecastContents")
@@ -932,6 +935,7 @@ document.addEventListener("DOMContentLoaded", () => {
         feelLikeElement.innerHTML = "";
         feelLikeElement.setAttribute("style", "display: none");
       }
+      svgElement.setAttribute("style", `--cloudsDuration:${-8.83955752 * windSpeed + 1000}s`);
     } else if (demo) {
       window.document
         .querySelector(".weatherForecastContents")
@@ -1018,6 +1022,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card5t16TemperatureText.innerHTML = "22℃";
       card5t19TemperatureText.innerHTML = "22℃";
       printWeatherUpdateTime(1678878405);
+      svgElement.setAttribute("style", `--cloudsDuration:80s`);
     } else {
       temperatureTextElement.innerHTML = "";
       descriptionTextElement.innerHTML = "";
@@ -1104,6 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.document
         .querySelector(".weatherForecastContents")
         .setAttribute("style", "display: none");
+      svgElement.setAttribute("style", `--cloudsDuration:0s`);
     }
   }
   function setGetWeatherStatus(_0x53b0x2) {
@@ -1149,6 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherData[_0xab36[8]],
           weatherData[_0xab36[18]],
           weatherData.zmVlbExpa2U,
+          weatherData.d2luZFNwZWVk,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
           weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
@@ -1217,6 +1224,7 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherData[_0xab36[8]],
           weatherData[_0xab36[18]],
           weatherData.zmVlbExpa2U,
+          weatherData.d2luZFNwZWVk,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGVtcGVyYXR1cmU,
           weatherData.dG9tb3Jyb3c[selectedForecast].aWQ,
           weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ,
