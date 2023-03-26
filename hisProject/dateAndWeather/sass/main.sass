@@ -33,6 +33,63 @@
 	font-style: normal
 	font-weight: 600
 	src: url("../fonts/numberOneLine/numberOneLine.ttf")
+@keyframes driftingCloud1
+	0%
+		transform: translate(0,1.5rem)
+		opacity: 0.5
+	88%
+		transform: translate(var(--end),1.5rem)
+		opacity: 0.5
+	88.25%
+		opacity: 0
+		transform: translate(var(--end),1.5rem)
+	88.5%
+		opacity: 0
+		transform: translate(var(--start),1.5rem)
+	88.75%
+		opacity: 0.5
+		transform: translate(var(--start),1.5rem)
+	100%
+		opacity: 0.5
+		transform: translate(0,1.5rem)
+@keyframes driftingCloud3
+	0%
+		transform: translate(0,1.5rem)
+		opacity: 0.20
+	75%
+		transform: translate(var(--end),1.5rem)
+		opacity: 0.20
+	75.25%
+		opacity: 0
+		transform: translate(var(--end),1.5rem)
+	75.5%
+		opacity: 0
+		transform: translate(var(--start),1.5rem)
+	75.75%
+		opacity: 0.20
+		transform: translate(var(--start),1.5rem)
+	100%
+		opacity: 0.20
+		transform: translate(0,1.5rem)
+@keyframes driftingCloud2
+	0%
+		transform: translate(0,1.5rem)
+		opacity: 0.25
+	30%
+		transform: translate(var(--end),1.5rem)
+		opacity: 0.25
+	30.25%
+		opacity: 0
+		transform: translate(var(--end),1.5rem)
+	30.5%
+		opacity: 0
+		transform: translate(var(--start),1.5rem)
+	30.75%
+		opacity: 0.25
+		transform: translate(var(--start),1.5rem)
+	100%
+		opacity: 0.25
+		transform: translate(0,1.5rem)
 *
 	margin: 0
 	padding: 0
@@ -75,6 +132,18 @@ html
 					display: block
 					*
 						transform: translate(0, 1.5rem)
+					.cloud1
+						--start: -20%
+						--end: 120%
+						animation: driftingCloud1 400s linear 0s infinite normal none
+					.cloud2
+						--start: -100%
+						--end: 30%
+						animation: driftingCloud2 700s linear 0s infinite normal none
+					.cloud3
+						--start: -45%
+						--end: 100%
+						animation: driftingCloud3 650s linear 0s infinite normal none
 				//*
 				//	width: 100%
 			.backgroundFooter

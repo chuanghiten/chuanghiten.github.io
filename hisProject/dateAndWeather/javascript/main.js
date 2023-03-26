@@ -398,24 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //  }
     solarText.innerHTML =
       dateSolarName + " / " + monthSolarName + " / " + data.getFullYear();
-    timeZone =
-      Number(
-        data
-          .toString()
-          .slice(
-            data.toString().indexOf("GMT") + 3,
-            data.toString().indexOf("GMT") + 6
-          )
-      ) +
-      Number(
-        data
-          .toString()
-          .slice(
-            data.toString().indexOf("GMT") + 6,
-            data.toString().indexOf("GMT") + 8
-          )
-      ) /
-        60;
+    timeZone = (data.getTimezoneOffset() / 60) * -1;
     lunarData = getLunar(
       data.getDate(),
       data.getMonth() + 1,
@@ -1138,9 +1121,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return _0x53b0x6[_0xab36[0]]();
     });
     if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
-      timeZone = new Date().getTimezoneOffset() / 60;
+      timeZone = weatherData.dGltZVpvbmU;
       searchForecastData = new Date(
-        weatherData.dG9tb3Jyb3c[0].dGltZQ * 1000 + timeZone * 3600 * 1000
+        weatherData.dG9tb3Jyb3c[0].dGltZQ * 1000 - timeZone * 1000
       );
       if (searchForecastData.getDate() == new Date().getDate()) {
         if (searchForecastData.getHours() == 0) {
@@ -1154,8 +1137,8 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             selectedForecast += 1;
             searchForecastData = new Date(
-              weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ * 1000 +
-                timeZone * 3600 * 1000
+              weatherData.dG9tb3Jyb3c[selectedForecast].dGltZQ * 1000 -
+                timeZone * 1000
             );
           }
         }
