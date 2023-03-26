@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2006 Ho Ngoc Duc. All Rights Reserved.
- * Astronomical algorithms from the book "Astronomical Algorithms" by Jean Meeus, 1998
+ * Bản quyền (c) 2006 Ho Ngoc Duc. Đã được giữ cho tất cả các quyền.
+ * Các thuật toán thiên văn học từ cuốn sách "Astronomical Algorithms" của Jean Meeus, 1998
  *
- * Permission to use, copy, modify, and redistribute this software and its
- * documentation for personal, non-commercial use is hereby granted provided that
- * this copyright notice and appropriate documentation appears in all copies.
- * The algorithm is explained by Ho Ngoc Duc at "https://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html"
+ * Được phép sử dụng, sao chép, sửa đổi và phân phối phần mềm này và tài liệu của nó cho mục đích cá nhân, phi thương mại miễn là
+ * thông báo bản quyền này và tài liệu phù hợp xuất hiện trong tất cả các bản sao.
+ * Thuật toán được giải thích bởi Ho Ngoc Duc tại "https://www.informatik.uni-leipzig.de/~duc/amlich/calrules_v02.html"
  */
 function abFunction(ac) {
   return Math.floor(ac);
@@ -269,8 +268,82 @@ function getLunar(a, b, c, d) {
     k -= 1;
   }
   return [i, j, k, l];
+}/*
+ * End!
+ * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!
+ * Cảm ơn Ho Ngoc Duc vì thuật toán tính ngày âm lịch rất hữu ích!
+ */
+
+  return x;
+}
+function rFunction(z, d) {
+  let w, aa, k, i;
+  k = abFunction((z - 2415021.076998695) / 29.530588853 + 0.5);
+  w = 0;
+  i = 1;
+  aa = sFunction(pFunction(k + i, d), d);
+  do {
+    w = aa;
+    i++;
+    aa = sFunction(pFunction(k + i, d), d);
+  } while (aa != w && i < 14);
+  return i - 1;
+}
+function getLunar(a, b, c, d) {
+  let e, f, g, h, i, j, k, m;
+  m =
+    a +
+    abFunction((153 * (b + 12 * abFunction((14 - b) / 12) - 3) + 2) / 5) +
+    365 * (c + 4800 - abFunction((14 - b) / 12)) +
+    abFunction((c + 4800 - abFunction((14 - b) / 12)) / 4) -
+    abFunction((c + 4800 - abFunction((14 - b) / 12)) / 100) +
+    abFunction((c + 4800 - abFunction((14 - b) / 12)) / 400) -
+    32045;
+  if (m < 2299161) {
+    m =
+      a +
+      abFunction((153 * (b + 12 * abFunction((14 - b) / 12) - 3) + 2) / 5) +
+      365 * (c + 4800 - abFunction((14 - b) / 12)) +
+      abFunction((c + 4800 - abFunction((14 - b) / 12)) / 4) -
+      32083;
+  }
+  e = abFunction((m - 2415021.076998695) / 29.530588853);
+  f = pFunction(e + 1, d);
+  if (f > m) {
+    f = pFunction(e, d);
+  }
+  i = m - f + 1;
+  g = qFunction(c, d);
+  h = g;
+  if (g >= f) {
+    k = c;
+    g = qFunction(c - 1, d);
+  } else {
+    k = c + 1;
+    h = qFunction(c + 1, d);
+  }
+  n = abFunction((f - g) / 29);
+  l = 0;
+  j = n + 11;
+  if (h - g > 365) {
+    o = rFunction(g, d);
+    if (n >= o) {
+      j = n + 10;
+      if (n == o) {
+        l = 1;
+      }
+    }
+  }
+  if (j > 12) {
+    j = j - 12;
+  }
+  if (j >= 11 && n < 4) {
+    k -= 1;
+  }
+  return [i, j, k, l];
 }
 /*
  * End!
  * Thank you Ho Ngoc Duc for the very useful Vietnamese lunar calculation algorithm!
+ * Cảm ơn Ho Ngoc Duc vì thuật toán tính ngày âm lịch rất hữu ích!
  */
