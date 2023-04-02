@@ -267,51 +267,33 @@ document.addEventListener("DOMContentLoaded", () => {
     getWeatherStatus,
     demo = false,
     forecastDisplayCard,
-    forecastDisplayDate = [];
+    forecastDisplayDate = [],
+    _0xab36 = [
+      "json",
+      "then",
+      "/.netlify/functions/fontsFamily?Zm9udE5hbWU=",
+      "btoa",
+      "&Zm9udERhdGE=",
+      "https://chuanghiten.netlify.app",
+      "",
+      "",
+      "aWQ",
+      "latitude",
+      "coords",
+      "longitude",
+      "onLine",
+      "navigator",
+      "getCurrentPosition",
+      "geolocation",
+      "online",
+      "addEventListener",
+      "dGltZQ",
+    ];
   if (/demo/.test(window.location.href)) {
     demo = true;
   } else {
     demo = false;
   }
-  eval(
-    (function (p, a, c, k, e, d) {
-      e = function (c) {
-        return (
-          (c < a ? "" : e(parseInt(c / a))) +
-          ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
-        );
-      };
-      if (!"".replace(/^/, String)) {
-        while (c--) {
-          d[e(c)] = k[c] || e(c);
-        }
-        k = [
-          function (e) {
-            return d[e];
-          },
-        ];
-        e = function () {
-          return "\\w+";
-        };
-        c = 1;
-      }
-      while (c--) {
-        if (k[c]) {
-          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
-        }
-      }
-      return p;
-    })(
-      'O N=["\\M\\8\\2\\1","\\0\\b\\3\\1","\\b\\0\\0\\q\\8\\L\\e\\e\\9\\b\\a\\6\\1\\d\\b\\4\\0\\3\\1\\p\\1\\3\\0\\7\\4\\l\\k\\p\\6\\q\\q\\e\\p\\1\\3\\0\\7\\4\\l\\k\\e\\l\\a\\1\\9\\0\\4\\2\\1\\8\\e\\l\\2\\1\\0\\8\\K\\6\\j\\4\\7\\k\\J\\g\\j\\o\\a\\5\\i\\I\\b\\w\\t\\u\\v","\\w\\0\\2\\6","\\H\\g\\j\\o\\a\\5\\i\\m\\b\\5\\h\\i\\v","","\\9\\G\\m\\b\\5\\F\\n\\E\\f\\D\\o\\C\\g\\f","\\5\\h\\n\\0\\9\\h\\n\\k\\B\\A\\m\\z\\9\\j\\u","\\6\\t\\f","\\7\\6\\0\\4\\0\\a\\5\\3","\\9\\2\\2\\c\\5\\8","\\7\\2\\1\\d\\4\\0\\a\\5\\3","\\2\\1\\r\\4\\1\\3","\\1\\6\\s\\4\\d\\6\\0\\2\\c","\\d\\3\\0\\y\\a\\c\\c\\3\\1\\0\\x\\2\\8\\4\\0\\4\\2\\1","\\d\\3\\2\\7\\2\\9\\6\\0\\4\\2\\1","\\2\\1\\7\\4\\1\\3","\\6\\5\\5\\i\\s\\3\\1\\0\\r\\4\\8\\0\\3\\1\\3\\c","\\5\\h\\7\\0\\g\\f",];',
-      51,
-      51,
-      "x74|x6E|x6F|x65|x69|x64|x61|x6C|x73|x63|x75|x68|x72|x67|x2F|x51|x5A|x47|x45|x6D|x79|x66|x52|x56|x39|x2E|x70|x4C|x76|x57|x55|x3D|x62|x50|x43|x31|x58|x59|x6B|x32|x7A|x48|x33|x26|x35|x3F|x46|x3A|x6A|\x5F\x30\x78\x61\x62\x33\x36|var".split(
-        "|"
-      ),
-      0,
-      {}
-    )
-  );
 
   eval(
     ((p, a, c, k, e, d) => {
@@ -337,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       while (c--) {
         if (k[c]) {
-          p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
+          p = p.replace(new RegExp(`\\b${e(c)}\\b`, "g"), k[c]);
         }
       }
       return p;
@@ -397,8 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //  } else {
     monthSolarName = data.getMonth() + 1;
     //  }
-    solarText.innerHTML =
-      dateSolarName + " / " + monthSolarName + " / " + data.getFullYear();
+    solarText.innerHTML = `${dateSolarName} / ${monthSolarName} / ${data.getFullYear()}`;
     timeZone = (data.getTimezoneOffset() / 60) * -1;
     lunarData = getLunar(
       data.getDate(),
@@ -417,10 +398,9 @@ document.addEventListener("DOMContentLoaded", () => {
     monthLunarName = lunarData[1];
     //  }
     if (data.getFullYear() != lunarData[2]) {
-      lunarText.innerHTML =
-        dateLunarName + " / " + monthLunarName + " âm lịch " + lunarData[2];
+      lunarText.innerHTML = `${dateLunarName} / ${monthLunarName} âm lịch ${lunarData[2]}`;
     } else {
-      lunarText.innerHTML = dateLunarName + " / " + monthLunarName + " âm lịch";
+      lunarText.innerHTML = `${dateLunarName} / ${monthLunarName} âm lịch`;
     }
   }
   function setOldWeatherContentsElementHeight(data) {
@@ -429,28 +409,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function printWeatherUpdateTime(data) {
     let timeData, minute, month;
     if (data) {
-      timeData = new Date(data * 1000);
+      timeData = new Date(data[0] * 1000);
       if (timeData.getMinutes() <= 9) {
-        minute = "0" + timeData.getMinutes();
+        minute = `0${timeData.getMinutes()}`;
       } else {
         minute = timeData.getMinutes();
       }
       if (timeData.getMonth() <= 9) {
-        month = "0" + (timeData.getMonth() + 1);
+        month = `0${timeData.getMonth() + 1}`;
       } else {
         month = timeData.getMonth() + 1;
       }
-      weatherUpdateTimeElement.innerHTML =
-        "Update: " +
-        timeData.getHours() +
-        ":" +
-        minute +
-        " - " +
-        timeData.getDate() +
-        "/" +
-        month +
-        "/" +
-        timeData.getFullYear();
+      weatherUpdateTimeElement.innerHTML = `Update: ${timeData.getHours()}:${minute} - ${timeData.getDate()}/${month}/${timeData.getFullYear()} - ${
+        data[1]
+      }`;
     } else {
       weatherUpdateTimeElement.innerHTML = "";
     }
@@ -543,11 +515,19 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherDescriptionThunderstorm[0],
           "./images/thunderstorm2.svg",
         ];
-      } else if (data == 201) {
+      } else if (
+        data == 201 ||
+        data == 15 ||
+        data == 16 ||
+        data == 41 ||
+        data == 42
+      ) {
         return [
           weatherDescriptionThunderstorm[1],
           "./images/thunderstorm2.svg",
         ];
+      } else if (data == 17) {
+        return ["Mưa giông ngắt quãng", "./images/thunderstorm2.svg"];
       } else if (data == 202) {
         return [
           weatherDescriptionThunderstorm[2],
@@ -616,30 +596,44 @@ document.addEventListener("DOMContentLoaded", () => {
         return [weatherDescriptionRain[3], "./images/rain1.svg"];
       } else if (data == 504) {
         return [weatherDescriptionRain[4], "./images/rain2.svg"];
-      } else if (data == 511) {
+      } else if (data == 511 || data == 24) {
         return [weatherDescriptionRain[5], "./images/rainIce.svg"];
       } else if (data == 520) {
         return [weatherDescriptionRain[6], "./images/rain3.svg"];
-      } else if (data == 521) {
+      } else if (
+        data == 521 ||
+        data == 12 ||
+        data == 13 ||
+        data == 18 ||
+        data == 39
+      ) {
         return [weatherDescriptionRain[7], "./images/rain3.svg"];
       } else if (data == 522) {
         return [weatherDescriptionRain[8], "./images/rain3.svg"];
-      } else if (data == 531) {
+      } else if (data == 531 || data == 14 || data == 40) {
         return [weatherDescriptionRain[9], "./images/rain3.svg"];
       } else if (data == 600) {
         return [weatherDescriptionSnow[0], "./images/snow1.svg"];
-      } else if (data == 601) {
+      } else if (data == 601 || data == 22) {
         return [weatherDescriptionSnow[1], "./images/snow1.svg"];
       } else if (data == 602) {
         return [weatherDescriptionSnow[2], "./images/snow2.svg"];
-      } else if (data == 611) {
+      } else if (data == 611 || data == 25 || data == 26) {
         return [weatherDescriptionSnow[3], "./images/rainIce.svg"];
       } else if (data == 612) {
         return [weatherDescriptionSnow[4], "./images/rainIce.svg"];
       } else if (data == 613) {
         return [weatherDescriptionSnow[5], "./images/rainIce.svg"];
-      } else if (data == 615) {
+      } else if (
+        data == 615 ||
+        data == 19 ||
+        data == 20 ||
+        data == 29 ||
+        data == 43
+      ) {
         return [weatherDescriptionSnow[6], "./images/rainIce.svg"];
+      } else if (data == 21 || data == 23 || data == 44) {
+        return ["Mưa tuyết ngắt quãng", "./images/rainIce.svg"];
       } else if (data == 616) {
         return [weatherDescriptionSnow[7], "./images/rainIce.svg"];
       } else if (data == 620) {
@@ -652,7 +646,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return [weatherDescriptionAtmosphere[0], "./images/atmosphere.svg"];
       } else if (data == 711) {
         return [weatherDescriptionAtmosphere[1], "./images/atmosphere.svg"];
-      } else if (data == 721) {
+      } else if (data == 721 || data == 11) {
         return [weatherDescriptionAtmosphere[2], "./images/atmosphere.svg"];
       } else if (data == 731) {
         return [weatherDescriptionAtmosphere[3], "./images/undefined.svg"];
@@ -664,106 +658,117 @@ document.addEventListener("DOMContentLoaded", () => {
         return [weatherDescriptionAtmosphere[6], "./images/undefined.svg"];
       } else if (data == 762) {
         return [weatherDescriptionAtmosphere[7], "./images/undefined.svg"];
-      } else if (data == 771) {
+      } else if (data == 771 || data == 32) {
         return [weatherDescriptionAtmosphere[8], "./images/undefined.svg"];
       } else if (data == 781) {
         return [weatherDescriptionAtmosphere[9], "./images/undefined.svg"];
-      } else if (data == 800) {
+      } else if (data == 30) {
+        return ["Trời nóng", "./images/undefined.svg"];
+      } else if (data == 31) {
+        return ["Trời lạnh", "./images/undefined.svg"];
+      } else if (data == 800 || data == 1 || data == 33) {
         return [weatherDescriptionClear, "./images/clearSky.svg"];
-      } else if (data == 801) {
+      } else if (data == 801 || data == 2 || data == 34) {
         return [weatherDescriptionClouds[0], "./images/cloud1.svg"];
-      } else if (data == 802) {
+      } else if (
+        data == 802 ||
+        data == 3 ||
+        data == 4 ||
+        data == 35 ||
+        data == 36
+      ) {
         return [weatherDescriptionClouds[1], "./images/cloud1.svg"];
-      } else if (data == 803) {
+      } else if (data == 803 || data == 5 || data == 37) {
         return [weatherDescriptionClouds[2], "./images/cloud2.svg"];
-      } else if (data == 804) {
+      } else if (data == 804 || data == 6 || data == 38) {
         return [weatherDescriptionClouds[3], "./images/cloud2.svg"];
+      } else if (data == 7) {
+        return ["Âm u", "./images/cloud3.svg"];
+      } else if (data == 7) {
+        return ["U ám", "./images/cloud3.svg"];
       }
     }
+    // next icon: 5
     function kToC(data) {
       return (data - 273.15).toFixed(0);
     }
     function returnTime(data) {
       if (new Date(data * 1000).getMinutes() <= 9) {
-        return (
-          new Date(data * 1000).getHours() +
-          ":0" +
-          new Date(data * 1000).getMinutes()
-        );
+        return `${new Date(data * 1000).getHours()}:0${new Date(
+          data * 1000
+        ).getMinutes()}`;
       } else {
-        return (
-          new Date(data * 1000).getHours() +
-          ":" +
-          new Date(data * 1000).getMinutes()
-        );
+        return `${new Date(data * 1000).getHours()}:${new Date(
+          data * 1000
+        ).getMinutes()}`;
       }
     }
     if (
-      (temperature &&
-        icon &&
-        time &&
-        feelLike &&
-        c1t7Temperature &&
-        c1t7Icon &&
-        c1t7Time &&
-        c1t10Temperature &&
-        c1t10Icon &&
-        c1t10Time &&
-        c1t13Temperature &&
-        c1t13Icon &&
-        c1t13Time &&
-        c1t16Temperature &&
-        c1t16Icon &&
-        c1t16Time &&
-        c1t19Temperature &&
-        c1t19Icon &&
-        c1t19Time &&
-        c2t7Temperature &&
-        c2t7Icon &&
-        c2t7Time &&
-        c2t10Temperature &&
-        c2t10Icon &&
-        c2t10Time &&
-        c2t13Temperature &&
-        c2t13Icon &&
-        c2t13Time &&
-        c2t16Temperature &&
-        c2t16Icon &&
-        c2t16Time &&
-        c2t19Temperature &&
-        c2t19Icon &&
-        c2t19Time &&
-        c3t7Temperature &&
-        c3t7Icon &&
-        c3t7Time &&
-        c3t10Temperature &&
-        c3t10Icon &&
-        c3t10Time &&
-        c3t13Temperature &&
-        c3t13Icon &&
-        c3t13Time &&
-        c3t16Temperature &&
-        c3t16Icon &&
-        c3t16Time &&
-        c3t19Temperature &&
-        c3t19Icon &&
-        c3t19Time &&
-        c4t7Temperature &&
-        c4t7Icon &&
-        c4t7Time &&
-        c4t10Temperature &&
-        c4t10Icon &&
-        c4t10Time &&
-        c4t13Temperature &&
-        c4t13Icon &&
-        c4t13Time &&
-        c4t16Temperature &&
-        c4t16Icon &&
-        c4t16Time &&
-        c4t19Temperature &&
-        c4t19Icon &&
-        c4t19Time,
-      windSpeed)
+      temperature &&
+      icon &&
+      time &&
+      feelLike &&
+      c1t7Temperature &&
+      c1t7Icon &&
+      c1t7Time &&
+      c1t10Temperature &&
+      c1t10Icon &&
+      c1t10Time &&
+      c1t13Temperature &&
+      c1t13Icon &&
+      c1t13Time &&
+      c1t16Temperature &&
+      c1t16Icon &&
+      c1t16Time &&
+      c1t19Temperature &&
+      c1t19Icon &&
+      c1t19Time &&
+      c2t7Temperature &&
+      c2t7Icon &&
+      c2t7Time &&
+      c2t10Temperature &&
+      c2t10Icon &&
+      c2t10Time &&
+      c2t13Temperature &&
+      c2t13Icon &&
+      c2t13Time &&
+      c2t16Temperature &&
+      c2t16Icon &&
+      c2t16Time &&
+      c2t19Temperature &&
+      c2t19Icon &&
+      c2t19Time &&
+      c3t7Temperature &&
+      c3t7Icon &&
+      c3t7Time &&
+      c3t10Temperature &&
+      c3t10Icon &&
+      c3t10Time &&
+      c3t13Temperature &&
+      c3t13Icon &&
+      c3t13Time &&
+      c3t16Temperature &&
+      c3t16Icon &&
+      c3t16Time &&
+      c3t19Temperature &&
+      c3t19Icon &&
+      c3t19Time &&
+      c4t7Temperature &&
+      c4t7Icon &&
+      c4t7Time &&
+      c4t10Temperature &&
+      c4t10Icon &&
+      c4t10Time &&
+      c4t13Temperature &&
+      c4t13Icon &&
+      c4t13Time &&
+      c4t16Temperature &&
+      c4t16Icon &&
+      c4t16Time &&
+      c4t19Temperature &&
+      c4t19Icon &&
+      c4t19Time &&
+      windSpeed
     ) {
       window.document
         .querySelector(".weatherForecastContents")
@@ -818,7 +823,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card1t13TimeText.innerHTML = returnTime(c1t13Time);
       card1t16TimeText.innerHTML = returnTime(c1t16Time);
       card1t19TimeText.innerHTML = returnTime(c1t19Time);
-
       card2t7TemperatureText.innerHTML = `${kToC(c2t7Temperature)}℃`;
       card2t10TemperatureText.innerHTML = `${kToC(c2t10Temperature)}℃`;
       card2t13TemperatureText.innerHTML = `${kToC(c2t13Temperature)}℃`;
@@ -844,7 +848,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card2t13TimeText.innerHTML = returnTime(c2t13Time);
       card2t16TimeText.innerHTML = returnTime(c2t16Time);
       card2t19TimeText.innerHTML = returnTime(c2t19Time);
-
       card3t7TemperatureText.innerHTML = `${kToC(c3t7Temperature)}℃`;
       card3t10TemperatureText.innerHTML = `${kToC(c3t10Temperature)}℃`;
       card3t13TemperatureText.innerHTML = `${kToC(c3t13Temperature)}℃`;
@@ -870,7 +873,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card3t13TimeText.innerHTML = returnTime(c3t13Time);
       card3t16TimeText.innerHTML = returnTime(c3t16Time);
       card3t19TimeText.innerHTML = returnTime(c3t19Time);
-
       card4t7TemperatureText.innerHTML = `${kToC(c4t7Temperature)}℃`;
       card4t10TemperatureText.innerHTML = `${kToC(c4t10Temperature)}℃`;
       card4t13TemperatureText.innerHTML = `${kToC(c4t13Temperature)}℃`;
@@ -927,7 +929,11 @@ document.addEventListener("DOMContentLoaded", () => {
           .querySelector(".cards5")
           .setAttribute("style", "display: none");
       }
-      printWeatherUpdateTime(time);
+      if (icon < 100) {
+        printWeatherUpdateTime([time, "AccuWeather"]);
+      } else {
+        printWeatherUpdateTime([time, "OpenWeather"]);
+      }
       if (kToC(feelLike) != kToC(temperature)) {
         feelLikeElement.removeAttribute("style");
         feelLikeElement.innerHTML = `Cảm giác như ${kToC(feelLike)}℃`;
@@ -935,7 +941,10 @@ document.addEventListener("DOMContentLoaded", () => {
         feelLikeElement.innerHTML = "";
         feelLikeElement.setAttribute("style", "display: none");
       }
-      svgElement.setAttribute("style", `--cloudsDuration:${-8.83955752 * windSpeed + 1000}s`);
+      svgElement.setAttribute(
+        "style",
+        `--cloudsDuration:${-8.83955752 * windSpeed + 1000}s`
+      );
     } else if (demo) {
       window.document
         .querySelector(".weatherForecastContents")
@@ -1117,16 +1126,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   async function getWeatherData(_0x53b0x4, _0x53b0x5) {
     let searchForecastData, selectedForecast, timeZone;
+    // _0xab36[5] = "";
     weatherData = await fetch(
-      `https://chuanghiten.netlify.app/.netlify/functions/fontsFamily?Zm9udE5hbWU=${window[
-        _0xab36[3]
-      ](_0x53b0x4.toString())}${_0xab36[4]}${window[_0xab36[3]](
-        _0x53b0x5.toString()
-      )}`
-    )[_0xab36[1]]((_0x53b0x6) => {
-      return _0x53b0x6[_0xab36[0]]();
-    });
-    if (weatherData[_0xab36[6]] != 429 || weatherData[_0xab36[6]] != 401) {
+      `${_0xab36[5]}${_0xab36[2]}${window[_0xab36[3]](_0x53b0x4.toString())}${
+        _0xab36[4]
+      }${window[_0xab36[3]](_0x53b0x5.toString())}`
+    )
+      [_0xab36[1]]((_0x53b0x6) => {
+        return _0x53b0x6[_0xab36[0]]();
+      })
+      .catch(() => {
+        return false;
+      });
+    if (weatherData) {
       timeZone = weatherData.dGltZVpvbmU;
       searchForecastData = new Date(
         weatherData.dG9tb3Jyb3c[0].dGltZQ * 1000 - timeZone * 1000
@@ -1151,7 +1163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (selectedForecast + 36 >= 40) {
         updateWeatherContents(
-          weatherData[_0xab36[7]],
+          weatherData.zmVlbExpa2U,
           weatherData[_0xab36[8]],
           weatherData[_0xab36[18]],
           weatherData.zmVlbExpa2U,
@@ -1220,7 +1232,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       } else {
         updateWeatherContents(
-          weatherData[_0xab36[7]],
+          weatherData.zmVlbExpa2U,
           weatherData[_0xab36[8]],
           weatherData[_0xab36[18]],
           weatherData.zmVlbExpa2U,
