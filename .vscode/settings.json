@@ -10,7 +10,7 @@
 	"vscode_custom_css.imports": [
 		"file:///D:/Documents/vsCodeCustom/main.css"
 	],
-	"editor.lineHeight": 25,
+	"editor.lineHeight": 2.25,
 	"javascript.inlayHints.parameterNames.enabled": "all",
 	"typescript.inlayHints.parameterNames.enabled": "all",
 	"[html]": {
