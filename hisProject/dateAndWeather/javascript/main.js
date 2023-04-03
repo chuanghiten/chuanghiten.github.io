@@ -1463,6 +1463,7 @@ document.addEventListener("DOMContentLoaded", () => {
   screenOffElement.addEventListener("click", () => {
     setKeepScreenOnStatus(1);
     onScreen();
+    getWeather();
   });
   function setForecastDisplayCard(data) {
     forecastDisplayCard = data;
