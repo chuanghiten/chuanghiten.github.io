@@ -930,7 +930,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .setAttribute("style", "display: none");
       }
       if (icon < 100) {
-        printWeatherUpdateTime([time, "AccuWeather"]);
+        printWeatherUpdateTime([time, "AccuWeather - OpenWeather"]);
       } else {
         printWeatherUpdateTime([time, "OpenWeather"]);
       }
