@@ -25,7 +25,7 @@
 	],
 	"theme_color": "#FFFFFF",
 	"background_color": "#FFFFFF",
-	"start_url": "/dateAndWeather/",
+	"start_url": "/hisProject/dateAndWeather/",
 	"display": "fullscreen",
 	"orientation": "portrait"
 }
