@@ -31,6 +31,9 @@
         margin: 10px;
         text-align: center;
       }
+      img{
+        border-radius: 15px;
+      }
     </style>
     <title>Tặng Uyên Nè!!!</title>
   </head>
@@ -42,32 +45,57 @@
       src="./images/boHoaHong.jpg"
       alt="Hoa Hồng"
     />
+    <img class="birthdayCake" src="./images/birthdayCache.jpg" alt="Bánh sinh nhật" style="display: none; width: 540px; height: auto;"/>
     <div class="text">
       Tặng m bông hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span
       ><br /><span class="button">Quá ít ư? Bấm vô đây!</span>
     </div>
   </body>
   <script>
-    var hoa = "bong";
+    var hoa = 0;
+    var date
     document.querySelector(".text").addEventListener("click", () => {
-      if (hoa == "bong") {
-        hoa = "bo";
-        document
-          .querySelector(".bongHoa")
-          .setAttribute("style", "display: none");
-        document
-          .querySelector(".boHoa")
-          .setAttribute("style", "display: block");
-        document
-          .querySelector(".text").innerHTML = "Tặng m bó hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span><br /><span class=\"button\">Quá nhiều ư? Lại bấm vô chữ!</span>";
-      } else{
-        hoa = "bong";
-        document
-          .querySelector(".bongHoa")
-          .setAttribute("style", "display: block");
+      if ((hoa == 0) && (hoa != 2)) {
+        date = new Date();
+        if ((date.getDate() == 18) && ((date.getMonth()+1) == 6)){
+          hoa = 2;
+          document
+            .querySelector(".birthdayCake")
+            .setAttribute("style", "display: block; width: 540px; height: auto;");
+          document
+            .querySelector(".bongHoa")
+            .setAttribute("style", "display: none");
         document
           .querySelector(".boHoa")
           .setAttribute("style", "display: none");
+        document
+          .querySelector(".text").innerHTML = "Ủa hôm nay sinh nhận m hả?<br />Tặnh bánh sinh nhật nè!<br /><span class=\"button\">Chúc mừng sinh nhật nhaaaaaa!!!</span>";
+        }
+        else {
+          hoa = 1;
+          document
+            .querySelector(".bongHoa")
+            .setAttribute("style", "display: none");
+          document
+            .querySelector(".birthdayCake")
+            .setAttribute("style", "display: none");
+          document
+            .querySelector(".boHoa")
+            .setAttribute("style", "display: block");
+          document
+            .querySelector(".text").innerHTML = "Tặng m bó hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span><br /><span class=\"button\">Quá nhiều ư? Lại bấm vô đây!</span>";
+        }
+      } else if (hoa != 2){
+        hoa = 0;
+        document
+          .querySelector(".bongHoa")
+          .setAttribute("style", "display: block");
+        document
+          .querySelector(".boHoa")
+          .setAttribute("style", "display: none");
+          document
+            .querySelector(".birthdayCake")
+            .setAttribute("style", "display: none");
         document
           .querySelector(".text").innerHTML = "Tặng m bông hoa nè!!!<br /><span>Đừng buồn nữa nhaaaaaaaaaa!</span><br /><span class=\"button\">Quá ít ư? Bấm vô đây!</span>";
       }
