@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "style",
       `--innerWidth:${window.innerWidth}px;--innerHeight:${window.innerHeight}px;`
     );
+		window.document.querySelector("html").setAttribute("style",`font-size: ${(window.innerWidth / 1211) * 62.5}%`)
   }
   hongElement.setAttribute("active", "");
   imgHong.setAttribute("bong","");
