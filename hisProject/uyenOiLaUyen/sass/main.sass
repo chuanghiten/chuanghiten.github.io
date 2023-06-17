@@ -1,6 +1,98 @@
 @font-face
 	font-family: Montserrat
-	src: url("../fonts/Montserrat-Regular.ttf")
+	src: url("../fonts/Montserrat-Medium.ttf")
+@property --candleFocusLength
+	syntax: '<percentage>'
+	inherits: false
+	initial-value: 100%
+@property --candleFocusColor
+	syntax: '<color>'
+	inherits: false
+	initial-value: transparent
+@property --shadowColor
+	syntax: '<color>'
+	inherits: false
+	initial-value: transparent
+@property --fireLight
+	syntax: '<percentage>'
+	inherits: false
+	initial-value: 0%
+@keyframes lightCandles
+	0%
+		--candleFocusLength: 100%
+		--candleFocusColor: transparent
+		--shadowColor: transparent
+		top: 40%
+		left: 130%
+		opacity: 1
+	9%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (414 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (194 / 1080)))
+	18%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (414 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (194 / 1080)))
+	27%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (480 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (180 / 1080)))
+	36%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (480 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (180 / 1080)))
+	45%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (545 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (138 / 1080)))
+	54%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (545 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (138 / 1080)))
+	63%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (592 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (170 / 1080)))
+	72%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (592 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (170 / 1080)))
+	81%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (680 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+	90%
+		--candleFocusLength: 5%
+		--candleFocusColor: rgba(244,158,33,0.5)
+		--shadowColor: rgba(0, 0, 0, 0.98)
+		left: calc(100% * (680 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+		opacity: 1
+	100%
+		--candleFocusLength: 100%
+		--candleFocusColor: transparent
+		--shadowColor: transparent
+		left: calc(100% * (680 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+		opacity: 0
 *
 	margin: 0
 	padding: 0
@@ -16,135 +108,395 @@ html
 		display: flex
 		justify-content: center
 		align-items: center
-		.hong, .birthdayCake
-			overflow: hidden
-			position: absolute
-			display: none
-		.hong
-			width: 100%
+		.main
 			height: 100%
-			background: #f7f7f7
+			width: 100%
+			max-width: var(--maxWidth)
+			display: flex
 			justify-content: center
 			align-items: center
-			flex-direction: column
-			display: none
-			&[active]
-				display: flex
-				.text
-					font-size: 8rem
-					text-align: center
-					color: #3d3d3d
-					margin: 10rem 0 0 0
-					span
-						font-size: 5rem
-						margin: 5rem 0 0 0
-						display: block
-						color: #3d3d3d
-				.image
-					background: #fff
-					box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, .1)
-					border-radius: 10rem
-					width: 60%
-					height: 0
-					padding-bottom: 60%
+			.hong, .birthdayCake
+				overflow: hidden
+				position: absolute
+				display: none
+			.hong
+				width: 100%
+				height: 100%
+				background: #f7f7f7
+				justify-content: center
+				align-items: center
+				flex-direction: column
+				display: none
+				&[active]
 					display: flex
-					justify-content: center
-					align-items: flex-end
-					svg
-						position: absolute
-						bottom: 0
-						width: 70%
-						height: auto
-						display: none
-					.imgInDiv
-						position: absolute
-						bottom: 0
-						width: 100%
-						height: 100%
+					.text
+						font-size: 8rem
+						text-align: center
+						color: #3d3d3d
+						margin: 10rem 0 0 0
+						span
+							font-size: 5rem
+							margin: 5rem 0 0 0
+							display: block
+							color: #3d3d3d
+					.image
+						background: #fff
+						box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, .1)
+						border-radius: 10rem
+						width: 60%
+						height: 0
+						padding-bottom: 60%
+						display: flex
+						justify-content: center
+						align-items: flex-end
+						svg
+							position: absolute
+							bottom: 0
+							width: 70%
+							height: auto
+							display: none
+						.imgInDiv
+							position: absolute
+							bottom: 0
+							width: 100%
+							height: 100%
+							justify-content: center
+							align-items: center
+							overflow: hidden
+							display: none
+							img
+								width: 90%
+								height: auto
+								transform: translate(0,7%)
+								position: absolute
+								transition: all .15s ease-in
+						&[active]
+							.il
+								transform: translate(-30%,10%) rotate(-15deg)
+							.ir
+								transform: translate(30%,10%) rotate(15deg)
+						.noOverflow
+							overflow: unset
+						&[bong] svg
+							display: block
+						&[bo] .imgInDiv
+							display: flex
+					.options
+						display: flex
 						justify-content: center
 						align-items: center
-						overflow: hidden
-						display: none
-						img
-							width: 90%
-							height: auto
-							transform: translate(0,7%)
-							position: absolute
-							transition: all .15s ease-out
-					&[active]
-						.il
-							transform: translate(-30%,10%) rotate(-15deg)
-						.ir
-							transform: translate(30%,10%) rotate(15deg)
-					.noOverflow
-						overflow: unset
-					&[bong] svg
-						display: block
-					&[bo] .imgInDiv
-						display: flex
-				.options
+						width: 100%
+						margin: 5rem
+						min-height: 30rem
+						.contents
+							width: 70%
+							height: 100%
+							padding: 5rem
+							.content
+								width: 100%
+								height: 100%
+								border: 1rem solid #3d3d3d
+								border-radius: 10rem
+								text-align: center
+								display: flex
+								justify-content: center
+								align-items: center
+								font-size: 5rem
+								color: #3d3d3d
+								padding: 4rem
+							.name
+								font-size: 3.5rem
+								background: #f7f7f7
+								position: absolute
+								transform: translate(0,-50%)
+								top: 5rem
+								left: 12rem
+								padding: 2rem
+						.option
+							width: 30%
+							height: 100%
+							padding: 5rem
+							div
+								width: 100%
+								height: auto
+								padding: 3rem
+								text-align: center
+								font-size: 4rem
+								border: 1rem solid #3d3d3d
+								border-radius: 10rem
+								margin: 2rem 0 0 0
+								color: #3d3d3d
+								opacity: 0.75
+								display: flex
+								align-items: center
+								&::before
+									content: ''
+									display: block
+									position: absolute
+									width: 0
+									height: 0
+									border: 3rem solid transparent
+									left: -5rem
+									border-left-color: #3d3d3d
+									opacity: 0
+								&:hover
+									opacity: 1
+									&::before
+										opacity: 1
+								&:first-child
+									margin: 0
+			.birthdayCake
+				width: 100%
+				height: 100%
+				&[active]
 					display: flex
 					justify-content: center
 					align-items: center
-					width: 100%
-					margin: 5rem
-					min-height: 30rem
-					.contents
-						width: 70%
+					.changeScene
 						height: 100%
-						padding: 5rem
-						.content
-							width: 100%
+						width: 100%
+						position: absolute
+						overflow: hidden
+						opacity: 0
+						&::before
+							content: ''
+							display: block
+							position: absolute
+							width: var(--width)
 							height: 100%
-							border: 1rem solid #3d3d3d
-							border-radius: 10rem
-							text-align: center
+							padding-left: 100%
+							background: #f7f7f7
+							border-radius: 50%
+							transform: scale(0)
+							transition: all .25s ease-out
+						&[active]
 							display: flex
 							justify-content: center
 							align-items: center
-							font-size: 5rem
-							color: #3d3d3d
-							padding: 5rem
-						.name
-							font-size: 3.5rem
-							background: #f7f7f7
-							position: absolute
-							transform: translate(0,-50%)
-							top: 5rem
-							left: 12rem
-							padding: 2rem
-					.option
-						width: 30%
+							opacity: 1
+							&::before
+								transform: scale(1)
+					.backgroundFinalCake
+						display: flex
+						justify-content: center
+						align-items: center
+						width: 100%
 						height: 100%
-						padding: 5rem
-						div
-							width: 100%
-							height: auto
-							padding: 3rem
-							text-align: center
-							font-size: 4rem
-							border: 1rem solid #3d3d3d
-							border-radius: 10rem
-							margin: 2rem 0 0 0
-							color: #3d3d3d
-							opacity: 0.75
-							display: flex
-							align-items: center
+						position: absolute
+						.bigCircle
+							width: 81.0185185185%
+							height: 0
+							padding-bottom: 81.0185185185%
+							background: #f9edd7
+							border-radius: 50%
+							position: absolute
+							transform: scale(0)
+							transition: all 32s cubic-bezier(0, 1.25, 0, 1)
+						.dot
+							position: absolute
+							transform: scale(0)
+							transition: all 8s cubic-bezier(0, 1.25, 0, 1)
 							&::before
 								content: ''
 								display: block
 								position: absolute
-								width: 0
+								border-radius: 50%
+							&1
+								width: 62.96296296296297%
 								height: 0
-								border: 3rem solid transparent
-								left: -5rem
-								border-left-color: #3d3d3d
-								opacity: 0
-							&:hover
-								opacity: 1
+								padding-bottom: 76.57407407407407%
 								&::before
-									opacity: 1
-							&:first-child
-								margin: 0
+									width: 5.1470588235294115%
+									height: 0
+									padding-bottom: 5.1470588235294115%
+									background: #d24e64
+									top: 0
+									right: 0
+							&2
+								width: 68.05555555555556%
+								height: 0
+								padding-bottom: 33.98148148148148%
+								&::before
+									width: 4.7619047619047616%
+									height: 0
+									padding-bottom: 4.7619047619047616%
+									background: #d24e64
+									top: 0
+									right: 0
+							&3
+								width: 58.14814814814815%
+								height: 0
+								padding-bottom: 25.74074074074074%
+								&::before
+									width: 3.662420382165605%
+									height: 0
+									padding-bottom: 3.662420382165605%
+									background: #d24e64
+									top: 0
+									right: 0
+									transition-duration: 2s
+							&4
+								width: 46.38888888888889%
+								height: 0
+								padding-bottom: 57.12962962962963%
+								&::before
+									width: 6.58682634730539%
+									height: 0
+									padding-bottom: 6.58682634730539%
+									background: #49aca7
+									top: 0
+									left: 0
+							&5
+								width: 75%
+								height: 0
+								padding-bottom: 44.44444444444444%
+								&::before
+									width: 4.074074074074074%
+									height: 0
+									padding-bottom: 4.074074074074074%
+									background: #49aca7
+									bottom: 0
+									left: 0
+							&6
+								width: 38.98148148148148%
+								height: 0
+								padding-bottom: 29.074074074074076%
+								&::before
+									width: 4.275534441805226%
+									height: 0
+									padding-bottom: 4.275534441805226%
+									background: #49aca7
+									top: 0
+									left: 0
+									transition-duration: 2s
+							&7
+								width: 52.407407407407405%
+								height: 0
+								padding-bottom: 42.77777777777778%
+								&::before
+									width: 3.7102473498233217%
+									height: 0
+									padding-bottom: 3.7102473498233217%
+									background: #fb834f
+									top: 0
+									left: 0
+									transition-duration: 2s
+							&8
+								width: 79.35185185185185%
+								height: 0
+								padding-bottom: 70.27777777777777%
+								&::before
+									width: 3.5005834305717616%
+									height: 0
+									padding-bottom: 3.5005834305717616%
+									background: #49aca7
+									bottom: 0
+									right: 0
+						.text
+							width: 100%
+							height: 100%
+							position: absolute
+							transform: scale(0)
+							transition: all 4s cubic-bezier(0, 1.25, 0, 1)
+							display: flex
+							justify-content: center
+							align-items: center
+							flex-direction: column
+							.top, .bottom
+								font-size: 8rem
+								color: #3d3d3d
+								text-align: center
+							.center
+								width: 100%
+								height: 0
+								padding-bottom: 100%
+								margin: 5rem 0
+						&[active]
+							.bigCircle, .dot, .text
+								transform: scale(1)
+					img
+						width: 100%
+						height: auto
+						position: absolute
+						opacity: 0
+						transition: all .75s cubic-bezier(0, 0, 0, 1)
+						&.cake0, &.cake2
+							transform: translate(30rem, -10rem) rotate(20deg)
+							transform-origin: 100% 100%
+						&.cake1, &.nen
+							transform: translate(-30rem, -10rem) rotate(-20deg)
+							transform-origin: 0 100%
+						&.fire
+							--fireLight: 0%
+							transition: --fireLight .25s ease-out, all .25s ease-out
+							background: radial-gradient(farthest-corner at var(--shadowTop) var(--shadowLeft),rgba(244,158,33,0.5) 0%, #0000 var(--fireLight))
+							transform-origin: var(--shadowTop) var(--shadowLeft)
+							transform: scale(0.25)
+							&5
+								--shadowTop: calc(100% * (680 / 1080))
+								--shadowLeft: calc(100% * (205 / 1080))
+							&4
+								--shadowTop: calc(100% * (592 / 1080))
+								--shadowLeft: calc(100% * (170 / 1080))
+							&3
+								--shadowTop: calc(100% * (545 / 1080))
+								--shadowLeft: calc(100% * (138 / 1080))
+							&2
+								--shadowTop: calc(100% * (480 / 1080))
+								--shadowLeft: calc(100% * (180 / 1080))
+							&1
+								--shadowTop: calc(100% * (414 / 1080))
+								--shadowLeft: calc(100% * (194 / 1080))
+							&[active]
+								--fireLight: 15%
+								transform: scale(1)
+						&[active]
+							opacity: 1
+							transform: translate(0,0) rotate(0deg) scale(1)
+					svg
+						position: absolute
+						top: 0
+						width: auto
+						height: 30%
+						opacity: 0
+						transition: all .1s linear
+						transform: translate(0,-100%)
+						overflow: visible
+						&[active]
+							opacity: 1
+							transform: translate(0,0)
+						circle
+							fill: #3d3d3d
+							opacity: 0
+						path, line
+							fill: none
+							stroke: #3d3d3d
+							stroke-linecap: round
+							stroke-width: 4rem
+					.light
+						width: 100%
+						height: 100%
+						position: absolute
+						overflow: hidden
+						pointer-events: none
+						&::before
+							--candleFocusLength: 100%
+							--candleFocusColor: transparent
+							--shadowColor: transparent
+							pointer-events: none
+							width: 500%
+							height: 0
+							padding-bottom: 500%
+							content: ''
+							display: block
+							position: absolute
+							transition: --candleFocusLength .25s ease-out, --candleFocusColor .25s ease-out
+							background: radial-gradient(var(--candleFocusColor) 0%, var(--shadowColor) var(--candleFocusLength)), url('../images/176c8f93859b54c50d8a.svg') 50% 50% / 8% no-repeat
+							transform: translate(-50%, -50%)
+							top: 0
+							left: 0
+							opacity: 0
+						&[active]::before
+							animation: lightCandles 5s linear 0s 1 forwards
 		&::-webkit-scrollbar
 			display: none
