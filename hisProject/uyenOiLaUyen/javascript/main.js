@@ -89,6 +89,7 @@ const {
   });
 RESET();
 registerPlugin(MorphSVGPlugin);
+gsap.config({trialWarn: false});
 let startX, startY;
 gsap.set([".cords", HIT], {
   x: -10,

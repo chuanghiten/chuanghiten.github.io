@@ -1,97 +1,93 @@
 @font-face
 	font-family: Montserrat
 	src: url("../fonts/Montserrat-Medium.ttf")
-@property --candleFocusLength
-	syntax: '<percentage>'
-	inherits: false
-	initial-value: 100%
-@property --candleFocusColor
-	syntax: '<color>'
-	inherits: false
-	initial-value: transparent
-@property --shadowColor
-	syntax: '<color>'
-	inherits: false
-	initial-value: transparent
 @property --fireLight
 	syntax: '<percentage>'
 	inherits: false
 	initial-value: 0%
 @keyframes lightCandles
 	0%
-		--candleFocusLength: 100%
-		--candleFocusColor: transparent
-		--shadowColor: transparent
 		top: 40%
 		left: 130%
 		opacity: 1
 	9%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (414 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (194 / 1080)))
 	18%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (414 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (194 / 1080)))
 	27%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (480 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (180 / 1080)))
 	36%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (480 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (180 / 1080)))
 	45%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (545 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (138 / 1080)))
 	54%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (545 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (138 / 1080)))
 	63%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (592 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (170 / 1080)))
 	72%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (592 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (170 / 1080)))
 	81%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (680 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
 	90%
-		--candleFocusLength: 5%
-		--candleFocusColor: rgba(244,158,33,0.5)
-		--shadowColor: rgba(0, 0, 0, 0.98)
 		left: calc(100% * (680 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
 		opacity: 1
 	100%
-		--candleFocusLength: 100%
-		--candleFocusColor: transparent
-		--shadowColor: transparent
 		left: calc(100% * (680 / 1080))
 		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+		opacity: 0
+@keyframes lightCandles2
+	0%
+		top: 40%
+		left: 130%
+		transform: translate(-50%,-50%) scale(15)
+		opacity: 1
+	9%
+		left: calc(100% * (414 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (194 / 1080)))
+		transform: translate(-50%,-50%) scale(1)
+	18%
+		left: calc(100% * (414 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (194 / 1080)))
+	27%
+		left: calc(100% * (480 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (180 / 1080)))
+	36%
+		left: calc(100% * (480 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (180 / 1080)))
+	45%
+		left: calc(100% * (545 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (138 / 1080)))
+	54%
+		left: calc(100% * (545 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (138 / 1080)))
+	63%
+		left: calc(100% * (592 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (170 / 1080)))
+	72%
+		left: calc(100% * (592 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (170 / 1080)))
+	81%
+		left: calc(100% * (680 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+	90%
+		left: calc(100% * (680 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+		transform: translate(-50%,-50%) scale(1)
+		opacity: 1
+	100%
+		left: calc(100% * (680 / 1080))
+		top: calc(((100% - var(--height)) / 2) + ( var(--height) * (205 / 1080)))
+		transform: translate(-50%,-50%) scale(15)
 		opacity: 0
 *
 	margin: 0
@@ -229,6 +225,7 @@ html
 								opacity: 0.75
 								display: flex
 								align-items: center
+								cursor: pointer
 								&::before
 									content: ''
 									display: block
@@ -480,9 +477,6 @@ html
 						overflow: hidden
 						pointer-events: none
 						&::before
-							--candleFocusLength: 100%
-							--candleFocusColor: transparent
-							--shadowColor: transparent
 							pointer-events: none
 							width: 500%
 							height: 0
@@ -490,13 +484,28 @@ html
 							content: ''
 							display: block
 							position: absolute
-							transition: --candleFocusLength .25s ease-out, --candleFocusColor .25s ease-out
-							background: radial-gradient(var(--candleFocusColor) 0%, var(--shadowColor) var(--candleFocusLength)), url('../images/176c8f93859b54c50d8a.svg') 50% 50% / 8% no-repeat
+							background: url('../images/176c8f93859b54c50d8a.svg') 50% 50% / 8% no-repeat
 							transform: translate(-50%, -50%)
+							opacity: 0
+							top: 0
+							left: 0
+						&::after
+							pointer-events: none
+							content: ''
+							display: block
+							position: absolute
+							width: 500%
+							height: 0
+							padding-bottom: 500%
+							background: radial-gradient(rgba(244,158,33,0.5) 0%, #000 5%)
+							transform: translate(-50%, -50%) scale(var(--scale))
 							top: 0
 							left: 0
 							opacity: 0
-						&[active]::before
-							animation: lightCandles 5s linear 0s 1 forwards
+						&[active]
+							&::before
+								animation: lightCandles 5s linear 0s 1 forwards
+							&::after
+								animation: lightCandles2 5s linear 0s 1 forwards
 		&::-webkit-scrollbar
 			display: none
