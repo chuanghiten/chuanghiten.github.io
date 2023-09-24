@@ -28,7 +28,8 @@ var bodyElement = window.document.querySelector("body"),
   ),
   loiChucSinhNhat = window.document.querySelector(
     "body body .main .birthdayCake .backgroundFinalCake .text .top, html body .main .birthdayCake .backgroundFinalCake .text .bottom"
-  );
+  ),
+  trungThuFrame = window.document.querySelector("body .trungThuFrame");
 function cakeAnim() {
   candleLightFocus.setAttribute("active", "");
   candleLightFocus.setAttribute("style", `--height: ${nen.offsetHeight}px`);
@@ -53,7 +54,8 @@ function cakeAnim() {
   }, 4300);
   setTimeout(() => {
     backgroundFinalCake.setAttribute("active", "");
-    let date = new Date(), tuoi;
+    let date = new Date(),
+      tuoi;
     tuoi = date.getFullYear() - 2006;
     loiChucSinhNhat.innerHTML = `Tuổi ${tuoi} vui vẻ đáng yêu nhaaaa~`;
     a[0].setAttribute("active", "");
@@ -201,7 +203,7 @@ function b() {
   imgHong.setAttribute("active", "");
   promptHong.innerHTML = "";
   optionHong.innerHTML = "";
-  if ((new Date().getDate() == 18 && new Date().getMonth() + 1 == 6) || true) {
+  if ((new Date().getDate() == 18 && new Date().getMonth() + 1 == 6) || false) {
     typingText(
       "3 bó thì sao? Ủa mà nay sinh nhật m hả?",
       promptHong,
@@ -238,6 +240,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "style",
       `--maxWidth: ${window.innerHeight * (555 / 888)}px`
     );
+    trungThuFrame.setAttribute(
+      "style",
+      `--maxWidth: ${window.innerHeight * (555 / 888)}px`
+    );
     window.document
       .querySelector("html")
       .setAttribute(
@@ -245,6 +251,9 @@ document.addEventListener("DOMContentLoaded", () => {
         `font-size: ${(mainElement.offsetWidth / 1211) * 62.5}%`
       );
     changeScene.setAttribute("style", `--width: ${mainElement.offsetHeight}px`);
+  }
+  if ( getLunar(new Date().getDate(), new Date().getMonth() + 1, new Date().getFullYear(), (new Date().getTimezoneOffset() / 60) * -1)[0] == 15 && getLunar(new Date().getDate(), new Date().getMonth() + 1, new Date().getFullYear(), (new Date().getTimezoneOffset() / 60) * -1)[1] == 8 ) {
+    trungThuFrame.setAttribute("active", "");
   }
   hongElement.setAttribute("active", "");
   imgHong.setAttribute("bong", "");

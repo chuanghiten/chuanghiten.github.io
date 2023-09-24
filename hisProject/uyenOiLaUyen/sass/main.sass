@@ -507,5 +507,26 @@ html
 								animation: lightCandles 5s linear 0s 1 forwards
 							&::after
 								animation: lightCandles2 5s linear 0s 1 forwards
+		.trungThuFrame
+			position: absolute
+			pointer-events: none
+			overflow: hidden
+			display: none
+			&[active]
+				width: 100%
+				height: 100%
+				max-width: var(--maxWidth)
+				display: flex
+				justify-content: center
+				align-items: center
+				flex-direction: column
+				img
+					position: absolute
+					width: 100%
+					height: auto
+					&.top
+						top: -8%
+					&.bottom
+						bottom: -23%
 		&::-webkit-scrollbar
 			display: none
