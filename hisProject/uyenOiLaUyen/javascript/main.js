@@ -25,6 +25,9 @@ var bodyElement = window.document.querySelector("body"),
   ),
   backgroundFinalCake = window.document.querySelector(
     "body .main .birthdayCake .backgroundFinalCake"
+  ),
+  loiChucSinhNhat = window.document.querySelector(
+    "body body .main .birthdayCake .backgroundFinalCake .text .top, html body .main .birthdayCake .backgroundFinalCake .text .bottom"
   );
 function cakeAnim() {
   candleLightFocus.setAttribute("active", "");
@@ -50,6 +53,9 @@ function cakeAnim() {
   }, 4300);
   setTimeout(() => {
     backgroundFinalCake.setAttribute("active", "");
+    let date = new Date(), tuoi;
+    tuoi = date.getFullYear() - 2006;
+    loiChucSinhNhat.innerHTML = `Tuổi ${tuoi} vui vẻ đáng yêu nhaaaa~`;
     a[0].setAttribute("active", "");
     birthdayCakeElement.setAttribute("style", "background: #ffdbb7");
     finalCake.setAttribute("active", "");
@@ -89,7 +95,7 @@ const {
   });
 RESET();
 registerPlugin(MorphSVGPlugin);
-gsap.config({trialWarn: false});
+gsap.config({ trialWarn: false });
 let startX, startY;
 gsap.set([".cords", HIT], {
   x: -10,
@@ -195,7 +201,7 @@ function b() {
   imgHong.setAttribute("active", "");
   promptHong.innerHTML = "";
   optionHong.innerHTML = "";
-  if ((new Date().getDate() == 18 && new Date().getMonth() + 1 == 6)) {
+  if ((new Date().getDate() == 18 && new Date().getMonth() + 1 == 6) || true) {
     typingText(
       "3 bó thì sao? Ủa mà nay sinh nhật m hả?",
       promptHong,
