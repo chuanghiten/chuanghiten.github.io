@@ -29,7 +29,10 @@ var bodyElement = window.document.querySelector("body"),
   loiChucSinhNhat = window.document.querySelector(
     "body body .main .birthdayCake .backgroundFinalCake .text .top, html body .main .birthdayCake .backgroundFinalCake .text .bottom"
   ),
-  trungThuFrame = window.document.querySelector("body .trungThuFrame");
+  trungThuFrame = window.document.querySelector("body .trungThuFrame"),
+  banhTrungThu = window.document.querySelector(
+    "body .main .hong .image .imgInDiv .banhTrungThu"
+  );
 function cakeAnim() {
   candleLightFocus.setAttribute("active", "");
   candleLightFocus.setAttribute("style", `--height: ${nen.offsetHeight}px`);
@@ -230,6 +233,26 @@ function a() {
     optionHong.innerHTML = '<div class="option1" onclick="b()">Đúng r</div>';
   });
 }
+function e(a) {
+  b = Math.floor(Math.random() * 3);
+  c = ["thapCam", "trungMuoi", "traXanh", "Thập Cẩm", "Trứng Muối", "Trà Xanh"];
+  banhTrungThu.removeAttribute("hoiCham");
+  banhTrungThu.setAttribute(c[b], "");
+  if (a == 3) {
+    textHong.innerHTML = `Vậy thì nhân ${
+      c[b + 3]
+    } nhé!<br><span>Trung thu vui vẻ nhaaaa~</span>`;
+  } else if (a != b) {
+    textHong.innerHTML = `Sai r nhé :)))<br><span>Bánh này nhân ${c[b + 3]}</span>`;
+  } else if (a == b) {
+    textHong.innerHTML = `OK tặng nhân ${c[b + 3]} nè!<br><span>Trung thu vui vẻ nhaaaa~</span>`;
+  }
+  promptHong.innerHTML = "";
+  optionHong.innerHTML = "";
+  typingText("Chúc ngon miệng!", promptHong, 50, () => {
+    optionHong.innerHTML = "";
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
   function addScreenSizeToBodyElement() {
     bodyElement.setAttribute(
@@ -252,17 +275,41 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     changeScene.setAttribute("style", `--width: ${mainElement.offsetHeight}px`);
   }
-  if ( getLunar(new Date().getDate(), new Date().getMonth() + 1, new Date().getFullYear(), (new Date().getTimezoneOffset() / 60) * -1)[0] == 15 && getLunar(new Date().getDate(), new Date().getMonth() + 1, new Date().getFullYear(), (new Date().getTimezoneOffset() / 60) * -1)[1] == 8 ) {
+  if (
+    (getLunar(
+      new Date().getDate(),
+      new Date().getMonth() + 1,
+      new Date().getFullYear(),
+      (new Date().getTimezoneOffset() / 60) * -1
+    )[0] == 15 &&
+      getLunar(
+        new Date().getDate(),
+        new Date().getMonth() + 1,
+        new Date().getFullYear(),
+        (new Date().getTimezoneOffset() / 60) * -1
+      )[1] == 8) ||
+    true
+  ) {
     trungThuFrame.setAttribute("active", "");
+    hongElement.setAttribute("active", "");
+    imgHong.setAttribute("banhTrungThu", "");
+    banhTrungThu.setAttribute("hoiCham", "");
+    textHong.innerHTML = "Tặng bánh trung thu nè~";
+    optionHong.innerHTML = "";
+    typingText("Thích nhân gì nào?", promptHong, 50, () => {
+      optionHong.innerHTML =
+        '<div onclick="e(0)">Thập Cẩm</div><div onclick="e(1)">Trứng Muối</div><div onclick="e(2)">Trà Xanh</div><div onclick="e(3)">Gì cũng đc</div>';
+    });
+  } else {
+    hongElement.setAttribute("active", "");
+    imgHong.setAttribute("bong", "");
+    textHong.innerHTML =
+      "Tặng m bông hồng nè~<br><span>Nếu đang buồn thì đừng buồn nữa nhaaaa!!!</span>";
+    optionHong.innerHTML = "";
+    typingText("Chưa đủ làm m vui ư?", promptHong, 50, () => {
+      optionHong.innerHTML = '<div class="option1" onclick="a()">Yep</div>';
+    });
   }
-  hongElement.setAttribute("active", "");
-  imgHong.setAttribute("bong", "");
-  textHong.innerHTML =
-    "Tặng m bông hồng nè~<br><span>Nếu đang buồn thì đừng buồn nữa nhaaaa!!!</span>";
-  optionHong.innerHTML = "";
-  typingText("Chưa đủ làm m vui ư?", promptHong, 50, () => {
-    optionHong.innerHTML = '<div class="option1" onclick="a()">Yep</div>';
-  });
   bodyElement.onresize = addScreenSizeToBodyElement;
   addScreenSizeToBodyElement();
   finalCake.addEventListener("click", () => {

@@ -160,12 +160,19 @@ html
 							align-items: center
 							overflow: hidden
 							display: none
+							.banhTrungThu
+								display: none
+								img
+									display: none
 							img
 								width: 90%
 								height: auto
 								transform: translate(0,7%)
 								position: absolute
 								transition: all .15s ease-in
+							.banhTrungThu
+								width: 100%
+								height: 100%
 						&[active]
 							.il
 								transform: translate(-30%,10%) rotate(-15deg)
@@ -177,6 +184,23 @@ html
 							display: block
 						&[bo] .imgInDiv
 							display: flex
+						&[banhTrungThu]
+							.imgInDiv
+								display: flex
+								&>img
+									display: none
+								.banhTrungThu
+									display: flex
+									justify-content: center
+									align-items: center
+									img
+										width: auto
+										height: 140%
+										transform: translate(0, 0)
+									&[hoiCham] .nhanHoiCham, &[thapCam] .nhanThapCam, &[trungMuoi] .nhanTrungMuoi, &[traXanh] .nhanTraXanh
+										display: block
+								&.noOverflow .banhTrungThu img
+									display: block
 					.options
 						display: flex
 						justify-content: center
@@ -187,7 +211,7 @@ html
 						.contents
 							width: 70%
 							height: 100%
-							padding: 5rem
+							padding: 5rem 2.5rem
 							.content
 								width: 100%
 								height: 100%
@@ -211,7 +235,7 @@ html
 						.option
 							width: 30%
 							height: 100%
-							padding: 5rem
+							padding: 5rem 2.5rem
 							div
 								width: 100%
 								height: auto
@@ -525,8 +549,8 @@ html
 					width: 100%
 					height: auto
 					&.top
-						top: -8%
+						top: -15rem
 					&.bottom
-						bottom: -23%
+						bottom: -42rem
 		&::-webkit-scrollbar
 			display: none
