@@ -243,9 +243,13 @@ function e(a) {
       c[b + 3]
     } nhé!<br><span>Trung thu vui vẻ nhaaaa~</span>`;
   } else if (a != b) {
-    textHong.innerHTML = `Sai r nhé :)))<br><span>Bánh này nhân ${c[b + 3]}</span>`;
+    textHong.innerHTML = `Sai r nhé :)))<br><span>Bánh này nhân ${
+      c[b + 3]
+    }</span>`;
   } else if (a == b) {
-    textHong.innerHTML = `OK tặng nhân ${c[b + 3]} nè!<br><span>Trung thu vui vẻ nhaaaa~</span>`;
+    textHong.innerHTML = `OK tặng nhân ${
+      c[b + 3]
+    } nè!<br><span>Trung thu vui vẻ nhaaaa~</span>`;
   }
   promptHong.innerHTML = "";
   optionHong.innerHTML = "";
@@ -276,19 +280,18 @@ document.addEventListener("DOMContentLoaded", () => {
     changeScene.setAttribute("style", `--width: ${mainElement.offsetHeight}px`);
   }
   if (
-    (getLunar(
+    getLunar(
       new Date().getDate(),
       new Date().getMonth() + 1,
       new Date().getFullYear(),
       (new Date().getTimezoneOffset() / 60) * -1
     )[0] == 15 &&
-      getLunar(
-        new Date().getDate(),
-        new Date().getMonth() + 1,
-        new Date().getFullYear(),
-        (new Date().getTimezoneOffset() / 60) * -1
-      )[1] == 8) ||
-    true
+    getLunar(
+      new Date().getDate(),
+      new Date().getMonth() + 1,
+      new Date().getFullYear(),
+      (new Date().getTimezoneOffset() / 60) * -1
+    )[1] == 8
   ) {
     trungThuFrame.setAttribute("active", "");
     hongElement.setAttribute("active", "");
