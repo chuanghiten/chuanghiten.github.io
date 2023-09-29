@@ -235,7 +235,7 @@ function a() {
 }
 function e(a) {
   b = Math.floor(Math.random() * 3);
-  c = ["thapCam", "trungMuoi", "traXanh", "Thập Cẩm", "Trứng Muối", "Trà Xanh"];
+  c = ["thapCam", "trungMuoi", "traXanh", "Thập Cẩm", "Trứng Muối", "Nhân Matcha"];
   banhTrungThu.removeAttribute("hoiCham");
   banhTrungThu.setAttribute(c[b], "");
   if (a == 3) {
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
     optionHong.innerHTML = "";
     typingText("Thích nhân gì nào?", promptHong, 50, () => {
       optionHong.innerHTML =
-        '<div onclick="e(0)">Thập Cẩm</div><div onclick="e(1)">Trứng Muối</div><div onclick="e(2)">Trà Xanh</div><div onclick="e(3)">Gì cũng đc</div>';
+        '<div onclick="e(0)">Thập Cẩm</div><div onclick="e(1)">Trứng Muối</div><div onclick="e(2)">Nhân Matcha</div><div onclick="e(3)">Gì cũng đc</div>';
     });
   } else {
     hongElement.setAttribute("active", "");
