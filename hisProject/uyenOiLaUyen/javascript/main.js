@@ -254,7 +254,7 @@ function e(a) {
   promptHong.innerHTML = "";
   optionHong.innerHTML = "";
   typingText("Chúc ngon miệng!", promptHong, 50, () => {
-    optionHong.innerHTML = "<div>...</div>";
+    optionHong.innerHTML = "<div>...</div><div>...</div>";
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
