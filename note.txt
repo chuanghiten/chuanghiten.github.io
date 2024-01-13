@@ -1,4 +1,0 @@
-================================youtubeCssWideYoutubeSubscriptions=================
---ytd-grid-6-columns-width: 97%;
---ytd-grid-max-width: 97%;
-======================================end=================================
