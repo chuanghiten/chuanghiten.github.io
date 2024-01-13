@@ -1,2 +1,2 @@
-*{margin:0;padding:0;border:0;box-sizing:border-box}body{background:#fff}
+*{margin:0;padding:0;border:0;box-sizing:border-box}body{display:flex;justify-content:center;align-items:center}body .main{background:red}
 /*# sourceMappingURL=main.css.map */
