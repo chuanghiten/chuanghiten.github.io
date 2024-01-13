@@ -3,9 +3,45 @@
   padding: 0
   border: 0
   box-sizing: border-box
-body
-  display: flex
-  justify-content: center
-  align-items: center
-  .main
-    background: #f00
+  position: relative
+  &::before, &::after
+    display: block
+    margin: 0
+    padding: 0
+    border: 0
+    box-sizing: border-box
+
+html
+  font-size: 6.25%
+  body
+    display: flex
+    justify-content: center
+    align-items: center
+    .main
+      width: 0
+      height: 0
+      .background, .contents
+        background: #b9eefe
+        width: 100%
+        height: 100%
+        position: absolute
+        .top, .bottom
+          width: 100%
+          height: 100%
+          position: absolute
+          display: flex
+          justify-content: center
+          flex-wrap: wrap
+          svg
+            width: 100%
+            height: auto
+        .bottom
+          align-content: flex-end
+          .marginBottom
+            --height: 0
+            width: 100%
+            height: var(--height)
+        .top
+          align-content: flex-start
+      .contents
+        background: #0000
