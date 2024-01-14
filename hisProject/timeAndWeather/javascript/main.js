@@ -80,7 +80,7 @@ function main() {
 			if (oldMinutes != newMinutes) {
 				oldMinutes = newMinutes;
 				updateTime("minutes", newMinutes);
-				updateTime("hoursArrow", 360 * ((newHours / 12) + ((newMinutes / 60) / 60)));
+				// if (newHours >= 12) updateTime("hoursArrow", 360 * (((newHours - 12) / 12) + (30 / 60)));
 			};
 		};
 	}, 1);
