@@ -18,7 +18,7 @@ function main() {
 	let fullscreen = 0;
 	resize(window.innerWidth, window.innerHeight);
 	window.addEventListener("resize", () => { resize(window.innerWidth, window.innerHeight) });
-	htmlDom.addEventListener("dblclick", () => {
+	htmlDom.addEventListener("mouseup", () => {
 		if (fullscreen) {
 			if (document.exitFullscreen) document.exitFullscreen();
 			else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
