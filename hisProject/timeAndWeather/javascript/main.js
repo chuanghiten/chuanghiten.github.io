@@ -15,8 +15,22 @@ function resize(width, height) {
 }
 
 function main() {
+	let fullscreen = 0;
 	resize(window.innerWidth, window.innerHeight);
 	window.addEventListener("resize", () => { resize(window.innerWidth, window.innerHeight) });
+	htmlDom.addEventListener("dblclick", () => {
+		if (fullscreen) {
+			if (document.exitFullscreen) document.exitFullscreen();
+			else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+			else if (document.msExitFullscreen) document.msExitFullscreen();
+			fullscreen = 0;
+		} else {
+			if (htmlDom.requestFullscreen) htmlDom.requestFullscreen();
+			else if (htmlDom.webkitRequestFullscreen) htmlDom.webkitRequestFullscreen();
+			else if (htmlDom.msRequestFullscreen) htmlDom.msRequestFullscreen();
+			fullscreen = 1;
+		}
+	})
 }
 
 window.addEventListener("load", () => { main() });
