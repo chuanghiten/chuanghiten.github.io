@@ -11,6 +11,10 @@
     border: 0
     box-sizing: border-box
 
+svg
+  width: 100%
+  height: 100%
+
 @font-face
   font-family: 'Modulus Pro'
   font-style: normal
@@ -49,10 +53,15 @@
 
 html
   font-size: 6.25%
+  --timeTextColor: #fefffa
+  --progressColor: #c5e36f
+  --hoursArrowColor: #f87b79
+  --minutesArrowColor: #f0d258
   body
     display: flex
     justify-content: center
     align-items: center
+    background: #000
     use-chat-gpt-ai-content-menu#USE_CHAT_GPT_AI_ROOT_Context_Menu
       display: none
     .main
@@ -71,7 +80,6 @@ html
           justify-content: center
           flex-wrap: wrap
           svg
-            width: 100%
             height: auto
         .bottom
           align-content: flex-end
@@ -83,3 +91,117 @@ html
           align-content: flex-start
       .contents
         background: #0000
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        align-content: space-between
+        .time, .weather
+          width: 100%
+          height: auto
+        .time
+          display: flex
+          justify-content: space-evenly
+          align-items: center
+          padding-top: 100rem
+          .clock
+            width: 175rem
+            height: 175rem
+            display: flex
+            justify-content: center
+            align-items: center
+            text-align: center
+            color: var(--timeTextColor)
+            font-family: 'Modulus Pro'
+            font-size: 50rem
+            border-radius: 50%
+            border: 5rem solid #fefffa00
+            .secondProgress
+              width: 175rem
+              height: 175rem
+              position: absolute
+              border-radius: 50%
+              display: flex
+              justify-content: center
+              align-items: center
+              .progress
+                width: 100%
+                height: 100%
+                border-radius: 50%
+                background: conic-gradient(var(--progressColor) 0deg, var(--progressColor) var(--deg), #fefffa var(--deg), #fefffa 354deg, transparent 354deg, transparent 360deg)
+                display: flex
+                justify-content: center
+                align-items: center
+                &::before, &::after
+                  content: ''
+                  position: absolute
+                  width: 5rem
+                  height: 5rem
+                  border-radius: 50%
+                  background: var(--progressColor)
+                  top: 0
+                &::after
+                  background: var(--timeTextColor)
+                  left: 76rem
+                  top: .1rem
+            .dot
+              width: 170rem
+              height: 170rem
+              position: absolute
+              display: flex
+              justify-content: center
+              transform: rotate(var(--deg))
+              &::before
+                content: ''
+                background: var(--progressColor)
+                width: 10rem
+                height: 10rem
+                border-radius: 50%
+                transform: translate(0, -50%)
+            .hoursArrow, .minutesArrow
+              width: 155rem
+              height: 155rem
+              position: absolute
+              display: flex
+              justify-content: center
+              transform: rotate(var(--hoursDeg))
+              &::before
+                content: ''
+                border: 9rem solid transparent
+                transform: translate(0,-50%)
+                border-bottom-color: var(--hoursArrowColor)
+                top: 0
+                position: absolute
+            .minutesArrow
+              width: 185rem
+              height: 185rem
+              transform: rotate(var(--minutesDeg))
+              &::before
+                border-color: transparent
+                border-top-color: var(--minutesArrowColor)
+          .date
+            display: flex
+            justify-content: center
+            align-items: center
+            color: var(--timeTextColor)
+            font-family: 'Modulus Pro'
+            .thu
+              text-align: right
+              font-size: 100rem
+              line-height: 85rem
+              margin: 0 10rem 0 0
+              .t
+                font-size: 70rem
+                margin: 0 7rem 0 0
+                line-height: 0
+              .nam
+                font-size: 20rem
+                line-height: 23rem
+            .ngayThang
+              font-size: 40rem
+              letter-spacing: .5rem
+              .progressbar
+                width: 100%
+                height: 3.5rem
+                background: #fefffa
+                margin: 3.5rem 0
+                border-radius: 1.25rem
