@@ -74,7 +74,7 @@ function main() {
 			updateTime("second", newSeconds);
 			updateTime("minutesArrow", 360 * ((newMinutes / 60) + ((newSeconds / 60) / 60)))
 			if (oldHours != newHours) {
-				oldHours = newHours
+				oldHours = newHours;
 				updateTime("hour", newHours);
 			}
 			if (oldMinutes != newMinutes) {
