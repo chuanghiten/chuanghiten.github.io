@@ -72,7 +72,7 @@ function main() {
 			newHours = time.getHours();
 			newMinutes = time.getMinutes();
 			updateTime("second", newSeconds);
-			updateTime("minutesArrow", 360 * ((newMinutes / 60) + ((newSeconds / 60) / 60)))
+			updateTime("minutesArrow", 6 * (newMinutes + (newSeconds / 60)));
 			if (oldHours != newHours) {
 				oldHours = newHours;
 				updateTime("hour", newHours);
@@ -80,7 +80,7 @@ function main() {
 			if (oldMinutes != newMinutes) {
 				oldMinutes = newMinutes;
 				updateTime("minutes", newMinutes);
-				// if (newHours >= 12) updateTime("hoursArrow", 360 * (((newHours - 12) / 12) + (30 / 60)));
+				updateTime("hoursArrow", 30 * (newHours + (newMinutes / 60)));
 			};
 		};
 	}, 1);
