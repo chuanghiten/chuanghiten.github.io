@@ -16,10 +16,17 @@ let mainDom = window.document.querySelector("html body .main"),
 	thu = window.document.querySelector("html body .main .contents .time .date .thu .text"),
 	namDuong = window.document.querySelector("html body .main .contents .time .date .thu .nam .duong"),
 	namAm = window.document.querySelector("html body .main .contents .time .date .thu .nam .am"),
-	progressDay = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar");
+	progressDay = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar"),
+	backgroundDom = window.document.querySelector("html body .main .background"),
+	weatherDom = window.document.querySelector("html body .main .contents .weather"),
+	arrowThang = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thang"),
+	arrowNam = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .nam");
 
 function updateTime(name, value) {
 	switch (name) {
+		case "monthProgress":
+			arrowThang.setAttribute("style", `--left: ${value * 100}%`);
+			break;
 		case "progressDay":
 			progressDay.setAttribute("style", `--progress: ${(value / 86399) * 100}%`);
 			break;
@@ -81,6 +88,7 @@ function resize(width, height) {
 	htmlFontsize = 6.25 * mainDomWidth / 515;
 	htmlDom.style.fontSize = `${htmlFontsize}%`;
 	secondProgressDom.setAttribute("style", `clip-path: path('M 0 0 H ${secondProgressDom.offsetWidth} V ${secondProgressDom.offsetWidth} H 0 V ${secondProgressDom.offsetWidth / 2} H ${(.16 * htmlFontsize) * 5} C ${(.16 * htmlFontsize) * 5}  ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 41.9)} ${(.16 * htmlFontsize) * 41.9} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 5)} ${secondProgressDom.offsetWidth / 2} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 5)} C ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 41.9)} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 5)} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 5)} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 41.9)} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 5)} ${secondProgressDom.offsetWidth / 2} C ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 5)} ${(.16 * htmlFontsize) * 41.9} ${secondProgressDom.offsetWidth - ((.16 * htmlFontsize) * 41.9)} ${(.16 * htmlFontsize) * 5} ${secondProgressDom.offsetWidth / 2} ${(.16 * htmlFontsize) * 5} C ${(.16 * htmlFontsize) * 41.9} ${(.16 * htmlFontsize) * 5} ${(.16 * htmlFontsize) * 5} ${(.16 * htmlFontsize) * 41.9} ${(.16 * htmlFontsize) * 5} ${secondProgressDom.offsetWidth / 2} H 0 Z')`);
+	backgroundDom.setAttribute("style", `--bottom: ${weatherDom.offsetHeight}px`);
 }
 
 function main() {
@@ -105,6 +113,8 @@ function main() {
 	newDate = time.getDate();
 	newMonth = time.getMonth() + 1;
 	newYear = time.getFullYear();
+	newHours = time.getHours();
+	newMinutes = time.getMinutes();
 	setInterval(() => {
 		time = new Date();
 		newSeconds = time.getSeconds();
@@ -114,6 +124,28 @@ function main() {
 			updateTime("second", newSeconds);
 			updateTime("minutesArrow", 6 * (newMinutes + (newSeconds / 60)));
 			updateTime("progressDay", (newHours * 3600) + (newMinutes * 60) + newSeconds);
+			if ((newMonth <= 7 && newMonth % 2 != 0) || (newMonth >= 8 && newMonth % 2 == 0)) {
+				updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2764799);
+				// updateTime("yearProgress", (newMonth * 2678400 + newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) /  )
+			} else {
+				if (newMonth != 2) {
+					updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2678399);
+				} else {
+					if (newYear.toString().slice(-2) == "00") {
+						if (newYear % 400 == 0) {
+							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2591999);
+						} else {
+							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2505599);
+						}
+					} else {
+						if (newYear % 4 == 0) {
+							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2591999);
+						} else {
+							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2505599);
+						}
+					}
+				}
+			}
 			if (oldMinutes != newMinutes) {
 				oldMinutes = newMinutes;
 				newHours = time.getHours();
