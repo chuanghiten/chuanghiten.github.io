@@ -19,13 +19,16 @@ let mainDom = window.document.querySelector("html body .main"),
 	progressDay = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar"),
 	backgroundDom = window.document.querySelector("html body .main .background"),
 	weatherDom = window.document.querySelector("html body .main .contents .weather"),
-	arrowThang = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thang"),
-	arrowNam = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .nam");
+	arrowThangDuong = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thangDuong"),
+	arrowThangAm = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thangAm");
 
 function updateTime(name, value) {
 	switch (name) {
-		case "monthProgress":
-			arrowThang.setAttribute("style", `--left: ${value * 100}%`);
+		case "progressThangAm":
+			arrowThangAm.setAttribute("style", `--left: ${value * 100}%`);
+			break;
+		case "progressThangDuong":
+			arrowThangDuong.setAttribute("style", `--left: ${value * 100}%`);
 			break;
 		case "progressDay":
 			progressDay.setAttribute("style", `--progress: ${(value / 86399) * 100}%`);
@@ -41,7 +44,7 @@ function updateTime(name, value) {
 			else thu.innerHTML = `<span class="t">t</span>${value}`;
 			break;
 		case "second":
-			clockDom.setAttribute("style", `--deg: ${360 * (value / 60)}deg`);
+			clockDom.setAttribute("style", `--deg: ${360 * (value / 59999)}deg`);
 			break;
 		case "minutes":
 			if (value < 10) minutesDom.innerHTML = `0${value}`;
@@ -115,42 +118,47 @@ function main() {
 	newYear = time.getFullYear();
 	newHours = time.getHours();
 	newMinutes = time.getMinutes();
+	soNgayAmTrongThang = getNewMoonDay(INT((jdFromDate(newDate, newMonth, newYear) - 2415021) / 29.530588853) + 1, 7) - getNewMoonDay(INT((jdFromDate(newDate, newMonth, newYear) - 2415021) / 29.530588853), 7);
+	// if (soNgayAmTrongThang == 30) thangAm.style.textDecoration = "underline";
+	// else thangAm.style.textDecoration = "none";
 	setInterval(() => {
 		time = new Date();
 		newSeconds = time.getSeconds();
+		updateTime("second", newSeconds * 1000 + time.getMilliseconds());
 		if (oldSeconds != newSeconds) {
 			oldSeconds = newSeconds;
 			newMinutes = time.getMinutes();
-			updateTime("second", newSeconds);
 			updateTime("minutesArrow", 6 * (newMinutes + (newSeconds / 60)));
 			updateTime("progressDay", (newHours * 3600) + (newMinutes * 60) + newSeconds);
-			if ((newMonth <= 7 && newMonth % 2 != 0) || (newMonth >= 8 && newMonth % 2 == 0)) {
-				updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2764799);
-				// updateTime("yearProgress", (newMonth * 2678400 + newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) /  )
-			} else {
-				if (newMonth != 2) {
-					updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2678399);
-				} else {
-					if (newYear.toString().slice(-2) == "00") {
-						if (newYear % 400 == 0) {
-							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2591999);
-						} else {
-							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2505599);
-						}
-					} else {
-						if (newYear % 4 == 0) {
-							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2591999);
-						} else {
-							updateTime("monthProgress", (newDate * 86400 + newHours * 3600 + newMinutes * 60 + newSeconds) / 2505599);
-						}
-					}
-				}
-			}
 			if (oldMinutes != newMinutes) {
 				oldMinutes = newMinutes;
 				newHours = time.getHours();
 				updateTime("minutes", newMinutes);
 				updateTime("hoursArrow", 30 * (newHours + (newMinutes / 60)));
+				if ((newMonth <= 7 && newMonth % 2 != 0) || (newMonth >= 8 && newMonth % 2 == 0)) {
+					thangDuong.style.textDecoration = "underline";
+					updateTime("progressThangDuong", (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2764740);
+				}
+				else {
+					thangDuong.style.textDecoration = "none";
+					if (newMonth != 2) updateTime("progressThangDuong", (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2678340);
+					else {
+						if ((newYear.toString().slice(-2) == "00" && newYear % 400 == 0) || (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)) {
+							namDuong.style.textDecoration = "underline";
+							updateTime("progressThangDuong", (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2591940);
+						} else {
+							namDuong.style.textDecoration = "none";
+							updateTime("progressThangDuong", (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2505540);
+						}
+					}
+				}
+				if (soNgayAmTrongThang == 30) {
+					thangAm.style.textDecoration = "underline";
+					updateTime("progressThangAm", (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 + newHours * 3600 + newMinutes * 60) / 2678340);
+				} else {
+					thangAm.style.textDecoration = "none";
+					updateTime("progressThangAm", (getLunar(newDate, newMonth, newYear, 7) * 86400 + newHours * 3600 + newMinutes * 60) / 2591940);
+				}
 				if (oldHours != newHours) {
 					oldHours = newHours;
 					newDate = time.getDate();
@@ -161,13 +169,16 @@ function main() {
 						updateTime("ngayAm", getLunar(newDate, newMonth, newYear, 7)[0]);
 						updateTime("ngayDuong", newDate);
 						updateTime("thu", time.getDay() + 1);
+						soNgayAmTrongThang = getNewMoonDay(INT((jdFromDate(newDate, newMonth, newYear) - 2415021) / 29.530588853) + 1, 7) - getNewMoonDay(INT((jdFromDate(newDate, newMonth, newYear) - 2415021) / 29.530588853), 7);
 						if (oldMonth != newMonth) {
 							oldMonth = newMonth;
 							newYear = time.getFullYear();
 							updateTime("thangAm", getLunar(newDate, newMonth, newYear, 7)[1]);
 							updateTime("thangDuong", newMonth);
 							if (oldYear != newYear) {
-								oldYear = newYear;
+
+								if ((newYear.toString().slice(-2) == "00" && newYear % 400 == 0) || (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)) namDuong.style.textDecoration = "underline";
+								else namDuong.style.textDecoration = "none"; oldYear = newYear;
 								if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
 									namAm.style.display = "none";
 									updateTime("namDuong", newYear);
@@ -182,7 +193,7 @@ function main() {
 				}
 			};
 		};
-	}, 1);
+	}, 100);
 }
 
 window.addEventListener("load", () => { main() });
