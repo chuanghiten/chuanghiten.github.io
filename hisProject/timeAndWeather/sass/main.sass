@@ -57,6 +57,7 @@ html
   --progressColor: #c5e36f
   --hoursArrowColor: #f87b79
   --minutesArrowColor: #f0d258
+  --weatherTextColor: #fafffc
   body
     display: flex
     justify-content: center
@@ -98,6 +99,52 @@ html
         .time, .weather
           width: 100%
           height: auto
+        .weather
+          text-shadow: -.5rem .5rem #1115
+          .randomFlower
+            width: 100%
+            height: 100%
+            position: absolute
+            overflow: hidden
+            svg
+              width: 18rem
+              height: auto
+              position: absolute
+          .forecast
+            width: 100%
+            height: auto
+            padding: 10rem 0
+          .now
+            width: 100%
+            display: flex
+            justify-content: space-around
+            align-items: center
+            backdrop-filter: blur(2px)
+            overflow: hidden
+            margin: 13rem 0
+            .texts
+              color: var(--weatherTextColor)
+              font-family: 'Modulus Pro'
+              font-size: 25rem
+              .minMax 
+                transform: translate(-5rem, 0)
+                svg
+                  display: inline
+                  height: 25rem
+                  width: auto
+                  fill: var(--weatherTextColor)
+                  transform: translate(0, 2rem)
+              .temprature
+                --fontSize: 40rem
+                font-size: var(--fontSize)
+                .text
+                  font-family: 'Number One Line'
+                  line-height: 100rem
+                  font-size: calc(var(--fontSize) * 2.7)
+            .icon
+              height: 160rem
+              svg
+                width: auto
         .time
           display: flex
           justify-content: space-evenly
@@ -115,6 +162,7 @@ html
             font-size: 50rem
             border-radius: 50%
             border: 5rem solid #fefffa00
+            text-shadow: -.5rem .5rem #1115
             .secondProgress
               width: 175rem
               height: 175rem
@@ -184,6 +232,7 @@ html
             align-items: center
             color: var(--timeTextColor)
             font-family: 'Modulus Pro'
+            text-shadow: .5rem .5rem #1115
             .thu
               text-align: right
               font-size: 100rem

@@ -1,3 +1,7 @@
+// https://ipinfo.io/json?
+// https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&q=171.224.178.31&language=vi&details=true
+// https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&language=vi&details=true
+// https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=7c2279acfa621dfb49b6dfa59ac7a610
 let mainDom = window.document.querySelector("html body .main"),
 	mainDomWidth,
 	htmlDom = window.document.querySelector("html"),
@@ -20,7 +24,8 @@ let mainDom = window.document.querySelector("html body .main"),
 	backgroundDom = window.document.querySelector("html body .main .background"),
 	weatherDom = window.document.querySelector("html body .main .contents .weather"),
 	arrowThangDuong = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thangDuong"),
-	arrowThangAm = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thangAm");
+	arrowThangAm = window.document.querySelector("html body .main .contents .time .date .ngayThang .progressbar .thangAm"),
+	randomFlowerDom = window.document.querySelector("html body .main .contents .weather .randomFlower");
 
 function updateTime(name, value) {
 	switch (name) {
@@ -44,7 +49,7 @@ function updateTime(name, value) {
 			else thu.innerHTML = `<span class="t">t</span>${value}`;
 			break;
 		case "second":
-			clockDom.setAttribute("style", `--deg: ${360 * (value / 59999)}deg`);
+			clockDom.setAttribute("style", `--deg: ${354 * (value / 59999)}deg`);
 			break;
 		case "minutes":
 			if (value < 10) minutesDom.innerHTML = `0${value}`;
@@ -96,7 +101,20 @@ function resize(width, height) {
 
 function main() {
 	let fullscreen = 0,
-		time, oldSeconds, oldMinutes, oldHours, oldDate, oldMonth, oldYear, newSeconds, newMinutes, newHours, newDate, newMonth, newYear;
+		time,
+		oldSeconds,
+		oldMinutes,
+		oldHours,
+		oldDate,
+		oldMonth,
+		oldYear,
+		newSeconds,
+		newMinutes,
+		newHours,
+		newDate,
+		newMonth,
+		newYear,
+		numberOfFlower = randomFlowerDom.childElementCount;
 	resize(window.innerWidth, window.innerHeight);
 	window.addEventListener("resize", () => { resize(window.innerWidth, window.innerHeight) });
 	htmlDom.addEventListener("click", () => {
@@ -112,6 +130,11 @@ function main() {
 			fullscreen = 1;
 		};
 	});
+	while (numberOfFlower > 0) {
+		randomFlowerDom.children[numberOfFlower - 1].style.top = `${Math.random() * randomFlowerDom.offsetHeight}rem`;
+		randomFlowerDom.children[numberOfFlower - 1].style.left = `${Math.random() * randomFlowerDom.offsetWidth}rem`;
+		--numberOfFlower;
+	}
 	time = new Date();
 	newDate = time.getDate();
 	newMonth = time.getMonth() + 1;
@@ -119,8 +142,6 @@ function main() {
 	newHours = time.getHours();
 	newMinutes = time.getMinutes();
 	soNgayAmTrongThang = getNewMoonDay(INT((jdFromDate(newDate, newMonth, newYear) - 2415021) / 29.530588853) + 1, 7) - getNewMoonDay(INT((jdFromDate(newDate, newMonth, newYear) - 2415021) / 29.530588853), 7);
-	// if (soNgayAmTrongThang == 30) thangAm.style.textDecoration = "underline";
-	// else thangAm.style.textDecoration = "none";
 	setInterval(() => {
 		time = new Date();
 		newSeconds = time.getSeconds();
