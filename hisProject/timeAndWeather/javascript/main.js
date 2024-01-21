@@ -124,8 +124,8 @@ async function callNetlify(lat, lon, locationKey, ip) {
   let apiURL,
     data = false;
   if (locationKey)
-    apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
-  else apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+    apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
+  else apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
   try {
     const response = await fetch(apiURL, {
       method: "GET",
