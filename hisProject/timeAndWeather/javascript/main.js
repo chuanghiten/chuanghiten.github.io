@@ -764,7 +764,7 @@ function main() {
           if (newHours % 2 == 0 && !calling) {
             if (lat) {
               callNetlify(lat, lon, locationKey, ip).then((w) => {
-                updateWeather("city", w.now.city);
+                if (w.now.city) updateWeather("city", w.now.city);
                 updateWeather("temperature", [
                   w.now.temperaturePast24.min.toFixed(1),
                   w.now.temperature.toFixed(1),
