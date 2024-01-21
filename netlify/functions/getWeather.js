@@ -1,13 +1,53 @@
 require("dotenv").config();
 
+let HEADERS = {
+  "Access-Control-Allow-Headers":
+    "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
+  "Content-Type": "application/json", //optional
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Max-Age": "8640",
+};
+
+//This solves the "No ‘Access-Control-Allow-Origin’ header is present on the requested resource."
+
+HEADERS["Access-Control-Allow-Origin"] = "*";
+HEADERS["Vary"] = "Origin";
+
 const axios = require("axios");
 
 exports.handler = async (event) => {
   const ip = event.queryStringParameters.ip,
     lat = event.queryStringParameters.lat,
     lon = event.queryStringParameters.lon,
-    accuKey = [process.env.ACCU1, process.env.ACCU2, process.env.ACCU3, process.env.ACCU4, process.env.ACCU5, process.env.ACCU6, process.env.ACCU7, process.env.ACCU8, process.env.ACCU9, process.env.ACCU10, process.env.ACCU11, process.env.ACCU12, process.env.ACCU13],
-    openKey = [process.env.OPEN1, process.env.OPEN2, process.env.OPEN3, process.env.OPEN4, process.env.OPEN5, process.env.OPEN6, process.env.OPEN7, process.env.OPEN8, process.env.OPEN9, process.env.OPEN10, process.env.OPEN11, process.env.OPEN12];
+    accuKey = [
+      process.env.ACCU1,
+      process.env.ACCU2,
+      process.env.ACCU3,
+      process.env.ACCU4,
+      process.env.ACCU5,
+      process.env.ACCU6,
+      process.env.ACCU7,
+      process.env.ACCU8,
+      process.env.ACCU9,
+      process.env.ACCU10,
+      process.env.ACCU11,
+      process.env.ACCU12,
+      process.env.ACCU13,
+    ],
+    openKey = [
+      process.env.OPEN1,
+      process.env.OPEN2,
+      process.env.OPEN3,
+      process.env.OPEN4,
+      process.env.OPEN5,
+      process.env.OPEN6,
+      process.env.OPEN7,
+      process.env.OPEN8,
+      process.env.OPEN9,
+      process.env.OPEN10,
+      process.env.OPEN11,
+      process.env.OPEN12,
+    ];
   const accuLength = accuKey.length,
     openLength = openKey.length;
   let weatherData = false,
@@ -104,7 +144,7 @@ exports.handler = async (event) => {
         city: weatherData.data.name,
         locationKey: locationKey,
       };
-    else return { statusCode: 500 };
+    else return { statusCode: 500, HEADERS };
   }
   weatherData = false;
   while (!weatherData && numberOfKey < openLength) {
@@ -133,34 +173,10 @@ exports.handler = async (event) => {
         icon: v.weather[0].icon,
       };
     });
-  } else return { statusCode: 500 };
+  } else return { statusCode: 500, HEADERS };
   return {
     statusCode: 200,
     body: JSON.stringify(response),
+    HEADERS,
   };
-
-  // try {
-  //   const { lat } = event.queryStringParameters,
-  //     { lon } = event.queryStringParameters;
-  //   let response;
-  //   response = await axios.get(
-  //     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.OPENWEATHER_API_KEY}`,
-  //     {
-  //       headers: { Accept: "application/json", "Accept-Encoding": "identity" },
-  //       params: { trophies: true },
-  //     }
-  //   );
-  //   let data = response.data;
-
-  //   return {
-  //     statusCode: 200,
-  //     body: JSON.stringify({ data }),
-  //   };
-  // } catch (error) {
-  //   console.log(error);
-  //   return {
-  //     statusCode: 500,
-  //     // body: JSON.stringify({ error }),
-  //   };
-  // }
 };
