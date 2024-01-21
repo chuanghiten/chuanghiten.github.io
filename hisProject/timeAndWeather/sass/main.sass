@@ -1,3 +1,5 @@
+@charset "UTF-8"
+
 *
   margin: 0
   padding: 0
@@ -15,6 +17,11 @@ svg
   width: 100%
   height: 100%
 
+@font-face
+  font-family: "dripicons-weather"
+  src: url("../fonts/dripiconsWeather/dripicons-weather.woff") format("woff"), url("../fonts/dripiconsWeather/dripicons-weather.ttf") format("truetype")
+  font-weight: normal
+  font-style: normal
 @font-face
   font-family: 'Modulus Pro'
   font-style: normal
@@ -58,16 +65,20 @@ html
   --hoursArrowColor: #f87b79
   --minutesArrowColor: #f0d258
   --weatherTextColor: #fafffc
+  --borderBieuDoColor: #f87b79
+  --backgroundBieuDoColor: #9a707166
   body
     display: flex
     justify-content: center
     align-items: center
     background: #000
-    use-chat-gpt-ai-content-menu#USE_CHAT_GPT_AI_ROOT_Context_Menu
+    &::-webkit-scrollbar
       display: none
     .main
       width: 0
       height: 0
+      border-radius: 10rem
+      overflow: hidden
       .background, .contents
         // background: #b9eefe
         width: 100%
@@ -110,10 +121,151 @@ html
               width: 18rem
               height: auto
               position: absolute
+          .updateBy
+            width: 100%
+            height: auto
+            color: var(--weatherTextColor)
+            font-family: 'Modulus Pro'
+            font-size: 12rem
+            text-align: right
+          .duBao
+            position: absolute
+            font-family: 'Modulus Pro'
+            font-size: 15rem
+            left: 40rem
+            color: var(--weatherTextColor)
+            top: 10rem
+            background: linear-gradient(to top, #7e8b35, #6a9d0d)
+            padding: 0 10rem
           .forecast
             width: 100%
             height: auto
-            padding: 10rem 0
+            padding: 20rem
+            padding-bottom: 10rem
+            .bieuDo
+              width: 100%
+              height: 190rem
+              border: 4rem solid var(--borderBieuDoColor)
+              border-radius: 15rem
+              backdrop-filter: blur(2px)
+              background: var(--backgroundBieuDoColor)
+              overflow: hidden
+              .duoi
+                width: 100%
+                height: 20%
+                display: flex
+                justify-content: space-between
+                align-items: flex-start
+                font-family: 'Modulus Pro'
+                font-size: 13rem
+                color: var(--weatherTextColor)
+                .text
+                  margin-top: 13rem
+                  &:nth-child(2)
+                    margin-left: 25rem
+                  &:last-child
+                    margin-right: 1rem
+                .line
+                  width: 90%
+                  height: 2rem
+                  background: var(--weatherTextColor)
+                  border-radius: 1rem
+                  position: absolute
+                  right: 10rem
+                  display: flex
+                  justify-content: flex-end
+                  &::before
+                    content: ''
+                    width: 10rem
+                    height: 100%
+                    background: var(--weatherTextColor)
+                    border-radius: 1rem 0 0 1rem
+                    transform-origin: 100% 50%
+                    transform: translate(-1rem, 0) rotate(-30deg)
+              .tren
+                width: 100%
+                height: 80%
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                .temperatureLine
+                  width: 10%
+                  height: 100%
+                  display: flex
+                  flex-wrap: wrap
+                  align-content: space-between
+                  justify-content: flex-end
+                  .line
+                    width: 2rem
+                    height: 100%
+                    position: absolute
+                    right: 0
+                    transform: translate(0, 10rem)
+                    background: var(--weatherTextColor)
+                    border-radius: 1rem
+                    &::before
+                      content: ''
+                      width: 100%
+                      height: 10rem
+                      background: var(--weatherTextColor)
+                      border-radius: 0 0 1rem 1rem
+                      transform-origin: 50% 0
+                      transform: translate(0, 1rem) rotate(30deg)
+                  .text
+                    font-family: 'Modulus Pro'
+                    font-size: 13rem
+                    color: var(--weatherTextColor)
+                    text-align: right
+                    white-space: pre
+                    margin-right: 1rem
+                    line-height: 1rem
+                    &:nth-child(2)
+                      margin: 15rem 0 0 0
+                .doThi
+                  width: calc(100% - 10rem)
+                  height: 100%
+                  padding-right: 10rem
+                  display: flex
+                  align-items: flex-end
+                  .grid
+                    width: calc(100% - 10rem)
+                    height: calc(100% - 10rem)
+                    position: absolute
+                    opacity: .25
+                    .v
+                      display: flex
+                      justify-content: space-between
+                      align-items: flex-end
+                      width: 100%
+                      height: 100%
+                      position: absolute
+                      top: 0
+                      div
+                        width: 1rem
+                        height: 100%
+                        background: var(--weatherTextColor)
+                        &:first-child
+                          margin-left: 71.5rem
+                        &:last-child
+                          margin-right: 7rem
+                    .h
+                      display: flex
+                      justify-content: flex-start
+                      align-content: space-between
+                      flex-wrap: wrap
+                      width: 100%
+                      height: 100%
+                      div
+                        width: 100%
+                        height: 1rem
+                        background: var(--weatherTextColor)
+                        &:first-child
+                          margin-top: 36.5rem
+                        &:last-child
+                          margin-bottom: 33rem
+                  svg
+                    width: 100%
+                    height: auto
           .now
             width: 100%
             display: flex
@@ -126,14 +278,11 @@ html
               color: var(--weatherTextColor)
               font-family: 'Modulus Pro'
               font-size: 25rem
-              .minMax 
+              .minMax
                 transform: translate(-5rem, 0)
-                svg
-                  display: inline
-                  height: 25rem
-                  width: auto
-                  fill: var(--weatherTextColor)
-                  transform: translate(0, 2rem)
+                .dripicons
+                  font-family: "dripicons-weather"
+                  line-height: 0
               .temprature
                 --fontSize: 40rem
                 font-size: var(--fontSize)
@@ -141,10 +290,24 @@ html
                   font-family: 'Number One Line'
                   line-height: 100rem
                   font-size: calc(var(--fontSize) * 2.7)
+                .dot
+                  font-size: 100rem
+                  line-height: 0
             .icon
               height: 160rem
+              display: flex
+              justify-content: center
+              flex-wrap: wrap
+              width: 160rem
               svg
                 width: auto
+                height: 80%
+              .trangThai
+                color: var(--weatherTextColor)
+                font-family: 'Modulus Pro'
+                font-size: 25rem
+                line-height: 30rem
+                white-space: nowrap
         .time
           display: flex
           justify-content: space-evenly
