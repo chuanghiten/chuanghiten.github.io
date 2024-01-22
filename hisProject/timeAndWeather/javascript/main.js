@@ -99,11 +99,30 @@ let mainDom = window.document.querySelector("html body .main"),
   ),
   trangThai = window.document.querySelector(
     "html body .main .contents .weather .now .icon .trangThai"
+  ),
+  clouds = window.document.querySelector(
+    "html body .main .background .top svg"
+  ),
+  updateBy = window.document.querySelector(
+    "html body .main .contents .weather .updateBy"
   );
 
 function add0(number) {
   if (number < 10) return `0${number}`;
   return number;
+}
+
+function updateCredit(name, value) {
+  switch (name) {
+    case "open":
+      updateBy.innerHTML = `${new Date(value * 1000)} - Openweathermap`;
+      break;
+    case "accu":
+      updateBy.innerHTML = `[${new Date(
+        value * 1000
+      )} - Accuweather] - [Openweathermap]`;
+      break;
+  }
 }
 
 async function getIp() {
@@ -123,9 +142,17 @@ async function getIp() {
 async function callNetlify(lat, lon, locationKey, ip) {
   let apiURL,
     data = false;
-  if (locationKey)
-    apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
-  else apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+  if (!window.location.href.includes("demo")) {
+    if (locationKey)
+      apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
+    else
+      apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+  } else {
+    if (locationKey)
+      apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
+    else
+      apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+  }
   try {
     const response = await fetch(apiURL, {
       method: "GET",
@@ -139,8 +166,10 @@ async function callNetlify(lat, lon, locationKey, ip) {
 }
 
 function updateWeather(name, value) {
-  let pathIcon;
   switch (name) {
+    case "wind":
+      clouds.setAttribute("style", `--cloudsDuration: ${5 / (value / 114)}s`);
+      break;
     case "trangThai":
       trangThai.innerHTML = `${value[0].toUpperCase()}${value.slice(1)}`;
       break;
@@ -156,7 +185,7 @@ function updateWeather(name, value) {
       minMaxTemperature.innerHTML = `<div class="minMax"><span class="dripicons">?</span>${value[0]}°C | <span class="dripicons">[</span>${value[2]}°C</div>`;
       break;
     case "icon":
-      pathIcon = bigIcon.childElementCount;
+      let pathIcon = bigIcon.childElementCount;
       while (pathIcon > 0) {
         bigIcon.children[pathIcon - 1].setAttribute("hide", "");
         --pathIcon;
@@ -635,6 +664,9 @@ function main() {
               forecast[5].time,
             ],
           });
+          updateWeather("wind", w.now.windSpeed);
+          if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
+          else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
           calling = false;
         });
       });
@@ -813,6 +845,7 @@ function main() {
                     forecast[5].time,
                   ],
                 });
+                updateWeather("wind", w.now.windSpeed);
               });
             }
           }

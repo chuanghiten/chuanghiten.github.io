@@ -100,8 +100,8 @@ exports.handler = async (event) => {
       temperature: weatherData.data[0].Temperature.Metric.Value,
       text: weatherData.data[0].WeatherText,
       icon: weatherData.data[0].WeatherIcon,
-      time: weatherData.data[0].LocalObservationDateTime,
-      windSpeed: weatherData.data[0].Wind.Speed.Metric.Value,
+      accuUpdate: weatherData.data[0].EpochTime,
+      windSpeed: (weatherData.data[0].Wind.Speed.Metric.Value * 1000) / 3600,
       temperaturePast24: {
         min: weatherData.data[0].TemperatureSummary.Past24HourRange.Minimum
           .Metric.Value,
@@ -135,7 +135,7 @@ exports.handler = async (event) => {
         temperature: weatherData.data.main.temp,
         text: weatherData.data.weather[0].description,
         icon: weatherData.data.weather[0].icon,
-        time: weatherData.data.dt,
+        openUpdate: weatherData.data.dt,
         windSpeed: weatherData.data.wind.speed,
         temperaturePast24: {
           min: weatherData.data.main.temp_min,
