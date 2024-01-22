@@ -1,7 +1,7 @@
 // https://ipinfo.io/json?
-// https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&q=171.224.178.31&language=vi&details=true
-// https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=tbCM322af77o7zc03WEdxbPFYWRdEnpm&language=vi&details=true
-// https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=7c2279acfa621dfb49b6dfa59ac7a610
+// https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=&q=171.224.178.31&language=vi&details=true
+// https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=&language=vi&details=true
+// https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=
 let mainDom = window.document.querySelector("html body .main"),
   mainDomWidth,
   htmlDom = window.document.querySelector("html"),
