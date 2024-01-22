@@ -109,7 +109,7 @@ function add0(number) {
 async function getIp() {
   let ip = false;
   try {
-    const response = await fetch(`https://api64.ipify.org?format=json`, {
+    const response = await fetch(`https://api.ipify.org?format=json`, {
       method: "GET",
       headers: { accept: "application/json" },
     });
