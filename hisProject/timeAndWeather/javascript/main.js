@@ -271,10 +271,10 @@ function updateWeather(name, value) {
 }
 
 function updateDoThi(value) {
-  // console.log(value);
+  console.log(value);
   let temperatureMin = value.temperature[0],
     temperatureMax = value.temperature[0],
-    point = [0, 0, 0, 0, 0, 0, 0];
+    point = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   value.temperature.forEach((v) => {
     if (temperatureMin > v) temperatureMin = v;
     if (temperatureMax < v) temperatureMax = v;
@@ -308,12 +308,24 @@ function updateDoThi(value) {
   duoiDom.children[7].innerHTML = `${add0(
     new Date(value.times[5] * 1000).getHours()
   )}:${add0(new Date(value.times[5] * 1000).getMinutes())}`;
+  duoiDom.children[8].innerHTML = `${add0(
+    new Date(value.times[6] * 1000).getHours()
+  )}:${add0(new Date(value.times[6] * 1000).getMinutes())}`;
+  duoiDom.children[9].innerHTML = `${add0(
+    new Date(value.times[7] * 1000).getHours()
+  )}:${add0(new Date(value.times[7] * 1000).getMinutes())}`;
+  duoiDom.children[10].innerHTML = `${add0(
+    new Date(value.times[8] * 1000).getHours()
+  )}:${add0(new Date(value.times[8] * 1000).getMinutes())}`;
   textBieuDo.children[0].innerHTML = value.temperature[1].toFixed(1);
   textBieuDo.children[1].innerHTML = value.temperature[2].toFixed(1);
   textBieuDo.children[2].innerHTML = value.temperature[3].toFixed(1);
   textBieuDo.children[3].innerHTML = value.temperature[4].toFixed(1);
   textBieuDo.children[4].innerHTML = value.temperature[5].toFixed(1);
   textBieuDo.children[5].innerHTML = value.temperature[6].toFixed(1);
+  textBieuDo.children[6].innerHTML = value.temperature[7].toFixed(1);
+  textBieuDo.children[7].innerHTML = value.temperature[8].toFixed(1);
+  textBieuDo.children[8].innerHTML = value.temperature[9].toFixed(1);
   // 93 - 300
   point[0] =
     300 -
@@ -357,6 +369,24 @@ function updateDoThi(value) {
       (1 -
         (temperatureMax - value.temperature[6]) /
           (temperatureMax - temperatureMin));
+  point[7] =
+    300 -
+    207 *
+      (1 -
+        (temperatureMax - value.temperature[7]) /
+          (temperatureMax - temperatureMin));
+  point[8] =
+    300 -
+    207 *
+      (1 -
+        (temperatureMax - value.temperature[8]) /
+          (temperatureMax - temperatureMin));
+  point[9] =
+    300 -
+    207 *
+      (1 -
+        (temperatureMax - value.temperature[9]) /
+          (temperatureMax - temperatureMin));
   dotBieuDo.children[0].setAttribute("cy", point[0]);
   dotBieuDo.children[1].setAttribute("cy", point[1]);
   dotBieuDo.children[2].setAttribute("cy", point[2]);
@@ -364,21 +394,30 @@ function updateDoThi(value) {
   dotBieuDo.children[4].setAttribute("cy", point[4]);
   dotBieuDo.children[5].setAttribute("cy", point[5]);
   dotBieuDo.children[6].setAttribute("cy", point[6]);
+  dotBieuDo.children[7].setAttribute("cy", point[7]);
+  dotBieuDo.children[8].setAttribute("cy", point[8]);
+  dotBieuDo.children[9].setAttribute("cy", point[9]);
   textBieuDo.children[0].setAttribute("y", point[1] - 50);
   textBieuDo.children[1].setAttribute("y", point[2] - 50);
   textBieuDo.children[2].setAttribute("y", point[3] - 50);
   textBieuDo.children[3].setAttribute("y", point[4] - 50);
   textBieuDo.children[4].setAttribute("y", point[5] - 50);
   textBieuDo.children[5].setAttribute("y", point[6] - 50);
+  textBieuDo.children[6].setAttribute("y", point[7] - 50);
+  textBieuDo.children[7].setAttribute("y", point[8] - 50);
+  textBieuDo.children[8].setAttribute("y", point[9] - 50);
   iconsBieuDo.children[0].setAttribute("y", point[1] - 15);
   iconsBieuDo.children[1].setAttribute("y", point[2] - 15);
   iconsBieuDo.children[2].setAttribute("y", point[3] - 15);
   iconsBieuDo.children[3].setAttribute("y", point[4] - 15);
   iconsBieuDo.children[4].setAttribute("y", point[5] - 15);
   iconsBieuDo.children[5].setAttribute("y", point[6] - 15);
+  iconsBieuDo.children[6].setAttribute("y", point[7] - 15);
+  iconsBieuDo.children[7].setAttribute("y", point[8] - 15);
+  iconsBieuDo.children[8].setAttribute("y", point[9] - 15);
   lineDoThi.setAttribute(
     "d",
-    `M 0 ${point[0]} L 150.5 ${point[1]} L 288.5 ${point[2]} L 428 ${point[3]} L 567 ${point[4]} L 706 ${point[5]} L 845 ${point[6]}`
+    `M 0 ${point[0]} L 93 ${point[1]} L 187.5 ${point[2]} L 282 ${point[3]} L 376 ${point[4]} L 470 ${point[5]} L 563 ${point[6]} L 658 ${point[7]} L 749 ${point[8]} L 844 ${point[9]}`
   );
   temperatureMin = 0;
   value.icons.forEach((v) => {
@@ -450,6 +489,15 @@ function updateDoThi(value) {
     ++temperatureMin;
   });
 }
+
+// updateDoThi({
+//   temperature: [10.3, 9.8, 10, 9.4, 9.2, 9.2, 9.2, 10, 9, 10],
+//   icons: ["04d", "04d", "04n", "04n", "04n", "04n", "04n", "04n", "04n"],
+//   times: [
+//     1705989600, 1706000400, 1706011200, 1706022000, 1706032800, 1706043600,
+//     1706022000, 1706032800, 1706043600,
+//   ],
+// });
 
 function updateTime(name, value) {
   switch (name) {
@@ -628,7 +676,7 @@ function main() {
           updateWeather("icon", w.now.icon);
           updateWeather("trangThai", w.now.text);
           let forecast = [];
-          for (let i = 0, q = 5; i < w.forecast.length && q >= 0; ++i, --q) {
+          for (let i = 0, q = 8; i < w.forecast.length && q >= 0; ++i, --q) {
             if (w.forecast[i].time * 1000 > Date.now()) {
               forecast[forecast.length] = {
                 temperature: Number(w.forecast[i].temperature.toFixed(1)),
@@ -646,6 +694,9 @@ function main() {
               forecast[3].temperature,
               forecast[4].temperature,
               forecast[5].temperature,
+              forecast[6].temperature,
+              forecast[7].temperature,
+              forecast[8].temperature,
             ],
             icons: [
               forecast[0].icon,
@@ -654,6 +705,9 @@ function main() {
               forecast[3].icon,
               forecast[4].icon,
               forecast[5].icon,
+              forecast[6].icon,
+              forecast[7].icon,
+              forecast[8].icon,
             ],
             times: [
               forecast[0].time,
@@ -662,6 +716,9 @@ function main() {
               forecast[3].time,
               forecast[4].time,
               forecast[5].time,
+              forecast[6].time,
+              forecast[7].time,
+              forecast[8].time,
             ],
           });
           updateWeather("wind", w.now.windSpeed);
