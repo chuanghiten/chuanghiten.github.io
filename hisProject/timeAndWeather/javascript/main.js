@@ -863,7 +863,7 @@ function main() {
                 updateWeather("trangThai", w.now.text);
                 let forecast = [];
                 for (
-                  let i = 0, q = 5;
+                  let i = 0, q = 8;
                   i < w.forecast.length && q >= 0;
                   ++i, --q
                 ) {
@@ -884,6 +884,9 @@ function main() {
                     forecast[3].temperature,
                     forecast[4].temperature,
                     forecast[5].temperature,
+                    forecast[6].temperature,
+                    forecast[7].temperature,
+                    forecast[8].temperature,
                   ],
                   icons: [
                     forecast[0].icon,
@@ -892,6 +895,9 @@ function main() {
                     forecast[3].icon,
                     forecast[4].icon,
                     forecast[5].icon,
+                    forecast[6].icon,
+                    forecast[7].icon,
+                    forecast[8].icon,
                   ],
                   times: [
                     forecast[0].time,
@@ -900,6 +906,9 @@ function main() {
                     forecast[3].time,
                     forecast[4].time,
                     forecast[5].time,
+                    forecast[6].time,
+                    forecast[7].time,
+                    forecast[8].time,
                   ],
                 });
                 updateWeather("wind", w.now.windSpeed);
