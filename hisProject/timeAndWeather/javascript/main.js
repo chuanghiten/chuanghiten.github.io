@@ -127,17 +127,20 @@ function updateCredit(name, value) {
 }
 
 async function getIp() {
-  let ip = false;
-  try {
-    const response = await fetch(`https://api.ipify.org?format=json`, {
-      method: "GET",
-      headers: { accept: "application/json" },
-    });
-    ip = await response.json();
-  } catch (error) {
-    console.log(error);
+  let ip;
+  if (!window.location.href.includes("noNetlify")) {
+    try {
+      const response = await fetch(`https://api.ipify.org?format=json`, {
+        method: "GET",
+        headers: { accept: "application/json" },
+      });
+      ip = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+    return ip.ip;
   }
-  return ip.ip;
+  return "8.8.4.4";
 }
 
 async function callNetlify(lat, lon, locationKey, ip) {
@@ -873,6 +876,7 @@ function pushWeather(w) {
   updateWeather("wind", w.now.windSpeed);
   if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
   else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
+  htmlDom.style.opacity = "1";
 }
 
 function main() {
