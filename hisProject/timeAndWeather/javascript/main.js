@@ -105,7 +105,8 @@ let mainDom = window.document.querySelector("html body .main"),
   ),
   updateBy = window.document.querySelector(
     "html body .main .contents .weather .updateBy"
-  );
+  ),
+  locationKey = false;
 
 function add0(number) {
   if (number < 10) return `0${number}`;
@@ -148,10 +149,229 @@ async function callNetlify(lat, lon, locationKey, ip) {
     else
       apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
   } else {
-    if (locationKey)
-      apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
-    else
-      apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+    if (!window.location.href.includes("noNetlify")) {
+      if (locationKey)
+        apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
+      else
+        apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+    } else
+      return {
+        now: {
+          temperature: 10,
+          text: "Có mây",
+          icon: 8,
+          accuUpdate: 1706055720,
+          windSpeed: 2.5833333333333335,
+          temperaturePast24: {
+            min: 8.6,
+            max: 14,
+          },
+          city: "Hà Nội",
+          locationKey: "3554433",
+        },
+        forecast: [
+          {
+            time: 2706065200,
+            temperature: 8.96,
+            icon: "04d",
+          },
+          {
+            time: 2706076000,
+            temperature: 9.52,
+            icon: "04d",
+          },
+          {
+            time: 2706086800,
+            temperature: 10.68,
+            icon: "04d",
+          },
+          {
+            time: 2706097600,
+            temperature: 10.32,
+            icon: "04n",
+          },
+          {
+            time: 2706108400,
+            temperature: 9.99,
+            icon: "04n",
+          },
+          {
+            time: 2706119200,
+            temperature: 9.68,
+            icon: "04n",
+          },
+          {
+            time: 2706130000,
+            temperature: 9.56,
+            icon: "04n",
+          },
+          {
+            time: 2706140800,
+            temperature: 9.58,
+            icon: "04d",
+          },
+          {
+            time: 2706151600,
+            temperature: 10.49,
+            icon: "04d",
+          },
+          {
+            time: 2706162400,
+            temperature: 11.69,
+            icon: "04d",
+          },
+          {
+            time: 2706173200,
+            temperature: 12.67,
+            icon: "04d",
+          },
+          {
+            time: 2706184000,
+            temperature: 12.18,
+            icon: "04n",
+          },
+          {
+            time: 2706194800,
+            temperature: 11.88,
+            icon: "04n",
+          },
+          {
+            time: 2706205600,
+            temperature: 11.54,
+            icon: "04n",
+          },
+          {
+            time: 2706216400,
+            temperature: 11.28,
+            icon: "04n",
+          },
+          {
+            time: 2706227200,
+            temperature: 11.39,
+            icon: "04d",
+          },
+          {
+            time: 2706238000,
+            temperature: 11.83,
+            icon: "04d",
+          },
+          {
+            time: 2706248800,
+            temperature: 12.55,
+            icon: "04d",
+          },
+          {
+            time: 2706259600,
+            temperature: 12.63,
+            icon: "04d",
+          },
+          {
+            time: 2706270400,
+            temperature: 12.01,
+            icon: "04n",
+          },
+          {
+            time: 2706281200,
+            temperature: 11.69,
+            icon: "04n",
+          },
+          {
+            time: 2706292000,
+            temperature: 11.5,
+            icon: "04n",
+          },
+          {
+            time: 2706302800,
+            temperature: 11.03,
+            icon: "10n",
+          },
+          {
+            time: 2706313600,
+            temperature: 11.16,
+            icon: "04d",
+          },
+          {
+            time: 2706324400,
+            temperature: 11.68,
+            icon: "10d",
+          },
+          {
+            time: 1706335200,
+            temperature: 11.97,
+            icon: "10d",
+          },
+          {
+            time: 1706346000,
+            temperature: 12.32,
+            icon: "04d",
+          },
+          {
+            time: 1706356800,
+            temperature: 11.96,
+            icon: "10n",
+          },
+          {
+            time: 1706367600,
+            temperature: 11.78,
+            icon: "10n",
+          },
+          {
+            time: 1706378400,
+            temperature: 11.41,
+            icon: "10n",
+          },
+          {
+            time: 1706389200,
+            temperature: 11.4,
+            icon: "04n",
+          },
+          {
+            time: 1706400000,
+            temperature: 11.18,
+            icon: "10d",
+          },
+          {
+            time: 1706410800,
+            temperature: 11.56,
+            icon: "10d",
+          },
+          {
+            time: 1706421600,
+            temperature: 11.68,
+            icon: "04d",
+          },
+          {
+            time: 1706432400,
+            temperature: 11.65,
+            icon: "04d",
+          },
+          {
+            time: 1706443200,
+            temperature: 11.25,
+            icon: "10n",
+          },
+          {
+            time: 1706454000,
+            temperature: 11.31,
+            icon: "10n",
+          },
+          {
+            time: 1706464800,
+            temperature: 11.48,
+            icon: "04n",
+          },
+          {
+            time: 1706475600,
+            temperature: 11.61,
+            icon: "10n",
+          },
+          {
+            time: 1706486400,
+            temperature: 11.88,
+            icon: "10d",
+          },
+        ],
+      };
   }
   try {
     const response = await fetch(apiURL, {
@@ -271,7 +491,6 @@ function updateWeather(name, value) {
 }
 
 function updateDoThi(value) {
-  console.log(value);
   let temperatureMin = value.temperature[0],
     temperatureMax = value.temperature[0],
     point = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -595,6 +814,67 @@ function resize(width, height) {
   backgroundDom.setAttribute("style", `--bottom: ${weatherDom.offsetHeight}px`);
 }
 
+function pushWeather(w) {
+  if (!locationKey) locationKey = Number(w.now.locationKey);
+  updateWeather("city", w.now.city);
+  updateWeather("temperature", [
+    w.now.temperaturePast24.min.toFixed(1),
+    w.now.temperature.toFixed(1),
+    w.now.temperaturePast24.max.toFixed(1),
+  ]);
+  updateWeather("icon", w.now.icon);
+  updateWeather("trangThai", w.now.text);
+  let forecast = [];
+  for (let i = 0, q = 8; i < w.forecast.length && q >= 0; ++i, --q) {
+    if (w.forecast[i].time * 1000 > Date.now()) {
+      forecast[forecast.length] = {
+        temperature: Number(w.forecast[i].temperature.toFixed(1)),
+        icon: w.forecast[i].icon,
+        time: w.forecast[i].time,
+      };
+    }
+  }
+  updateDoThi({
+    temperature: [
+      w.now.temperature,
+      forecast[0].temperature,
+      forecast[1].temperature,
+      forecast[2].temperature,
+      forecast[3].temperature,
+      forecast[4].temperature,
+      forecast[5].temperature,
+      forecast[6].temperature,
+      forecast[7].temperature,
+      forecast[8].temperature,
+    ],
+    icons: [
+      forecast[0].icon,
+      forecast[1].icon,
+      forecast[2].icon,
+      forecast[3].icon,
+      forecast[4].icon,
+      forecast[5].icon,
+      forecast[6].icon,
+      forecast[7].icon,
+      forecast[8].icon,
+    ],
+    times: [
+      forecast[0].time,
+      forecast[1].time,
+      forecast[2].time,
+      forecast[3].time,
+      forecast[4].time,
+      forecast[5].time,
+      forecast[6].time,
+      forecast[7].time,
+      forecast[8].time,
+    ],
+  });
+  updateWeather("wind", w.now.windSpeed);
+  if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
+  else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
+}
+
 function main() {
   let fullscreen = 0,
     time,
@@ -612,7 +892,6 @@ function main() {
     newYear,
     numberOfFlower = randomFlowerDom.childElementCount,
     ip = false,
-    locationKey = false,
     lat = false,
     lon = false,
     calling = true;
@@ -641,6 +920,9 @@ function main() {
     randomFlowerDom.children[numberOfFlower - 1].style.left = `${
       Math.random() * randomFlowerDom.offsetWidth
     }rem`;
+    randomFlowerDom.children[numberOfFlower - 1].style.transform = `rotate(${
+      Math.random() * 360
+    }deg) scale(var(--scaleRandomSvg))`;
     --numberOfFlower;
   }
   time = new Date();
@@ -666,64 +948,7 @@ function main() {
       getIp().then((v) => {
         ip = v;
         callNetlify(lat, lon, locationKey, ip).then((w) => {
-          locationKey = Number(w.now.locationKey);
-          updateWeather("city", w.now.city);
-          updateWeather("temperature", [
-            w.now.temperaturePast24.min.toFixed(1),
-            w.now.temperature.toFixed(1),
-            w.now.temperaturePast24.max.toFixed(1),
-          ]);
-          updateWeather("icon", w.now.icon);
-          updateWeather("trangThai", w.now.text);
-          let forecast = [];
-          for (let i = 0, q = 8; i < w.forecast.length && q >= 0; ++i, --q) {
-            if (w.forecast[i].time * 1000 > Date.now()) {
-              forecast[forecast.length] = {
-                temperature: Number(w.forecast[i].temperature.toFixed(1)),
-                icon: w.forecast[i].icon,
-                time: w.forecast[i].time,
-              };
-            }
-          }
-          updateDoThi({
-            temperature: [
-              w.now.temperature,
-              forecast[0].temperature,
-              forecast[1].temperature,
-              forecast[2].temperature,
-              forecast[3].temperature,
-              forecast[4].temperature,
-              forecast[5].temperature,
-              forecast[6].temperature,
-              forecast[7].temperature,
-              forecast[8].temperature,
-            ],
-            icons: [
-              forecast[0].icon,
-              forecast[1].icon,
-              forecast[2].icon,
-              forecast[3].icon,
-              forecast[4].icon,
-              forecast[5].icon,
-              forecast[6].icon,
-              forecast[7].icon,
-              forecast[8].icon,
-            ],
-            times: [
-              forecast[0].time,
-              forecast[1].time,
-              forecast[2].time,
-              forecast[3].time,
-              forecast[4].time,
-              forecast[5].time,
-              forecast[6].time,
-              forecast[7].time,
-              forecast[8].time,
-            ],
-          });
-          updateWeather("wind", w.now.windSpeed);
-          if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
-          else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
+          pushWeather(w);
           calling = false;
         });
       });
@@ -853,65 +1078,7 @@ function main() {
           if (newHours % 2 == 0 && !calling) {
             if (lat) {
               callNetlify(lat, lon, locationKey, ip).then((w) => {
-                if (w.now.city) updateWeather("city", w.now.city);
-                updateWeather("temperature", [
-                  w.now.temperaturePast24.min.toFixed(1),
-                  w.now.temperature.toFixed(1),
-                  w.now.temperaturePast24.max.toFixed(1),
-                ]);
-                updateWeather("icon", w.now.icon);
-                updateWeather("trangThai", w.now.text);
-                let forecast = [];
-                for (
-                  let i = 0, q = 8;
-                  i < w.forecast.length && q >= 0;
-                  ++i, --q
-                ) {
-                  if (w.forecast[i].time * 1000 > Date.now()) {
-                    forecast[forecast.length] = {
-                      temperature: Number(w.forecast[i].temperature.toFixed(1)),
-                      icon: w.forecast[i].icon,
-                      time: w.forecast[i].time,
-                    };
-                  }
-                }
-                updateDoThi({
-                  temperature: [
-                    w.now.temperature,
-                    forecast[0].temperature,
-                    forecast[1].temperature,
-                    forecast[2].temperature,
-                    forecast[3].temperature,
-                    forecast[4].temperature,
-                    forecast[5].temperature,
-                    forecast[6].temperature,
-                    forecast[7].temperature,
-                    forecast[8].temperature,
-                  ],
-                  icons: [
-                    forecast[0].icon,
-                    forecast[1].icon,
-                    forecast[2].icon,
-                    forecast[3].icon,
-                    forecast[4].icon,
-                    forecast[5].icon,
-                    forecast[6].icon,
-                    forecast[7].icon,
-                    forecast[8].icon,
-                  ],
-                  times: [
-                    forecast[0].time,
-                    forecast[1].time,
-                    forecast[2].time,
-                    forecast[3].time,
-                    forecast[4].time,
-                    forecast[5].time,
-                    forecast[6].time,
-                    forecast[7].time,
-                    forecast[8].time,
-                  ],
-                });
-                updateWeather("wind", w.now.windSpeed);
+                pushWeather(w);
               });
             }
           }
