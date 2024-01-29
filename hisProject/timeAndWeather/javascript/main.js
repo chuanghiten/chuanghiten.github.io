@@ -819,7 +819,7 @@ function resize(width, height) {
 
 function pushWeather(w) {
   if (!locationKey) locationKey = Number(w.now.locationKey);
-  updateWeather("city", w.now.city);
+  if (w.now.city) updateWeather("city", w.now.city);
   updateWeather("temperature", [
     w.now.temperaturePast24.min.toFixed(1),
     w.now.temperature.toFixed(1),
