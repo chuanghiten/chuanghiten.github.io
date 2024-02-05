@@ -59,16 +59,6 @@ svg
   font-weight: 600
   src: url("../fonts/numberOneLine/numberOneLine.ttf")
 
-@keyframes cloudsSlide
-  0%
-    transform: translate(calc(var(--cloudSlide) - 300rem), 0)
-    opacity: 0
-  20%, 80%
-    opacity: 1
-  100%
-    transform: translate(calc(var(--cloudSlide) + 1035rem), 0)
-    opacity: 0
-
 @keyframes kLinear
   0%
     transform: translate(var(--x0), var(--y0)) rotate(var(--r0))
@@ -6117,6 +6107,8 @@ html
         width: 100%
         height: 100%
         position: absolute
+      .background
+        background: linear-gradient(to top, var(--weatherBackground) 0px calc(var(--bottom) + 1rem), var(--sky) calc(var(--bottom) + 1rem) 100%)
         .top, .bottom
           width: 100%
           height: 100%
@@ -6132,22 +6124,6 @@ html
           align-content: flex-end
         .top
           align-content: flex-start
-          --cloudsDuration: 5s
-          svg path
-            animation: cloudsSlide var(--cloudsDuration) linear infinite
-            transform: translate(0, 0)
-            &:nth-child(1)
-              --cloudSlide: -149rem
-              animation-duration: calc( var(--cloudsDuration) - 2s )
-              animation-delay: calc( var(--cloudsDuration) * 0.3 )
-            &:nth-child(2)
-              --cloudSlide: -494rem
-              animation-duration: calc( var(--cloudsDuration) - 4s )
-            &:nth-child(3)
-              --cloudSlide: -807rem
-              animation-delay: calc( var(--cloudsDuration) * 0.6 )
-      .background
-        background: linear-gradient(to top, var(--weatherBackground) 0px calc(var(--bottom) + 1rem), var(--sky) calc(var(--bottom) + 1rem) 100%)
         svg
           .shadowCo
             fill: var(--shadowCo)
