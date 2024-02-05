@@ -106,10 +106,7 @@ let mainDom = window.document.querySelector("html body .main"),
   updateBy = window.document.querySelector(
     "html body .main .contents .weather .updateBy"
   ),
-  locationKey = false,
-  cloud1Anime,
-  cloud2Anime,
-  cloud3Anime;
+  locationKey = false;
 
 function add0(number) {
   if (number < 10) return `0${number}`;
@@ -394,91 +391,7 @@ async function callNetlify(lat, lon, locationKey, ip) {
 function updateWeather(name, value) {
   switch (name) {
     case "wind":
-      if (!cloud1Anime) {
-        cloud1Anime = anime({
-          targets: clouds.children[0],
-          translateX: ["-449rem", "886rem"],
-          easing: "linear",
-          duration: 3000 / (value / 144),
-          delay: 1500,
-          loop: true,
-        });
-      } else {
-        let cloud1CurrentTransform = Number(
-          cloud1Anime.animations[0].currentValue.replace("rem", "")
-        );
-        cloud1Anime = anime({
-          targets: clouds.children[0],
-          translateX: ["-449rem", "886rem"],
-          // translateX: "886rem",
-          easing: "linear",
-          duration: 3000 / (value / 144),
-          delay: 1500,
-          loop: true,
-          autoplay: false,
-        });
-        cloud1Anime.seek(
-          cloud1Anime.duration * ((cloud1CurrentTransform + 449) / (886 + 449))
-        );
-        cloud1Anime.play();
-      }
-      if (!cloud2Anime) {
-        cloud2Anime = anime({
-          targets: clouds.children[1],
-          translateX: ["-794rem", "541rem"],
-          easing: "linear",
-          duration: 1000 / (value / 144),
-          delay: 1500,
-          loop: true,
-        });
-      } else {
-        let cloud2CurrentTransform = Number(
-          cloud2Anime.animations[0].currentValue.replace("rem", "")
-        );
-        cloud2Anime = anime({
-          targets: clouds.children[1],
-          translateX: ["-794rem", "541rem"],
-          // translateX: "541rem",
-          easing: "linear",
-          duration: 1000 / (value / 144),
-          delay: 1500,
-          loop: true,
-          autoplay: false,
-        });
-        cloud2Anime.seek(
-          cloud2Anime.duration * ((cloud2CurrentTransform + 794) / (541 + 794))
-        );
-        cloud2Anime.play();
-      }
-      if (!cloud3Anime) {
-        cloud3Anime = anime({
-          targets: clouds.children[2],
-          translateX: ["-1107rem", "228rem"],
-          // translateX: "228rem",
-          easing: "linear",
-          duration: 5000 / (value / 144),
-          delay: 1500,
-          loop: true,
-        });
-      } else {
-        let cloud3CurrentTransform = Number(
-          cloud3Anime.animations[0].currentValue.replace("rem", "")
-        );
-        cloud3Anime = anime({
-          targets: clouds.children[2],
-          translateX: ["-1107rem", "228rem"],
-          // translateX: "228rem",
-          easing: "linear",
-          duration: 5000 / (value / 144),
-          delay: 1500,
-          loop: true,
-          autoplay: false,
-        });
-        cloud3Anime.seek(
-          cloud3Anime.duration * ((cloud3CurrentTransform + 1107) / (228 + 1107))
-        );
-        cloud3Anime.play();
-      }
+      clouds.setAttribute("style", `--cloudsDuration: ${5 / (value / 114)}s`);
       break;
     case "trangThai":
       trangThai.innerHTML = `${value[0].toUpperCase()}${value.slice(1)}`;
@@ -808,7 +721,7 @@ function updateDoThi(value) {
 //   ],
 // });
 
-function pushTime(name, value) {
+function updateTime(name, value) {
   switch (name) {
     case "progressThangAm":
       arrowThangAm.setAttribute("style", `--left: ${value * 100}%`);
@@ -1045,35 +958,33 @@ function main() {
       });
     });
   else alert("Geolocation is not supported by this browser.");
-  // setInterval(() => , 100);
-
-  function updateTime() {
+  setInterval(() => {
     time = new Date();
     newSeconds = time.getSeconds();
-    pushTime("second", newSeconds * 1000 + time.getMilliseconds());
+    updateTime("second", newSeconds * 1000 + time.getMilliseconds());
     if (oldSeconds != newSeconds) {
       oldSeconds = newSeconds;
       newMinutes = time.getMinutes();
-      pushTime("minutesArrow", 6 * (newMinutes + newSeconds / 60));
-      pushTime("progressDay", newHours * 3600 + newMinutes * 60 + newSeconds);
+      updateTime("minutesArrow", 6 * (newMinutes + newSeconds / 60));
+      updateTime("progressDay", newHours * 3600 + newMinutes * 60 + newSeconds);
       if (oldMinutes != newMinutes) {
         oldMinutes = newMinutes;
         newHours = time.getHours();
-        pushTime("minutes", newMinutes);
-        pushTime("hoursArrow", 30 * (newHours + newMinutes / 60));
+        updateTime("minutes", newMinutes);
+        updateTime("hoursArrow", 30 * (newHours + newMinutes / 60));
         if (
           (newMonth <= 7 && newMonth % 2 != 0) ||
           (newMonth >= 8 && newMonth % 2 == 0)
         ) {
           thangDuong.style.textDecoration = "underline";
-          pushTime(
+          updateTime(
             "progressThangDuong",
             (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2764740
           );
         } else {
           thangDuong.style.textDecoration = "none";
           if (newMonth != 2)
-            pushTime(
+            updateTime(
               "progressThangDuong",
               (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2678340
             );
@@ -1083,13 +994,13 @@ function main() {
               (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
             ) {
               namDuong.style.textDecoration = "underline";
-              pushTime(
+              updateTime(
                 "progressThangDuong",
                 (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2591940
               );
             } else {
               namDuong.style.textDecoration = "none";
-              pushTime(
+              updateTime(
                 "progressThangDuong",
                 (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2505540
               );
@@ -1098,7 +1009,7 @@ function main() {
         }
         if (soNgayAmTrongThang == 30) {
           thangAm.style.textDecoration = "underline";
-          pushTime(
+          updateTime(
             "progressThangAm",
             (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
               newHours * 3600 +
@@ -1107,7 +1018,7 @@ function main() {
           );
         } else {
           thangAm.style.textDecoration = "none";
-          pushTime(
+          updateTime(
             "progressThangAm",
             (getLunar(newDate, newMonth, newYear, 7) * 86400 +
               newHours * 3600 +
@@ -1118,13 +1029,13 @@ function main() {
         if (oldHours != newHours) {
           oldHours = newHours;
           newDate = time.getDate();
-          pushTime("hour", newHours);
+          updateTime("hour", newHours);
           if (oldDate != newDate) {
             oldDate = newDate;
             newMonth = time.getMonth() + 1;
-            pushTime("ngayAm", getLunar(newDate, newMonth, newYear, 7)[0]);
-            pushTime("ngayDuong", newDate);
-            pushTime("thu", time.getDay() + 1);
+            updateTime("ngayAm", getLunar(newDate, newMonth, newYear, 7)[0]);
+            updateTime("ngayDuong", newDate);
+            updateTime("thu", time.getDay() + 1);
             soNgayAmTrongThang =
               getNewMoonDay(
                 INT(
@@ -1143,8 +1054,8 @@ function main() {
             if (oldMonth != newMonth) {
               oldMonth = newMonth;
               newYear = time.getFullYear();
-              pushTime("thangAm", getLunar(newDate, newMonth, newYear, 7)[1]);
-              pushTime("thangDuong", newMonth);
+              updateTime("thangAm", getLunar(newDate, newMonth, newYear, 7)[1]);
+              updateTime("thangDuong", newMonth);
               if (oldYear != newYear) {
                 if (
                   (newYear.toString().slice(-2) == "00" &&
@@ -1156,11 +1067,14 @@ function main() {
                 oldYear = newYear;
                 if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
                   namAm.style.display = "none";
-                  pushTime("namDuong", newYear);
+                  updateTime("namDuong", newYear);
                 } else {
                   namAm.style.display = "inline";
-                  pushTime("namDuong", newYear);
-                  pushTime("namAm", getLunar(newDate, newMonth, newYear, 7)[2]);
+                  updateTime("namDuong", newYear);
+                  updateTime(
+                    "namAm",
+                    getLunar(newDate, newMonth, newYear, 7)[2]
+                  );
                 }
               }
             }
@@ -1175,9 +1089,7 @@ function main() {
         }
       }
     }
-    window.requestAnimationFrame(updateTime);
-  }
-  updateTime();
+  }, 100);
 }
 
 window.addEventListener("load", () => {
