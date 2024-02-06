@@ -2,7 +2,11 @@
 // https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=&q=171.224.178.31&language=vi&details=true
 // https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=&language=vi&details=true
 // https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=
-let mainDom = window.document.querySelector("html body .main"),
+let cfr = 0,
+  lkAnim = window.document.querySelector(
+    "html[autumn] body .main .background .bottom svg .lkAnim"
+  ),
+  mainDom = window.document.querySelector("html body .main"),
   mainDomWidth,
   htmlDom = window.document.querySelector("html"),
   secondProgressDom = window.document.querySelector(
@@ -898,7 +902,9 @@ function main() {
     ip = false,
     lat = false,
     lon = false,
-    calling = true;
+    calling = true,
+    fr = 0;
+  lkAnim.setAttribute("animplay", "");
   resize(window.innerWidth, window.innerHeight);
   window.addEventListener("resize", () => {
     resize(window.innerWidth, window.innerHeight);
@@ -958,138 +964,156 @@ function main() {
       });
     });
   else alert("Geolocation is not supported by this browser.");
-  setInterval(() => {
-    time = new Date();
-    newSeconds = time.getSeconds();
-    updateTime("second", newSeconds * 1000 + time.getMilliseconds());
-    if (oldSeconds != newSeconds) {
-      oldSeconds = newSeconds;
-      newMinutes = time.getMinutes();
-      updateTime("minutesArrow", 6 * (newMinutes + newSeconds / 60));
-      updateTime("progressDay", newHours * 3600 + newMinutes * 60 + newSeconds);
-      if (oldMinutes != newMinutes) {
-        oldMinutes = newMinutes;
-        newHours = time.getHours();
-        updateTime("minutes", newMinutes);
-        updateTime("hoursArrow", 30 * (newHours + newMinutes / 60));
-        if (
-          (newMonth <= 7 && newMonth % 2 != 0) ||
-          (newMonth >= 8 && newMonth % 2 == 0)
-        ) {
-          thangDuong.style.textDecoration = "underline";
-          updateTime(
-            "progressThangDuong",
-            (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2764740
-          );
-        } else {
-          thangDuong.style.textDecoration = "none";
-          if (newMonth != 2)
+  function raf() {
+    if (fr > cfr) {
+      fr = 0;
+      time = new Date();
+      newSeconds = time.getSeconds();
+      updateTime("second", newSeconds * 1000 + time.getMilliseconds());
+      if (oldSeconds != newSeconds) {
+        oldSeconds = newSeconds;
+        newMinutes = time.getMinutes();
+        updateTime("minutesArrow", 6 * (newMinutes + newSeconds / 60));
+        updateTime(
+          "progressDay",
+          newHours * 3600 + newMinutes * 60 + newSeconds
+        );
+        if (oldMinutes != newMinutes) {
+          oldMinutes = newMinutes;
+          newHours = time.getHours();
+          updateTime("minutes", newMinutes);
+          updateTime("hoursArrow", 30 * (newHours + newMinutes / 60));
+          if (
+            (newMonth <= 7 && newMonth % 2 != 0) ||
+            (newMonth >= 8 && newMonth % 2 == 0)
+          ) {
+            thangDuong.style.textDecoration = "underline";
             updateTime(
               "progressThangDuong",
-              (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2678340
+              (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2764740
             );
-          else {
-            if (
-              (newYear.toString().slice(-2) == "00" && newYear % 400 == 0) ||
-              (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
-            ) {
-              namDuong.style.textDecoration = "underline";
+          } else {
+            thangDuong.style.textDecoration = "none";
+            if (newMonth != 2)
               updateTime(
                 "progressThangDuong",
-                (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2591940
+                (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2678340
               );
-            } else {
-              namDuong.style.textDecoration = "none";
-              updateTime(
-                "progressThangDuong",
-                (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2505540
-              );
-            }
-          }
-        }
-        if (soNgayAmTrongThang == 30) {
-          thangAm.style.textDecoration = "underline";
-          updateTime(
-            "progressThangAm",
-            (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
-              newHours * 3600 +
-              newMinutes * 60) /
-              2678340
-          );
-        } else {
-          thangAm.style.textDecoration = "none";
-          updateTime(
-            "progressThangAm",
-            (getLunar(newDate, newMonth, newYear, 7) * 86400 +
-              newHours * 3600 +
-              newMinutes * 60) /
-              2591940
-          );
-        }
-        if (oldHours != newHours) {
-          oldHours = newHours;
-          newDate = time.getDate();
-          updateTime("hour", newHours);
-          if (oldDate != newDate) {
-            oldDate = newDate;
-            newMonth = time.getMonth() + 1;
-            updateTime("ngayAm", getLunar(newDate, newMonth, newYear, 7)[0]);
-            updateTime("ngayDuong", newDate);
-            updateTime("thu", time.getDay() + 1);
-            soNgayAmTrongThang =
-              getNewMoonDay(
-                INT(
-                  (jdFromDate(newDate, newMonth, newYear) - 2415021) /
-                    29.530588853
-                ) + 1,
-                7
-              ) -
-              getNewMoonDay(
-                INT(
-                  (jdFromDate(newDate, newMonth, newYear) - 2415021) /
-                    29.530588853
-                ),
-                7
-              );
-            if (oldMonth != newMonth) {
-              oldMonth = newMonth;
-              newYear = time.getFullYear();
-              updateTime("thangAm", getLunar(newDate, newMonth, newYear, 7)[1]);
-              updateTime("thangDuong", newMonth);
-              if (oldYear != newYear) {
-                if (
-                  (newYear.toString().slice(-2) == "00" &&
-                    newYear % 400 == 0) ||
-                  (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
-                )
-                  namDuong.style.textDecoration = "underline";
-                else namDuong.style.textDecoration = "none";
-                oldYear = newYear;
-                if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
-                  namAm.style.display = "none";
-                  updateTime("namDuong", newYear);
-                } else {
-                  namAm.style.display = "inline";
-                  updateTime("namDuong", newYear);
-                  updateTime(
-                    "namAm",
-                    getLunar(newDate, newMonth, newYear, 7)[2]
-                  );
-                }
+            else {
+              if (
+                (newYear.toString().slice(-2) == "00" && newYear % 400 == 0) ||
+                (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
+              ) {
+                namDuong.style.textDecoration = "underline";
+                updateTime(
+                  "progressThangDuong",
+                  (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
+                    2591940
+                );
+              } else {
+                namDuong.style.textDecoration = "none";
+                updateTime(
+                  "progressThangDuong",
+                  (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
+                    2505540
+                );
               }
             }
           }
-          if (newHours % 2 == 0 && !calling) {
-            if (lat) {
-              callNetlify(lat, lon, locationKey, ip).then((w) => {
-                pushWeather(w);
-              });
+          if (soNgayAmTrongThang == 30) {
+            thangAm.style.textDecoration = "underline";
+            updateTime(
+              "progressThangAm",
+              (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
+                newHours * 3600 +
+                newMinutes * 60) /
+                2678340
+            );
+          } else {
+            thangAm.style.textDecoration = "none";
+            updateTime(
+              "progressThangAm",
+              (getLunar(newDate, newMonth, newYear, 7) * 86400 +
+                newHours * 3600 +
+                newMinutes * 60) /
+                2591940
+            );
+          }
+          if (oldHours != newHours) {
+            oldHours = newHours;
+            newDate = time.getDate();
+            updateTime("hour", newHours);
+            if (oldDate != newDate) {
+              oldDate = newDate;
+              newMonth = time.getMonth() + 1;
+              updateTime("ngayAm", getLunar(newDate, newMonth, newYear, 7)[0]);
+              updateTime("ngayDuong", newDate);
+              updateTime("thu", time.getDay() + 1);
+              soNgayAmTrongThang =
+                getNewMoonDay(
+                  INT(
+                    (jdFromDate(newDate, newMonth, newYear) - 2415021) /
+                      29.530588853
+                  ) + 1,
+                  7
+                ) -
+                getNewMoonDay(
+                  INT(
+                    (jdFromDate(newDate, newMonth, newYear) - 2415021) /
+                      29.530588853
+                  ),
+                  7
+                );
+              if (oldMonth != newMonth) {
+                oldMonth = newMonth;
+                newYear = time.getFullYear();
+                updateTime(
+                  "thangAm",
+                  getLunar(newDate, newMonth, newYear, 7)[1]
+                );
+                updateTime("thangDuong", newMonth);
+                if (oldYear != newYear) {
+                  if (
+                    (newYear.toString().slice(-2) == "00" &&
+                      newYear % 400 == 0) ||
+                    (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
+                  )
+                    namDuong.style.textDecoration = "underline";
+                  else namDuong.style.textDecoration = "none";
+                  oldYear = newYear;
+                  if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
+                    namAm.style.display = "none";
+                    updateTime("namDuong", newYear);
+                  } else {
+                    namAm.style.display = "inline";
+                    updateTime("namDuong", newYear);
+                    updateTime(
+                      "namAm",
+                      getLunar(newDate, newMonth, newYear, 7)[2]
+                    );
+                  }
+                }
+              }
+            }
+            if (newHours % 2 == 0 && !calling) {
+              if (lat) {
+                callNetlify(lat, lon, locationKey, ip).then((w) => {
+                  pushWeather(w);
+                });
+              }
             }
           }
+          if ((Math.random() * 2).toFixed(0) % 2 == 0)
+            lkAnim.setAttribute("animplay", "");
         }
       }
-    }
-  }, 100);
+    } else ++fr;
+    window.requestAnimationFrame(raf);
+  }
+  window.requestAnimationFrame(raf);
+  lkAnim.children[0].addEventListener("animationend", () =>
+    lkAnim.removeAttribute("animplay")
+  );
 }
 
 window.addEventListener("load", () => {
