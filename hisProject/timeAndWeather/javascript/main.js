@@ -2,7 +2,7 @@
 // https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=&q=171.224.178.31&language=vi&details=true
 // https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=&language=vi&details=true
 // https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=
-let cfr = 0,
+let cfr = 1,
   lkAnim = window.document.querySelector(
     "html[autumn] body .main .background .bottom svg .lkAnim"
   ),
@@ -162,228 +162,92 @@ async function callNetlify(lat, lon, locationKey, ip) {
       else
         apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
     } else
-      return {
-        now: {
-          temperature: 10,
-          text: "Có mây",
-          icon: 8,
-          accuUpdate: 1706055720,
-          windSpeed: 2.5833333333333335,
-          temperaturePast24: {
-            min: 8.6,
-            max: 14,
-          },
-          city: "Hà Nội",
-          locationKey: "3554433",
-        },
-        forecast: [
-          {
-            time: 2706065200,
-            temperature: 8.96,
-            icon: "04d",
-          },
-          {
-            time: 2706076000,
-            temperature: 9.52,
-            icon: "04d",
-          },
-          {
-            time: 2706086800,
-            temperature: 10.68,
-            icon: "04d",
-          },
-          {
-            time: 2706097600,
-            temperature: 10.32,
-            icon: "04n",
-          },
-          {
-            time: 2706108400,
-            temperature: 9.99,
-            icon: "04n",
-          },
-          {
-            time: 2706119200,
-            temperature: 9.68,
-            icon: "04n",
-          },
-          {
-            time: 2706130000,
-            temperature: 9.56,
-            icon: "04n",
-          },
-          {
-            time: 2706140800,
-            temperature: 9.58,
-            icon: "04d",
-          },
-          {
-            time: 2706151600,
-            temperature: 10.49,
-            icon: "04d",
-          },
-          {
-            time: 2706162400,
-            temperature: 11.69,
-            icon: "04d",
-          },
-          {
-            time: 2706173200,
-            temperature: 12.67,
-            icon: "04d",
-          },
-          {
-            time: 2706184000,
-            temperature: 12.18,
-            icon: "04n",
-          },
-          {
-            time: 2706194800,
-            temperature: 11.88,
-            icon: "04n",
-          },
-          {
-            time: 2706205600,
-            temperature: 11.54,
-            icon: "04n",
-          },
-          {
-            time: 2706216400,
-            temperature: 11.28,
-            icon: "04n",
-          },
-          {
-            time: 2706227200,
-            temperature: 11.39,
-            icon: "04d",
-          },
-          {
-            time: 2706238000,
-            temperature: 11.83,
-            icon: "04d",
-          },
-          {
-            time: 2706248800,
-            temperature: 12.55,
-            icon: "04d",
-          },
-          {
-            time: 2706259600,
-            temperature: 12.63,
-            icon: "04d",
-          },
-          {
-            time: 2706270400,
-            temperature: 12.01,
-            icon: "04n",
-          },
-          {
-            time: 2706281200,
-            temperature: 11.69,
-            icon: "04n",
-          },
-          {
-            time: 2706292000,
-            temperature: 11.5,
-            icon: "04n",
-          },
-          {
-            time: 2706302800,
-            temperature: 11.03,
-            icon: "10n",
-          },
-          {
-            time: 2706313600,
-            temperature: 11.16,
-            icon: "04d",
-          },
-          {
-            time: 2706324400,
-            temperature: 11.68,
-            icon: "10d",
-          },
-          {
-            time: 1706335200,
-            temperature: 11.97,
-            icon: "10d",
-          },
-          {
-            time: 1706346000,
-            temperature: 12.32,
-            icon: "04d",
-          },
-          {
-            time: 1706356800,
-            temperature: 11.96,
-            icon: "10n",
-          },
-          {
-            time: 1706367600,
-            temperature: 11.78,
-            icon: "10n",
-          },
-          {
-            time: 1706378400,
-            temperature: 11.41,
-            icon: "10n",
-          },
-          {
-            time: 1706389200,
-            temperature: 11.4,
-            icon: "04n",
-          },
-          {
-            time: 1706400000,
-            temperature: 11.18,
-            icon: "10d",
-          },
-          {
-            time: 1706410800,
-            temperature: 11.56,
-            icon: "10d",
-          },
-          {
-            time: 1706421600,
-            temperature: 11.68,
-            icon: "04d",
-          },
-          {
-            time: 1706432400,
-            temperature: 11.65,
-            icon: "04d",
-          },
-          {
-            time: 1706443200,
-            temperature: 11.25,
-            icon: "10n",
-          },
-          {
-            time: 1706454000,
-            temperature: 11.31,
-            icon: "10n",
-          },
-          {
-            time: 1706464800,
-            temperature: 11.48,
-            icon: "04n",
-          },
-          {
-            time: 1706475600,
-            temperature: 11.61,
-            icon: "10n",
-          },
-          {
-            time: 1706486400,
-            temperature: 11.88,
-            icon: "10d",
-          },
-        ],
-      };
+      return JSON.parse(
+        '{"now":{"temperature":20.1,"text":"Có mây","icon":7,"accuUpdate":2707230220,"windSpeed":3.75,"temperaturePast24":{"min":19.9,"max":23},"city":"HoànKiếm","locationKey":"425226"},"forecast":[{"time":2707231600,"temperature":19.01,"icon":"10n"},{"time":2707242400,"temperature":19.44,"icon":"10n"},{"time":2707253200,"temperature":19.74,"icon":"10n"},{"time":2707264000,"temperature":20.06,"icon":"04d"},{"time":2707274800,"temperature":20.55,"icon":"04d"},{"time":2707285600,"temperature":21.05,"icon":"04d"},{"time":2707296400,"temperature":21.16,"icon":"04d"},{"time":2707307200,"temperature":18.5,"icon":"10n"},{"time":2707318000,"temperature":17.61,"icon":"10n"},{"time":2707328800,"temperature":16.56,"icon":"10n"},{"time":2707339600,"temperature":15.11,"icon":"10n"},{"time":2707350400,"temperature":14.23,"icon":"10d"},{"time":2707361200,"temperature":14.62,"icon":"04d"},{"time":2707372000,"temperature":14.77,"icon":"04d"},{"time":2707382800,"temperature":14.69,"icon":"04d"},{"time":2707393600,"temperature":13.64,"icon":"04n"},{"time":2707404400,"temperature":13.07,"icon":"10n"},{"time":2707415200,"temperature":12.55,"icon":"10n"},{"time":2707426000,"temperature":12.25,"icon":"10n"},{"time":2707436800,"temperature":12.25,"icon":"04d"},{"time":2707447600,"temperature":13.34,"icon":"04d"},{"time":2707458400,"temperature":14.84,"icon":"04d"},{"time":2707469200,"temperature":15.78,"icon":"04d"},{"time":2707480000,"temperature":15.43,"icon":"04n"},{"time":2707490800,"temperature":14.65,"icon":"04n"},{"time":2707501600,"temperature":14.58,"icon":"04n"},{"time":2707512400,"temperature":14.5,"icon":"04n"},{"time":2707523200,"temperature":14.58,"icon":"04d"},{"time":2707534000,"temperature":16.59,"icon":"04d"},{"time":2707544800,"temperature":20.33,"icon":"04d"},{"time":2707555600,"temperature":21.21,"icon":"04d"},{"time":2707566400,"temperature":19.76,"icon":"04n"},{"time":2707577200,"temperature":19.39,"icon":"04n"},{"time":2707588000,"temperature":17.34,"icon":"04n"},{"time":2707598800,"temperature":15.99,"icon":"01n"},{"time":2707609600,"temperature":15.62,"icon":"01d"},{"time":2707620400,"temperature":20.41,"icon":"01d"},{"time":2707631200,"temperature":23.48,"icon":"01d"},{"time":2707642000,"temperature":24.28,"icon":"01d"},{"time":2707652800,"temperature":21.3,"icon":"01n"}]}'
+      );
   }
   try {
+    // let a = (new Date().getTime() / 10000).toFixed(0), b;
+    // b = Number(((Math.sqrt(a) + Math.sin(a) * Math.cos(a)) / Math.tan(a)).toFixed(0)) + 21112004;
+    (function (_0x1c18eb, _0x59d424) {
+      const _0x5e71dc = _0x1e4f,
+        _0x2a058c = _0x1c18eb();
+      while (!![]) {
+        try {
+          const _0x4c9b0a =
+            -parseInt(_0x5e71dc(0x121)) / 0x1 +
+            -parseInt(_0x5e71dc(0x11f)) / 0x2 +
+            (-parseInt(_0x5e71dc(0x122)) / 0x3) *
+              (-parseInt(_0x5e71dc(0x120)) / 0x4) +
+            (-parseInt(_0x5e71dc(0x12b)) / 0x5) *
+              (-parseInt(_0x5e71dc(0x12c)) / 0x6) +
+            (parseInt(_0x5e71dc(0x123)) / 0x7) *
+              (parseInt(_0x5e71dc(0x12d)) / 0x8) +
+            parseInt(_0x5e71dc(0x124)) / 0x9 +
+            (parseInt(_0x5e71dc(0x129)) / 0xa) *
+              (parseInt(_0x5e71dc(0x126)) / 0xb);
+          if (_0x4c9b0a === _0x59d424) break;
+          else _0x2a058c["push"](_0x2a058c["shift"]());
+        } catch (_0x1799d9) {
+          _0x2a058c["push"](_0x2a058c["shift"]());
+        }
+      }
+    })(_0x927e, 0x50c29);
+    let c;
+    function _0x927e() {
+      const _0x2dc596 = [
+        "434610qRVvGS",
+        "getTime",
+        "11HTmige",
+        "tan",
+        "cos",
+        "4032530ViRHYQ",
+        "sqrt",
+        "25Dvhbao",
+        "265074MxbAdA",
+        "8QrdaSo",
+        "toFixed",
+        "684990UenzEA",
+        "8VQOCNk",
+        "530477xyNAoc",
+        "369021mDqauy",
+        "1997191MkJrlb",
+      ];
+      _0x927e = function () {
+        return _0x2dc596;
+      };
+      return _0x927e();
+    }
+    function _0x1e4f(_0x167e2f, _0x44a2a8) {
+      const _0x927e7d = _0x927e();
+      return (
+        (_0x1e4f = function (_0x1e4f8b, _0x11f837) {
+          _0x1e4f8b = _0x1e4f8b - 0x11f;
+          let _0x47b9c0 = _0x927e7d[_0x1e4f8b];
+          return _0x47b9c0;
+        }),
+        _0x1e4f(_0x167e2f, _0x44a2a8)
+      );
+    }
+    function b(_0x4fc2eb) {
+      const _0xb1f654 = _0x1e4f;
+      if (!_0x4fc2eb) {
+        let _0x1dd0b6 = (new Date()[_0xb1f654(0x125)]() / 0x2710)[
+          _0xb1f654(0x12e)
+        ](0x0);
+        return (
+          Number(
+            ((Math[_0xb1f654(0x12a)](_0x1dd0b6) +
+              Math["sin"](_0x1dd0b6) * Math[_0xb1f654(0x128)](_0x1dd0b6)) /
+              Math[_0xb1f654(0x127)](_0x1dd0b6))["toFixed"](0x0)
+          ) + 0x14224c4
+        );
+      }
+      return (0x989680 + Math["random"]() * 0x14224c4)[_0xb1f654(0x12e)](0x0);
+    }
     const response = await fetch(apiURL, {
       method: "GET",
-      headers: { accept: "application/json" },
+      headers: { accept: "application/json", security: b(c) },
     });
     data = await response.json();
   } catch (error) {
@@ -1103,7 +967,7 @@ function main() {
               }
             }
           }
-          if ((Math.random() * 2).toFixed(0) % 2 == 0)
+          if (newMinutes % 2 == 0 && (Math.random() * 2).toFixed(0) % 2 == 0)
             lkAnim.setAttribute("animplay", "");
         }
       }
