@@ -61,8 +61,8 @@ exports.handler = async (event) => {
             Math[_0x4eb3ab(0x12f)](_0x368f0f)) /
           Math["tan"](_0x368f0f))[_0x4eb3ab(0x133)](0x0)
       ) +
-        0x14224c4 ==
-      event[_0x4eb3ab(0x136)]?.["security"]
+        0x14224c4 == event.queryStringParameters.security
+      // event[_0x4eb3ab(0x136)]?.["security"]
     );
   }
   function _0x370e() {
@@ -88,8 +88,8 @@ exports.handler = async (event) => {
     };
     return _0x370e();
   }
-  console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
-  if (a(new Date().getTime())) {
+  // console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
+  if (a(new Date().getTime()) && event.headers.referer.includes("chuanghiten.github.io")) {
     const ip = event.queryStringParameters.ip,
       lat = event.queryStringParameters.lat,
       lon = event.queryStringParameters.lon,
