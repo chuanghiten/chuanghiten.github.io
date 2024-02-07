@@ -163,7 +163,7 @@ async function callNetlify(lat, lon, locationKey, ip) {
         apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
     } else
       return JSON.parse(
-        '{"now":{"temperature":20.1,"text":"Có mây","icon":7,"accuUpdate":2707230220,"windSpeed":3.75,"temperaturePast24":{"min":19.9,"max":23},"city":"HoànKiếm","locationKey":"425226"},"forecast":[{"time":2707231600,"temperature":19.01,"icon":"10n"},{"time":2707242400,"temperature":19.44,"icon":"10n"},{"time":2707253200,"temperature":19.74,"icon":"10n"},{"time":2707264000,"temperature":20.06,"icon":"04d"},{"time":2707274800,"temperature":20.55,"icon":"04d"},{"time":2707285600,"temperature":21.05,"icon":"04d"},{"time":2707296400,"temperature":21.16,"icon":"04d"},{"time":2707307200,"temperature":18.5,"icon":"10n"},{"time":2707318000,"temperature":17.61,"icon":"10n"},{"time":2707328800,"temperature":16.56,"icon":"10n"},{"time":2707339600,"temperature":15.11,"icon":"10n"},{"time":2707350400,"temperature":14.23,"icon":"10d"},{"time":2707361200,"temperature":14.62,"icon":"04d"},{"time":2707372000,"temperature":14.77,"icon":"04d"},{"time":2707382800,"temperature":14.69,"icon":"04d"},{"time":2707393600,"temperature":13.64,"icon":"04n"},{"time":2707404400,"temperature":13.07,"icon":"10n"},{"time":2707415200,"temperature":12.55,"icon":"10n"},{"time":2707426000,"temperature":12.25,"icon":"10n"},{"time":2707436800,"temperature":12.25,"icon":"04d"},{"time":2707447600,"temperature":13.34,"icon":"04d"},{"time":2707458400,"temperature":14.84,"icon":"04d"},{"time":2707469200,"temperature":15.78,"icon":"04d"},{"time":2707480000,"temperature":15.43,"icon":"04n"},{"time":2707490800,"temperature":14.65,"icon":"04n"},{"time":2707501600,"temperature":14.58,"icon":"04n"},{"time":2707512400,"temperature":14.5,"icon":"04n"},{"time":2707523200,"temperature":14.58,"icon":"04d"},{"time":2707534000,"temperature":16.59,"icon":"04d"},{"time":2707544800,"temperature":20.33,"icon":"04d"},{"time":2707555600,"temperature":21.21,"icon":"04d"},{"time":2707566400,"temperature":19.76,"icon":"04n"},{"time":2707577200,"temperature":19.39,"icon":"04n"},{"time":2707588000,"temperature":17.34,"icon":"04n"},{"time":2707598800,"temperature":15.99,"icon":"01n"},{"time":2707609600,"temperature":15.62,"icon":"01d"},{"time":2707620400,"temperature":20.41,"icon":"01d"},{"time":2707631200,"temperature":23.48,"icon":"01d"},{"time":2707642000,"temperature":24.28,"icon":"01d"},{"time":2707652800,"temperature":21.3,"icon":"01n"}]}'
+        '{"now":{"temperature":20.1,"text":"Có mây","icon":7,"accuUpdate":2707230220,"windSpeed":3.75,"temperaturePast24":{"min":19.9,"max":23},"city":"Hoàn Kiếm","locationKey":"425226"},"forecast":[{"time":2707231600,"temperature":19.01,"icon":"10n"},{"time":2707242400,"temperature":19.44,"icon":"10n"},{"time":2707253200,"temperature":19.74,"icon":"10n"},{"time":2707264000,"temperature":20.06,"icon":"04d"},{"time":2707274800,"temperature":20.55,"icon":"04d"},{"time":2707285600,"temperature":21.05,"icon":"04d"},{"time":2707296400,"temperature":21.16,"icon":"04d"},{"time":2707307200,"temperature":18.5,"icon":"10n"},{"time":2707318000,"temperature":17.61,"icon":"10n"},{"time":2707328800,"temperature":16.56,"icon":"10n"},{"time":2707339600,"temperature":15.11,"icon":"10n"},{"time":2707350400,"temperature":14.23,"icon":"10d"},{"time":2707361200,"temperature":14.62,"icon":"04d"},{"time":2707372000,"temperature":14.77,"icon":"04d"},{"time":2707382800,"temperature":14.69,"icon":"04d"},{"time":2707393600,"temperature":13.64,"icon":"04n"},{"time":2707404400,"temperature":13.07,"icon":"10n"},{"time":2707415200,"temperature":12.55,"icon":"10n"},{"time":2707426000,"temperature":12.25,"icon":"10n"},{"time":2707436800,"temperature":12.25,"icon":"04d"},{"time":2707447600,"temperature":13.34,"icon":"04d"},{"time":2707458400,"temperature":14.84,"icon":"04d"},{"time":2707469200,"temperature":15.78,"icon":"04d"},{"time":2707480000,"temperature":15.43,"icon":"04n"},{"time":2707490800,"temperature":14.65,"icon":"04n"},{"time":2707501600,"temperature":14.58,"icon":"04n"},{"time":2707512400,"temperature":14.5,"icon":"04n"},{"time":2707523200,"temperature":14.58,"icon":"04d"},{"time":2707534000,"temperature":16.59,"icon":"04d"},{"time":2707544800,"temperature":20.33,"icon":"04d"},{"time":2707555600,"temperature":21.21,"icon":"04d"},{"time":2707566400,"temperature":19.76,"icon":"04n"},{"time":2707577200,"temperature":19.39,"icon":"04n"},{"time":2707588000,"temperature":17.34,"icon":"04n"},{"time":2707598800,"temperature":15.99,"icon":"01n"},{"time":2707609600,"temperature":15.62,"icon":"01d"},{"time":2707620400,"temperature":20.41,"icon":"01d"},{"time":2707631200,"temperature":23.48,"icon":"01d"},{"time":2707642000,"temperature":24.28,"icon":"01d"},{"time":2707652800,"temperature":21.3,"icon":"01n"}]}'
       );
   }
   try {
@@ -768,7 +768,7 @@ function main() {
     lon = false,
     calling = true,
     fr = 0;
-  lkAnim.setAttribute("animplay", "");
+  if (lkAnim) lkAnim.setAttribute("animplay", "");
   resize(window.innerWidth, window.innerHeight);
   window.addEventListener("resize", () => {
     resize(window.innerWidth, window.innerHeight);
@@ -967,7 +967,11 @@ function main() {
               }
             }
           }
-          if (newMinutes % 2 == 0 && (Math.random() * 2).toFixed(0) % 2 == 0)
+          if (
+            newMinutes % 2 == 0 &&
+            (Math.random() * 2).toFixed(0) % 2 == 0 &&
+            lkAnim
+          )
             lkAnim.setAttribute("animplay", "");
         }
       }
@@ -975,9 +979,10 @@ function main() {
     window.requestAnimationFrame(raf);
   }
   window.requestAnimationFrame(raf);
-  lkAnim.children[0].addEventListener("animationend", () =>
-    lkAnim.removeAttribute("animplay")
-  );
+  if (lkAnim)
+    lkAnim.children[0].addEventListener("animationend", () =>
+      lkAnim.removeAttribute("animplay")
+    );
 }
 
 window.addEventListener("load", () => {

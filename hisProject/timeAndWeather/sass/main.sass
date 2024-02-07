@@ -485,8 +485,22 @@ svg
   100%
     left: 100%
 
+html[summer]
+  .forAutumn, .forSpring, .forWinter
+    display: none
+    animation: none
+    *
+      display: none
+      animation: none
+html[winter]
+  .forAutumn, .forSpring, .forSummer
+    display: none
+    animation: none
+    *
+      display: none
+      animation: none
 html[autumn]
-  .forSpring
+  .forSpring, .forSummer, .forWinter
     animation: none
     display: none
     *
@@ -6074,12 +6088,42 @@ html[autumn]
       --y100: 0%
       --r100: 0deg
 html[spring]
-  .forAutumn
+  .forAutumn, .forSummer, .forWinter
     display: none
     animation: none
     *
       display: none
       animation: none
+  --sky: #b9eefe
+  --weatherBackground: #6a9d0d
+  --topcl: #fafffe
+  --cl1: #ffffff
+  --cl2: #d2f4fe
+  --fm2: #5ba26a
+  --fm1: #77ba85
+  --m3: #91d49e
+  --m2: #77ba85
+  --m1: #5ba26a
+  --db6: #c5e36f
+  --db5: #a8d652
+  --db4: #92c238
+  --treeShadow: #986142
+  --treeBody: #553f2a
+  --db3: #85b124
+  --db2: #74a31f
+  --khoai: #9a7071
+  --bongKhoai: #a88c88
+  --laNhonDam: #b4db4c
+  --laNho: #1c7639
+  --laTo1: #267315
+  --ganLaTo1: #10632d
+  --laTo2: #4ab042
+  --ganLaTo2: #3ba334
+  --laTo3: #2b9825
+  --ganLaTo3: #1a7d13
+  --laNhon: #1c7639
+  --co: #237513
+  --shadowCo: #1c540b
   --timeTextColor: #fefffa
   --progressColor: #c5e36f
   --hoursArrowColor: #f87b79
@@ -6398,7 +6442,7 @@ html
             align-items: center
             backdrop-filter: blur(2px)
             overflow: hidden
-            margin: 13rem 0
+            margin: 20rem 0 13rem 0
             .texts
               color: var(--weatherTextColor)
               font-family: 'Modulus Pro'
