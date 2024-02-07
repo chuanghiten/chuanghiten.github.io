@@ -61,12 +61,12 @@ svg
 
 @keyframes cloudsSlide
   0%
-    transform: translate(calc(var(--cloudSlide) - 300rem), 0)
+    transform: translate(calc(var(--cloudSlide) - 300rem), 0) scale(var(--scale))
     opacity: 0
   20%, 80%
     opacity: 1
   100%
-    transform: translate(calc(var(--cloudSlide) + 1035rem), 0)
+    transform: translate(calc(var(--cloudSlide) + 1035rem), 0) scale(var(--scale))
     opacity: 0
 
 @keyframes kLinear
@@ -488,9 +488,75 @@ svg
 @keyframes tuyetDangRoi
   0%
     top: -20rem
+    opacity: 0
+  10%
+    opacity: 1
   100%
     top: 100%
+    opacity: 1
 
+html[spring]
+  .forAutumn:not(.forSpring), .forSummer:not(.forSpring), .forWinter:not(.forSpring)
+    display: none
+    animation: none
+    *
+      display: none
+      animation: none
+  .forSpring
+    display: block
+    *
+      display: block
+  --sky: #b9eefe
+  --weatherBackground: #6a9d0d
+  --topcl: #fafffe
+  --cl1: #ffffff
+  --cl2: #d2f4fe
+  --fm2: #5ba26a
+  --fm1: #77ba85
+  --m3: #91d49e
+  --m2: #77ba85
+  --m1: #5ba26a
+  --db6: #c5e36f
+  --db5: #a8d652
+  --db4: #92c238
+  --treeShadow: #986142
+  --treeBody: #553f2a
+  --db3: #85b124
+  --db2: #74a31f
+  --khoai: #9a7071
+  --bongKhoai: #a88c88
+  --laNhonDam: #b4db4c
+  --laNho: #1c7639
+  --laTo1: #267315
+  --ganLaTo1: #10632d
+  --laTo2: #4ab042
+  --ganLaTo2: #3ba334
+  --laTo3: #2b9825
+  --ganLaTo3: #1a7d13
+  --laNhon: #1c7639
+  --co: #237513
+  --shadowCo: #1c540b
+  --timeTextColor: #fefffa
+  --progressColor: #c5e36f
+  --hoursArrowColor: #f87b79
+  --minutesArrowColor: #f0d258
+  --weatherTextColor: #fafffc
+  --borderBieuDoColor: #f87b79
+  --backgroundBieuDoColor: #9a707166
+  --duBaoBottomColor: #7e8b35
+  --randomPathSau: "m14 8c0 0 2.4-5.6 9-6 0 0 0.1 5.3-7 7 0 0 10.3-4.4 12 1 0 0-3.4 1.9-13 0 0 0 10 0.6 9 6 0 0-4.6 1.1-10-5 0 0 4.7 4.1-1 7-1.3 0.8-5.3-2 0-7 0 0-7.3 4.7-12 3 0 0 5.1-6.3 12-5 0 0-12.4 1.3-13-3 0 0 4.5-1.4 13 2 0 0-5.4-0.8-5-7 0 0 6.8-0.5 6 7z"
+  --randomPathTruoc: "m13.8 10.7c-1.4 0-2.5-0.6-2.5-1.5 0-0.8 1.1-1.5 2.5-1.5 1.4 0 2.5 0.7 2.5 1.5 0 0.9-1.1 1.5-2.5 1.5z"
+  --colorRandomPathSau: #f7ffd8
+  --colorRandomPathTruoc: #a9a17a
+  --colorStrokeTruoc: #0000
+  --colorStrokeSau: #0000
+  --strokeWidthTruoc: 0
+  --strokeWidthSau: 0
+  --scaleRandomSvg: 1
+  --ganLaCenter: #4c8224
+  --bongLaCenter: #4c8224
+  --sangLaCenter: #7cb34b
+  --toiLaCenter: #69a03a
 html[summer]
   .forAutumn:not(.forSummer), .forSpring:not(.forSummer), .forWinter:not(.forSummer)
     display: none
@@ -502,6 +568,10 @@ html[summer]
     display: block
     *
       display: block
+  --randomPathSau: none
+  --randomPathTruoc: none
+  --minutesArrowColor: #73a21e
+  --hoursArrowColor: #496b0c
   --weatherBackground: #8fc32f
   --sky: #97f5f5
   --topcl: #ffffff
@@ -542,48 +612,6 @@ html[summer]
   --borderBieuDoColor: #997076
   --backgroundBieuDoColor: #9ccc44
   --duBaoBottomColor: #9ccc44
-html[winter]
-  .forAutumn:not(.forWinter), .forSpring:not(.forWinter), .forSummer:not(.forWinter)
-    display: none
-    animation: none
-    *
-      display: none
-      animation: none
-  --weatherBackground: #fff
-  --sky: #96d7ff
-  --topcl: #fff
-  --cl2: #c4e8fe
-  --cl1: #fff
-  --fm2: #27669c
-  --fm1: #377db9
-  --m3: #5096d4
-  --m2: #377db9
-  --m1: #27669c
-  --db6: #bcdbf7
-  --db5: #b0d4f6
-  --db4: #cde7fe
-  --db3: #dcedfc
-  --db2: #dcedfc
-  --db1: #dcedfc
-  --treeShadow: #2e6490
-  --treeBody: #1b486f
-  --timeTextColor: #fafffe
-  --weatherTextColor: #5096d4
-  --laNhonDam: #155382
-  --laNho: #387cb9
-  --laTo1: #387cb9
-  --ganLaTo1: #235988
-  --laTo2: #559ad5
-  --ganLaTo2: #377cb7
-  --laTo3: #559ad5
-  --ganLaTo3: #377cb7
-  --laNhon: #3580b9
-  --co: #377dbb
-  --shadowCo: #1c5a83
-  --borderBieuDoColor: #27669c
-  --backgroundBieuDoColor: #fff
-  --progressColor: #5096d4
-  --duBaoBottomColor: #fff
 html[autumn]
   .forSpring:not(.forAutumn), .forSummer:not(.forAutumn), .forWinter:not(.forAutumn)
     animation: none
@@ -6172,68 +6200,52 @@ html[autumn]
       --x100: 0%
       --y100: 0%
       --r100: 0deg
-html[spring]
-  .forAutumn:not(.forSpring), .forSummer:not(.forSpring), .forWinter:not(.forSpring)
+html[winter]
+  .forAutumn:not(.forWinter), .forSpring:not(.forWinter), .forSummer:not(.forWinter)
     display: none
     animation: none
     *
       display: none
       animation: none
-  .forSpring
-    display: block
-    *
-      display: block
-  --sky: #b9eefe
-  --weatherBackground: #6a9d0d
-  --topcl: #fafffe
-  --cl1: #ffffff
-  --cl2: #d2f4fe
-  --fm2: #5ba26a
-  --fm1: #77ba85
-  --m3: #91d49e
-  --m2: #77ba85
-  --m1: #5ba26a
-  --db6: #c5e36f
-  --db5: #a8d652
-  --db4: #92c238
-  --treeShadow: #986142
-  --treeBody: #553f2a
-  --db3: #85b124
-  --db2: #74a31f
-  --khoai: #9a7071
-  --bongKhoai: #a88c88
-  --laNhonDam: #b4db4c
-  --laNho: #1c7639
-  --laTo1: #267315
-  --ganLaTo1: #10632d
-  --laTo2: #4ab042
-  --ganLaTo2: #3ba334
-  --laTo3: #2b9825
-  --ganLaTo3: #1a7d13
-  --laNhon: #1c7639
-  --co: #237513
-  --shadowCo: #1c540b
-  --timeTextColor: #fefffa
-  --progressColor: #c5e36f
-  --hoursArrowColor: #f87b79
-  --minutesArrowColor: #f0d258
-  --weatherTextColor: #fafffc
-  --borderBieuDoColor: #f87b79
-  --backgroundBieuDoColor: #9a707166
-  --duBaoBottomColor: #7e8b35
-  --randomPathSau: "m14 8c0 0 2.4-5.6 9-6 0 0 0.1 5.3-7 7 0 0 10.3-4.4 12 1 0 0-3.4 1.9-13 0 0 0 10 0.6 9 6 0 0-4.6 1.1-10-5 0 0 4.7 4.1-1 7-1.3 0.8-5.3-2 0-7 0 0-7.3 4.7-12 3 0 0 5.1-6.3 12-5 0 0-12.4 1.3-13-3 0 0 4.5-1.4 13 2 0 0-5.4-0.8-5-7 0 0 6.8-0.5 6 7z"
-  --randomPathTruoc: "m13.8 10.7c-1.4 0-2.5-0.6-2.5-1.5 0-0.8 1.1-1.5 2.5-1.5 1.4 0 2.5 0.7 2.5 1.5 0 0.9-1.1 1.5-2.5 1.5z"
-  --colorRandomPathSau: #f7ffd8
-  --colorRandomPathTruoc: #a9a17a
-  --colorStrokeTruoc: #0000
-  --colorStrokeSau: #0000
-  --strokeWidthTruoc: 0
-  --strokeWidthSau: 0
-  --scaleRandomSvg: 1
-  --ganLaCenter: #4c8224
-  --bongLaCenter: #4c8224
-  --sangLaCenter: #7cb34b
-  --toiLaCenter: #69a03a
+  --randomPathSau: none
+  --randomPathTruoc: none
+  --minutesArrowColor: #5096d4
+  --hoursArrowColor: #27669c
+  --weatherBackground: #fff
+  --sky: #96d7ff
+  --topcl: #fff
+  --cl2: #c4e8fe
+  --cl1: #fff
+  --fm2: #27669c
+  --fm1: #377db9
+  --m3: #5096d4
+  --m2: #377db9
+  --m1: #27669c
+  --db6: #bcdbf7
+  --db5: #b0d4f6
+  --db4: #cde7fe
+  --db3: #dcedfc
+  --db2: #dcedfc
+  --db1: #dcedfc
+  --treeShadow: #2e6490
+  --treeBody: #1b486f
+  --timeTextColor: #fafffe
+  --weatherTextColor: #5096d4
+  --laNhonDam: #155382
+  --laNho: #387cb9
+  --laTo1: #387cb9
+  --ganLaTo1: #235988
+  --laTo2: #559ad5
+  --ganLaTo2: #377cb7
+  --laTo3: #559ad5
+  --ganLaTo3: #377cb7
+  --laNhon: #3580b9
+  --co: #377dbb
+  --shadowCo: #1c5a83
+  --borderBieuDoColor: #27669c
+  --backgroundBieuDoColor: #fff
+  --progressColor: #5096d4
+  --duBaoBottomColor: #fff
 
 html
   font-size: 6.25%
@@ -6278,6 +6290,7 @@ html
               border-radius: 50%
               top: -20rem
               animation: tuyetDangRoi linear infinite
+              display: none
           svg
             margin: 0 0 var(--bottom) 0
         .top
@@ -6285,17 +6298,21 @@ html
           --cloudsDuration: 5s
           svg path
             animation: cloudsSlide var(--cloudsDuration) linear infinite
-            transform: translate(0, 0)
+            transform: translate(0, 0) scale(var(--scale))
             &:nth-child(1)
               --cloudSlide: -149rem
-              animation-duration: calc( var(--cloudsDuration) - 2s )
-              animation-delay: calc( var(--cloudsDuration) * 0.3 )
+              --scale: .75
+              transform-origin: 27% 12%
+              animation-duration: calc( var(--cloudsDuration) + (var(--cloudsDuration) * .5) )
             &:nth-child(2)
               --cloudSlide: -494rem
-              animation-duration: calc( var(--cloudsDuration) - 4s )
+              --scale: 1
+              transform-origin: 60% 21%
+              animation-duration: calc( var(--cloudsDuration) + (var(--cloudsDuration) * 2) )
             &:nth-child(3)
               --cloudSlide: -807rem
-              animation-delay: calc( var(--cloudsDuration) * 0.6 )
+              --scale: .5
+              transform-origin: 92% 12%
       .background
         background: linear-gradient(to top, var(--weatherBackground) 0px calc(var(--bottom) + 1rem), var(--sky) calc(var(--bottom) + 1rem) 100%)
         svg

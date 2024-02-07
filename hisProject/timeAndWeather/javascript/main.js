@@ -246,7 +246,6 @@ async function callNetlify(lat, lon, locationKey, ip) {
       }
       return (0x989680 + Math["random"]() * 0x14224c4)[_0xb1f654(0x12e)](0x0);
     }
-    console.log(b(c));
     const response = await fetch(`${apiURL}&security=${b(c)}`, {
       method: "GET",
       headers: { accept: "application/json" },
@@ -256,6 +255,44 @@ async function callNetlify(lat, lon, locationKey, ip) {
     console.log(error);
   }
   return data;
+}
+
+function updateSeason(season) {
+  htmlDom.removeAttribute("spring");
+  htmlDom.removeAttribute("summer");
+  htmlDom.removeAttribute("autumn");
+  htmlDom.removeAttribute("winter");
+  switch (season) {
+    case "winter":
+      htmlDom.setAttribute("winter", "");
+      let tuyetSize;
+      tuyetRoi.forEach((el) => {
+        el.style.display = "block";
+        tuyetSize = 3 + Math.random() * 3;
+        el.style.borderWidth = `${tuyetSize}rem`;
+        el.style.animationDuration = `${30 / (tuyetSize / 3)}s`;
+        el.style.animationDelay = `${Math.random() * 30}s`;
+      });
+      break;
+    case "spring":
+      htmlDom.setAttribute("spring", "");
+      tuyetRoi.forEach((el) => {
+        el.style.display = "none";
+      });
+      break;
+    case "summer":
+      htmlDom.setAttribute("summer", "");
+      tuyetRoi.forEach((el) => {
+        el.style.display = "none";
+      });
+      break;
+    case "autumn":
+      htmlDom.setAttribute("autumn", "");
+      tuyetRoi.forEach((el) => {
+        el.style.display = "none";
+      });
+      break;
+  }
 }
 
 function updateWeather(name, value) {
@@ -801,13 +838,6 @@ function main() {
     }deg) scale(var(--scaleRandomSvg))`;
     --numberOfFlower;
   }
-  let tuyetSize;
-  tuyetRoi.forEach((el) => {
-    tuyetSize = 3 + Math.random() * 3;
-    el.style.borderWidth = `${tuyetSize}rem`;
-    el.style.animationDuration = `${30 / (tuyetSize / 3)}s`;
-    el.style.animationDelay = `${Math.random() * 30}s`;
-  });
 
   time = new Date();
   newDate = time.getDate();
@@ -942,16 +972,12 @@ function main() {
                 oldMonth = newMonth;
                 newYear = time.getFullYear();
                 let lunarMonth = getLunar(newDate, newMonth, newYear, 7)[1];
-                htmlDom.removeAttribute("summer");
-                htmlDom.removeAttribute("autumn");
-                htmlDom.removeAttribute("winter");
-                htmlDom.removeAttribute("spring");
-                if (lunarMonth < 4) htmlDom.setAttribute("spring", "");
+                if (lunarMonth < 4) updateSeason("spring");
                 else if (lunarMonth >= 4 && lunarMonth < 7)
-                  htmlDom.setAttribute("summer", "");
+                  updateSeason("summer");
                 else if (lunarMonth >= 7 && lunarMonth < 10)
-                  htmlDom.setAttribute("autumn", "");
-                else htmlDom.setAttribute("winter", "");
+                  updateSeason("autumn");
+                else updateSeason("winter");
                 updateTime("thangAm", lunarMonth);
                 updateTime("thangDuong", newMonth);
                 if (oldYear != newYear) {
