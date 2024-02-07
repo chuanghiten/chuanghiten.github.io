@@ -246,6 +246,7 @@ async function callNetlify(lat, lon, locationKey, ip) {
       }
       return (0x989680 + Math["random"]() * 0x14224c4)[_0xb1f654(0x12e)](0x0);
     }
+    console.log(b(c));
     const response = await fetch(apiURL, {
       method: "GET",
       headers: { accept: "application/json", security: b(c) },

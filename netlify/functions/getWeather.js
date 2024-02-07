@@ -88,7 +88,7 @@ exports.handler = async (event) => {
     };
     return _0x370e();
   }
-  console.log(new Date().getTime());
+  console.log(a(new Date().getTime()));
   if (a(new Date().getTime())) {
     const ip = event.queryStringParameters.ip,
       lat = event.queryStringParameters.lat,
