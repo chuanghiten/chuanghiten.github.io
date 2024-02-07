@@ -2,7 +2,8 @@
 // https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=&q=171.224.178.31&language=vi&details=true
 // https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=&language=vi&details=true
 // https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=
-let cfr = 1,
+let tuyetRoi = window.document.querySelectorAll(".tuyet"),
+  cfr = 1,
   lkAnim = window.document.querySelector(
     "html[autumn] body .main .background .bottom svg .lkAnim"
   ),
@@ -768,7 +769,6 @@ function main() {
     lon = false,
     calling = true,
     fr = 0;
-  if (lkAnim) lkAnim.setAttribute("animplay", "");
   resize(window.innerWidth, window.innerHeight);
   window.addEventListener("resize", () => {
     resize(window.innerWidth, window.innerHeight);
@@ -787,6 +787,7 @@ function main() {
       fullscreen = 1;
     }
   });
+  if (lkAnim) lkAnim.setAttribute("animplay", "");
   while (numberOfFlower > 0) {
     randomFlowerDom.children[numberOfFlower - 1].style.top = `${
       Math.random() * randomFlowerDom.offsetHeight
@@ -799,6 +800,14 @@ function main() {
     }deg) scale(var(--scaleRandomSvg))`;
     --numberOfFlower;
   }
+  let tuyetSize;
+  tuyetRoi.forEach((el) => {
+    tuyetSize = 3 + Math.random() * 3;
+    el.style.borderWidth = `${tuyetSize}rem`;
+    el.style.animationDuration = `${30 / (tuyetSize / 3)}s`;
+    el.style.animationDelay = `${Math.random() * 30}s`;
+  });
+
   time = new Date();
   newDate = time.getDate();
   newMonth = time.getMonth() + 1;
@@ -931,10 +940,18 @@ function main() {
               if (oldMonth != newMonth) {
                 oldMonth = newMonth;
                 newYear = time.getFullYear();
-                updateTime(
-                  "thangAm",
-                  getLunar(newDate, newMonth, newYear, 7)[1]
-                );
+                let lunarMonth = getLunar(newDate, newMonth, newYear, 7)[1];
+                htmlDom.removeAttribute("summer");
+                htmlDom.removeAttribute("autumn");
+                htmlDom.removeAttribute("winter");
+                htmlDom.removeAttribute("spring");
+                if (lunarMonth < 4) htmlDom.setAttribute("spring", "");
+                else if (lunarMonth >= 4 && lunarMonth < 7)
+                  htmlDom.setAttribute("summer", "");
+                else if (lunarMonth >= 7 && lunarMonth < 10)
+                  htmlDom.setAttribute("autumn", "");
+                else htmlDom.setAttribute("winter", "");
+                updateTime("thangAm", lunarMonth);
                 updateTime("thangDuong", newMonth);
                 if (oldYear != newYear) {
                   if (

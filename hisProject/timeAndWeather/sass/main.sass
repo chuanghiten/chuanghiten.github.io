@@ -485,22 +485,107 @@ svg
   100%
     left: 100%
 
+@keyframes tuyetDangRoi
+  0%
+    top: -20rem
+  100%
+    top: 100%
+
 html[summer]
-  .forAutumn, .forSpring, .forWinter
+  .forAutumn:not(.forSummer), .forSpring:not(.forSummer), .forWinter:not(.forSummer)
     display: none
     animation: none
     *
       display: none
       animation: none
+  .forSummer
+    display: block
+    *
+      display: block
+  --weatherBackground: #8fc32f
+  --sky: #97f5f5
+  --topcl: #ffffff
+  --cl2: #affffe
+  --cl1: #fff
+  --fm2: #496b0c
+  --fm1: #5f8518
+  --m3: #73a21e
+  --m2: #5f8518
+  --m1: #496b0c
+  --db6: #b5dd62
+  --db5: #a8d652
+  --db4: #92c238
+  --treeShadow: #9e5f40
+  --treeBody: #593d28
+  --db3: #bcdc5d
+  --db2: #9ccc44
+  --khoai: #98736b
+  --bongKhoai: #a88b8f
+  --laNhonDam: #b1db4b
+  --laNho: #27731b
+  --laTo1: #267315
+  --ganLaTo1: #12622d
+  --laTo2: #4ab042
+  --ganLaTo2: #379d2d
+  --laTo3: #2f9525
+  --ganLaTo3: #1a7c17
+  --ganLaCenter: #559a30
+  --sangLaCenter: #6ab53f
+  --bongLaCenter: #3b7415
+  --toiLaCenter: #529433
+  --laNhon: #267718
+  --co: #267315
+  --shadowCo: #1d5911
+  --timeTextColor: #fafffe
+  --progressColor: #a8d652
+  --weatherTextColor: #fafffe
+  --borderBieuDoColor: #997076
+  --backgroundBieuDoColor: #9ccc44
+  --duBaoBottomColor: #9ccc44
 html[winter]
-  .forAutumn, .forSpring, .forSummer
+  .forAutumn:not(.forWinter), .forSpring:not(.forWinter), .forSummer:not(.forWinter)
     display: none
     animation: none
     *
       display: none
       animation: none
+  --weatherBackground: #fff
+  --sky: #96d7ff
+  --topcl: #fff
+  --cl2: #c4e8fe
+  --cl1: #fff
+  --fm2: #27669c
+  --fm1: #377db9
+  --m3: #5096d4
+  --m2: #377db9
+  --m1: #27669c
+  --db6: #bcdbf7
+  --db5: #b0d4f6
+  --db4: #cde7fe
+  --db3: #dcedfc
+  --db2: #dcedfc
+  --db1: #dcedfc
+  --treeShadow: #2e6490
+  --treeBody: #1b486f
+  --timeTextColor: #fafffe
+  --weatherTextColor: #5096d4
+  --laNhonDam: #155382
+  --laNho: #387cb9
+  --laTo1: #387cb9
+  --ganLaTo1: #235988
+  --laTo2: #559ad5
+  --ganLaTo2: #377cb7
+  --laTo3: #559ad5
+  --ganLaTo3: #377cb7
+  --laNhon: #3580b9
+  --co: #377dbb
+  --shadowCo: #1c5a83
+  --borderBieuDoColor: #27669c
+  --backgroundBieuDoColor: #fff
+  --progressColor: #5096d4
+  --duBaoBottomColor: #fff
 html[autumn]
-  .forSpring, .forSummer, .forWinter
+  .forSpring:not(.forAutumn), .forSummer:not(.forAutumn), .forWinter:not(.forAutumn)
     animation: none
     display: none
     *
@@ -6088,12 +6173,16 @@ html[autumn]
       --y100: 0%
       --r100: 0deg
 html[spring]
-  .forAutumn, .forSummer, .forWinter
+  .forAutumn:not(.forSpring), .forSummer:not(.forSpring), .forWinter:not(.forSpring)
     display: none
     animation: none
     *
       display: none
       animation: none
+  .forSpring
+    display: block
+    *
+      display: block
   --sky: #b9eefe
   --weatherBackground: #6a9d0d
   --topcl: #fafffe
@@ -6141,6 +6230,10 @@ html[spring]
   --strokeWidthTruoc: 0
   --strokeWidthSau: 0
   --scaleRandomSvg: 1
+  --ganLaCenter: #4c8224
+  --bongLaCenter: #4c8224
+  --sangLaCenter: #7cb34b
+  --toiLaCenter: #69a03a
 
 html
   font-size: 6.25%
@@ -6157,7 +6250,6 @@ html
       border-radius: 10rem
       overflow: hidden
       .background, .contents
-        // background: #b9eefe
         width: 100%
         height: 100%
         position: absolute
@@ -6170,10 +6262,24 @@ html
           flex-wrap: wrap
           svg
             height: auto
-            margin: 0 0 var(--bottom) 0
         .bottom
           --margin: 0
           align-content: flex-end
+          .tuyetRoi
+            position: absolute
+            width: 100%
+            height: calc(100% - var(--bottom))
+            display: flex
+            justify-content: space-around
+            .tuyet
+              height: 0
+              width: 0
+              border: 0px solid #fff
+              border-radius: 50%
+              top: -20rem
+              animation: tuyetDangRoi linear infinite
+          svg
+            margin: 0 0 var(--bottom) 0
         .top
           align-content: flex-start
           --cloudsDuration: 5s
@@ -6193,6 +6299,15 @@ html
       .background
         background: linear-gradient(to top, var(--weatherBackground) 0px calc(var(--bottom) + 1rem), var(--sky) calc(var(--bottom) + 1rem) 100%)
         svg
+          .chrysanthemums
+            .gan
+              stroke: var(--ganLaCenter)
+            .sang
+              fill: var(--sangLaCenter)
+            .bong
+              fill: var(--bongLaCenter)
+            .toi
+              fill: var(--toiLaCenter)
           .shadowCo
             fill: var(--shadowCo)
           .co
@@ -6442,7 +6557,7 @@ html
             align-items: center
             backdrop-filter: blur(2px)
             overflow: hidden
-            margin: 20rem 0 13rem 0
+            margin: 13rem 0
             .texts
               color: var(--weatherTextColor)
               font-family: 'Modulus Pro'
