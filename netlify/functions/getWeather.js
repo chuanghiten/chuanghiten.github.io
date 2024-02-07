@@ -4,7 +4,8 @@ let HEADERS = {
   "Access-Control-Allow-Headers":
     "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin",
   "Content-Type": "application/json", //optional
-  "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS",
+  "Access-Control-Allow-Methods":
+    "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS",
   "Access-Control-Max-Age": "86400",
 };
 
@@ -56,7 +57,8 @@ exports.handler = async (event) => {
     return (
       Number(
         ((Math[_0x4eb3ab(0x134)](_0x368f0f) +
-          Math[_0x4eb3ab(0x13a)](_0x368f0f) * Math[_0x4eb3ab(0x12f)](_0x368f0f)) /
+          Math[_0x4eb3ab(0x13a)](_0x368f0f) *
+            Math[_0x4eb3ab(0x12f)](_0x368f0f)) /
           Math["tan"](_0x368f0f))[_0x4eb3ab(0x133)](0x0)
       ) +
         0x14224c4 ==
@@ -86,6 +88,7 @@ exports.handler = async (event) => {
     };
     return _0x370e();
   }
+  console.log(new Date().getTime());
   if (a(new Date().getTime())) {
     const ip = event.queryStringParameters.ip,
       lat = event.queryStringParameters.lat,
