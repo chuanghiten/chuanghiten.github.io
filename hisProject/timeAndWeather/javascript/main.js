@@ -163,13 +163,225 @@ async function callNetlify(lat, lon, locationKey, ip) {
       else
         apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
     } else
-      return JSON.parse(
-        '{"now":{"temperature":20.1,"text":"Có mây","icon":7,"accuUpdate":2707230220,"windSpeed":3.75,"temperaturePast24":{"min":19.9,"max":23},"city":"Hoàn Kiếm","locationKey":"425226"},"forecast":[{"time":2707231600,"temperature":19.01,"icon":"10n"},{"time":2707242400,"temperature":19.44,"icon":"10n"},{"time":2707253200,"temperature":19.74,"icon":"10n"},{"time":2707264000,"temperature":20.06,"icon":"04d"},{"time":2707274800,"temperature":20.55,"icon":"04d"},{"time":2707285600,"temperature":21.05,"icon":"04d"},{"time":2707296400,"temperature":21.16,"icon":"04d"},{"time":2707307200,"temperature":18.5,"icon":"10n"},{"time":2707318000,"temperature":17.61,"icon":"10n"},{"time":2707328800,"temperature":16.56,"icon":"10n"},{"time":2707339600,"temperature":15.11,"icon":"10n"},{"time":2707350400,"temperature":14.23,"icon":"10d"},{"time":2707361200,"temperature":14.62,"icon":"04d"},{"time":2707372000,"temperature":14.77,"icon":"04d"},{"time":2707382800,"temperature":14.69,"icon":"04d"},{"time":2707393600,"temperature":13.64,"icon":"04n"},{"time":2707404400,"temperature":13.07,"icon":"10n"},{"time":2707415200,"temperature":12.55,"icon":"10n"},{"time":2707426000,"temperature":12.25,"icon":"10n"},{"time":2707436800,"temperature":12.25,"icon":"04d"},{"time":2707447600,"temperature":13.34,"icon":"04d"},{"time":2707458400,"temperature":14.84,"icon":"04d"},{"time":2707469200,"temperature":15.78,"icon":"04d"},{"time":2707480000,"temperature":15.43,"icon":"04n"},{"time":2707490800,"temperature":14.65,"icon":"04n"},{"time":2707501600,"temperature":14.58,"icon":"04n"},{"time":2707512400,"temperature":14.5,"icon":"04n"},{"time":2707523200,"temperature":14.58,"icon":"04d"},{"time":2707534000,"temperature":16.59,"icon":"04d"},{"time":2707544800,"temperature":20.33,"icon":"04d"},{"time":2707555600,"temperature":21.21,"icon":"04d"},{"time":2707566400,"temperature":19.76,"icon":"04n"},{"time":2707577200,"temperature":19.39,"icon":"04n"},{"time":2707588000,"temperature":17.34,"icon":"04n"},{"time":2707598800,"temperature":15.99,"icon":"01n"},{"time":2707609600,"temperature":15.62,"icon":"01d"},{"time":2707620400,"temperature":20.41,"icon":"01d"},{"time":2707631200,"temperature":23.48,"icon":"01d"},{"time":2707642000,"temperature":24.28,"icon":"01d"},{"time":2707652800,"temperature":21.3,"icon":"01n"}]}'
-      );
+      return {
+        now: {
+          temperature: 14.9,
+          text: "Nhiều mây",
+          icon: 38,
+          accuUpdate: 1707498480,
+          windSpeed: 3.9722222222222223,
+          temperaturePast24: {
+            min: 12.1,
+            max: 16.7,
+          },
+          city: "Hoàn Kiếm",
+          locationKey: "425226",
+        },
+        forecast: [
+          {
+            time: 2707501600,
+            temperature: 15.03,
+            icon: "02n",
+          },
+          {
+            time: 2707512400,
+            temperature: 14.61,
+            icon: "03n",
+          },
+          {
+            time: 2707523200,
+            temperature: 14.16,
+            icon: "03d",
+          },
+          {
+            time: 2707534000,
+            temperature: 18.87,
+            icon: "04d",
+          },
+          {
+            time: 2707544800,
+            temperature: 21.89,
+            icon: "03d",
+          },
+          {
+            time: 2707555600,
+            temperature: 22.14,
+            icon: "03d",
+          },
+          {
+            time: 2707566400,
+            temperature: 20.62,
+            icon: "03n",
+          },
+          {
+            time: 2707577200,
+            temperature: 19.59,
+            icon: "04n",
+          },
+          {
+            time: 2707588000,
+            temperature: 16.63,
+            icon: "03n",
+          },
+          {
+            time: 2707598800,
+            temperature: 15.73,
+            icon: "01n",
+          },
+          {
+            time: 2707609600,
+            temperature: 15.58,
+            icon: "01d",
+          },
+          {
+            time: 2707620400,
+            temperature: 20.51,
+            icon: "04d",
+          },
+          {
+            time: 2707631200,
+            temperature: 23.63,
+            icon: "04d",
+          },
+          {
+            time: 2707642000,
+            temperature: 24.25,
+            icon: "02d",
+          },
+          {
+            time: 2707652800,
+            temperature: 21.24,
+            icon: "01n",
+          },
+          {
+            time: 2707663600,
+            temperature: 18.34,
+            icon: "02n",
+          },
+          {
+            time: 2707674400,
+            temperature: 17.11,
+            icon: "02n",
+          },
+          {
+            time: 2707685200,
+            temperature: 16.13,
+            icon: "01n",
+          },
+          {
+            time: 2707696000,
+            temperature: 16.01,
+            icon: "02d",
+          },
+          {
+            time: 2707706800,
+            temperature: 20.7,
+            icon: "03d",
+          },
+          {
+            time: 2707717600,
+            temperature: 22.43,
+            icon: "04d",
+          },
+          {
+            time: 2707728400,
+            temperature: 21.48,
+            icon: "04d",
+          },
+          {
+            time: 2707739200,
+            temperature: 19.87,
+            icon: "04n",
+          },
+          {
+            time: 2707750000,
+            temperature: 18.29,
+            icon: "03n",
+          },
+          {
+            time: 2707760800,
+            temperature: 17.49,
+            icon: "03n",
+          },
+          {
+            time: 2707771600,
+            temperature: 16.94,
+            icon: "04n",
+          },
+          {
+            time: 2707782400,
+            temperature: 16.94,
+            icon: "04d",
+          },
+          {
+            time: 2707793200,
+            temperature: 19.39,
+            icon: "04d",
+          },
+          {
+            time: 2707804000,
+            temperature: 22.65,
+            icon: "04d",
+          },
+          {
+            time: 2707814800,
+            temperature: 22.2,
+            icon: "04d",
+          },
+          {
+            time: 2707825600,
+            temperature: 20.5,
+            icon: "04n",
+          },
+          {
+            time: 2707836400,
+            temperature: 19.45,
+            icon: "04n",
+          },
+          {
+            time: 2707847200,
+            temperature: 19.09,
+            icon: "04n",
+          },
+          {
+            time: 2707858000,
+            temperature: 18.86,
+            icon: "10n",
+          },
+          {
+            time: 2707868800,
+            temperature: 18.92,
+            icon: "04d",
+          },
+          {
+            time: 2707879600,
+            temperature: 22.44,
+            icon: "10d",
+          },
+          {
+            time: 2707890400,
+            temperature: 24.64,
+            icon: "04d",
+          },
+          {
+            time: 2707901200,
+            temperature: 25.97,
+            icon: "04d",
+          },
+          {
+            time: 2707912000,
+            temperature: 22.46,
+            icon: "04n",
+          },
+          {
+            time: 2707922800,
+            temperature: 20.58,
+            icon: "04n",
+          },
+        ],
+      };
   }
   try {
-    // let a = (new Date().getTime() / 10000).toFixed(0), b;
-    // b = Number(((Math.sqrt(a) + Math.sin(a) * Math.cos(a)) / Math.tan(a)).toFixed(0)) + 21112004;
     (function (_0x1c18eb, _0x59d424) {
       const _0x5e71dc = _0x1e4f,
         _0x2a058c = _0x1c18eb();
@@ -403,7 +615,7 @@ function updateWeather(name, value) {
 function updateDoThi(value) {
   let temperatureMin = value.temperature[0],
     temperatureMax = value.temperature[0],
-    point = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    point;
   value.temperature.forEach((v) => {
     if (temperatureMin > v) temperatureMin = v;
     if (temperatureMax < v) temperatureMax = v;
@@ -455,99 +667,62 @@ function updateDoThi(value) {
   textBieuDo.children[6].innerHTML = value.temperature[7].toFixed(1);
   textBieuDo.children[7].innerHTML = value.temperature[8].toFixed(1);
   textBieuDo.children[8].innerHTML = value.temperature[9].toFixed(1);
-  // 93 - 300
-  point[0] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[0]) /
-          (temperatureMax - temperatureMin));
-  point[1] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[1]) /
-          (temperatureMax - temperatureMin));
-  point[2] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[2]) /
-          (temperatureMax - temperatureMin));
-  point[3] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[3]) /
-          (temperatureMax - temperatureMin));
-  point[4] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[4]) /
-          (temperatureMax - temperatureMin));
-  point[5] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[5]) /
-          (temperatureMax - temperatureMin));
-  point[6] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[6]) /
-          (temperatureMax - temperatureMin));
-  point[7] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[7]) /
-          (temperatureMax - temperatureMin));
-  point[8] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[8]) /
-          (temperatureMax - temperatureMin));
-  point[9] =
-    300 -
-    207 *
-      (1 -
-        (temperatureMax - value.temperature[9]) /
-          (temperatureMax - temperatureMin));
-  dotBieuDo.children[0].setAttribute("cy", point[0]);
-  dotBieuDo.children[1].setAttribute("cy", point[1]);
-  dotBieuDo.children[2].setAttribute("cy", point[2]);
-  dotBieuDo.children[3].setAttribute("cy", point[3]);
-  dotBieuDo.children[4].setAttribute("cy", point[4]);
-  dotBieuDo.children[5].setAttribute("cy", point[5]);
-  dotBieuDo.children[6].setAttribute("cy", point[6]);
-  dotBieuDo.children[7].setAttribute("cy", point[7]);
-  dotBieuDo.children[8].setAttribute("cy", point[8]);
-  dotBieuDo.children[9].setAttribute("cy", point[9]);
-  textBieuDo.children[0].setAttribute("y", point[1] - 50);
-  textBieuDo.children[1].setAttribute("y", point[2] - 50);
-  textBieuDo.children[2].setAttribute("y", point[3] - 50);
-  textBieuDo.children[3].setAttribute("y", point[4] - 50);
-  textBieuDo.children[4].setAttribute("y", point[5] - 50);
-  textBieuDo.children[5].setAttribute("y", point[6] - 50);
-  textBieuDo.children[6].setAttribute("y", point[7] - 50);
-  textBieuDo.children[7].setAttribute("y", point[8] - 50);
-  textBieuDo.children[8].setAttribute("y", point[9] - 50);
-  iconsBieuDo.children[0].setAttribute("y", point[1] - 15);
-  iconsBieuDo.children[1].setAttribute("y", point[2] - 15);
-  iconsBieuDo.children[2].setAttribute("y", point[3] - 15);
-  iconsBieuDo.children[3].setAttribute("y", point[4] - 15);
-  iconsBieuDo.children[4].setAttribute("y", point[5] - 15);
-  iconsBieuDo.children[5].setAttribute("y", point[6] - 15);
-  iconsBieuDo.children[6].setAttribute("y", point[7] - 15);
-  iconsBieuDo.children[7].setAttribute("y", point[8] - 15);
-  iconsBieuDo.children[8].setAttribute("y", point[9] - 15);
-  lineDoThi.setAttribute(
-    "d",
-    `M 0 ${point[0]} L 93 ${point[1]} L 187.5 ${point[2]} L 282 ${point[3]} L 376 ${point[4]} L 470 ${point[5]} L 563 ${point[6]} L 658 ${point[7]} L 749 ${point[8]} L 844 ${point[9]}`
-  );
+  point = [[0], [93], [187.5], [282], [376], [470], [563], [658], [749], [844]];
+  value.temperature.forEach((c, i) => {
+    point[i][1] =
+      300 -
+      207 * (1 - (temperatureMax - c) / (temperatureMax - temperatureMin));
+  });
+  let smoothCommand = (smoothing) => (_, i, a) => {
+    const pStart = a[i - 1];
+    const pEnd = a[i];
+
+    const pPrev = a[i - 2] || pStart;
+    const pNext = a[i + 1] || pEnd;
+
+    const Vec2 = {
+      add([ax, ay], [bx, by]) {
+        return [ax + bx, ay + by];
+      },
+      sub([ax, ay], [bx, by]) {
+        return [ax - bx, ay - by];
+      },
+      scale(s, [x, y]) {
+        return [s * x, s * y];
+      },
+    };
+    // start control point
+    const [cpsX, cpsY] = Vec2.add(
+      pStart,
+      Vec2.scale(smoothing, Vec2.sub(pEnd, pPrev))
+    );
+    // end control point
+    const [cpeX, cpeY] = Vec2.add(
+      pEnd,
+      Vec2.scale(smoothing, Vec2.sub(pStart, pNext))
+    );
+    return `C ${cpsX} ${cpsY} ${cpeX} ${cpeY} ${pEnd[0]} ${pEnd[1]}`;
+  };
+  svgPathD = (points, command) =>
+    points.reduce(
+      (acc, point, i, a) =>
+        i === 0
+          ? // if first point
+            `M ${point[0]} ${point[1]}`
+          : // else
+            `${acc} ${command(point, i, a)}`,
+      ""
+    );
+  // console.log(svgPathD(point, smoothCommand(.1)));
+  lineDoThi.setAttribute("d", `${svgPathD(point, smoothCommand(0.15))}`);
+  point.forEach((c, i) => {
+    dotBieuDo.children[i].setAttribute("cy", c[1]);
+    if (i < 9) {
+      textBieuDo.children[i].setAttribute("y", point[i + 1][1] - 50);
+      iconsBieuDo.children[i].setAttribute("y", point[i + 1][1] - 15);
+    }
+  });
+
   temperatureMin = 0;
   value.icons.forEach((v) => {
     if (v >= 1 && v <= 44) {
@@ -806,7 +981,11 @@ function main() {
     lat = false,
     lon = false,
     calling = true,
-    fr = 0;
+    fr = 0,
+    oldLunarMonth,
+    newLunarMonth,
+    oldLunarYear,
+    newLunarYear;
   resize(window.innerWidth, window.innerHeight);
   window.addEventListener("resize", () => {
     resize(window.innerWidth, window.innerHeight);
@@ -950,7 +1129,9 @@ function main() {
             if (oldDate != newDate) {
               oldDate = newDate;
               newMonth = time.getMonth() + 1;
-              updateTime("ngayAm", getLunar(newDate, newMonth, newYear, 7)[0]);
+              let lunar = getLunar(newDate, newMonth, newYear, 7);
+              newLunarMonth = lunar[1];
+              updateTime("ngayAm", lunar[0]);
               updateTime("ngayDuong", newDate);
               updateTime("thu", time.getDay() + 1);
               soNgayAmTrongThang =
@@ -968,19 +1149,33 @@ function main() {
                   ),
                   7
                 );
+              if (oldLunarMonth != newLunarMonth) {
+                oldLunarMonth = newLunarMonth;
+                newLunarYear = lunar[2];
+                if (newLunarMonth < 4) updateSeason("spring");
+                else if (newLunarMonth >= 4 && newLunarMonth < 7)
+                  updateSeason("summer");
+                else if (newLunarMonth >= 7 && newLunarMonth < 10)
+                  updateSeason("autumn");
+                else updateSeason("winter");
+                updateTime("thangAm", newLunarMonth);
+                if (oldLunarYear != newLunarYear) {
+                  oldLunarYear = newLunarYear;
+                  if (newYear == newLunarYear) {
+                    namAm.style.display = "none";
+                  } else {
+                    namAm.style.display = "inline";
+                    updateTime("namAm", newLunarYear);
+                    if (lunar[3]) namAm.style.textDecoration = "underline";
+                  }
+                }
+              }
               if (oldMonth != newMonth) {
                 oldMonth = newMonth;
                 newYear = time.getFullYear();
-                let lunarMonth = getLunar(newDate, newMonth, newYear, 7)[1];
-                if (lunarMonth < 4) updateSeason("spring");
-                else if (lunarMonth >= 4 && lunarMonth < 7)
-                  updateSeason("summer");
-                else if (lunarMonth >= 7 && lunarMonth < 10)
-                  updateSeason("autumn");
-                else updateSeason("winter");
-                updateTime("thangAm", lunarMonth);
                 updateTime("thangDuong", newMonth);
                 if (oldYear != newYear) {
+                  oldYear = newYear;
                   if (
                     (newYear.toString().slice(-2) == "00" &&
                       newYear % 400 == 0) ||
@@ -988,7 +1183,6 @@ function main() {
                   )
                     namDuong.style.textDecoration = "underline";
                   else namDuong.style.textDecoration = "none";
-                  oldYear = newYear;
                   if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
                     namAm.style.display = "none";
                     updateTime("namDuong", newYear);
