@@ -66,7 +66,10 @@ let tuyetRoi = window.document.querySelectorAll(".tuyet"),
   arrowThangAm = window.document.querySelector(
     "html body .main .contents .time .date .ngayThang .progressbar .thangAm"
   ),
-  randomFlowerDom = window.document.querySelector(
+  randomFlowerDom = window.document.querySelectorAll(
+    "html body .main .contents .weather .randomFlower svg"
+  ),
+  randomFlowerWidthHeight = window.document.querySelector(
     "html body .main .contents .weather .randomFlower"
   ),
   temperatureLineDom = window.document.querySelector(
@@ -141,6 +144,7 @@ async function getIp() {
       });
       ip = await response.json();
     } catch (error) {
+      alert("Lấy ip thất bại!");
       console.log(error);
     }
     return ip.ip;
@@ -165,218 +169,218 @@ async function callNetlify(lat, lon, locationKey, ip) {
     } else
       return {
         now: {
-          temperature: 14.9,
+          temperature: 18.7,
           text: "Nhiều mây",
-          icon: 38,
-          accuUpdate: 1707498480,
-          windSpeed: 3.9722222222222223,
+          icon: 6,
+          accuUpdate: 1707539520,
+          windSpeed: 4.388888888888889,
           temperaturePast24: {
-            min: 12.1,
-            max: 16.7,
+            min: 14,
+            max: 18.7,
           },
           city: "Hoàn Kiếm",
           locationKey: "425226",
         },
         forecast: [
           {
-            time: 2707501600,
-            temperature: 15.03,
-            icon: "02n",
-          },
-          {
-            time: 2707512400,
-            temperature: 14.61,
-            icon: "03n",
-          },
-          {
-            time: 2707523200,
-            temperature: 14.16,
-            icon: "03d",
-          },
-          {
-            time: 2707534000,
-            temperature: 18.87,
+            time: 2707544800,
+            temperature: 19.03,
             icon: "04d",
           },
           {
-            time: 2707544800,
-            temperature: 21.89,
-            icon: "03d",
-          },
-          {
             time: 2707555600,
-            temperature: 22.14,
-            icon: "03d",
+            temperature: 19.93,
+            icon: "04d",
           },
           {
             time: 2707566400,
-            temperature: 20.62,
-            icon: "03n",
+            temperature: 19.98,
+            icon: "04n",
           },
           {
             time: 2707577200,
-            temperature: 19.59,
+            temperature: 18.29,
             icon: "04n",
           },
           {
             time: 2707588000,
-            temperature: 16.63,
+            temperature: 16.74,
             icon: "03n",
           },
           {
             time: 2707598800,
-            temperature: 15.73,
+            temperature: 15.6,
             icon: "01n",
           },
           {
             time: 2707609600,
-            temperature: 15.58,
+            temperature: 15.3,
             icon: "01d",
           },
           {
             time: 2707620400,
-            temperature: 20.51,
-            icon: "04d",
+            temperature: 20.18,
+            icon: "03d",
           },
           {
             time: 2707631200,
-            temperature: 23.63,
+            temperature: 23.42,
             icon: "04d",
           },
           {
             time: 2707642000,
-            temperature: 24.25,
-            icon: "02d",
+            temperature: 24.12,
+            icon: "03d",
           },
           {
             time: 2707652800,
-            temperature: 21.24,
-            icon: "01n",
+            temperature: 20.89,
+            icon: "02n",
           },
           {
             time: 2707663600,
-            temperature: 18.34,
+            temperature: 18.35,
             icon: "02n",
           },
           {
             time: 2707674400,
-            temperature: 17.11,
-            icon: "02n",
+            temperature: 17.14,
+            icon: "03n",
           },
           {
             time: 2707685200,
-            temperature: 16.13,
+            temperature: 16.12,
             icon: "01n",
           },
           {
             time: 2707696000,
-            temperature: 16.01,
-            icon: "02d",
+            temperature: 16.06,
+            icon: "01d",
           },
           {
             time: 2707706800,
-            temperature: 20.7,
-            icon: "03d",
+            temperature: 20.71,
+            icon: "01d",
           },
           {
             time: 2707717600,
-            temperature: 22.43,
+            temperature: 21.67,
             icon: "04d",
           },
           {
             time: 2707728400,
-            temperature: 21.48,
+            temperature: 21.6,
             icon: "04d",
           },
           {
             time: 2707739200,
-            temperature: 19.87,
+            temperature: 20.07,
             icon: "04n",
           },
           {
             time: 2707750000,
-            temperature: 18.29,
+            temperature: 18.17,
             icon: "03n",
           },
           {
             time: 2707760800,
-            temperature: 17.49,
-            icon: "03n",
-          },
-          {
-            time: 2707771600,
-            temperature: 16.94,
+            temperature: 17.51,
             icon: "04n",
           },
           {
+            time: 2707771600,
+            temperature: 16.8,
+            icon: "03n",
+          },
+          {
             time: 2707782400,
-            temperature: 16.94,
+            temperature: 16.88,
             icon: "04d",
           },
           {
             time: 2707793200,
-            temperature: 19.39,
+            temperature: 21.48,
             icon: "04d",
           },
           {
             time: 2707804000,
-            temperature: 22.65,
+            temperature: 22.45,
             icon: "04d",
           },
           {
             time: 2707814800,
-            temperature: 22.2,
-            icon: "04d",
+            temperature: 23.9,
+            icon: "10d",
           },
           {
             time: 2707825600,
-            temperature: 20.5,
+            temperature: 20.67,
             icon: "04n",
           },
           {
             time: 2707836400,
-            temperature: 19.45,
+            temperature: 19.68,
             icon: "04n",
           },
           {
             time: 2707847200,
-            temperature: 19.09,
+            temperature: 18.78,
             icon: "04n",
           },
           {
             time: 2707858000,
-            temperature: 18.86,
+            temperature: 19.1,
             icon: "10n",
           },
           {
             time: 2707868800,
-            temperature: 18.92,
-            icon: "04d",
+            temperature: 19.32,
+            icon: "10d",
           },
           {
             time: 2707879600,
-            temperature: 22.44,
+            temperature: 23.23,
             icon: "10d",
           },
           {
             time: 2707890400,
-            temperature: 24.64,
-            icon: "04d",
+            temperature: 24.79,
+            icon: "10d",
           },
           {
             time: 2707901200,
-            temperature: 25.97,
+            temperature: 24.5,
             icon: "04d",
           },
           {
             time: 2707912000,
-            temperature: 22.46,
+            temperature: 22.28,
             icon: "04n",
           },
           {
             time: 2707922800,
-            temperature: 20.58,
+            temperature: 20.62,
             icon: "04n",
+          },
+          {
+            time: 2707933600,
+            temperature: 20.78,
+            icon: "04n",
+          },
+          {
+            time: 2707944400,
+            temperature: 20.48,
+            icon: "10n",
+          },
+          {
+            time: 2707955200,
+            temperature: 20.4,
+            icon: "10d",
+          },
+          {
+            time: 2707966000,
+            temperature: 21.47,
+            icon: "04d",
           },
         ],
       };
@@ -464,6 +468,7 @@ async function callNetlify(lat, lon, locationKey, ip) {
     });
     data = await response.json();
   } catch (error) {
+    alert("Lấy dữ liệu thời tiết thất bại");
     console.log(error);
   }
   return data;
@@ -615,7 +620,18 @@ function updateWeather(name, value) {
 function updateDoThi(value) {
   let temperatureMin = value.temperature[0],
     temperatureMax = value.temperature[0],
-    point;
+    point = [
+      [0],
+      [93],
+      [187.5],
+      [282],
+      [376],
+      [470],
+      [563],
+      [658],
+      [749],
+      [844],
+    ];
   value.temperature.forEach((v) => {
     if (temperatureMin > v) temperatureMin = v;
     if (temperatureMax < v) temperatureMax = v;
@@ -630,90 +646,80 @@ function updateDoThi(value) {
     temperatureMin +
     (temperatureMax - temperatureMin) * (1 / 3)
   ).toFixed(1)} -`;
-
-  duoiDom.children[2].innerHTML = `${add0(
-    new Date(value.times[0] * 1000).getHours()
-  )}:${add0(new Date(value.times[0] * 1000).getMinutes())}`;
-  duoiDom.children[3].innerHTML = `${add0(
-    new Date(value.times[1] * 1000).getHours()
-  )}:${add0(new Date(value.times[1] * 1000).getMinutes())}`;
-  duoiDom.children[4].innerHTML = `${add0(
-    new Date(value.times[2] * 1000).getHours()
-  )}:${add0(new Date(value.times[2] * 1000).getMinutes())}`;
-  duoiDom.children[5].innerHTML = `${add0(
-    new Date(value.times[3] * 1000).getHours()
-  )}:${add0(new Date(value.times[3] * 1000).getMinutes())}`;
-  duoiDom.children[6].innerHTML = `${add0(
-    new Date(value.times[4] * 1000).getHours()
-  )}:${add0(new Date(value.times[4] * 1000).getMinutes())}`;
-  duoiDom.children[7].innerHTML = `${add0(
-    new Date(value.times[5] * 1000).getHours()
-  )}:${add0(new Date(value.times[5] * 1000).getMinutes())}`;
-  duoiDom.children[8].innerHTML = `${add0(
-    new Date(value.times[6] * 1000).getHours()
-  )}:${add0(new Date(value.times[6] * 1000).getMinutes())}`;
-  duoiDom.children[9].innerHTML = `${add0(
-    new Date(value.times[7] * 1000).getHours()
-  )}:${add0(new Date(value.times[7] * 1000).getMinutes())}`;
-  duoiDom.children[10].innerHTML = `${add0(
-    new Date(value.times[8] * 1000).getHours()
-  )}:${add0(new Date(value.times[8] * 1000).getMinutes())}`;
-  textBieuDo.children[0].innerHTML = value.temperature[1].toFixed(1);
-  textBieuDo.children[1].innerHTML = value.temperature[2].toFixed(1);
-  textBieuDo.children[2].innerHTML = value.temperature[3].toFixed(1);
-  textBieuDo.children[3].innerHTML = value.temperature[4].toFixed(1);
-  textBieuDo.children[4].innerHTML = value.temperature[5].toFixed(1);
-  textBieuDo.children[5].innerHTML = value.temperature[6].toFixed(1);
-  textBieuDo.children[6].innerHTML = value.temperature[7].toFixed(1);
-  textBieuDo.children[7].innerHTML = value.temperature[8].toFixed(1);
-  textBieuDo.children[8].innerHTML = value.temperature[9].toFixed(1);
-  point = [[0], [93], [187.5], [282], [376], [470], [563], [658], [749], [844]];
+  value.times.forEach((c, i) => {
+    duoiDom.children[i + 2].innerHTML = `${add0(
+      new Date(c * 1000).getHours()
+    )}:${add0(new Date(c * 1000).getMinutes())}`;
+  });
+  value.temperature.forEach((c, i) => {
+    if (i > 0) {
+      textBieuDo.children[i - 1].innerHTML = c.toFixed(1);
+    }
+  });
   value.temperature.forEach((c, i) => {
     point[i][1] =
       300 -
       207 * (1 - (temperatureMax - c) / (temperatureMax - temperatureMin));
   });
+
+  // \/ \/ \/ Source code: https://observablehq.com/@ndry/smooth-a-svg-path-with-cubic-bezier-curves?fbclid=IwAR2gTBlj3DxcpIWhIonDRAn2ZTJJUEejW6di55OXQVzPpnYZ0ZglkhcrIC0
+
+  // Create the bezier curve command
+  // I:  - point (array) [x,y]: current point coordinates
+  //     - i (integer): index of 'point' in the array 'a'
+  //     - a (array): complete array of points coordinates
+  // O:  - (string) 'C x2,y2 x1,y1 x,y': SVG cubic bezier C command
   let smoothCommand = (smoothing) => (_, i, a) => {
-    const pStart = a[i - 1];
-    const pEnd = a[i];
+      const pStart = a[i - 1];
+      const pEnd = a[i];
 
-    const pPrev = a[i - 2] || pStart;
-    const pNext = a[i + 1] || pEnd;
+      const pPrev = a[i - 2] || pStart;
+      const pNext = a[i + 1] || pEnd;
 
-    const Vec2 = {
-      add([ax, ay], [bx, by]) {
-        return [ax + bx, ay + by];
-      },
-      sub([ax, ay], [bx, by]) {
-        return [ax - bx, ay - by];
-      },
-      scale(s, [x, y]) {
-        return [s * x, s * y];
-      },
-    };
-    // start control point
-    const [cpsX, cpsY] = Vec2.add(
-      pStart,
-      Vec2.scale(smoothing, Vec2.sub(pEnd, pPrev))
-    );
-    // end control point
-    const [cpeX, cpeY] = Vec2.add(
-      pEnd,
-      Vec2.scale(smoothing, Vec2.sub(pStart, pNext))
-    );
-    return `C ${cpsX} ${cpsY} ${cpeX} ${cpeY} ${pEnd[0]} ${pEnd[1]}`;
-  };
-  svgPathD = (points, command) =>
-    points.reduce(
-      (acc, point, i, a) =>
-        i === 0
-          ? // if first point
-            `M ${point[0]} ${point[1]}`
-          : // else
-            `${acc} ${command(point, i, a)}`,
-      ""
-    );
-  // console.log(svgPathD(point, smoothCommand(.1)));
+      const Vec2 = {
+        add([ax, ay], [bx, by]) {
+          return [ax + bx, ay + by];
+        },
+        sub([ax, ay], [bx, by]) {
+          return [ax - bx, ay - by];
+        },
+        scale(s, [x, y]) {
+          return [s * x, s * y];
+        },
+      };
+      // start control point
+      const [cpsX, cpsY] = Vec2.add(
+        pStart,
+        Vec2.scale(smoothing, Vec2.sub(pEnd, pPrev))
+      );
+      // end control point
+      const [cpeX, cpeY] = Vec2.add(
+        pEnd,
+        Vec2.scale(smoothing, Vec2.sub(pStart, pNext))
+      );
+      return `C ${cpsX} ${cpsY} ${cpeX} ${cpeY} ${pEnd[0]} ${pEnd[1]}`;
+    },
+    // Render the svg <path> element
+    // I:  - points (array): points coordinates
+    //     - command (function)
+    //       I:  - point (array) [x,y]: current point coordinates
+    //           - i (integer): index of 'point' in the array 'a'
+    //           - a (array): complete array of points coordinates
+    //       O:  - (string) a svg path command
+    // O:  - (string): a Svg <path> element's 'd' attribute
+    svgPathD = (points, command) =>
+      points.reduce(
+        (acc, point, i, a) =>
+          i === 0
+            ? // if first point
+              `M ${point[0]} ${point[1]}`
+            : // else
+              `${acc} ${command(point, i, a)}`,
+        ""
+      );
+
+  // /\ /\ /\ Source code: https://observablehq.com/@ndry/smooth-a-svg-path-with-cubic-bezier-curves?fbclid=IwAR2gTBlj3DxcpIWhIonDRAn2ZTJJUEejW6di55OXQVzPpnYZ0ZglkhcrIC0
+
   lineDoThi.setAttribute("d", `${svgPathD(point, smoothCommand(0.15))}`);
   point.forEach((c, i) => {
     dotBieuDo.children[i].setAttribute("cy", c[1]);
@@ -909,16 +915,20 @@ function pushWeather(w) {
   ]);
   updateWeather("icon", w.now.icon);
   updateWeather("trangThai", w.now.text);
-  let forecast = [];
-  for (let i = 0, q = 8; i < w.forecast.length && q >= 0; ++i, --q) {
-    if (w.forecast[i].time * 1000 > Date.now()) {
+  let forecast = [],
+    q = 8;
+  w.forecast.every((c) => {
+    if (c.time * 1000 > Date.now()) {
       forecast[forecast.length] = {
-        temperature: Number(w.forecast[i].temperature.toFixed(1)),
-        icon: w.forecast[i].icon,
-        time: w.forecast[i].time,
+        temperature: Number(c.temperature.toFixed(1)),
+        icon: c.icon,
+        time: c.time,
       };
+      --q;
     }
-  }
+    if (q >= 0) return true;
+    else return false;
+  });
   updateDoThi({
     temperature: [
       w.now.temperature,
@@ -976,7 +986,6 @@ function main() {
     newDate,
     newMonth,
     newYear,
-    numberOfFlower = randomFlowerDom.childElementCount,
     ip = false,
     lat = false,
     lon = false,
@@ -1005,18 +1014,13 @@ function main() {
     }
   });
   if (lkAnim) lkAnim.setAttribute("animplay", "");
-  while (numberOfFlower > 0) {
-    randomFlowerDom.children[numberOfFlower - 1].style.top = `${
-      Math.random() * randomFlowerDom.offsetHeight
-    }rem`;
-    randomFlowerDom.children[numberOfFlower - 1].style.left = `${
-      Math.random() * randomFlowerDom.offsetWidth
-    }rem`;
-    randomFlowerDom.children[numberOfFlower - 1].style.transform = `rotate(${
+  randomFlowerDom.forEach((c) => {
+    c.style.top = `${Math.random() * randomFlowerWidthHeight.offsetHeight}rem`;
+    c.style.left = `${Math.random() * randomFlowerWidthHeight.offsetWidth}rem`;
+    c.style.transform = `rotate(${
       Math.random() * 360
     }deg) scale(var(--scaleRandomSvg))`;
-    --numberOfFlower;
-  }
+  });
 
   time = new Date();
   newDate = time.getDate();
@@ -1035,18 +1039,25 @@ function main() {
       7
     );
   if (navigator.geolocation)
-    navigator.geolocation.getCurrentPosition((v) => {
-      lat = v.coords.latitude;
-      lon = v.coords.longitude;
-      getIp().then((v) => {
-        ip = v;
-        callNetlify(lat, lon, locationKey, ip).then((w) => {
-          pushWeather(w);
-          calling = false;
+    navigator.geolocation.getCurrentPosition(
+      (v) => {
+        lat = v.coords.latitude;
+        lon = v.coords.longitude;
+        getIp().then((v) => {
+          ip = v;
+          callNetlify(lat, lon, locationKey, ip).then((w) => {
+            pushWeather(w);
+            calling = false;
+          });
         });
-      });
-    });
-  else alert("Geolocation is not supported by this browser.");
+      },
+      () => {
+        alert(
+          "Bạn đã từ chối chia sẻ vị trí của mình. Nếu bạn thay đổi ý định, hãy vào cài đặt trang web và chọn cho phép."
+        );
+      }
+    );
+  else alert("Trình duyệt của bạn không hỗ trợ định vị.");
   function raf() {
     if (fr > cfr) {
       fr = 0;
