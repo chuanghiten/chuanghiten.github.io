@@ -92,7 +92,7 @@ exports.handler = async (event) => {
   // console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
   if (
     a(new Date().getTime()) &&
-    (event.headers.referer.includes("chuanghiten.github.io") || true)
+    event.headers.referer.includes("chuanghiten.github.io")
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
@@ -133,7 +133,11 @@ exports.handler = async (event) => {
       numberOfKey = 0,
       response,
       city;
-    while ((locationKey == "undefined" || lat == "undefined") && !weatherData && numberOfKey < accuLength) {
+    while (
+      (locationKey == "undefined" || lat == "undefined") &&
+      !weatherData &&
+      numberOfKey < accuLength
+    ) {
       try {
         weatherData = await axios.get(
           `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
