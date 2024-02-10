@@ -96,10 +96,10 @@ exports.handler = async (event) => {
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
-        process.env.ACCU1,
+        process.env.ACCU4,
         process.env.ACCU2,
         process.env.ACCU3,
-        process.env.ACCU4,
+        process.env.ACCU1,
         process.env.ACCU5,
         process.env.ACCU6,
         process.env.ACCU7,
@@ -133,7 +133,7 @@ exports.handler = async (event) => {
       numberOfKey = 0,
       response,
       city;
-    while ((!locationKey || lat == "undefined") && !weatherData && numberOfKey < accuLength) {
+    while ((locationKey == "undefined" || lat == "undefined") && !weatherData && numberOfKey < accuLength) {
       try {
         weatherData = await axios.get(
           `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
