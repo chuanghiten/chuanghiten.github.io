@@ -92,23 +92,18 @@ exports.handler = async (event) => {
   // console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
   if (
     a(new Date().getTime()) &&
-    event.headers.referer.includes("chuanghiten.github.io")
+    (event.headers.referer.includes("chuanghiten.github.io") ||
+      event.headers.referer.includes("chuanghiten.netlify.app"))
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
-        process.env.ACCU4,
+        process.env.ACCU1,
         process.env.ACCU2,
         process.env.ACCU3,
-        process.env.ACCU1,
+        process.env.ACCU4,
         process.env.ACCU5,
         process.env.ACCU6,
         process.env.ACCU7,
-        process.env.ACCU8,
-        process.env.ACCU9,
-        process.env.ACCU10,
-        process.env.ACCU11,
-        process.env.ACCU12,
-        process.env.ACCU13,
       ],
       openKey = [
         process.env.OPEN1,
@@ -118,11 +113,6 @@ exports.handler = async (event) => {
         process.env.OPEN5,
         process.env.OPEN6,
         process.env.OPEN7,
-        process.env.OPEN8,
-        process.env.OPEN9,
-        process.env.OPEN10,
-        process.env.OPEN11,
-        process.env.OPEN12,
       ];
     const accuLength = accuKey.length,
       openLength = openKey.length;
@@ -130,6 +120,8 @@ exports.handler = async (event) => {
       locationKey = event.queryStringParameters.locationKey,
       lat = event.queryStringParameters.lat,
       lon = event.queryStringParameters.lon,
+      ac = event.queryStringParameters.ac,
+      op = event.queryStringParameters.op,
       numberOfKey = 0,
       response,
       city;
@@ -138,21 +130,26 @@ exports.handler = async (event) => {
       !weatherData &&
       numberOfKey < accuLength
     ) {
-      try {
-        weatherData = await axios.get(
-          `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Accept-Encoding": "identity",
-            },
-            params: { trophies: true },
-          }
-        );
-      } catch {
-        weatherData = false;
-        ++numberOfKey;
-      }
+      if (ac[numberOfKey] == "1") {
+        try {
+          weatherData = await axios.get(
+            `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
+            {
+              headers: {
+                Accept: "application/json",
+                "Accept-Encoding": "identity",
+              },
+              params: { trophies: true },
+            }
+          );
+        } catch {
+          weatherData = false;
+          ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
+            numberOfKey + 1
+          )}`;
+          ++numberOfKey;
+        }
+      } else ++numberOfKey;
     }
     if (weatherData) {
       locationKey = weatherData.data.Key;
@@ -165,21 +162,26 @@ exports.handler = async (event) => {
     weatherData = false;
     numberOfKey = 0;
     while (!weatherData && numberOfKey < accuLength && locationKey) {
-      try {
-        weatherData = await axios.get(
-          `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${accuKey[numberOfKey]}&language=vi&details=true`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Accept-Encoding": "identity",
-            },
-            params: { trophies: true },
-          }
-        );
-      } catch {
-        weatherData = false;
-        ++numberOfKey;
-      }
+      if (ac[numberOfKey] == "1") {
+        try {
+          weatherData = await axios.get(
+            `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${accuKey[numberOfKey]}&language=vi&details=true`,
+            {
+              headers: {
+                Accept: "application/json",
+                "Accept-Encoding": "identity",
+              },
+              params: { trophies: true },
+            }
+          );
+        } catch {
+          weatherData = false;
+          ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
+            numberOfKey + 1
+          )}`;
+          ++numberOfKey;
+        }
+      } else ++numberOfKey;
     }
     if (weatherData)
       response = {
@@ -195,28 +197,30 @@ exports.handler = async (event) => {
             .Metric.Value,
         },
         city: city,
-        locationKey: locationKey,
-        latitude: lat,
-        longitude: lon,
       };
     else {
       numberOfKey = 0;
-      while (!weatherData && numberOfKey < openLength) {
-        try {
-          weatherData = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openKey[numberOfKey]}&units=metric&lang=vi`,
-            {
-              headers: {
-                Accept: "application/json",
-                "Accept-Encoding": "identity",
-              },
-              params: { trophies: true },
-            }
-          );
-        } catch {
-          weatherData = false;
-          ++numberOfKey;
-        }
+      while (!weatherData && numberOfKey < openLength && lat) {
+        if (op[numberOfKey] == "1") {
+          try {
+            weatherData = await axios.get(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openKey[numberOfKey]}&units=metric&lang=vi`,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "Accept-Encoding": "identity",
+                },
+                params: { trophies: true },
+              }
+            );
+          } catch {
+            weatherData = false;
+            op = `${op.substring(0, numberOfKey)}0${op.substring(
+              numberOfKey + 1
+            )}`;
+            ++numberOfKey;
+          }
+        } else ++numberOfKey;
       }
       if (weatherData)
         response = {
@@ -230,30 +234,58 @@ exports.handler = async (event) => {
             max: weatherData.data.main.temp_max,
           },
           city: weatherData.data.name,
-          locationKey: locationKey,
         };
       else return { statusCode: 500, HEADERS };
     }
     weatherData = false;
-    while (!weatherData && numberOfKey < openLength) {
-      try {
-        weatherData = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openKey[numberOfKey]}&units=metric&lang=vi`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Accept-Encoding": "identity",
-            },
-            params: { trophies: true },
-          }
-        );
-      } catch {
-        weatherData = false;
-        ++numberOfKey;
-      }
+    while (!weatherData && numberOfKey < openLength && lat) {
+      if (op[numberOfKey] == "1") {
+        try {
+          weatherData = await axios.get(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openKey[numberOfKey]}&units=metric&lang=vi`,
+            {
+              headers: {
+                Accept: "application/json",
+                "Accept-Encoding": "identity",
+              },
+              params: { trophies: true },
+            }
+          );
+        } catch {
+          weatherData = false;
+          op = `${op.substring(0, numberOfKey)}0${op.substring(
+            numberOfKey + 1
+          )}`;
+          ++numberOfKey;
+        }
+      } else ++numberOfKey;
     }
     if (weatherData) {
-      response = { now: response, forecast: [] };
+      response = {
+        now: {
+          temperature: response.temperature,
+          text: response.text,
+          icon: response.icon,
+          accuUpdate: response.accuUpdate,
+          openUpdate: response.openUpdate,
+          windSpeed: response.windSpeed,
+          temperaturePast24: {
+            min: response.temperaturePast24.min,
+            max: response.temperaturePast24.max,
+          },
+        },
+        forecast: [],
+        location: {
+          city: response.city,
+          latitude: lat,
+          longitude: lon,
+          locationKey: locationKey,
+        },
+        key: {
+          op: op,
+          ac: ac,
+        },
+      };
       weatherData.data.list.forEach((v, i) => {
         response.forecast[i] = {
           time: v.dt,
