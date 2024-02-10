@@ -151,6 +151,76 @@ async function getIp() {
   return "8.8.4.4";
 }
 
+function pushWeather(w) {
+  if (!locationKey) locationKey = Number(w.now.locationKey);
+  if (!lat) {
+    lat = Number(w.now.latitude);
+    lon = Number(w.now.longitude);
+  }
+  if (w.now.city) updateWeather("city", w.now.city);
+  updateWeather("temperature", [
+    w.now.temperaturePast24.min.toFixed(1),
+    w.now.temperature.toFixed(1),
+    w.now.temperaturePast24.max.toFixed(1),
+  ]);
+  updateWeather("icon", w.now.icon);
+  updateWeather("trangThai", w.now.text);
+  let forecast = [],
+    q = 8;
+  w.forecast.every((c) => {
+    if (c.time * 1000 > Date.now()) {
+      forecast[forecast.length] = {
+        temperature: Number(c.temperature.toFixed(1)),
+        icon: c.icon,
+        time: c.time,
+      };
+      --q;
+    }
+    if (q >= 0) return true;
+    else return false;
+  });
+  updateDoThi({
+    temperature: [
+      w.now.temperature,
+      forecast[0].temperature,
+      forecast[1].temperature,
+      forecast[2].temperature,
+      forecast[3].temperature,
+      forecast[4].temperature,
+      forecast[5].temperature,
+      forecast[6].temperature,
+      forecast[7].temperature,
+      forecast[8].temperature,
+    ],
+    icons: [
+      forecast[0].icon,
+      forecast[1].icon,
+      forecast[2].icon,
+      forecast[3].icon,
+      forecast[4].icon,
+      forecast[5].icon,
+      forecast[6].icon,
+      forecast[7].icon,
+      forecast[8].icon,
+    ],
+    times: [
+      forecast[0].time,
+      forecast[1].time,
+      forecast[2].time,
+      forecast[3].time,
+      forecast[4].time,
+      forecast[5].time,
+      forecast[6].time,
+      forecast[7].time,
+      forecast[8].time,
+    ],
+  });
+  updateWeather("wind", w.now.windSpeed);
+  if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
+  else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
+  htmlDom.style.opacity = "1";
+}
+
 async function callNetlify(lat, lon, locationKey, ip) {
   let apiURL = "",
     data;
@@ -158,7 +228,7 @@ async function callNetlify(lat, lon, locationKey, ip) {
     apiURL = `https://chuanghiten.netlify.app`;
   } else {
     if (window.location.href.includes("noNetlify"))
-      return {
+      pushWeather({
         now: {
           temperature: 18.7,
           text: "Nhiều mây",
@@ -374,7 +444,8 @@ async function callNetlify(lat, lon, locationKey, ip) {
             icon: "04d",
           },
         ],
-      };
+      });
+    return Promise.resolve();
   }
   try {
     (function (_0x1c18eb, _0x59d424) {
@@ -467,7 +538,8 @@ async function callNetlify(lat, lon, locationKey, ip) {
     alert("Lấy dữ liệu thời tiết thất bại");
     console.log(error);
   }
-  return data;
+  pushWeather(data);
+  return Promise.resolve();
 }
 
 function updateSeason(season) {
@@ -901,76 +973,6 @@ function resize(width, height) {
   backgroundDom.setAttribute("style", `--bottom: ${weatherDom.offsetHeight}px`);
 }
 
-function pushWeather(w) {
-  if (!locationKey) locationKey = Number(w.now.locationKey);
-  if (!lat) {
-    lat = Number(w.now.latitude);
-    lon = Number(w.now.longitude);
-  }
-  if (w.now.city) updateWeather("city", w.now.city);
-  updateWeather("temperature", [
-    w.now.temperaturePast24.min.toFixed(1),
-    w.now.temperature.toFixed(1),
-    w.now.temperaturePast24.max.toFixed(1),
-  ]);
-  updateWeather("icon", w.now.icon);
-  updateWeather("trangThai", w.now.text);
-  let forecast = [],
-    q = 8;
-  w.forecast.every((c) => {
-    if (c.time * 1000 > Date.now()) {
-      forecast[forecast.length] = {
-        temperature: Number(c.temperature.toFixed(1)),
-        icon: c.icon,
-        time: c.time,
-      };
-      --q;
-    }
-    if (q >= 0) return true;
-    else return false;
-  });
-  updateDoThi({
-    temperature: [
-      w.now.temperature,
-      forecast[0].temperature,
-      forecast[1].temperature,
-      forecast[2].temperature,
-      forecast[3].temperature,
-      forecast[4].temperature,
-      forecast[5].temperature,
-      forecast[6].temperature,
-      forecast[7].temperature,
-      forecast[8].temperature,
-    ],
-    icons: [
-      forecast[0].icon,
-      forecast[1].icon,
-      forecast[2].icon,
-      forecast[3].icon,
-      forecast[4].icon,
-      forecast[5].icon,
-      forecast[6].icon,
-      forecast[7].icon,
-      forecast[8].icon,
-    ],
-    times: [
-      forecast[0].time,
-      forecast[1].time,
-      forecast[2].time,
-      forecast[3].time,
-      forecast[4].time,
-      forecast[5].time,
-      forecast[6].time,
-      forecast[7].time,
-      forecast[8].time,
-    ],
-  });
-  updateWeather("wind", w.now.windSpeed);
-  if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
-  else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
-  htmlDom.style.opacity = "1";
-}
-
 function main() {
   let fullscreen = 0,
     time,
@@ -1043,15 +1045,9 @@ function main() {
         getIp()
           .then((v) => {
             ip = v;
-            callNetlify(lat, lon, locationKey, ip)
-              .then((w) => {
-                pushWeather(w);
-                calling = false;
-              })
-              .catch((e) => {
-                alert("Lấy dữ liệu thời tiết thất bại!");
-                console.log(e);
-              });
+            callNetlify(lat, lon, locationKey, ip).then(() => {
+              calling = false;
+            });
           })
           .catch((e) => {
             alert("Lấy ip người dùng thất bại!");
@@ -1069,15 +1065,9 @@ function main() {
         getIp()
           .then((v) => {
             ip = v;
-            callNetlify(lat, lon, locationKey, ip)
-              .then((w) => {
-                pushWeather(w);
-                calling = false;
-              })
-              .catch((e) => {
-                alert("Lấy dữ liệu thời tiết thất bại!");
-                console.log(e);
-              });
+            callNetlify(lat, lon, locationKey, ip).then(() => {
+              calling = false;
+            });
           })
           .catch((e) => {
             alert("Lấy ip người dùng thất bại!");
@@ -1091,15 +1081,9 @@ function main() {
     getIp()
       .then((v) => {
         ip = v;
-        callNetlify(lat, lon, locationKey, ip)
-          .then((w) => {
-            pushWeather(w);
-            calling = false;
-          })
-          .catch((e) => {
-            alert("Lấy dữ liệu thời tiết thất bại!");
-            console.log(e);
-          });
+        callNetlify(lat, lon, locationKey, ip).then((w) => {
+          calling = false;
+        });
       })
       .catch((e) => {
         alert("Lấy ip người dùng thất bại!");
@@ -1259,14 +1243,7 @@ function main() {
             }
             if (newHours % 2 == 0 && !calling) {
               if (ip) {
-                callNetlify(lat, lon, locationKey, ip)
-                  .then((w) => {
-                    pushWeather(w);
-                  })
-                  .catch((e) => {
-                    alert("lấy dữ liệu thời tiết thất bại");
-                    console.log(e);
-                  });
+                callNetlify(lat, lon, locationKey, ip);
               }
             }
           }
