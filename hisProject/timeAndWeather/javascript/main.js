@@ -1250,6 +1250,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
                     }
                   }
                 }
+                if (newDate % 2 == 0) ac = op = "1111111";
               }
               if (newHours % 2 == 0 && !calling) {
                 if (ip) {
