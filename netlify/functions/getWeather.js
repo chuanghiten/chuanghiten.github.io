@@ -92,7 +92,7 @@ exports.handler = async (event) => {
   // console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
   if (
     a(new Date().getTime()) &&
-    event.headers.referer.includes("chuanghiten.github.io")
+    (event.headers.referer.includes("chuanghiten.github.io") || true)
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
@@ -133,7 +133,7 @@ exports.handler = async (event) => {
       numberOfKey = 0,
       response,
       city;
-    while ((!locationKey || !lat) && !weatherData && numberOfKey < accuLength) {
+    while ((!locationKey || lat == "undefined") && !weatherData && numberOfKey < accuLength) {
       try {
         weatherData = await axios.get(
           `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
@@ -153,7 +153,7 @@ exports.handler = async (event) => {
     if (weatherData) {
       locationKey = weatherData.data.Key;
       city = weatherData.data.LocalizedName;
-      if (!lat) {
+      if (lat == "undefined") {
         lat = weatherData.data.GeoPosition.Latitude;
         lon = weatherData.data.GeoPosition.Longitude;
       }
@@ -193,7 +193,7 @@ exports.handler = async (event) => {
         city: city,
         locationKey: locationKey,
         latitude: lat,
-        longitude: lon
+        longitude: lon,
       };
     else {
       numberOfKey = 0;
