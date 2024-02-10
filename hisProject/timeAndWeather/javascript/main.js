@@ -2,18 +2,16 @@
 // https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=&q=171.224.178.31&language=vi&details=true
 // https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=&language=vi&details=true
 // https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=
-let tuyetRoi = window.document.querySelectorAll(".tuyet"),
+const tuyetRoi = window.document.querySelectorAll(".tuyet"),
   cfr = 1,
   lkAnim = window.document.querySelector(
     "html[autumn] body .main .background .bottom svg .lkAnim"
   ),
   mainDom = window.document.querySelector("html body .main"),
-  mainDomWidth,
   htmlDom = window.document.querySelector("html"),
   secondProgressDom = window.document.querySelector(
     "html body .main .contents .time .clock .secondProgress"
   ),
-  htmlFontsize,
   secondProgressDomRotate = window.document.querySelector(
     "html body .main .contents .time .clock .secondProgress .progress"
   ),
@@ -113,8 +111,10 @@ let tuyetRoi = window.document.querySelectorAll(".tuyet"),
   ),
   updateBy = window.document.querySelector(
     "html body .main .contents .weather .updateBy"
-  ),
-  locationKey = false;
+  );
+var htmlFontsize,
+  mainDomWidth,
+  locationKey = (lat = lon = ip = undefined);
 
 function add0(number) {
   if (number < 10) return `0${number}`;
@@ -135,7 +135,6 @@ function updateCredit(name, value) {
 }
 
 async function getIp() {
-  let ip;
   if (!window.location.href.includes("noNetlify")) {
     try {
       const response = await fetch(`https://api.ipify.org?format=json`, {
@@ -144,7 +143,7 @@ async function getIp() {
       });
       ip = await response.json();
     } catch (error) {
-      alert("Lấy ip thất bại!");
+      alert("Lấy ip người dùng thất bại!");
       console.log(error);
     }
     return ip.ip;
@@ -153,20 +152,12 @@ async function getIp() {
 }
 
 async function callNetlify(lat, lon, locationKey, ip) {
-  let apiURL,
-    data = false;
+  let apiURL = "",
+    data;
   if (!window.location.href.includes("demo")) {
-    if (locationKey)
-      apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
-    else
-      apiURL = `https://chuanghiten.netlify.app/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
+    apiURL = `https://chuanghiten.netlify.app`;
   } else {
-    if (!window.location.href.includes("noNetlify")) {
-      if (locationKey)
-        apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}`;
-      else
-        apiURL = `/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}`;
-    } else
+    if (window.location.href.includes("noNetlify"))
       return {
         now: {
           temperature: 18.7,
@@ -462,10 +453,15 @@ async function callNetlify(lat, lon, locationKey, ip) {
       }
       return (0x989680 + Math["random"]() * 0x14224c4)[_0xb1f654(0x12e)](0x0);
     }
-    const response = await fetch(`${apiURL}&security=${b(c)}`, {
-      method: "GET",
-      headers: { accept: "application/json" },
-    });
+    const response = await fetch(
+      `${apiURL}/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}&security=${b(
+        c
+      )}`,
+      {
+        method: "GET",
+        headers: { accept: "application/json" },
+      }
+    );
     data = await response.json();
   } catch (error) {
     alert("Lấy dữ liệu thời tiết thất bại");
@@ -907,6 +903,10 @@ function resize(width, height) {
 
 function pushWeather(w) {
   if (!locationKey) locationKey = Number(w.now.locationKey);
+  if (!lat) {
+    lat = Number(w.now.latitude);
+    lon = Number(w.now.longitude);
+  }
   if (w.now.city) updateWeather("city", w.now.city);
   updateWeather("temperature", [
     w.now.temperaturePast24.min.toFixed(1),
@@ -986,9 +986,6 @@ function main() {
     newDate,
     newMonth,
     newYear,
-    ip = false,
-    lat = false,
-    lon = false,
     calling = true,
     fr = 0,
     oldLunarMonth,
@@ -1043,21 +1040,73 @@ function main() {
       (v) => {
         lat = v.coords.latitude;
         lon = v.coords.longitude;
-        getIp().then((v) => {
-          ip = v;
-          callNetlify(lat, lon, locationKey, ip).then((w) => {
+        getIp()
+          .then((v) => {
+            ip = v;
+            callNetlify(lat, lon, locationKey, ip)
+              .then((w) => {
+                pushWeather(w);
+                calling = false;
+              })
+              .catch((e) => {
+                alert("Lấy dữ liệu thời tiết thất bại!");
+                console.log(e);
+              });
+          })
+          .catch((e) => {
+            alert("Lấy ip người dùng thất bại!");
+            console.log(e);
+          });
+      },
+      (e) => {
+        if (e.code == 1)
+          alert(
+            "Bạn đã từ chối chia sẻ vị trí của mình. Nếu bạn thay đổi ý định, hãy vào cài đặt trang web và chọn cho phép."
+          );
+        else if (e.code == 3)
+          alert("Không thể lấy vị trí của bạn: Hết thời gian chờ");
+        console.log(e);
+        getIp()
+          .then((v) => {
+            ip = v;
+            callNetlify(lat, lon, locationKey, ip)
+              .then((w) => {
+                pushWeather(w);
+                calling = false;
+              })
+              .catch((e) => {
+                alert("Lấy dữ liệu thời tiết thất bại!");
+                console.log(e);
+              });
+          })
+          .catch((e) => {
+            alert("Lấy ip người dùng thất bại!");
+            console.log(e);
+          });
+      },
+      { maximumAge: 60000, timeout: 10000, enableHighAccuracy: true }
+    );
+  else {
+    alert("Trình duyệt của bạn không hỗ trợ định vị.");
+    getIp()
+      .then((v) => {
+        ip = v;
+        callNetlify(lat, lon, locationKey, ip)
+          .then((w) => {
             pushWeather(w);
             calling = false;
+          })
+          .catch((e) => {
+            alert("Lấy dữ liệu thời tiết thất bại!");
+            console.log(e);
           });
-        });
-      },
-      () => {
-        alert(
-          "Bạn đã từ chối chia sẻ vị trí của mình. Nếu bạn thay đổi ý định, hãy vào cài đặt trang web và chọn cho phép."
-        );
-      }
-    );
-  else alert("Trình duyệt của bạn không hỗ trợ định vị.");
+      })
+      .catch((e) => {
+        alert("Lấy ip người dùng thất bại!");
+        console.log(e);
+      });
+  }
+
   function raf() {
     if (fr > cfr) {
       fr = 0;
@@ -1209,10 +1258,15 @@ function main() {
               }
             }
             if (newHours % 2 == 0 && !calling) {
-              if (lat) {
-                callNetlify(lat, lon, locationKey, ip).then((w) => {
-                  pushWeather(w);
-                });
+              if (ip) {
+                callNetlify(lat, lon, locationKey, ip)
+                  .then((w) => {
+                    pushWeather(w);
+                  })
+                  .catch((e) => {
+                    alert("lấy dữ liệu thời tiết thất bại");
+                    console.log(e);
+                  });
               }
             }
           }

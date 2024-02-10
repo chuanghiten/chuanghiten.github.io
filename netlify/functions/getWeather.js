@@ -61,7 +61,8 @@ exports.handler = async (event) => {
             Math[_0x4eb3ab(0x12f)](_0x368f0f)) /
           Math["tan"](_0x368f0f))[_0x4eb3ab(0x133)](0x0)
       ) +
-        0x14224c4 == event.queryStringParameters.security
+        0x14224c4 ==
+      event.queryStringParameters.security
       // event[_0x4eb3ab(0x136)]?.["security"]
     );
   }
@@ -89,10 +90,11 @@ exports.handler = async (event) => {
     return _0x370e();
   }
   // console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
-  if (a(new Date().getTime()) && event.headers.referer.includes("chuanghiten.github.io")) {
+  if (
+    a(new Date().getTime()) &&
+    event.headers.referer.includes("chuanghiten.github.io")
+  ) {
     const ip = event.queryStringParameters.ip,
-      lat = event.queryStringParameters.lat,
-      lon = event.queryStringParameters.lon,
       accuKey = [
         process.env.ACCU1,
         process.env.ACCU2,
@@ -126,10 +128,12 @@ exports.handler = async (event) => {
       openLength = openKey.length;
     let weatherData = false,
       locationKey = event.queryStringParameters.locationKey,
+      lat = event.queryStringParameters.lat,
+      lon = event.queryStringParameters.lon,
       numberOfKey = 0,
       response,
       city;
-    while (!locationKey && !weatherData && numberOfKey < accuLength) {
+    while ((!locationKey || !lat) && !weatherData && numberOfKey < accuLength) {
       try {
         weatherData = await axios.get(
           `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
@@ -149,6 +153,10 @@ exports.handler = async (event) => {
     if (weatherData) {
       locationKey = weatherData.data.Key;
       city = weatherData.data.LocalizedName;
+      if (!lat) {
+        lat = weatherData.data.GeoPosition.Latitude;
+        lon = weatherData.data.GeoPosition.Longitude;
+      }
     }
     weatherData = false;
     numberOfKey = 0;
@@ -184,6 +192,8 @@ exports.handler = async (event) => {
         },
         city: city,
         locationKey: locationKey,
+        latitude: lat,
+        longitude: lon
       };
     else {
       numberOfKey = 0;
