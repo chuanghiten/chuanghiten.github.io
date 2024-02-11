@@ -132,14 +132,14 @@ const sunriset = window.document.querySelector(
           time.getMonth()
         )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
           time.getMinutes()
-        )} - Openweathermap (${op})] - [<a href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
+        )} - <a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
       case "accu":
         updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
           time.getMonth()
         )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
           time.getMinutes()
-        )} - Accuweather (${ac})] - [Openweathermap (${op})] - [<a href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
+        )} - <a target="_blank" href="https://www.accuweather.com/">Accuweather</a> (${ac})] - [<a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
     }
   },
@@ -553,13 +553,13 @@ const sunriset = window.document.querySelector(
       );
       data = await response.json();
     } catch (error) {
-      updateBy.textContent = `${updateBy.textContent.replace(
+      updateBy.innerHTML = `${updateBy.textContent.replace(
         " - [SunriseSunset.io]",
         ""
-      )} / Failed - [SunriseSunset.io]`;
+      )} / Failed - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
       console.log(error);
     }
-    pushWeather(data);
+    if (data) pushWeather(data);
     return Promise.resolve();
   },
   updateSeason = (season) => {
