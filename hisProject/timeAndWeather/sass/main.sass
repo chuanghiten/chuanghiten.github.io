@@ -18,6 +18,9 @@ svg
   width: 100%
   height: 100%
 
+a:-webkit-any-link
+  color: var(--weatherTextColor)
+
 @font-face
   font-family: "dripicons-weather"
   src: url("../fonts/dripiconsWeather/dripicons-weather.woff") format("woff"), url("../fonts/dripiconsWeather/dripicons-weather.ttf") format("truetype")
@@ -6619,6 +6622,7 @@ html
             height: 175rem
             display: flex
             justify-content: center
+            align-content: center
             align-items: center
             text-align: center
             color: var(--timeTextColor)
@@ -6627,6 +6631,11 @@ html
             border-radius: 50%
             border: 5rem solid #fefffa00
             text-shadow: -.5rem .5rem #1115
+            flex-wrap: wrap
+            .sunriset
+              font-size: 17rem
+              .icon
+                font-family: "dripicons-weather"
             .secondProgress
               width: 175rem
               height: 175rem

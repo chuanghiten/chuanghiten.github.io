@@ -7,7 +7,10 @@ var htmlFontsize,
   locationKey = (lat = lon = ip = undefined),
   op = (ac = "1111111");
 
-const tuyetRoi = window.document.querySelectorAll(".tuyet"),
+const sunriset = window.document.querySelector(
+    "html body .main .contents .time .clock .sunriset"
+  ),
+  tuyetRoi = window.document.querySelectorAll(".tuyet"),
   cfr = 1,
   lkAnim = window.document.querySelector(
     "html[autumn] body .main .background .bottom svg .lkAnim"
@@ -125,18 +128,18 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
     let time = new Date(value * 1000);
     switch (name) {
       case "open":
-        updateBy.innerHTML = `${add0(time.getDate())} / ${add0(
+        updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
           time.getMonth()
         )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
           time.getMinutes()
-        )} - Openweathermap (${op})`;
+        )} - Openweathermap (${op})] - [<a href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
       case "accu":
         updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
           time.getMonth()
         )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
           time.getMinutes()
-        )} - Accuweather (${ac})] - [Openweathermap (${op})]`;
+        )} - Accuweather (${ac})] - [Openweathermap (${op})] - [<a href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
     }
   },
@@ -550,7 +553,10 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
       );
       data = await response.json();
     } catch (error) {
-      alert("Lấy dữ liệu thời tiết thất bại");
+      updateBy.textContent = `${updateBy.textContent.replace(
+        " - [SunriseSunset.io]",
+        ""
+      )} / Failed - [SunriseSunset.io]`;
       console.log(error);
     }
     pushWeather(data);
@@ -719,7 +725,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
     temperatureLineDom.children[2].innerHTML = `${temperatureMax.toFixed(1)} -`;
     temperatureLineDom.children[5].innerHTML = `${temperatureMin.toFixed(
       1
-    )}   `;
+    )}&nbsp;&nbsp;&nbsp;`;
     temperatureLineDom.children[3].innerHTML = `${(
       temperatureMin +
       (temperatureMax - temperatureMin) * (2 / 3)
@@ -932,7 +938,30 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
       case "thangAm":
         thangAm.innerHTML = `${add0(value)}`;
         break;
+      case "sunriset":
+        sunriset.innerHTML = `<span class="icon">=</span> ${value[0]} | <span class="icon">></span> ${value[1]}`;
+        break;
     }
+  },
+  getSunriset = async (lat, lon) => {
+    let data;
+    try {
+      const response = await fetch(
+        `https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`,
+        {
+          method: "GET",
+          headers: { accept: "application/json" },
+        }
+      );
+      data = await response.json();
+    } catch (error) {
+      alert("Lấy thông tin mặt trời thất bại!");
+      console.log(error);
+    }
+    updateTime("sunriset", [
+      data.results.sunrise.replace(/:\d\d \w\w/, ""),
+      data.results.sunset.replace(/:\d\d \w\w/, ""),
+    ]);
   },
   resize = (width, height) => {
     if (width / height >= 0.480410447761194) {
@@ -1054,6 +1083,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
             .then((v) => {
               ip = v;
               callNetlify(lat, lon, locationKey, ip).then(() => {
+                getSunriset(lat, lon);
                 calling = false;
               });
             })
@@ -1065,7 +1095,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
         (e) => {
           if (e.code == 1)
             alert(
-              "Bạn đã từ chối chia sẻ vị trí của mình. Nếu bạn thay đổi ý định, hãy vào cài đặt trang web và chọn cho phép."
+              "Bạn đã từ chối chia sẻ vị trí của mình. Nếu bạn thay đổi ý định, hãy vào cài đặt trang web và chọn cho phép sử dụng định vị."
             );
           else if (e.code == 3)
             alert("Không thể lấy vị trí của bạn: Hết thời gian chờ");
@@ -1074,6 +1104,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
             .then((v) => {
               ip = v;
               callNetlify(lat, lon, locationKey, ip).then(() => {
+                getSunriset(lat, lon);
                 calling = false;
               });
             })
@@ -1090,6 +1121,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
         .then((v) => {
           ip = v;
           callNetlify(lat, lon, locationKey, ip).then((w) => {
+            getSunriset(lat, lon);
             calling = false;
           });
         })
@@ -1098,6 +1130,7 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
           console.log(e);
         });
     }
+    // getSunriset(lat, lon);
 
     function raf() {
       if (fr > cfr) {
@@ -1254,7 +1287,9 @@ const tuyetRoi = window.document.querySelectorAll(".tuyet"),
               }
               if (newHours % 2 == 0 && !calling) {
                 if (ip) {
-                  callNetlify(lat, lon, locationKey, ip);
+                  callNetlify(lat, lon, locationKey, ip).then(() => {
+                    getSunriset(lat, lon);
+                  });
                 }
               }
             }
