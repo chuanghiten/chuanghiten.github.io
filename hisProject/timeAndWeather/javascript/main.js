@@ -1167,18 +1167,9 @@ const sunrise = window.document.querySelector(
             59999
           ).toFixed(2)}deg`
         );
-        // updateTime("second", newSeconds * 1000 + time.getMilliseconds());
         if (oldSeconds != newSeconds) {
           oldSeconds = newSeconds;
           newMinutes = time.getMinutes();
-          updateTime(
-            "minutesArrow",
-            (6 * (newMinutes + newSeconds / 60)).toFixed(2)
-          );
-          updateTime(
-            "progressDay",
-            (newHours * 3600 + newMinutes * 60 + newSeconds).toFixed(2)
-          );
           if (oldMinutes != newMinutes) {
             oldMinutes = newMinutes;
             newHours = time.getHours();
@@ -1199,6 +1190,87 @@ const sunrise = window.document.querySelector(
               oldHours = newHours;
               newDate = time.getDate();
               updateTime("hour", newHours);
+              updateTime(
+                "minutesArrow",
+                (6 * (newMinutes + newSeconds / 60)).toFixed(2)
+              );
+              updateTime(
+                "progressDay",
+                (newHours * 3600 + newMinutes * 60 + newSeconds).toFixed(2)
+              );
+              if (oldDate != newDate) {
+                oldDate = newDate;
+                newMonth = time.getMonth() + 1;
+                let lunar = getLunar(newDate, newMonth, newYear, 7);
+                newLunarMonth = lunar[1];
+                updateTime("ngayAm", lunar[0]);
+                updateTime("ngayDuong", newDate);
+                updateTime("thu", time.getDay() + 1);
+                if (oldMonth != newMonth) {
+                  oldMonth = newMonth;
+                  newYear = time.getFullYear();
+                  updateTime("thangDuong", newMonth);
+                  if (oldYear != newYear) {
+                    oldYear = newYear;
+                    if (
+                      (newYear.toString().slice(-2) == "00" &&
+                        newYear % 400 == 0) ||
+                      (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
+                    )
+                      namDuong.style.textDecoration = "underline";
+                    else namDuong.style.textDecoration = "none";
+                    if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
+                      namAm.style.display = "none";
+                      updateTime("namDuong", newYear);
+                    } else {
+                      namAm.style.display = "inline";
+                      updateTime("namDuong", newYear);
+                      updateTime(
+                        "namAm",
+                        getLunar(newDate, newMonth, newYear, 7)[2]
+                      );
+                    }
+                  }
+                }
+                if (oldLunarMonth != newLunarMonth) {
+                  oldLunarMonth = newLunarMonth;
+                  newLunarYear = lunar[2];
+                  updateTime("thangAm", newLunarMonth);
+                  if (newLunarMonth < 4) updateSeason("spring");
+                  else if (newLunarMonth >= 4 && newLunarMonth < 7)
+                    updateSeason("summer");
+                  else if (newLunarMonth >= 7 && newLunarMonth < 10)
+                    updateSeason("autumn");
+                  else updateSeason("winter");
+                  if (oldLunarYear != newLunarYear) {
+                    oldLunarYear = newLunarYear;
+                    if (newYear == newLunarYear) {
+                      namAm.style.display = "none";
+                    } else {
+                      namAm.style.display = "inline";
+                      updateTime("namAm", newLunarYear);
+                      if (lunar[3]) namAm.style.textDecoration = "underline";
+                    }
+                  }
+                  soNgayAmTrongThang =
+                    getNewMoonDay(
+                      INT(
+                        (jdFromDate(newDate, newMonth, newYear) - 2415021) /
+                          29.530588853
+                      ) + 1,
+                      7
+                    ) -
+                    getNewMoonDay(
+                      INT(
+                        (jdFromDate(newDate, newMonth, newYear) - 2415021) /
+                          29.530588853
+                      ),
+                      7
+                    );
+                }
+                if (newDate % 2 == 0) ac = op = "1111111";
+                if (lat) getSunriset(lat, lon);
+              }
               if (
                 (newMonth <= 7 && newMonth % 2 != 0) ||
                 (newMonth >= 8 && newMonth % 2 == 0)
@@ -1255,79 +1327,6 @@ const sunrise = window.document.querySelector(
                     2591940
                   ).toFixed(2)
                 );
-              }
-              if (oldDate != newDate) {
-                oldDate = newDate;
-                newMonth = time.getMonth() + 1;
-                let lunar = getLunar(newDate, newMonth, newYear, 7);
-                newLunarMonth = lunar[1];
-                updateTime("ngayAm", lunar[0]);
-                updateTime("ngayDuong", newDate);
-                updateTime("thu", time.getDay() + 1);
-                if (oldLunarMonth != newLunarMonth) {
-                  oldLunarMonth = newLunarMonth;
-                  newLunarYear = lunar[2];
-                  soNgayAmTrongThang =
-                    getNewMoonDay(
-                      INT(
-                        (jdFromDate(newDate, newMonth, newYear) - 2415021) /
-                          29.530588853
-                      ) + 1,
-                      7
-                    ) -
-                    getNewMoonDay(
-                      INT(
-                        (jdFromDate(newDate, newMonth, newYear) - 2415021) /
-                          29.530588853
-                      ),
-                      7
-                    );
-                  if (newLunarMonth < 4) updateSeason("spring");
-                  else if (newLunarMonth >= 4 && newLunarMonth < 7)
-                    updateSeason("summer");
-                  else if (newLunarMonth >= 7 && newLunarMonth < 10)
-                    updateSeason("autumn");
-                  else updateSeason("winter");
-                  updateTime("thangAm", newLunarMonth);
-                  if (oldLunarYear != newLunarYear) {
-                    oldLunarYear = newLunarYear;
-                    if (newYear == newLunarYear) {
-                      namAm.style.display = "none";
-                    } else {
-                      namAm.style.display = "inline";
-                      updateTime("namAm", newLunarYear);
-                      if (lunar[3]) namAm.style.textDecoration = "underline";
-                    }
-                  }
-                }
-                if (oldMonth != newMonth) {
-                  oldMonth = newMonth;
-                  newYear = time.getFullYear();
-                  updateTime("thangDuong", newMonth);
-                  if (oldYear != newYear) {
-                    oldYear = newYear;
-                    if (
-                      (newYear.toString().slice(-2) == "00" &&
-                        newYear % 400 == 0) ||
-                      (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
-                    )
-                      namDuong.style.textDecoration = "underline";
-                    else namDuong.style.textDecoration = "none";
-                    if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
-                      namAm.style.display = "none";
-                      updateTime("namDuong", newYear);
-                    } else {
-                      namAm.style.display = "inline";
-                      updateTime("namDuong", newYear);
-                      updateTime(
-                        "namAm",
-                        getLunar(newDate, newMonth, newYear, 7)[2]
-                      );
-                    }
-                  }
-                }
-                if (newDate % 2 == 0) ac = op = "1111111";
-                if (lat) getSunriset(lat, lon);
               }
               if (newHours % 2 == 0 && !calling) {
                 if (ip) {
