@@ -7,8 +7,11 @@ var htmlFontsize,
   locationKey = (lat = lon = ip = undefined),
   op = (ac = "1111111");
 
-const sunriset = window.document.querySelector(
-    "html body .main .contents .time .clock .sunriset"
+const sunrise = window.document.querySelector(
+    "html body .main .contents .time .clock .sunrise"
+  ),
+  sunset = window.document.querySelector(
+    "html body .main .contents .time .clock .sunset"
   ),
   tuyetRoi = window.document.querySelectorAll(".tuyet"),
   cfr = 1,
@@ -898,7 +901,7 @@ const sunriset = window.document.querySelector(
       case "progressDay":
         progressDay.setAttribute(
           "style",
-          `--progress: ${(value / 86399) * 100}%`
+          `--progress: ${((value / 86399) * 100).toFixed(2)}%`
         );
         break;
       case "namDuong":
@@ -910,9 +913,6 @@ const sunriset = window.document.querySelector(
       case "thu":
         if (value == 1) thu.innerHTML = "Cn";
         else thu.innerHTML = `<span class="t">t</span>${value}`;
-        break;
-      case "second":
-        clockDom.setAttribute("style", `--deg: ${354 * (value / 59999)}deg`);
         break;
       case "minutes":
         minutesDom.innerHTML = `${add0(value)}`;
@@ -939,7 +939,8 @@ const sunriset = window.document.querySelector(
         thangAm.innerHTML = `${add0(value)}`;
         break;
       case "sunriset":
-        sunriset.innerHTML = `<span class="icon">=</span> ${value[0]} | <span class="icon">></span> ${value[1]}`;
+        sunrise.innerHTML = `<span class="icon">=</span> ${value[0]}`;
+        sunset.innerHTML = `<span class="icon">=</span> ${value[1]}`;
         break;
     }
   },
@@ -1130,27 +1131,39 @@ const sunriset = window.document.querySelector(
           console.log(e);
         });
     }
-    // getSunriset(lat, lon);
 
     function raf() {
       if (fr > cfr) {
         fr = 0;
         time = new Date();
         newSeconds = time.getSeconds();
-        updateTime("second", newSeconds * 1000 + time.getMilliseconds());
+        clockDom.setAttribute(
+          "style",
+          `--deg: ${(
+            (354 * (newSeconds * 1000 + time.getMilliseconds())) /
+            59999
+          ).toFixed(2)}deg`
+        );
+        // updateTime("second", newSeconds * 1000 + time.getMilliseconds());
         if (oldSeconds != newSeconds) {
           oldSeconds = newSeconds;
           newMinutes = time.getMinutes();
-          updateTime("minutesArrow", 6 * (newMinutes + newSeconds / 60));
+          updateTime(
+            "minutesArrow",
+            (6 * (newMinutes + newSeconds / 60)).toFixed(2)
+          );
           updateTime(
             "progressDay",
-            newHours * 3600 + newMinutes * 60 + newSeconds
+            (newHours * 3600 + newMinutes * 60 + newSeconds).toFixed(2)
           );
           if (oldMinutes != newMinutes) {
             oldMinutes = newMinutes;
             newHours = time.getHours();
             updateTime("minutes", newMinutes);
-            updateTime("hoursArrow", 30 * (newHours + newMinutes / 60));
+            updateTime(
+              "hoursArrow",
+              (30 * (newHours + newMinutes / 60)).toFixed(2)
+            );
             if (
               (newMonth <= 7 && newMonth % 2 != 0) ||
               (newMonth >= 8 && newMonth % 2 == 0)
@@ -1158,15 +1171,20 @@ const sunriset = window.document.querySelector(
               thangDuong.style.textDecoration = "underline";
               updateTime(
                 "progressThangDuong",
-                (newDate * 86400 + newHours * 3600 + newMinutes * 60) / 2764740
+                (
+                  (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
+                  2764740
+                ).toFixed(2)
               );
             } else {
               thangDuong.style.textDecoration = "none";
               if (newMonth != 2)
                 updateTime(
                   "progressThangDuong",
-                  (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
+                  (
+                    (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
                     2678340
+                  ).toFixed(2)
                 );
               else {
                 if (
@@ -1177,15 +1195,19 @@ const sunriset = window.document.querySelector(
                   namDuong.style.textDecoration = "underline";
                   updateTime(
                     "progressThangDuong",
-                    (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
+                    (
+                      (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
                       2591940
+                    ).toFixed(2)
                   );
                 } else {
                   namDuong.style.textDecoration = "none";
                   updateTime(
                     "progressThangDuong",
-                    (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
+                    (
+                      (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
                       2505540
+                    ).toFixed(2)
                   );
                 }
               }
@@ -1194,19 +1216,23 @@ const sunriset = window.document.querySelector(
               thangAm.style.textDecoration = "underline";
               updateTime(
                 "progressThangAm",
-                (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
-                  newHours * 3600 +
-                  newMinutes * 60) /
+                (
+                  (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
+                    newHours * 3600 +
+                    newMinutes * 60) /
                   2678340
+                ).toFixed(2)
               );
             } else {
               thangAm.style.textDecoration = "none";
               updateTime(
                 "progressThangAm",
-                (getLunar(newDate, newMonth, newYear, 7) * 86400 +
-                  newHours * 3600 +
-                  newMinutes * 60) /
+                (
+                  (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
+                    newHours * 3600 +
+                    newMinutes * 60) /
                   2591940
+                ).toFixed(2)
               );
             }
             if (oldHours != newHours) {
@@ -1284,12 +1310,11 @@ const sunriset = window.document.querySelector(
                   }
                 }
                 if (newDate % 2 == 0) ac = op = "1111111";
+                if (lat) getSunriset(lat, lon);
               }
               if (newHours % 2 == 0 && !calling) {
                 if (ip) {
-                  callNetlify(lat, lon, locationKey, ip).then(() => {
-                    getSunriset(lat, lon);
-                  });
+                  callNetlify(lat, lon, locationKey, ip);
                 }
               }
             }
