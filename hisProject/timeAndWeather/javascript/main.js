@@ -153,14 +153,14 @@ const sunrise = window.document.querySelector(
       case "open":
         updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
           time.getMonth() + 1
-        )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
+        )} - ${add0(time.getHours())}:${add0(
           time.getMinutes()
         )} - <a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
       case "accu":
         updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
           time.getMonth() + 1
-        )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
+        )} - ${add0(time.getHours())}:${add0(
           time.getMinutes()
         )} - <a target="_blank" href="https://www.accuweather.com/">Accuweather</a> (${ac})] - [<a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
@@ -1195,81 +1195,67 @@ const sunrise = window.document.querySelector(
                   }, 120000);
               });
             }
-            if (
-              (newMonth <= 7 && newMonth % 2 != 0) ||
-              (newMonth >= 8 && newMonth % 2 == 0)
-            ) {
-              thangDuong.style.textDecoration = "underline";
-              updateTime(
-                "progressThangDuong",
-                (
-                  (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
-                  2764740
-                ).toFixed(2)
-              );
-            } else {
-              thangDuong.style.textDecoration = "none";
-              if (newMonth != 2)
-                updateTime(
-                  "progressThangDuong",
-                  (
-                    (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
-                    2678340
-                  ).toFixed(2)
-                );
-              else {
-                if (
-                  (newYear.toString().slice(-2) == "00" &&
-                    newYear % 400 == 0) ||
-                  (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
-                ) {
-                  namDuong.style.textDecoration = "underline";
-                  updateTime(
-                    "progressThangDuong",
-                    (
-                      (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
-                      2591940
-                    ).toFixed(2)
-                  );
-                } else {
-                  namDuong.style.textDecoration = "none";
-                  updateTime(
-                    "progressThangDuong",
-                    (
-                      (newDate * 86400 + newHours * 3600 + newMinutes * 60) /
-                      2505540
-                    ).toFixed(2)
-                  );
-                }
-              }
-            }
-            if (soNgayAmTrongThang == 30) {
-              thangAm.style.textDecoration = "underline";
-              updateTime(
-                "progressThangAm",
-                (
-                  (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
-                    newHours * 3600 +
-                    newMinutes * 60) /
-                  2678340
-                ).toFixed(2)
-              );
-            } else {
-              thangAm.style.textDecoration = "none";
-              updateTime(
-                "progressThangAm",
-                (
-                  (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
-                    newHours * 3600 +
-                    newMinutes * 60) /
-                  2591940
-                ).toFixed(2)
-              );
-            }
             if (oldHours != newHours) {
               oldHours = newHours;
               newDate = time.getDate();
               updateTime("hour", newHours);
+              if (
+                (newMonth <= 7 && newMonth % 2 != 0) ||
+                (newMonth >= 8 && newMonth % 2 == 0)
+              ) {
+                thangDuong.style.textDecoration = "underline";
+                updateTime(
+                  "progressThangDuong",
+                  ((newDate * 86400 + newHours * 3600) / 2764740).toFixed(2)
+                );
+              } else {
+                thangDuong.style.textDecoration = "none";
+                if (newMonth != 2)
+                  updateTime(
+                    "progressThangDuong",
+                    ((newDate * 86400 + newHours * 3600) / 2678340).toFixed(2)
+                  );
+                else {
+                  if (
+                    (newYear.toString().slice(-2) == "00" &&
+                      newYear % 400 == 0) ||
+                    (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
+                  ) {
+                    namDuong.style.textDecoration = "underline";
+                    updateTime(
+                      "progressThangDuong",
+                      ((newDate * 86400 + newHours * 3600) / 2591940).toFixed(2)
+                    );
+                  } else {
+                    namDuong.style.textDecoration = "none";
+                    updateTime(
+                      "progressThangDuong",
+                      ((newDate * 86400 + newHours * 3600) / 2505540).toFixed(2)
+                    );
+                  }
+                }
+              }
+              if (soNgayAmTrongThang == 30) {
+                thangAm.style.textDecoration = "underline";
+                updateTime(
+                  "progressThangAm",
+                  (
+                    (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
+                      newHours * 3600) /
+                    2678340
+                  ).toFixed(2)
+                );
+              } else {
+                thangAm.style.textDecoration = "none";
+                updateTime(
+                  "progressThangAm",
+                  (
+                    (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
+                      newHours * 3600) /
+                    2591940
+                  ).toFixed(2)
+                );
+              }
               if (oldDate != newDate) {
                 oldDate = newDate;
                 newMonth = time.getMonth() + 1;
@@ -1278,24 +1264,24 @@ const sunrise = window.document.querySelector(
                 updateTime("ngayAm", lunar[0]);
                 updateTime("ngayDuong", newDate);
                 updateTime("thu", time.getDay() + 1);
-                soNgayAmTrongThang =
-                  getNewMoonDay(
-                    INT(
-                      (jdFromDate(newDate, newMonth, newYear) - 2415021) /
-                        29.530588853
-                    ) + 1,
-                    7
-                  ) -
-                  getNewMoonDay(
-                    INT(
-                      (jdFromDate(newDate, newMonth, newYear) - 2415021) /
-                        29.530588853
-                    ),
-                    7
-                  );
                 if (oldLunarMonth != newLunarMonth) {
                   oldLunarMonth = newLunarMonth;
                   newLunarYear = lunar[2];
+                  soNgayAmTrongThang =
+                    getNewMoonDay(
+                      INT(
+                        (jdFromDate(newDate, newMonth, newYear) - 2415021) /
+                          29.530588853
+                      ) + 1,
+                      7
+                    ) -
+                    getNewMoonDay(
+                      INT(
+                        (jdFromDate(newDate, newMonth, newYear) - 2415021) /
+                          29.530588853
+                      ),
+                      7
+                    );
                   if (newLunarMonth < 4) updateSeason("spring");
                   else if (newLunarMonth >= 4 && newLunarMonth < 7)
                     updateSeason("summer");
