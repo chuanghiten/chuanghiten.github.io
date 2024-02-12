@@ -5,7 +5,8 @@
 var htmlFontsize,
   mainDomWidth,
   locationKey = (lat = lon = ip = undefined),
-  op = (ac = "1111111");
+  op = (ac = "1111111"),
+  pageUpdate;
 
 const sunrise = window.document.querySelector(
     "html body .main .contents .time .clock .sunrise"
@@ -126,6 +127,25 @@ const sunrise = window.document.querySelector(
   add0 = (number) => {
     if (number < 10) return `0${number}`;
     return number;
+  },
+  checkPageUpdate = async (mode) => {
+    let ud, url;
+    switch (mode) {
+      case "setup":
+        url = "/hisProject/timeAndWeather/checkUpdate/update.json";
+        break;
+      case "check":
+        url =
+          "https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/timeAndWeather/checkUpdate/update.json";
+        break;
+    }
+    try {
+      const response = await fetch(url);
+      ud = await response.json();
+    } catch (e) {
+      console.log(e);
+    }
+    return ud.update;
   },
   updateCredit = (name, value) => {
     let time = new Date(value * 1000);
@@ -1131,7 +1151,10 @@ const sunrise = window.document.querySelector(
           console.log(e);
         });
     }
-
+    if (!pageUpdate)
+      checkPageUpdate("setup").then((v) => {
+        pageUpdate = v;
+      });
     function raf() {
       if (fr > cfr) {
         fr = 0;
@@ -1164,6 +1187,14 @@ const sunrise = window.document.querySelector(
               "hoursArrow",
               (30 * (newHours + newMinutes / 60)).toFixed(2)
             );
+            if (newMinutes % 5 == 0) {
+              checkPageUpdate("check").then((v) => {
+                if (pageUpdate != v)
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 120000);
+              });
+            }
             if (
               (newMonth <= 7 && newMonth % 2 != 0) ||
               (newMonth >= 8 && newMonth % 2 == 0)
