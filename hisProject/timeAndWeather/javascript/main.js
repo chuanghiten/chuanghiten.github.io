@@ -152,16 +152,16 @@ const sunrise = window.document.querySelector(
     switch (name) {
       case "open":
         updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
-          time.getMonth()
+          time.getMonth() + 1
         )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
-          time.getMinutes()
+          time.getMinutes() + 1
         )} - <a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
       case "accu":
         updateBy.innerHTML = `[${add0(time.getDate())} / ${add0(
-          time.getMonth()
+          time.getMonth() + 1
         )} / ${time.getFullYear()} - ${add0(time.getHours())}:${add0(
-          time.getMinutes()
+          time.getMinutes() + 1
         )} - <a target="_blank" href="https://www.accuweather.com/">Accuweather</a> (${ac})] - [<a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
     }
