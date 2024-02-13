@@ -132,7 +132,7 @@ const randomStar = window.document.querySelectorAll(
     return number;
   },
   checkPageUpdate = async (mode) => {
-    let ud, url;
+    let url;
     switch (mode) {
       case "setup":
         url = "/hisProject/timeAndWeather/checkUpdate/update.json";
@@ -142,13 +142,15 @@ const randomStar = window.document.querySelectorAll(
           "https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/timeAndWeather/checkUpdate/update.json";
         break;
     }
-    try {
-      const response = await fetch(url);
-      ud = await response.json();
-    } catch (e) {
-      console.log(e);
-    }
-    return ud.update;
+    const ud = await fetch(url)
+      .then((v) => {
+        return v.json();
+      })
+      .catch((e) => {
+        console.log(e);
+        return { update: pageUpdate };
+      });
+    return await ud.update;
   },
   updateCredit = (name, value) => {
     let time = new Date(value * 1000);
@@ -168,22 +170,35 @@ const randomStar = window.document.querySelectorAll(
         )} - <a target="_blank" href="https://www.accuweather.com/">Accuweather</a> (${ac})] - [<a target="_blank" href="https://openweathermap.org/">Openweathermap</a> (${op})] - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
         break;
     }
+    return;
   },
   getIp = async () => {
     if (!window.location.href.includes("noNetlify")) {
-      try {
-        const response = await fetch(`https://api.ipify.org?format=json`, {
-          method: "GET",
-          headers: { accept: "application/json" },
+      // try {
+      //   const response = await fetch(`https://api.ipify.org?format=json`, {
+      //     method: "GET",
+      //     headers: { accept: "application/json" },
+      //   });
+      //   ip = await response.json();
+      // } catch (error) {
+      //   alert("Lấy ip người dùng thất bại!");
+      //   console.log(error);
+      // }
+      // return ip.ip;
+      const res = await fetch("https://api.ipify.org?format=json", {
+        method: "GET",
+        headers: { accept: "application/json" },
+      })
+        .then((v) => {
+          return v.json();
+        })
+        .catch((e) => {
+          console.log(e);
+          return { ip: "8.8.4.4" };
         });
-        ip = await response.json();
-      } catch (error) {
-        alert("Lấy ip người dùng thất bại!");
-        console.log(error);
-      }
-      return ip.ip;
+      return await res.ip;
     }
-    return "8.8.4.4";
+    return Promise.resolve("8.8.4.4");
   },
   pushWeather = (w) => {
     ac = w.key.ac;
@@ -257,8 +272,7 @@ const randomStar = window.document.querySelectorAll(
     htmlDom.style.opacity = "1";
   },
   callNetlify = async (lat, lon, locationKey, ip) => {
-    let apiURL = "",
-      data;
+    let apiURL = "";
     if (!window.location.href.includes("demo")) {
       apiURL = `https://chuanghiten.netlify.app`;
     } else {
@@ -491,101 +505,339 @@ const randomStar = window.document.querySelectorAll(
         return Promise.resolve();
       }
     }
-    try {
-      (function (_0x1c18eb, _0x59d424) {
-        const _0x5e71dc = _0x1e4f,
-          _0x2a058c = _0x1c18eb();
-        while (!![]) {
-          try {
-            const _0x4c9b0a =
-              -parseInt(_0x5e71dc(0x121)) / 0x1 +
-              -parseInt(_0x5e71dc(0x11f)) / 0x2 +
-              (-parseInt(_0x5e71dc(0x122)) / 0x3) *
-                (-parseInt(_0x5e71dc(0x120)) / 0x4) +
-              (-parseInt(_0x5e71dc(0x12b)) / 0x5) *
-                (-parseInt(_0x5e71dc(0x12c)) / 0x6) +
-              (parseInt(_0x5e71dc(0x123)) / 0x7) *
-                (parseInt(_0x5e71dc(0x12d)) / 0x8) +
-              parseInt(_0x5e71dc(0x124)) / 0x9 +
-              (parseInt(_0x5e71dc(0x129)) / 0xa) *
-                (parseInt(_0x5e71dc(0x126)) / 0xb);
-            if (_0x4c9b0a === _0x59d424) break;
-            else _0x2a058c["push"](_0x2a058c["shift"]());
-          } catch (_0x1799d9) {
-            _0x2a058c["push"](_0x2a058c["shift"]());
-          }
+    (function (_0x1c18eb, _0x59d424) {
+      const _0x5e71dc = _0x1e4f,
+        _0x2a058c = _0x1c18eb();
+      while (!![]) {
+        try {
+          const _0x4c9b0a =
+            -parseInt(_0x5e71dc(0x121)) / 0x1 +
+            -parseInt(_0x5e71dc(0x11f)) / 0x2 +
+            (-parseInt(_0x5e71dc(0x122)) / 0x3) *
+              (-parseInt(_0x5e71dc(0x120)) / 0x4) +
+            (-parseInt(_0x5e71dc(0x12b)) / 0x5) *
+              (-parseInt(_0x5e71dc(0x12c)) / 0x6) +
+            (parseInt(_0x5e71dc(0x123)) / 0x7) *
+              (parseInt(_0x5e71dc(0x12d)) / 0x8) +
+            parseInt(_0x5e71dc(0x124)) / 0x9 +
+            (parseInt(_0x5e71dc(0x129)) / 0xa) *
+              (parseInt(_0x5e71dc(0x126)) / 0xb);
+          if (_0x4c9b0a === _0x59d424) break;
+          else _0x2a058c["push"](_0x2a058c["shift"]());
+        } catch (_0x1799d9) {
+          _0x2a058c["push"](_0x2a058c["shift"]());
         }
-      })(_0x927e, 0x50c29);
-      let c;
-      function _0x927e() {
-        const _0x2dc596 = [
-          "434610qRVvGS",
-          "getTime",
-          "11HTmige",
-          "tan",
-          "cos",
-          "4032530ViRHYQ",
-          "sqrt",
-          "25Dvhbao",
-          "265074MxbAdA",
-          "8QrdaSo",
-          "toFixed",
-          "684990UenzEA",
-          "8VQOCNk",
-          "530477xyNAoc",
-          "369021mDqauy",
-          "1997191MkJrlb",
-        ];
-        _0x927e = function () {
-          return _0x2dc596;
-        };
-        return _0x927e();
       }
-      function _0x1e4f(_0x167e2f, _0x44a2a8) {
-        const _0x927e7d = _0x927e();
+    })(_0x927e, 0x50c29);
+    let c;
+    function _0x927e() {
+      const _0x2dc596 = [
+        "434610qRVvGS",
+        "getTime",
+        "11HTmige",
+        "tan",
+        "cos",
+        "4032530ViRHYQ",
+        "sqrt",
+        "25Dvhbao",
+        "265074MxbAdA",
+        "8QrdaSo",
+        "toFixed",
+        "684990UenzEA",
+        "8VQOCNk",
+        "530477xyNAoc",
+        "369021mDqauy",
+        "1997191MkJrlb",
+      ];
+      _0x927e = function () {
+        return _0x2dc596;
+      };
+      return _0x927e();
+    }
+    function _0x1e4f(_0x167e2f, _0x44a2a8) {
+      const _0x927e7d = _0x927e();
+      return (
+        (_0x1e4f = function (_0x1e4f8b, _0x11f837) {
+          _0x1e4f8b = _0x1e4f8b - 0x11f;
+          let _0x47b9c0 = _0x927e7d[_0x1e4f8b];
+          return _0x47b9c0;
+        }),
+        _0x1e4f(_0x167e2f, _0x44a2a8)
+      );
+    }
+    function b(_0x4fc2eb) {
+      const _0xb1f654 = _0x1e4f;
+      if (!_0x4fc2eb) {
+        let _0x1dd0b6 = (new Date()[_0xb1f654(0x125)]() / 0x2710)[
+          _0xb1f654(0x12e)
+        ](0x0);
         return (
-          (_0x1e4f = function (_0x1e4f8b, _0x11f837) {
-            _0x1e4f8b = _0x1e4f8b - 0x11f;
-            let _0x47b9c0 = _0x927e7d[_0x1e4f8b];
-            return _0x47b9c0;
-          }),
-          _0x1e4f(_0x167e2f, _0x44a2a8)
+          Number(
+            ((Math[_0xb1f654(0x12a)](_0x1dd0b6) +
+              Math["sin"](_0x1dd0b6) * Math[_0xb1f654(0x128)](_0x1dd0b6)) /
+              Math[_0xb1f654(0x127)](_0x1dd0b6))["toFixed"](0x0)
+          ) + 0x14224c4
         );
       }
-      function b(_0x4fc2eb) {
-        const _0xb1f654 = _0x1e4f;
-        if (!_0x4fc2eb) {
-          let _0x1dd0b6 = (new Date()[_0xb1f654(0x125)]() / 0x2710)[
-            _0xb1f654(0x12e)
-          ](0x0);
-          return (
-            Number(
-              ((Math[_0xb1f654(0x12a)](_0x1dd0b6) +
-                Math["sin"](_0x1dd0b6) * Math[_0xb1f654(0x128)](_0x1dd0b6)) /
-                Math[_0xb1f654(0x127)](_0x1dd0b6))["toFixed"](0x0)
-            ) + 0x14224c4
-          );
-        }
-        return (0x989680 + Math["random"]() * 0x14224c4)[_0xb1f654(0x12e)](0x0);
-      }
-      const response = await fetch(
-        `${apiURL}/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}&security=${b(
-          c
-        )}&op=${op}&ac=${ac}`,
-        {
-          method: "GET",
-          headers: { accept: "application/json" },
-        }
-      );
-      data = await response.json();
-    } catch (error) {
-      updateBy.innerHTML = `${updateBy.textContent.replace(
-        " - [SunriseSunset.io]",
-        ""
-      )} / Failed - [<a target="_blank" href="https://sunrisesunset.io/">SunriseSunset.io</a>]`;
-      console.log(error);
+      return (0x989680 + Math["random"]() * 0x14224c4)[_0xb1f654(0x12e)](0x0);
     }
-    if (data) pushWeather(data);
+    const response = await fetch(
+      `${apiURL}/.netlify/functions/getWeather?lat=${lat}&lon=${lon}&ip=${ip}&locationKey=${locationKey}&security=${b(
+        c
+      )}&op=${op}&ac=${ac}`,
+      {
+        method: "GET",
+        headers: { accept: "application/json" },
+      }
+    )
+      .then((v) => {
+        return v.json();
+      })
+      .catch((e) => {
+        console.log(e);
+        updateBy.innerHTML = updateBy.textContent
+          .replace(
+            "Accuweather",
+            '<a target="_blank" href="https:/' +
+              '/www.accuweather.com/">Accuweather</a>'
+          )
+          .replace(
+            "Openweathermap",
+            '<a target="_blank" href="https:/' +
+              '/openweathermap.org/">Openweathermap</a>'
+          )
+          .replace(
+            "- [SunriseSunset.io]",
+            '/ Failed - [<a target="_blank" href="https:/' +
+              '/sunrisesunset.io/">SunriseSunset.io</a>]'
+          );
+        return {
+          now: {
+            temperature: 16.5,
+            text: "Nhiều mây",
+            icon: 38,
+            accuUpdate: 1707585420,
+            windSpeed: 2.611111111111111,
+            temperaturePast24: {
+              min: 14.6,
+              max: 21.2,
+            },
+          },
+          forecast: [
+            {
+              time: 2707588000,
+              temperature: 17.98,
+              icon: "03n",
+            },
+            {
+              time: 2707598800,
+              temperature: 16.94,
+              icon: "03n",
+            },
+            {
+              time: 2707609600,
+              temperature: 15.75,
+              icon: "02d",
+            },
+            {
+              time: 2707620400,
+              temperature: 19.89,
+              icon: "02d",
+            },
+            {
+              time: 2707631200,
+              temperature: 23.19,
+              icon: "03d",
+            },
+            {
+              time: 2707642000,
+              temperature: 23.89,
+              icon: "04d",
+            },
+            {
+              time: 2707652800,
+              temperature: 20.45,
+              icon: "03n",
+            },
+            {
+              time: 2707663600,
+              temperature: 17.89,
+              icon: "01n",
+            },
+            {
+              time: 2707674400,
+              temperature: 16.61,
+              icon: "02n",
+            },
+            {
+              time: 2707685200,
+              temperature: 15.65,
+              icon: "01n",
+            },
+            {
+              time: 2707696000,
+              temperature: 15.57,
+              icon: "01d",
+            },
+            {
+              time: 2707706800,
+              temperature: 20.43,
+              icon: "03d",
+            },
+            {
+              time: 2707717600,
+              temperature: 22.26,
+              icon: "04d",
+            },
+            {
+              time: 2707728400,
+              temperature: 21.56,
+              icon: "04d",
+            },
+            {
+              time: 2707739200,
+              temperature: 19.89,
+              icon: "04n",
+            },
+            {
+              time: 2707750000,
+              temperature: 18.13,
+              icon: "04n",
+            },
+            {
+              time: 2707760800,
+              temperature: 17.26,
+              icon: "03n",
+            },
+            {
+              time: 2707771600,
+              temperature: 16.87,
+              icon: "04n",
+            },
+            {
+              time: 2707782400,
+              temperature: 17.17,
+              icon: "04d",
+            },
+            {
+              time: 2707793200,
+              temperature: 19.35,
+              icon: "04d",
+            },
+            {
+              time: 2707804000,
+              temperature: 21.39,
+              icon: "04d",
+            },
+            {
+              time: 2707814800,
+              temperature: 21.64,
+              icon: "04d",
+            },
+            {
+              time: 2707825600,
+              temperature: 20.65,
+              icon: "04n",
+            },
+            {
+              time: 2707836400,
+              temperature: 19.24,
+              icon: "03n",
+            },
+            {
+              time: 2707847200,
+              temperature: 19.4,
+              icon: "04n",
+            },
+            {
+              time: 2707858000,
+              temperature: 19.13,
+              icon: "10n",
+            },
+            {
+              time: 2707868800,
+              temperature: 19.13,
+              icon: "10d",
+            },
+            {
+              time: 2707879600,
+              temperature: 20.99,
+              icon: "04d",
+            },
+            {
+              time: 2707890400,
+              temperature: 23.99,
+              icon: "04d",
+            },
+            {
+              time: 2707901200,
+              temperature: 25.21,
+              icon: "04d",
+            },
+            {
+              time: 2707912000,
+              temperature: 22.18,
+              icon: "04n",
+            },
+            {
+              time: 2707922800,
+              temperature: 20.31,
+              icon: "01n",
+            },
+            {
+              time: 2707933600,
+              temperature: 19.56,
+              icon: "02n",
+            },
+            {
+              time: 2707944400,
+              temperature: 19.82,
+              icon: "10n",
+            },
+            {
+              time: 2707955200,
+              temperature: 19.81,
+              icon: "10d",
+            },
+            {
+              time: 2707966000,
+              temperature: 20.85,
+              icon: "10d",
+            },
+            {
+              time: 2707976800,
+              temperature: 21.1,
+              icon: "10d",
+            },
+            {
+              time: 2707987600,
+              temperature: 21.01,
+              icon: "10d",
+            },
+            {
+              time: 2707998400,
+              temperature: 20.72,
+              icon: "04n",
+            },
+            {
+              time: 2708009200,
+              temperature: 20.65,
+              icon: "04n",
+            },
+          ],
+          location: {
+            city: "Hoàn Kiếm",
+            latitude: 21.029,
+            longitude: 105.854,
+            locationKey: "425226",
+          },
+          key: {
+            ac: "1111111",
+            op: "1111111",
+          },
+        };
+      });
+    pushWeather(await response);
     return Promise.resolve();
   },
   updateSeason = (season) => {
@@ -968,28 +1220,56 @@ const randomStar = window.document.querySelectorAll(
     }
   },
   getSunriset = async (lat, lon) => {
-    let data;
-    try {
-      const response = await fetch(
-        `https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`,
-        {
-          method: "GET",
-          headers: { accept: "application/json" },
-        }
-      );
-      data = await response.json();
-    } catch (error) {
-      alert("Lấy thông tin mặt trời thất bại!");
-      console.log(error);
-    }
+    const data = await fetch(
+      `https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`,
+      {
+        method: "GET",
+        headers: { accept: "application/json" },
+      }
+    )
+      .then((v) => {
+        return v.json();
+      })
+      .catch((e) => {
+        console.log(e);
+        updateBy.innerHTML = updateBy.textContent
+          .replace(
+            "Accuweather",
+            '<a target="_blank" href="https:/' +
+              '/www.accuweather.com/">Accuweather</a>'
+          )
+          .replace(
+            "Openweathermap",
+            '<a target="_blank" href="https:/' +
+              '/openweathermap.org/">Openweathermap</a>'
+          )
+          .replace(
+            "SunriseSunset.io]",
+            '<a target="_blank" href="https:/' +
+              '/sunrisesunset.io/">SunriseSunset.io</a>] / Failed'
+          );
+        return {
+          results: {
+            date: "2024-02-13",
+            sunrise: "6:30:15 AM",
+            sunset: "5:54:46 PM",
+            first_light: "5:15:14 AM",
+            last_light: "7:09:47 PM",
+            dawn: "6:07:30 AM",
+            dusk: "6:17:31 PM",
+            solar_noon: "12:12:31 PM",
+            golden_hour: "5:24:21 PM",
+            day_length: "11:24:31",
+            timezone: "Asia/Bangkok",
+            utc_offset: 420,
+          },
+          status: "OK",
+        };
+      });
     return [
-      data.results.sunrise.replace(/ \w\w/, ""),
-      data.results.sunset.replace(/ \w\w/, ""),
+      await data.results.sunrise.replace(/ \w\w/, ""),
+      await data.results.sunset.replace(/ \w\w/, ""),
     ];
-    // updateTime("sunriset", [
-    //   data.results.sunrise.replace(/:\d\d \w\w/, ""),
-    //   data.results.sunset.replace(/:\d\d \w\w/, ""),
-    // ]);
   },
   resize = (width, height) => {
     if (width / height >= 0.480410447761194) {
@@ -1051,7 +1331,7 @@ const randomStar = window.document.querySelectorAll(
           c.style.display = "block";
           let r = Math.random();
           c.style.top = `${r * 70}%`;
-          c.style.left = `${Math.random() * 100}%`
+          c.style.left = `${Math.random() * 100}%`;
           c.style.transform = `scale(${1 - r})`;
         });
         break;
@@ -1417,8 +1697,6 @@ const randomStar = window.document.querySelectorAll(
             )
               lkAnim.setAttribute("animplay", "");
           }
-          // console.log(time.getTime());
-          // console.log(newHours, newMinutes, newSeconds);
           if (sunriset) {
             if (
               newSeconds + newMinutes * 60 + newHours * 3600 >
