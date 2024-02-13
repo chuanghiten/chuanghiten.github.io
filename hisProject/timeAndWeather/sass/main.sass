@@ -560,6 +560,57 @@ html[spring]
   --bongLaCenter: #4c8224
   --sangLaCenter: #7cb34b
   --toiLaCenter: #69a03a
+  &[night]
+    --sky: #0c132d
+    --topcl: #121b3cdd
+    --cl1: #172041
+    --cl2: #17204188
+    --fm2: #080f2d
+    --m1: #080f2d
+    --m2: #0a1131
+    --fm1: #0a1131
+    --m3: #0c1334
+    --db6: #080f2d
+    --db5: #091130
+    --db4: #0b1334
+    --db3: #0c1539
+    --db2: #10193d
+    --weatherBackground: #111a41
+    --treeBody: #111a41
+    --treeShadow: #111a41
+    --sangLaCenter: #111a41
+    --bongLaCenter: #111a41
+    --ganLaCenter: #111a41
+    --toiLaCenter: #111a41
+    --laNhonDam: #111a41
+    --laNho: #111a41
+    --laTo1: #111a41
+    --ganLaTo1: #111a41
+    --laTo2: #111a41
+    --ganLaTo2: #111a41
+    --laTo3: #111a41
+    --ganLaTo3: #111a41
+    --khoai: #111a41
+    --bongKhoai: #111a41
+    --laNhon: #111a41
+    --co: #111a41
+    --shadowCo: #111a41
+    --weatherTextColor: #4b5ea3
+    --timeTextColor: #38467a
+    --progressColor: #172041
+    --hoursArrowColor: #38467a
+    --minutesArrowColor: #38467a
+    --borderBieuDoColor: #4b5ea3
+    --backgroundBieuDoColor: #0000
+    --duBaoBottomColor: #111a41
+    .forSpring *
+      fill: #111a41
+      stroke: #111a41
+    .btf.forSpring
+      display: none
+    body .main .contents .weather .randomFlower svg *
+      fill: #111a41
+      stroke: #111a41
 html[summer]
   .forAutumn:not(.forSummer), .forSpring:not(.forSummer), .forWinter:not(.forSummer)
     display: none
@@ -6268,6 +6319,8 @@ html
         width: 100%
         height: 100%
         position: absolute
+      .background
+        background: linear-gradient(to top, var(--weatherBackground) 0px calc(var(--bottom) + 1rem), var(--sky) calc(var(--bottom) + 1rem) 100%)
         .top, .bottom
           width: 100%
           height: 100%
@@ -6299,7 +6352,22 @@ html
         .top
           align-content: flex-start
           --cloudsDuration: 5s
-          svg path
+          .randomStar
+            position: absolute
+            width: 100%
+            height: calc(100% - var(--bottom))
+            .star
+              position: absolute
+              width: 20rem
+              height: 20rem
+              top: 0%
+              left: 0%
+              transform: scale(1)
+              svg
+                margin: 0
+                height: 100%
+                filter: drop-shadow(0 0 7rem #fafffe)
+          svg.cl path
             animation: cloudsSlide var(--cloudsDuration) linear infinite
             transform: translate(0, 0) scale(var(--scale))
             &:nth-child(1)
@@ -6316,8 +6384,6 @@ html
               --cloudSlide: -807rem
               --scale: .5
               transform-origin: 92% 12%
-      .background
-        background: linear-gradient(to top, var(--weatherBackground) 0px calc(var(--bottom) + 1rem), var(--sky) calc(var(--bottom) + 1rem) 100%)
         svg
           .chrysanthemums
             .gan
@@ -6649,7 +6715,7 @@ html
                 width: 100%
                 height: 100%
                 border-radius: 50%
-                background: conic-gradient(var(--progressColor) 0deg, var(--progressColor) var(--deg), #fefffa var(--deg), #fefffa 354deg, transparent 354deg, transparent 360deg)
+                background: conic-gradient(var(--progressColor) 0deg, var(--progressColor) var(--deg), var(--timeTextColor) var(--deg), var(--timeTextColor) 354deg, transparent 354deg, transparent 360deg)
                 display: flex
                 justify-content: center
                 align-items: center
@@ -6726,7 +6792,7 @@ html
                 --progress: 0%
                 width: 100%
                 height: 3.5rem
-                background: linear-gradient(to right, var(--progressColor) 0rem var(--progress), #fefffa var(--progress) 100%)
+                background: linear-gradient(to right, var(--progressColor) 0rem var(--progress), var(--timeTextColor) var(--progress) 100%)
                 margin: 3.5rem 0
                 border-radius: 1.25rem
                 display: flex

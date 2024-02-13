@@ -8,7 +8,10 @@ var htmlFontsize,
   op = (ac = "1111111"),
   pageUpdate;
 
-const sunrise = window.document.querySelector(
+const randomStar = window.document.querySelectorAll(
+    "html body .main .background .top .randomStar .star"
+  ),
+  sunrise = window.document.querySelector(
     "html body .main .contents .time .clock .sunrise"
   ),
   sunset = window.document.querySelector(
@@ -119,7 +122,7 @@ const sunrise = window.document.querySelector(
     "html body .main .contents .weather .now .icon .trangThai"
   ),
   clouds = window.document.querySelector(
-    "html body .main .background .top svg"
+    "html body .main .background .top svg.cl"
   ),
   updateBy = window.document.querySelector(
     "html body .main .contents .weather .updateBy"
@@ -979,10 +982,14 @@ const sunrise = window.document.querySelector(
       alert("Lấy thông tin mặt trời thất bại!");
       console.log(error);
     }
-    updateTime("sunriset", [
-      data.results.sunrise.replace(/:\d\d \w\w/, ""),
-      data.results.sunset.replace(/:\d\d \w\w/, ""),
-    ]);
+    return [
+      data.results.sunrise.replace(/ \w\w/, ""),
+      data.results.sunset.replace(/ \w\w/, ""),
+    ];
+    // updateTime("sunriset", [
+    //   data.results.sunrise.replace(/:\d\d \w\w/, ""),
+    //   data.results.sunset.replace(/:\d\d \w\w/, ""),
+    // ]);
   },
   resize = (width, height) => {
     if (width / height >= 0.480410447761194) {
@@ -1028,6 +1035,28 @@ const sunrise = window.document.querySelector(
       `--bottom: ${weatherDom.offsetHeight}px`
     );
   },
+  updateSession = (session) => {
+    htmlDom.removeAttribute("day");
+    htmlDom.removeAttribute("night");
+    switch (session) {
+      case "day":
+        htmlDom.setAttribute("day", "");
+        randomStar.forEach((c) => {
+          c.style.display = "none";
+        });
+        break;
+      case "night":
+        htmlDom.setAttribute("night", "");
+        randomStar.forEach((c) => {
+          c.style.display = "block";
+          let r = Math.random();
+          c.style.top = `${r * 70}%`;
+          c.style.left = `${Math.random() * 100}%`
+          c.style.transform = `scale(${1 - r})`;
+        });
+        break;
+    }
+  },
   main = () => {
     let fullscreen = 0,
       time,
@@ -1048,7 +1077,9 @@ const sunrise = window.document.querySelector(
       oldLunarMonth,
       newLunarMonth,
       oldLunarYear,
-      newLunarYear;
+      newLunarYear,
+      sunriset,
+      session;
     resize(window.innerWidth, window.innerHeight);
     window.addEventListener("resize", () => {
       resize(window.innerWidth, window.innerHeight);
@@ -1104,7 +1135,18 @@ const sunrise = window.document.querySelector(
             .then((v) => {
               ip = v;
               callNetlify(lat, lon, locationKey, ip).then(() => {
-                getSunriset(lat, lon);
+                getSunriset(lat, lon).then((v) => {
+                  sunriset = [
+                    v[0],
+                    `${Number(v[1].match(/^\d+/)[0]) + 12}${
+                      v[1].match(/:[\d:]+/)[0]
+                    }`,
+                  ];
+                  updateTime("sunriset", [
+                    sunriset[0].replace(/:\d\d$/, ""),
+                    sunriset[1].replace(/:\d\d$/, ""),
+                  ]);
+                });
                 calling = false;
               });
             })
@@ -1125,7 +1167,18 @@ const sunrise = window.document.querySelector(
             .then((v) => {
               ip = v;
               callNetlify(lat, lon, locationKey, ip).then(() => {
-                getSunriset(lat, lon);
+                getSunriset(lat, lon).then((v) => {
+                  sunriset = [
+                    v[0],
+                    `${Number(v[1].match(/^\d+/)[0]) + 12}${
+                      v[1].match(/:[\d:]+/)[0]
+                    }`,
+                  ];
+                  updateTime("sunriset", [
+                    sunriset[0].replace(/:\d\d$/, ""),
+                    sunriset[1].replace(/:\d\d$/, ""),
+                  ]);
+                });
                 calling = false;
               });
             })
@@ -1142,7 +1195,18 @@ const sunrise = window.document.querySelector(
         .then((v) => {
           ip = v;
           callNetlify(lat, lon, locationKey, ip).then((w) => {
-            getSunriset(lat, lon);
+            getSunriset(lat, lon).then((v) => {
+              sunriset = [
+                v[0],
+                `${Number(v[1].match(/^\d+/)[0]) + 12}${
+                  v[1].match(/:[\d:]+/)[0]
+                }`,
+              ];
+              updateTime("sunriset", [
+                sunriset[0].replace(/:\d\d$/, ""),
+                sunriset[1].replace(/:\d\d$/, ""),
+              ]);
+            });
             calling = false;
           });
         })
@@ -1269,7 +1333,19 @@ const sunrise = window.document.querySelector(
                     );
                 }
                 if (newDate % 2 == 0) ac = op = "1111111";
-                if (lat) getSunriset(lat, lon);
+                if (lat)
+                  getSunriset(lat, lon).then((v) => {
+                    sunriset = [
+                      v[0],
+                      `${Number(v[1].match(/^\d+/)[0]) + 12}${
+                        v[1].match(/:[\d:]+/)[0]
+                      }`,
+                    ];
+                    updateTime("sunriset", [
+                      sunriset[0].replace(/:\d\d$/, ""),
+                      sunriset[1].replace(/:\d\d$/, ""),
+                    ]);
+                  });
               }
               if (
                 (newMonth <= 7 && newMonth % 2 != 0) ||
@@ -1340,6 +1416,30 @@ const sunrise = window.document.querySelector(
               lkAnim
             )
               lkAnim.setAttribute("animplay", "");
+          }
+          // console.log(time.getTime());
+          // console.log(newHours, newMinutes, newSeconds);
+          if (sunriset) {
+            if (
+              newSeconds + newMinutes * 60 + newHours * 3600 >
+                Number(sunriset[0].match(/^\d+/)[0]) * 3600 +
+                  Number(sunriset[0].match(/\d+$/)) +
+                  Number(sunriset[0].match(/\D\d+\D/)[0].match(/\d+/)) * 60 &&
+              newSeconds + newMinutes * 60 + newHours * 3600 <
+                Number(sunriset[1].match(/^\d+/)[0]) * 3600 +
+                  Number(sunriset[1].match(/\d+$/)) +
+                  Number(sunriset[1].match(/\D\d+\D/)[0].match(/\d+/)) * 60
+            ) {
+              if (!session || session != "day") {
+                session = "day";
+                updateSession("day");
+              }
+            } else {
+              if (!session || session != "night") {
+                session = "night";
+                updateSession("night");
+              }
+            }
           }
         }
       } else ++fr;
