@@ -174,17 +174,6 @@ const randomStar = window.document.querySelectorAll(
   },
   getIp = async () => {
     if (!window.location.href.includes("noNetlify")) {
-      // try {
-      //   const response = await fetch(`https://api.ipify.org?format=json`, {
-      //     method: "GET",
-      //     headers: { accept: "application/json" },
-      //   });
-      //   ip = await response.json();
-      // } catch (error) {
-      //   alert("Lấy ip người dùng thất bại!");
-      //   console.log(error);
-      // }
-      // return ip.ip;
       const res = await fetch("https://api.ipify.org?format=json", {
         method: "GET",
         headers: { accept: "application/json" },
@@ -194,7 +183,7 @@ const randomStar = window.document.querySelectorAll(
         })
         .catch((e) => {
           console.log(e);
-          return { ip: "8.8.4.4" };
+          return ip ? { ip: ip } : { ip: "8.8.4.4" };
         });
       return await res.ip;
     }
@@ -827,13 +816,13 @@ const randomStar = window.document.querySelectorAll(
           ],
           location: {
             city: "Hoàn Kiếm",
-            latitude: 21.029,
-            longitude: 105.854,
-            locationKey: "425226",
+            latitude: lat,
+            longitude: lon,
+            locationKey: locationKey,
           },
           key: {
-            ac: "1111111",
-            op: "1111111",
+            ac: ac,
+            op: op,
           },
         };
       });
@@ -1359,7 +1348,8 @@ const randomStar = window.document.querySelectorAll(
       oldLunarYear,
       newLunarYear,
       sunriset,
-      session;
+      session,
+      userLatLon;
     resize(window.innerWidth, window.innerHeight);
     window.addEventListener("resize", () => {
       resize(window.innerWidth, window.innerHeight);
@@ -1411,6 +1401,7 @@ const randomStar = window.document.querySelectorAll(
         (v) => {
           lat = v.coords.latitude;
           lon = v.coords.longitude;
+          userLatLon = true;
           getIp()
             .then((v) => {
               ip = v;
@@ -1685,8 +1676,38 @@ const randomStar = window.document.querySelectorAll(
                 );
               }
               if (newHours % 2 == 0 && !calling) {
-                if (ip) {
+                if (ip && ip != "8.8.4.4") {
                   callNetlify(lat, lon, locationKey, ip);
+                } else {
+                  getIp()
+                    .then((v) => {
+                      ip = v;
+                      callNetlify(
+                        userLatLon ? lat : undefined,
+                        userLatLon ? lon : undefined,
+                        undefined,
+                        ip
+                      );
+                    })
+                    .catch((e) => {
+                      console.log(e);
+                      updateBy.innerHTML = updateBy.textContent
+                        .replace(
+                          "Accuweather",
+                          '<a target="_blank" href="https:/' +
+                            '/www.accuweather.com/">Accuweather</a>'
+                        )
+                        .replace(
+                          "Openweathermap",
+                          '<a target="_blank" href="https:/' +
+                            '/openweathermap.org/">Openweathermap</a>'
+                        )
+                        .replace(
+                          "- [SunriseSunset.io]",
+                          '/ Failed - [<a target="_blank" href="https:/' +
+                            '/sunrisesunset.io/">SunriseSunset.io</a>]'
+                        );
+                    });
                 }
               }
             }
