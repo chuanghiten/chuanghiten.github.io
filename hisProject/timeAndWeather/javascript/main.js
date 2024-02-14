@@ -560,7 +560,7 @@ const randomStar = window.document.querySelectorAll(
         let _0x1dd0b6 = (new Date()[_0xb1f654(0x125)]() / 0x2710)[
           _0xb1f654(0x12e)
         ](0x0);
-        return (
+        return btoa(
           Number(
             ((Math[_0xb1f654(0x12a)](_0x1dd0b6) +
               Math["sin"](_0x1dd0b6) * Math[_0xb1f654(0x128)](_0x1dd0b6)) /

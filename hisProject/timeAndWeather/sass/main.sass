@@ -603,9 +603,12 @@ html[spring]
     --borderBieuDoColor: #4b5ea3
     --backgroundBieuDoColor: #0000
     --duBaoBottomColor: #111a41
-    .forSpring *
+    .forSpring
       fill: #111a41
       stroke: #111a41
+      *
+        fill: #111a41
+        stroke: #111a41
     .btf.forSpring
       display: none
     body .main .contents .weather .randomFlower svg *
@@ -666,6 +669,57 @@ html[summer]
   --borderBieuDoColor: #997076
   --backgroundBieuDoColor: #9ccc44
   --duBaoBottomColor: #9ccc44
+  &[night]
+    --sky: #03253e
+    --topcl: #28485fdd
+    --cl1: #28485f
+    --cl2: #28485f88
+    --fm2: #061f33
+    --m1: #061f33
+    --m2: #082236
+    --fm1: #082236
+    --m3: #0a2337
+    --db6: #0a2439
+    --db5: #0b253a
+    --db4: #0b273d
+    --db3: #0c283e
+    --db2: #0d2a41
+    --weatherBackground: #0f2c43
+    --treeBody: #0a2b44
+    --treeShadow: #0a2b44
+    --sangLaCenter: #0a2b44
+    --bongLaCenter: #0a2b44
+    --ganLaCenter: #0a2b44
+    --toiLaCenter: #0a2b44
+    --laNhonDam: #0a2b44
+    --laNho: #0a2b44
+    --laTo1: #0a2b44
+    --ganLaTo1: #0a2b44
+    --laTo2: #0a2b44
+    --ganLaTo2: #0a2b44
+    --laTo3: #0a2b44
+    --ganLaTo3: #0a2b44
+    --khoai: #0a2b44
+    --bongKhoai: #0a2b44
+    --laNhon: #0a2b44
+    --co: #0a2b44
+    --shadowCo: #0a2b44
+    --weatherTextColor: #4a7594
+    --timeTextColor: #4a7594
+    --progressColor: #28485f
+    --hoursArrowColor: #4a7594
+    --minutesArrowColor: #4a7594
+    --borderBieuDoColor: #4a7594
+    --backgroundBieuDoColor: #0000
+    --duBaoBottomColor: #0f2c43
+    .forSummer
+      fill: #0a2b44
+      stroke: #0a2b44
+      *
+        fill: #0a2b44
+        stroke: #0a2b44
+      &.bird
+        display: none
 html[autumn]
   .forSpring:not(.forAutumn), .forSummer:not(.forAutumn), .forWinter:not(.forAutumn)
     animation: none
@@ -6254,6 +6308,65 @@ html[autumn]
       --x100: 0%
       --y100: 0%
       --r100: 0deg
+  &[night]
+    --sky: #3b0140
+    --topcl: #521257dd
+    --cl1: #521257
+    --cl2: #52125788
+    --fm2: #300034
+    --m1: #300034
+    --fm1: #340138
+    --m2: #340138
+    --m3: #37013b
+    --db6: #39013d
+    --db5: #3b013f
+    --db4: #3d0041
+    --db3: #3f0243
+    --db2: #3f0243
+    --weatherBackground: #440448
+    --treeBody: #1a103f
+    --treeShadow: #1a103f
+    --sangLaCenter: #1a103f
+    --bongLaCenter: #1a103f
+    --ganLaCenter: #1a103f
+    --toiLaCenter: #1a103f
+    --laNhonDam: #1a103f
+    --laNho: #1a103f
+    --laTo1: #1a103f
+    --ganLaTo1: #1a103f
+    --laTo2: #1a103f
+    --ganLaTo2: #1a103f
+    --laTo3: #1a103f
+    --ganLaTo3: #1a103f
+    --khoai: #1a103f
+    --bongKhoai: #1a103f
+    --laNhon: #1a103f
+    --co: #1a103f
+    --shadowCo: #1a103f
+    --colorRandomPathTruoc: #0000
+    --colorRandomPathSau: #0000
+    --colorStrokeTruoc: #0000
+    --colorStrokeSau: #0000
+    --weatherTextColor: #9e4ea3
+    --timeTextColor: #9e4ea3
+    --progressColor: #791f7f
+    --hoursArrowColor: #9e4ea3
+    --minutesArrowColor: #9e4ea3
+    --borderBieuDoColor: #9e4ea3
+    --backgroundBieuDoColor: #0000
+    --duBaoBottomColor: #440448
+    .forAutumn
+      fill: #1a103f
+      stroke: #1a103f
+      *
+        fill: #1a103f
+        stroke: #1a103f
+    body .main .background .bottom svg .laKhoAnimation
+      display: none
+      animation: none
+      *
+        display: none
+        animation: none
 html[winter]
   .forAutumn:not(.forWinter), .forSpring:not(.forWinter), .forSummer:not(.forWinter)
     display: none
@@ -6300,6 +6413,51 @@ html[winter]
   --backgroundBieuDoColor: #fff
   --progressColor: #5096d4
   --duBaoBottomColor: #fff
+  &[night]
+    --sky: #1f253b
+    --topcl: #313a59dd
+    --cl1: #313a59
+    --cl2: #313a5988
+    --fm2: #12172a
+    --m1: #12172a
+    --m2: #161c31
+    --fm1: #161c31
+    --m3: #192036
+    --db6: #1c243c
+    --db5: #1e2740
+    --db4: #1f2943
+    --db3: #222d48
+    --db2: #222d48
+    --weatherBackground: #232f4b
+    --treeBody: #2e4057
+    --treeShadow: #2e4057
+    --sangLaCenter: #2e4057
+    --bongLaCenter: #2e4057
+    --ganLaCenter: #2e4057
+    --toiLaCenter: #2e4057
+    --laNhonDam: #2e4057
+    --laNho: #2e4057
+    --laTo1: #2e4057
+    --ganLaTo1: #2e4057
+    --laTo2: #2e4057
+    --ganLaTo2: #2e4057
+    --laTo3: #2e4057
+    --ganLaTo3: #2e4057
+    --khoai: #2e4057
+    --bongKhoai: #2e4057
+    --laNhon: #2e4057
+    --co: #2e4057
+    --shadowCo: #2e4057
+    --weatherTextColor: #5d719e
+    --timeTextColor: #5d719e
+    --progressColor: #2e4474
+    --hoursArrowColor: #5d719e
+    --minutesArrowColor: #5d719e
+    --borderBieuDoColor: #5d719e
+    --backgroundBieuDoColor: #0000
+    --duBaoBottomColor: #232f4b
+    body .main .background .bottom .tuyetRoi .tuyet
+      border-color: #232f4b
 
 html
   font-size: 6.25%

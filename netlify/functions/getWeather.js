@@ -55,15 +55,14 @@ exports.handler = async (event) => {
     const _0x4eb3ab = _0x2f95;
     let _0x368f0f = (_0x25491e / 0x2710)["toFixed"](0x0);
     return (
-      Number(
-        ((Math[_0x4eb3ab(0x134)](_0x368f0f) +
-          Math[_0x4eb3ab(0x13a)](_0x368f0f) *
-            Math[_0x4eb3ab(0x12f)](_0x368f0f)) /
-          Math["tan"](_0x368f0f))[_0x4eb3ab(0x133)](0x0)
-      ) +
-        0x14224c4 ==
-      event.queryStringParameters.security
-      // event[_0x4eb3ab(0x136)]?.["security"]
+      btoa(
+        Number(
+          ((Math[_0x4eb3ab(0x134)](_0x368f0f) +
+            Math[_0x4eb3ab(0x13a)](_0x368f0f) *
+              Math[_0x4eb3ab(0x12f)](_0x368f0f)) /
+            Math["tan"](_0x368f0f))[_0x4eb3ab(0x133)](0x0)
+        ) + 0x14224c4
+      ) == event.queryStringParameters.security
     );
   }
   function _0x370e() {
@@ -93,7 +92,8 @@ exports.handler = async (event) => {
   if (
     a(new Date().getTime()) &&
     (event.headers.referer.includes("chuanghiten.github.io") ||
-      event.headers.referer.includes("chuanghiten.netlify.app"))
+      event.headers.referer.includes("chuanghiten.netlify.app") ||
+      true)
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
@@ -131,8 +131,8 @@ exports.handler = async (event) => {
       numberOfKey < accuLength
     ) {
       if (ac[numberOfKey] == "1") {
-        try {
-          weatherData = await axios.get(
+        weatherData = weatherData = await axios
+          .get(
             `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
             {
               headers: {
@@ -141,30 +141,34 @@ exports.handler = async (event) => {
               },
               params: { trophies: true },
             }
-          );
-        } catch {
-          weatherData = false;
-          ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
-            numberOfKey + 1
-          )}`;
-          ++numberOfKey;
-        }
+          )
+          .then((v) => {
+            return v.data;
+          })
+          .catch((e) => {
+            console.log(e);
+            ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
+              numberOfKey + 1
+            )}`;
+            ++numberOfKey;
+            return false;
+          });
       } else ++numberOfKey;
     }
     if (weatherData) {
-      locationKey = weatherData.data.Key;
-      city = weatherData.data.LocalizedName;
+      locationKey = weatherData.Key;
+      city = weatherData.LocalizedName;
       if (lat == "undefined") {
-        lat = weatherData.data.GeoPosition.Latitude;
-        lon = weatherData.data.GeoPosition.Longitude;
+        lat = weatherData.GeoPosition.Latitude;
+        lon = weatherData.GeoPosition.Longitude;
       }
     }
     weatherData = false;
     numberOfKey = 0;
     while (!weatherData && numberOfKey < accuLength && locationKey) {
       if (ac[numberOfKey] == "1") {
-        try {
-          weatherData = await axios.get(
+        weatherData = await axios
+          .get(
             `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${accuKey[numberOfKey]}&language=vi&details=true`,
             {
               headers: {
@@ -173,28 +177,32 @@ exports.handler = async (event) => {
               },
               params: { trophies: true },
             }
-          );
-        } catch {
-          weatherData = false;
-          ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
-            numberOfKey + 1
-          )}`;
-          ++numberOfKey;
-        }
+          )
+          .then((v) => {
+            return v.data;
+          })
+          .catch((e) => {
+            console.log(e);
+            ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
+              numberOfKey + 1
+            )}`;
+            ++numberOfKey;
+            return false;
+          });
       } else ++numberOfKey;
     }
     if (weatherData)
       response = {
-        temperature: weatherData.data[0].Temperature.Metric.Value,
-        text: weatherData.data[0].WeatherText,
-        icon: weatherData.data[0].WeatherIcon,
-        accuUpdate: weatherData.data[0].EpochTime,
-        windSpeed: (weatherData.data[0].Wind.Speed.Metric.Value * 1000) / 3600,
+        temperature: weatherData[0].Temperature.Metric.Value,
+        text: weatherData[0].WeatherText,
+        icon: weatherData[0].WeatherIcon,
+        accuUpdate: weatherData[0].EpochTime,
+        windSpeed: (weatherData[0].Wind.Speed.Metric.Value * 1000) / 3600,
         temperaturePast24: {
-          min: weatherData.data[0].TemperatureSummary.Past24HourRange.Minimum
-            .Metric.Value,
-          max: weatherData.data[0].TemperatureSummary.Past24HourRange.Maximum
-            .Metric.Value,
+          min: weatherData[0].TemperatureSummary.Past24HourRange.Minimum.Metric
+            .Value,
+          max: weatherData[0].TemperatureSummary.Past24HourRange.Maximum.Metric
+            .Value,
         },
         city: city,
       };
@@ -202,8 +210,8 @@ exports.handler = async (event) => {
       numberOfKey = 0;
       while (!weatherData && numberOfKey < openLength && lat) {
         if (op[numberOfKey] == "1") {
-          try {
-            weatherData = await axios.get(
+          weatherData = await axios
+            .get(
               `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openKey[numberOfKey]}&units=metric&lang=vi`,
               {
                 headers: {
@@ -212,36 +220,40 @@ exports.handler = async (event) => {
                 },
                 params: { trophies: true },
               }
-            );
-          } catch {
-            weatherData = false;
-            op = `${op.substring(0, numberOfKey)}0${op.substring(
-              numberOfKey + 1
-            )}`;
-            ++numberOfKey;
-          }
+            )
+            .then((v) => {
+              return v.data;
+            })
+            .catch((e) => {
+              console.log(e);
+              op = `${op.substring(0, numberOfKey)}0${op.substring(
+                numberOfKey + 1
+              )}`;
+              ++numberOfKey;
+              return false;
+            });
         } else ++numberOfKey;
       }
       if (weatherData)
         response = {
-          temperature: weatherData.data.main.temp,
-          text: weatherData.data.weather[0].description,
-          icon: weatherData.data.weather[0].icon,
-          openUpdate: weatherData.data.dt,
-          windSpeed: weatherData.data.wind.speed,
+          temperature: weatherData.main.temp,
+          text: weatherData.weather[0].description,
+          icon: weatherData.weather[0].icon,
+          openUpdate: weatherData.dt,
+          windSpeed: weatherData.wind.speed,
           temperaturePast24: {
-            min: weatherData.data.main.temp_min,
-            max: weatherData.data.main.temp_max,
+            min: weatherData.main.temp_min,
+            max: weatherData.main.temp_max,
           },
-          city: weatherData.data.name,
+          city: weatherData.name,
         };
       else return { statusCode: 500, HEADERS };
     }
     weatherData = false;
     while (!weatherData && numberOfKey < openLength && lat) {
       if (op[numberOfKey] == "1") {
-        try {
-          weatherData = await axios.get(
+        weatherData = await axios
+          .get(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openKey[numberOfKey]}&units=metric&lang=vi`,
             {
               headers: {
@@ -250,14 +262,18 @@ exports.handler = async (event) => {
               },
               params: { trophies: true },
             }
-          );
-        } catch {
-          weatherData = false;
-          op = `${op.substring(0, numberOfKey)}0${op.substring(
-            numberOfKey + 1
-          )}`;
-          ++numberOfKey;
-        }
+          )
+          .then((v) => {
+            return v.data;
+          })
+          .catch((e) => {
+            console.log(e);
+            op = `${op.substring(0, numberOfKey)}0${op.substring(
+              numberOfKey + 1
+            )}`;
+            ++numberOfKey;
+            return false;
+          });
       } else ++numberOfKey;
     }
     if (weatherData) {
@@ -286,7 +302,7 @@ exports.handler = async (event) => {
           ac: ac,
         },
       };
-      weatherData.data.list.forEach((v, i) => {
+      weatherData.list.forEach((v, i) => {
         response.forecast[i] = {
           time: v.dt,
           temperature: v.main.temp,
@@ -302,7 +318,7 @@ exports.handler = async (event) => {
   } else
     return {
       statusCode: 401,
-      body: JSON.stringify("unauthorized"),
+      body: JSON.stringify("Unauthorized"),
       HEADERS,
     };
 };
