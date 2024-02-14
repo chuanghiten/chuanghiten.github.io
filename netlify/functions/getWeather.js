@@ -88,7 +88,6 @@ exports.handler = async (event) => {
     };
     return _0x370e();
   }
-  // console.log(`${a(new Date().getTime())} ${event.headers.referer}`);
   if (
     a(new Date().getTime()) &&
     (event.headers.referer.includes("chuanghiten.github.io") ||
