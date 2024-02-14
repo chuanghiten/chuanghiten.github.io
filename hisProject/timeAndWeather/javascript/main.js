@@ -1505,6 +1505,10 @@ const randomStar = window.document.querySelectorAll(
         if (oldSeconds != newSeconds) {
           oldSeconds = newSeconds;
           newMinutes = time.getMinutes();
+          updateTime(
+            "minutesArrow",
+            (6 * (newMinutes + newSeconds / 60)).toFixed(2)
+          );
           if (oldMinutes != newMinutes) {
             oldMinutes = newMinutes;
             newHours = time.getHours();
@@ -1525,10 +1529,6 @@ const randomStar = window.document.querySelectorAll(
               oldHours = newHours;
               newDate = time.getDate();
               updateTime("hour", newHours);
-              updateTime(
-                "minutesArrow",
-                (6 * (newMinutes + newSeconds / 60)).toFixed(2)
-              );
               updateTime(
                 "progressDay",
                 (newHours * 3600 + newMinutes * 60 + newSeconds).toFixed(2)
