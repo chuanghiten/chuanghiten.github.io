@@ -90,9 +90,8 @@ exports.handler = async (event) => {
   }
   if (
     a(new Date().getTime()) &&
-    (event.headers.referer.includes("chuanghiten.github.io") ||
-      event.headers.referer.includes("chuanghiten.netlify.app") ||
-      true)
+    (event.headers.referer.startsWith("https://chuanghiten.github.io/", 0) ||
+      event.headers.referer.startsWith("https://chuanghiten.netlify.app/", 0))
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
@@ -130,7 +129,7 @@ exports.handler = async (event) => {
       numberOfKey < accuLength
     ) {
       if (ac[numberOfKey] == "1") {
-        weatherData = weatherData = await axios
+        weatherData = await axios
           .get(
             `https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${accuKey[numberOfKey]}&q=${ip}&language=vi&details=true`,
             {
