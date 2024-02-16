@@ -91,7 +91,7 @@ exports.handler = async (event) => {
   if (
     a(new Date().getTime()) &&
     (event.headers.referer.startsWith("https://chuanghiten.github.io/", 0) ||
-      event.headers.referer.startsWith("https://chuanghiten.netlify.app/", 0) || true)
+      event.headers.referer.startsWith("https://chuanghiten.netlify.app/", 0))
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
