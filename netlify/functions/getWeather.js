@@ -245,7 +245,15 @@ exports.handler = async (event) => {
           },
           city: weatherData.name,
         };
-      else return { statusCode: 500, HEADERS };
+      else
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            code: 500,
+            description: "Internal Server Error",
+          }),
+          HEADERS,
+        };
     }
     weatherData = false;
     while (!weatherData && numberOfKey < openLength && lat) {
@@ -276,6 +284,8 @@ exports.handler = async (event) => {
     }
     if (weatherData) {
       response = {
+        code: 200,
+        description: "Ok",
         now: {
           temperature: response.temperature,
           text: response.text,
@@ -307,7 +317,12 @@ exports.handler = async (event) => {
           icon: v.weather[0].icon,
         };
       });
-    } else return { statusCode: 500, HEADERS };
+    } else
+      return {
+        statusCode: 500,
+        body: { code: 500, description: "Internal Server Error" },
+        HEADERS,
+      };
     return {
       statusCode: 200,
       body: JSON.stringify(response),
@@ -316,7 +331,7 @@ exports.handler = async (event) => {
   } else
     return {
       statusCode: 401,
-      body: JSON.stringify("Unauthorized"),
+      body: JSON.stringify({ code: 401, description: "Unauthorized" }),
       HEADERS,
     };
 };
