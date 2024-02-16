@@ -181,10 +181,12 @@ const timeCreditUpdate = window.document.querySelector(
     )} - ${add0(time.getHours())}:${add0(time.getMinutes())} - `;
     if (name == "accu") {
       accuLink.innerHTML = "Accuweather";
-      gachNgangAccuOpen.innerHTML = " - ";
+      gachNgangAccuOpen.innerHTML = ` (${ac
+        .replaceAll("0", "!")
+        .replaceAll("1", "i")}) - `;
     }
     openLink.innerHTML = "Openweathermap";
-    netlifyFailed.innerHTML = "] - [";
+    netlifyFailed.innerHTML = ` (${op.replaceAll("0", "!").replaceAll("1", "i")})] - [`;
     sunrisetLink.innerHTML = "SunriseSunset.io";
     sunrisetFailed.innerHTML = "]";
     return;
@@ -197,7 +199,7 @@ const timeCreditUpdate = window.document.querySelector(
       })
         .then((v) => {
           if (v.status == 200) return v.json();
-          else return ip ? { ip: ip } : { ip: "8.8.4.4" }
+          else return ip ? { ip: ip } : { ip: "8.8.4.4" };
         })
         .catch((e) => {
           console.log(e);
@@ -828,7 +830,12 @@ const timeCreditUpdate = window.document.querySelector(
       })
       .catch((e) => {
         console.log(e);
-        netlifyFailed.innerHTML = "] / Failed - [";
+        gachNgangAccuOpen.innerHTML = ` (${ac
+          .replaceAll("0", "!")
+          .replaceAll("1", "i")}) - `;
+        netlifyFailed.innerHTML = `(${op
+          .replaceAll("0", "!")
+          .replaceAll("1", "i")})] / Failed - [`;
         return {
           now: {
             temperature: 16.5,
@@ -1923,7 +1930,12 @@ const timeCreditUpdate = window.document.querySelector(
                     })
                     .catch((e) => {
                       console.log(e);
-                      netlifyFailed.innerHTML = "] / Failed - [";
+                      gachNgangAccuOpen.innerHTML = ` (${ac
+                        .replaceAll("0", "!")
+                        .replaceAll("1", "i")}) - `;
+                      netlifyFailed.innerHTML = `(${op
+                        .replaceAll("0", "!")
+                        .replaceAll("1", "i")})] / Failed - [`;
                     });
                 }
               }

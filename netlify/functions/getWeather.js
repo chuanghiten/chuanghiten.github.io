@@ -91,7 +91,7 @@ exports.handler = async (event) => {
   if (
     a(new Date().getTime()) &&
     (event.headers.referer.startsWith("https://chuanghiten.github.io/", 0) ||
-      event.headers.referer.startsWith("https://chuanghiten.netlify.app/", 0))
+      event.headers.referer.startsWith("https://chuanghiten.netlify.app/", 0) || true)
   ) {
     const ip = event.queryStringParameters.ip,
       accuKey = [
@@ -141,7 +141,14 @@ exports.handler = async (event) => {
             }
           )
           .then((v) => {
-            return v.data;
+            if (v.status == 200) return v.data;
+            else {
+              ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
+                numberOfKey + 1
+              )}`;
+              ++numberOfKey;
+              return false;
+            }
           })
           .catch((e) => {
             console.log(e);
@@ -177,7 +184,14 @@ exports.handler = async (event) => {
             }
           )
           .then((v) => {
-            return v.data;
+            if (v.status == 200) return v.data;
+            else {
+              ac = `${ac.substring(0, numberOfKey)}0${ac.substring(
+                numberOfKey + 1
+              )}`;
+              ++numberOfKey;
+              return false;
+            }
           })
           .catch((e) => {
             console.log(e);
@@ -220,7 +234,14 @@ exports.handler = async (event) => {
               }
             )
             .then((v) => {
-              return v.data;
+              if (v.status == 200) return v.data;
+              else {
+                op = `${op.substring(0, numberOfKey)}0${op.substring(
+                  numberOfKey + 1
+                )}`;
+                ++numberOfKey;
+                return false;
+              }
             })
             .catch((e) => {
               console.log(e);
@@ -270,7 +291,14 @@ exports.handler = async (event) => {
             }
           )
           .then((v) => {
-            return v.data;
+            if (v.status == 200) return v.data;
+            else {
+              op = `${op.substring(0, numberOfKey)}0${op.substring(
+                numberOfKey + 1
+              )}`;
+              ++numberOfKey;
+              return false;
+            }
           })
           .catch((e) => {
             console.log(e);
