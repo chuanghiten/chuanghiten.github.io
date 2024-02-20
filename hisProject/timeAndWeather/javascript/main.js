@@ -1914,7 +1914,7 @@ const timeCreditUpdate = window.document.querySelector(
                   ).toFixed(2)
                 );
               }
-              if (newHours % 2 == 0 && !calling) {
+              if (!calling) {
                 if (ip && ip != "8.8.4.4") {
                   callNetlify(lat, lon, locationKey, ip);
                 } else {
