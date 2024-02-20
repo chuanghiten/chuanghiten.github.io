@@ -186,7 +186,9 @@ const timeCreditUpdate = window.document.querySelector(
         .replaceAll("1", "i")}) - `;
     }
     openLink.innerHTML = "Openweathermap";
-    netlifyFailed.innerHTML = ` (${op.replaceAll("0", "!").replaceAll("1", "i")})] - [`;
+    netlifyFailed.innerHTML = ` (${op
+      .replaceAll("0", "!")
+      .replaceAll("1", "i")})] - [`;
     sunrisetLink.innerHTML = "SunriseSunset.io";
     sunrisetFailed.innerHTML = "]";
     return;
@@ -210,74 +212,106 @@ const timeCreditUpdate = window.document.querySelector(
     return Promise.resolve("8.8.4.4");
   },
   pushWeather = (w) => {
-    ac = w.key.ac;
-    op = w.key.op;
-    if (!locationKey) locationKey = Number(w.location.locationKey);
-    if (!lat) {
-      lat = Number(w.location.latitude);
-      lon = Number(w.location.longitude);
-    }
-    if (w.location.city) updateWeather("city", w.location.city);
-    updateWeather("temperature", [
-      w.now.temperaturePast24.min.toFixed(1),
-      w.now.temperature.toFixed(1),
-      w.now.temperaturePast24.max.toFixed(1),
-    ]);
-    updateWeather("icon", w.now.icon);
-    updateWeather("trangThai", w.now.text);
-    let forecast = [],
-      q = 8;
-    w.forecast.every((c) => {
-      if (c.time * 1000 > Date.now()) {
-        forecast[forecast.length] = {
-          temperature: Number(c.temperature.toFixed(1)),
-          icon: c.icon,
-          time: c.time,
-        };
-        --q;
+    if (w) {
+      ac = w.key.ac;
+      op = w.key.op;
+      if (!locationKey) locationKey = Number(w.location.locationKey);
+      if (!lat) {
+        lat = Number(w.location.latitude);
+        lon = Number(w.location.longitude);
       }
-      if (q >= 0) return true;
-      else return false;
-    });
-    updateDoThi({
-      temperature: [
-        w.now.temperature,
-        forecast[0].temperature,
-        forecast[1].temperature,
-        forecast[2].temperature,
-        forecast[3].temperature,
-        forecast[4].temperature,
-        forecast[5].temperature,
-        forecast[6].temperature,
-        forecast[7].temperature,
-        forecast[8].temperature,
-      ],
-      icons: [
-        forecast[0].icon,
-        forecast[1].icon,
-        forecast[2].icon,
-        forecast[3].icon,
-        forecast[4].icon,
-        forecast[5].icon,
-        forecast[6].icon,
-        forecast[7].icon,
-        forecast[8].icon,
-      ],
-      times: [
-        forecast[0].time,
-        forecast[1].time,
-        forecast[2].time,
-        forecast[3].time,
-        forecast[4].time,
-        forecast[5].time,
-        forecast[6].time,
-        forecast[7].time,
-        forecast[8].time,
-      ],
-    });
-    updateWeather("wind", w.now.windSpeed);
-    if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
-    else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
+      if (w.location.city) updateWeather("city", w.location.city);
+      updateWeather("temperature", [
+        w.now.temperaturePast24.min.toFixed(1),
+        w.now.temperature.toFixed(1),
+        w.now.temperaturePast24.max.toFixed(1),
+      ]);
+      updateWeather("icon", w.now.icon);
+      updateWeather("trangThai", w.now.text);
+      let forecast = [],
+        q = 8;
+      w.forecast.every((c) => {
+        if (c.time * 1000 > Date.now()) {
+          forecast[forecast.length] = {
+            temperature: Number(c.temperature.toFixed(1)),
+            icon: c.icon,
+            time: c.time,
+          };
+          --q;
+        }
+        if (q >= 0) return true;
+        else return false;
+      });
+      updateDoThi({
+        temperature: [
+          w.now.temperature,
+          forecast[0].temperature,
+          forecast[1].temperature,
+          forecast[2].temperature,
+          forecast[3].temperature,
+          forecast[4].temperature,
+          forecast[5].temperature,
+          forecast[6].temperature,
+          forecast[7].temperature,
+          forecast[8].temperature,
+        ],
+        icons: [
+          forecast[0].icon,
+          forecast[1].icon,
+          forecast[2].icon,
+          forecast[3].icon,
+          forecast[4].icon,
+          forecast[5].icon,
+          forecast[6].icon,
+          forecast[7].icon,
+          forecast[8].icon,
+        ],
+        times: [
+          forecast[0].time,
+          forecast[1].time,
+          forecast[2].time,
+          forecast[3].time,
+          forecast[4].time,
+          forecast[5].time,
+          forecast[6].time,
+          forecast[7].time,
+          forecast[8].time,
+        ],
+      });
+      updateWeather("wind", w.now.windSpeed);
+      if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
+      else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
+    } else {
+      if (htmlDom.style.opacity == "0") {
+        updateWeather("city", "Undefined");
+        updateWeather("temperature", [0, 99.9, 99.9]);
+        updateWeather("icon", 2);
+        updateWeather("trangThai", "Undefined");
+        updateDoThi({
+          temperature: [99.9, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          icons: [
+            "02d",
+            "02d",
+            "02d",
+            "02d",
+            "02d",
+            "02d",
+            "02d",
+            "02d",
+            "02d",
+          ],
+          times: [
+            9999999999, 9999999999, 9999999999, 9999999999, 9999999999,
+            9999999999, 9999999999, 9999999999, 9999999999,
+          ],
+        });
+        updateWeather("wind", 114);
+        updateCredit("accu", 9999999999);
+        netlifyFailed.innerHTML = `(${op
+          .replaceAll("0", "!")
+          .replaceAll("1", "i")})] / Failed - [`;
+      }
+    }
     htmlDom.style.opacity = "1";
   },
   callNetlify = async (lat, lon, locationKey, ip) => {
@@ -288,220 +322,220 @@ const timeCreditUpdate = window.document.querySelector(
       if (window.location.href.includes("noNetlify")) {
         pushWeather({
           now: {
-            temperature: 16.5,
-            text: "Nhiều mây",
-            icon: 38,
-            accuUpdate: 1707585420,
+            temperature: 99.9,
+            text: "Undefined",
+            icon: 2,
+            accuUpdate: 9999999999,
             windSpeed: 2.611111111111111,
             temperaturePast24: {
-              min: 14.6,
-              max: 21.2,
+              min: 0,
+              max: 99.9,
             },
           },
           forecast: [
             {
-              time: 2707588000,
+              time: 9999999999,
               temperature: 17.98,
-              icon: "03n",
+              icon: "02d",
             },
             {
-              time: 2707598800,
+              time: 9999999999,
               temperature: 16.94,
-              icon: "03n",
+              icon: "02d",
             },
             {
-              time: 2707609600,
+              time: 9999999999,
               temperature: 15.75,
               icon: "02d",
             },
             {
-              time: 2707620400,
+              time: 9999999999,
               temperature: 19.89,
               icon: "02d",
             },
             {
-              time: 2707631200,
+              time: 9999999999,
               temperature: 23.19,
-              icon: "03d",
+              icon: "02d",
             },
             {
-              time: 2707642000,
+              time: 9999999999,
               temperature: 23.89,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707652800,
+              time: 9999999999,
               temperature: 20.45,
-              icon: "03n",
+              icon: "02d",
             },
             {
-              time: 2707663600,
+              time: 9999999999,
               temperature: 17.89,
-              icon: "01n",
+              icon: "02d",
             },
             {
-              time: 2707674400,
+              time: 9999999999,
               temperature: 16.61,
-              icon: "02n",
+              icon: "02d",
             },
             {
-              time: 2707685200,
+              time: 9999999999,
               temperature: 15.65,
-              icon: "01n",
+              icon: "02d",
             },
             {
-              time: 2707696000,
+              time: 9999999999,
               temperature: 15.57,
-              icon: "01d",
+              icon: "02d",
             },
             {
-              time: 2707706800,
+              time: 9999999999,
               temperature: 20.43,
-              icon: "03d",
+              icon: "02d",
             },
             {
-              time: 2707717600,
+              time: 9999999999,
               temperature: 22.26,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707728400,
+              time: 9999999999,
               temperature: 21.56,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707739200,
+              time: 9999999999,
               temperature: 19.89,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2707750000,
+              time: 9999999999,
               temperature: 18.13,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2707760800,
+              time: 9999999999,
               temperature: 17.26,
-              icon: "03n",
+              icon: "02d",
             },
             {
-              time: 2707771600,
+              time: 9999999999,
               temperature: 16.87,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2707782400,
+              time: 9999999999,
               temperature: 17.17,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707793200,
+              time: 9999999999,
               temperature: 19.35,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707804000,
+              time: 9999999999,
               temperature: 21.39,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707814800,
+              time: 9999999999,
               temperature: 21.64,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707825600,
+              time: 9999999999,
               temperature: 20.65,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2707836400,
+              time: 9999999999,
               temperature: 19.24,
-              icon: "03n",
+              icon: "02d",
             },
             {
-              time: 2707847200,
+              time: 9999999999,
               temperature: 19.4,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2707858000,
+              time: 9999999999,
               temperature: 19.13,
-              icon: "10n",
+              icon: "02d",
             },
             {
-              time: 2707868800,
+              time: 9999999999,
               temperature: 19.13,
-              icon: "10d",
+              icon: "02d",
             },
             {
-              time: 2707879600,
+              time: 9999999999,
               temperature: 20.99,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707890400,
+              time: 9999999999,
               temperature: 23.99,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707901200,
+              time: 9999999999,
               temperature: 25.21,
-              icon: "04d",
+              icon: "02d",
             },
             {
-              time: 2707912000,
+              time: 9999999999,
               temperature: 22.18,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2707922800,
+              time: 9999999999,
               temperature: 20.31,
-              icon: "01n",
+              icon: "02d",
             },
             {
-              time: 2707933600,
+              time: 9999999999,
               temperature: 19.56,
-              icon: "02n",
+              icon: "02d",
             },
             {
-              time: 2707944400,
+              time: 9999999999,
               temperature: 19.82,
-              icon: "10n",
+              icon: "02d",
             },
             {
-              time: 2707955200,
+              time: 9999999999,
               temperature: 19.81,
-              icon: "10d",
+              icon: "02d",
             },
             {
-              time: 2707966000,
+              time: 9999999999,
               temperature: 20.85,
-              icon: "10d",
+              icon: "02d",
             },
             {
-              time: 2707976800,
+              time: 9999999999,
               temperature: 21.1,
-              icon: "10d",
+              icon: "02d",
             },
             {
-              time: 2707987600,
+              time: 9999999999,
               temperature: 21.01,
-              icon: "10d",
+              icon: "02d",
             },
             {
-              time: 2707998400,
+              time: 9999999999,
               temperature: 20.72,
-              icon: "04n",
+              icon: "02d",
             },
             {
-              time: 2708009200,
+              time: 9999999999,
               temperature: 20.65,
-              icon: "04n",
+              icon: "02d",
             },
           ],
           location: {
-            city: "Hoàn Kiếm",
+            city: "Undefined",
             latitude: 21.029,
             longitude: 105.854,
             locationKey: "425226",
@@ -601,232 +635,15 @@ const timeCreditUpdate = window.document.querySelector(
     )
       .then((v) => {
         if (v.status == 200) return v.json();
-        else
-          return {
-            now: {
-              temperature: 16.5,
-              text: "Nhiều mây",
-              icon: 38,
-              accuUpdate: 1707585420,
-              windSpeed: 2.611111111111111,
-              temperaturePast24: {
-                min: 14.6,
-                max: 21.2,
-              },
-            },
-            forecast: [
-              {
-                time: 2707588000,
-                temperature: 17.98,
-                icon: "03n",
-              },
-              {
-                time: 2707598800,
-                temperature: 16.94,
-                icon: "03n",
-              },
-              {
-                time: 2707609600,
-                temperature: 15.75,
-                icon: "02d",
-              },
-              {
-                time: 2707620400,
-                temperature: 19.89,
-                icon: "02d",
-              },
-              {
-                time: 2707631200,
-                temperature: 23.19,
-                icon: "03d",
-              },
-              {
-                time: 2707642000,
-                temperature: 23.89,
-                icon: "04d",
-              },
-              {
-                time: 2707652800,
-                temperature: 20.45,
-                icon: "03n",
-              },
-              {
-                time: 2707663600,
-                temperature: 17.89,
-                icon: "01n",
-              },
-              {
-                time: 2707674400,
-                temperature: 16.61,
-                icon: "02n",
-              },
-              {
-                time: 2707685200,
-                temperature: 15.65,
-                icon: "01n",
-              },
-              {
-                time: 2707696000,
-                temperature: 15.57,
-                icon: "01d",
-              },
-              {
-                time: 2707706800,
-                temperature: 20.43,
-                icon: "03d",
-              },
-              {
-                time: 2707717600,
-                temperature: 22.26,
-                icon: "04d",
-              },
-              {
-                time: 2707728400,
-                temperature: 21.56,
-                icon: "04d",
-              },
-              {
-                time: 2707739200,
-                temperature: 19.89,
-                icon: "04n",
-              },
-              {
-                time: 2707750000,
-                temperature: 18.13,
-                icon: "04n",
-              },
-              {
-                time: 2707760800,
-                temperature: 17.26,
-                icon: "03n",
-              },
-              {
-                time: 2707771600,
-                temperature: 16.87,
-                icon: "04n",
-              },
-              {
-                time: 2707782400,
-                temperature: 17.17,
-                icon: "04d",
-              },
-              {
-                time: 2707793200,
-                temperature: 19.35,
-                icon: "04d",
-              },
-              {
-                time: 2707804000,
-                temperature: 21.39,
-                icon: "04d",
-              },
-              {
-                time: 2707814800,
-                temperature: 21.64,
-                icon: "04d",
-              },
-              {
-                time: 2707825600,
-                temperature: 20.65,
-                icon: "04n",
-              },
-              {
-                time: 2707836400,
-                temperature: 19.24,
-                icon: "03n",
-              },
-              {
-                time: 2707847200,
-                temperature: 19.4,
-                icon: "04n",
-              },
-              {
-                time: 2707858000,
-                temperature: 19.13,
-                icon: "10n",
-              },
-              {
-                time: 2707868800,
-                temperature: 19.13,
-                icon: "10d",
-              },
-              {
-                time: 2707879600,
-                temperature: 20.99,
-                icon: "04d",
-              },
-              {
-                time: 2707890400,
-                temperature: 23.99,
-                icon: "04d",
-              },
-              {
-                time: 2707901200,
-                temperature: 25.21,
-                icon: "04d",
-              },
-              {
-                time: 2707912000,
-                temperature: 22.18,
-                icon: "04n",
-              },
-              {
-                time: 2707922800,
-                temperature: 20.31,
-                icon: "01n",
-              },
-              {
-                time: 2707933600,
-                temperature: 19.56,
-                icon: "02n",
-              },
-              {
-                time: 2707944400,
-                temperature: 19.82,
-                icon: "10n",
-              },
-              {
-                time: 2707955200,
-                temperature: 19.81,
-                icon: "10d",
-              },
-              {
-                time: 2707966000,
-                temperature: 20.85,
-                icon: "10d",
-              },
-              {
-                time: 2707976800,
-                temperature: 21.1,
-                icon: "10d",
-              },
-              {
-                time: 2707987600,
-                temperature: 21.01,
-                icon: "10d",
-              },
-              {
-                time: 2707998400,
-                temperature: 20.72,
-                icon: "04n",
-              },
-              {
-                time: 2708009200,
-                temperature: 20.65,
-                icon: "04n",
-              },
-            ],
-            location: {
-              city: "Hoàn Kiếm",
-              latitude: lat,
-              longitude: lon,
-              locationKey: locationKey,
-            },
-            key: {
-              ac: ac,
-              op: op,
-            },
-          };
+        else {
+          gachNgangAccuOpen.innerHTML = ` (${ac
+            .replaceAll("0", "!")
+            .replaceAll("1", "i")}) - `;
+          netlifyFailed.innerHTML = `(${op
+            .replaceAll("0", "!")
+            .replaceAll("1", "i")})] / Failed - [`;
+          return false;
+        }
       })
       .catch((e) => {
         console.log(e);
@@ -836,231 +653,7 @@ const timeCreditUpdate = window.document.querySelector(
         netlifyFailed.innerHTML = `(${op
           .replaceAll("0", "!")
           .replaceAll("1", "i")})] / Failed - [`;
-        return {
-          now: {
-            temperature: 16.5,
-            text: "Nhiều mây",
-            icon: 38,
-            accuUpdate: 1707585420,
-            windSpeed: 2.611111111111111,
-            temperaturePast24: {
-              min: 14.6,
-              max: 21.2,
-            },
-          },
-          forecast: [
-            {
-              time: 2707588000,
-              temperature: 17.98,
-              icon: "03n",
-            },
-            {
-              time: 2707598800,
-              temperature: 16.94,
-              icon: "03n",
-            },
-            {
-              time: 2707609600,
-              temperature: 15.75,
-              icon: "02d",
-            },
-            {
-              time: 2707620400,
-              temperature: 19.89,
-              icon: "02d",
-            },
-            {
-              time: 2707631200,
-              temperature: 23.19,
-              icon: "03d",
-            },
-            {
-              time: 2707642000,
-              temperature: 23.89,
-              icon: "04d",
-            },
-            {
-              time: 2707652800,
-              temperature: 20.45,
-              icon: "03n",
-            },
-            {
-              time: 2707663600,
-              temperature: 17.89,
-              icon: "01n",
-            },
-            {
-              time: 2707674400,
-              temperature: 16.61,
-              icon: "02n",
-            },
-            {
-              time: 2707685200,
-              temperature: 15.65,
-              icon: "01n",
-            },
-            {
-              time: 2707696000,
-              temperature: 15.57,
-              icon: "01d",
-            },
-            {
-              time: 2707706800,
-              temperature: 20.43,
-              icon: "03d",
-            },
-            {
-              time: 2707717600,
-              temperature: 22.26,
-              icon: "04d",
-            },
-            {
-              time: 2707728400,
-              temperature: 21.56,
-              icon: "04d",
-            },
-            {
-              time: 2707739200,
-              temperature: 19.89,
-              icon: "04n",
-            },
-            {
-              time: 2707750000,
-              temperature: 18.13,
-              icon: "04n",
-            },
-            {
-              time: 2707760800,
-              temperature: 17.26,
-              icon: "03n",
-            },
-            {
-              time: 2707771600,
-              temperature: 16.87,
-              icon: "04n",
-            },
-            {
-              time: 2707782400,
-              temperature: 17.17,
-              icon: "04d",
-            },
-            {
-              time: 2707793200,
-              temperature: 19.35,
-              icon: "04d",
-            },
-            {
-              time: 2707804000,
-              temperature: 21.39,
-              icon: "04d",
-            },
-            {
-              time: 2707814800,
-              temperature: 21.64,
-              icon: "04d",
-            },
-            {
-              time: 2707825600,
-              temperature: 20.65,
-              icon: "04n",
-            },
-            {
-              time: 2707836400,
-              temperature: 19.24,
-              icon: "03n",
-            },
-            {
-              time: 2707847200,
-              temperature: 19.4,
-              icon: "04n",
-            },
-            {
-              time: 2707858000,
-              temperature: 19.13,
-              icon: "10n",
-            },
-            {
-              time: 2707868800,
-              temperature: 19.13,
-              icon: "10d",
-            },
-            {
-              time: 2707879600,
-              temperature: 20.99,
-              icon: "04d",
-            },
-            {
-              time: 2707890400,
-              temperature: 23.99,
-              icon: "04d",
-            },
-            {
-              time: 2707901200,
-              temperature: 25.21,
-              icon: "04d",
-            },
-            {
-              time: 2707912000,
-              temperature: 22.18,
-              icon: "04n",
-            },
-            {
-              time: 2707922800,
-              temperature: 20.31,
-              icon: "01n",
-            },
-            {
-              time: 2707933600,
-              temperature: 19.56,
-              icon: "02n",
-            },
-            {
-              time: 2707944400,
-              temperature: 19.82,
-              icon: "10n",
-            },
-            {
-              time: 2707955200,
-              temperature: 19.81,
-              icon: "10d",
-            },
-            {
-              time: 2707966000,
-              temperature: 20.85,
-              icon: "10d",
-            },
-            {
-              time: 2707976800,
-              temperature: 21.1,
-              icon: "10d",
-            },
-            {
-              time: 2707987600,
-              temperature: 21.01,
-              icon: "10d",
-            },
-            {
-              time: 2707998400,
-              temperature: 20.72,
-              icon: "04n",
-            },
-            {
-              time: 2708009200,
-              temperature: 20.65,
-              icon: "04n",
-            },
-          ],
-          location: {
-            city: "Hoàn Kiếm",
-            latitude: lat,
-            longitude: lon,
-            locationKey: locationKey,
-          },
-          key: {
-            ac: ac,
-            op: op,
-          },
-        };
+        return false;
       });
     pushWeather(await response);
     return Promise.resolve();
@@ -1454,7 +1047,8 @@ const timeCreditUpdate = window.document.querySelector(
     )
       .then((v) => {
         if (v.status == 200) return v.json();
-        else
+        else {
+          sunrisetFailed.innerHTML = "] / Failed";
           return {
             results: {
               date: "2024-02-13",
@@ -1472,6 +1066,7 @@ const timeCreditUpdate = window.document.querySelector(
             },
             status: "OK",
           };
+        }
       })
       .catch((e) => {
         console.log(e);
