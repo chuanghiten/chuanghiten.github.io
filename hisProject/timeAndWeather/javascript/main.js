@@ -1050,7 +1050,7 @@ const timeCreditUpdate = window.document.querySelector(
     },
     sunriset: (v) => {
       sunrise.innerHTML = `<span class="icon">=</span> ${v[0]}`;
-      sunset.innerHTML = `<span class="icon">=</span> ${v[1]}`;
+      sunset.innerHTML = `<span class="icon">></span> ${v[1]}`;
     },
     thangAm: (v) => {
       thangAm.innerHTML = `${add0(v)}`;
