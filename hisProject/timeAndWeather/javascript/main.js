@@ -1033,7 +1033,7 @@ const timeCreditUpdate = window.document.querySelector(
         break;
       case "sunriset":
         sunrise.innerHTML = `<span class="icon">=</span> ${value[0]}`;
-        sunset.innerHTML = `<span class="icon">=</span> ${value[1]}`;
+        sunset.innerHTML = `<span class="icon">></span> ${value[1]}`;
         break;
     }
   },
