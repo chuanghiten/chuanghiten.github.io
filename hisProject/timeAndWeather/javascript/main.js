@@ -152,7 +152,7 @@ const timeCreditUpdate = window.document.querySelector(
     if (number < 10) return `0${number}`;
     return number;
   },
-  checkPageUpdate = {
+  checkPageUpdate = Object.freeze({
     setup: async () => {
       const ud = await fetch(
         "/hisProject/timeAndWeather/checkUpdate/update.json"
@@ -181,7 +181,7 @@ const timeCreditUpdate = window.document.querySelector(
         });
       return await ud.update;
     },
-  },
+  }),
   updateCredit = (name, value) => {
     if (name == "open" || name == "accu") {
       const time = new Date(value * 1000);
@@ -317,7 +317,7 @@ const timeCreditUpdate = window.document.querySelector(
         });
         updateWeather.wind(114);
         updateCredit("accu", 9999999999);
-        netlifyFailed.innerHTML = `(${op
+        netlifyFailed.innerHTML = ` (${op
           .replaceAll("0", "!")
           .replaceAll("1", "i")})] / Failed - [`;
       }
@@ -668,7 +668,7 @@ const timeCreditUpdate = window.document.querySelector(
     pushWeather(await response);
     return Promise.resolve();
   },
-  updateSeason = {
+  updateSeason = Object.freeze({
     season: ["spring", "summer", "autumn", "winter"],
     spring: () => {
       updateSeason.season.forEach((c) => {
@@ -711,8 +711,8 @@ const timeCreditUpdate = window.document.querySelector(
         el.style.animationDelay = `${Math.random() * 30}s`;
       });
     },
-  },
-  updateWeather = {
+  }),
+  updateWeather = Object.freeze({
     wind: (v) => {
       clouds.setAttribute("style", `--cloudsDuration: ${5 / (v / 114)}s`);
     },
@@ -731,103 +731,66 @@ const timeCreditUpdate = window.document.querySelector(
       minMaxTemperature.innerHTML = `<div class="minMax"><span class="dripicons">?</span>${v[0]}°C | <span class="dripicons">[</span>${v[2]}°C</div>`;
     },
     icon: (v) => {
+      let icMap = {
+        1: 0,
+        "01d": 0,
+        2: 1,
+        3: 1,
+        4: 1,
+        "02d": 1,
+        5: 2,
+        6: 2,
+        7: 3,
+        8: 3,
+        "03d": 3,
+        "03n": 3,
+        "04d": 3,
+        "04n": 3,
+        11: 4,
+        "50d": 4,
+        "50n": 4,
+        12: 5,
+        "09d": 5,
+        "09n": 5,
+        13: 6,
+        14: 6,
+        "10d": 6,
+        15: 7,
+        "11d": 7,
+        "11n": 7,
+        16: 8,
+        17: 8,
+        18: 9,
+        19: 10,
+        22: 10,
+        "13d": 10,
+        "13n": 10,
+        20: 11,
+        21: 11,
+        23: 11,
+        32: 12,
+        33: 13,
+        "01n": 13,
+        34: 14,
+        35: 14,
+        36: 14,
+        "02n": 14,
+        37: 15,
+        38: 15,
+        39: 16,
+        40: 16,
+        "10n": 16,
+        41: 17,
+        42: 17,
+        43: 18,
+        44: 18,
+      };
       bigIcon.forEach((c) => {
         c.setAttribute("hide", "");
       });
-      switch (v) {
-        case 1:
-        case "01d":
-          bigIcon[0].removeAttribute("hide");
-          break;
-        case 2:
-        case 3:
-        case 4:
-        case "02d":
-          bigIcon[1].removeAttribute("hide");
-          break;
-        case 5:
-        case 6:
-          bigIcon[2].removeAttribute("hide");
-          break;
-        case 7:
-        case 8:
-        case "03d":
-        case "03n":
-        case "04d":
-        case "04n":
-          bigIcon[3].removeAttribute("hide");
-          break;
-        case 11:
-        case "50d":
-        case "50n":
-          bigIcon[4].removeAttribute("hide");
-          break;
-        case 12:
-        case "09d":
-        case "09n":
-          bigIcon[5].removeAttribute("hide");
-          break;
-        case 13:
-        case 14:
-        case "10d":
-          bigIcon[6].removeAttribute("hide");
-          break;
-        case 15:
-        case "11d":
-        case "11n":
-          bigIcon[7].removeAttribute("hide");
-          break;
-        case 16:
-        case 17:
-          bigIcon[8].removeAttribute("hide");
-          break;
-        case 18:
-          bigIcon[9].removeAttribute("hide");
-          break;
-        case 19:
-        case 22:
-        case "13d":
-        case "13n":
-          bigIcon[10].removeAttribute("hide");
-          break;
-        case 20:
-        case 21:
-        case 23:
-          bigIcon[11].removeAttribute("hide");
-          break;
-        case 32:
-          bigIcon[12].removeAttribute("hide");
-          break;
-        case 33:
-        case "01n":
-          bigIcon[13].removeAttribute("hide");
-          break;
-        case 34:
-        case 35:
-        case 36:
-        case "02n":
-          bigIcon[14].removeAttribute("hide");
-          break;
-        case 37:
-        case 38:
-          bigIcon[15].removeAttribute("hide");
-          break;
-        case 39:
-        case 40:
-        case "10n":
-          bigIcon[16].removeAttribute("hide");
-          break;
-        case 41:
-        case 42:
-          bigIcon[17].removeAttribute("hide");
-          break;
-        case 43:
-        case 44:
-          bigIcon[18].removeAttribute("hide");
-          break;
-      }
+      bigIcon[icMap[v]].removeAttribute("hide");
     },
-  },
+  }),
   updateDoThi = (value) => {
     let temperatureMin = value.temperature[0],
       temperatureMax = value.temperature[0],
@@ -842,7 +805,61 @@ const timeCreditUpdate = window.document.querySelector(
         [658],
         [749],
         [844],
-      ];
+      ],
+      iconMap = {
+        43: "O",
+        44: "O",
+        41: "s",
+        42: "s",
+        39: "g",
+        40: "g",
+        37: "A",
+        38: "A",
+        34: "2",
+        35: "2",
+        36: "2",
+        32: "|",
+        20: "P",
+        21: "P",
+        23: "P",
+        18: "B",
+        16: "r",
+        17: "r",
+        5: "R",
+        6: "R",
+        "01d": "/",
+        1: "/",
+        "01n": "*",
+        33: "*",
+        "02d": "3",
+        2: "3",
+        3: "3",
+        4: "3",
+        "02n": "4",
+        "03d": "1",
+        "03n": "1",
+        "04n": "1",
+        "04d": "1",
+        7: "1",
+        8: "1",
+        "09d": "b",
+        "09n": "b",
+        12: "b",
+        "10d": "h",
+        13: "h",
+        14: "h",
+        "10n": "i",
+        "11d": "p",
+        "11n": "p",
+        15: "p",
+        "13d": "N",
+        "13n": "N",
+        19: "N",
+        22: "N",
+        "50d": "$",
+        "50n": "$",
+        11: "$",
+      };
     value.temperature.forEach((v) => {
       if (temperatureMin > v) temperatureMin = v;
       if (temperatureMax < v) temperatureMax = v;
@@ -942,77 +959,11 @@ const timeCreditUpdate = window.document.querySelector(
       }
     });
 
-    temperatureMin = 0;
-    value.icons.forEach((v) => {
-      if (v >= 1 && v <= 44) {
-        if (v == 1) temperatureMax = "/";
-        else if (v > 1 && v <= 4) temperatureMax = "3";
-        else if (v == 5 || v == 6) temperatureMax = "R";
-        else if (v == 7 || v == 8) temperatureMax = "1";
-        else if (v == 11) temperatureMax = "$";
-        else if (v == 12) temperatureMax = "b";
-        else if (v == 13 || v == 14) temperatureMax = "h";
-        else if (v == 15) temperatureMax = "p";
-        else if (v == 16 || v == 17) temperatureMax = "r";
-        else if (v == 18) temperatureMax = "B";
-        else if (v == 19 || v == 22) temperatureMax = "N";
-        else if (v == 20 || v == 21 || v == 23) temperatureMax = "P";
-        else if (v == 32) temperatureMax = "|";
-        else if (v == 33) temperatureMax = "*";
-        else if (v > 33 && v <= 36) temperatureMax = "2";
-        else if (v == 37 || v == 38) temperatureMax = "A";
-        else if (v == 40 || v == 39) temperatureMax = "g";
-        else if (v == 41 || v == 42) temperatureMax = "s";
-        else if (v == 43 || v == 44) temperatureMax = "O";
-      } else {
-        switch (v) {
-          case "01d":
-            temperatureMax = "/";
-            break;
-          case "01n":
-            temperatureMax = "*";
-            break;
-          case "02d":
-            temperatureMax = "3";
-            break;
-          case "02n":
-            temperatureMax = "4";
-            break;
-          case "03d":
-          case "03n":
-          case "04n":
-          case "04d":
-            temperatureMax = "1";
-            break;
-          case "09d":
-          case "09n":
-            temperatureMax = "b";
-            break;
-          case "10d":
-            temperatureMax = "h";
-            break;
-          case "10n":
-            temperatureMax = "i";
-            break;
-          case "11d":
-          case "11n":
-            temperatureMax = "p";
-            break;
-          case "13d":
-          case "13n":
-            temperatureMax = "N";
-            break;
-          case "50d":
-          case "50n":
-            temperatureMax = "$";
-            break;
-        }
-      }
-      iconsBieuDo.children[temperatureMin].innerHTML = temperatureMax;
-      ++temperatureMin;
+    value.icons.forEach((c, i) => {
+      iconsBieuDo.children[i].innerHTML = iconMap[c];
     });
   },
-  updateTime = {
+  updateTime = Object.freeze({
     progressThangDuong: (v) => {
       arrowThangDuong.setAttribute("style", `--left: ${v * 100}%`);
     },
@@ -1064,7 +1015,7 @@ const timeCreditUpdate = window.document.querySelector(
     ngayDuong: (v) => {
       ngayDuong.innerHTML = `${add0(v)}`;
     },
-  },
+  }),
   getSunriset = async (lat, lon) => {
     const data = await fetch(
       `https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`,
@@ -1166,7 +1117,7 @@ const timeCreditUpdate = window.document.querySelector(
       `--bottom: ${weatherDom.offsetHeight}px`
     );
   },
-  updateSession = {
+  updateSession = Object.freeze({
     day: () => {
       htmlDom.removeAttribute("night");
       htmlDom.setAttribute("day", "");
@@ -1185,7 +1136,7 @@ const timeCreditUpdate = window.document.querySelector(
         c.style.transform = `scale(${1 - r})`;
       });
     },
-  },
+  }),
   main = () => {
     let fullscreen = 0,
       time,
