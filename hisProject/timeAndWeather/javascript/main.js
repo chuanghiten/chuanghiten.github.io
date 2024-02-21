@@ -133,8 +133,8 @@ const timeCreditUpdate = window.document.querySelector(
   minMaxTemperature = window.document.querySelector(
     "html body .main .contents .weather .now .texts .minMax"
   ),
-  bigIcon = window.document.querySelector(
-    "html body .main .contents .weather .now .icon svg"
+  bigIcon = window.document.querySelectorAll(
+    "html body .main .contents .weather .now .icon svg > g, html body .main .contents .weather .now .icon svg > path"
   ),
   iconDoThi = window.document.querySelector(
     "html body .main .contents .weather .forecast .bieuDo .tren .doThi svg .icons"
@@ -152,45 +152,55 @@ const timeCreditUpdate = window.document.querySelector(
     if (number < 10) return `0${number}`;
     return number;
   },
-  checkPageUpdate = async (mode) => {
-    let url;
-    switch (mode) {
-      case "setup":
-        url = "/hisProject/timeAndWeather/checkUpdate/update.json";
-        break;
-      case "check":
-        url =
-          "https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/timeAndWeather/checkUpdate/update.json";
-        break;
-    }
-    const ud = await fetch(url)
-      .then((v) => {
-        if (v.status == 200 || v.status == 304) return v.json();
-        else return { update: pageUpdate };
-      })
-      .catch((e) => {
-        console.log(e);
-        return { update: pageUpdate };
-      });
-    return await ud.update;
+  checkPageUpdate = {
+    setup: async () => {
+      const ud = await fetch(
+        "/hisProject/timeAndWeather/checkUpdate/update.json"
+      )
+        .then((v) => {
+          if (v.status == 200 || v.status == 304) return v.json();
+          else return { update: pageUpdate };
+        })
+        .catch((e) => {
+          console.log(e);
+          return { update: pageUpdate };
+        });
+      return await ud.update;
+    },
+    check: async () => {
+      const ud = await fetch(
+        "https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/timeAndWeather/checkUpdate/update.json"
+      )
+        .then((v) => {
+          if (v.status == 200 || v.status == 304) return v.json();
+          else return { update: pageUpdate };
+        })
+        .catch((e) => {
+          console.log(e);
+          return { update: pageUpdate };
+        });
+      return await ud.update;
+    },
   },
   updateCredit = (name, value) => {
-    const time = new Date(value * 1000);
-    timeCreditUpdate.innerHTML = `[${add0(time.getDate())} / ${add0(
-      time.getMonth() + 1
-    )} - ${add0(time.getHours())}:${add0(time.getMinutes())} - `;
-    if (name == "accu") {
-      accuLink.innerHTML = "Accuweather";
-      gachNgangAccuOpen.innerHTML = ` (${ac
+    if (name == "open" || name == "accu") {
+      const time = new Date(value * 1000);
+      timeCreditUpdate.innerHTML = `[${add0(time.getDate())} / ${add0(
+        time.getMonth() + 1
+      )} - ${add0(time.getHours())}:${add0(time.getMinutes())} - `;
+      if (name == "accu") {
+        accuLink.innerHTML = "Accuweather";
+        gachNgangAccuOpen.innerHTML = ` (${ac
+          .replaceAll("0", "!")
+          .replaceAll("1", "i")}) - `;
+      }
+      openLink.innerHTML = "Openweathermap";
+      netlifyFailed.innerHTML = ` (${op
         .replaceAll("0", "!")
-        .replaceAll("1", "i")}) - `;
+        .replaceAll("1", "i")})] - [`;
+      sunrisetLink.innerHTML = "SunriseSunset.io";
+      sunrisetFailed.innerHTML = "]";
     }
-    openLink.innerHTML = "Openweathermap";
-    netlifyFailed.innerHTML = ` (${op
-      .replaceAll("0", "!")
-      .replaceAll("1", "i")})] - [`;
-    sunrisetLink.innerHTML = "SunriseSunset.io";
-    sunrisetFailed.innerHTML = "]";
     return;
   },
   getIp = async () => {
@@ -220,14 +230,14 @@ const timeCreditUpdate = window.document.querySelector(
         lat = Number(w.location.latitude);
         lon = Number(w.location.longitude);
       }
-      if (w.location.city) updateWeather("city", w.location.city);
-      updateWeather("temperature", [
+      if (w.location.city) updateWeather.city(w.location.city);
+      updateWeather.temperature([
         w.now.temperaturePast24.min.toFixed(1),
         w.now.temperature.toFixed(1),
         w.now.temperaturePast24.max.toFixed(1),
       ]);
-      updateWeather("icon", w.now.icon);
-      updateWeather("trangThai", w.now.text);
+      updateWeather.icon(w.now.icon);
+      updateWeather.trangThai(w.now.text);
       let forecast = [],
         q = 8;
       w.forecast.every((c) => {
@@ -278,15 +288,15 @@ const timeCreditUpdate = window.document.querySelector(
           forecast[8].time,
         ],
       });
-      updateWeather("wind", w.now.windSpeed);
+      updateWeather.wind(w.now.windSpeed);
       if (w.now.openUpdate) updateCredit("open", w.now.openUpdate);
       else if (w.now.accuUpdate) updateCredit("accu", w.now.accuUpdate);
     } else {
       if (htmlDom.style.opacity == "0") {
-        updateWeather("city", "Undefined");
-        updateWeather("temperature", [0, 99.9, 99.9]);
-        updateWeather("icon", 2);
-        updateWeather("trangThai", "Undefined");
+        updateWeather.city("Undefined");
+        updateWeather.temperature([0, 99.9, 99.9]);
+        updateWeather.icon(2);
+        updateWeather.trangThai("Undefined");
         updateDoThi({
           temperature: [99.9, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           icons: [
@@ -305,7 +315,7 @@ const timeCreditUpdate = window.document.querySelector(
             9999999999, 9999999999, 9999999999, 9999999999,
           ],
         });
-        updateWeather("wind", 114);
+        updateWeather.wind(114);
         updateCredit("accu", 9999999999);
         netlifyFailed.innerHTML = `(${op
           .replaceAll("0", "!")
@@ -658,146 +668,165 @@ const timeCreditUpdate = window.document.querySelector(
     pushWeather(await response);
     return Promise.resolve();
   },
-  updateSeason = (season) => {
-    htmlDom.removeAttribute("spring");
-    htmlDom.removeAttribute("summer");
-    htmlDom.removeAttribute("autumn");
-    htmlDom.removeAttribute("winter");
-    switch (season) {
-      case "winter":
-        htmlDom.setAttribute("winter", "");
-        let tuyetSize;
-        tuyetRoi.forEach((el) => {
-          el.style.display = "block";
-          tuyetSize = 3 + Math.random() * 3;
-          el.style.borderWidth = `${tuyetSize}rem`;
-          el.style.animationDuration = `${30 / (tuyetSize / 3)}s`;
-          el.style.animationDelay = `${Math.random() * 30}s`;
-        });
-        break;
-      case "spring":
-        htmlDom.setAttribute("spring", "");
-        tuyetRoi.forEach((el) => {
-          el.style.display = "none";
-        });
-        break;
-      case "summer":
-        htmlDom.setAttribute("summer", "");
-        tuyetRoi.forEach((el) => {
-          el.style.display = "none";
-        });
-        break;
-      case "autumn":
-        htmlDom.setAttribute("autumn", "");
-        tuyetRoi.forEach((el) => {
-          el.style.display = "none";
-        });
-        break;
-    }
+  updateSeason = {
+    season: ["spring", "summer", "autumn", "winter"],
+    spring: () => {
+      updateSeason.season.forEach((c) => {
+        htmlDom.removeAttribute(c);
+      });
+      htmlDom.setAttribute("spring", "");
+      tuyetRoi.forEach((el) => {
+        el.style.display = "none";
+      });
+    },
+    summer: () => {
+      updateSeason.season.forEach((c) => {
+        htmlDom.removeAttribute(c);
+      });
+      htmlDom.setAttribute("summer", "");
+      tuyetRoi.forEach((el) => {
+        el.style.display = "none";
+      });
+    },
+    autumn: () => {
+      updateSeason.season.forEach((c) => {
+        htmlDom.removeAttribute(c);
+      });
+      htmlDom.setAttribute("autumn", "");
+      tuyetRoi.forEach((el) => {
+        el.style.display = "none";
+      });
+    },
+    winter: () => {
+      updateSeason.season.forEach((c) => {
+        htmlDom.removeAttribute(c);
+      });
+      htmlDom.setAttribute("winter", "");
+      let tuyetSize;
+      tuyetRoi.forEach((el) => {
+        el.style.display = "block";
+        tuyetSize = 3 + Math.random() * 3;
+        el.style.borderWidth = `${tuyetSize}rem`;
+        el.style.animationDuration = `${30 / (tuyetSize / 3)}s`;
+        el.style.animationDelay = `${Math.random() * 30}s`;
+      });
+    },
   },
-  updateWeather = (name, value) => {
-    switch (name) {
-      case "wind":
-        clouds.setAttribute("style", `--cloudsDuration: ${5 / (value / 114)}s`);
-        break;
-      case "trangThai":
-        trangThai.innerHTML = `${value[0].toUpperCase()}${value.slice(1)}`;
-        break;
-      case "city":
-        cityName.innerHTML = value;
-        break;
-      case "temperature":
-        nowTemperature.innerHTML = `<span class="text">${
-          value[1].toString().split(".")[0]
-        }</span><span class="dot">.</span><span class="text">${
-          value[1].toString().split(".")[1]
-        }</span>°C`;
-        minMaxTemperature.innerHTML = `<div class="minMax"><span class="dripicons">?</span>${value[0]}°C | <span class="dripicons">[</span>${value[2]}°C</div>`;
-        break;
-      case "icon":
-        let pathIcon = bigIcon.childElementCount;
-        while (pathIcon > 0) {
-          bigIcon.children[pathIcon - 1].setAttribute("hide", "");
-          --pathIcon;
-        }
-        if (value >= 1 && value <= 44) {
-          if (value == 1) bigIcon.children[1].removeAttribute("hide");
-          else if (value > 1 && value <= 4)
-            bigIcon.children[2].removeAttribute("hide");
-          else if (value == 5 || value == 6)
-            bigIcon.children[3].removeAttribute("hide");
-          else if (value == 7 || value == 8)
-            bigIcon.children[4].removeAttribute("hide");
-          else if (value == 11) bigIcon.children[5].removeAttribute("hide");
-          else if (value == 12) bigIcon.children[6].removeAttribute("hide");
-          else if (value == 13 || value == 14)
-            bigIcon.children[7].removeAttribute("hide");
-          else if (value == 15) bigIcon.children[8].removeAttribute("hide");
-          else if (value == 16 || value == 17)
-            bigIcon.children[9].removeAttribute("hide");
-          else if (value == 18) bigIcon.children[10].removeAttribute("hide");
-          else if (value == 19 || value == 22)
-            bigIcon.children[11].removeAttribute("hide");
-          else if (value == 20 || value == 21 || value == 23)
-            bigIcon.children[12].removeAttribute("hide");
-          else if (value == 32) bigIcon.children[13].removeAttribute("hide");
-          else if (value == 33) bigIcon.children[14].removeAttribute("hide");
-          else if (value > 33 && value <= 36)
-            bigIcon.children[15].removeAttribute("hide");
-          else if (value == 37 || value == 38)
-            bigIcon.children[16].removeAttribute("hide");
-          else if (value == 39 || value == 40)
-            bigIcon.children[17].removeAttribute("hide");
-          else if (value == 41 || value == 42)
-            bigIcon.children[18].removeAttribute("hide");
-          else if (value == 43 || value == 44)
-            bigIcon.children[19].removeAttribute("hide");
-        } else {
-          switch (value) {
-            case "01d":
-              bigIcon.children[1].removeAttribute("hide");
-              break;
-            case "01n":
-              bigIcon.children[14].removeAttribute("hide");
-              break;
-            case "02d":
-              bigIcon.children[2].removeAttribute("hide");
-              break;
-            case "02n":
-              bigIcon.children[15].removeAttribute("hide");
-              break;
-            case "03d":
-            case "03n":
-            case "04n":
-            case "04d":
-              bigIcon.children[4].removeAttribute("hide");
-              break;
-            case "09d":
-            case "09n":
-              bigIcon.children[6].removeAttribute("hide");
-              break;
-            case "10d":
-              bigIcon.children[7].removeAttribute("hide");
-              break;
-            case "10n":
-              bigIcon.children[17].removeAttribute("hide");
-              break;
-            case "11d":
-            case "11n":
-              bigIcon.children[8].removeAttribute("hide");
-              break;
-            case "13d":
-            case "13n":
-              bigIcon.children[11].removeAttribute("hide");
-              break;
-            case "50d":
-            case "50n":
-              bigIcon.children[5].removeAttribute("hide");
-              break;
-          }
-        }
-        break;
-    }
+  updateWeather = {
+    wind: (v) => {
+      clouds.setAttribute("style", `--cloudsDuration: ${5 / (v / 114)}s`);
+    },
+    trangThai: (v) => {
+      trangThai.innerHTML = `${v[0].toUpperCase()}${v.slice(1)}`;
+    },
+    city: (v) => {
+      cityName.innerHTML = v;
+    },
+    temperature: (v) => {
+      nowTemperature.innerHTML = `<span class="text">${
+        v[1].toString().split(".")[0]
+      }</span><span class="dot">.</span><span class="text">${
+        v[1].toString().split(".")[1]
+      }</span>°C`;
+      minMaxTemperature.innerHTML = `<div class="minMax"><span class="dripicons">?</span>${v[0]}°C | <span class="dripicons">[</span>${v[2]}°C</div>`;
+    },
+    icon: (v) => {
+      bigIcon.forEach((c) => {
+        c.setAttribute("hide", "");
+      });
+      switch (v) {
+        case 1:
+        case "01d":
+          bigIcon[0].removeAttribute("hide");
+          break;
+        case 2:
+        case 3:
+        case 4:
+        case "02d":
+          bigIcon[1].removeAttribute("hide");
+          break;
+        case 5:
+        case 6:
+          bigIcon[2].removeAttribute("hide");
+          break;
+        case 7:
+        case 8:
+        case "03d":
+        case "03n":
+        case "04d":
+        case "04n":
+          bigIcon[3].removeAttribute("hide");
+          break;
+        case 11:
+        case "50d":
+        case "50n":
+          bigIcon[4].removeAttribute("hide");
+          break;
+        case 12:
+        case "09d":
+        case "09n":
+          bigIcon[5].removeAttribute("hide");
+          break;
+        case 13:
+        case 14:
+        case "10d":
+          bigIcon[6].removeAttribute("hide");
+          break;
+        case 15:
+        case "11d":
+        case "11n":
+          bigIcon[7].removeAttribute("hide");
+          break;
+        case 16:
+        case 17:
+          bigIcon[8].removeAttribute("hide");
+          break;
+        case 18:
+          bigIcon[9].removeAttribute("hide");
+          break;
+        case 19:
+        case 22:
+        case "13d":
+        case "13n":
+          bigIcon[10].removeAttribute("hide");
+          break;
+        case 20:
+        case 21:
+        case 23:
+          bigIcon[11].removeAttribute("hide");
+          break;
+        case 32:
+          bigIcon[12].removeAttribute("hide");
+          break;
+        case 33:
+        case "01n":
+          bigIcon[13].removeAttribute("hide");
+          break;
+        case 34:
+        case 35:
+        case 36:
+        case "02n":
+          bigIcon[14].removeAttribute("hide");
+          break;
+        case 37:
+        case 38:
+          bigIcon[15].removeAttribute("hide");
+          break;
+        case 39:
+        case 40:
+        case "10n":
+          bigIcon[16].removeAttribute("hide");
+          break;
+        case 41:
+        case 42:
+          bigIcon[17].removeAttribute("hide");
+          break;
+        case 43:
+        case 44:
+          bigIcon[18].removeAttribute("hide");
+          break;
+      }
+    },
   },
   updateDoThi = (value) => {
     let temperatureMin = value.temperature[0],
@@ -983,59 +1012,58 @@ const timeCreditUpdate = window.document.querySelector(
       ++temperatureMin;
     });
   },
-  updateTime = (name, value) => {
-    switch (name) {
-      case "progressThangAm":
-        arrowThangAm.setAttribute("style", `--left: ${value * 100}%`);
-        break;
-      case "progressThangDuong":
-        arrowThangDuong.setAttribute("style", `--left: ${value * 100}%`);
-        break;
-      case "progressDay":
-        progressDay.setAttribute(
-          "style",
-          `--progress: ${((value / 86399) * 100).toFixed(2)}%`
-        );
-        break;
-      case "namDuong":
-        namDuong.innerHTML = value;
-        break;
-      case "namAm":
-        namAm.innerHTML = ` / ${value}`;
-        break;
-      case "thu":
-        if (value == 1) thu.innerHTML = "Cn";
-        else thu.innerHTML = `<span class="t">t</span>${value}`;
-        break;
-      case "minutes":
-        minutesDom.innerHTML = `${add0(value)}`;
-        break;
-      case "hour":
-        hourDom.innerHTML = `${add0(value)}`;
-        break;
-      case "minutesArrow":
-        minutesArrow.setAttribute("style", `--minutesDeg: ${value}deg`);
-        break;
-      case "hoursArrow":
-        hoursArrow.setAttribute("style", `--hoursDeg: ${value}deg`);
-        break;
-      case "ngayDuong":
-        ngayDuong.innerHTML = `${add0(value)}`;
-        break;
-      case "thangDuong":
-        thangDuong.innerHTML = `${add0(value)}`;
-        break;
-      case "ngayAm":
-        ngayAm.innerHTML = `${add0(value)}`;
-        break;
-      case "thangAm":
-        thangAm.innerHTML = `${add0(value)}`;
-        break;
-      case "sunriset":
-        sunrise.innerHTML = `<span class="icon">=</span> ${value[0]}`;
-        sunset.innerHTML = `<span class="icon">=</span> ${value[1]}`;
-        break;
-    }
+  updateTime = {
+    progressThangDuong: (v) => {
+      arrowThangDuong.setAttribute("style", `--left: ${v * 100}%`);
+    },
+    progressDay: (v) => {
+      progressDay.setAttribute(
+        "style",
+        `--progress: ${((v / 86399) * 100).toFixed(2)}%`
+      );
+    },
+    namDuong: (v) => {
+      namDuong.innerHTML = v;
+    },
+    namAm: (v) => {
+      namAm.innerHTML = ` / ${v}`;
+    },
+    thu: (v) => {
+      v == 1
+        ? (thu.innerHTML = "Cn")
+        : (thu.innerHTML = `<span class="t">t</span>${v}`);
+    },
+    minutes: (v) => {
+      minutesDom.innerHTML = `${add0(v)}`;
+    },
+    hour: (v) => {
+      hourDom.innerHTML = `${add0(v)}`;
+    },
+    minutesArrow: (v) => {
+      minutesArrow.setAttribute("style", `--minutesDeg: ${v}deg`);
+    },
+    hoursArrow: (v) => {
+      hoursArrow.setAttribute("style", `--hoursDeg: ${v}deg`);
+    },
+    progressThangAm: (v) => {
+      arrowThangAm.setAttribute("style", `--left: ${v * 100}%`);
+    },
+    sunriset: (v) => {
+      sunrise.innerHTML = `<span class="icon">=</span> ${v[0]}`;
+      sunset.innerHTML = `<span class="icon">=</span> ${v[1]}`;
+    },
+    thangAm: (v) => {
+      thangAm.innerHTML = `${add0(v)}`;
+    },
+    ngayAm: (v) => {
+      ngayAm.innerHTML = `${add0(v)}`;
+    },
+    thangDuong: (v) => {
+      thangDuong.innerHTML = `${add0(v)}`;
+    },
+    ngayDuong: (v) => {
+      ngayDuong.innerHTML = `${add0(v)}`;
+    },
   },
   getSunriset = async (lat, lon) => {
     const data = await fetch(
@@ -1138,27 +1166,25 @@ const timeCreditUpdate = window.document.querySelector(
       `--bottom: ${weatherDom.offsetHeight}px`
     );
   },
-  updateSession = (session) => {
-    htmlDom.removeAttribute("day");
-    htmlDom.removeAttribute("night");
-    switch (session) {
-      case "day":
-        htmlDom.setAttribute("day", "");
-        randomStar.forEach((c) => {
-          c.style.display = "none";
-        });
-        break;
-      case "night":
-        htmlDom.setAttribute("night", "");
-        randomStar.forEach((c) => {
-          c.style.display = "block";
-          let r = Math.random();
-          c.style.top = `${r * 70}%`;
-          c.style.left = `${Math.random() * 100}%`;
-          c.style.transform = `scale(${1 - r})`;
-        });
-        break;
-    }
+  updateSession = {
+    day: () => {
+      htmlDom.removeAttribute("night");
+      htmlDom.setAttribute("day", "");
+      randomStar.forEach((c) => {
+        c.style.display = "none";
+      });
+    },
+    night: () => {
+      htmlDom.removeAttribute("day");
+      htmlDom.setAttribute("night", "");
+      randomStar.forEach((c) => {
+        c.style.display = "block";
+        let r = Math.random();
+        c.style.top = `${r * 70}%`;
+        c.style.left = `${Math.random() * 100}%`;
+        c.style.transform = `scale(${1 - r})`;
+      });
+    },
   },
   main = () => {
     let fullscreen = 0,
@@ -1247,7 +1273,7 @@ const timeCreditUpdate = window.document.querySelector(
                       v[1].match(/:[\d:]+/)[0]
                     }`,
                   ];
-                  updateTime("sunriset", [
+                  updateTime.sunriset([
                     sunriset[0].replace(/:\d\d$/, ""),
                     sunriset[1].replace(/:\d\d$/, ""),
                   ]);
@@ -1279,7 +1305,7 @@ const timeCreditUpdate = window.document.querySelector(
                       v[1].match(/:[\d:]+/)[0]
                     }`,
                   ];
-                  updateTime("sunriset", [
+                  updateTime.sunriset([
                     sunriset[0].replace(/:\d\d$/, ""),
                     sunriset[1].replace(/:\d\d$/, ""),
                   ]);
@@ -1307,7 +1333,7 @@ const timeCreditUpdate = window.document.querySelector(
                   v[1].match(/:[\d:]+/)[0]
                 }`,
               ];
-              updateTime("sunriset", [
+              updateTime.sunriset([
                 sunriset[0].replace(/:\d\d$/, ""),
                 sunriset[1].replace(/:\d\d$/, ""),
               ]);
@@ -1321,7 +1347,7 @@ const timeCreditUpdate = window.document.querySelector(
         });
     }
     if (!pageUpdate)
-      checkPageUpdate("setup").then((v) => {
+      checkPageUpdate.setup().then((v) => {
         pageUpdate = v;
       });
     function raf() {
@@ -1339,20 +1365,18 @@ const timeCreditUpdate = window.document.querySelector(
         if (oldSeconds != newSeconds) {
           oldSeconds = newSeconds;
           newMinutes = time.getMinutes();
-          updateTime(
-            "minutesArrow",
+          updateTime.minutesArrow(
             (6 * (newMinutes + newSeconds / 60)).toFixed(2)
           );
           if (oldMinutes != newMinutes) {
             oldMinutes = newMinutes;
             newHours = time.getHours();
-            updateTime("minutes", newMinutes);
-            updateTime(
-              "hoursArrow",
+            updateTime.minutes(newMinutes);
+            updateTime.hoursArrow(
               (30 * (newHours + newMinutes / 60)).toFixed(2)
             );
             if (newMinutes % 5 == 0) {
-              checkPageUpdate("check").then((v) => {
+              checkPageUpdate.check().then((v) => {
                 if (pageUpdate != v)
                   setTimeout(() => {
                     window.location.reload();
@@ -1362,9 +1386,8 @@ const timeCreditUpdate = window.document.querySelector(
             if (oldHours != newHours) {
               oldHours = newHours;
               newDate = time.getDate();
-              updateTime("hour", newHours);
-              updateTime(
-                "progressDay",
+              updateTime.hour(newHours);
+              updateTime.progressDay(
                 (newHours * 3600 + newMinutes * 60 + newSeconds).toFixed(2)
               );
               if (oldDate != newDate) {
@@ -1372,13 +1395,13 @@ const timeCreditUpdate = window.document.querySelector(
                 newMonth = time.getMonth() + 1;
                 let lunar = getLunar(newDate, newMonth, newYear, 7);
                 newLunarMonth = lunar[1];
-                updateTime("ngayAm", lunar[0]);
-                updateTime("ngayDuong", newDate);
-                updateTime("thu", time.getDay() + 1);
+                updateTime.ngayAm(lunar[0]);
+                updateTime.ngayDuong(newDate);
+                updateTime.thu(time.getDay() + 1);
                 if (oldMonth != newMonth) {
                   oldMonth = newMonth;
                   newYear = time.getFullYear();
-                  updateTime("thangDuong", newMonth);
+                  updateTime.thangDuong(newMonth);
                   if (oldYear != newYear) {
                     oldYear = newYear;
                     if (
@@ -1390,12 +1413,11 @@ const timeCreditUpdate = window.document.querySelector(
                     else namDuong.style.textDecoration = "none";
                     if (newYear == getLunar(newDate, newMonth, newYear, 7)[2]) {
                       namAm.style.display = "none";
-                      updateTime("namDuong", newYear);
+                      updateTime.namDuong(newYear);
                     } else {
                       namAm.style.display = "inline";
-                      updateTime("namDuong", newYear);
-                      updateTime(
-                        "namAm",
+                      updateTime.namDuong(newYear);
+                      updateTime.namAm(
                         getLunar(newDate, newMonth, newYear, 7)[2]
                       );
                     }
@@ -1404,20 +1426,20 @@ const timeCreditUpdate = window.document.querySelector(
                 if (oldLunarMonth != newLunarMonth) {
                   oldLunarMonth = newLunarMonth;
                   newLunarYear = lunar[2];
-                  updateTime("thangAm", newLunarMonth);
-                  if (newLunarMonth < 4) updateSeason("spring");
+                  updateTime.thangAm(newLunarMonth);
+                  if (newLunarMonth < 4) updateSeason.spring();
                   else if (newLunarMonth >= 4 && newLunarMonth < 7)
-                    updateSeason("summer");
+                    updateSeason.summer();
                   else if (newLunarMonth >= 7 && newLunarMonth < 10)
-                    updateSeason("autumn");
-                  else updateSeason("winter");
+                    updateSeason.autumn();
+                  else updateSeason.winter();
                   if (oldLunarYear != newLunarYear) {
                     oldLunarYear = newLunarYear;
                     if (newYear == newLunarYear) {
                       namAm.style.display = "none";
                     } else {
                       namAm.style.display = "inline";
-                      updateTime("namAm", newLunarYear);
+                      updateTime.namAm(newLunarYear);
                       if (lunar[3]) namAm.style.textDecoration = "underline";
                     }
                   }
@@ -1446,7 +1468,7 @@ const timeCreditUpdate = window.document.querySelector(
                         v[1].match(/:[\d:]+/)[0]
                       }`,
                     ];
-                    updateTime("sunriset", [
+                    updateTime.sunriset([
                       sunriset[0].replace(/:\d\d$/, ""),
                       sunriset[1].replace(/:\d\d$/, ""),
                     ]);
@@ -1457,15 +1479,13 @@ const timeCreditUpdate = window.document.querySelector(
                 (newMonth >= 8 && newMonth % 2 == 0)
               ) {
                 thangDuong.style.textDecoration = "underline";
-                updateTime(
-                  "progressThangDuong",
+                updateTime.progressThangDuong(
                   ((newDate * 86400 + newHours * 3600) / 2764740).toFixed(2)
                 );
               } else {
                 thangDuong.style.textDecoration = "none";
                 if (newMonth != 2)
-                  updateTime(
-                    "progressThangDuong",
+                  updateTime.progressThangDuong(
                     ((newDate * 86400 + newHours * 3600) / 2678340).toFixed(2)
                   );
                 else {
@@ -1475,14 +1495,12 @@ const timeCreditUpdate = window.document.querySelector(
                     (newYear.toString().slice(-2) != "00" && newYear % 4 == 0)
                   ) {
                     namDuong.style.textDecoration = "underline";
-                    updateTime(
-                      "progressThangDuong",
+                    updateTime.progressThangDuong(
                       ((newDate * 86400 + newHours * 3600) / 2591940).toFixed(2)
                     );
                   } else {
                     namDuong.style.textDecoration = "none";
-                    updateTime(
-                      "progressThangDuong",
+                    updateTime.progressThangDuong(
                       ((newDate * 86400 + newHours * 3600) / 2505540).toFixed(2)
                     );
                   }
@@ -1490,8 +1508,7 @@ const timeCreditUpdate = window.document.querySelector(
               }
               if (soNgayAmTrongThang == 30) {
                 thangAm.style.textDecoration = "underline";
-                updateTime(
-                  "progressThangAm",
+                updateTime.progressThangAm(
                   (
                     (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
                       newHours * 3600) /
@@ -1500,8 +1517,7 @@ const timeCreditUpdate = window.document.querySelector(
                 );
               } else {
                 thangAm.style.textDecoration = "none";
-                updateTime(
-                  "progressThangAm",
+                updateTime.progressThangAm(
                   (
                     (getLunar(newDate, newMonth, newYear, 7)[0] * 86400 +
                       newHours * 3600) /
@@ -1555,12 +1571,12 @@ const timeCreditUpdate = window.document.querySelector(
             ) {
               if (!session || session != "day") {
                 session = "day";
-                updateSession("day");
+                updateSession.day();
               }
             } else {
               if (!session || session != "night") {
                 session = "night";
-                updateSession("night");
+                updateSession.night();
               }
             }
           }
