@@ -712,10 +712,6 @@ const timeCreditUpdate = window.document.querySelector(
       });
     },
   },
-  // updateWeather = (name, value) => {
-  //   switch (name) {
-  //   }
-  // },
   updateWeather = {
     wind: (v) => {
       clouds.setAttribute("style", `--cloudsDuration: ${5 / (v / 114)}s`);
