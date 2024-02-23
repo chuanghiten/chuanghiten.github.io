@@ -1,11 +1,12 @@
-// https://ipinfo.io/json?
-// https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=&q=171.224.178.31&language=vi&details=true
-// https://dataservice.accuweather.com/currentconditions/v1/425226?apikey=&language=vi&details=true
-// https://api.openweathermap.org/data/2.5/forecast?lat=21.0245&lon=105.8412&appid=
+"use strict";
 var htmlFontsize,
   mainDomWidth,
-  locationKey = (lat = lon = ip = undefined),
-  op = (ac = "1111111"),
+  locationKey,
+  lat,
+  lon,
+  ip,
+  op = "1111111",
+  ac = "1111111",
   pageUpdate;
 
 const timeCreditUpdate = window.document.querySelector(
@@ -169,7 +170,8 @@ const timeCreditUpdate = window.document.querySelector(
     },
     check: async () => {
       const ud = await fetch(
-        "https://raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/timeAndWeather/checkUpdate/update.json"
+        "https:/" +
+          "/raw.githubusercontent.com/chuanghiten/chuanghiten.github.io/main/hisProject/timeAndWeather/checkUpdate/update.json"
       )
         .then((v) => {
           if (v.status == 200 || v.status == 304) return v.json();
@@ -205,7 +207,7 @@ const timeCreditUpdate = window.document.querySelector(
   },
   getIp = async () => {
     if (!window.location.href.includes("noNetlify")) {
-      const res = await fetch("https://api.ipify.org?format=json", {
+      const res = await fetch("https:/" + "/api.ipify.org?format=json", {
         method: "GET",
         headers: { accept: "application/json" },
       })
@@ -327,7 +329,7 @@ const timeCreditUpdate = window.document.querySelector(
   callNetlify = async (lat, lon, locationKey, ip) => {
     let apiURL = "";
     if (!window.location.href.includes("demo")) {
-      apiURL = `https://chuanghiten.netlify.app`;
+      apiURL = "https:/" + "/chuanghiten.netlify.app";
     } else {
       if (window.location.href.includes("noNetlify")) {
         pushWeather({
@@ -345,202 +347,202 @@ const timeCreditUpdate = window.document.querySelector(
           forecast: [
             {
               time: 9999999999,
-              temperature: 17.98,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 16.94,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 15.75,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.89,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 23.19,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 23.89,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.45,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 17.89,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 16.61,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 15.65,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 15.57,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.43,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 22.26,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 21.56,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.89,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 18.13,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 17.26,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 16.87,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 17.17,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.35,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 21.39,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 21.64,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.65,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.24,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.4,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.13,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.13,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.99,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 23.99,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 25.21,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 22.18,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.31,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.56,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.82,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 19.81,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.85,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 21.1,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 21.01,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.72,
+              temperature: 0,
               icon: "02d",
             },
             {
               time: 9999999999,
-              temperature: 20.65,
+              temperature: 0,
               icon: "02d",
             },
           ],
@@ -1018,7 +1020,7 @@ const timeCreditUpdate = window.document.querySelector(
   }),
   getSunriset = async (lat, lon) => {
     const data = await fetch(
-      `https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`,
+      "https:/" + `/api.sunrisesunset.io/json?lat=${lat}&lng=${lon}`,
       {
         method: "GET",
         headers: { accept: "application/json" },
@@ -1081,7 +1083,6 @@ const timeCreditUpdate = window.document.querySelector(
     }
     mainDom.style.width = `${mainDomWidth}px`;
     mainDom.style.height = `${height}px`;
-    // console.log(6.25 * mainDomWidth / 515);
     htmlFontsize = (6.25 * mainDomWidth) / 515;
     htmlDom.style.fontSize = `${htmlFontsize}%`;
     secondProgressDom.setAttribute(
@@ -1160,7 +1161,8 @@ const timeCreditUpdate = window.document.querySelector(
       newLunarYear,
       sunriset,
       session,
-      userLatLon;
+      userLatLon,
+      soNgayAmTrongThang;
     resize(window.innerWidth, window.innerHeight);
     window.addEventListener("resize", () => {
       resize(window.innerWidth, window.innerHeight);
