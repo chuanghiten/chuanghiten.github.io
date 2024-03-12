@@ -1346,11 +1346,6 @@ const timeCreditUpdate = window.document.querySelector(
               if (oldDate != newDate) {
                 oldDate = newDate;
                 newMonth = time.getMonth() + 1;
-                let lunar = getLunar(newDate, newMonth, newYear, 7);
-                newLunarMonth = lunar[1];
-                updateTime.ngayAm(lunar[0]);
-                updateTime.ngayDuong(newDate);
-                updateTime.thu(time.getDay() + 1);
                 if (oldMonth != newMonth) {
                   oldMonth = newMonth;
                   newYear = time.getFullYear();
@@ -1376,6 +1371,11 @@ const timeCreditUpdate = window.document.querySelector(
                     }
                   }
                 }
+                let lunar = getLunar(newDate, newMonth, newYear, 7);
+                newLunarMonth = lunar[1];
+                updateTime.ngayAm(lunar[0]);
+                updateTime.ngayDuong(newDate);
+                updateTime.thu(time.getDay() + 1);
                 if (oldLunarMonth != newLunarMonth) {
                   oldLunarMonth = newLunarMonth;
                   newLunarYear = lunar[2];
