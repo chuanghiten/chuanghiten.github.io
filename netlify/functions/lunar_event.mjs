@@ -1,3 +1,5 @@
 export default async (req, context) => {
-  return new Response(context.params);
+    console.log("req", req);
+    console.log("context", context);
+    return new Response("Hello World!");
 };
