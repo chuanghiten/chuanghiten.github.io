@@ -1,6 +1,7 @@
 export default async (req, context) => {
-    console.log("req", req);
-    console.log("context", context);
+    // console.log("req", req);
+    // console.log("context", context);
+    console.log(Netlify.env.get("VI_LUNAR_CALENDAR_1"));
     return new Response(`BEGIN:VCALENDAR
 PRODID:-//github.com/rianjs/ical.net//NONSGML ical.net 4.0//EN
 VERSION:2.0
