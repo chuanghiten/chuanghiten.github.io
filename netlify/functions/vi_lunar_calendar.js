@@ -29,3 +29,7 @@ exports.handler = stream(async () => {
     body
   };
 });
+
+exports.config = {
+  path: "vi_lunar_calendar"
+}
