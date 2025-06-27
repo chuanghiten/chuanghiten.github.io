@@ -18,7 +18,7 @@ exports.handler = stream(async () => {
           controller.close();
           clearInterval(timer);
         }
-      }, 1000);
+      }, 100);
     }
   });
   return {
