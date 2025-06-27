@@ -1,22 +1,31 @@
-export default async (req, context) => {
-    // console.log("req", req);
-    // console.log("context", context);
-    // console.log(Netlify.env.get("VI_LUNAR_CALENDAR_1"));
-    return new Response(`BEGIN:VCALENDAR
-PRODID:-//github.com/rianjs/ical.net//NONSGML ical.net 4.0//EN
-VERSION:2.0
-BEGIN:VEVENT
-DTEND;VALUE=DATE:20250628
-DTSTAMP:20180126T040745Z
-DTSTART;VALUE=DATE:20250627
-RRULE:FREQ=DAILY;COUNT=1
-SEQUENCE:0
-SUMMARY:test2
-UID:a8e88636-f566-4d8c-9c56-2061eb1f92e9
-END:VEVENT
-END:VCALENDAR`);
-};
+const { stream } = require("@netlify/functions");
 
-export const config = {
-    path: '/vi_lunar_calendar'
-}
+exports.handler = stream(async () => {
+  const encoder = new TextEncoder();
+  const formatter = new Intl.DateTimeFormat("en", { timeStyle: "medium" });
+  const body = new ReadableStream({
+    start(controller) {
+      controller.enqueue(encoder.encode("<html><body><ol>"));
+      let i = 0;
+      const timer = setInterval(() => {
+        controller.enqueue(
+          encoder.encode(
+            `<li>Hello at ${formatter.format(new Date())}</li>\n\n`
+          )
+        );
+        if (i++ >= 5) {
+          controller.enqueue(encoder.encode("</ol></body></html>"));
+          controller.close();
+          clearInterval(timer);
+        }
+      }, 1000);
+    }
+  });
+  return {
+    headers: {
+      "content-type": "text/html"
+    },
+    statusCode: 200,
+    body
+  };
+});
