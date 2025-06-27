@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "axios": "^1.7.4",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "@netlify/functions": "^4.1.8"
   }
 }
