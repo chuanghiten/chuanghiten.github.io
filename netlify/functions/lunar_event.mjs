@@ -16,3 +16,7 @@ UID:a8e88636-f566-4d8c-9c56-2061eb1f92e9
 END:VEVENT
 END:VCALENDAR`);
 };
+
+export const config = {
+    path: '/vi_lunar_calendar'
+}
