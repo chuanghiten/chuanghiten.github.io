@@ -29,3 +29,7 @@ exports.handler = stream(async () => {
     body
   };
 });
+
+export const config = {
+  path: "/"
+}
