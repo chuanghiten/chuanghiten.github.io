@@ -30,3 +30,7 @@ exports.handler = stream(async (req, contex) => {
     body
   };
 });
+
+exports.config = {
+  path: "/vi_lunar_calendar"
+}
