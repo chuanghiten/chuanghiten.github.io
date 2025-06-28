@@ -1,6 +1,7 @@
 const { stream } = require("@netlify/functions");
 
-exports.handler = stream(async () => {
+exports = {
+  handler: stream(async () => {
   const encoder = new TextEncoder();
   const formatter = new Intl.DateTimeFormat("en", { timeStyle: "medium" });
   const body = new ReadableStream({
@@ -28,8 +29,8 @@ exports.handler = stream(async () => {
     statusCode: 200,
     body
   };
-});
-
-exports.config = {
-  path: "vi_lunar_calendar"
+}),
+  config: {
+    path: "vi_lunar_calendar"
+  }
 }
