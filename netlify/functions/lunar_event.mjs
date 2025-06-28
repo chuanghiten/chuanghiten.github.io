@@ -1,6 +1,6 @@
 import { stream } from '@netlify/functions';
 
-export default handler = stream(async (req, contex) => {
+export default stream(async (req, contex) => {
   console.log(req, contex);
   const encoder = new TextEncoder();
   const formatter = new Intl.DateTimeFormat("en", { timeStyle: "medium" });
