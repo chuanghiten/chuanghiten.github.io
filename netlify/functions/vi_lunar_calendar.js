@@ -27,10 +27,7 @@ exports.handler = stream(async (req, contex) => {
       "content-type": "text/html"
     },
     statusCode: 200,
-    body
+    body: body
   };
 });
 
-exports.config = {
-  path: "/vi_lunar_calendar"
-}
