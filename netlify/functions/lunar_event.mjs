@@ -3,16 +3,14 @@ import { stream } from '@netlify/functions';
 export default stream(async (event, context) => {
   return {
     statusCode: 200,
-    // headers: {
-    //   'Content-Type': 'text/plain',
-    // },
+    headers: {
+      'Content-Type': 'text/plain',
+    },
     body: new ReadableStream({
       start(controller) {
         controller.enqueue(new TextEncoder().encode('Hello, '));
-        setTimeout(() => {
-          controller.enqueue(new TextEncoder().encode('Streaming World!'));
-          controller.close();
-        }, 1000);
+        controller.enqueue(new TextEncoder().encode('Streaming World!'));
+        controller.close();
       },
     }),
   };
