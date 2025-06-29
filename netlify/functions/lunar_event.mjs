@@ -20,7 +20,14 @@ export default async () => {
     }
   });
 
-  return new Response(body);
+  // return new Response(body);
+  return {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'text/html'
+    },
+    body: body
+  }
 };
 
 export const config = {
