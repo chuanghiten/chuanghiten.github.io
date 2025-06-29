@@ -1,4 +1,7 @@
-export default async () => {
+export default async (req, context) => {
+  
+  console.log(req, context);
+  
   const encoder = new TextEncoder();
   const formatter = new Intl.DateTimeFormat("en", { timeStyle: "medium" });
   const body = new ReadableStream({
@@ -20,14 +23,13 @@ export default async () => {
     }
   });
 
-  // return new Response(body);
-  return {
-    statusCode: 200,
+  return new Response(body, {
+    status: 200,
     headers: {
       'Content-Type': 'text/html'
-    },
-    body: body
-  }
+    }
+  });
+  
 };
 
 export const config = {
