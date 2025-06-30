@@ -3,12 +3,12 @@ export default async (req, context) => {
     
     const authHeaders = req.headers.get('Authorization');
     if (!authHeaders || authHeaders.split(' ')[0] !== 'Basic') {
-        return {
+        return new Response('401 Unauthorized', {
             status: 401,
             headers: {
                 'WWW-Authenticate': 'Basic realm="Restricted Area"'
             }
-        }
+        });
     }
     
     const encoder = new TextEncoder();
