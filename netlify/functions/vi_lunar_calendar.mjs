@@ -293,7 +293,7 @@ export default async (req, context) => {
     chi = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
   
   const [lunar_date, lunar_month, lunar_year, lunar_leap] = getLunar(25, 7, 2025, 7);
-  console.log(lunar_date, lunar_month, lunar_year, lunar_leap, `Ngày ${can[(jdFromDate(25, 7, 2025) + 9) % 10]} ${chi[(jdFromDate(25, 7, 2025) + 1) % 12]} Tháng ${can[((lunar_year * 12) + lunar_month + 3) % 10]} ${chi[(lunar_month + 1) % 12]} Năm ${can[(lunar_year + 6) % 10]} ${chi[(lunar_year + 8) % 12]}`);
+  console.log(lunar_date, lunar_month, lunar_year, lunar_leap, `Ngày ${can[(jdFromDate(25, 7, 2025) + 9) % 10]} ${chi[(jdFromDate(25, 7, 2025) + 1) % 12]} Tháng ${can[((lunar_year * 12) + lunar_month + 3) % 10]} ${chi[(lunar_month + 1) % 12]}${lunar_leap ? ' (nhuận)' : ''} Năm ${can[(lunar_year + 6) % 10]} ${chi[(lunar_year + 8) % 12]}`);
 
 
 
