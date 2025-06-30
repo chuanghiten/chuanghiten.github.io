@@ -1,5 +1,5 @@
 export default async (req, context) => {
-    console.log(req, context);
+    console.log(req, context, Netlify.env.toObject());
     
     const authHeaders = req.headers.get('Authorization');
     if (!authHeaders || authHeaders.split(' ')[0] !== 'Basic') return new Response('401 Unauthorized', {
