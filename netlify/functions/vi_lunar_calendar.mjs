@@ -2,14 +2,20 @@ export default async (req, context) => {
     console.log(req, context);
     
     const authHeaders = req.headers.get('Authorization');
-    if (!authHeaders || authHeaders.split(' ')[0] !== 'Basic') {
-        return new Response('401 Unauthorized', {
-            status: 401,
-            headers: {
-                'WWW-Authenticate': 'Basic realm="Restricted Area"'
-            }
-        });
-    }
+    if (!authHeaders || authHeaders.split(' ')[0] !== 'Basic') return new Response('401 Unauthorized', {
+        status: 401,
+        headers: {
+            'WWW-Authenticate': 'Basic realm="Restricted Area"',
+            'Content-Type': 'text/plain'
+        }
+    });
+    
+    if (atob(authHeaders.split(' ')[1]).replace(':', '_') !== Netlify.env.get('VI_LUNAR_CALENDAR_1')) return new Response('403 Forbidden', {
+        status: 403,
+        headers: {
+            'Content-Type': 'text/plain'
+        }
+    });
     
     const encoder = new TextEncoder();
     const formatter = new Intl.DateTimeFormat("en", { timeStyle: "medium" });
