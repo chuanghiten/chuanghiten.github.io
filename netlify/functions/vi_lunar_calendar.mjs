@@ -294,26 +294,47 @@ export default async (req, context) => {
   const can = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"],
     chi = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
 
-  const [lunar_date, lunar_month, lunar_year, lunar_leap] = getLunar(25, 7, 2025, 7);
-  console.log(lunar_date, lunar_month, lunar_year, lunar_leap, `Ngày ${can[(jdFromDate(25, 7, 2025) + 9) % 10]} ${chi[(jdFromDate(25, 7, 2025) + 1) % 12]} Tháng ${can[((lunar_year * 12) + lunar_month + 3) % 10]} ${chi[(lunar_month + 1) % 12]}${lunar_leap ? ' (nhuận)' : ''} Năm ${can[(lunar_year + 6) % 10]} ${chi[(lunar_year + 8) % 12]}`, uuidv4());
+  // const [lunar_date, lunar_month, lunar_year, lunar_leap] = getLunar(25, 7, 2025, 7);
+  // console.log(lunar_date, lunar_month, lunar_year, lunar_leap, `Ngày ${can[(jdFromDate(25, 7, 2025) + 9) % 10]} ${chi[(jdFromDate(25, 7, 2025) + 1) % 12]} Tháng ${can[((lunar_year * 12) + lunar_month + 3) % 10]} ${chi[(lunar_month + 1) % 12]}${lunar_leap ? ' (nhuận)' : ''} Năm ${can[(lunar_year + 6) % 10]} ${chi[(lunar_year + 8) % 12]}`, uuidv4());
 
 
 
   const encoder = new TextEncoder();
   const time = new Date();
-  const start = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) - 31536000000, end = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) + 31536000000;
+  const end = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) + 31536000000;
+  let start = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) - 31536000000;
   const body = new ReadableStream({
     start(controller) {
       controller.enqueue(encoder.encode('BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//github.com/chuanghiten/ical.net//NONSGML ical.net 4.0//EN\nCALSCALE:GREGORIAN\n'));
 
-      controller.enqueue(encoder.encode('BEGIN:VEVENT\n'));
-      controller.enqueue(encoder.encode(`UID:${uuidv4()}\n`));
-      controller.enqueue(encoder.encode('DTSTAMP:20250725T000000\n'));
-      controller.enqueue(encoder.encode('DTSTART:20250725\n'));
-      controller.enqueue(encoder.encode('DTEND:20250726\n'));
-      controller.enqueue(encoder.encode('SUMMARY:1/6*\n'));
-      controller.enqueue(encoder.encode('DESCRIPTION:Ngày Ất Mùi\\nTháng Quý Mùi (nhuận)\\nNăm Ất Tỵ\n'));
-      controller.enqueue(encoder.encode('END:VEVENT\n'));
+      while (start <== end) {
+        
+        controller.enqueue(encoder.encode('BEGIN:VEVENT\n'));
+        controller.enqueue(encoder.encode(`UID:${uuidv4()}\n`));
+        const cr_time = new Date(start);
+        const [cr_date, cr_month, cr_year] = [`${cr_time.getDate()}`.padStart(2, '0'), `${cr_time.getMonth() + 1}`.padStart(2, '0'), cr_time.getFullYear()]
+        controller.enqueue(encoder.encode(`DTSTAMP:${cr_year}${cr_month}${cr_date}T000000\n`));
+        controller.enqueue(encoder.encode(`DTSTART:${cr_year}${cr_month}${cr_date}\n`));
+        const tmr_time = new Date(start + 86400000);
+        const [tmr_date, tmr_month, tmr_year] = [`${tmr_time.getDate()}`.padStart(2, '0'), `${tmr_time.getMonth() + 1}`.padStart(2, '0'), tmr_time.getFullYear()]
+        controller.enqueue(encoder.encode(`DTEND:${tmr_year}${tmr_month}${tmr_date}\n`));
+        const lunar = getLunar(Number(cr_date), Number(cr_month), cr_year, 7);
+        controller.enqueue(encoder.encode(`SUMMARY:${lunar[0]}/${lunar[1]}${lunar[3] ? '*' : ''}\n`));
+        controller.enqueue(encoder.encode(`DESCRIPTION:\\n\\t${lunar[0]}/${lunar[1]}${lunar[3] ? '*' : ''}/${lunar[2]} (Âm lịch)\\nNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\nTháng ${can[((lunar[2] * 12) + lunar[1] + 3) % 10]} ${chi[(lunar[1] + 1) % 12]}${lunar[3] ? ' (nhuận)' : ''}\\nNăm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]}\n`));
+        controller.enqueue(encoder.encode('END:VEVENT\n'));
+        controller.enqueue(encoder.encode('END:VEVENT\n'));
+        
+        start += 86400000;
+      }
+
+      // controller.enqueue(encoder.encode('BEGIN:VEVENT\n'));
+      // controller.enqueue(encoder.encode(`UID:${uuidv4()}\n`));
+      // controller.enqueue(encoder.encode('DTSTAMP:20250725T000000\n'));
+      // controller.enqueue(encoder.encode('DTSTART:20250725\n'));
+      // controller.enqueue(encoder.encode('DTEND:20250726\n'));
+      // controller.enqueue(encoder.encode('SUMMARY:1/6*\n'));
+      // controller.enqueue(encoder.encode('DESCRIPTION:Ngày Ất Mùi\\nTháng Quý Mùi (nhuận)\\nNăm Ất Tỵ\n'));
+      // controller.enqueue(encoder.encode('END:VEVENT\n'));
 
       controller.enqueue(encoder.encode('END:VCALENDAR\n'));
       controller.close();
