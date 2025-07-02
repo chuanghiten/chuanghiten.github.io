@@ -307,7 +307,7 @@ export default async (req, context) => {
     start(controller) {
       controller.enqueue(encoder.encode('BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//github.com/chuanghiten/ical.net//NONSGML ical.net 4.0//EN\nCALSCALE:GREGORIAN\n'));
 
-      while (start <== end) {
+      while (start <= end) {
         
         controller.enqueue(encoder.encode('BEGIN:VEVENT\n'));
         controller.enqueue(encoder.encode(`UID:${uuidv4()}\n`));
