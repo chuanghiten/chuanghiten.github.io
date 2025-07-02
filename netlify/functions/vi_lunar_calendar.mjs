@@ -322,7 +322,6 @@ export default async (req, context) => {
         controller.enqueue(encoder.encode(`SUMMARY:${lunar[0]}/${lunar[1]}${lunar[3] ? '*' : ''}\n`));
         controller.enqueue(encoder.encode(`DESCRIPTION:\n\t${lunar[0]}/${lunar[1]}${lunar[3] ? '*' : ''}/${lunar[2]} (Âm lịch)\\nNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\nTháng ${can[((lunar[2] * 12) + lunar[1] + 3) % 10]} ${chi[(lunar[1] + 1) % 12]}${lunar[3] ? ' (nhuận)' : ''}\\nNăm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]}\n`));
         controller.enqueue(encoder.encode('END:VEVENT\n'));
-        controller.enqueue(encoder.encode('END:VEVENT\n'));
         
         start += 86400000;
       }
@@ -344,8 +343,8 @@ export default async (req, context) => {
   return new Response(body, {
     status: 200,
     headers: {
-      // 'Content-Type': 'text/calendar'
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/calendar'
+      // 'Content-Type': 'text/plain'
     }
   });
 };
