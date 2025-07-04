@@ -370,8 +370,8 @@ export default async (req, context) => {
   return new Response(body, {
     status: 200,
     headers: {
-      'Content-Type': 'text/calendar'
-      // 'Content-Type': 'text/plain'
+      // 'Content-Type': 'text/calendar'
+      'Content-Type': 'text/plain'
     }
   });
 };
