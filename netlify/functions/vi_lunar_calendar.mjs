@@ -348,7 +348,7 @@ export default async (req, context) => {
             if (c++ < 5) controller.enqueue(encoder.encode(`, \n\t`));
           }
         }
-        controller.enqueue(encoder.encode('END:VEVENT\n'));
+        controller.enqueue(encoder.encode('\nEND:VEVENT\n'));
 
         start += 86400000;
       }
@@ -370,8 +370,8 @@ export default async (req, context) => {
   return new Response(body, {
     status: 200,
     headers: {
-      // 'Content-Type': 'text/calendar'
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/calendar'
+      // 'Content-Type': 'text/plain'
     }
   });
 };
