@@ -316,14 +316,14 @@ export default async (req, context) => {
         const lunar = getLunar(Number(cr_date), Number(cr_month), cr_year, 7);
         controller.enqueue(encoder.encode(`${lunar[0]}/${lunar[1]}`));
         if (lunar[3]) controller.enqueue(encoder.encode('*'));
-        controller.enqueue(encoder.encode(`\nDESCRIPTION:\n\t${lunar[0]}/${lunar[1]}`));
+        controller.enqueue(encoder.encode(`\nDESCRIPTION:\n\tNgày ${lunar[0]} tháng ${lunar[1]}`));
         if (lunar[3]) controller.enqueue(encoder.encode('*'));
-        controller.enqueue(encoder.encode(`/${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\n\n\tTháng `));
+        controller.enqueue(encoder.encode(` năm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]} ${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\n\n\tTháng `));
         if (Number(lunar[1]) === 1) controller.enqueue(encoder.encode('Giêng '));
         else if (Number(lunar[1]) === 12) controller.enqueue(encoder.encode('Chạp '));
         controller.enqueue(encoder.encode(`${can[((lunar[2] * 12) + lunar[1] + 3) % 10]} ${chi[(lunar[1] + 1) % 12]}`));
         if (lunar[3]) controller.enqueue(encoder.encode(' (nhuận)'));
-        controller.enqueue(encoder.encode(`\\n\n\tNăm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]}\\n\\n\n\tGiờ hoàng đạo: \n\t`));
+        controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t`));
         const gio_hd = list_gio_hd[((jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12) % 6];
         let c = 0;
         for (let i = 0; i < 12; i++) {
