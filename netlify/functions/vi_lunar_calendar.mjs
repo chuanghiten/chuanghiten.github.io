@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default async (req, context) => {
 
   const authHeaders = req.headers.get('Authorization');
+
   if (!authHeaders || authHeaders.split(' ')[0] !== 'Basic') return new Response('401 Unauthorized', {
     status: 401,
     headers: {
@@ -12,6 +13,7 @@ export default async (req, context) => {
   });
 
   const [user, pwd] = atob(authHeaders.split(' ')[1]).split(':');
+
   if (!Netlify.env.has(user) || pwd !== Netlify.env.get(user)) return new Response('403 Forbidden', {
     status: 403,
     headers: {
@@ -291,9 +293,11 @@ export default async (req, context) => {
     //   // return "t12 (30/12* Nham Than)"
     // }
 
-    can = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"],
-    chi = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"],
-    list_gio_hd = [3372, 843, 3282, 2868, 717, 1203],
+    can = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'],
+    chi = ['Tí', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'],
+    nhat_tinh = ['Thanh Long hoàng đạo', 'Minh Đường hoàng đạo', 'Thiên Hình hắc đạo', 'Chu Tước hắc đạo', 'Kim Quỹ hoàng đạo', 'Kim Đường hoàng đạo', 'Bạch Hổ hắc đạo', 'Ngọc Đường hoàng đạo', 'Thiên Lao hắc đạo', 'Huyền Vũ hắc đạo', 'Tư Mệnh hoàng đạo', 'Cầu Trần hắc đạo'],
+    list_gio_hd = [843, 3372, 1203, 717, 2868, 3282],
+    list_ngay_hd = [[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7], [6, 7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5], [4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2, 3]],
 
     encoder = new TextEncoder(), time = new Date();
 
@@ -301,37 +305,58 @@ export default async (req, context) => {
   let start = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) - 31536000000;
 
   const body = new ReadableStream({
+
     start(controller) {
+
       controller.enqueue(encoder.encode('BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//github.com/chuanghiten/ical.net//NONSGML ical.net 4.0//EN\nCALSCALE:GREGORIAN\n'));
 
       while (start <= end) {
-
+        
         controller.enqueue(encoder.encode(`BEGIN:VEVENT\nUID:${uuidv4()}\nDTSTAMP:`));
+
         const cr_time = new Date(start);
         const [cr_date, cr_month, cr_year] = [`${cr_time.getDate()}`.padStart(2, '0'), `${cr_time.getMonth() + 1}`.padStart(2, '0'), cr_time.getFullYear()];
+
         controller.enqueue(encoder.encode(`${cr_year}${cr_month}${cr_date}T000000\nDTSTART:${cr_year}${cr_month}${cr_date}\nDTEND:`));
+
         const tmr_time = new Date(start + 86400000);
         const [tmr_date, tmr_month, tmr_year] = [`${tmr_time.getDate()}`.padStart(2, '0'), `${tmr_time.getMonth() + 1}`.padStart(2, '0'), tmr_time.getFullYear()];
+
         controller.enqueue(encoder.encode(`${tmr_year}${tmr_month}${tmr_date}\nSUMMARY:`));
+
         const lunar = getLunar(Number(cr_date), Number(cr_month), cr_year, 7);
+
         controller.enqueue(encoder.encode(`${lunar[0]}/${lunar[1]}`));
+
         if (lunar[3]) controller.enqueue(encoder.encode('*'));
+
         controller.enqueue(encoder.encode(`\nDESCRIPTION:\n\tNgày ${lunar[0]} tháng ${lunar[1]}`));
-        if (lunar[3]) controller.enqueue(encoder.encode('*'));
-        controller.enqueue(encoder.encode(` năm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]} ${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\n\n\tTháng `));
+
+        if (lunar[3]) controller.enqueue(encoder.encode(' (nhuận)'));
+
+        const chi_of_day = (jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12;
+
+        controller.enqueue(encoder.encode(` năm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]} ${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[chi_of_day]} (${nhat_tinh[list_ngay_hd[lunar[1] % 6][chi_of_day]]})\\n\n\tTháng `));
+
         if (Number(lunar[1]) === 1) controller.enqueue(encoder.encode('Giêng '));
         else if (Number(lunar[1]) === 12) controller.enqueue(encoder.encode('Chạp '));
+
         controller.enqueue(encoder.encode(`${can[((lunar[2] * 12) + lunar[1] + 3) % 10]} ${chi[(lunar[1] + 1) % 12]}`));
+
         if (lunar[3]) controller.enqueue(encoder.encode(' (nhuận)'));
+
         controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t`));
-        const gio_hd = list_gio_hd[((jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12) % 6];
+
+        const gio_hd = list_gio_hd[(chi_of_day) % 6];
         let c = 0;
+
         for (let i = 0; i < 12; i++) {
           if ((gio_hd >> i) & 1) {
             controller.enqueue(encoder.encode(chi[i]));
             if (c++ < 5) controller.enqueue(encoder.encode(`, \n\t`));
           }
         }
+
         controller.enqueue(encoder.encode('\nEND:VEVENT\n'));
 
         start += 86400000;
@@ -361,5 +386,5 @@ export default async (req, context) => {
 };
 
 export const config = {
-  path: "/vi_lunar_calendar"
+  path: '/vi_lunar_calendar'
 }
