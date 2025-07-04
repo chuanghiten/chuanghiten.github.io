@@ -293,25 +293,9 @@ export default async (req, context) => {
 
     can = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"],
     chi = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"],
-    list_gio_hd = ["110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011"],
+    list_gio_hd = [3372, 843, 3282, 2868, 717, 1203],
 
-    encoder = new TextEncoder(), time = new Date(),
-
-    getGioHoangDao = jd => {
-      var chiOfDay = (jd + 1) % 12;
-      var gioHD = gio_hd[chiOfDay % 6];
-      // same values for Ty' (1) and Ngo. (6), for Suu and Mui etc.
-      var ret = "";
-      var count = 0;
-      for (var i = 0; i < 12; i++) {
-        if (gioHD.charAt(i) == '1') {
-          ret += chi[i];
-          if (count++ < 5) ret += `, \n\t`;
-        }
-      }
-      return ret;
-    };
-
+    encoder = new TextEncoder(), time = new Date();
 
   const end = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) + 31536000000;
   let start = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) - 31536000000;
@@ -343,7 +327,7 @@ export default async (req, context) => {
         const gio_hd = list_gio_hd[((jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12) % 6];
         let c = 0;
         for (let i = 0; i < 12; i++) {
-          if (gio_hd.charAt(i) === '1') {
+          if ((gio_hd >> i) & 1) {
             controller.enqueue(encoder.encode(chi[i]));
             if (c++ < 5) controller.enqueue(encoder.encode(`, \n\t`));
           }
