@@ -293,7 +293,7 @@ export default async (req, context) => {
 
     can = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"],
     chi = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"],
-    gio_hd = ["110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011"],
+    list_gio_hd = ["110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011"],
 
     encoder = new TextEncoder(), time = new Date(),
 
@@ -310,7 +310,7 @@ export default async (req, context) => {
         }
       }
       return ret;
-    }
+    };
 
 
   const end = Date.UTC(time.getFullYear(), time.getMonth() + 1, time.getDate(), 0, 0, 0, 0) + 31536000000;
@@ -322,18 +322,32 @@ export default async (req, context) => {
 
       while (start <= end) {
 
-        controller.enqueue(encoder.encode('BEGIN:VEVENT\n'));
-        controller.enqueue(encoder.encode(`UID:${uuidv4()}\n`));
+        controller.enqueue(encoder.encode(`BEGIN:VEVENT\nUID:${uuidv4()}\nDTSTAMP:`));
         const cr_time = new Date(start);
-        const [cr_date, cr_month, cr_year] = [`${cr_time.getDate()}`.padStart(2, '0'), `${cr_time.getMonth() + 1}`.padStart(2, '0'), cr_time.getFullYear()]
-        controller.enqueue(encoder.encode(`DTSTAMP:${cr_year}${cr_month}${cr_date}T000000\n`));
-        controller.enqueue(encoder.encode(`DTSTART:${cr_year}${cr_month}${cr_date}\n`));
+        const [cr_date, cr_month, cr_year] = [`${cr_time.getDate()}`.padStart(2, '0'), `${cr_time.getMonth() + 1}`.padStart(2, '0'), cr_time.getFullYear()];
+        controller.enqueue(encoder.encode(`${cr_year}${cr_month}${cr_date}T000000\nDTSTART:${cr_year}${cr_month}${cr_date}\nDTEND:`));
         const tmr_time = new Date(start + 86400000);
-        const [tmr_date, tmr_month, tmr_year] = [`${tmr_time.getDate()}`.padStart(2, '0'), `${tmr_time.getMonth() + 1}`.padStart(2, '0'), tmr_time.getFullYear()]
-        controller.enqueue(encoder.encode(`DTEND:${tmr_year}${tmr_month}${tmr_date}\n`));
+        const [tmr_date, tmr_month, tmr_year] = [`${tmr_time.getDate()}`.padStart(2, '0'), `${tmr_time.getMonth() + 1}`.padStart(2, '0'), tmr_time.getFullYear()];
+        controller.enqueue(encoder.encode(`${tmr_year}${tmr_month}${tmr_date}\nSUMMARY:`));
         const lunar = getLunar(Number(cr_date), Number(cr_month), cr_year, 7);
-        controller.enqueue(encoder.encode(`SUMMARY:${lunar[0]}/${lunar[1]}${lunar[3] ? '*' : ''}\n`));
-        controller.enqueue(encoder.encode(`DESCRIPTION:\n\t${lunar[0]}/${lunar[1]}${lunar[3] ? '*' : ''}/${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\n\n\tTháng ${Number(lunar[1]) === 1 ? 'Giêng ' : Number(lunar[1]) === 12 ? 'Chạp ' : ''}${can[((lunar[2] * 12) + lunar[1] + 3) % 10]} ${chi[(lunar[1] + 1) % 12]}${lunar[3] ? ' (nhuận)' : ''}\\n\n\tNăm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]}\\n\\n\n\tGiờ hoàng đạo: \n\t${getGioHoangDao(jdFromDate(Number(cr_date), Number(cr_month), cr_year))}\n`));
+        controller.enqueue(encoder.encode(`${lunar[0]}/${lunar[1]}`));
+        if (lunar[3]) controller.enqueue(encoder.encode('*'));
+        controller.enqueue(encoder.encode(`\nDESCRIPTION:\n\t${lunar[0]}/${lunar[1]}`));
+        if (lunar[3]) controller.enqueue(encoder.encode('*'));
+        controller.enqueue(encoder.encode(`/${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12]}\\n\n\tTháng `));
+        if (Number(lunar[1]) === 1) controller.enqueue(encoder.encode('Giêng '));
+        else if (Number(lunar[1]) === 12) controller.enqueue(encoder.encode('Chạp '));
+        controller.enqueue(encoder.encode(`${can[((lunar[2] * 12) + lunar[1] + 3) % 10]} ${chi[(lunar[1] + 1) % 12]}`));
+        if (lunar[3]) controller.enqueue(encoder.encode(' (nhuận)'));
+        controller.enqueue(encoder.encode(`\\n\n\tNăm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]}\\n\\n\n\tGiờ hoàng đạo: \n\t`));
+        const gio_hd = list_gio_hd[((jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12) % 6];
+        let c = 0;
+        for (let i = 0; i < 12; i++) {
+          if (gio_hd.charAt(i) === '1') {
+            controller.enqueue(encoder.encode(chi[i]));
+            if (c++ < 5) controller.enqueue(encoder.encode(`, \n\t`));
+          }
+        }
         controller.enqueue(encoder.encode('END:VEVENT\n'));
 
         start += 86400000;
