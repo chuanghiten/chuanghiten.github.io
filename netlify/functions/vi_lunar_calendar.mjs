@@ -373,7 +373,7 @@ export default async (req, context) => {
         if (lunar[3]) controller.enqueue(encoder.encode(' (nhuận)'));
         
         const cr_tiet = INT((INT(SunLongitude(jdFromDate(Number(cr_date), Number(cr_month), cr_year)) * (180 / PI)) / 360) * 24);
-        controller.enqueue(encoder.encode(`\nTiết ${tiet_khi[cr_tiet].name} (\n\t${tiet_khi[cr_tiet].meaning})`));
+        controller.enqueue(encoder.encode(`\n\t\\nTiết ${tiet_khi[cr_tiet].name} (\n\t${tiet_khi[cr_tiet].meaning})`));
 
         controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t`));
 
