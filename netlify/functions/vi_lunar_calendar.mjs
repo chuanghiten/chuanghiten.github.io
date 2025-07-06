@@ -298,30 +298,30 @@ export default async (req, context) => {
     nhat_tinh = ['Thanh Long hoàng đạo', 'Minh Đường hoàng đạo', 'Thiên Hình hắc đạo', 'Chu Tước hắc đạo', 'Kim Quỹ hoàng đạo', 'Kim Đường hoàng đạo', 'Bạch Hổ hắc đạo', 'Ngọc Đường hoàng đạo', 'Thiên Lao hắc đạo', 'Huyền Vũ hắc đạo', 'Tư Mệnh hoàng đạo', 'Cầu Trần hắc đạo'],
     // tiet_khi = ['Xuân Phân', 'Thanh Minh', 'Cốc Vũ', 'Lập Hạ', 'Tiểu Mãn', 'Mang Chủng', 'Hạ Chí', 'Tiểu Thử', 'Đại Thử', 'Lập Thu', 'Xử Thử', 'Bạch Lộ', 'Thu Phân', 'Hàn Lộ', 'Sương Giáng', 'Lập Đông', 'Tiểu Tuyết', 'Đại Tuyết', 'Đông Chí', 'Tiểu Hàn', 'Đại Hàn'],
     tiet_khi = [
-      {name: 'Xuân Phân', meaning: 'Thời gian giữa mùa Xuân'},
-      {name: 'Thanh Minh', meaning: 'Thời tiết trong sáng'},
-      {name: 'Cốc Vũ', meaning: 'Thời tiết có mưa rào'},
-      {name: 'Lập Hạ', meaning: 'Thời gian bắt đầu mùa Hạ'},
-      {name: 'Tiểu Mãn', meaning: 'Thời tiết có lũ nhỏ, duối vàng'},
-      {name: 'Mang Chủng', meaning: 'Chòm sao Tua Rua bắt đầu mọc'},
-      {name: 'Hạ Chí', meaning: 'Thời gian giữa mùa Hè'},
-      {name: 'Tiểu Thử', meaning: 'Thời tiết nóng nhẹ'},
-      {name: 'Đại Thử', meaning: 'Thời tiết oi bức, nóng nực'},
-      {name: 'Lập Thu', meaning: 'Thời gian bắt đầu mùa Thu'},
-      {name: 'Xử Thử', meaning: 'Thời tiết có mưa ngâu'},
-      {name: 'Bạch Lộ', meaning: 'Thời tiết có nắng nhạt'},
-      {name: 'Thu Phân', meaning: 'Thời hian giữa mùa Thu'},
-      {name: 'Hàn Lộ', meaning: 'Thời tiết mát mẻ'},
-      {name: 'Sương Giáng', meaning: 'Sương mù xuất hiện'},
-      {name: 'Lập Đông', meaning: 'Thời gian bắt đầu mùa Đông'},
-      {name: 'Tiểu Tuyết', meaning: 'Tuyết xuất hiện ở một số nơi'},
-      {name: 'Đại Tuyết', meaning: 'Tuyết bắt đầu dày'},
-      {name: 'Đông Chí', meaning: 'Thời gian giữa mùa Đông'},
-      {name: 'Tiểu Hàn', meaning: 'Thời tiết rét nhẹ'},
-      {name: 'Đại Hàn', meaning: 'Thời tiết rét đậm'},
-      {name: 'Lập Xuân ', meaning: 'Thời gian bắt đầu mùa Xuân'},
-      {name: 'Vũ Thủy', meaning: 'Thời tiết có mưa ẩm'},
-      {name: 'Kinh Trập ', meaning: 'Sâu bướm bắt đầu nở'}
+      {name: 'Xuân Phân', meaning: 'Thời gian \n\tgiữa mùa Xuân'},
+      {name: 'Thanh Minh', meaning: 'Thời tiết \n\ttrong sáng'},
+      {name: 'Cốc Vũ', meaning: 'Thời tiết có \n\tmưa rào'},
+      {name: 'Lập Hạ', meaning: 'Thời gian bắt \n\tđầu mùa Hạ'},
+      {name: 'Tiểu Mãn', meaning: 'Thời tiết có \n\tlũ nhỏ, duối vàng'},
+      {name: 'Mang Chủng', meaning: 'Chòm sao Tua \n\tRua bắt đầu mọc'},
+      {name: 'Hạ Chí', meaning: 'Thời gian \n\tgiữa mùa Hè'},
+      {name: 'Tiểu Thử', meaning: 'Thời tiết \n\tnóng nhẹ'},
+      {name: 'Đại Thử', meaning: 'Thời tiết oi \n\tbức, nóng nực'},
+      {name: 'Lập Thu', meaning: 'Thời gian bắt \n\tđầu mùa Thu'},
+      {name: 'Xử Thử', meaning: 'Thời tiết \n\tcó mưa ngâu'},
+      {name: 'Bạch Lộ', meaning: 'Thời tiết \n\tcó nắng nhạt'},
+      {name: 'Thu Phân', meaning: 'Thời hian \n\tgiữa mùa Thu'},
+      {name: 'Hàn Lộ', meaning: 'Thời tiết \n\tmát mẻ'},
+      {name: 'Sương Giáng', meaning: 'Sương mù \n\txuất hiện'},
+      {name: 'Lập Đông', meaning: 'Thời gian bắt \n\tđầu mùa Đông'},
+      {name: 'Tiểu Tuyết', meaning: 'Tuyết xuất hiện \n\tở một số nơi'},
+      {name: 'Đại Tuyết', meaning: 'Tuyết bắt \n\tđầu dày'},
+      {name: 'Đông Chí', meaning: 'Thời gian giữa \n\tmùa Đông'},
+      {name: 'Tiểu Hàn', meaning: 'Trời \n\trét nhẹ'},
+      {name: 'Đại Hàn', meaning: 'Trời \n\trét đậm'},
+      {name: 'Lập Xuân ', meaning: 'Thời gian bắt \n\tđầu mùa Xuân'},
+      {name: 'Vũ Thủy', meaning: 'Thời tiết \n\tcó mưa ẩm'},
+      {name: 'Kinh Trập ', meaning: 'Sâu bướm \n\tbắt đầu nở'}
     ],
     list_gio_hd = [843, 3372, 1203, 717, 2868, 3282],
     list_ngay_hd = [[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7], [6, 7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5], [4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2, 3]],
@@ -363,7 +363,7 @@ export default async (req, context) => {
 
         const chi_of_day = (jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 1) % 12;
 
-        controller.enqueue(encoder.encode(` năm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]} ${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[chi_of_day]} (${nhat_tinh[list_ngay_hd[lunar[1] % 6][chi_of_day]]})\\n\n\tTháng `));
+        controller.enqueue(encoder.encode(` năm ${can[(lunar[2] + 6) % 10]} ${chi[(lunar[2] + 8) % 12]} ${lunar[2]} (Âm lịch)\\n\\n\n\tNgày ${can[(jdFromDate(Number(cr_date), Number(cr_month), cr_year) + 9) % 10]} ${chi[chi_of_day]} (\n\t${nhat_tinh[list_ngay_hd[lunar[1] % 6][chi_of_day]]})\\n\n\tTháng `));
 
         if (Number(lunar[1]) === 1) controller.enqueue(encoder.encode('Giêng '));
         else if (Number(lunar[1]) === 12) controller.enqueue(encoder.encode('Chạp '));
@@ -373,7 +373,7 @@ export default async (req, context) => {
         if (lunar[3]) controller.enqueue(encoder.encode(' (nhuận)'));
         
         const cr_tiet = INT((INT(SunLongitude(jdFromDate(Number(cr_date), Number(cr_month), cr_year)) * (180 / PI)) / 360) * 24);
-        controller.enqueue(encoder.encode(`\nTiết ${tiet_khi[cr_tiet].name} (${tiet_khi[cr_tiet].meaning})`));
+        controller.enqueue(encoder.encode(`\nTiết ${tiet_khi[cr_tiet].name} (\n\t${tiet_khi[cr_tiet].meaning})`));
 
         controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t`));
 
@@ -409,8 +409,8 @@ export default async (req, context) => {
   return new Response(body, {
     status: 200,
     headers: {
-      // 'Content-Type': 'text/calendar'
-      'Content-Type': 'text/plain'
+      'Content-Type': 'text/calendar'
+      //'Content-Type': 'text/plain'
     }
   });
 };
