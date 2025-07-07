@@ -295,7 +295,7 @@ export default async (req, context) => {
 
     can = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'],
     chi = ['Tí', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'],
-    chi_gio = ['23h - 1h', '1h - 3h', '3h - 5h', '5h - 7h', '7h - 9h', '9h - 11h', '11h - 13h', '13h - 15h', '15h - 17h', '17h - 19h', '19h - 21h', '21h - 23h'],
+    chi_gio = ['23 giờ - 1 giờ', '1 giờ - 3 giờ', '3 giờ - 5 giờ', '5 giờ - 7 giờ', '7 giờ - 9 giờ', '9 giờ - 11 giờ', '11 giờ - 13 giờ', '13 giờ - 15 giờ', '15 giờ - 17 giờ', '17 giờ - 19 giờ', '19 giờ - 21 giờ', '21 giờ - 23 giờ'],
     nhat_tinh = ['Thanh Long hoàng đạo', 'Minh Đường hoàng đạo', 'Thiên Hình hắc đạo', 'Chu Tước hắc đạo', 'Kim Quỹ hoàng đạo', 'Kim Đường hoàng đạo', 'Bạch Hổ hắc đạo', 'Ngọc Đường hoàng đạo', 'Thiên Lao hắc đạo', 'Huyền Vũ hắc đạo', 'Tư Mệnh hoàng đạo', 'Cầu Trần hắc đạo'],
     tiet_khi = [
       {name: 'Xuân Phân', meaning: 'Thời gian \n\tgiữa mùa Xuân'},
@@ -375,15 +375,15 @@ export default async (req, context) => {
         const cr_tiet = INT((INT(SunLongitude(jdFromDate(Number(cr_date), Number(cr_month), cr_year)) * (180 / PI)) / 360) * 24);
         controller.enqueue(encoder.encode(`\n\t\\nTiết ${tiet_khi[cr_tiet].name} (\n\t${tiet_khi[cr_tiet].meaning})`));
 
-        controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t`));
+        controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t\\n\\t`));
 
         const gio_hd = list_gio_hd[(chi_of_day) % 6];
         let c = 0;
 
         for (let i = 0; i < 12; i++) {
           if ((gio_hd >> i) & 1) {
-            controller.enqueue(encoder.encode(`${chi[i]} (${chi_gio[i]})`));
-            if (c++ < 5) controller.enqueue(encoder.encode(`, \n\t`));
+            controller.enqueue(encoder.encode(`- ${chi[i]} (${chi_gio[i]})`));
+            if (c++ < 5) controller.enqueue(encoder.encode(`\\n\\t\n\t`));
           }
         }
 
