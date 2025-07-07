@@ -295,7 +295,6 @@ export default async (req, context) => {
 
     can = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'],
     chi = ['Tí', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'],
-    chi_gio = ['23 - 1 giờ', '1 - 3 giờ', '3 - 5 giờ', '5 - 7 giờ', '7 - 9 giờ', '9 - 11 giờ', '11 - 13 giờ', '13 - 15 giờ', '15 - 17 giờ', '17 - 19 giờ', '19 - 21 giờ', '21 - 23 giờ'],
     nhat_tinh = ['Thanh Long hoàng đạo', 'Minh Đường hoàng đạo', 'Thiên Hình hắc đạo', 'Chu Tước hắc đạo', 'Kim Quỹ hoàng đạo', 'Kim Đường hoàng đạo', 'Bạch Hổ hắc đạo', 'Ngọc Đường hoàng đạo', 'Thiên Lao hắc đạo', 'Huyền Vũ hắc đạo', 'Tư Mệnh hoàng đạo', 'Cầu Trần hắc đạo'],
     tiet_khi = [
       {name: 'Xuân Phân', meaning: 'Thời gian \n\tgiữa mùa Xuân'},
@@ -322,6 +321,9 @@ export default async (req, context) => {
       {name: 'Lập Xuân ', meaning: 'Thời gian bắt \n\tđầu mùa Xuân'},
       {name: 'Vũ Thủy', meaning: 'Thời tiết \n\tcó mưa ẩm'},
       {name: 'Kinh Trập ', meaning: 'Sâu bướm \n\tbắt đầu nở'}
+    ],
+    events = [,
+      []
     ],
     list_gio_hd = [843, 3372, 1203, 717, 2868, 3282],
     list_ngay_hd = [[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7], [6, 7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5], [4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2, 3]],
@@ -375,15 +377,15 @@ export default async (req, context) => {
         const cr_tiet = INT((INT(SunLongitude(jdFromDate(Number(cr_date), Number(cr_month), cr_year)) * (180 / PI)) / 360) * 24);
         controller.enqueue(encoder.encode(`\n\t\\nTiết ${tiet_khi[cr_tiet].name} (\n\t${tiet_khi[cr_tiet].meaning})`));
 
-        controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t\\n\\t`));
+        controller.enqueue(encoder.encode(`\\n\\n\n\tGiờ hoàng đạo: \n\t`));
 
         const gio_hd = list_gio_hd[(chi_of_day) % 6];
         let c = 0;
 
         for (let i = 0; i < 12; i++) {
           if ((gio_hd >> i) & 1) {
-            controller.enqueue(encoder.encode(`- Giờ ${chi[i]} (từ ${chi_gio[i]})`));
-            if (c++ < 5) controller.enqueue(encoder.encode(`\\n \n\t`));
+            controller.enqueue(encoder.encode(chi[i]));
+            if (c++ < 5) controller.enqueue(encoder.encode(`, \n\t`));
           }
         }
 
