@@ -295,7 +295,7 @@ export default async (req, context) => {
 
     can = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'],
     chi = ['Tí', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'],
-    can_gio = ['23h - 1h', '1h - 3h', '3h - 5h', '5h - 7h', '7h - 9h', '9h - 11h', '11h - 13h', '13h - 15h', '15h - 17h', '17h - 19h', '19h - 21h', '21h - 23h'],
+    chi_gio = ['23h - 1h', '1h - 3h', '3h - 5h', '5h - 7h', '7h - 9h', '9h - 11h', '11h - 13h', '13h - 15h', '15h - 17h', '17h - 19h', '19h - 21h', '21h - 23h'],
     nhat_tinh = ['Thanh Long hoàng đạo', 'Minh Đường hoàng đạo', 'Thiên Hình hắc đạo', 'Chu Tước hắc đạo', 'Kim Quỹ hoàng đạo', 'Kim Đường hoàng đạo', 'Bạch Hổ hắc đạo', 'Ngọc Đường hoàng đạo', 'Thiên Lao hắc đạo', 'Huyền Vũ hắc đạo', 'Tư Mệnh hoàng đạo', 'Cầu Trần hắc đạo'],
     tiet_khi = [
       {name: 'Xuân Phân', meaning: 'Thời gian \n\tgiữa mùa Xuân'},
