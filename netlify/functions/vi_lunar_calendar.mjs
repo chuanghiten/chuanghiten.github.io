@@ -295,7 +295,7 @@ export default async (req, context) => {
 
     can = ['Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ', 'Canh', 'Tân', 'Nhâm', 'Quý'],
     chi = ['Tí', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi', 'Thân', 'Dậu', 'Tuất', 'Hợi'],
-    chi_gio = ['23 giờ - 1 giờ', '1 giờ - 3 giờ', '3 giờ - 5 giờ', '5 giờ - 7 giờ', '7 giờ - 9 giờ', '9 giờ - 11 giờ', '11 giờ - 13 giờ', '13 giờ - 15 giờ', '15 giờ - 17 giờ', '17 giờ - 19 giờ', '19 giờ - 21 giờ', '21 giờ - 23 giờ'],
+    chi_gio = ['23 - 1 giờ', '1 - 3 giờ', '3 - 5 giờ', '5 - 7 giờ', '7 - 9 giờ', '9 - 11 giờ', '11 - 13 giờ', '13 - 15 giờ', '15 - 17 giờ', '17 - 19 giờ', '19 - 21 giờ', '21 - 23 giờ'],
     nhat_tinh = ['Thanh Long hoàng đạo', 'Minh Đường hoàng đạo', 'Thiên Hình hắc đạo', 'Chu Tước hắc đạo', 'Kim Quỹ hoàng đạo', 'Kim Đường hoàng đạo', 'Bạch Hổ hắc đạo', 'Ngọc Đường hoàng đạo', 'Thiên Lao hắc đạo', 'Huyền Vũ hắc đạo', 'Tư Mệnh hoàng đạo', 'Cầu Trần hắc đạo'],
     tiet_khi = [
       {name: 'Xuân Phân', meaning: 'Thời gian \n\tgiữa mùa Xuân'},
@@ -382,8 +382,8 @@ export default async (req, context) => {
 
         for (let i = 0; i < 12; i++) {
           if ((gio_hd >> i) & 1) {
-            controller.enqueue(encoder.encode(`- ${chi[i]} (${chi_gio[i]})`));
-            if (c++ < 5) controller.enqueue(encoder.encode(`\\n\\t\n\t`));
+            controller.enqueue(encoder.encode(`- Giờ ${chi[i]} (từ ${chi_gio[i]})`));
+            if (c++ < 5) controller.enqueue(encoder.encode(`\\n \n\t`));
           }
         }
 
