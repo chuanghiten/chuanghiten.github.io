@@ -206,7 +206,7 @@ function b() {
   imgHong.setAttribute("active", "");
   promptHong.innerHTML = "";
   optionHong.innerHTML = "";
-  if ((new Date().getDate() == 18 && new Date().getMonth() + 1 == 6) || false) {
+  if ((new Date().getDate() == 18 && new Date().getMonth() + 1 == 6) || window.location.href.includes("sinh_nhat")) {
     typingText(
       "3 bó thì sao? Ủa mà nay sinh nhật m hả?",
       promptHong,
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
     changeScene.setAttribute("style", `--width: ${mainElement.offsetHeight}px`);
   }
   if (
-    getLunar(
+    (getLunar(
       new Date().getDate(),
       new Date().getMonth() + 1,
       new Date().getFullYear(),
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
       new Date().getMonth() + 1,
       new Date().getFullYear(),
       (new Date().getTimezoneOffset() / 60) * -1
-    )[1] == 8
+    )[1] == 8) || window.location.href.includes("trung_thu")
   ) {
     trungThuFrame.setAttribute("active", "");
     hongElement.setAttribute("active", "");
